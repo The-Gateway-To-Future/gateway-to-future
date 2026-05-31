@@ -551,3 +551,419 @@ header {
         min-height: auto;
     }
 }
+
+/* ============================================
+   3D THEME EXTENSIONS - Gateway to Future
+   Enhanced 3D effects, glassmorphism, particles,
+   aurora gradients, and depth animations
+   Color variants: #1d4ed8 (primary), #fbfdff (bg),
+   #f3f4f6 (surface), #1e40af (hover)
+   ============================================ */
+
+/* --- 3D Particle Field Enhancement --- */
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+#canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* --- Aurora Borealis Background --- */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.aurora-bg::before,
+.aurora-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: aurora-drift 20s ease-in-out infinite alternate;
+}
+.aurora-bg::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(29,78,216,0.3) 0%, rgba(29,78,216,0) 70%);
+  top: -10%;
+  left: -10%;
+}
+.aurora-bg::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0) 70%);
+  bottom: -5%;
+  right: -5%;
+  animation-delay: -10s;
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(100px, 50px) scale(1.1) rotate(45deg); }
+  50% { transform: translate(50px, 150px) scale(1.05) rotate(90deg); }
+  75% { transform: translate(-50px, 100px) scale(1.15) rotate(135deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(180deg); }
+}
+
+/* --- Grid Pattern Overlay --- */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(29,78,216,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29,78,216,0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 75%);
+  mask-image: linear-gradient(180deg, black 0%, transparent 75%);
+}
+
+/* --- Enhanced Glassmorphism Cards --- */
+.glass-3d {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.92),
+    rgba(243,244,246,0.86)
+  );
+  border: 1px solid rgba(255,255,255,0.7);
+  border-top: 1px solid rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(214,222,234,0.6);
+  border-radius: 1.2rem;
+  padding: 1.6rem;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow:
+    0 20px 50px rgba(17,24,39,0.1),
+    0 8px 20px rgba(17,24,39,0.06),
+    inset 0 0 0 1px rgba(255,255,255,0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-3d:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 30px 70px rgba(29,78,216,0.16),
+    0 12px 30px rgba(29,78,216,0.1),
+    inset 0 0 0 1px rgba(29,78,216,0.15);
+  border-color: rgba(29,78,216,0.3);
+}
+
+/* --- Depth Cards with 3.5D Perspective --- */
+.depth-card {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  border-radius: 1.2rem;
+}
+.depth-card-inner {
+  position: relative;
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(214,222,234,0.8);
+  border-radius: 1.2rem;
+  padding: 1.8rem;
+  box-shadow:
+    0 1px 3px rgba(17,24,39,0.04),
+    0 8px 24px rgba(17,24,39,0.06),
+    0 16px 40px rgba(17,24,39,0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.depth-card:hover .depth-card-inner {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+  box-shadow:
+    0 12px 35px rgba(29,78,216,0.15),
+    0 30px 60px rgba(29,78,216,0.1),
+    0 -1px 40px rgba(29,78,216,0.08);
+  border-color: rgba(29,78,216,0.32);
+}
+
+/* --- 3D Section Containers --- */
+.section-3d {
+  position: relative;
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  overflow: hidden;
+}
+.section-3d .section-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(29,78,216,0.06) 0%,
+    transparent 60%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Feature Grid 3D Cards --- */
+.feature-grid-3d {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+.feature-card-3d {
+  background: linear-gradient(150deg, #ffffff 0%, #f3f4f6 100%);
+  border: 1px solid rgba(214,222,234,0.85);
+  border-radius: 1.1rem;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 4px 20px rgba(17,24,39,0.06),
+    0 1px 3px rgba(17,24,39,0.03);
+}
+.feature-card-3d::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 50%, #1d4ed8 100%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.feature-card-3d:hover {
+  transform: translateY(-10px) rotateX(1deg);
+  box-shadow:
+    0 20px 45px rgba(29,78,216,0.14),
+    0 8px 20px rgba(29,78,216,0.08),
+    0 4px 8px rgba(29,78,216,0.06);
+  border-color: rgba(29,78,216,0.35);
+}
+.feature-card-3d:hover::before {
+  opacity: 1;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --- 3D Icons & Badges --- */
+.icon-3d-chip {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.85rem;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #ffffff 0%, #e5edff 100%);
+  border: 1px solid rgba(214,222,234,0.8);
+  color: #1d4ed8;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  box-shadow:
+    0 8px 20px rgba(29,78,216,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+  transition: all 0.3s ease;
+}
+.icon-3d-chip:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow:
+    0 14px 30px rgba(29,78,216,0.2),
+    inset 0 2px 6px rgba(255,255,255,0.8);
+}
+
+.level-badge-3d {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.32rem 0.82rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 900;
+  box-shadow: 0 4px 12px rgba(29,78,216,0.2), inset 0 1px 0 rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+
+/* --- Timeline 3D Steps --- */
+.timeline-3d {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  counter-reset: step;
+  padding: 1rem 0;
+}
+.timeline-step-3d {
+  position: relative;
+  padding: 1.6rem;
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(214,222,234,0.8);
+  border-radius: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(17,24,39,0.05);
+}
+.timeline-step-3d::before {
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #1d4ed8, #1e40af);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(29,78,216,0.35);
+  opacity: 0.85;
+}
+.timeline-step-3d:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 40px rgba(29,78,216,0.16),
+    0 4px 12px rgba(29,78,216,0.08);
+  border-color: rgba(29,78,216,0.3);
+}
+
+/* --- 3D Buttons with Depth --- */
+.btn-3d {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 50px;
+  padding: 0 1.6rem;
+  border-radius: 0.85rem;
+  border: none;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.btn-3d-primary {
+  background: linear-gradient(145deg, #1d4ed8 0%, #1e40af 100%);
+  color: #fff;
+  box-shadow:
+    0 6px 20px rgba(29,78,216,0.28),
+    0 3px 8px rgba(29,78,216,0.16),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-3d-primary:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 30px rgba(29,78,216,0.35),
+    0 6px 14px rgba(29,78,216,0.22),
+    inset 0 2px 8px rgba(255,255,255,0.25);
+}
+.btn-3d-primary:active {
+  transform: translateY(0);
+}
+.btn-3d-secondary {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  color: #1d4ed8;
+  border: 1px solid rgba(29,78,216,0.22);
+  box-shadow:
+    0 4px 12px rgba(17,24,39,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+.btn-3d-secondary:hover {
+  background: linear-gradient(145deg, #eff6ff 0%, #e0e7ff 100%);
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 25px rgba(29,78,216,0.15),
+    inset 0 2px 0 rgba(255,255,255,0.9);
+}
+
+/* --- 3D Headings with Shadow --- */
+.heading-3d {
+  font-family: var(--font-display);
+  letter-spacing: 0;
+  line-height: 1.05;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 50%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(29,78,216,0.15));
+}
+
+/* --- Section Title with Glow --- */
+.section-title-glow {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+.section-title-glow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 100%);
+  border-radius: 3px;
+  box-shadow: 0 2px 12px rgba(29,78,216,0.4);
+}
+
+/* --- Floating Elements Animation --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- Scroll Reveal Animation --- */
+.reveal-3d {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-3d.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- Responsive 3D Styles --- */
+@media (max-width: 768px) {
+  .feature-grid-3d,
+  .timeline-3d {
+    grid-template-columns: 1fr;
+  }
+  .depth-card:hover .depth-card-inner {
+    transform: translateY(-4px);
+  }
+  .aurora-bg::before {
+    width: 300px;
+    height: 300px;
+  }
+  .aurora-bg::after {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* --- Dark Theme Support (for future use) --- */
+@media (prefers-color-scheme: dark) {
+  /* Optional dark mode overrides */
+}
