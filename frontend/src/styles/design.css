@@ -1,0 +1,103 @@
+/* Design System for Gateway To Future – premium look */
+/* Import Google Font – Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  /* Primary teal‑blue gradient palette */
+  --color-primary-h: 210;   /* hue */
+  --color-primary-s: 80%;
+  --color-primary-l: 55%;
+  --color-secondary-h: 340; /* Pink‑ish accent */
+  --color-secondary-s: 70%;
+  --color-secondary-l: 60%;
+
+  /* Light mode colors */
+  --bg-light: hsl(0, 0%, 100%);
+  --bg-dark: hsl(210, 30%, 10%);
+  --text-light: hsl(210, 15%, 20%);
+  --text-dark: hsl(0, 0%, 95%);
+
+  /* Gradient background */
+  --gradient-bg: linear-gradient(135deg, hsl(var(--color-primary-h), var(--color-primary-s), 65%), hsl(var(--color-secondary-h), var(--color-secondary-s), 55%));
+
+  /* Dark mode overrides */
+  --bg-dark-mode: var(--bg-dark);
+  --text-dark-mode: var(--text-dark);
+
+  /* Common tokens */
+  --font-family: 'Inter', system-ui, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Dark mode – toggled by data-theme="dark" on <html> */
+html[data-theme='dark'] {
+  --bg: var(--bg-dark-mode);
+  --text: var(--text-dark-mode);
+}
+
+/* Light mode defaults */
+html {
+  --bg: var(--bg-light);
+  --text: var(--text-light);
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gradient-bg);
+  color: var(--text);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Utility classes */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.grid-2 { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.grid-3 { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+/* Glass‑morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1.5rem;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.glass-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+.btn:hover { background: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 10%)); transform: translateY(-2px); }
+
+/* Nav */
+.site-header { position: sticky; top: 0; background: var(--gradient-bg); padding: 1rem 0; z-index: 1000; }
+.menu a { color: var(--text); margin-left: 1rem; text-decoration: none; transition: color var(--transition-speed); }
+.menu a:hover, .menu a.active { color: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l)); }
+
+/* Footer */
+.site-footer { background: var(--bg-dark-mode); color: var(--text-dark-mode); padding: 2rem 0; text-align: center; }
+
+/* Theme toggle button */
+.theme-toggle { position: fixed; bottom: 1rem; right: 1rem; background: var(--bg-light); border: 1px solid var(--text-light); border-radius: 9999px; padding: 0.5rem; cursor: pointer; z-index: 1000; }
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in-up { animation: fadeInUp 0.6s forwards; }

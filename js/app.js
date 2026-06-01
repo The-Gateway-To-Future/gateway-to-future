@@ -1,7 +1,7 @@
 // 5D Immersive Background with Three.js
 let scene, camera, renderer, particles;
 
-function init() {
+function initThreeJS() {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     

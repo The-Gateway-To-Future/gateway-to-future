@@ -1,0 +1,185 @@
+/* Design System */
+:root {
+  /* Color palette (HSL) */
+  --color-primary-h: 210;   /* Blue-ish */
+  --color-primary-s: 80%;
+  --color-primary-l: 55%;
+  --color-secondary-h: 340; /* Pink-ish */
+  --color-secondary-s: 70%;
+  --color-secondary-l: 60%;
+  --color-bg-light: hsl(0, 0%, 100%);
+  --color-bg-dark: hsl(210, 30%, 10%);
+  --color-text-light: hsl(210, 15%, 20%);
+  --color-text-dark: hsl(0, 0%, 95%);
+  --gradient-bg: linear-gradient(135deg, hsl(var(--color-primary-h), var(--color-primary-s), 65%), hsl(var(--color-secondary-h), var(--color-secondary-s), 55%));
+  --font-family: 'Outfit', sans-serif;
+  --color-bg: var(--color-bg-light);
+  --color-text: var(--color-text-light);
+  --transition-speed: 0.3s;
+}
+
+/* Dark mode */
+body.dark {
+  --color-bg: var(--color-bg-dark);
+  --color-text: var(--color-text-dark);
+}
+
+/* Light mode defaults */
+body {
+  background: var(--gradient-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding: 8rem 0;
+  text-align: center;
+  color: var(--color-text-light);
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Header and navigation */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: var(--gradient-bg);
+  padding: 1rem 0;
+  z-index: 1000;
+}
+
+/* Footer styling matching .site-footer */
+.site-footer {
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.site-footer a { color: var(--color-text-dark); }
+.menu a {
+  color: var(--color-text);
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+.menu a:hover,
+.menu a.active-page {
+  color: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+}
+
+/* Highlight */
+.headline-highlight {
+  color: hsl(var(--color-secondary-h), var(--color-secondary-s), 70%);
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 1.5rem;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+.reveal.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Utility classes */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 600;
+  background: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+  color: #fff;
+  text-decoration: none;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+.btn:hover {
+  background: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 10%));
+  transform: translateY(-2px);
+}
+.btn-primary {
+  background: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+}
+.btn-secondary {
+  background: hsl(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l));
+}
+
+/* Dark mode toggle */
+.theme-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-text-light);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Micro-animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Responsive utilities */
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Additional component styles (example) */
+.header { padding: 2rem 0; }
+.footer { padding: 2rem 0; text-align: center; }

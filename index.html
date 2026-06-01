@@ -27,10 +27,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "The Gateway to Future",
+    "url": "https://gatewaytofuture.example.com",
+    "logo": "https://gatewaytofuture.example.com/assets/preview.png",
+    "sameAs": [
+      "https://www.facebook.com/gatewaytofuture",
+      "https://twitter.com/gatewaytofuture",
+      "https://www.linkedin.com/company/gatewaytofuture"
+    ],
+    "description": "Premium Germany education institute offering language courses, Studienkolleg preparation, university admission support, visa processing, and Ausbildung counselling for Indian learners.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Berlin",
+      "addressCountry": "Germany"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "gatewaytofuture@email.com",
+      "contactType": "Customer Service"
+    }
+  }
+  </script>
 </head>
+  <!-- Fallback hero image for no‑WebGL support -->
+  <style>
+    .hero { background-image: url('assets/hero.jpg'); background-size: cover; background-position: center; }
+  </style>
 <body>
-  <canvas id="space" aria-hidden="true"></canvas>
+  <div id="canvas-container" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
@@ -44,6 +76,7 @@
           <span class="brand-sub">Germany Education · Mentorship · Admissions</span>
         </div>
       </a>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">🌙</button>
       <nav class="menu" aria-label="Primary navigation">
         <a href="index.html" class="active-page">Home</a>
         <a href="courses.html">Programs</a>
@@ -56,7 +89,7 @@
   </header>
 
   <main id="content" class="shell">
-    <section class="hero">
+    <section id="hero" class="hero reveal">
       <div>
         <div class="eyebrow">Premium institute experience for Germany aspirants</div>
         <h1>Build your <span class="headline-highlight">German future</span> with a Berlin-based academy.</h1>
@@ -75,17 +108,17 @@
         </div>
       </div>
       <div class="hero-visual reveal">
-        <div class="floating-card one">
+        <div class="floating-card one glass-card">
           <div class="kicker">Admissions Architecture</div>
           <h3>Structured student journey</h3>
           <p>Program discovery → profile review → roadmap booking — designed like a mature institute website.</p>
         </div>
-        <div class="floating-card two">
+        <div class="floating-card two glass-card">
           <div class="kicker">Premium Experience</div>
           <h3>5D motion background</h3>
           <p>Living particle field, aurora lighting, and orbital motion create a world-class first impression.</p>
         </div>
-        <div class="floating-card three">
+        <div class="floating-card three glass-card">
           <div class="kicker">Trust Stack</div>
           <h3>Big-brand visual language</h3>
           <p>Executive typography, glassmorphism surfaces, and institute-grade credibility signals.</p>
@@ -94,15 +127,15 @@
     </section>
 
     <!-- PROGRAMS -->
-    <section class="programs reveal">
+    <section id="programs" class="programs reveal">
       <h2>Programs for every stage of your Germany journey</h2>
       <p class="section-subtitle">From German language mastery to visa-ready applications — we cover it all.</p>
       <div class="program-grid">
 
-        <div class="program-card">
+        <div class="program-card glass-card">
           <div class="program-icon">🗣️</div>
           <h3>German Language (A1 → C1)</h3>
-          <p.Live classes and premium materials aligned with Goethe, telc, and TestDaF exams.</p>
+          <p>Live classes and premium materials aligned with Goethe, telc, and TestDaF exams.</p>
           <ul class="program-features">
             <li>A1.1 to C1 structured curriculum</li>
             <li>Grammar deep-dives + speaking practice</li>
@@ -113,7 +146,7 @@
           <a href="contact.html" class="program-link">Learn more →</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card glass-card">
           <div class="program-icon">🎓</div>
           <h3>Studienkolleg Preparation</h3>
           <p>Prepare for Studienkolleg entrance exams with targeted coaching for T, M, W, G, and S-courses.</p>
@@ -127,7 +160,7 @@
           <a href="contact.html" class="program-link">Learn more →</a>
         </div>
 
-        <div class="program-card highlight">
+        <div class="program-card highlight glass-card">
           <div class="program-icon">📋</div>
           <div class="program-badge">Most Popular</div>
           <h3>University Admission Support</h3>
@@ -143,7 +176,7 @@
           <a href="contact.html" class="program-link">Learn more →</a>
         </div>
 
-        <div class="program-card highlight">
+        <div class="program-card highlight glass-card">
           <div class="program-icon">🛂</div>
           <div class="program-badge">Visa Ready</div>
           <h3>Student Visa Processing</h3>
@@ -160,7 +193,7 @@
           <a href="contact.html" class="program-link">Learn more →</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card glass-card">
           <div class="program-icon">🏥</div>
           <h3>Ausbildung Pathway</h3>
           <p>Dual vocational training in Germany — earn while you learn. Ideal for students aged 18–35.</p>
@@ -175,7 +208,7 @@
           <a href="contact.html" class="program-link">Learn more →</a>
         </div>
 
-        <div class="program-card">
+        <div class="program-card glass-card">
           <div class="program-icon">🚀</div>
           <div class="program-badge">Free</div>
           <h3>Free A1 German Starter</h3>
@@ -194,7 +227,7 @@
     </section>
 
     <!-- STUDENT JOURNEY -->
-    <section class="journey reveal">
+    <section id="journey" class="journey reveal">
       <h2>Your roadmap to Germany</h2>
       <p class="section-subtitle">A clear, 4-step process designed to remove uncertainty at every stage.</p>
       <div class="journey-steps">
@@ -222,7 +255,7 @@
     </section>
 
     <!-- INSTITUTIONAL ADVANTAGE -->
-    <section class="advantage reveal">
+    <section id="advantage" class="advantage reveal">
       <div class="advantage-content">
         <h2>Why study with The Gateway to Future?</h2>
         <p class="section-subtitle">We combine academic expertise with insider experience — Ashutosh Sharma, your mentor, has lived and studied the German system from the inside.</p>
@@ -252,7 +285,7 @@
     </section>
 
     <!-- BLOCKED ACCOUNT COMPARISON -->
-    <section class="blocked-account reveal">
+    <section id="blocked-account" class="blocked-account reveal">
       <h2>Blocked Account Guide: Choose Your Provider</h2>
       <p class="section-subtitle">A blocked Sperrkonto is mandatory for your German student visa. Here is a comparison of the 3 main providers.</p>
       <div class="provider-grid">
@@ -297,7 +330,7 @@
     </section>
 
     <!-- SETTLEMENT SUPPORT -->
-    <section class="settlement reveal">
+    <section id="settlement" class="settlement reveal">
       <h2>Settlement Support: Life After Landing</h2>
       <p class="section-subtitle">We do not send you to Germany alone. Our post-arrival support ensures you settle in smoothly.</p>
       <div class="settlement-grid">
@@ -335,7 +368,7 @@
     </section>
 
     <!-- FREE RESOURCES -->
-    <section class="resources reveal">
+    <section id="resources" class="resources reveal">
       <h2>Free resources to kickstart your Germany journey</h2>
       <div class="resource-card">
         <h3>Download your Free A1 German Starter Workbook</h3>
@@ -355,7 +388,7 @@
     </section>
 
     <!-- ENROLLMENT FORM -->
-    <section class="form-section reveal">
+    <section id="contact" class="form-section reveal">
       <div class="form-wrapper">
         <h2>Book your free 30-minute strategy call</h2>
         <p>Tell us about yourself and we will schedule a structured consultation to map out your Germany roadmap.</p>
@@ -473,6 +506,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/theme.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       console.log('Gateway To Future loaded');
