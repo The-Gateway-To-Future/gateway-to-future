@@ -1,0 +1,16 @@
+/* threeBackground.css */
+/* Position the canvas as a full-screen background behind content */
+#three-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* behind other elements */
+  pointer-events: none; /* allow clicks through */
+}
+
+/* Optional VR mode styling */
+#three-bg.vr {
+  /* could adjust for VR field of view if needed */
+}
