@@ -1,19 +1,17 @@
 # Gateway to Future Backend System
 
-A production-ready, highly secure RESTful API backend and interactive student hub SPA for the **Gateway to Future** brand website (`gatewaytofuture.com`), assisting Indian students with German language class registration, Ausbildung counseling slot scheduling (9 PM IST / 5:30 PM CEST), secure Razorpay checkout, and educational content downloads.
-
-This system is designed with competitive content matrices (**Inhalt**) matching and outperforming other industry platforms (such as Nikshala).
+A production-ready, highly secure RESTful API backend and interactive student hub SPA for the **Gateway to Future** brand website (`gatewaytofuture.com`). The backend handles student registrations, counseling slot scheduling (9 PM IST / 5:30 PM CEST), secure Razorpay checkouts, and educational material distribution.
 
 ---
 
 ## 🛠️ Architecture & Tech Stack
 
-- **Runtime & Language**: Node.js v24, Express, TypeScript
-- **Relational Database**: PostgreSQL 16 (Parametrized SQL queries, custom migration scripts)
-- **Caching Layer**: Redis 7 (Speed-caching course listings/materials, resilient in-memory fallback)
-- **Security**: JWT sessions, Bcrypt password salting, Helmet CSP guards, Express Rate Limiter, and Timing-Safe HMAC signatures
-- **Payments**: Razorpay Node API Integration (webhook crypt verify, mock environment seeder)
-- **Deployment**: Multi-stage `Dockerfile`, orchestration via `docker-compose`
+- **Runtime & Language**: Node.js v20+, Express, TypeScript
+- **Relational Database**: PostgreSQL 16 (Parametrized SQL queries, custom migrations)
+- **Caching Layer**: Redis 7 (Speed-caching course listings and materials with in-memory fallback)
+- **Security**: JWT sessions, Bcrypt password salting, Helmet CSP guards, Express Rate Limiting, and Timing-Safe HMAC signatures
+- **Payments**: Razorpay Node API Integration (webhook crypt verification, mock environment seeder)
+- **Deployment**: Multi-stage `Dockerfile`, orchestration via `docker-compose`, or Render Blueprint (`render.yaml`)
 
 ---
 
@@ -24,19 +22,24 @@ Ensure you have the following installed on your host system:
 - **Node.js** (v18+)
 - **NPM** (v9+)
 - *(Optional)* **Docker & Docker Compose** (for containerized execution)
+- *(Optional)* **PostgreSQL & Redis** (if running without mock repositories)
 
 ### 2. Environment Configurations (`.env`)
-The project comes pre-configured with a default `.env` file that runs in **Mock Mode** by default. This enables:
+The project comes pre-configured with a default `.env` template that runs in **Mock Mode** by default. This enables:
 - **DB_MOCK=true**: In-memory database repository. No live PostgreSQL server needed.
 - **REDIS_MOCK=true**: In-memory cache repository. No live Redis cache server needed.
 - **PAY_MOCK=true**: Simulated Razorpay Checkout popup. Allows approving/failing payments directly.
 
-This allows immediate, error-free local execution and test suite compilation. For production, simply change these values to `false` and enter your database credentials.
+To configure local environments:
+```bash
+# Copy env example reference
+cp .env.example .env
+```
+For production or live connection testing, change these values to `false` and enter your database connection details under `DATABASE_URL` and `REDIS_URL`.
 
 ### 3. Installation
-Navigate to the directory and install all production and development dependencies:
+Install all production and development dependencies:
 ```bash
-cd backend
 npm install
 ```
 
@@ -52,7 +55,12 @@ The console will boot, apply migrations (if DB_MOCK=false), seed the initial adm
 ```
 Open **[http://localhost:5000](http://localhost:5000)** in your browser to view the interactive student portal dashboard.
 
-### 5. Running the Automated Test Suite
+### 5. Health Check Endpoint
+Exposed directly at root level to assist container orchestrators and hosting checkers:
+- **Endpoint**: `GET http://localhost:5000/health`
+- **Output**: `{ "status": "ok", "environment": "development", "timestamp": "2026-06-05T20:00:00.000Z" }`
+
+### 6. Running the Automated Test Suite
 The project includes a comprehensive endpoint test suite using **Jest** and **Supertest** covering registrations, validation guards, timezone scheduling boundaries, and webhook captures.
 ```bash
 npm run test
@@ -75,6 +83,7 @@ This will compile the optimized multi-stage production Docker image, boot Postgr
 
 | Method | Endpoint | Access Level | Description |
 | :--- | :--- | :---: | :--- |
+| **GET** | `/health` | Public | Health Check Endpoint for deployment status |
 | **POST** | `/api/auth/register` | Public | Register student with WhatsApp & qualification details |
 | **POST** | `/api/auth/login` | Public | Login user and issue JWT token |
 | **GET** | `/api/auth/me` | Logged In | Retrieve logged-in student profile details |

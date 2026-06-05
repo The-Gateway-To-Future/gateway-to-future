@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: gateway-to-future-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: DB_MOCK
+        value: "false"
+      - key: REDIS_MOCK
+        value: "true"
+      - key: PAY_MOCK
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: gateway-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_INIT_EMAIL
+        value: admin@gatewaytofuture.com
+      - key: ADMIN_INIT_PASSWORD
+        generateValue: true
+
+databases:
+  - name: gateway-db
+    plan: free

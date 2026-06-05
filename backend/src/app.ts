@@ -39,6 +39,15 @@ app.use(
 
 app.use(express.urlencoded({ extended: true }));
 
+// Health Check Endpoint (exposed at root for deployment checks)
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    environment: process.env.NODE_ENV || 'development',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Apply rate limiting to all API requests
 app.use('/api', apiLimiter);
 

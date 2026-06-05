@@ -14,182 +14,125 @@
 - 🏛️ **University Admission**
 - 💼 **Professional Career in Germany**
 
-### Why This Course?
+---
 
-- ✅ **CEFR-Aligned**: Internationally recognized standards (A1-C2)
-- ✅ **Exam-Oriented**: Prepares for Telc & Goethe-Institut certifications
-- ✅ **Hindi Support**: Vocabulary and grammar explanations in Hindi (हिंदी)
-- ✅ **Indian Context**: Relatable examples with Indian names and scenarios
-- ✅ **Premium Quality**: Professional textbook-grade content
-- ✅ **Comprehensive**: Complete coverage from beginner to advanced
+## 🚀 Getting Started & Local Development
 
-## 📚 Course Structure
+This repository contains both a static frontend and a Node.js + TypeScript backend system.
 
-### Available Levels
+### 1. Frontend (Static Site)
+The frontend is a static web application located in the repository root.
 
-#### 🟢 A1 Level (Beginner)
-- **A1.1**: Your First Step to Germany *(71 pages, Completed ✓)*
-  - 15 Chapters covering greetings, family, food, shopping, transport, daily routine
-  - Full vocabulary tables with German-English-Hindi translations
-  - Mini dialogues with Indian character names (Raj, Priya, Arjun, Anna)
-  - Practice exercises with answer keys
-  - Mock exam (Telc & Goethe A1 format)
+#### Running Locally
+To run the static frontend locally, you can open `index.html` directly in any web browser, or serve it using a lightweight local web server:
 
-- **A1.2**: Building Your Foundation *(In Development)*
+```bash
+# Using live-server (npm)
+npx live-server .
 
-#### 🟡 A2 Level (Elementary)
-*Coming Soon*
+# Or using Python's built-in HTTP server
+python -m http.server 8000
+```
+Then navigate to `http://localhost:8000` (or the port specified by live-server) in your browser.
 
-#### 🟠 B1-B2 Levels (Intermediate)
-*Planned*
+- **Main Files**:
+  - `index.html` - Homepage styling and layout
+  - `css/styles.css` - Core design system and visual branding styles
+  - `js/main.js` - Smooth scrolls, reveal animations, and interactive controls
+  - `js/background.js` - Immersive 3D particle animation using Three.js
 
-#### 🔴 C1-C2 Levels (Advanced)
-*Planned*
+---
 
-## 📥 Downloads
+### 2. Backend (Node.js + TypeScript)
+The backend service handles JWT authentication, counseling slot booking, course registrations, Razorpay payments integration, and cached educational materials. It resides in the `backend/` directory.
 
-### Current Release
+#### Local Setup
+1. Navigate to the `backend` folder:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create your local configuration file:
+   Copy the reference `.env.example` file to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+   The backend will boot up, auto-seed the initial admin credentials, and expose:
+   - **Local Server API**: `http://localhost:5000`
+   - **Health Status Endpoint**: `http://localhost:5000/health`
+   - **Interactive Hub SPA**: `http://localhost:5000/`
 
-- **A1.1 - Your First Step to Germany** 
-  - [Download PDF](./books/A1.1-Your-First-Step-to-Germany.pdf)
-  - Format: PDF, 71 pages
-  - Language: German with English/Hindi support
-  - Price: Free (Educational Resource)
+*Note: By default, the app starts with mock modes enabled (`DB_MOCK=true`, `REDIS_MOCK=true`, and `PAY_MOCK=true`) for easy setup without external dependencies.*
 
-## 🎯 Learning Path
-
-```mermaid
-graph LR
-    A[A1.1] --> B[A1.2]
-    B --> C[A2.1]
-    C --> D[A2.2]
-    D --> E[B1.1]
-    E --> F[B1.2]
-    F --> G[B2.1]
-    G --> H[B2.2]
-    H --> I[C1]
-    I --> J[C2]
+#### Running Backend Tests
+Execute the Jest and Supertest automated test suite:
+```bash
+cd backend
+npm test
 ```
 
-## 📋 A1.1 Table of Contents
+---
 
-### Module 1: Erste Schritte (First Steps)
-1. **Hallo, ich bin!** - Greetings & Introductions
-2. **Woher kommst du?** - Countries, Nationalities & Languages
-3. **Das Alphabet** - German Alphabet & Pronunciation
+## 🐋 Docker & Containerization
 
-### Module 2: Mein Leben (My Life)
-4. **Familie und Freunde** - Family & Friends
-5. **Zahlen, Datum, Uhrzeit** - Numbers, Dates & Time
-6. **Mein Zuhause** - My Home
+You can run the backend along with PostgreSQL and Redis databases using Docker Compose:
 
-### Module 3: Alltag in Deutschland (Daily Life)
-7. **Essen und Trinken** - Food & Drinks
-8. **Einkaufen** - Shopping
-9. **Verkehrsmittel** - Transport
+```bash
+cd backend
+docker-compose up --build -d
+```
+This boots:
+1. **API Web Server**: Listening on port `5000`
+2. **PostgreSQL DB**: Port `5432` (health-checked and connected)
+3. **Redis Cache**: Port `6379` (health-checked and connected)
 
-### Module 4: Arbeit und Studium (Work & Study)
-10. **Berufe und Träume** - Jobs & Dreams
-11. **Im Kurs** - In the Class
-12. **Mein Alltag** - My Daily Routine
+---
 
-### Module 5: Prüfungsvorbereitung (Exam Preparation)
-13. **Lesen und Schreiben A1** - Reading & Writing
-14. **Hören und Sprechen A1** - Listening & Speaking
-15. **Mock Exam** - Telc & Goethe A1 Practice Test
+## 🌐 Deployment Configuration
 
-## 🛠️ Project Structure
+- **Frontend Deployment**: Deployed automatically to **GitHub Pages** from the `main` branch.
+- **Backend Deployment**: Proposed and configured for **Render** via the `render.yaml` blueprint file in the repository root. Initiating a new service on Render using this blueprint will deploy the Node.js/Express app connected to a private PostgreSQL database.
+- **CI/CD Pipeline**: A GitHub Actions workflow (`.github/workflows/deploy.yml`) is active on push/pull requests to the `main` branch to run automated test suites, verify builds, and deploy the frontend.
+
+---
+
+## 🛠️ Project Directory Tree
 
 ```
 gateway-to-future/
 │
-├── books/                  # Published textbooks (PDF)
-│   ├── A1.1-Your-First-Step-to-Germany.pdf
-│   └── ...
-│
-├── content/               # Source content
-│   ├── A1/
-│   ├── A2/
-│   └── ...
-│
-├── scripts/               # Automation scripts
-│   ├── Start-GatewayWorkspace.ps1
-│   └── ...
-│
-├── app/                   # Web/mobile application
-│   └── ...
-│
-└── ai-workflows/          # AI generation workflows
-    └── ...
+├── .github/workflows/      # CI/CD Action pipelines (test & Pages deploy)
+├── assets/                 # Brand assets and official logo files
+│   └── logo.jpg            # Unified premium brand logo image
+├── books/                  # Released educational PDF study materials
+├── css/                    # Frontend stylesheet directories
+│   ├── style.css           # Subpage styles
+│   └── styles.css          # Homepage Redesign layout and brand colors
+├── js/                     # Frontend client interaction scripts
+│   ├── background.js       # Immersive Three.js particle canvas animation
+│   └── main.js             # General scrolls, reveals, and hooks
+├── backend/                # Express TypeScript Backend Server
+│   ├── src/                # TS source codes (controllers, routes, etc.)
+│   ├── tests/              # Jest/Supertest endpoint verification tests
+│   ├── Dockerfile          # Production runner image spec
+│   ├── docker-compose.yml  # Docker multi-service local stack orchestration
+│   └── package.json        # Dependencies and scripts definitions
+├── render.yaml             # Render Blueprint configuration for backend deployment
+├── index.html              # Main Landing page
+└── README.md               # Root documentation (this file)
 ```
-
-## 🚀 Getting Started
-
-### For Learners
-
-1. **Choose Your Level**: Start with A1.1 if you're a complete beginner
-2. **Download the Book**: Get the PDF from the Downloads section
-3. **Study Systematically**: Follow the chapters in order
-4. **Practice Daily**: 15-20 minutes daily is better than long weekly sessions
-5. **Take Mock Exams**: Use Chapter 15 to test your readiness
-
-### For Contributors
-
-```powershell
-# Clone the repository
-git clone https://github.com/Gateway-To-Future/gateway-to-future.git
-cd gateway-to-future
-
-# Run the workspace setup (PowerShell)
-.\scripts\Start-GatewayWorkspace.ps1
-```
-
-## 🎓 Certification Path
-
-| Level | Exam | Description |
-|-------|------|-------------|
-| A1 | Telc Deutsch A1 / Goethe-Zertifikat A1 | Basic user - Can introduce themselves and answer simple questions |
-| A2 | Telc Deutsch A2 / Goethe-Zertifikat A2 | Elementary - Can handle routine tasks requiring simple exchanges |
-| B1 | Telc Deutsch B1 / Goethe-Zertifikat B1 | Intermediate - Can deal with most situations while traveling |
-| B2 | Telc Deutsch B2 / Goethe-Zertifikat B2 | Upper Intermediate - Can interact fluently with native speakers |
-| C1 | Telc Deutsch C1 / Goethe-Zertifikat C1 | Advanced - Can express ideas fluently and spontaneously |
-| C2 | Telc Deutsch C2 / Goethe-Zertifikat C2 | Proficient - Near-native level mastery |
-
-## 💰 Pricing
-
-- **A1.1 Book**: FREE (Open Educational Resource)
-- **Future Levels**: Planned at €11.11 per level
-- **Complete A1-C2 Bundle**: Special pricing TBA
-
-## 🤝 Contributing
-
-We welcome contributions! Whether you're:
-- 📝 Improving content
-- 🐛 Reporting issues
-- 🌐 Adding translations
-- 💡 Suggesting features
-
-Please feel free to open an issue or submit a pull request.
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/Gateway-To-Future/gateway-to-future/issues)
-- **Email**: [Contact Us](mailto:contact@gateway-to-future.com)
-- **Community**: Join our learner community
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- CEFR Framework by Council of Europe
-- Telc GmbH for examination standards
-- Goethe-Institut for German language promotion
-- Indian learner community for feedback and support
 
 ---
 
-**Made with ❤️ for Indian learners pursuing their German dream**
+## 🤝 Contributing & Support
 
-*Dein Tor zur Zukunft beginnt hier. (Your gateway to the future starts here.)*
+For issues, please open a ticket on [GitHub Issues](https://github.com/Gateway-To-Future/gateway-to-future/issues) or reach out to the development team.
+
+**Dein Tor zur Zukunft beginnt hier. (Your gateway to the future starts here.)**
