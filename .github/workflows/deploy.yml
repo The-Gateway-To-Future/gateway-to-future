@@ -15,6 +15,11 @@ jobs:
   test:
     name: Backend Test & Build
     runs-on: ubuntu-latest
+    env:
+      DB_MOCK: "true"
+      REDIS_MOCK: "true"
+      PAY_MOCK: "true"
+      JWT_SECRET: "test_jwt_secret_999"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
