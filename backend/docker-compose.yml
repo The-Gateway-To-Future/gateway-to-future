@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # 1. Express API Backend
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gateway-to-future-backend:latest
+    container_name: gtf_backend_app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:db_secure_pass_2026@db:5432/gatewaytofuture?schema=public
+      - DB_MOCK=false
+      - REDIS_URL=redis://cache:6379
+      - REDIS_MOCK=false
+      - PAY_MOCK=true
+      - JWT_SECRET=production_secret_key_needs_rotation_999
+      - JWT_EXPIRES_IN=1h
+      - RAZORPAY_KEY_ID=rzp_live_production_key
+      - RAZORPAY_KEY_SECRET=rzp_live_production_secret
+      - RAZORPAY_WEBHOOK_SECRET=rzp_live_webhook_secret
+      - ADMIN_INIT_EMAIL=admin@gatewaytofuture.com
+      - ADMIN_INIT_PASSWORD=ChangeAdminPass2026!
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    networks:
+      - gtf_network
+
+  # 2. PostgreSQL Relational Database
+  db:
+    image: postgres:16-alpine
+    container_name: gtf_postgres_db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=db_secure_pass_2026
+      - POSTGRES_DB=gatewaytofuture
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gatewaytofuture"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - gtf_network
+
+  # 3. Redis In-Memory Cache
+  cache:
+    image: redis:7-alpine
+    container_name: gtf_redis_cache
+    restart: always
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - gtf_network
+
+networks:
+  gtf_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

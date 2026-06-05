@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gateway to Future - Student Hub</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated Background Matrix -->
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="/" class="brand">
+        <div class="logo-circle">GTF</div>
+        <div class="brand-text">
+          <span class="brand-name">GATEWAY <span class="text-logo-accent">TO</span> FUTURE</span>
+          <span class="brand-sub">BUILDING TODAY. EMPOWERING TOMORROW.</span>
+        </div>
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="#clocks" class="nav-link active">Hub</a>
+        <a href="#courses" class="nav-link">Courses</a>
+        <a href="#counseling" class="nav-link">Counseling</a>
+        <a href="#materials" class="nav-link">Materials</a>
+      </nav>
+
+      <div class="user-auth-section" id="authSection">
+        <button class="btn btn-secondary" onclick="showAuthModal('login')">Sign In</button>
+        <button class="btn btn-primary" onclick="showAuthModal('register')">Register</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+    <!-- Timezone Clocks & Competitor Banner -->
+    <section class="clocks-section" id="clocks">
+      <div class="card glass hero-card">
+        <div class="hero-card-left">
+          <span class="badge badge-emerald">Live Germany Pathway Portal</span>
+          <h1>Germany Ausbildung Hub</h1>
+          <p>Your premium, secure ecosystem for mastering German levels A1 to B2, booking certified counselor sessions, and obtaining verified Ausbildung enrollment contracts. Built to perform and protect.</p>
+          <div class="trust-indicators">
+            <span class="trust-badge">✦ Resilient JWT Auth</span>
+            <span class="trust-badge">✦ Razorpay Sandbox</span>
+            <span class="trust-badge">✦ Redis Speed Caching</span>
+          </div>
+        </div>
+        
+        <div class="clocks-panel">
+          <div class="clock-box">
+            <div class="clock-label">New Delhi, India (IST)</div>
+            <div class="clock-time" id="clockIst">00:00:00</div>
+            <div class="clock-date" id="dateIst">May 30, 2026</div>
+          </div>
+          <div class="clock-divider">↔</div>
+          <div class="clock-box">
+            <div class="clock-label">Berlin, Germany (CET/CEST)</div>
+            <div class="clock-time" id="clockCet">00:00:00</div>
+            <div class="clock-date" id="dateCet">May 30, 2026</div>
+          </div>
+          <div class="counseling-slot-note">
+            🚀 <strong>Next Daily Counseling Session Slot:</strong> 9:00 PM IST / 5:30 PM Germany CEST
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Dashboard Area (Visible when logged in) -->
+    <section class="dashboard-section hidden" id="studentDashboard">
+      <div class="section-header">
+        <h2>Welcome back, <span id="welcomeName">Student</span>!</h2>
+        <p>Preferred Field: <strong id="profileField" class="text-emerald">Nursing</strong> | Target German Level: <strong id="profileLevel" class="text-indigo">B1</strong></p>
+      </div>
+      
+      <div class="grid-2">
+        <!-- Bookings Column -->
+        <div class="card glass">
+          <h3>Your Course Bookings</h3>
+          <div class="bookings-list" id="bookingsList">
+            <p class="text-muted">No course bookings found yet. Explore courses below to register.</p>
+          </div>
+        </div>
+        
+        <!-- Appointments Column -->
+        <div class="card glass">
+          <h3>Your Scheduled Counseling Slots</h3>
+          <div class="appointments-list" id="appointmentsList">
+            <p class="text-muted">No scheduled counseling sessions. Book your 9:00 PM IST slot below.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Catalog -->
+    <section class="courses-section" id="courses">
+      <div class="section-header-centered">
+        <span class="badge badge-indigo">CEFR Language Tracks</span>
+        <h2>Master German for Ausbildung</h2>
+        <p>Curated intensive courses designed to beat competitive thresholds. Includes Goethe-Zertifikat and Telc exam preparation modules.</p>
+      </div>
+
+      <div class="courses-grid" id="coursesGrid">
+        <!-- Courses will be loaded dynamically via Javascript -->
+        <div class="loading-spinner">Loading courses catalog...</div>
+      </div>
+    </section>
+
+    <!-- Counseling Slots Scheduling -->
+    <section class="counseling-section" id="counseling">
+      <div class="grid-2">
+        <div class="counseling-info-panel">
+          <span class="badge badge-emerald">Specialized Guidance</span>
+          <h2>Book a 1-on-1 Germany Strategy Session</h2>
+          <p>Get personalized, direct counseling on German Ausbildung requirements, CV compliance rules, Blocked Accounts (Sperrkonto), and APS certification procedures. Out-compete other applicants with a strategic roadmap.</p>
+          <ul class="counseling-points">
+            <li>✓ Fixed 9:00 PM Indian Time (IST) / 5:30 PM Berlin Time slot.</li>
+            <li>✓ Auto-adjusts for Germany's CET and CEST timezone transitions.</li>
+            <li>✓ Covers Nursing, IT, Mechatronics, and Hospitality contracts.</li>
+            <li>✓ Mock visa interview training included.</li>
+          </ul>
+        </div>
+        
+        <div class="card glass booking-card">
+          <h3>Schedule Counseling Slot</h3>
+          <form id="bookingForm" onsubmit="handleBookAppointment(event)">
+            <div class="form-group">
+              <label for="bookingDate">Select Date</label>
+              <input type="date" id="bookingDate" class="form-input" required onchange="checkSlotAvailability()">
+            </div>
+            
+            <div class="slot-availability-display hidden" id="slotAvailability">
+              <div class="slot-time-badge" id="slotTimeLabel">9:00 PM IST / 5:30 PM CEST</div>
+              <div class="slot-status-indicator" id="slotStatusLabel">Checking slot availability...</div>
+            </div>
+            
+            <div class="form-group">
+              <label for="bookingNotes">Aspirations & Intake Goal</label>
+              <textarea id="bookingNotes" class="form-input" rows="3" placeholder="Tell us about your target Ausbildung field, your current German level, and your intake goal..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block" id="btnBookSlot" disabled>Sign In to Book Session</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Materials Library -->
+    <section class="materials-section" id="materials">
+      <div class="section-header-centered">
+        <span class="badge badge-violet">Academic Downloads</span>
+        <h2>Educational Materials & Content</h2>
+        <p>Premium resources including official Germany visa checklists, CV/Lebenslauf templates, vocabulary grids, and exam preparation kits.</p>
+      </div>
+
+      <!-- Level Filter -->
+      <div class="materials-filter-bar" id="materialsFilterBar">
+        <button class="filter-tab active" onclick="loadMaterials('ALL')">All levels</button>
+        <button class="filter-tab" onclick="loadMaterials('A1')">A1 German</button>
+        <button class="filter-tab" onclick="loadMaterials('A2')">A2 German</button>
+        <button class="filter-tab" onclick="loadMaterials('B1')">B1 German</button>
+        <button class="filter-tab" onclick="loadMaterials('B2')">B2 German</button>
+      </div>
+
+      <!-- Materials List -->
+      <div class="materials-grid" id="materialsGrid">
+        <div class="card glass text-center padding-lg">
+          <p class="text-muted">Register or sign in to browse and download our premium educational materials.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>© 2026 The Gateway to Future. Germany & India. Built to exceed competition with premium performance.</p>
+      <div class="footer-links">
+        <a href="#courses">Courses</a>
+        <a href="#counseling">Counseling</a>
+        <a href="#materials">Materials</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AUTHENTICATION MODAL -->
+  <div class="modal-backdrop hidden" id="authModal">
+    <div class="modal-card card glass">
+      <button class="modal-close" onclick="closeAuthModal()">×</button>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" class="form-input" placeholder="Your Full Name" required>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email Address</label>
+          <input type="email" id="regEmail" class="form-input" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="regPassword">Password (Min 6 chars)</label>
+          <input type="password" id="regPassword" class="form-input" placeholder="••••••••" required minlength="6">
+        </div>
+        <div class="form-group">
+          <label for="regPhone">WhatsApp Number</label>
+          <input type="tel" id="regPhone" class="form-input" placeholder="+91 98765 43210" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="regQual">Qualification</label>
+            <input type="text" id="regQual" class="form-input" placeholder="e.g. 12th Class, Diploma" required>
+          </div>
+          <div class="form-group">
+            <label for="regField">Preferred Field</label>
+            <select id="regField" class="form-input" required>
+              <option value="Nursing">Nursing</option>
+              <option value="IT Specialist">IT Specialist</option>
+              <option value="Mechatronics">Mechatronics</option>
+              <option value="Hospitality">Hospitality / Hotel Management</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- RAZORPAY SIMULATED CHECKOUT MODAL -->
+  <div class="modal-backdrop hidden" id="razorpayModal">
+    <div class="rzp-modal card">
+      <div class="rzp-header">
+        <div class="rzp-brand-row">
+          <div class="rzp-logo">R</div>
+          <div class="rzp-brand-details">
+            <span class="rzp-merchant">The Gateway to Future</span>
+            <span class="rzp-title" id="rzpProductTitle">German Course A1 Booking</span>
+          </div>
+        </div>
+        <div class="rzp-amount-col">
+          <span class="rzp-amount" id="rzpAmountLabel">₹12,000.00</span>
+          <span class="rzp-receipt" id="rzpOrderIdLabel">order_12345</span>
+        </div>
+      </div>
+      
+      <div class="rzp-body">
+        <div class="rzp-info-banner">
+          🔒 Secured by Razorpay API Webhooks
+        </div>
+        
+        <p class="rzp-desc">This is a simulated Razorpay Sandbox environment connected to our backend REST API endpoints. You can complete or reject the payment to test Webhook database synchronization and client signatures.</p>
+        
+        <div class="rzp-actions">
+          <button class="btn rzp-btn-success" onclick="simulatePayment(true)">✔ Approve & Pay (Simulated Success)</button>
+          <button class="btn rzp-btn-fail" onclick="simulatePayment(false)">✖ Decline Payment (Simulated Fail)</button>
+        </div>
+      </div>
+      
+      <div class="rzp-footer">
+        Razorpay Checkout SDK Simulation v12.4.0
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
