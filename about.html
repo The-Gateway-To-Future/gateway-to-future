@@ -6,6 +6,90 @@
     <title>About | Gateway to Future</title>
     <link rel="stylesheet" href="css/style.css?v=2">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        .founders-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+        .founder-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border: 1px solid rgba(214, 222, 234, 0.9);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(17, 24, 39, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .founder-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(29, 78, 216, 0.12);
+            border-color: rgba(29, 78, 216, 0.3);
+        }
+        .founder-img-wrapper {
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            border-radius: 1.2rem;
+            border: 1px solid rgba(214, 222, 234, 0.8);
+            box-shadow: 0 15px 30px rgba(17, 24, 39, 0.04);
+            position: relative;
+        }
+        .founder-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .founder-card:hover .founder-img {
+            transform: scale(1.04);
+        }
+        .founder-info {
+            text-align: center;
+            border-bottom: 1px solid rgba(214, 222, 234, 0.8);
+            padding-bottom: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .founder-name {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.35rem;
+        }
+        .founder-bio-box {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .bio-lang {
+            font-size: 0.95rem;
+            line-height: 1.68;
+            color: #374151;
+        }
+        .bio-lang strong {
+            color: var(--nav-blue);
+            display: inline-block;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        @media (max-width: 960px) {
+            .founders-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .founder-img-wrapper {
+                height: 380px;
+            }
+        }
+    </style>
 </head>
 <body class="subpage">
     <div id="canvas-container"></div>
@@ -67,37 +151,49 @@
             </article>
         </section>
 
-        <section class="page-header" style="margin-top: 3rem;">
-            <h1>Our <span>Teachers</span></h1>
-            <p>Learn from native-level experts who have successfully walked the path.</p>
+        <section class="page-header" style="margin-top: 4rem;">
+            <h1>Our <span>Founders & Teachers</span></h1>
+            <p>Learn from the leadership team guiding your pathway from Berlin.</p>
         </section>
 
-        <section class="about-grid" style="margin-bottom: 2rem;">
-            <article class="about-panel" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
-                    <img src="assets/gateway-to-future-teacher-ashutosh-sharma.jpg" alt="Portrait of Ashutosh Sharma, German teacher and founder at Gateway To Future in Berlin." style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid var(--nav-border); box-shadow: var(--nav-shadow);" />
-                    <div>
-                        <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: #111827; margin-bottom: 0.25rem;">Ashutosh Sharma</h3>
-                        <div class="section-kicker" style="margin-bottom: 0;">Founder & German Pathway Expert</div>
-                    </div>
+        <section class="founders-section">
+            <article class="founder-card">
+                <div class="founder-img-wrapper">
+                    <img src="assets/gateway-to-future-teacher-ashutosh-sharma.jpg" alt="Portrait of Ashutosh Sharma, German teacher and founder at Gateway To Future in Berlin." class="founder-img" />
                 </div>
-                <div>
-                    <p style="margin-bottom: 0.75rem;"><strong>Deutsch:</strong> Ashutosh Sharma ist der Gründer von Gateway to Future und ein erfahrener Berater für Bildungs- und Karrierewege in Deutschland. Nach seinem Medizinstudium an der Lugansk Medical State University absolvierte er eine Ausbildung zum Pflegefachmann (Psychiatrie) und arbeitete als Pflegehelfer in Berlin. Mit seinen umfassenden Kenntnissen des deutschen Bildungs- und Gesundheitssystems und Sprachkenntnissen in Deutsch (B2), Englisch (B2), Hindi und Urdu unterstützt er Studentinnen und Studenten kompetent bei Visaverfahren, Studienkolleg-Bewerbungen und dem gesamten Umsiedlungsprozess.</p>
-                    <p style="border-top: 1px solid var(--nav-border); padding-top: 0.75rem; margin-top: 0.75rem;"><strong>English:</strong> Ashutosh Sharma is the founder of Gateway to Future and an expert advisor for academic and career pathways in Germany. Following his medical studies at Lugansk Medical State University, he completed training as a healthcare professional (psychiatry) and worked as a care assistant in Berlin. Leveraging his deep expertise in the German educational and healthcare systems along with his multilingual skills (German B2, English B2, Hindi, Urdu), he guides students through visa procedures, Studienkolleg applications, and relocation.</p>
+                <div class="founder-info">
+                    <h3 class="founder-name">Ashutosh Sharma</h3>
+                    <div class="section-kicker" style="margin-bottom: 0;">Founder & German Pathway Expert</div>
+                </div>
+                <div class="founder-bio-box">
+                    <div class="bio-lang">
+                        <strong>Deutsch</strong>
+                        <p>Ashutosh Sharma ist der Gründer von Gateway to Future und ein erfahrener Berater für Bildungs- und Karrierewege in Deutschland. Nach seinem Medizinstudium an der Lugansk Medical State University absolvierte er eine Ausbildung zum Pflegefachmann (Psychiatrie) und arbeitete als Pflegehelfer in Berlin. Mit seinen umfassenden Kenntnissen des deutschen Bildungs- und Gesundheitssystems und Sprachkenntnissen in Deutsch (B2), Englisch (B2), Hindi und Urdu unterstützt er Studentinnen und Studenten kompetent bei Visaverfahren, Studienkolleg-Bewerbungen und dem gesamten Umsiedlungsprozess.</p>
+                    </div>
+                    <div class="bio-lang" style="border-top: 1px solid rgba(214, 222, 234, 0.6); padding-top: 1.2rem;">
+                        <strong>English</strong>
+                        <p>Ashutosh Sharma is the founder of Gateway to Future and an expert advisor for academic and career pathways in Germany. Following his medical studies at Lugansk Medical State University, he completed training as a healthcare professional (psychiatry) and worked as a care assistant in Berlin. Leveraging his deep expertise in the German educational and healthcare systems along with his multilingual skills (German B2, English B2, Hindi, Urdu), he guides students through visa procedures, Studienkolleg applications, and relocation.</p>
+                    </div>
                 </div>
             </article>
 
-            <article class="about-panel" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
-                    <img src="assets/gateway-to-future-teacher-sarbjit-kour.jpg" alt="Portrait of Sarbjit Kour, German teacher and co-founder at Gateway To Future in Berlin." style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid var(--nav-border); box-shadow: var(--nav-shadow);" />
-                    <div>
-                        <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: #111827; margin-bottom: 0.25rem;">Sarbjit Kour</h3>
-                        <div class="section-kicker" style="margin-bottom: 0;">Co-founder & German Language Specialist</div>
-                    </div>
+            <article class="founder-card">
+                <div class="founder-img-wrapper">
+                    <img src="assets/gateway-to-future-teacher-sarbjit-kour.jpg" alt="Portrait of Sarbjit Kour, German teacher and co-founder at Gateway To Future in Berlin." class="founder-img" />
                 </div>
-                <div>
-                    <p style="margin-bottom: 0.75rem;"><strong>Deutsch:</strong> Sarbjit Kour ist die Mitgründerin und Deutschlehrerin bei Gateway to Future. Sie verfügt über fundierte pädagogische Erfahrung sowie praktische Einblicke in das deutsche Arbeitsleben durch ihre Ausbildung als Pflegefachkraft und Betreuungsassistentin in Berlin. Mit Sprachkenntnissen in Punjabi, Hindi, Englisch und Deutsch (B2) unterstützt sie Studierende leidenschaftlich beim Erlernen der deutschen Sprache (A1–B2) und bereitet sie erfolgreich auf die sprachlichen Anforderungen des Alltags und der Berufswelt in Deutschland vor.</p>
-                    <p style="border-top: 1px solid var(--nav-border); padding-top: 0.75rem; margin-top: 0.75rem;"><strong>English:</strong> Sarbjit Kour is the co-founder and German language instructor at Gateway to Future. She possesses strong teaching experience alongside practical insights into the German workforce from her training as a healthcare professional and care assistant in Berlin. Fluent in Punjabi, Hindi, English, and German (B2), she is passionate about helping students master the German language (A1–B2) and preparing them for the daily linguistic demands of living and working in Germany.</p>
+                <div class="founder-info">
+                    <h3 class="founder-name">Sarbjit Kour</h3>
+                    <div class="section-kicker" style="margin-bottom: 0;">Co-founder & German Language Specialist</div>
+                </div>
+                <div class="founder-bio-box">
+                    <div class="bio-lang">
+                        <strong>Deutsch</strong>
+                        <p>Sarbjit Kour ist die Mitgründerin und Deutschlehrerin bei Gateway to Future. Sie verfügt über fundierte pädagogische Erfahrung sowie praktische Einblicke in das deutsche Arbeitsleben durch ihre Ausbildung als Pflegefachkraft und Betreuungsassistentin in Berlin. Mit Sprachkenntnissen in Punjabi, Hindi, Englisch und Deutsch (B2) unterstützt sie Studierende leidenschaftlich beim Erlernen der deutschen Sprache (A1–B2) und bereitet sie erfolgreich auf die sprachlichen Anforderungen des Alltags und der Berufswelt in Deutschland vor.</p>
+                    </div>
+                    <div class="bio-lang" style="border-top: 1px solid rgba(214, 222, 234, 0.6); padding-top: 1.2rem;">
+                        <strong>English</strong>
+                        <p>Sarbjit Kour is the co-founder and German language instructor at Gateway to Future. She possesses strong teaching experience alongside practical insights into the German workforce from her training as a healthcare professional and care assistant in Berlin. Fluent in Punjabi, Hindi, English, and German (B2), she is passionate about helping students master the German language (A1–B2) and preparing them for the daily linguistic demands of living and working in Germany.</p>
+                    </div>
                 </div>
             </article>
         </section>
