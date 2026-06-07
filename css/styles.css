@@ -156,6 +156,19 @@ header {
   flex-shrink: 0;
 }
 
+.brand-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  background: transparent;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-logo:hover {
+  transform: scale(1.03);
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -1045,6 +1058,9 @@ footer {
     grid-template-columns: 1fr;
   }
   .blocked-grid, .settlement-grid, .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .founders-grid {
     grid-template-columns: 1fr;
   }
 }
