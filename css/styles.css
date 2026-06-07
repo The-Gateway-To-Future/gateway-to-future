@@ -169,6 +169,14 @@ header {
   transform: scale(1.03);
 }
 
+.founder-img-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founder-img-hover:hover {
+  transform: scale(1.04);
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
