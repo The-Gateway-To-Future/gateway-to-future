@@ -650,11 +650,49 @@
       e.target.reset();
     }
 
+    // Webhook Target URL (Google Sheets + Notion Apps Script Web App)
+    // TODO: Replace with your actual deployed Google Apps Script Web App URL
+    const WEBHOOK_URL = 'https://example.com/notion-webhook';
+
     // Main Strategy Form Handler
-    function handleInquirySubmit(e) {
+    async function handleInquirySubmit(e) {
       e.preventDefault();
-      alert('Thank you for requesting a roadmap session! Our Berlin team will review your profile and contact you on WhatsApp within 24 hours.');
-      e.target.reset();
+      
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting Request...';
+
+      // Gather form fields
+      const formData = new FormData(form);
+      const payload = {};
+      formData.forEach((value, key) => {
+        payload[key] = value;
+      });
+      
+      payload.date_submitted = new Date().toISOString();
+      payload.lead_score = 0; // Baseline score
+      payload.status = 'New';
+      
+      try {
+        console.log('[API POST] Submitting Strategy Call lead details:', payload);
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error('[WEBHOOK ERROR] Failed to submit strategy lead:', err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        alert('Thank you for requesting a roadmap session! Our Berlin team will review your profile and contact you on WhatsApp within 24 hours.');
+        form.reset();
+      }
     }
 
     // Scroll reveal observer
