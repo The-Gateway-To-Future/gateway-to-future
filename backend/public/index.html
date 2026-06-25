@@ -124,7 +124,7 @@
       <div class="grid-2">
         <div class="counseling-info-panel">
           <span class="badge badge-emerald">Specialized Guidance</span>
-          <h2>Book a 1-on-1 Germany Strategy Session</h2>
+          <h2>Book a 1-on-1 Germany Strategy Session (₹499)</h2>
           <p>Get personalized, direct counseling on German Ausbildung requirements, CV compliance rules, Blocked Accounts (Sperrkonto), and APS certification procedures. Out-compete other applicants with a strategic roadmap.</p>
           <ul class="counseling-points">
             <li>✓ Fixed 9:00 PM Indian Time (IST) / 5:30 PM Berlin Time slot.</li>
@@ -135,7 +135,7 @@
         </div>
         
         <div class="card glass booking-card">
-          <h3>Schedule Counseling Slot</h3>
+          <h3>Schedule Counseling Slot (₹499)</h3>
           <form id="bookingForm" onsubmit="handleBookAppointment(event)">
             <div class="form-group">
               <label for="bookingDate">Select Date</label>
@@ -258,38 +258,136 @@
     </div>
   </div>
 
-  <!-- RAZORPAY SIMULATED CHECKOUT MODAL -->
-  <div class="modal-backdrop hidden" id="razorpayModal">
-    <div class="rzp-modal card">
-      <div class="rzp-header">
-        <div class="rzp-brand-row">
-          <div class="rzp-logo">R</div>
-          <div class="rzp-brand-details">
-            <span class="rzp-merchant">The Gateway to Future</span>
-            <span class="rzp-title" id="rzpProductTitle">German Course A1 Booking</span>
+  <!-- UNIFIED PREMIUM CHECKOUT MODAL -->
+  <div class="modal-backdrop hidden" id="checkoutModal">
+    <div class="modal-card card glass" style="max-width: 480px; padding: 0; overflow: hidden; border: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px);">
+      <button class="modal-close" onclick="closeCheckoutModal()" style="top: 15px; right: 15px; z-index: 10;">×</button>
+      
+      <!-- Checkout Header -->
+      <div style="background: rgba(99, 102, 241, 0.15); padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+        <h3 id="checkoutItemTitle" style="margin: 0 0 0.25rem 0; font-family: var(--font-display); font-size: 1.25rem; color: #ffffff;">Counseling Strategy Call</h3>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Secure Checkout Pathway</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-size: 0.9rem; color: var(--text-secondary);">Total Payable Amount:</span>
+          <span id="checkoutAmountLabel" style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: #6366f1;">₹499.00</span>
+        </div>
+      </div>
+
+      <!-- Checkout Body -->
+      <div style="padding: 1.5rem;" id="checkoutBody">
+        
+        <!-- Screen 1: Method Selector -->
+        <div id="checkoutScreenSelect">
+          <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--text-secondary);">Choose your preferred payment method:</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            
+            <!-- Option 1: Razorpay (Automated) -->
+            <button class="btn btn-primary" onclick="selectPaymentMethod('razorpay')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; text-align: left; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color); color: #ffffff; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">💳</span>
+                <span>
+                  <strong style="display: block; font-size: 0.95rem;">UPI / Cards / NetBanking</strong>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Instant automatic activation via Razorpay</span>
+                </span>
+              </span>
+              <span style="font-size: 1.1rem; color: #6366f1;">→</span>
+            </button>
+
+            <!-- Option 2: PayPal Direct -->
+            <button class="btn btn-primary" onclick="selectPaymentMethod('paypal')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; text-align: left; background: rgba(59, 130, 246, 0.1); border: 1px solid var(--border-color); color: #ffffff; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">🅿️</span>
+                <span>
+                  <strong style="display: block; font-size: 0.95rem;">Pay via PayPal Link</strong>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Fast international / card payments</span>
+                </span>
+              </span>
+              <span style="font-size: 1.1rem; color: #3b82f6;">→</span>
+            </button>
+
+            <!-- Option 3: SBI Bank Transfer -->
+            <button class="btn btn-primary" onclick="selectPaymentMethod('bank')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; text-align: left; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--border-color); color: #ffffff; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">🏦</span>
+                <span>
+                  <strong style="display: block; font-size: 0.95rem;">Direct Bank Transfer (SBI)</strong>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Transfer to official GTF current account</span>
+                </span>
+              </span>
+              <span style="font-size: 1.1rem; color: #10b981;">→</span>
+            </button>
+            
           </div>
         </div>
-        <div class="rzp-amount-col">
-          <span class="rzp-amount" id="rzpAmountLabel">₹12,000.00</span>
-          <span class="rzp-receipt" id="rzpOrderIdLabel">order_12345</span>
+
+        <!-- Screen 2: Razorpay Simulated Gateway -->
+        <div id="checkoutScreenRazorpay" class="hidden">
+          <div style="background: #ffffff; color: #2b3947; border-radius: 8px; overflow: hidden; font-family: sans-serif;">
+            <div style="background: #0f1d3c; color: #ffffff; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 700; font-size: 0.9rem;">The Gateway to Future</span>
+              <span id="rzpOrderIdLabel" style="font-size: 0.65rem; opacity: 0.6; color: #ffffff !important;">order_12345</span>
+            </div>
+            <div style="padding: 1.25rem;">
+              <div style="background: #eef2f6; color: #4b5a6c; font-size: 0.75rem; font-weight: 600; padding: 0.5rem; text-align: center; border-radius: 4px; margin-bottom: 1rem;">
+                🔒 Secured by Razorpay Sandbox API
+              </div>
+              <p style="font-size: 0.8rem; line-height: 1.4; color: #4b5a6c; margin: 0 0 1rem 0;">Simulate payment transaction. In production, this launches the official Razorpay Checkout overlay.</p>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button class="btn btn-emerald btn-block" onclick="simulatePayment(true)" style="background: #10b981; color: white; padding: 0.6rem; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px;">✔ Simulated Success (Approve)</button>
+                <button class="btn btn-block" onclick="simulatePayment(false)" style="background: #ef4444; color: white; padding: 0.6rem; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px;">✖ Simulated Decline (Cancel)</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="showCheckoutScreen('select')" style="margin-top: 1rem; width: 100%;">← Back to payment methods</button>
         </div>
+
+        <!-- Screen 3: PayPal Instructions -->
+        <div id="checkoutScreenPaypal" class="hidden" style="text-align: center;">
+          <div style="background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🅿️</span>
+            <h4 style="margin: 0 0 0.5rem 0; color: #ffffff;">Pay Securely via PayPal</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0 0 1.25rem 0;">
+              Click the button below to transfer the amount of **₹499 (or equivalent in USD/EUR)** to our PayPal account:
+            </p>
+            <a href="https://www.paypal.me/AshutoshSharma1111" target="_blank" rel="noopener" class="btn btn-primary" style="display: inline-block; background: #0070e0; color: #ffffff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; font-size: 0.9rem;">
+              Open PayPal Payment Page
+            </a>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); text-align: left; line-height: 1.4; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-bottom: 1rem;">
+            ⚠️ <strong>Verification Notice:</strong> After finishing the transfer, click the button below to send your receipt/screenshot via WhatsApp.
+          </div>
+          <button class="btn btn-emerald btn-block" onclick="confirmManualPayment('PayPal')" style="background: #10b981; color: white; padding: 0.6rem; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px; width: 100%;">I have paid ₹499 - Confirm on WhatsApp</button>
+          <button class="btn btn-secondary btn-sm" onclick="showCheckoutScreen('select')" style="margin-top: 1.25rem; width: 100%;">← Back to payment methods</button>
+        </div>
+
+        <!-- Screen 4: SBI Bank Transfer Details -->
+        <div id="checkoutScreenBank" class="hidden">
+          <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+            <h4 style="margin: 0 0 0.75rem 0; color: #ffffff; font-size: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🏛️</span> State Bank of India Account Details
+            </h4>
+            
+            <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse; color: var(--text-secondary);">
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Name:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">THE GATEWAY TO FUTURE</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Number:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-family: monospace; letter-spacing: 0.5px;">4524638548-5</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Type:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">Current Account (CA-REGULAR)</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Bank Name:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">State Bank of India (SBI)</td></tr>
+              <tr><td style="padding: 0.4rem 0; font-weight: 600;">Branch:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-size: 0.75rem;">Laksar Haridwar Road Laksar, Haridwar</td></tr>
+            </table>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); text-align: left; line-height: 1.4; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-bottom: 1rem;">
+            ⚠️ <strong>Verification Notice:</strong> After making the transfer, click the button below to send your receipt/screenshot via WhatsApp.
+          </div>
+          <button class="btn btn-emerald btn-block" onclick="confirmManualPayment('Bank Transfer')" style="background: #10b981; color: white; padding: 0.6rem; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px; width: 100%;">I have paid ₹499 - Confirm on WhatsApp</button>
+          <button class="btn btn-secondary btn-sm" onclick="showCheckoutScreen('select')" style="margin-top: 1.25rem; width: 100%;">← Back to payment methods</button>
+        </div>
+
       </div>
       
-      <div class="rzp-body">
-        <div class="rzp-info-banner">
-          🔒 Secured by Razorpay API Webhooks
-        </div>
-        
-        <p class="rzp-desc">This is a simulated Razorpay Sandbox environment connected to our backend REST API endpoints. You can complete or reject the payment to test Webhook database synchronization and client signatures.</p>
-        
-        <div class="rzp-actions">
-          <button class="btn rzp-btn-success" onclick="simulatePayment(true)">✔ Approve & Pay (Simulated Success)</button>
-          <button class="btn rzp-btn-fail" onclick="simulatePayment(false)">✖ Decline Payment (Simulated Fail)</button>
-        </div>
-      </div>
-      
-      <div class="rzp-footer">
-        Razorpay Checkout SDK Simulation v12.4.0
+      <!-- Footer -->
+      <div style="background: rgba(255, 255, 255, 0.02); padding: 0.75rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border-color);">
+        🛡️ End-to-End Secure SSL Payment Gateway
       </div>
     </div>
   </div>

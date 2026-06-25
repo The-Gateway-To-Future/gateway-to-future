@@ -102,7 +102,7 @@ function updateAuthUI(isLoggedIn) {
     
     if (btnBookSlot) {
       btnBookSlot.disabled = false;
-      btnBookSlot.textContent = 'Confirm Counseling Booking';
+      btnBookSlot.textContent = 'Proceed to Payment (₹499)';
     }
     
     loadMaterials(state.selectedLevel);
@@ -406,7 +406,7 @@ async function handleBookAppointment(e) {
   const notes = document.getElementById('bookingNotes').value;
   
   try {
-    const res = await fetch(`${API_BASE}/appointments/book`, {
+    const res = await fetch(`${API_BASE}/payments/counseling/checkout`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${state.token}`,
@@ -417,16 +417,24 @@ async function handleBookAppointment(e) {
     
     const data = await res.json();
     if (res.status === 211 || res.status === 200) {
-      alert('Counseling session scheduled successfully!');
-      document.getElementById('bookingDate').value = '';
-      document.getElementById('bookingNotes').value = '';
-      document.getElementById('slotAvailability').classList.add('hidden');
-      loadDashboardData();
+      state.activeCheckoutType = 'counseling';
+      state.activeCheckoutDate = date;
+      state.activeCheckoutNotes = notes;
+      state.activeCheckoutAmount = 499;
+      state.activeCheckoutOrder = data.razorpay_order;
+      
+      // Populate Checkout Modal
+      document.getElementById('checkoutItemTitle').textContent = '1:1 Counseling Strategy Session';
+      document.getElementById('checkoutAmountLabel').textContent = '₹499.00';
+      document.getElementById('rzpOrderIdLabel').textContent = data.razorpay_order.id;
+      
+      showCheckoutScreen('select');
+      document.getElementById('checkoutModal').classList.remove('hidden');
     } else {
-      alert(`Booking failed: ${data.message}`);
+      alert(`Booking checkout failed: ${data.message}`);
     }
   } catch {
-    alert('Communication error booking appointment.');
+    alert('Communication error initiating counseling booking.');
   }
 }
 
@@ -466,6 +474,7 @@ function renderAppointments(appointments) {
 
 // --- Payment simulated Checkout ---
 async function initiateCheckout(bookingId, price, title) {
+  state.activeCheckoutType = 'course';
   state.activeCheckoutBookingId = bookingId;
   state.activeCheckoutAmount = price;
   
@@ -484,12 +493,13 @@ async function initiateCheckout(bookingId, price, title) {
     if (res.status === 211 || res.status === 200) {
       state.activeCheckoutOrder = data.razorpay_order;
       
-      // 2. Open Simulated Razorpay UI Skin
-      document.getElementById('rzpProductTitle').textContent = title;
-      document.getElementById('rzpAmountLabel').textContent = `₹${price.toLocaleString('en-IN')}`;
+      // Populate Checkout Modal
+      document.getElementById('checkoutItemTitle').textContent = title;
+      document.getElementById('checkoutAmountLabel').textContent = `₹${price.toLocaleString('en-IN')}`;
       document.getElementById('rzpOrderIdLabel').textContent = data.razorpay_order.id;
       
-      document.getElementById('razorpayModal').classList.remove('hidden');
+      showCheckoutScreen('select');
+      document.getElementById('checkoutModal').classList.remove('hidden');
     } else {
       alert(`Checkout failed: ${data.message}`);
     }
@@ -498,9 +508,39 @@ async function initiateCheckout(bookingId, price, title) {
   }
 }
 
+function closeCheckoutModal() {
+  document.getElementById('checkoutModal').classList.add('hidden');
+}
+
+function showCheckoutScreen(screen) {
+  const selectScreen = document.getElementById('checkoutScreenSelect');
+  const rzpScreen = document.getElementById('checkoutScreenRazorpay');
+  const paypalScreen = document.getElementById('checkoutScreenPaypal');
+  const bankScreen = document.getElementById('checkoutScreenBank');
+
+  selectScreen.classList.add('hidden');
+  rzpScreen.classList.add('hidden');
+  paypalScreen.classList.add('hidden');
+  bankScreen.classList.add('hidden');
+
+  if (screen === 'select') {
+    selectScreen.classList.remove('hidden');
+  } else if (screen === 'razorpay') {
+    rzpScreen.classList.remove('hidden');
+  } else if (screen === 'paypal') {
+    paypalScreen.classList.remove('hidden');
+  } else if (screen === 'bank') {
+    bankScreen.classList.remove('hidden');
+  }
+}
+
+function selectPaymentMethod(method) {
+  showCheckoutScreen(method);
+}
+
 async function simulatePayment(isSuccess) {
-  // Close simulated Razorpay skin
-  document.getElementById('razorpayModal').classList.add('hidden');
+  // Close checkout modal
+  closeCheckoutModal();
   
   if (!isSuccess) {
     alert('Payment canceled or declined.');
@@ -512,30 +552,72 @@ async function simulatePayment(isSuccess) {
   const signature = `mock_client_sig_${Math.random().toString(36).substring(2, 10)}`;
   
   try {
-    // Send mock success verification parameters
-    const res = await fetch(`${API_BASE}/payments/verify`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${state.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        razorpay_order_id: orderId,
-        razorpay_payment_id: paymentId,
-        razorpay_signature: signature
-      })
-    });
-    
-    const data = await res.json();
-    if (res.ok) {
-      alert('Payment simulated successfully! Registration confirmed.');
-      loadDashboardData();
-      loadCourses(); // Refresh enrollment slots counts
+    if (state.activeCheckoutType === 'counseling') {
+      const res = await fetch(`${API_BASE}/payments/counseling/verify`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          razorpay_order_id: orderId,
+          razorpay_payment_id: paymentId,
+          razorpay_signature: signature,
+          appointment_date: state.activeCheckoutDate,
+          appointment_notes: state.activeCheckoutNotes
+        })
+      });
+      
+      const data = await res.json();
+      if (res.ok) {
+        alert('Payment simulated successfully! Counseling session scheduled.');
+        document.getElementById('bookingDate').value = '';
+        document.getElementById('bookingNotes').value = '';
+        document.getElementById('slotAvailability').classList.add('hidden');
+        loadDashboardData();
+      } else {
+        alert(`Verification failed: ${data.message}`);
+      }
     } else {
-      alert(`Verification failed: ${data.message}`);
+      // Send mock success verification parameters for courses
+      const res = await fetch(`${API_BASE}/payments/verify`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${state.token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          razorpay_order_id: orderId,
+          razorpay_payment_id: paymentId,
+          razorpay_signature: signature
+        })
+      });
+      
+      const data = await res.json();
+      if (res.ok) {
+        alert('Payment simulated successfully! Registration confirmed.');
+        loadDashboardData();
+        loadCourses(); // Refresh enrollment slots counts
+      } else {
+        alert(`Verification failed: ${data.message}`);
+      }
     }
   } catch {
     alert('Error connecting to verify payment signature.');
+  }
+}
+
+function confirmManualPayment(method) {
+  closeCheckoutModal();
+  if (state.activeCheckoutType === 'counseling') {
+    document.getElementById('bookingDate').value = '';
+    document.getElementById('bookingNotes').value = '';
+    document.getElementById('slotAvailability').classList.add('hidden');
+    
+    const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${state.activeCheckoutDate}. Here is my receipt screenshot.`)}`;
+    window.location.href = whatsappUrl;
+  } else {
+    const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my payment via ${method} for course enrollment. Here is my receipt screenshot.`)}`;
+    window.location.href = whatsappUrl;
   }
 }
 

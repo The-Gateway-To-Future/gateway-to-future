@@ -22,7 +22,8 @@ export class PaymentService {
   static async createOrder(
     amount: number, // in paise (e.g. 50000 for INR 500.00)
     currency: string = 'INR',
-    receipt: string
+    receipt: string,
+    notes?: any
   ): Promise<RazorpayOrder> {
     if (env.PAY_MOCK) {
       console.log(`[MOCK PAYMENT] Simulating Razorpay order creation for INR ${amount / 100}`);
@@ -36,7 +37,7 @@ export class PaymentService {
         receipt,
         status: 'created',
         attempts: 0,
-        notes: [],
+        notes: notes || [],
         created_at: Math.floor(Date.now() / 1000),
       };
     }
@@ -55,6 +56,7 @@ export class PaymentService {
           amount,
           currency,
           receipt,
+          notes,
         }),
       });
 

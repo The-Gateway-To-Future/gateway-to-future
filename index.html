@@ -240,7 +240,7 @@
         <div class="roadmap-step">
           <span class="step-num">03</span>
           <h4>Strategize</h4>
-          <p>Get a free 30-minute Germany strategy consultation to map out a clear timeline, fee structure, and steps.</p>
+          <p>Get a 1:1 Germany strategy consultation (₹499) to map out a clear timeline, fee structure, and steps.</p>
         </div>
         <div class="roadmap-step">
           <span class="step-num">04</span>
@@ -506,10 +506,9 @@
     <section id="final-cta-band" class="final-cta">
       <div class="shell">
         <h2>Ready to Begin Your Germany Journey?</h2>
-        <p>Stop wasting months browsing confusing forums. Book a structured, free 30-minute roadmap call with us today and let's map out your language, admissions, visa, and settlement targets with complete transparency.</p>
+        <p>Stop wasting months browsing confusing forums. Book a structured 1:1 strategy session (₹499) with our Berlin mentors today and let's map out your language, admissions, visa, and settlement targets with complete transparency.</p>
         <div class="final-cta-buttons">
-          <a class="btn btn-primary" href="#contact">Book Free Strategy Call</a>
-          <a class="btn btn-secondary" href="https://wa.me/4915228372894" target="_blank">💬 WhatsApp Chat (Berlin)</a>
+          <a class="btn btn-primary" href="#contact">Book Strategy Call (₹499)</a>
         </div>
       </div>
     </section>
@@ -518,8 +517,8 @@
     <section id="contact" class="shell">
       <div class="lead-magnet-card" style="grid-template-columns: 1fr; padding: 3rem;">
         <div style="max-width: 720px; margin: 0 auto; width: 100%;">
-          <h2 style="text-align: center; margin-bottom: 0.5rem;">Book Your Free 30-Minute Strategy Session</h2>
-          <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 2.5rem;">Provide your details below to schedule a direct profile evaluation with our Berlin team.</p>
+          <h2 style="text-align: center; margin-bottom: 0.5rem;">Book Your 1:1 Strategy Call (₹499)</h2>
+          <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 2.5rem;">Provide your details below to schedule a direct profile evaluation and book your 9:00 PM IST slot with our Berlin team.</p>
           
           <form id="inquiry-form" onsubmit="handleInquirySubmit(event)">
             <div class="form-row">
@@ -575,11 +574,24 @@
                 </select>
               </div>
             </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bookingDate">Preferred Date</label>
+                <input type="date" id="bookingDate" name="bookingDate" class="form-input" required onchange="checkSlotAvailability()" />
+              </div>
+              <div class="form-group" id="slotStatusContainer" style="display: none; justify-content: center; align-items: center;">
+                <div style="font-size: 0.85rem; padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); text-align: center; width: 100%; border: 1px solid var(--color-border); min-height: 42px; display: flex; align-items: center; justify-content: center; font-weight: 600;" id="slotStatusText">
+                  Checking slot availability...
+                </div>
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="message">Tell us more about your academic/vocational plan</label>
               <textarea id="message" name="message" class="form-input" rows="4" placeholder="Briefly describe your high school or college graduation details, current German knowledge, and target timelines..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 48px;">Request Consultation Slot →</button>
+            <button type="submit" class="btn btn-primary" id="btnBookSlot" style="width: 100%; min-height: 48px;" disabled>Select Date to Book</button>
           </form>
         </div>
       </div>
@@ -594,11 +606,6 @@
         <div class="footer-brand">
           <h3>The Gateway to Future</h3>
           <p>Premium Berlin-based education mentorship for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
-          <div class="footer-socials">
-            <a href="https://youtube.com/@GatewayToFutureDE" class="social-link" target="_blank">YouTube</a>
-            <a href="https://instagram.com" class="social-link" target="_blank">Instagram</a>
-            <a href="https://wa.me/4915228372894" class="social-link" target="_blank">WhatsApp</a>
-          </div>
         </div>
         <div class="footer-col">
           <h4>Navigate</h4>
@@ -641,6 +648,139 @@
     </div>
   </footer>
 
+  <!-- UNIFIED PREMIUM CHECKOUT MODAL -->
+  <div class="modal-backdrop" id="checkoutModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center;">
+    <div class="modal-card" style="position: relative; max-width: 440px; width: 90%; padding: 0; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--color-border); background: #0b0f19; font-family: var(--font-body); box-shadow: var(--shadow-lg);">
+      <button class="modal-close" onclick="closeCheckoutModal()" style="position: absolute; top: 15px; right: 15px; z-index: 10; background: none; border: none; font-size: 1.5rem; color: #ffffff; cursor: pointer;">×</button>
+      
+      <!-- Checkout Header -->
+      <div style="background: rgba(99, 102, 241, 0.15); padding: 1.5rem; border-bottom: 1px solid var(--color-border);">
+        <h3 style="margin: 0 0 0.25rem 0; font-family: var(--font-display); font-size: 1.25rem; color: #ffffff;">1:1 Counseling Strategy Call</h3>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">Secure Checkout Gateway</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-size: 0.9rem; color: var(--color-text-secondary);">Total Payable Amount:</span>
+          <span style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: #6366f1;">₹499.00</span>
+        </div>
+      </div>
+
+      <!-- Checkout Body -->
+      <div style="padding: 1.5rem;" id="checkoutBody">
+        
+        <!-- Screen 1: Method Selector -->
+        <div id="checkoutScreenSelect">
+          <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--color-text-secondary);">Choose your preferred payment method:</p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            
+            <!-- Option 1: Razorpay (Automated) -->
+            <button class="btn btn-primary" onclick="selectPaymentMethod('razorpay')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; text-align: left; background: rgba(99, 102, 241, 0.1); border: 1px solid var(--color-border); color: #ffffff; border-radius: 8px; cursor: pointer; width: 100%;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">💳</span>
+                <span>
+                  <strong style="display: block; font-size: 0.95rem;">UPI / Cards / NetBanking</strong>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: normal;">Instant automatic activation via Razorpay</span>
+                </span>
+              </span>
+              <span style="font-size: 1.1rem; color: #6366f1;">→</span>
+            </button>
+
+            <!-- Option 2: PayPal Direct -->
+            <button class="btn btn-primary" onclick="selectPaymentMethod('paypal')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; text-align: left; background: rgba(59, 130, 246, 0.1); border: 1px solid var(--color-border); color: #ffffff; border-radius: 8px; cursor: pointer; width: 100%;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">🅿️</span>
+                <span>
+                  <strong style="display: block; font-size: 0.95rem;">Pay via PayPal Link</strong>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: normal;">Fast international checkout</span>
+                </span>
+              </span>
+              <span style="font-size: 1.1rem; color: #3b82f6;">→</span>
+            </button>
+
+            <!-- Option 3: SBI Bank Transfer -->
+            <button class="btn btn-primary" onclick="selectPaymentMethod('bank')" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; text-align: left; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--color-border); color: #ffffff; border-radius: 8px; cursor: pointer; width: 100%;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 1.5rem;">🏦</span>
+                <span>
+                  <strong style="display: block; font-size: 0.95rem;">Direct Bank Transfer (SBI)</strong>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: normal;">SBI Current Account details</span>
+                </span>
+              </span>
+              <span style="font-size: 1.1rem; color: #10b981;">→</span>
+            </button>
+            
+          </div>
+        </div>
+
+        <!-- Screen 2: Razorpay Simulated Gateway -->
+        <div id="checkoutScreenRazorpay" style="display: none;">
+          <div style="background: #ffffff; color: #2b3947; border-radius: 8px; overflow: hidden; font-family: sans-serif;">
+            <div style="background: #0f1d3c; color: #ffffff; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 700; font-size: 0.9rem;">The Gateway to Future</span>
+              <span id="rzpOrderIdLabel" style="font-size: 0.65rem; opacity: 0.6; color: #ffffff !important;">order_12345</span>
+            </div>
+            <div style="padding: 1.25rem;">
+              <div style="background: #eef2f6; color: #4b5a6c; font-size: 0.75rem; font-weight: 600; padding: 0.5rem; text-align: center; border-radius: 4px; margin-bottom: 1rem;">
+                🔒 Secured by Razorpay Sandbox API
+              </div>
+              <p style="font-size: 0.8rem; line-height: 1.4; color: #4b5a6c; margin: 0 0 1rem 0;">This is a simulated Razorpay payment gateway screen.</p>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button class="btn btn-emerald" onclick="simulatePayment(true)" style="background: #10b981; color: white; padding: 0.6rem; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px; width: 100%;">✔ Simulated Success (Approve)</button>
+                <button class="btn" onclick="simulatePayment(false)" style="background: #ef4444; color: white; padding: 0.6rem; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px; width: 100%;">✖ Simulated Decline (Cancel)</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary" onclick="showCheckoutScreen('select')" style="margin-top: 1rem; width: 100%;">← Back to payment methods</button>
+        </div>
+
+        <!-- Screen 3: PayPal Instructions -->
+        <div id="checkoutScreenPaypal" style="display: none; text-align: center;">
+          <div style="background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🅿️</span>
+            <h4 style="margin: 0 0 0.5rem 0; color: #ffffff;">Pay Securely via PayPal</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-secondary); line-height: 1.5; margin: 0 0 1.25rem 0;">
+              Transfer ₹499 (approx $6 USD) directly using the link below:
+            </p>
+            <a href="https://www.paypal.me/AshutoshSharma1111" target="_blank" rel="noopener" class="btn btn-primary" style="display: inline-block; background: #0070e0; color: #ffffff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; font-size: 0.9rem;">
+              Open PayPal Page
+            </a>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted); text-align: left; line-height: 1.4; border-top: 1px solid var(--color-border); padding-top: 0.75rem; margin-bottom: 1rem;">
+            ⚠️ Send receipt/screenshot of the transaction to verify and confirm your slot.
+          </div>
+          <button class="btn btn-primary" onclick="confirmManualPayment('PayPal')" style="width: 100%; background: #10b981; border: none; font-weight: 600;">I have paid ₹499 - Confirm on WhatsApp</button>
+          <button class="btn btn-secondary" onclick="showCheckoutScreen('select')" style="margin-top: 1rem; width: 100%;">← Back to payment methods</button>
+        </div>
+
+        <!-- Screen 4: SBI Bank Transfer Details -->
+        <div id="checkoutScreenBank" style="display: none;">
+          <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+            <h4 style="margin: 0 0 0.75rem 0; color: #ffffff; font-size: 1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🏛️</span> SBI Account Details
+            </h4>
+            
+            <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse; color: var(--color-text-secondary);">
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Name:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">THE GATEWAY TO FUTURE</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Number:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-family: monospace; letter-spacing: 0.5px;">4524638548-5</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Type:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-size: 0.8rem;">Current Account</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Bank Name:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">State Bank of India (SBI)</td></tr>
+              <tr><td style="padding: 0.4rem 0; font-weight: 600;">Branch:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-size: 0.75rem;">Laksar Haridwar Road, Haridwar</td></tr>
+            </table>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted); text-align: left; line-height: 1.4; border-top: 1px solid var(--color-border); padding-top: 0.75rem; margin-bottom: 1rem;">
+            ⚠️ Send receipt/screenshot of the transaction to verify and confirm your slot.
+          </div>
+          <button class="btn btn-primary" onclick="confirmManualPayment('Bank Transfer')" style="width: 100%; background: #10b981; border: none; font-weight: 600;">I have paid ₹499 - Confirm on WhatsApp</button>
+          <button class="btn btn-secondary" onclick="showCheckoutScreen('select')" style="margin-top: 1rem; width: 100%;">← Back to payment methods</button>
+        </div>
+
+      </div>
+      
+      <!-- Footer -->
+      <div style="background: rgba(255, 255, 255, 0.02); padding: 0.75rem; text-align: center; font-size: 0.75rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border);">
+        🛡️ End-to-End Secure SSL Payment Gateway
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js?v=2"></script>
   <script>
     // Lead Magnet Form Handler
@@ -650,49 +790,217 @@
       e.target.reset();
     }
 
-    // Webhook Target URL (Google Sheets + Notion Apps Script Web App)
-    // TODO: Replace with your actual deployed Google Apps Script Web App URL
-    const WEBHOOK_URL = 'https://example.com/notion-webhook';
+    const API_BASE = 'http://localhost:5000/api';
+    let activeCheckout = {
+      order: null,
+      date: null,
+      notes: null
+    };
 
-    // Main Strategy Form Handler
+    // Set min date for date input to today
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('bookingDate');
+      if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+      }
+    });
+
+    // Check slot availability
+    async function checkSlotAvailability() {
+      const dateVal = document.getElementById('bookingDate').value;
+      const statusContainer = document.getElementById('slotStatusContainer');
+      const statusText = document.getElementById('slotStatusText');
+      const submitBtn = document.getElementById('btnBookSlot');
+      
+      if (!dateVal) {
+        statusContainer.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Select Date to Book';
+        return;
+      }
+      
+      statusContainer.style.display = 'flex';
+      statusText.textContent = 'Checking slot availability...';
+      statusText.style.background = 'rgba(255, 255, 255, 0.05)';
+      statusText.style.color = 'var(--color-text-secondary)';
+      
+      try {
+        const res = await fetch(`${API_BASE}/appointments/available-slots?date=${dateVal}`);
+        const data = await res.json();
+        
+        if (res.ok) {
+          if (data.available) {
+            statusText.textContent = `● Slot Available: ${data.slot}`;
+            statusText.style.background = 'rgba(16, 185, 129, 0.1)';
+            statusText.style.color = '#10b981';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Proceed to Payment (₹499)';
+          } else {
+            statusText.textContent = '● Daily slot already booked. Choose another date.';
+            statusText.style.background = 'rgba(239, 68, 68, 0.1)';
+            statusText.style.color = '#ef4444';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Slot Unavailable';
+          }
+        } else {
+          statusText.textContent = `Error: ${data.message}`;
+          statusText.style.background = 'rgba(239, 68, 68, 0.1)';
+          statusText.style.color = '#ef4444';
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Error Checking Slot';
+        }
+      } catch (err) {
+        statusText.textContent = 'Server offline. Cannot check availability.';
+        statusText.style.background = 'rgba(239, 68, 68, 0.1)';
+        statusText.style.color = '#ef4444';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Error Communicating';
+      }
+    }
+
+    // Handle inquiry / paid booking submit
     async function handleInquirySubmit(e) {
       e.preventDefault();
       
       const form = e.target;
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
+      const submitBtn = document.getElementById('btnBookSlot');
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('whatsapp').value;
+      const level = document.getElementById('german-level').value;
+      const goal = document.getElementById('goal').value;
+      const intake = document.getElementById('intake').value;
+      const date = document.getElementById('bookingDate').value;
+      const msgText = document.getElementById('message').value;
+      
+      const notes = `Main Site Booking. German Level: ${level}, Goal: ${goal}, Intake: ${intake}, Plan Notes: "${msgText}"`;
       
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting Request...';
-
-      // Gather form fields
-      const formData = new FormData(form);
-      const payload = {};
-      formData.forEach((value, key) => {
-        payload[key] = value;
-      });
-      
-      payload.date_submitted = new Date().toISOString();
-      payload.lead_score = 0; // Baseline score
-      payload.status = 'New';
+      submitBtn.textContent = 'Initiating Checkout...';
       
       try {
-        console.log('[API POST] Submitting Strategy Call lead details:', payload);
-        await fetch(WEBHOOK_URL, {
+        const res = await fetch(`${API_BASE}/payments/counseling/guest-checkout`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ name, email, phone, date, notes })
         });
+        
+        const data = await res.json();
+        if (res.status === 211 || res.status === 200) {
+          activeCheckout.order = data.razorpay_order;
+          activeCheckout.date = date;
+          activeCheckout.notes = notes;
+          
+          // Update order ID label
+          document.getElementById('rzpOrderIdLabel').textContent = data.razorpay_order.id;
+          
+          // Save token to localStorage if returned
+          if (data.token) {
+            localStorage.setItem('token', data.token);
+          }
+          
+          // Show checkout modal
+          showCheckoutScreen('select');
+          document.getElementById('checkoutModal').style.display = 'flex';
+        } else {
+          alert(`Booking checkout failed: ${data.message}`);
+        }
       } catch (err) {
-        console.error('[WEBHOOK ERROR] Failed to submit strategy lead:', err.message);
+        alert('Communication error establishing payment order.');
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        alert('Thank you for requesting a roadmap session! Our Berlin team will review your profile and contact you on WhatsApp within 24 hours.');
-        form.reset();
+        submitBtn.textContent = 'Proceed to Payment (₹499)';
       }
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+
+    function showCheckoutScreen(screen) {
+      const selectScreen = document.getElementById('checkoutScreenSelect');
+      const rzpScreen = document.getElementById('checkoutScreenRazorpay');
+      const paypalScreen = document.getElementById('checkoutScreenPaypal');
+      const bankScreen = document.getElementById('checkoutScreenBank');
+
+      selectScreen.style.display = 'none';
+      rzpScreen.style.display = 'none';
+      paypalScreen.style.display = 'none';
+      bankScreen.style.display = 'none';
+
+      if (screen === 'select') {
+        selectScreen.style.display = 'block';
+      } else if (screen === 'razorpay') {
+        rzpScreen.style.display = 'block';
+      } else if (screen === 'paypal') {
+        paypalScreen.style.display = 'block';
+      } else if (screen === 'bank') {
+        bankScreen.style.display = 'block';
+      }
+    }
+
+    function selectPaymentMethod(method) {
+      showCheckoutScreen(method);
+    }
+
+    // Razorpay Simulation
+    async function simulatePayment(isSuccess) {
+      closeCheckoutModal();
+      
+      if (!isSuccess) {
+        alert('Payment canceled or declined.');
+        return;
+      }
+      
+      const orderId = activeCheckout.order.id;
+      const paymentId = `pay_${Math.random().toString(36).substring(2, 10)}`;
+      const signature = `mock_client_sig_${Math.random().toString(36).substring(2, 10)}`;
+      
+      try {
+        const res = await fetch(`${API_BASE}/payments/counseling/verify`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            razorpay_order_id: orderId,
+            razorpay_payment_id: paymentId,
+            razorpay_signature: signature,
+            appointment_date: activeCheckout.date,
+            appointment_notes: activeCheckout.notes
+          })
+        });
+        
+        const data = await res.json();
+        if (res.ok) {
+          alert('Payment simulated successfully! Forwarding you to WhatsApp to confirm your slot.');
+          // Reset form
+          document.getElementById('inquiry-form').reset();
+          document.getElementById('slotStatusContainer').style.display = 'none';
+          
+          // Redirect to WhatsApp
+          const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I just completed my ₹499 counseling payment! Please confirm my slot for ${activeCheckout.date}.`)}`;
+          window.location.href = whatsappUrl;
+        } else {
+          alert(`Verification failed: ${data.message}`);
+        }
+      } catch (err) {
+        alert('Error connecting to verify payment signature.');
+      }
+    }
+
+    // Manual payments (PayPal / Bank) redirection after clicking confirmation
+    function confirmManualPayment(method) {
+      closeCheckoutModal();
+      document.getElementById('inquiry-form').reset();
+      document.getElementById('slotStatusContainer').style.display = 'none';
+      
+      const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${activeCheckout.date}. Here is my receipt screenshot.`)}`;
+      window.location.href = whatsappUrl;
     }
 
     // Scroll reveal observer

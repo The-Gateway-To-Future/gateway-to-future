@@ -6,7 +6,7 @@ import { UserRepository } from '../src/repositories/user.repository';
 describe('Appointments and Counseling Slots API Tests', () => {
   let studentToken: string;
   let otherStudentToken: string;
-  const testDate = '2026-06-15'; // Specific date in the future
+  const testDate = '2026-07-20'; // Specific date in the future
 
   beforeEach(async () => {
     await AppointmentRepository.clearMockData();
