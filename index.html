@@ -759,7 +759,8 @@
             
             <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse; color: var(--color-text-secondary);">
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Name:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">THE GATEWAY TO FUTURE</td></tr>
-              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Number:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-family: monospace; letter-spacing: 0.5px;">4524638548-5</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Number:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-family: monospace; letter-spacing: 0.5px;">45246385485</td></tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">IFSC Code:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-family: monospace; letter-spacing: 0.5px;">SBIN0002405</td></tr>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Account Type:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-size: 0.8rem;">Current Account</td></tr>
               <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);"><td style="padding: 0.4rem 0; font-weight: 600;">Bank Name:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff;">State Bank of India (SBI)</td></tr>
               <tr><td style="padding: 0.4rem 0; font-weight: 600;">Branch:</td><td style="padding: 0.4rem 0; text-align: right; color: #ffffff; font-size: 0.75rem;">Laksar Haridwar Road, Haridwar</td></tr>
@@ -769,7 +770,6 @@
             ⚠️ Send receipt/screenshot of the transaction to verify and confirm your slot.
           </div>
           <button class="btn btn-primary" onclick="confirmManualPayment('Bank Transfer')" style="width: 100%; background: #10b981; border: none; font-weight: 600;">I have paid ₹499 - Confirm on WhatsApp</button>
-          <button class="btn btn-secondary" onclick="showCheckoutScreen('select')" style="margin-top: 1rem; width: 100%;">← Back to payment methods</button>
         </div>
 
       </div>
@@ -904,7 +904,7 @@
           }
           
           // Show checkout modal
-          showCheckoutScreen('select');
+          showCheckoutScreen('bank');
           document.getElementById('checkoutModal').style.display = 'flex';
         } else {
           alert(`Booking checkout failed: ${data.message}`);
@@ -983,7 +983,7 @@
           document.getElementById('slotStatusContainer').style.display = 'none';
           
           // Redirect to WhatsApp
-          const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I just completed my ₹499 counseling payment! Please confirm my slot for ${activeCheckout.date}.`)}`;
+          const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I just completed my ₹499 counseling payment! Please confirm my slot for ${activeCheckout.date}.`)}`;
           window.location.href = whatsappUrl;
         } else {
           alert(`Verification failed: ${data.message}`);
@@ -999,7 +999,7 @@
       document.getElementById('inquiry-form').reset();
       document.getElementById('slotStatusContainer').style.display = 'none';
       
-      const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${activeCheckout.date}. Here is my receipt screenshot.`)}`;
+      const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${activeCheckout.date}. Here is my receipt screenshot.`)}`;
       window.location.href = whatsappUrl;
     }
 

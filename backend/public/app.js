@@ -498,7 +498,7 @@ async function initiateCheckout(bookingId, price, title) {
       document.getElementById('checkoutAmountLabel').textContent = `₹${price.toLocaleString('en-IN')}`;
       document.getElementById('rzpOrderIdLabel').textContent = data.razorpay_order.id;
       
-      showCheckoutScreen('select');
+      showCheckoutScreen('bank');
       document.getElementById('checkoutModal').classList.remove('hidden');
     } else {
       alert(`Checkout failed: ${data.message}`);
@@ -613,10 +613,10 @@ function confirmManualPayment(method) {
     document.getElementById('bookingNotes').value = '';
     document.getElementById('slotAvailability').classList.add('hidden');
     
-    const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${state.activeCheckoutDate}. Here is my receipt screenshot.`)}`;
+    const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${state.activeCheckoutDate}. Here is my receipt screenshot.`)}`;
     window.location.href = whatsappUrl;
   } else {
-    const whatsappUrl = `https://wa.me/4915228372894?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my payment via ${method} for course enrollment. Here is my receipt screenshot.`)}`;
+    const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my payment via ${method} for course enrollment. Here is my receipt screenshot.`)}`;
     window.location.href = whatsappUrl;
   }
 }
