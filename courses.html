@@ -1,72 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses | Gateway to Future</title>
-    <link rel="stylesheet" href="css/style.css?v=2">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CFB6FD052Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CFB6FD052Q');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs & Pathways — German Language & Placements | Gateway to Future</title>
+  <meta name="description" content="Explore our premium pathways: Ausbildung vocational matching, intensive German language courses A1–B2, Studienkolleg prep, and university admission support." />
+  
+  <!-- SEO Open Graph -->
+  <meta property="og:title" content="Pathways & Programs — Gateway to Future" />
+  <meta property="og:description" content="Intensive German language courses A1-B2, guaranteed Ausbildung placements, and university admissions support." />
+  <meta property="og:image" content="assets/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Typography & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=2">
+  
+  <style>
+    .program-section-header {
+      margin-bottom: 3rem;
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: 1rem;
+    }
+    .program-section-header h2 {
+      font-size: 2rem;
+      color: var(--color-text-primary);
+    }
+    .program-section-header p {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .prog-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-speed);
+      box-shadow: var(--shadow-sm);
+    }
+    .prog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .prog-card h3 {
+      font-size: 1.25rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .prog-card p {
+      font-size: 0.925rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .prog-price {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+    .level-indicator {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
-<body class="subpage">
-    <div id="canvas-container"></div>
+<body>
 
-    <header>
-        <div class="nav shell">
-            <a href="index.html" class="brand" aria-label="The Gateway to Future">
-                <img src="assets/logo.jpg?v=2" alt="Gateway to Future" class="brand-logo" style="height: 48px; width: auto; display: block;" />
-            </a>
-            <nav class="menu" aria-label="Primary navigation">
-                <a href="index.html">Home</a>
-                <a href="courses.html" class="active-page">Programs</a>
-                <a href="about.html">About</a>
-                <a href="resources.html">Resources</a>
-                <a href="blog.html">Blog</a>
-                <a class="cta-mini" href="contact.html">Book strategy call</a>
-            </nav>
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav shell">
+      <a href="index.html" class="brand" aria-label="The Gateway to Future">
+        <img src="assets/logo.jpg?v=2" alt="Gateway to Future" class="brand-logo" style="height: 48px; width: auto; display: block;" />
+      </a>
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="ausbildung.html">Ausbildung</a>
+        <a href="courses.html" class="active-page">Programs</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="blog.html">Blog</a>
+        <a class="cta-mini btn btn-primary" href="contact.html" style="padding: 0.5rem 1rem; min-height: auto; font-size: 0.875rem;">Book roadmap call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="shell">
+    
+    <!-- Hero Block -->
+    <section style="padding: 4rem 0 2rem 0; border-bottom: 1px solid var(--color-border); margin-bottom: 3rem;">
+      <span class="badge badge-indigo">Explore Academic & Vocational Pathways</span>
+      <h1 style="font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem); margin-bottom: 1rem;">Programs & Placement Tracks</h1>
+      <p style="font-size: 1.15rem; max-width: 800px; color: var(--color-text-secondary); line-height: 1.6;">Whether you want to enter the paid dual vocational system (Ausbildung) immediately, master the German language from zero to B2, or prepare for university admissions—we map your trajectory directly to Germany.</p>
+    </section>
+
+    <!-- SECTION 1: Ausbildung Pathways (Priority) -->
+    <section id="ausbildung-paths" style="padding: 2rem 0; border-bottom: none;">
+      <div class="program-section-header">
+        <h2>1. Ausbildung Vocational Placements</h2>
+        <p>Earn a stipend of €1,000–€1,400+ per month while getting trained. Zero tuition, guaranteed post-grad employment, and fast-track residency.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Healthcare Placement</span>
+            <h3>Nursing & Geriatric Care</h3>
+            <p>Direct placement with German hospitals and senior care clinics. Includes mock interview drills and B2 clinical term prep.</p>
+          </div>
+          <div>
+            <div class="prog-price">€1,150 - €1,650/mo</div>
+            <a class="btn btn-primary" href="ausbildung.html" style="width: 100%; text-align: center;">Explore Placements</a>
+          </div>
         </div>
-    </header>
 
-    <main class="container">
-        <section class="page-header">
-            <h1>Our <span>Premium</span> Courses</h1>
-            <p>Select your level and start your journey today.</p>
-        </section>
-
-        <div class="course-grid">
-            <div class="course-card glass">
-                <div class="level-badge a1">A1</div>
-                <h2>German A1.1</h2>
-                <p>Perfect for absolute beginners. Includes 15 chapters with Hindi and English support.</p>
-                <div class="price">FREE</div>
-                <a href="books/Gateway-to-Future-Deutsch-A1.1-Premium-Study-Material-1.pdf" class="btn-primary">Download PDF</a>
-            </div>
-
-            <div class="course-card glass">
-                <div class="level-badge a1">A1</div>
-                <h2>German A1.2</h2>
-                <p>Continue your journey. Build on A1.1 with more vocabulary and grammar.</p>
-                <div class="price">₹1,000</div>
-                <a href="/index.html#courses" class="btn-primary">Book on Student Hub</a>
-            </div>
-
-            <div class="course-card glass">
-                <div class="level-badge a2">A2</div>
-                <h2>German A2.1</h2>
-                <p>Building your foundation. Advanced grammar and conversation skills.</p>
-                <div class="price">₹1,000</div>
-                <a href="/index.html#courses" class="btn-primary">Book on Student Hub</a>
-            </div>
-
-            <div class="course-card glass">
-                <div class="level-badge b1">B1</div>
-                <h2>German B1</h2>
-                <p>Intermediate level. Focus on Telc and Goethe certification prep.</p>
-                <div class="price">₹1,000</div>
-                <a href="/index.html#courses" class="btn-primary">Book on Student Hub</a>
-            </div>
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Technology Placement</span>
+            <h3>IT Software & Systems</h3>
+            <p>Develop, program, and integrate software with German startups and mid-tier companies. Focused on systems, apps, and security.</p>
+          </div>
+          <div>
+            <div class="prog-price">€1,050 - €1,250/mo</div>
+            <a class="btn btn-primary" href="ausbildung.html" style="width: 100%; text-align: center;">Explore Placements</a>
+          </div>
         </div>
-    </main>
 
-    <script src="js/background.js?v=2"></script>
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Industrial & Trades Placement</span>
+            <h3>House-Building & Technical Trades</h3>
+            <p>20+ tracks in construction, electrics, HVAC, and carpentry. High starting stipends, low initial language bars, and immediate visa approvals.</p>
+          </div>
+          <div>
+            <div class="prog-price">€920 - €1,495/mo</div>
+            <a class="btn btn-primary" href="ausbildung.html" style="width: 100%; text-align: center;">Explore Placements</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: German Language Mastery (CEFR Core) -->
+    <section id="language-paths" style="padding: 2rem 0; border-bottom: none;">
+      <div class="program-section-header">
+        <h2>2. German Language Mastery (A1–B2)</h2>
+        <p>Your essential tool for Ausbildung matching and university admits. Our structured classes cover speech, grammar, and exam strategies.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Level A1.1 — Free Starter</span>
+            <h3>German A1.1 Foundation</h3>
+            <p>Perfect for absolute beginners. 15 chapters detailing pronunciation, basic syntax, and greetings with English/Hindi side-support.</p>
+          </div>
+          <div>
+            <div class="prog-price">FREE (PDF)</div>
+            <a class="btn btn-secondary" href="books/Gateway-to-Future-Deutsch-A1.1-Premium-Study-Material-1.pdf" target="_blank" style="width: 100%; text-align: center; border-color: var(--color-primary);">Download Book</a>
+          </div>
+        </div>
+
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Level A1.2 — Beginner</span>
+            <h3>German A1.2 Intermediate</h3>
+            <p>Continue your linguistic foundation. Focus on past tenses, everyday activities, food, shopping, and building simple vocabulary blocks.</p>
+          </div>
+          <div>
+            <div class="prog-price">₹1,000 / Level</div>
+            <a class="btn btn-primary" href="index.html#courses" style="width: 100%; text-align: center;">Book on Student Hub</a>
+          </div>
+        </div>
+
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Level A2 — Upper Beginner</span>
+            <h3>German A2 Complete</h3>
+            <p>Understand routine tasks, exchange simple reports on familiar topics, and read basic workplace guides. Key for basic trade vocations.</p>
+          </div>
+          <div>
+            <div class="prog-price">₹1,000 / Level</div>
+            <a class="btn btn-primary" href="index.html#courses" style="width: 100%; text-align: center;">Book on Student Hub</a>
+          </div>
+        </div>
+
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Level B1/B2 — Professional</span>
+            <h3>German B1 & B2 Intermediate</h3>
+            <p>Intensive training for Goethe/telc certifications. Learn complex business reports, clinical nursing jargon, and fluent workplace discussions.</p>
+          </div>
+          <div>
+            <div class="prog-price">₹1,000 / Level</div>
+            <a class="btn btn-primary" href="index.html#courses" style="width: 100%; text-align: center;">Book on Student Hub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Academic Admissions & Settlement Support -->
+    <section id="academic-support" style="padding: 2rem 0; border-bottom: none; margin-bottom: 5rem;">
+      <div class="program-section-header">
+        <h2>3. Higher Education & Visa Mentorship</h2>
+        <p>For students aiming for Public Universities (Bachelor/Master), Studienkolleg prep, and seamless relocation support.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Academic Pathway</span>
+            <h3>Studienkolleg Preparation</h3>
+            <p>Bridging classes for Indian secondary school graduates who need to pass the FSP examination before entering public universities.</p>
+          </div>
+          <div>
+            <div class="prog-price">Direct Support</div>
+            <a class="btn btn-primary" href="contact.html" style="width: 100%; text-align: center;">Book Strategy Call</a>
+          </div>
+        </div>
+
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Admission Services</span>
+            <h3>Direct Public University Admits</h3>
+            <p>We review your transcripts, map courses, write German-style letters of motivation, and handle Uni-Assist applications end-to-end.</p>
+          </div>
+          <div>
+            <div class="prog-price">Complete Guide</div>
+            <a class="btn btn-primary" href="contact.html" style="width: 100%; text-align: center;">Book Strategy Call</a>
+          </div>
+        </div>
+
+        <div class="prog-card">
+          <div>
+            <span class="level-indicator">Visa & Relocation</span>
+            <h3>Embassy Prep & Blocked Account</h3>
+            <p>Step-by-step assistance with Blocked Accounts (Expatrio, Fintiba, Kotak), APS certificates, visa appointments, and mock embassy drills.</p>
+          </div>
+          <div>
+            <div class="prog-price">Checklist Aid</div>
+            <a class="btn btn-primary" href="contact.html" style="width: 100%; text-align: center;">Book Strategy Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>The Gateway to Future</h3>
+          <p>Premium Berlin-based education mentorship for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ausbildung.html">Ausbildung</a></li>
+            <li><a href="courses.html">Programs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Pathways</h4>
+          <ul>
+            <li><a href="courses.html">German A1–C1</a></li>
+            <li><a href="courses.html">Studienkolleg Prep</a></li>
+            <li><a href="courses.html">Uni Admissions</a></li>
+            <li><a href="courses.html">Student Visas</a></li>
+            <li><a href="ausbildung.html">Ausbildung Placements</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support & Legal</h4>
+          <ul>
+            <li><a href="courses.html">Blocked Accounts</a></li>
+            <li><a href="courses.html">Settlement Aid</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Meet Founder</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Gateway to Future. Germany & India. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>German Courses</span> •
+          <span>Admissions Mentorship</span> •
+          <span>Visa Preparation</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>

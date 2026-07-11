@@ -53,6 +53,7 @@
       </a>
       <nav class="menu" aria-label="Primary navigation">
         <a href="index.html" class="active-page">Home</a>
+        <a href="ausbildung.html">Ausbildung</a>
         <a href="courses.html">Programs</a>
         <a href="about.html">About</a>
         <a href="resources.html">Resources</a>
@@ -1002,19 +1003,6 @@
       const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${activeCheckout.date}. Here is my receipt screenshot.`)}`;
       window.location.href = whatsappUrl;
     }
-
-    // Scroll reveal observer
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    });
   </script>
 </body>
 </html>
