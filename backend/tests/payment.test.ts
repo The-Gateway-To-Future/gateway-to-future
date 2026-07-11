@@ -39,7 +39,7 @@ describe('Razorpay Payments API Tests', () => {
 
     expect(res.status).toBe(211);
     expect(res.body).toHaveProperty('razorpay_order');
-    expect(res.body.razorpay_order.amount).toBe(1800000); // 18,000 INR in paise
+    expect(res.body.razorpay_order.amount).toBe(2500000); // 25,000 INR in paise
     expect(res.body.razorpay_order.status).toBe('created');
   });
 
@@ -86,7 +86,7 @@ describe('Razorpay Payments API Tests', () => {
         order: {
           entity: {
             id: orderId,
-            amount: 1800000,
+            amount: 2500000,
             status: 'paid',
           },
         },
