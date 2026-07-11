@@ -71,7 +71,12 @@ npm run test
 ## 🐋 Docker Compose Deployment
 To deploy the backend, database, and cache services as a containerized stack:
 1. Ensure `docker` and `docker-compose` are installed and running.
-2. Launch the services:
+2. Configure credentials by copying the template file `.env.docker` to `.env` (which is ignored by Git):
+   ```bash
+   cp .env.docker .env
+   ```
+   Feel free to edit the `.env` file to customize passwords and secrets.
+3. Launch the services:
    ```bash
    docker-compose up --build -d
    ```

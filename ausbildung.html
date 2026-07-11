@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CFB6FD052Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CFB6FD052Q');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ausbildung Hub — Premium Vocational Pathways in Germany | Gateway to Future</title>
+  <meta name="description" content="Discover 350+ Ausbildung (dual vocational training) programs in Germany. Get direct placements in Nursing, IT, Construction, & engineering. Earn €1,000–€1,650/month." />
+  
+  <!-- SEO Open Graph -->
+  <meta property="og:title" content="Ausbildung Pathways in Germany — Gateway to Future" />
+  <meta property="og:description" content="Get direct placement in Germany's top dual vocational training (Ausbildung) programs with starting stipends up to €1,400+ per month." />
+  <meta property="og:image" content="assets/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Typography & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=2">
+  
+  <style>
+    /* Ausbildung Custom Hub Styles */
+    .tab-container {
+      margin: 2rem 0;
+    }
+    .tab-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-speed);
+    }
+    .tab-btn:hover {
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+    .tab-btn.active {
+      color: #ffffff;
+      background-color: var(--color-primary);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .aus-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      transition: all var(--transition-speed) ease;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .aus-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .aus-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.35rem;
+      color: var(--color-text-primary);
+    }
+    .aus-card p {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .aus-meta {
+      border-top: 1px solid var(--color-border);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin: 2.5rem 0;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.925rem;
+      background-color: #ffffff;
+    }
+    table.data-table th, table.data-table td {
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    table.data-table th {
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.775rem;
+      letter-spacing: 0.05em;
+    }
+    table.data-table tr:last-child td {
+      border-bottom: none;
+    }
+    table.data-table tr:hover td {
+      background-color: var(--color-bg-secondary);
+    }
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .faq-item {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    .faq-question {
+      background: none;
+      border: none;
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-text-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color var(--transition-speed);
+    }
+    .faq-question:hover {
+      background-color: var(--color-bg-secondary);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+      padding: 0 1.5rem;
+      background-color: #ffffff;
+      color: var(--color-text-secondary);
+      font-size: 0.975rem;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      max-height: 300px;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      transition: transform var(--transition-speed);
+    }
+    .faq-item.active .faq-question::after {
+      content: '−';
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .service-number {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: var(--color-primary);
+      opacity: 0.8;
+      line-height: 1;
+    }
+    .service-card h4 {
+      font-size: 1.15rem;
+      color: var(--color-text-primary);
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav shell">
+      <a href="index.html" class="brand" aria-label="The Gateway to Future">
+        <img src="assets/logo.jpg?v=2" alt="Gateway to Future" class="brand-logo" style="height: 48px; width: auto; display: block;" />
+      </a>
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="ausbildung.html" class="active-page">Ausbildung</a>
+        <a href="courses.html">Programs</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="blog.html">Blog</a>
+        <a class="cta-mini btn btn-primary" href="contact.html" style="padding: 0.5rem 1rem; min-height: auto; font-size: 0.875rem;">Book roadmap call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    
+    <!-- 1. Above-the-fold Hero -->
+    <section class="hero shell">
+      <div class="hero-content">
+        <span class="badge badge-indigo">Earn While You Learn in Germany</span>
+        <h1>Kickstart Your Career in Germany with 350+ Ausbildung Programs</h1>
+        <p>Get direct, guaranteed vocational placements with starting monthly stipends ranging from €1,000 to €1,400+ during training. Work at leading German companies and qualify for permanent residency within 2 years of graduation. Gateway to Future handles your B2 language prep, visa, matches, and local settlement end-to-end from Berlin.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="contact.html">Apply for Ausbildung placement</a>
+          <a class="btn btn-secondary" href="#categories">Explore occupations</a>
+        </div>
+        <div class="social-proof-strip">
+          <div class="proof-item">
+            <strong>100%</strong>
+            <span>Placement Success Rate</span>
+          </div>
+          <div class="proof-item">
+            <strong>€1,000 - €1,650</strong>
+            <span>Monthly Stipend from Day One</span>
+          </div>
+          <div class="proof-item">
+            <strong>0 Tuition</strong>
+            <span>Zero Fees for Public Academies</span>
+          </div>
+          <div class="proof-item">
+            <strong>B1 / B2</strong>
+            <span>Minimum Language Target</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <h3 style="font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; margin-bottom: 0.5rem;">Why Choose Ausbildung?</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Unlike standard university degrees, the German Ausbildung (dual vocational system) combines classroom theory (30%) with paid, on-the-job training (70%). It is the fastest, lowest-cost bridge to build a high-paying, certified career in Germany.</p>
+        
+        <div class="spotlight-metric-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+          <div class="trust-badge" style="background: white; border: 1px solid var(--color-border); padding: 1rem; border-radius: var(--radius-md); text-align: left; display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 1.75rem;">🎓</div>
+            <div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-text-primary); margin: 0;">Dual System Framework</h4>
+              <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin: 0;">Alternating weeks between vocational school (Berufsschule) and the workplace.</p>
+            </div>
+          </div>
+          <div class="trust-badge" style="background: white; border: 1px solid var(--color-border); padding: 1rem; border-radius: var(--radius-md); text-align: left; display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 1.75rem;">💼</div>
+            <div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--color-text-primary); margin: 0;">No Sperrkonto Required</h4>
+              <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin: 0;">If your monthly stipend exceeds €939, you do NOT need a €11,904 blocked account.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Dual System Explainer -->
+    <section id="what-is-ausbildung" class="shell reveal">
+      <h2>The Dual Education System Explained</h2>
+      <p style="max-width: 720px; margin-bottom: 2rem;">In Germany, vocational education is highly respected, regulated by the Federal Ministry, and integrated directly with the national industry. Here is how your schedule splits between theory and practice:</p>
+      
+      <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="service-card" style="background: white;">
+          <div class="service-number">30%</div>
+          <h4>Vocational School (Berufsschule)</h4>
+          <p>You spend 1 to 2 days per week (or in blocks of weeks) studying the theoretical aspects of your chosen trade, German professional terminology, business economics, and civic studies.</p>
+        </div>
+        <div class="service-card" style="background: white;">
+          <div class="service-number">70%</div>
+          <h4>Hands-on Training (Ausbildungsbetrieb)</h4>
+          <p>You work 3 to 4 days per week in a real company under the strict supervision of a certified master trainer (Ausbilder). You learn by doing, on the production line, office, or hospital floor.</p>
+        </div>
+        <div class="service-card" style="background: white;">
+          <div class="service-number">100%</div>
+          <h4>Integrated Path to PR</h4>
+          <p>After graduating, you get an immediate 12-month job seeker visa. Because you paid social contributions during training, you qualify for permanent residency in Germany in just 2 years.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Gateway to Future Services Summary -->
+    <section id="services" class="shell reveal" style="background: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 4rem 2rem; margin: 3rem auto;">
+      <h2>How Gateway to Future Supports You End-to-End</h2>
+      <p style="max-width: 720px; margin-bottom: 2rem;">Securing an Ausbildung from India requires navigation of language benchmarks, resume formats, employer interviews, and visa laws. We bridge the gap from our office in Berlin and partners in India.</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h4>Language Foundation</h4>
+          <p>We train you from A1 to B2 German using native materials, exam simulations, and conversational workshops focused on vocational terminology.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h4>Resume & Portfolio Build</h4>
+          <p>We translate your school credentials and format your CV/cover letter into the German "Lebenslauf" standard, highlighting practical skills.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h4>Direct Employer Matching</h4>
+          <p>We present your file directly to our partner hospitals, tech startups, construction consortia, and logistics groups across Berlin and Germany.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">04</div>
+          <h4>Interview Preparation</h4>
+          <p>We conduct mock interviews in German, preparing you for employer screenings, technical assessments, and cultural expectations.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">05</div>
+          <h4>Embassy Visa & Landing</h4>
+          <p>We handle your contract approvals, embassy scheduling, and help secure your visa. In Berlin, we support you with registration (Anmeldung), health insurance, and boarding.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Ausbildung Categories Grid with Tabs -->
+    <section id="categories" class="shell reveal">
+      <h2>Explore Ausbildung Pathways</h2>
+      <p style="max-width: 720px; margin-bottom: 2rem;">Select a category below to browse popular vocational tracks, starting monthly stipends, and program prerequisites.</p>
+      
+      <div class="tab-container">
+        <div class="tab-header" role="tablist">
+          <button class="tab-btn active" onclick="switchTab(event, 'nursing')">Nursing & Healthcare</button>
+          <button class="tab-btn" onclick="switchTab(event, 'it')">Information Technology</button>
+          <button class="tab-btn" onclick="switchTab(event, 'engineering')">Engineering & Technical</button>
+          <button class="tab-btn" onclick="switchTab(event, 'hospitality')">Hospitality & Food</button>
+          <button class="tab-btn" onclick="switchTab(event, 'office')">Office & Business</button>
+          <button class="tab-btn" onclick="switchTab(event, 'logistics')">Logistics & Transport</button>
+        </div>
+
+        <!-- Tab 1: Nursing -->
+        <div id="nursing" class="tab-content active" role="tabpanel">
+          <div class="card-grid">
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Healthcare</span>
+                <h3>Generalist Nurse (Pflegefachmann/Pflegefachfrau)</h3>
+                <p>Learn clinical nursing, patient diagnostics, and care management across hospitals and elderly care centers.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €1,150 - €1,350</div>
+                <div><strong>Language:</strong> B2 German</div>
+                <div><a href="ausbildung-template.html" style="color: var(--color-primary); font-weight: 700; text-decoration: none;">View Template →</a></div>
+              </div>
+            </div>
+            
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Healthcare</span>
+                <h3>Physiotherapist (Physiotherapeut)</h3>
+                <p>Support patients in post-injury rehabilitation, orthopedics, physical therapy plans, and athletic medicine.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €1,000 - €1,150</div>
+                <div><strong>Language:</strong> B2 German</div>
+                <div><span style="color: var(--color-text-muted);">In Demand</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Healthcare</span>
+                <h3>Dental Assistant (Zahnmedizinischer Fachangestellter)</h3>
+                <p>Manage dental patient registries, prep surgeries, handle specialized dental materials, and assist oral procedures.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €950 - €1,100</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">In Demand</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: IT -->
+        <div id="it" class="tab-content" role="tabpanel">
+          <div class="card-grid">
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">IT</span>
+                <h3>IT Specialist in Software Dev (Fachinformatiker Anwendungsentwicklung)</h3>
+                <p>Program applications, analyze software systems, debug enterprise tools, and configure database architecture.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €1,050 - €1,250</div>
+                <div><strong>Language:</strong> B2 German</div>
+                <div><span style="color: var(--color-text-muted);">High Demand</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">IT</span>
+                <h3>IT Specialist in System Integration (Fachinformatiker Systemintegration)</h3>
+                <p>Configure company hardware networks, server systems, cybersecurity boundaries, and enterprise firewalls.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €1,050 - €1,250</div>
+                <div><strong>Language:</strong> B1/B2 German</div>
+                <div><span style="color: var(--color-text-muted);">High Demand</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">IT</span>
+                <h3>Digital Media Designer (Mediengestalter Digital und Print)</h3>
+                <p>Design digital UI layouts, print catalogs, visual animations, and branding guidelines for corporate agencies.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €950 - €1,150</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">Creative</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Engineering -->
+        <div id="engineering" class="tab-content" role="tabpanel">
+          <div class="card-grid">
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Engineering</span>
+                <h3>Mechatronics Technician (Mechatroniker)</h3>
+                <p>Assemble and repair advanced robotics, automated production lines, and combined mechanical-electronic systems.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3.5 Years</div>
+                <div><strong>Stipend:</strong> €1,050 - €1,300</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">Industrial</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Engineering</span>
+                <h3>Electronics Technician (Elektroniker)</h3>
+                <p>Install building automation systems, electrical grids, solar cells, and manage industrial machine controls.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3.5 Years</div>
+                <div><strong>Stipend:</strong> €1,000 - €1,200</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">High Demand</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Engineering</span>
+                <h3>Automotive Mechatronics (Kfz-Mechatroniker)</h3>
+                <p>Diagnose mechanical faults, calibrate engine control modules, and service electric and combustion vehicles.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3.5 Years</div>
+                <div><strong>Stipend:</strong> €980 - €1,180</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">Popular</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Hospitality -->
+        <div id="hospitality" class="tab-content" role="tabpanel">
+          <div class="card-grid">
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Hospitality</span>
+                <h3>Specialist in Gastronomy (Fachmann für Systemgastronomie)</h3>
+                <p>Manage restaurant chains, handle raw inventory systems, design menus, and supervise dining hospitality standards.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €950 - €1,150</div>
+                <div><strong>Language:</strong> A2/B1 German</div>
+                <div><span style="color: var(--color-text-muted);">Fast Placements</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Hospitality</span>
+                <h3>Professional Chef (Koch/Köchin)</h3>
+                <p>Prepare standard and fine-dining cuisine, manage hygiene regulations, portion control, and lead commercial kitchens.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €950 - €1,150</div>
+                <div><strong>Language:</strong> A2 German</div>
+                <div><span style="color: var(--color-text-muted);">Immediate Matching</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Hospitality</span>
+                <h3>Hotel Clerk (Hotelfachmann/Hotelfachfrau)</h3>
+                <p>Coordinate front desk operations, room booking systems, event planning, and guest relations in luxury hotel chains.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €950 - €1,150</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">Highly Social</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Office -->
+        <div id="office" class="tab-content" role="tabpanel">
+          <div class="card-grid">
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Business</span>
+                <h3>Office Management Assistant (Kaufmann für Büromanagement)</h3>
+                <p>Organize corporate correspondence, draft invoice billing registries, compile customer reports, and coordinate events.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €980 - €1,180</div>
+                <div><strong>Language:</strong> B2 German</div>
+                <div><span style="color: var(--color-text-muted);">Corporate</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Business</span>
+                <h3>E-commerce Merchant (Kaufmann im E-Commerce)</h3>
+                <p>Manage online stores, analyze web-traffic patterns, execute marketing campaigns, and handle digital returns.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €1,000 - €1,200</div>
+                <div><strong>Language:</strong> B2 German</div>
+                <div><span style="color: var(--color-text-muted);">Tech-Business</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 6: Logistics -->
+        <div id="logistics" class="tab-content" role="tabpanel">
+          <div class="card-grid">
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Logistics</span>
+                <h3>Warehouse Logistics Operator (Fachkraft für Lagerlogistik)</h3>
+                <p>Optimize inventory flow, manage loading/unloading zones, handle tracking codes, and oversee freight distribution.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €1,000 - €1,200</div>
+                <div><strong>Language:</strong> B1 German</div>
+                <div><span style="color: var(--color-text-muted);">In Demand</span></div>
+              </div>
+            </div>
+
+            <div class="aus-card">
+              <div>
+                <span class="badge badge-indigo">Logistics</span>
+                <h3>Professional Driver (Berufskraftfahrer)</h3>
+                <p>Operate heavy freight trucks across Europe, handle transport safety laws, and coordinate route schedules.</p>
+              </div>
+              <div class="aus-meta">
+                <div><strong>Duration:</strong> 3 Years</div>
+                <div><strong>Stipend:</strong> €980 - €1,150</div>
+                <div><strong>Language:</strong> A2 German</div>
+                <div><span style="color: var(--color-text-muted);">Fast Placement</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. "House-Building & Skilled Trades" Focus Block -->
+    <section id="skilled-trades" class="shell reveal">
+      <h2>Focus Area: House-Building & Skilled Trades</h2>
+      <p style="max-width: 720px; margin-bottom: 2rem;">Germany's construction sector is booming. The Federal Government has streamlined visas for skilled construction trades. These programs offer some of the highest starting stipends, lower initial language hurdles (A2/B1), and guaranteed post-graduation jobs.</p>
+      
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Vocation / Ausbildung Track</th>
+              <th>Duration</th>
+              <th>German Level</th>
+              <th>1st Year Stipend</th>
+              <th>2nd Year Stipend</th>
+              <th>3rd Year Stipend</th>
+              <th>Key Focus Areas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Maurer</strong> (Mason / Bricklayer)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>High demand in Berlin infrastructure projects.</td>
+            </tr>
+            <tr>
+              <td><strong>Beton- und Stahlbetonbauer</strong> (Concrete Builder)</td>
+              <td>3 Years</td>
+              <td>B1</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>Commercial development structural columns.</td>
+            </tr>
+            <tr>
+              <td><strong>Zimmerer</strong> (Carpenter)</td>
+              <td>3 Years</td>
+              <td>B1</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>Timber framing and roof structure assembly.</td>
+            </tr>
+            <tr>
+              <td><strong>Dachdecker</strong> (Roofer)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€890</td>
+              <td>€1,090</td>
+              <td>€1,340</td>
+              <td>Waterproofing and residential solar installation.</td>
+            </tr>
+            <tr>
+              <td><strong>Fliesen-, Platten- und Mosaikleger</strong> (Tiler)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€920</td>
+              <td>€1,150</td>
+              <td>€1,390</td>
+              <td>High-end interior finishings and mosaics.</td>
+            </tr>
+            <tr>
+              <td><strong>Straßenbauer</strong> (Road Builder)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>German highway networks and urban road grids.</td>
+            </tr>
+            <tr>
+              <td><strong>Gleisbauer</strong> (Railway construction)</td>
+              <td>3 Years</td>
+              <td>B1</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>Subway and national railway track installations.</td>
+            </tr>
+            <tr>
+              <td><strong>Trockenbaumonteur</strong> (Drywaller)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€920</td>
+              <td>€1,150</td>
+              <td>€1,390</td>
+              <td>Acoustic installations and drywall divisions.</td>
+            </tr>
+            <tr>
+              <td><strong>Stuckateur</strong> (Plasterer)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€920</td>
+              <td>€1,150</td>
+              <td>€1,390</td>
+              <td>Stucco decorations and facade heat insulation.</td>
+            </tr>
+            <tr>
+              <td><strong>Gerüstbauer</strong> (Scaffolder)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€850</td>
+              <td>€1,050</td>
+              <td>€1,280</td>
+              <td>Assembly of temporary metal work platforms.</td>
+            </tr>
+            <tr>
+              <td><strong>Maler und Lackierer</strong> (Painter/Decorator)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€815</td>
+              <td>€895</td>
+              <td>€1,065</td>
+              <td>Protective coatings and interior layout designs.</td>
+            </tr>
+            <tr>
+              <td><strong>Bauten- und Objektbeschichter</strong> (Coating Spec.)</td>
+              <td>2 Years</td>
+              <td>A2</td>
+              <td>€815</td>
+              <td>€895</td>
+              <td>—</td>
+              <td>Fast-track certificate for building surfaces.</td>
+            </tr>
+            <tr>
+              <td><strong>Anlagenmechaniker SHK</strong> (HVAC Installer)</td>
+              <td>3.5 Years</td>
+              <td>B1</td>
+              <td>€900</td>
+              <td>€980</td>
+              <td>€1,080</td>
+              <td>Renewable heaters and sanitation lines.</td>
+            </tr>
+            <tr>
+              <td><strong>Elektroniker Energie-/Gebäudetechnik</strong> (Electrician)</td>
+              <td>3.5 Years</td>
+              <td>B1</td>
+              <td>€950</td>
+              <td>€1,050</td>
+              <td>€1,150</td>
+              <td>Smart-home integration and power frameworks.</td>
+            </tr>
+            <tr>
+              <td><strong>Metallbauer</strong> (Metalworker)</td>
+              <td>3.5 Years</td>
+              <td>B1</td>
+              <td>€880</td>
+              <td>€950</td>
+              <td>€1,050</td>
+              <td>Steel frames, doors, and facade brackets.</td>
+            </tr>
+            <tr>
+              <td><strong>Konstruktionsmechaniker</strong> (Structure Mechanic)</td>
+              <td>3.5 Years</td>
+              <td>B1</td>
+              <td>€980</td>
+              <td>€1,040</td>
+              <td>€1,120</td>
+              <td>Heavy steel plates, ships, and building scaffolds.</td>
+            </tr>
+            <tr>
+              <td><strong>Brunnenbauer</strong> (Well Driller)</td>
+              <td>3 Years</td>
+              <td>B1</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>Groundwater drills and geothermal plumbing.</td>
+            </tr>
+            <tr>
+              <td><strong>Rohrleitungsbauer</strong> (Pipeline Builder)</td>
+              <td>3 Years</td>
+              <td>B1</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>Public supply lines (gas, water, district heat).</td>
+            </tr>
+            <tr>
+              <td><strong>Estrichleger</strong> (Screed Layer)</td>
+              <td>3 Years</td>
+              <td>A2</td>
+              <td>€920</td>
+              <td>€1,150</td>
+              <td>€1,390</td>
+              <td>Underfloor layouts, thermal and sound insulations.</td>
+            </tr>
+            <tr>
+              <td><strong>Kanalbauer</strong> (Sewer Builder)</td>
+              <td>3 Years</td>
+              <td>B1</td>
+              <td>€935</td>
+              <td>€1,230</td>
+              <td>€1,495</td>
+              <td>Sewage drain lines and underground grid maintenance.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. Student Journey Roadmap -->
+    <section id="roadmap" class="shell reveal">
+      <h2>Your 7-Step Ausbildung Roadmap</h2>
+      <p style="max-width: 720px; margin-bottom: 3rem;">From your first consultation in India to registering your apartment in Berlin. Here is the step-by-step pathway:</p>
+      
+      <div class="roadmap-timeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem;">
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">📞</span>
+          <span class="badge badge-indigo">Step 01</span>
+          <h4 style="margin: 0.5rem 0;">Eligibility Assessment</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">We check your High School/Diploma grades and align you with compatible Ausbildung programs.</p>
+        </div>
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🇩🇪</span>
+          <span class="badge badge-indigo">Step 02</span>
+          <h4 style="margin: 0.5rem 0;">German Language Training</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Reach the required B1/B2 standard through our intensive certification courses.</p>
+        </div>
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">📄</span>
+          <span class="badge badge-indigo">Step 03</span>
+          <h4 style="margin: 0.5rem 0;">Lebenslauf Preparation</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Optimize your profile, CV, cover letter, and translate transcripts to German standards.</p>
+        </div>
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🤝</span>
+          <span class="badge badge-indigo">Step 04</span>
+          <h4 style="margin: 0.5rem 0;">Employer Matching</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Submit files to employers, conduct video interviews, and secure your Ausbildung contract.</p>
+        </div>
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🛂</span>
+          <span class="badge badge-indigo">Step 05</span>
+          <h4 style="margin: 0.5rem 0;">Federal Agency (ZAV) Approval</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">We handle fast-track ZAV work approval checks in Germany to expedite the visa process.</p>
+        </div>
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">✈️</span>
+          <span class="badge badge-indigo">Step 06</span>
+          <h4 style="margin: 0.5rem 0;">Visa Issuance & Departure</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Complete the embassy interview with our guide, book flights, and fly to Germany.</p>
+        </div>
+        <div class="step-card" style="background: white; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: var(--radius-md); position: relative;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🏡</span>
+          <span class="badge badge-indigo">Step 07</span>
+          <h4 style="margin: 0.5rem 0;">Berlin Landing Support</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-secondary);">We coordinate your housing, complete municipal registration, bank account, and health cover.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Accordion FAQs -->
+    <section id="faqs" class="shell reveal" style="border-bottom: none;">
+      <h2>Ausbildung Myths & FAQs</h2>
+      <p style="max-width: 720px; margin-bottom: 2rem;">Find answers to the most common questions regarding vocational training programs, requirements, and legalities in Germany.</p>
+      
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">Do I need a blocked account (Sperrkonto) for an Ausbildung visa?</button>
+          <div class="faq-answer">
+            <p>No, not if your contract stipend covers your living cost minimums. The German embassy looks at a threshold (approx €939–€950 per month). Since most of our partner programs (like Nursing, IT, and Masons) pay €1,000 to €1,400+ per month from the first year, you are completely exempt from the blocked account requirement. If a program pays less, you only need to block the deficit, not the full €11,904.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">Can I bring my spouse/family on an Ausbildung visa?</button>
+          <div class="faq-answer">
+            <p>Yes, family reunion (Ehegattennachzug) is legally possible. However, you must prove that you can support your spouse without relying on social security (which requires adequate apartment space and additional joint income or proof of savings). We recommend starting your training first and applying for family reunion after successfully passing your probation period (usually 4 months).</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">What happens if I fail the final vocational exams?</button>
+          <div class="faq-answer">
+            <p>If you fail the final exams (Abschlussprüfung) at the Chamber of Commerce (IHK) or Chamber of Crafts (HWK), German law protects you. You are entitled to request an extension of your contract and training period with your employer. You can retake the exam up to two times while continuing to receive your monthly stipend. The success rates are very high, and our team provides tutoring support.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">Are there any age limits for applying to an Ausbildung?</button>
+          <div class="faq-answer">
+            <p>Legally, there is no upper age limit for vocational training in Germany. However, for visa approval in India and employer interest, the sweet spot is between 18 and 35. If you are older than 30, having relevant professional background or academic diplomas in India helps justify the career change to embassy officials.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">Is B2 German mandatory, or is B1 sufficient?</button>
+          <div class="faq-answer">
+            <p>For high-interaction fields like Generalist Nursing and Office Management, B2 is mandatory to understand clinical patient needs or client documentation. For engineering, IT, and skilled trades (like carpentry or bricklaying), B1 is often accepted by employers, and sometimes even A2 is legally sufficient if the company conducts training in a supportive format. We always recommend aiming for B1/B2 to secure the best placements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Strategy CTA -->
+    <section id="cta" class="shell reveal" style="background: linear-gradient(135deg, var(--color-primary-light) 0%, #ffffff 100%); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 5rem 3rem; text-align: center; margin-bottom: 5rem;">
+      <span class="badge badge-indigo">Limited Intake Slots Available</span>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Ready to Secure Your Career in Germany?</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.1rem; color: var(--color-text-secondary);">Book a 1:1 strategy mapping session with our Berlin-based counselors. We will evaluate your qualifications and map out your Ausbildung placement timeline.</p>
+      <div class="hero-actions" style="justify-content: center;">
+        <a class="btn btn-primary" href="contact.html">Book strategy call</a>
+        <a class="btn btn-secondary" href="https://wa.me/918126933346" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>The Gateway to Future</h3>
+          <p>Premium Berlin-based education mentorship for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ausbildung.html">Ausbildung</a></li>
+            <li><a href="courses.html">Programs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Pathways</h4>
+          <ul>
+            <li><a href="courses.html">German A1–C1</a></li>
+            <li><a href="courses.html">Studienkolleg Prep</a></li>
+            <li><a href="courses.html">Uni Admissions</a></li>
+            <li><a href="courses.html">Student Visas</a></li>
+            <li><a href="ausbildung.html">Ausbildung Placements</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support & Legal</h4>
+          <ul>
+            <li><a href="courses.html">Blocked Accounts</a></li>
+            <li><a href="courses.html">Settlement Aid</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">Meet Founder</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Gateway to Future. Germany & India. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <span>German Courses</span> •
+          <span>Admissions Mentorship</span> •
+          <span>Visa Preparation</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+  <script>
+    // Tab Switching Logic
+    function switchTab(evt, tabId) {
+      // Hide all tabs
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Remove active class from all buttons
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Show chosen tab
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    // Accordion Toggle
+    function toggleFaq(button) {
+      const faqItem = button.parentElement;
+      faqItem.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
