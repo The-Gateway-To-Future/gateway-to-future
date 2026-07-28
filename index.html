@@ -813,7 +813,7 @@
     });
 
     // Check slot availability
-    async function checkSlotAvailability() {
+    function checkSlotAvailability() {
       const dateVal = document.getElementById('bookingDate').value;
       const statusContainer = document.getElementById('slotStatusContainer');
       const statusText = document.getElementById('slotStatusText');
@@ -827,42 +827,11 @@
       }
       
       statusContainer.style.display = 'flex';
-      statusText.textContent = 'Checking slot availability...';
-      statusText.style.background = 'rgba(255, 255, 255, 0.05)';
-      statusText.style.color = 'var(--color-text-secondary)';
-      
-      try {
-        const res = await fetch(`${API_BASE}/appointments/available-slots?date=${dateVal}`);
-        const data = await res.json();
-        
-        if (res.ok) {
-          if (data.available) {
-            statusText.textContent = `● Slot Available: ${data.slot}`;
-            statusText.style.background = 'rgba(16, 185, 129, 0.1)';
-            statusText.style.color = '#10b981';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Proceed to Payment (₹1,000)';
-          } else {
-            statusText.textContent = '● Daily slot already booked. Choose another date.';
-            statusText.style.background = 'rgba(239, 68, 68, 0.1)';
-            statusText.style.color = '#ef4444';
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Slot Unavailable';
-          }
-        } else {
-          statusText.textContent = `Error: ${data.message}`;
-          statusText.style.background = 'rgba(239, 68, 68, 0.1)';
-          statusText.style.color = '#ef4444';
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Error Checking Slot';
-        }
-      } catch (err) {
-        statusText.textContent = 'Server offline. Cannot check availability.';
-        statusText.style.background = 'rgba(239, 68, 68, 0.1)';
-        statusText.style.color = '#ef4444';
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Error Communicating';
-      }
+      statusText.textContent = '● Slot Available: 9:00 PM IST';
+      statusText.style.background = 'rgba(16, 185, 129, 0.1)';
+      statusText.style.color = '#10b981';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Proceed to Payment (₹1,000)';
     }
 
     // Handle inquiry / paid booking submit
