@@ -241,7 +241,7 @@
         <div class="roadmap-step">
           <span class="step-num">03</span>
           <h4>Strategize</h4>
-          <p>Get a 1:1 Germany strategy consultation (₹499) to map out a clear timeline, fee structure, and steps.</p>
+          <p>Get a 1:1 Germany strategy consultation (₹1,000) to map out a clear timeline, fee structure, and steps.</p>
         </div>
         <div class="roadmap-step">
           <span class="step-num">04</span>
@@ -507,9 +507,9 @@
     <section id="final-cta-band" class="final-cta">
       <div class="shell">
         <h2>Ready to Begin Your Germany Journey?</h2>
-        <p>Stop wasting months browsing confusing forums. Book a structured 1:1 strategy session (₹499) with our Berlin mentors today and let's map out your language, admissions, visa, and settlement targets with complete transparency.</p>
+        <p>Stop wasting months browsing confusing forums. Book a structured 1:1 strategy session (₹1,000) with our Berlin mentors today and let's map out your language, admissions, visa, and settlement targets with complete transparency.</p>
         <div class="final-cta-buttons">
-          <a class="btn btn-primary" href="#contact">Book Strategy Call (₹499)</a>
+          <a class="btn btn-primary" href="#contact">Book Strategy Call (₹1,000)</a>
         </div>
       </div>
     </section>
@@ -518,7 +518,7 @@
     <section id="contact" class="shell">
       <div class="lead-magnet-card" style="grid-template-columns: 1fr; padding: 3rem;">
         <div style="max-width: 720px; margin: 0 auto; width: 100%;">
-          <h2 style="text-align: center; margin-bottom: 0.5rem;">Book Your 1:1 Strategy Call (₹499)</h2>
+          <h2 style="text-align: center; margin-bottom: 0.5rem;">Book Your 1:1 Strategy Call (₹1,000)</h2>
           <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 2.5rem;">Provide your details below to schedule a direct profile evaluation and book your 9:00 PM IST slot with our Berlin team.</p>
           
           <form id="inquiry-form" onsubmit="handleInquirySubmit(event)">
@@ -660,7 +660,7 @@
         <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">Secure Checkout Gateway</p>
         <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
           <span style="font-size: 0.9rem; color: var(--color-text-secondary);">Total Payable Amount:</span>
-          <span style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: #6366f1;">₹499.00</span>
+          <span style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: #6366f1;">₹1,000.00</span>
         </div>
       </div>
 
@@ -770,7 +770,7 @@
           <div style="font-size: 0.8rem; color: var(--color-text-muted); text-align: left; line-height: 1.4; border-top: 1px solid var(--color-border); padding-top: 0.75rem; margin-bottom: 1rem;">
             ⚠️ Send receipt/screenshot of the transaction to verify and confirm your slot.
           </div>
-          <button class="btn btn-primary" onclick="confirmManualPayment('Bank Transfer')" style="width: 100%; background: #10b981; border: none; font-weight: 600;">I have paid ₹499 - Confirm on WhatsApp</button>
+          <button class="btn btn-primary" onclick="confirmManualPayment('Bank Transfer')" style="width: 100%; background: #10b981; border: none; font-weight: 600;">I have paid ₹1,000 - Confirm on WhatsApp</button>
         </div>
 
       </div>
@@ -791,10 +791,15 @@
       e.target.reset();
     }
 
-    const API_BASE = 'http://localhost:5000/api';
+    // ─── APPS SCRIPT WEBHOOK (Gmail + Notion) ───────────────────────────────
+    // Replace the URL below with YOUR deployed Google Apps Script Web App URL
+    const APPS_SCRIPT_WEBHOOK = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
     let activeCheckout = {
-      order: null,
       date: null,
+      name: null,
+      email: null,
+      phone: null,
       notes: null
     };
 
@@ -836,7 +841,7 @@
             statusText.style.background = 'rgba(16, 185, 129, 0.1)';
             statusText.style.color = '#10b981';
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Proceed to Payment (₹499)';
+            submitBtn.textContent = 'Proceed to Payment (₹1,000)';
           } else {
             statusText.textContent = '● Daily slot already booked. Choose another date.';
             statusText.style.background = 'rgba(239, 68, 68, 0.1)';
@@ -864,58 +869,49 @@
     async function handleInquirySubmit(e) {
       e.preventDefault();
       
-      const form = e.target;
       const submitBtn = document.getElementById('btnBookSlot');
       
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('whatsapp').value;
-      const level = document.getElementById('german-level').value;
-      const goal = document.getElementById('goal').value;
-      const intake = document.getElementById('intake').value;
-      const date = document.getElementById('bookingDate').value;
-      const msgText = document.getElementById('message').value;
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const phone   = document.getElementById('whatsapp').value.trim();
+      const level   = document.getElementById('german-level').value;
+      const goal    = document.getElementById('goal').value;
+      const intake  = document.getElementById('intake').value;
+      const date    = document.getElementById('bookingDate').value;
+      const msgText = document.getElementById('message').value.trim();
       
-      const notes = `Main Site Booking. German Level: ${level}, Goal: ${goal}, Intake: ${intake}, Plan Notes: "${msgText}"`;
+      const notes = `German Level: ${level} | Goal: ${goal} | Intake: ${intake} | Notes: ${msgText || 'N/A'}`;
       
+      // Cache for confirmation step
+      activeCheckout = { date, name, email, phone, notes };
+
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Initiating Checkout...';
-      
+      submitBtn.textContent = 'Sending Enquiry...';
+
+      // ── Send to Apps Script → Gmail + Notion ──────────────────────────────
       try {
-        const res = await fetch(`${API_BASE}/payments/counseling/guest-checkout`, {
+        await fetch(APPS_SCRIPT_WEBHOOK, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ name, email, phone, date, notes })
+          mode: 'no-cors',        // Apps Script requires no-cors from browser
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'counseling_booking',
+            name, email, phone, date, notes,
+            amount: '₹1,000',
+            timestamp: new Date().toISOString()
+          })
         });
-        
-        const data = await res.json();
-        if (res.status === 211 || res.status === 200) {
-          activeCheckout.order = data.razorpay_order;
-          activeCheckout.date = date;
-          activeCheckout.notes = notes;
-          
-          // Update order ID label
-          document.getElementById('rzpOrderIdLabel').textContent = data.razorpay_order.id;
-          
-          // Save token to localStorage if returned
-          if (data.token) {
-            localStorage.setItem('token', data.token);
-          }
-          
-          // Show checkout modal
-          showCheckoutScreen('bank');
-          document.getElementById('checkoutModal').style.display = 'flex';
-        } else {
-          alert(`Booking checkout failed: ${data.message}`);
-        }
+        // no-cors means we can't read the response, but it fires fine
       } catch (err) {
-        alert('Communication error establishing payment order.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Proceed to Payment (₹499)';
+        console.warn('Webhook fire error (non-critical):', err);
       }
+
+      // ── Show payment modal regardless ──────────────────────────────────────
+      showCheckoutScreen('bank');
+      document.getElementById('checkoutModal').style.display = 'flex';
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Proceed to Payment (₹1,000)';
     }
 
     function closeCheckoutModal() {
@@ -948,59 +944,31 @@
       showCheckoutScreen(method);
     }
 
-    // Razorpay Simulation
-    async function simulatePayment(isSuccess) {
-      closeCheckoutModal();
-      
-      if (!isSuccess) {
-        alert('Payment canceled or declined.');
-        return;
-      }
-      
-      const orderId = activeCheckout.order.id;
-      const paymentId = `pay_${Math.random().toString(36).substring(2, 10)}`;
-      const signature = `mock_client_sig_${Math.random().toString(36).substring(2, 10)}`;
-      
-      try {
-        const res = await fetch(`${API_BASE}/payments/counseling/verify`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            razorpay_order_id: orderId,
-            razorpay_payment_id: paymentId,
-            razorpay_signature: signature,
-            appointment_date: activeCheckout.date,
-            appointment_notes: activeCheckout.notes
-          })
-        });
-        
-        const data = await res.json();
-        if (res.ok) {
-          alert('Payment simulated successfully! Forwarding you to WhatsApp to confirm your slot.');
-          // Reset form
-          document.getElementById('inquiry-form').reset();
-          document.getElementById('slotStatusContainer').style.display = 'none';
-          
-          // Redirect to WhatsApp
-          const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I just completed my ₹499 counseling payment! Please confirm my slot for ${activeCheckout.date}.`)}`;
-          window.location.href = whatsappUrl;
-        } else {
-          alert(`Verification failed: ${data.message}`);
-        }
-      } catch (err) {
-        alert('Error connecting to verify payment signature.');
-      }
-    }
-
-    // Manual payments (PayPal / Bank) redirection after clicking confirmation
+    // Manual payment confirmation (Bank Transfer / PayPal)
     function confirmManualPayment(method) {
       closeCheckoutModal();
       document.getElementById('inquiry-form').reset();
       document.getElementById('slotStatusContainer').style.display = 'none';
-      
-      const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹499 counseling payment via ${method} for ${activeCheckout.date}. Here is my receipt screenshot.`)}`;
+
+      // Fire confirmation to Apps Script (payment done signal)
+      fetch(APPS_SCRIPT_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'payment_confirmed',
+          method,
+          name:  activeCheckout.name,
+          email: activeCheckout.email,
+          phone: activeCheckout.phone,
+          date:  activeCheckout.date,
+          notes: activeCheckout.notes,
+          amount: '₹1,000',
+          timestamp: new Date().toISOString()
+        })
+      }).catch(() => {});
+
+      const whatsappUrl = `https://wa.me/918126933346?text=${encodeURIComponent(`Hi Gateway to Future, I have completed my ₹1,000 counseling payment via ${method} for ${activeCheckout.date}. Please confirm my slot. Name: ${activeCheckout.name}`)}`;
       window.location.href = whatsappUrl;
     }
   </script>
