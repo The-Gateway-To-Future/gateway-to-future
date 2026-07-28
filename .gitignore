@@ -4,6 +4,9 @@ node_modules/
 /backend/dist/
 /frontend/dist/
 
+# React CRM Dashboard build output (generated in CI, not committed)
+/app/
+
 # Env files
 .env
 .env.local

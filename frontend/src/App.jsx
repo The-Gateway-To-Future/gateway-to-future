@@ -6,6 +6,8 @@ import ThemeToggle from './components/ThemeToggle';
 import Home from './pages/Home';
 import About from './pages/About';
 import Courses from './pages/Courses';
+import AusbildungHub from './pages/AusbildungHub';
+import AusbildungDetail from './pages/AusbildungDetail';
 import Blog from './pages/Blog';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
@@ -35,7 +37,8 @@ function App() {
         <div className="logo">GTF</div>
         <nav className="menu" style={{ display: 'flex', alignItems: 'center' }}>
           <Link to="/">Home</Link>
-          <Link to="/courses">Programs</Link>
+          <Link to="/ausbildung">Ausbildung Hub</Link>
+          <Link to="/courses">Other Programs</Link>
           <Link to="/about">About</Link>
           <Link to="/resources">Resources</Link>
           <Link to="/blog">Blog</Link>
@@ -51,6 +54,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/ausbildung" element={<AusbildungHub />} />
+          <Route path="/ausbildung/:id" element={<AusbildungDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/crm-agent" element={<CrmAgent />} />
