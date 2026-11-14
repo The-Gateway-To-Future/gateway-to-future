@@ -62,9 +62,9 @@
 
             <!-- Mobile Quick Direct Portal Access & Hamburger Button -->
             <div class="nav-actions-mobile">
-                <a href="https://app.gatewaytofuture.com" target="_blank" rel="noopener noreferrer" class="btn-portal-mobile-direct" aria-label="GTF Student and Exam Portal">
+                <a href="https://app.gatewaytofuture.com/dashboard" target="_blank" rel="noopener noreferrer" class="btn-portal-mobile-direct" id="portal-btn-mobile" aria-label="GTF Student and Exam Portal">
                     <i class="fa-solid fa-graduation-cap"></i>
-                    <span>Portal</span>
+                    <span id="mobile-user-greeting">Portal</span>
                 </a>
                 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span class="hamburger-bar"></span>
@@ -77,16 +77,16 @@
             <nav class="menu" id="nav-menu" aria-label="Primary navigation">
                 <a href="index.html" class="active-page">Home</a>
                 <a href="#programs">Programs</a>
-                <a href="#healthcare">Healthcare & Nursing</a>
+                <a href="#healthcare">Healthcare &amp; Nursing</a>
                 <a href="#roadmap">Roadmap</a>
-                <a href="#blocked-account">Blocked Accounts</a>
+                <a href="#placement-test">Placement Test</a>
                 <a href="#founders">About</a>
-                <a href="https://app.gatewaytofuture.com" target="_blank" rel="noopener noreferrer" class="btn btn-portal-nav" aria-label="Open GTF Student and Exam Portal in new tab">
+                <a href="https://app.gatewaytofuture.com/dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-portal-nav" id="portal-btn-desktop" aria-label="Open GTF Student and Exam Portal">
                     <i class="fa-solid fa-graduation-cap"></i>
-                    <span>Student &amp; Exam Portal</span>
-                    <span class="portal-badge-pulse">Live</span>
+                    <span id="desktop-user-greeting">Student &amp; Exam Portal</span>
+                    <span class="portal-badge-pulse" id="portal-badge-indicator">Live</span>
                 </a>
-                <a class="cta-mini btn btn-primary" href="#contact">Book roadmap call</a>
+                <a class="cta-mini btn btn-primary" href="#placement-test">Free 3-Min Test</a>
             </nav>
         </div>
     </header>
@@ -303,27 +303,42 @@
             </div>
             <div class="roadmap-timeline">
                 <div class="roadmap-step">
-                    <span class="step-num">01</span>
+                    <div class="step-header-row">
+                        <span class="step-num">01</span>
+                        <span class="badge badge-indigo">Phase 01</span>
+                    </div>
                     <h4>Discover</h4>
                     <p>Identify your pathway — German language classes, Studienkolleg, university admission, visa prep, nursing Anerkennung, or Ausbildung.</p>
                 </div>
                 <div class="roadmap-step">
-                    <span class="step-num">02</span>
+                    <div class="step-header-row">
+                        <span class="step-num">02</span>
+                        <span class="badge badge-indigo">Phase 02</span>
+                    </div>
                     <h4>Qualify</h4>
                     <p>Share your academic profile, current German level, target intake, and specific support needs with our team.</p>
                 </div>
                 <div class="roadmap-step">
-                    <span class="step-num">03</span>
+                    <div class="step-header-row">
+                        <span class="step-num">03</span>
+                        <span class="badge badge-indigo">Phase 03</span>
+                    </div>
                     <h4>Strategize</h4>
                     <p>Get a 1:1 Germany strategy consultation (₹1,000 / ₹499) to map out a clear timeline, fee structure, and steps.</p>
                 </div>
                 <div class="roadmap-step">
-                    <span class="step-num">04</span>
+                    <div class="step-header-row">
+                        <span class="step-num">04</span>
+                        <span class="badge badge-indigo">Phase 04</span>
+                    </div>
                     <h4>Enroll</h4>
                     <p>Join our structured mentorship tracks, intensive language classes, and admissions training ecosystem.</p>
                 </div>
                 <div class="roadmap-step">
-                    <span class="step-num">05</span>
+                    <div class="step-header-row">
+                        <span class="step-num">05</span>
+                        <span class="badge badge-emerald">Phase 05</span>
+                    </div>
                     <h4>Settle</h4>
                     <p>Arrive in Germany with peace of mind. We assist with registration, housing, and integration guidance.</p>
                 </div>
@@ -529,34 +544,93 @@
             </div>
         </section>
 
-        <!-- 9. Free A1 Starter Workbook Download -->
-        <section id="lead-magnet" class="shell">
-            <div class="lead-magnet-card">
-                <div class="lead-text">
-                    <span class="badge badge-gold">Free Learning Resource</span>
-                    <h3>Download Your Free A1 German Starter Workbook</h3>
-                    <p>Kickstart your German language learning today with our structured workbook, built specifically to help Indian learners master the foundations of vocabulary, pronunciation, and basic sentence structure.</p>
-                    <ul>
-                        <li>Essential vocabulary lists (German-English-Hindi translations)</li>
-                        <li>Goethe/telc A1 speaking and writing exam overview templates</li>
-                        <li>Interactive grammar reference sheets & everyday worksheets</li>
+        <!-- 9. Dynamic Lead-Gen Widget & Free Placement Test (Firestore Connected) -->
+        <section id="placement-test" class="placement-test-section shell">
+            <div class="placement-card">
+                <div class="placement-info">
+                    <span class="badge badge-gold">Official Diagnostic &amp; Vault Access</span>
+                    <h2>Take a Free 3-Minute Placement Test &amp; Unlock B1/B2 Study Materials</h2>
+                    <p>Assess your authentic German proficiency from A1 to B2 in under 3 minutes. Receive your instant CEFR score, tailored pathway recommendation from Berlin, and immediate access to our authentic 61-page 122 Säulen B2 Grammatik-Architektur book, B1 dossiers, and model exams.</p>
+                    
+                    <ul class="placement-perks">
+                        <li class="placement-perk-item">
+                            <div class="placement-perk-icon">⏱️</div>
+                            <div>
+                                <strong>Adaptive 3-Minute CEFR Test:</strong>
+                                <span>Immediate diagnostic testing grammar, vocabulary &amp; reading comprehension.</span>
+                            </div>
+                        </li>
+                        <li class="placement-perk-item">
+                            <div class="placement-perk-icon">📚</div>
+                            <div>
+                                <strong>Authentic B1/B2 PDF Vault:</strong>
+                                <span>Direct access to the 61-page 122 Säulen der Grammatik-Architektur &amp; Menschen B1 dossiers.</span>
+                            </div>
+                        </li>
+                        <li class="placement-perk-item">
+                            <div class="placement-perk-icon">🔐</div>
+                            <div>
+                                <strong>Instant Student ID Provisioning:</strong>
+                                <span>Automatic account creation on app.gatewaytofuture.com with zero waiting time.</span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-                <div class="lead-form-box">
-                    <form id="download-form">
+
+                <div class="placement-form-wrapper">
+                    <h3>Unlock Instant Access</h3>
+                    <p class="form-sub">Enter your details to generate your Student ID and unlock materials.</p>
+                    
+                    <form id="lead-gen-form">
                         <div class="form-group">
-                            <label for="lead-name">Your Name</label>
-                            <input type="text" id="lead-name" class="form-input" placeholder="e.g. Ananya Sharma" required />
+                            <label for="lead-fullname">Full Name *</label>
+                            <input type="text" id="lead-fullname" class="form-input" placeholder="e.g. Rahul Verma" required />
                         </div>
                         <div class="form-group">
-                            <label for="lead-email">Email Address</label>
-                            <input type="email" id="lead-email" class="form-input" placeholder="e.g. ananya@example.com" required />
+                            <label for="lead-user-email">Email Address *</label>
+                            <input type="email" id="lead-user-email" class="form-input" placeholder="e.g. rahul@example.com" required />
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Get Instant Access 🎁</button>
+                        <div class="form-group">
+                            <label for="lead-user-phone">WhatsApp Number (with Country Code) *</label>
+                            <input type="tel" id="lead-user-phone" class="form-input" placeholder="+91 98765 43210" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lead-target-course">Target Goal in Germany *</label>
+                            <select id="lead-target-course" class="form-select" required>
+                                <option value="" disabled selected>Select your goal...</option>
+                                <option value="German Language Academy (A1-B2)">German Language Academy (A1–B2 + 122 Säulen)</option>
+                                <option value="Studienkolleg Entrance (M/T/W/G-Kurs)">Studienkolleg Entrance (M-Kurs / T-Kurs / W-Kurs / G-Kurs)</option>
+                                <option value="Healthcare & Nursing Anerkennung">Healthcare &amp; Nursing Anerkennung (§ 81a / FSP)</option>
+                                <option value="Dual Ausbildung in Germany">Dual Ausbildung in Germany (€1,000–€1,400/mo)</option>
+                                <option value="Public University Admission">Tuition-Free Public University Admission</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="lead-submit-btn" class="btn-submit-lead">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Start Free Test &amp; Unlock Materials</span>
+                        </button>
                     </form>
                 </div>
             </div>
         </section>
+
+        <!-- Lead Success Celebration Modal -->
+        <div id="lead-success-modal" class="lead-modal-overlay" aria-hidden="true">
+            <div class="lead-modal-card">
+                <div class="lead-modal-icon">🎉</div>
+                <h3>Welcome to Gateway to Future!</h3>
+                <p id="lead-success-message">Your student profile and placement registration have been successfully synchronized to our shared Berlin cloud. Your authentic B1/B2 PDF materials and diagnostic test are ready.</p>
+                <div class="lead-modal-actions">
+                    <a href="https://app.gatewaytofuture.com/dashboard" id="modal-portal-link" target="_blank" rel="noopener noreferrer" class="btn btn-portal-hero" style="width: 100%; text-decoration: none;">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>Open Exam Portal Dashboard Now &rarr;</span>
+                    </a>
+                    <button type="button" id="modal-close-btn" class="btn btn-secondary" style="width: 100%;">
+                        Return to Website
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- 10. Booking & Strategy Call Form Section -->
         <section id="contact" class="shell">
@@ -655,6 +729,10 @@
         </div>
     </footer>
 
+    <!-- Firebase Client SDK (Compat v10) for SSO and Firestore Lead Generation -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
