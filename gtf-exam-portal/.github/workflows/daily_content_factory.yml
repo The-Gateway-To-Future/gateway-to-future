@@ -1,0 +1,64 @@
+name: Nightly 16-Employer AI Content Factory
+
+on:
+  schedule:
+    # Runs automatically every night at 2:00 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      max_items:
+        description: 'Maximum modules to generate per run (capped at 10)'
+        required: false
+        default: '5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-content-factory
+  cancel-in-progress: false
+
+jobs:
+  run-content-factory:
+    name: Generate Daily German Modules & Auto-Sync Catalog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Content Factory requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r content_factory/requirements.txt
+
+      - name: Run 16-Employer Content Factory (Vertex AI + Cloud TTS)
+        env:
+          GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          MAX_ITEMS="${{ github.event.inputs.max_items || '5' }}"
+          python content_factory/run_daily_factory.py --max-items "$MAX_ITEMS" --reuse-existing-audio
+
+      - name: Commit and push newly generated JSONs for Vercel auto-deploy
+        run: |
+          git config user.name "GTF Content Factory Bot"
+          git config user.email "bot@gatewaytofuture.com"
+          git add gtf-exam-portal/data/question_banks/ gtf-exam-portal/data/catalog.json || true
+          if [ -d data/question_banks ]; then git add data/question_banks/; fi
+          if [ -f data/catalog.json ]; then git add data/catalog.json; fi
+          if git diff --staged --quiet; then
+            echo "No new catalog or question bank changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(content-factory): nightly generated modules $(date -u +'%Y-%m-%d')"
+          git push origin HEAD:main
