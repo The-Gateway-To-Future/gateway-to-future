@@ -1,0 +1,127 @@
+{
+  "name": "GTF — 16-Employee Content Factory to Firestore Flashcard Ingestion",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gtf-flashcards-ingest",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "id": "fc-node-001-webhook",
+      "name": "Flashcard Batch Ingest Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "gtf-flashcards-ingest"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normalizes input batch of German A1-B2 flashcards from Emp 11\nconst raw = $input.first().json.body || $input.first().json || {};\nconst cards = Array.isArray(raw.flashcards) ? raw.flashcards : (Array.isArray(raw) ? raw : [raw]);\n\nconst normalizedCards = cards.map((item, index) => {\n  const cleanId = (item.id || `fc_${(item.level || 'a1').toLowerCase()}_${Date.now()}_${index}`).toLowerCase().replace(/[^a-z0-9_-]/g, '_');\n  const level = (item.level || 'A1').toUpperCase().trim();\n  const german = (item.german || item.termDe || '').trim();\n  const english = (item.english || item.meaningEn || '').trim();\n  const hindi = (item.hindi || item.meaningHi || '').trim();\n  const category = (item.category || 'Vocabulary').trim();\n  const exampleDe = (item.exampleDe || item.example || '').trim();\n  const exampleTranslation = (item.exampleTranslation || item.exampleEn || '').trim();\n  const grammarTip = (item.grammarTip || item.notes || '').trim();\n  const phonetic = (item.phonetic || item.pronunciationDe || '').trim();\n  const articleDe = item.articleDe || (german.startsWith('der ') ? 'der' : german.startsWith('die ') ? 'die' : german.startsWith('das ') ? 'das' : null);\n\n  return {\n    id: cleanId,\n    level,\n    german,\n    articleDe,\n    english,\n    hindi,\n    category,\n    phonetic,\n    exampleDe,\n    exampleTranslation,\n    grammarTip,\n    source: item.source || 'emp11_interactive_builder',\n    tags: Array.isArray(item.tags) ? item.tags : ['a1_b2_core', level.toLowerCase()],\n    createdAt: new Date().toISOString(),\n    updatedAt: new Date().toISOString()\n  };\n}).filter(c => c.german.length > 0);\n\nreturn normalizedCards.map(c => ({ json: c }));"
+      },
+      "id": "fc-node-002-normalize",
+      "name": "Validate & Normalize CEFR Schema",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://firestore.googleapis.com/v1/projects/gateway-to-future/databases/(default)/documents/flashcards/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"id\": { \"stringValue\": \"{{ $json.id }}\" },\n    \"level\": { \"stringValue\": \"{{ $json.level }}\" },\n    \"german\": { \"stringValue\": \"{{ $json.german }}\" },\n    \"articleDe\": { \"stringValue\": \"{{ $json.articleDe || '' }}\" },\n    \"english\": { \"stringValue\": \"{{ $json.english }}\" },\n    \"hindi\": { \"stringValue\": \"{{ $json.hindi }}\" },\n    \"category\": { \"stringValue\": \"{{ $json.category }}\" },\n    \"phonetic\": { \"stringValue\": \"{{ $json.phonetic }}\" },\n    \"exampleDe\": { \"stringValue\": \"{{ $json.exampleDe }}\" },\n    \"exampleTranslation\": { \"stringValue\": \"{{ $json.exampleTranslation }}\" },\n    \"grammarTip\": { \"stringValue\": \"{{ $json.grammarTip }}\" },\n    \"source\": { \"stringValue\": \"{{ $json.source }}\" },\n    \"createdAt\": { \"timestampValue\": \"{{ $json.createdAt }}\" },\n    \"updatedAt\": { \"timestampValue\": \"{{ $json.updatedAt }}\" }\n  }\n}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "fc-node-003-firestore",
+      "name": "Write to Firestore /flashcards",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [740, 300],
+      "credentials": {
+        "googleApi": {
+          "id": "gtf-firestore-sa-cred",
+          "name": "GTF Google Cloud Service Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"ok\": true,\n  \"brand\": \"The Gateway to Future (GTF)\",\n  \"status\": \"INGESTED_TO_FIRESTORE\",\n  \"collection\": \"flashcards\",\n  \"total_cards_processed\": {{ $items().length }},\n  \"timestamp\": \"{{ $now.toISOString() }}\"\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "fc-node-004-respond",
+      "name": "Respond with Ingestion Confirmation",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1000, 300]
+    }
+  ],
+  "connections": {
+    "Flashcard Batch Ingest Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate & Normalize CEFR Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate & Normalize CEFR Schema": {
+      "main": [
+        [
+          {
+            "node": "Write to Firestore /flashcards",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write to Firestore /flashcards": {
+      "main": [
+        [
+          {
+            "node": "Respond with Ingestion Confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "tags": [
+    {
+      "name": "GTF-Content-Factory"
+    },
+    {
+      "name": "Firestore"
+    },
+    {
+      "name": "A1-B2-Curriculum"
+    }
+  ]
+}

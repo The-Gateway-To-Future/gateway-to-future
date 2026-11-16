@@ -1,0 +1,58 @@
+version: "3.8"
+
+networks:
+  gtf-net:
+    driver: bridge
+
+volumes:
+  n8n_storage:
+    name: gtf_n8n_storage
+  caddy_data:
+    name: gtf_caddy_data
+  caddy_config:
+    name: gtf_caddy_config
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: gtf-caddy-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/gtf-n8n/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - gtf-net
+    depends_on:
+      - n8n
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: gtf-n8n-core
+    restart: unless-stopped
+    environment:
+      - N8N_HOST=${N8N_DOMAIN:-n8n.gatewaytofuture.com}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://${N8N_DOMAIN:-n8n.gatewaytofuture.com}/
+      - GENERIC_TIMEZONE=Europe/Berlin
+      - TZ=Europe/Berlin
+      - N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+      - DB_SQLITE_VACUUM_ON_STARTUP=true
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=168
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/node/.secrets/firebase-service-account.json
+    volumes:
+      - n8n_storage:/home/node/.n8n
+      - /opt/gtf-n8n/secrets:/home/node/.secrets:ro
+      - /opt/gtf-n8n/shared:/data/shared
+    networks:
+      - gtf-net
+    deploy:
+      resources:
+        limits:
+          memory: 1400M

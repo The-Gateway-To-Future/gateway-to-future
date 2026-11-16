@@ -50,6 +50,55 @@ rules_version = '2';
 //   - lastLoginDate: string (required, format YYYY-MM-DD, 10 characters)
 //   - currentStreak: number (required, active day streak counter, bounds: 1 - 10000)
 //
+// Collection: catalog
+// Document ID: {itemId} (Product or course slug, e.g. 'a1-free-demo-test', 'wb-suite-a1-b2')
+// Fields:
+//   - slug: string (required, product identifier)
+//   - divisionId: string (required, 'sprachakademie' | 'studienkolleg' | 'fachsprache_medizin')
+//   - type: string (required, e.g. 'mock_test', 'pdf_workbook', 'sprechen_pass')
+//   - title: string (required, 1-200 characters)
+//   - description: string (required, 1-1000 characters)
+//   - priceEur: number (required, >= 0)
+//   - priceInr: number (required, >= 0)
+//   - isFree: bool (required)
+//   - resourceId: string (required)
+//
+// Collection: workbooks
+// Document ID: {workbookId} (Workbook identifier, e.g. 'gtf-wb-a1-grammatik')
+// Fields:
+//   - id: string (required)
+//   - title: string (required, 1-200 characters)
+//   - subtitle: string (optional)
+//   - level: string (required, 'a1' | 'a2' | 'b1' | 'b2' | 'c1')
+//   - productSlug: string (required)
+//   - isFree: bool (required)
+//   - priceEur: number (required)
+//   - priceInr: number (required)
+//   - pages: number (required)
+//   - topics: list (required)
+//   - questions: list (optional/required)
+//   - flashcards: list (optional)
+//
+// Collection: materials
+// Document ID: {materialId} (Material slug or identifier)
+// Fields:
+//   - id: string (required)
+//   - title: string (required)
+//   - level: string (optional)
+//   - divisionId: string (required)
+//   - category: string (required)
+//   - isFree: bool (required)
+//
+// Collection: question_banks
+// Document ID: {bankId} (Unique exam or test paper identifier, e.g. 'gtf-a1-modelltest-1')
+// Fields:
+//   - id: string (required)
+//   - title: string (required)
+//   - level: string (required)
+//   - divisionId: string (required)
+//   - sections: map (required)
+//   - durationMinutes: number (optional)
+//
 // ===============================================================
 
 service cloud.firestore {
@@ -394,6 +443,78 @@ service cloud.firestore {
 
       // Deletion: Restricted strictly to GTF Admins
       allow delete: if isAdmin();
+    }
+
+    // ===============================================================
+    // Collection: catalog/{itemId}
+    // ===============================================================
+    match /catalog/{itemId} {
+      // Direct get and listing: Open to public and authenticated users for product & course discovery
+      allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+
+      // Write operations (create, update, delete): Strictly restricted to GTF Admins
+      allow write: if isAdmin();
+
+      // Subcollections (if any)
+      match /{allChildren=**} {
+        allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow write: if isAdmin();
+      }
+    }
+
+    // ===============================================================
+    // Collection: workbooks/{workbookId}
+    // ===============================================================
+    match /workbooks/{workbookId} {
+      // Direct get and listing: Open to authenticated students and unauthenticated preview/demo access
+      allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+
+      // Write operations (create, update, delete): Strictly restricted to GTF Admins
+      allow write: if isAdmin();
+
+      // Subcollections (e.g. chapters, flashcards, questions)
+      match /{allChildren=**} {
+        allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow write: if isAdmin();
+      }
+    }
+
+    // ===============================================================
+    // Collection: materials/{materialId}
+    // ===============================================================
+    match /materials/{materialId} {
+      // Direct get and listing: Open to authenticated candidates and unauthenticated preview access
+      allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+
+      // Write operations (create, update, delete): Strictly restricted to GTF Admins
+      allow write: if isAdmin();
+
+      // Subcollections (e.g. attachments, worksheets)
+      match /{allChildren=**} {
+        allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow write: if isAdmin();
+      }
+    }
+
+    // ===============================================================
+    // Collection: question_banks/{bankId}
+    // ===============================================================
+    match /question_banks/{bankId} {
+      // Direct get: Authenticated candidates, GTF Admins, and unauthenticated demo mock exam sessions
+      allow get: if isAuthenticated() || isAdmin() || !isAuthenticated();
+
+      // Collection queries / listings: Authenticated candidates and GTF Admins
+      allow list: if isAuthenticated() || isAdmin();
+
+      // Write operations (create, update, delete): Strictly restricted to GTF Admins
+      allow write: if isAdmin();
+
+      // Subcollections (e.g. questions, sections)
+      match /{allChildren=**} {
+        allow get: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow list: if isAuthenticated() || isAdmin();
+        allow write: if isAdmin();
+      }
     }
 
     // ===============================================================
