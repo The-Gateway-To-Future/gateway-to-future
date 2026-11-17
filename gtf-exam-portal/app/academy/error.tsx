@@ -52,15 +52,15 @@ export default function AcademyError({
           <button
             type="button"
             onClick={() => reset()}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
+            className="relative z-20 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
           >
             <RotateCcw className="h-4 w-4" />
-            <span>Try Again</span>
+            <span>Reload Module</span>
           </button>
 
           <Link
             href="/academy"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs"
+            className="relative z-20 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
           >
             <BookOpen className="h-4 w-4" />
             <span>Academy Hub</span>
@@ -68,7 +68,7 @@ export default function AcademyError({
 
           <Link
             href="/dashboard"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs"
+            className="relative z-20 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
           >
             <Home className="h-4 w-4" />
             <span>Dashboard</span>

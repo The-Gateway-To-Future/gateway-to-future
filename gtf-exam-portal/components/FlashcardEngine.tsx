@@ -744,16 +744,23 @@ export function FlashcardEngine({
 
   const handleNext = () => {
     setIsFlipped(false);
-    setCurrentIndex((prev) => (prev + 1) % cards.length);
+    const total = safeCards.length;
+    if (total > 0) {
+      setCurrentIndex((prev) => (prev + 1) % total);
+    }
   };
 
   const handlePrev = () => {
     setIsFlipped(false);
-    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
+    const total = safeCards.length;
+    if (total > 0) {
+      setCurrentIndex((prev) => (prev - 1 + total) % total);
+    }
   };
 
   const handleToggleMastered = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!currentCard) return;
     const nextState = !masteredIds[currentCard.id];
     const updated = { ...masteredIds, [currentCard.id]: nextState };
     setMasteredIds(updated);
@@ -768,17 +775,17 @@ export function FlashcardEngine({
     }
     onToggleMasteredCard?.(currentCard.id, Array.from(nextSet));
 
-    const newCount = cards.filter((c) => Boolean(updated[c.id])).length;
-    if (nextState && newCount === cards.length && onCompleteDeck) {
+    const newCount = safeCards.filter((c) => Boolean(updated[c.id])).length;
+    if (nextState && newCount === safeCards.length && onCompleteDeck) {
       onCompleteDeck();
-    } else if (nextState && safeIndex < cards.length - 1) {
+    } else if (nextState && safeIndex < safeCards.length - 1) {
       setIsFlipped(false);
       setCurrentIndex(safeIndex + 1);
     }
   };
 
   const handleShuffle = () => {
-    const shuffled = [...cards];
+    const shuffled = [...safeCards];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -882,13 +889,13 @@ export function FlashcardEngine({
         setTtsError(null);
         if (playPromise !== undefined) {
           playPromise.catch((err) => {
-            console.warn("Audio blocked or delayed:", err);
+            console.warn("Audio play prevented:", err);
             setSpeaking(false);
             setTtsError("Audio could not be played. Tap Listen again.");
           });
         }
       } catch (err) {
-        console.warn("Audio blocked or delayed:", err);
+        console.warn("Audio play prevented:", err);
         setSpeaking(false);
       }
       return;
@@ -948,7 +955,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handleShuffle}
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
+            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
             title="Shuffle deck order"
           >
             <Shuffle className="h-3.5 w-3.5 text-slate-500" />
@@ -958,25 +965,25 @@ export function FlashcardEngine({
       </div>
 
       {/* Dynamic JSON Deck Selector (Core + Question Bank / Catalog Decks) */}
-      {deckOptions.length > 1 && (
+      {(deckOptions || []).length > 1 && (
         <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-2.5">
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500 px-2">
             Switch Deck:
           </span>
-          {deckOptions.map((opt) => {
+          {(deckOptions || []).map((opt) => {
             const active = opt.id === (activeOption?.id || "core");
             return (
               <button
                 key={opt.id}
                 type="button"
                 onClick={() => setSelectedDeckId(opt.id)}
-                className={`relative z-10 rounded-lg px-3 py-1.5 text-xs font-semibold transition cursor-pointer ${
+                className={`relative z-20 rounded-lg px-3 py-1.5 text-xs font-semibold transition cursor-pointer ${
                   active
                     ? "bg-slate-900 text-white shadow-xs"
                     : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                 }`}
               >
-                {opt.title} ({opt.cards.length})
+                {opt.title} ({(opt.cards || []).length})
               </button>
             );
           })}
@@ -1038,7 +1045,7 @@ export function FlashcardEngine({
             <button
               type="button"
               onClick={handleSpeakGerman}
-              className="relative z-10 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition hover:bg-slate-800 shadow-sm cursor-pointer"
+              className="relative z-20 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition hover:bg-slate-800 shadow-sm cursor-pointer"
             >
               <Volume2 className={`h-3.5 w-3.5 text-white ${speaking ? "animate-pulse" : ""}`} />
               <span>{speaking ? "Speaking..." : "Listen (de-DE)"}</span>
@@ -1120,7 +1127,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handlePrev}
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
+            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
           >
             <ChevronLeft className="h-4 w-4" />
             <span>Previous</span>
@@ -1129,7 +1136,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={() => setIsFlipped((f) => !f)}
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
+            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
           >
             <RotateCw className="h-3.5 w-3.5" />
             <span>Flip Card</span>
@@ -1140,7 +1147,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handleToggleMastered}
-            className={`relative z-10 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold transition shadow-xs cursor-pointer ${
+            className={`relative z-20 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold transition shadow-xs cursor-pointer ${
               isMastered
                 ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
                 : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
@@ -1153,7 +1160,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handleNext}
-            className="relative z-10 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-slate-800 transition shadow-sm cursor-pointer"
+            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-slate-800 transition shadow-sm cursor-pointer"
           >
             <span>Next</span>
             <ChevronRight className="h-4 w-4 text-white" />
@@ -1163,7 +1170,7 @@ export function FlashcardEngine({
 
       {/* Quick Number Pills */}
       <div className="flex flex-wrap items-center gap-1.5 pt-1">
-        {safeCards.map((c, idx) => {
+        {(safeCards || []).map((c, idx) => {
           if (!c) return null;
           const active = idx === safeIndex;
           const done = Boolean(masteredIds[c.id]);
@@ -1175,7 +1182,7 @@ export function FlashcardEngine({
                 setCurrentIndex(idx);
                 setIsFlipped(false);
               }}
-              className={`relative z-10 h-7 w-7 rounded-lg text-[11px] font-semibold transition cursor-pointer ${
+              className={`relative z-20 h-7 w-7 rounded-lg text-[11px] font-semibold transition cursor-pointer ${
                 active
                   ? "bg-slate-900 text-white shadow-xs"
                   : done

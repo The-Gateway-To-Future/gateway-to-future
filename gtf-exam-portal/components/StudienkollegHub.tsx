@@ -439,7 +439,7 @@ export function StudienkollegHub({
               <span>Interactive Exam Formulas ({filteredFormulas.length})</span>
             </div>
             <div className="space-y-2">
-              {filteredFormulas.map((form) => {
+              {(filteredFormulas || []).map((form) => {
                 const isSelected = form.id === currentFormula.id;
                 return (
                   <button
@@ -659,7 +659,7 @@ export function StudienkollegHub({
       {/* ── VIEW 3: UNIVERSITY PAST PAPERS ARCHIVE ────────────────────────────── */}
       {activeView === "past_papers" && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-          {filteredPastPapers.map((paper) => (
+          {(filteredPastPapers || []).map((paper) => (
             <div
               key={paper.id}
               className="rounded-2xl border border-white/10 bg-[#0D1017] p-6 flex flex-col justify-between"
@@ -758,7 +758,7 @@ export function StudienkollegHub({
             >
               All ({STUDIENKOLLEG_FLASHCARDS.filter((c) => c.track === activeTrack).length})
             </button>
-            {availableSubjects.map((sub) => (
+            {(availableSubjects || []).map((sub) => (
               <button
                 key={sub}
                 type="button"

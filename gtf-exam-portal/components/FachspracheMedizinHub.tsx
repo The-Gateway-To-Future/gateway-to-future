@@ -147,7 +147,7 @@ export function FachspracheMedizinHub({
         {/* Case Studies Selector */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/10">
           <div className="flex flex-wrap gap-2">
-            {CLINICAL_MODULES.map((mod) => {
+            {(CLINICAL_MODULES || []).map((mod) => {
               const isSelected = mod.id === currentModule.id;
               return (
                 <button

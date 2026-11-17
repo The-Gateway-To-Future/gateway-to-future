@@ -82,12 +82,13 @@ export function SubdivisionCard({
   aspectClassName,
 }: SubdivisionCardProps) {
   const cfg = THEME_CONFIG[theme] || THEME_CONFIG.hub;
+  const safeHref = href && href.trim() !== "" && href !== "#" ? href : "/academy";
 
   return (
     <Link
-      href={href}
+      href={safeHref}
       prefetch={true}
-      className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#07090E] p-6 sm:p-8 transition-all duration-500 hover:border-white/25 ${cfg.accentLine} ${
+      className={`group relative z-20 cursor-pointer flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#07090E] p-6 sm:p-8 transition-all duration-500 hover:border-white/25 ${cfg.accentLine} ${
         aspectClassName || "min-h-[260px] sm:min-h-[290px]"
       }`}
     >

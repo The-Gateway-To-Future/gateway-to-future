@@ -24,9 +24,15 @@ export default function AcademyLevelSubdivisionsPage() {
   useEffect(() => {
     let active = true;
     const email = user?.userEmail || getActiveUserEmail();
-    fetch(`/api/catalog?email=${encodeURIComponent(email)}`)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+    fetch(`/api/catalog?email=${encodeURIComponent(email)}`, {
+      signal: controller.signal,
+    })
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
+        clearTimeout(timeoutId);
         if (!active) return;
         if (data && Array.isArray(data.workbooks)) {
           setWorkbooks(data.workbooks as RoadmapWorkbookSummary[]);
@@ -34,10 +40,13 @@ export default function AcademyLevelSubdivisionsPage() {
         setLoaded(true);
       })
       .catch(() => {
+        clearTimeout(timeoutId);
         if (active) setLoaded(true);
       });
     return () => {
       active = false;
+      clearTimeout(timeoutId);
+      controller.abort();
     };
   }, [user]);
 

@@ -450,14 +450,14 @@ service cloud.firestore {
     // ===============================================================
     match /catalog/{itemId} {
       // Direct get and listing: Open to public and authenticated users for product & course discovery
-      allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
 
       // Write operations (create, update, delete): Strictly restricted to GTF Admins
       allow write: if isAdmin();
 
       // Subcollections (if any)
       match /{allChildren=**} {
-        allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
         allow write: if isAdmin();
       }
     }
@@ -467,14 +467,14 @@ service cloud.firestore {
     // ===============================================================
     match /workbooks/{workbookId} {
       // Direct get and listing: Open to authenticated students and unauthenticated preview/demo access
-      allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
 
       // Write operations (create, update, delete): Strictly restricted to GTF Admins
       allow write: if isAdmin();
 
       // Subcollections (e.g. chapters, flashcards, questions)
       match /{allChildren=**} {
-        allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
         allow write: if isAdmin();
       }
     }
@@ -484,14 +484,14 @@ service cloud.firestore {
     // ===============================================================
     match /materials/{materialId} {
       // Direct get and listing: Open to authenticated candidates and unauthenticated preview access
-      allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
 
       // Write operations (create, update, delete): Strictly restricted to GTF Admins
       allow write: if isAdmin();
 
       // Subcollections (e.g. attachments, worksheets)
       match /{allChildren=**} {
-        allow get, list: if isAuthenticated() || isAdmin() || !isAuthenticated();
+        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
         allow write: if isAdmin();
       }
     }
@@ -500,19 +500,15 @@ service cloud.firestore {
     // Collection: question_banks/{bankId}
     // ===============================================================
     match /question_banks/{bankId} {
-      // Direct get: Authenticated candidates, GTF Admins, and unauthenticated demo mock exam sessions
-      allow get: if isAuthenticated() || isAdmin() || !isAuthenticated();
-
-      // Collection queries / listings: Authenticated candidates and GTF Admins
-      allow list: if isAuthenticated() || isAdmin();
+      // Direct get and listing: Authenticated candidates, GTF Admins, and unauthenticated demo mock exam sessions
+      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
 
       // Write operations (create, update, delete): Strictly restricted to GTF Admins
       allow write: if isAdmin();
 
       // Subcollections (e.g. questions, sections)
       match /{allChildren=**} {
-        allow get: if isAuthenticated() || isAdmin() || !isAuthenticated();
-        allow list: if isAuthenticated() || isAdmin();
+        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
         allow write: if isAdmin();
       }
     }

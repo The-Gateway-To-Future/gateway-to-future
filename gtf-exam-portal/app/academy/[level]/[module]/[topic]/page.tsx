@@ -68,9 +68,15 @@ export default function AcademyTopicWorkspacePage() {
   useEffect(() => {
     let active = true;
     const email = user?.userEmail || getActiveUserEmail();
-    fetch(`/api/catalog?email=${encodeURIComponent(email)}`)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+    fetch(`/api/catalog?email=${encodeURIComponent(email)}`, {
+      signal: controller.signal,
+    })
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
+        clearTimeout(timeoutId);
         if (!active) return;
         if (data) {
           const prods = Array.isArray(data.products) ? data.products : [];
@@ -88,10 +94,13 @@ export default function AcademyTopicWorkspacePage() {
         setCatalogLoaded(true);
       })
       .catch(() => {
+        clearTimeout(timeoutId);
         if (active) setCatalogLoaded(true);
       });
     return () => {
       active = false;
+      clearTimeout(timeoutId);
+      controller.abort();
     };
   }, [user]);
 
@@ -187,7 +196,7 @@ export default function AcademyTopicWorkspacePage() {
     "Single-focus learning environment. No distractions, no stacked modules.";
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#07090E] text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar activeDivision={info.divisionId} />
 
       <main className="flex-1 pb-24 lg:pb-12 bg-slate-50 text-slate-900 light-study">
@@ -229,7 +238,7 @@ export default function AcademyTopicWorkspacePage() {
                   </p>
                   <Link
                     href={`/academy/${info.levelKey}/01-vocabulary/core-deck`}
-                    className="relative z-10 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm"
+                    className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
                   >
                     Open Core Deck
                   </Link>
@@ -341,13 +350,13 @@ export default function AcademyTopicWorkspacePage() {
               <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
                 <Link
                   href={`/academy/${info.levelKey}/${moduleSlug}`}
-                  className="relative z-10 inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-700 hover:bg-slate-50 transition shadow-xs"
+                  className="relative z-20 inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
                 >
                   Back to Topics
                 </Link>
                 <Link
                   href={`/exam/${info.examLevel}/${resolvedSection}`}
-                  className="relative z-10 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white hover:bg-slate-800 transition shadow-sm"
+                  className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
                 >
                   <span>Launch Live Exam</span>
                   <ArrowRight className="h-4 w-4" />
@@ -364,6 +373,9 @@ export default function AcademyTopicWorkspacePage() {
             !isExamLauncher && (
               <FocusedWorkbookWorkspace
                 workbookId={rawTopic}
+                levelHint={info?.levelKey || rawLevel}
+                topicTitleHint={matchedTopic?.title || pageTitle}
+                topicSubtitleHint={matchedTopic?.subtitle || pageSubtitle}
                 onWorkbookLoaded={(wb) => setWorkbookMeta(wb)}
               />
             )}

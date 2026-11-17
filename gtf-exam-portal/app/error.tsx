@@ -52,15 +52,15 @@ export default function RootError({
           <button
             type="button"
             onClick={() => reset()}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
+            className="w-full sm:w-auto relative z-20 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
           >
             <RotateCcw className="h-4 w-4" />
-            <span>Try Again</span>
+            <span>Reload Module</span>
           </button>
 
           <Link
             href="/dashboard"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs"
+            className="w-full sm:w-auto relative z-20 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
           >
             <Home className="h-4 w-4" />
             <span>Dashboard</span>
