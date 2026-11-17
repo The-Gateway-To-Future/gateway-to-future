@@ -659,10 +659,17 @@ export function FlashcardEngine({
   const [speaking, setSpeaking] = useState(false);
   const [ttsError, setTtsError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const ttsWatchdogRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Stop MP3 audio when the card/deck changes or the component unmounts
+  // Stop audio + watchdog when the card/deck changes or the component unmounts
   useEffect(() => {
     return () => {
+      if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
+      if (utteranceRef.current && typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        utteranceRef.current = null;
+      }
       try {
         if (audioRef.current) {
           audioRef.current.pause();
@@ -674,6 +681,25 @@ export function FlashcardEngine({
       setSpeaking(false);
     };
   }, [currentIndex, selectedDeckId]);
+
+  // Pre-warm speechSynthesis voices on iOS/iPadOS Safari & Chrome
+  useEffect(() => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    const synth = window.speechSynthesis;
+    const loadVoices = () => {
+      try {
+        synth.getVoices();
+      } catch {
+        // ignore
+      }
+    };
+    loadVoices();
+    if (typeof synth.addEventListener === "function") {
+      synth.addEventListener("voiceschanged", loadVoices);
+      return () => synth.removeEventListener("voiceschanged", loadVoices);
+    }
+    return undefined;
+  }, []);
 
   // Sync deck whenever caller changes level/track or selects a dynamic deck from catalog/question_banks
   useEffect(() => {
@@ -762,25 +788,96 @@ export function FlashcardEngine({
     setIsFlipped(false);
   };
 
-  // iOS/iPadOS-safe MP3 TTS handler: real Cloud TTS MP3 + strictly synchronous .play() inside onClick.
+  // iOS/iPadOS-safe TTS handler: fully synchronous so Safari keeps the user-gesture.
   const handleSpeakGerman = (e: React.MouseEvent) => {
     e.stopPropagation(); // don't flip the card
     if (!isMounted || typeof window === "undefined") return;
     const text = currentCard.german?.trim() || "";
     if (!text) return;
 
-    const url = `/api/tts?text=${encodeURIComponent(text)}`;
-    const el = audioRef.current;
+    // 1. Primary: Native browser SpeechSynthesis (zero network latency, free, 100% reliable offline)
+    if ("speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined") {
+      const synth = window.speechSynthesis;
 
+      // Clear stuck queues FIRST, then always un-stick Safari's paused state
+      if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
+      synth.cancel();
+      synth.resume();
+      setTtsError(null);
+
+      // Everything below is synchronous — no await/then/setTimeout before speak(),
+      // so iOS/iPadOS Safari retains the direct user-gesture lock.
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "de-DE";
+      utter.rate = 0.9;
+      utter.pitch = 1;
+      utter.volume = 1;
+
+      const norm = (l: string) => l.replace("_", "-").toLowerCase();
+      const voices = synth.getVoices();
+      const deVoice =
+        voices.find((v) => norm(v.lang) === "de-de" && v.localService) ||
+        voices.find((v) => norm(v.lang) === "de-de") ||
+        voices.find((v) => norm(v.lang).startsWith("de"));
+      if (deVoice) utter.voice = deVoice;
+
+      let started = false;
+
+      utter.onstart = () => {
+        started = true;
+        if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
+        setSpeaking(true);
+      };
+
+      utter.onend = () => {
+        setSpeaking(false);
+        utteranceRef.current = null;
+      };
+
+      utter.onerror = (ev: SpeechSynthesisErrorEvent) => {
+        if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
+        setSpeaking(false);
+        utteranceRef.current = null;
+        if (ev.error === "interrupted" || ev.error === "canceled") return;
+        setTtsError(
+          ev.error === "not-allowed"
+            ? "Audio was blocked. Tap “Listen” again to play."
+            : "Audio could not be played. Check your volume and try again.",
+        );
+      };
+
+      // Retain strong reference to prevent iOS Safari GC mid-speech
+      utteranceRef.current = utter;
+
+      try {
+        synth.speak(utter);
+      } catch {
+        setSpeaking(false);
+        utteranceRef.current = null;
+        setTtsError("Audio is not supported on this browser.");
+        return;
+      }
+
+      // 2500ms Watchdog: Catches iOS Silent Mode (side switch) or missing German voice package
+      ttsWatchdogRef.current = setTimeout(() => {
+        if (!started) {
+          synth.cancel();
+          utteranceRef.current = null;
+          setSpeaking(false);
+          setTtsError(
+            "No audio? Turn off Silent Mode (side switch), raise the volume, and tap Listen again.",
+          );
+        }
+      }, 2500);
+      return;
+    }
+
+    // 2. Fallback: Cloud Audio Stream if speechSynthesis is completely absent
+    const el = audioRef.current;
     if (el) {
       try {
         el.pause();
-        if (el.getAttribute("src") !== url) {
-          el.src = url;
-        } else {
-          el.currentTime = 0;
-        }
-        // Call .play() SYNCHRONOUSLY before any React state update so iOS retains user-gesture lock
+        el.currentTime = 0;
         const playPromise = el.play();
         setTtsError(null);
         if (playPromise !== undefined) {
@@ -797,34 +894,8 @@ export function FlashcardEngine({
       return;
     }
 
-    if (typeof Audio === "undefined") {
-      setTtsError("Audio playback not supported on this browser.");
-      return;
-    }
-
-    try {
-      const audio = new Audio(url);
-      audio.setAttribute("playsinline", "true");
-      audio.onplay = () => setSpeaking(true);
-      audio.onpause = () => setSpeaking(false);
-      audio.onended = () => setSpeaking(false);
-      audio.onerror = () => {
-        setSpeaking(false);
-        setTtsError("Audio could not be loaded. Tap Listen again.");
-      };
-      const playPromise = audio.play();
-      setTtsError(null);
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.warn("Audio blocked or delayed:", err);
-          setSpeaking(false);
-          setTtsError("Audio could not be played. Tap Listen again.");
-        });
-      }
-    } catch (err) {
-      console.warn("Audio instantiation blocked:", err);
-      setSpeaking(false);
-    }
+    setSpeaking(false);
+    setTtsError("Audio is not supported on this browser. Please try Safari or Chrome.");
   };
 
   const isMastered = Boolean(masteredIds[currentCard.id]);
