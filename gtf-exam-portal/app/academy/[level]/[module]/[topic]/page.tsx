@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowRight, Clock, ShieldCheck } from "lucide-react";
@@ -244,27 +244,29 @@ export default function AcademyTopicWorkspacePage() {
                   </Link>
                 </div>
               ) : (
-                <FlashcardEngine
-                  title={
-                    isFactoryDeck && factoryWorkbook
-                      ? cleanWorkbookTitle(factoryWorkbook.title)
-                      : (coreDeckConfig?.title || "German Vocabulary Flashcards")
-                  }
-                  deck={
-                    isFactoryDeck && Array.isArray(factoryWorkbook?.flashcards)
-                      ? (factoryWorkbook.flashcards as FlashcardDeckItem[])
-                      : (coreDeckConfig?.deck || [])
-                  }
-                  masteredCardIds={userProgress?.masteredFlashcards}
-                  onToggleMasteredCard={handleToggleMasteredCard}
-                  onCompleteDeck={() => {
-                    const step1 = getStepId(info.levelKey, 1);
-                    const merged = Array.from(
-                      new Set([...(userProgress?.completedSteps || []), step1]),
-                    );
-                    void updateUserProgress(uid, { completedSteps: merged });
-                  }}
-                />
+                <Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
+                  <FlashcardEngine
+                    title={
+                      isFactoryDeck && factoryWorkbook
+                        ? cleanWorkbookTitle(factoryWorkbook.title)
+                        : (coreDeckConfig?.title || "German Vocabulary Flashcards")
+                    }
+                    deck={
+                      isFactoryDeck && Array.isArray(factoryWorkbook?.flashcards)
+                        ? (factoryWorkbook.flashcards as FlashcardDeckItem[])
+                        : (coreDeckConfig?.deck || [])
+                    }
+                    masteredCardIds={userProgress?.masteredFlashcards}
+                    onToggleMasteredCard={handleToggleMasteredCard}
+                    onCompleteDeck={() => {
+                      const step1 = getStepId(info.levelKey, 1);
+                      const merged = Array.from(
+                        new Set([...(userProgress?.completedSteps || []), step1]),
+                      );
+                      void updateUserProgress(uid, { completedSteps: merged });
+                    }}
+                  />
+                </Suspense>
               )}
             </div>
           )}
@@ -371,13 +373,15 @@ export default function AcademyTopicWorkspacePage() {
             !isStkWorkspace &&
             !isPflegeHub &&
             !isExamLauncher && (
-              <FocusedWorkbookWorkspace
-                workbookId={rawTopic}
-                levelHint={info?.levelKey || rawLevel}
-                topicTitleHint={matchedTopic?.title || pageTitle}
-                topicSubtitleHint={matchedTopic?.subtitle || pageSubtitle}
-                onWorkbookLoaded={(wb) => setWorkbookMeta(wb)}
-              />
+              <Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
+                <FocusedWorkbookWorkspace
+                  workbookId={rawTopic}
+                  levelHint={info?.levelKey || rawLevel}
+                  topicTitleHint={matchedTopic?.title || pageTitle}
+                  topicSubtitleHint={matchedTopic?.subtitle || pageSubtitle}
+                  onWorkbookLoaded={(wb) => setWorkbookMeta(wb)}
+                />
+              </Suspense>
             )}
         </section>
       </main>

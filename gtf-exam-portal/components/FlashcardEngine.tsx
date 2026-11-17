@@ -602,6 +602,8 @@ export const TRACK_FLASHCARD_DECKS: Record<
   },
 };
 
+const EMPTY_DYNAMIC_DECKS: DynamicFlashcardDeck[] = [];
+
 interface FlashcardEngineProps {
   title?: string;
   deck?: FlashcardDeckItem[];
@@ -611,10 +613,10 @@ interface FlashcardEngineProps {
   onCompleteDeck?: () => void;
 }
 
-export function FlashcardEngine({
+function FlashcardEngineInner({
   title = "A1 Greetings & Basics — Interactive Flashcards",
   deck = A1_GREETINGS_BASICS_DECK,
-  dynamicDecks = [],
+  dynamicDecks = EMPTY_DYNAMIC_DECKS,
   masteredCardIds,
   onToggleMasteredCard,
   onCompleteDeck,
@@ -624,13 +626,16 @@ export function FlashcardEngine({
     setIsMounted(true);
   }, []);
 
-  const safeInitialDeck = Array.isArray(deck) && deck.length > 0 ? deck : A1_GREETINGS_BASICS_DECK;
+  const safeInitialDeck = useMemo(
+    () => (Array.isArray(deck) && deck.length > 0 ? deck : A1_GREETINGS_BASICS_DECK),
+    [deck],
+  );
 
   const validDynamicDecks = useMemo(
     () =>
       Array.isArray(dynamicDecks)
         ? dynamicDecks.filter((d) => d && Array.isArray(d.cards) && d.cards.length > 0)
-        : [],
+        : EMPTY_DYNAMIC_DECKS,
     [dynamicDecks],
   );
 
@@ -643,16 +648,7 @@ export function FlashcardEngine({
   );
 
   const [selectedDeckId, setSelectedDeckId] = useState<string>("core");
-  const activeOption = useMemo(
-    () =>
-      deckOptions.find((d) => d.id === selectedDeckId) ||
-      deckOptions[0] || { id: "core", title: "Core Vocabulary Deck", cards: safeInitialDeck },
-    [deckOptions, selectedDeckId, safeInitialDeck],
-  );
-
-  const [cards, setCards] = useState<FlashcardDeckItem[]>(
-    Array.isArray(activeOption?.cards) ? activeOption.cards : safeInitialDeck,
-  );
+  const [shuffledCards, setShuffledCards] = useState<FlashcardDeckItem[] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [masteredIds, setMasteredIds] = useState<Record<string, boolean>>({});
@@ -662,12 +658,43 @@ export function FlashcardEngine({
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const ttsWatchdogRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const activeOption = useMemo(
+    () =>
+      deckOptions.find((d) => d.id === selectedDeckId) ||
+      deckOptions[0] || { id: "core", title: "Core Vocabulary Deck", cards: safeInitialDeck },
+    [deckOptions, selectedDeckId, safeInitialDeck],
+  );
+
+  const activeDeckCards = useMemo(() => {
+    return Array.isArray(activeOption?.cards) && activeOption.cards.length > 0
+      ? activeOption.cards
+      : safeInitialDeck;
+  }, [activeOption, safeInitialDeck]);
+
+  const cards = shuffledCards || activeDeckCards;
+
+  // Deck identity key: Only reset index and flip state when the deck actually changes
+  const activeDeckIdentity = `${title}:::${selectedDeckId}`;
+  const lastDeckIdentityRef = useRef<string>(activeDeckIdentity);
+
+  useEffect(() => {
+    if (lastDeckIdentityRef.current !== activeDeckIdentity) {
+      lastDeckIdentityRef.current = activeDeckIdentity;
+      setShuffledCards(null);
+      setCurrentIndex(0);
+      setIsFlipped(false);
+      setTtsError(null);
+    }
+  }, [activeDeckIdentity]);
+
   // Stop audio + watchdog when the card/deck changes or the component unmounts
   useEffect(() => {
     return () => {
       if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
       if (utteranceRef.current && typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
+        try {
+          window.speechSynthesis.cancel();
+        } catch {}
         utteranceRef.current = null;
       }
       try {
@@ -675,9 +702,7 @@ export function FlashcardEngine({
           audioRef.current.pause();
           audioRef.current.currentTime = 0;
         }
-      } catch {
-        // ignore audio cancellation on unmount
-      }
+      } catch {}
       setSpeaking(false);
     };
   }, [currentIndex, selectedDeckId]);
@@ -689,9 +714,7 @@ export function FlashcardEngine({
     const loadVoices = () => {
       try {
         synth.getVoices();
-      } catch {
-        // ignore
-      }
+      } catch {}
     };
     loadVoices();
     if (typeof synth.addEventListener === "function") {
@@ -700,19 +723,6 @@ export function FlashcardEngine({
     }
     return undefined;
   }, []);
-
-  // Sync deck whenever caller changes level/track or selects a dynamic deck from catalog/question_banks
-  useEffect(() => {
-    setSelectedDeckId("core");
-    setTtsError(null);
-  }, [title, deck]);
-
-  useEffect(() => {
-    setCards(Array.isArray(activeOption?.cards) ? activeOption.cards : safeInitialDeck);
-    setCurrentIndex(0);
-    setIsFlipped(false);
-    setTtsError(null);
-  }, [activeOption, safeInitialDeck]);
 
   // Sync externally persisted mastered card IDs (e.g., from Firestore UserProgress)
   useEffect(() => {
@@ -724,11 +734,14 @@ export function FlashcardEngine({
     setMasteredIds(synced);
   }, [masteredCardIds]);
 
-  const safeCards = Array.isArray(cards) ? cards : safeInitialDeck;
-  const safeIndex = Math.min(currentIndex, Math.max(0, safeCards.length - 1));
-  const currentCard = safeCards[safeIndex] || null;
-  const masteredCount = safeCards.filter((c) => c && Boolean(masteredIds[c.id])).length;
-  const progressPct = Math.round((masteredCount / Math.max(1, safeCards.length)) * 100);
+  const safeIndex = Math.min(currentIndex, Math.max(0, cards.length - 1));
+  const currentCard = cards[safeIndex] || null;
+  const masteredCount = cards.filter((c) => c && Boolean(masteredIds[c.id])).length;
+  const progressPct = Math.round((masteredCount / Math.max(1, cards.length)) * 100);
+
+  if (!isMounted) {
+    return null;
+  }
 
   if (!currentCard) {
     return (
@@ -740,19 +753,30 @@ export function FlashcardEngine({
     );
   }
 
-  const ttsAudioSrc = `/api/tts?text=${encodeURIComponent(currentCard.german)}`;
+  const handleFlip = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    setIsFlipped((prev) => !prev);
+  };
 
-  const handleNext = () => {
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
     setIsFlipped(false);
-    const total = safeCards.length;
+    const total = cards.length;
     if (total > 0) {
       setCurrentIndex((prev) => (prev + 1) % total);
     }
   };
 
-  const handlePrev = () => {
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
     setIsFlipped(false);
-    const total = safeCards.length;
+    const total = cards.length;
     if (total > 0) {
       setCurrentIndex((prev) => (prev - 1 + total) % total);
     }
@@ -775,152 +799,157 @@ export function FlashcardEngine({
     }
     onToggleMasteredCard?.(currentCard.id, Array.from(nextSet));
 
-    const newCount = safeCards.filter((c) => Boolean(updated[c.id])).length;
-    if (nextState && newCount === safeCards.length && onCompleteDeck) {
+    const newCount = cards.filter((c) => Boolean(updated[c.id])).length;
+    if (nextState && newCount === cards.length && onCompleteDeck) {
       onCompleteDeck();
-    } else if (nextState && safeIndex < safeCards.length - 1) {
+    } else if (nextState && safeIndex < cards.length - 1) {
       setIsFlipped(false);
       setCurrentIndex(safeIndex + 1);
     }
   };
 
-  const handleShuffle = () => {
-    const shuffled = [...safeCards];
+  const handleShuffle = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    const shuffled = [...activeDeckCards];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    setCards(shuffled);
+    setShuffledCards(shuffled);
     setCurrentIndex(0);
     setIsFlipped(false);
   };
 
-  // iOS/iPadOS-safe TTS handler: fully synchronous so Safari keeps the user-gesture.
-  const handleSpeakGerman = (e: React.MouseEvent) => {
-    e.stopPropagation(); // don't flip the card
-    if (!isMounted || typeof window === "undefined") return;
-    const text = currentCard.german?.trim() || "";
-    if (!text) return;
-
-    // 1. Primary: Native browser SpeechSynthesis (zero network latency, free, 100% reliable offline)
-    if ("speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined") {
-      const synth = window.speechSynthesis;
-
-      // Clear stuck queues FIRST, then always un-stick Safari's paused state
-      if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
-      synth.cancel();
-      synth.resume();
-      setTtsError(null);
-
-      // Everything below is synchronous — no await/then/setTimeout before speak(),
-      // so iOS/iPadOS Safari retains the direct user-gesture lock.
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "de-DE";
-      utter.rate = 0.9;
-      utter.pitch = 1;
-      utter.volume = 1;
-
-      const norm = (l: string) => l.replace("_", "-").toLowerCase();
-      const voices = synth.getVoices();
-      const deVoice =
-        voices.find((v) => norm(v.lang) === "de-de" && v.localService) ||
-        voices.find((v) => norm(v.lang) === "de-de") ||
-        voices.find((v) => norm(v.lang).startsWith("de"));
-      if (deVoice) utter.voice = deVoice;
-
-      let started = false;
-
-      utter.onstart = () => {
-        started = true;
-        if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
-        setSpeaking(true);
-      };
-
-      utter.onend = () => {
-        setSpeaking(false);
-        utteranceRef.current = null;
-      };
-
-      utter.onerror = (ev: SpeechSynthesisErrorEvent) => {
-        if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
-        setSpeaking(false);
-        utteranceRef.current = null;
-        if (ev.error === "interrupted" || ev.error === "canceled") return;
-        setTtsError(
-          ev.error === "not-allowed"
-            ? "Audio was blocked. Tap “Listen” again to play."
-            : "Audio could not be played. Check your volume and try again.",
-        );
-      };
-
-      // Retain strong reference to prevent iOS Safari GC mid-speech
-      utteranceRef.current = utter;
-
+  // Browser Web-Speech Synthesis fallback (SpeechSynthesisUtterance)
+  const speakWithBrowserTts = (text: string) => {
+    if (!text) {
+      setSpeaking(false);
+      return;
+    }
+    if (typeof window !== "undefined" && "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined") {
       try {
-        synth.speak(utter);
-      } catch {
-        setSpeaking(false);
-        utteranceRef.current = null;
-        setTtsError("Audio is not supported on this browser.");
-        return;
-      }
+        const synth = window.speechSynthesis;
+        if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
+        if (synth.speaking || synth.pending) {
+          synth.cancel();
+        }
+        synth.resume();
+        setTtsError(null);
 
-      // 2500ms Watchdog: Catches iOS Silent Mode (side switch) or missing German voice package
-      ttsWatchdogRef.current = setTimeout(() => {
-        if (!started) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "de-DE";
+        utterance.rate = 0.9;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        try {
+          const norm = (l: string) => l.replace("_", "-").toLowerCase();
+          const voices = synth.getVoices();
+          const deVoice =
+            voices.find((v) => norm(v.lang) === "de-de" && v.localService) ||
+            voices.find((v) => norm(v.lang) === "de-de") ||
+            voices.find((v) => norm(v.lang).startsWith("de"));
+          if (deVoice) utterance.voice = deVoice;
+        } catch {}
+
+        utterance.onstart = () => {
+          if (ttsWatchdogRef.current) clearTimeout(ttsWatchdogRef.current);
+          setSpeaking(true);
+        };
+
+        utterance.onend = () => {
+          setSpeaking(false);
+          utteranceRef.current = null;
+        };
+
+        utterance.onerror = (ev) => {
+          setSpeaking(false);
+          utteranceRef.current = null;
+          if (ev.error !== "interrupted" && ev.error !== "canceled") {
+            setTtsError("Audio playback error on this device.");
+          }
+        };
+
+        utteranceRef.current = utterance;
+        synth.speak(utterance);
+        setSpeaking(true);
+
+        ttsWatchdogRef.current = setTimeout(() => {
           synth.cancel();
           utteranceRef.current = null;
           setSpeaking(false);
-          setTtsError(
-            "No audio? Turn off Silent Mode (side switch), raise the volume, and tap Listen again.",
-          );
-        }
-      }, 2500);
-      return;
-    }
+        }, 5000);
 
-    // 2. Fallback: Cloud Audio Stream if speechSynthesis is completely absent
-    const el = audioRef.current;
-    if (el) {
-      try {
-        el.pause();
-        el.currentTime = 0;
-        const playPromise = el.play();
-        setTtsError(null);
-        if (playPromise !== undefined) {
-          playPromise.catch((err) => {
-            console.warn("Audio play prevented:", err);
-            setSpeaking(false);
-            setTtsError("Audio could not be played. Tap Listen again.");
-          });
-        }
+        return;
       } catch (err) {
-        console.warn("Audio play prevented:", err);
-        setSpeaking(false);
+        console.warn("[FlashcardEngine] speechSynthesis.speak failed:", err);
       }
-      return;
     }
 
     setSpeaking(false);
-    setTtsError("Audio is not supported on this browser. Please try Safari or Chrome.");
+    setTtsError("Audio playback is not supported on this browser.");
+  };
+
+  // Bulletproof handleListen: Real MP3 Audio -> Native Edge Audio Stream -> Web-Speech Fallback
+  const handleListen = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    if (!isMounted || !currentCard) return;
+
+    setTtsError(null);
+    const frontText = (currentCard.frontText || currentCard.german || "").trim();
+    if (!frontText) return;
+
+    const audioUrl = currentCard.audioUrl?.trim() || `/api/tts?text=${encodeURIComponent(frontText)}`;
+
+    const el = audioRef.current;
+    if (el) {
+      try {
+        setSpeaking(true);
+        el.pause();
+        el.currentTime = 0;
+        el.src = audioUrl;
+        const playPromise = el.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setTtsError(null);
+            })
+            .catch((err) => {
+              console.warn("[FlashcardEngine] HTML5 audio play failed, falling back to Web Speech:", err);
+              speakWithBrowserTts(frontText);
+            });
+        }
+      } catch (err) {
+        console.warn("[FlashcardEngine] HTML5 Audio exception:", err);
+        speakWithBrowserTts(frontText);
+      }
+    } else {
+      speakWithBrowserTts(frontText);
+    }
   };
 
   const isMastered = Boolean(masteredIds[currentCard.id]);
 
   return (
-    <div className="light-study rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6 text-slate-900 shadow-sm relative z-0">
+    <div className="light-study rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6 text-slate-900 shadow-sm relative z-10 pointer-events-auto">
       <audio
         ref={audioRef}
-        src={ttsAudioSrc}
         playsInline
-        preload="auto"
+        preload="none"
         className="hidden"
         onPlay={() => setSpeaking(true)}
         onPause={() => setSpeaking(false)}
         onEnded={() => setSpeaking(false)}
         onError={() => {
           setSpeaking(false);
-          setTtsError("Audio could not be loaded. Tap Listen again.");
+          const frontText = (currentCard.frontText || currentCard.german || "").trim();
+          if (frontText) {
+            speakWithBrowserTts(frontText);
+          }
         }}
       />
       {/* Header & Progress */}
@@ -977,7 +1006,7 @@ export function FlashcardEngine({
                 key={opt.id}
                 type="button"
                 onClick={() => setSelectedDeckId(opt.id)}
-                className={`relative z-20 rounded-lg px-3 py-1.5 text-xs font-semibold transition cursor-pointer ${
+                className={`relative z-50 cursor-pointer pointer-events-auto rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
                   active
                     ? "bg-slate-900 text-white shadow-xs"
                     : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900"
@@ -1011,7 +1040,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={() => setTtsError(null)}
-            className="text-[11px] font-semibold text-amber-700 hover:underline cursor-pointer"
+            className="relative z-50 cursor-pointer pointer-events-auto text-[11px] font-semibold text-amber-700 hover:underline"
           >
             Dismiss
           </button>
@@ -1022,20 +1051,24 @@ export function FlashcardEngine({
       <div
         role="button"
         tabIndex={0}
-        onClick={() => setIsFlipped((f) => !f)}
+        onClick={handleFlip}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            setIsFlipped((f) => !f);
+            handleFlip();
           }
         }}
-        className="relative z-0 rounded-3xl border-2 border-slate-200 bg-white p-6 sm:p-10 min-h-[300px] h-auto flex flex-col justify-between transition-all cursor-pointer select-none hover:border-slate-300 hover:shadow-md text-slate-900 shadow-sm"
+        className={`relative z-10 cursor-pointer pointer-events-auto rounded-3xl border-2 p-6 sm:p-10 min-h-[300px] h-auto flex flex-col justify-between transition-all duration-300 select-none text-slate-900 shadow-sm ${
+          isFlipped
+            ? "border-indigo-300 ring-2 ring-indigo-500/20 bg-indigo-50/20 shadow-md"
+            : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-md"
+        }`}
       >
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 pointer-events-auto">
           <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-600">
             {isFlipped
               ? "BACK · ENGLISH / HINDI & EXAMPLE"
-              : `FRONT · ${currentCard.category.toUpperCase()}`}
+              : `FRONT · ${(currentCard.category || "VOKABEL").toUpperCase()}`}
           </span>
 
           <div className="flex items-center gap-2.5">
@@ -1044,68 +1077,77 @@ export function FlashcardEngine({
             </span>
             <button
               type="button"
-              onClick={handleSpeakGerman}
-              className="relative z-20 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition hover:bg-slate-800 shadow-sm cursor-pointer"
+              onClick={handleListen}
+              className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition hover:bg-slate-800 shadow-sm"
+              title="Listen in German (de-DE)"
             >
               <Volume2 className={`h-3.5 w-3.5 text-white ${speaking ? "animate-pulse" : ""}`} />
-              <span>{speaking ? "Speaking..." : "Listen (de-DE)"}</span>
+              <span>{speaking ? "Speaking..." : "LISTEN (DE-DE)"}</span>
             </button>
           </div>
         </div>
 
-        {/* Center Content */}
-        {!isFlipped ? (
-          <div className="my-8 space-y-3 text-center">
-            <p className="text-2xl sm:text-4xl font-semibold tracking-tight leading-snug text-slate-900 break-words hyphens-auto">
-              {currentCard.german}
-            </p>
-            {currentCard.phonetic && (
-              <p className="text-xs sm:text-sm font-medium text-slate-500 italic">
-                Pronunciation: {currentCard.phonetic}
+        {/* Center Content with smooth transition */}
+        <div className="pointer-events-none transition-all duration-300 ease-out">
+          {!isFlipped ? (
+            <div className="my-8 space-y-3 text-center">
+              <p className="text-2xl sm:text-4xl font-semibold tracking-tight leading-snug text-slate-900 break-words hyphens-auto">
+                {currentCard.frontText || currentCard.german}
               </p>
-            )}
-          </div>
-        ) : (
-          <div className="my-4 space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-                  English Meaning
+              {currentCard.phonetic && (
+                <p className="text-xs sm:text-sm font-medium text-slate-500 italic">
+                  Pronunciation: {currentCard.phonetic}
                 </p>
-                <p className="mt-1.5 text-sm sm:text-base font-semibold text-slate-900">
-                  {currentCard.english}
-                </p>
-              </div>
-              <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-800">
-                  Hindi / Hinglish Translation
-                </p>
-                <p className="mt-1.5 text-sm sm:text-base font-semibold text-slate-900">
-                  {currentCard.hindi}
-                </p>
-              </div>
+              )}
             </div>
+          ) : (
+            <div className="my-4 space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    English Meaning
+                  </p>
+                  <p className="mt-1.5 text-sm sm:text-base font-semibold text-slate-900">
+                    {currentCard.backText || currentCard.english}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-800">
+                    Hindi / Hinglish Translation
+                  </p>
+                  <p className="mt-1.5 text-sm sm:text-base font-semibold text-slate-900">
+                    {currentCard.hindi || "—"}
+                  </p>
+                </div>
+              </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-                Example in Real German Life
-              </p>
-              <p className="text-sm font-semibold text-slate-900">{currentCard.exampleDe}</p>
-              <p className="text-xs text-slate-600">{currentCard.exampleTranslation}</p>
+              {(currentCard.exampleDe || currentCard.exampleTranslation) && (
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    Example in Real German Life
+                  </p>
+                  {currentCard.exampleDe && (
+                    <p className="text-sm font-semibold text-slate-900">{currentCard.exampleDe}</p>
+                  )}
+                  {currentCard.exampleTranslation && (
+                    <p className="text-xs text-slate-600">{currentCard.exampleTranslation}</p>
+                  )}
+                </div>
+              )}
+
+              {currentCard.grammarTip && (
+                <p className="text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2.5 font-medium">
+                  Pro Tip: {currentCard.grammarTip}
+                </p>
+              )}
             </div>
-
-            {currentCard.grammarTip && (
-              <p className="text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2.5 font-medium">
-                Pro Tip: {currentCard.grammarTip}
-              </p>
-            )}
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Tap Hint Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs pointer-events-none">
           <span className="font-medium flex items-center gap-1.5 text-slate-500">
-            <RotateCw className="h-3.5 w-3.5" />
+            <RotateCw className={`h-3.5 w-3.5 transition-transform duration-300 ${isFlipped ? "rotate-180 text-indigo-600" : ""}`} />
             <span>
               {isFlipped
                 ? "Tap anywhere on card to view German Front"
@@ -1127,7 +1169,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handlePrev}
-            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
+            className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs"
           >
             <ChevronLeft className="h-4 w-4" />
             <span>Previous</span>
@@ -1135,10 +1177,10 @@ export function FlashcardEngine({
 
           <button
             type="button"
-            onClick={() => setIsFlipped((f) => !f)}
-            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs cursor-pointer"
+            onClick={handleFlip}
+            className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition shadow-xs"
           >
-            <RotateCw className="h-3.5 w-3.5" />
+            <RotateCw className={`h-3.5 w-3.5 transition-transform duration-300 ${isFlipped ? "rotate-180 text-indigo-600" : "text-slate-500"}`} />
             <span>Flip Card</span>
           </button>
         </div>
@@ -1147,7 +1189,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handleToggleMastered}
-            className={`relative z-20 inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold transition shadow-xs cursor-pointer ${
+            className={`relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold transition shadow-xs ${
               isMastered
                 ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
                 : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
@@ -1160,7 +1202,7 @@ export function FlashcardEngine({
           <button
             type="button"
             onClick={handleNext}
-            className="relative z-20 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-slate-800 transition shadow-sm cursor-pointer"
+            className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-slate-800 transition shadow-sm"
           >
             <span>Next</span>
             <ChevronRight className="h-4 w-4 text-white" />
@@ -1170,7 +1212,7 @@ export function FlashcardEngine({
 
       {/* Quick Number Pills */}
       <div className="flex flex-wrap items-center gap-1.5 pt-1">
-        {(safeCards || []).map((c, idx) => {
+        {(cards || []).map((c, idx) => {
           if (!c) return null;
           const active = idx === safeIndex;
           const done = Boolean(masteredIds[c.id]);
@@ -1178,11 +1220,12 @@ export function FlashcardEngine({
             <button
               key={c.id || idx}
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setCurrentIndex(idx);
                 setIsFlipped(false);
               }}
-              className={`relative z-20 h-7 w-7 rounded-lg text-[11px] font-semibold transition cursor-pointer ${
+              className={`relative z-50 cursor-pointer pointer-events-auto h-7 w-7 rounded-lg text-[11px] font-semibold transition ${
                 active
                   ? "bg-slate-900 text-white shadow-xs"
                   : done
@@ -1196,5 +1239,13 @@ export function FlashcardEngine({
         })}
       </div>
     </div>
+  );
+}
+
+export function FlashcardEngine(props: FlashcardEngineProps) {
+  return (
+    <React.Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
+      <FlashcardEngineInner {...props} />
+    </React.Suspense>
   );
 }

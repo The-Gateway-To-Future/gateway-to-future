@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
 import {
   AlertCircle,
   BookOpen,
@@ -52,13 +52,18 @@ interface FocusedWorkbookWorkspaceProps {
   onWorkbookLoaded?: (wb: WorkbookClientView) => void;
 }
 
-export function FocusedWorkbookWorkspace({
+function FocusedWorkbookWorkspaceInner({
   workbookId,
   levelHint,
   topicTitleHint,
   topicSubtitleHint,
   onWorkbookLoaded,
 }: FocusedWorkbookWorkspaceProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const [workbook, setWorkbook] = useState<WorkbookClientView | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -70,6 +75,10 @@ export function FocusedWorkbookWorkspace({
   // In-lesson interactive flashcard state (when no PDF)
   const [cardIndex, setCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+
+  const [activeAudioSrc, setActiveAudioSrc] = useState<string>("");
+  const [audioError, setAudioError] = useState(false);
+  const [triedFallback, setTriedFallback] = useState(false);
 
   const storageKey = `gtf_wb_answers_${workbookId}`;
 
@@ -295,6 +304,98 @@ export function FocusedWorkbookWorkspace({
     }
   };
 
+  const normalizeAudioUrl = (url?: string | null): string => {
+    if (!url) return "";
+    const trimmed = url.trim();
+    if (!trimmed) return "";
+    if (/^(https?:\/\/|blob:|data:)/i.test(trimmed)) {
+      return trimmed;
+    }
+    return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  };
+
+  const levelLower = (workbook?.level || "b1").toLowerCase();
+  const fallbackLocalTrack =
+    workbook?.id?.includes("b2-hoeren-02")
+      ? "/audio/hoeren/daf_b2_hoeren_02.mp3"
+      : workbook?.id?.includes("b2-hoeren") || levelLower === "b2"
+      ? "/audio/hoeren/daf_b2_hoeren_01.mp3"
+      : workbook?.id?.includes("b1-hoeren-02")
+      ? "/audio/hoeren/daf_b1_hoeren_02.mp3"
+      : workbook?.id?.includes("b1-hoeren") || workbook?.id?.includes("b1-lab") || levelLower === "b1"
+      ? "/audio/hoeren/daf_b1_hoeren_01.mp3"
+      : workbook?.id?.includes("a2-hoeren") || levelLower === "a2"
+      ? "/audio/hoeren/daf_a2_hoeren_01.mp3"
+      : "/audio/hoeren/daf_a1_hoeren_01.mp3";
+
+  const rawWorkbookAudioUrl =
+    workbook?.audioUrl && workbook.audioUrl.trim() !== ""
+      ? workbook.audioUrl
+      : fallbackLocalTrack;
+
+  const resolvedAudioUrl = normalizeAudioUrl(rawWorkbookAudioUrl);
+
+  useEffect(() => {
+    if (resolvedAudioUrl) {
+      setActiveAudioSrc(resolvedAudioUrl);
+      setAudioError(false);
+      setTriedFallback(false);
+    }
+  }, [resolvedAudioUrl]);
+
+  const handleAudioError = () => {
+    if (!triedFallback && fallbackLocalTrack && activeAudioSrc !== fallbackLocalTrack) {
+      console.warn(
+        "[FocusedWorkbookWorkspace] Primary audio source failed, attempting local verified fallback:",
+        fallbackLocalTrack,
+      );
+      setTriedFallback(true);
+      setActiveAudioSrc(fallbackLocalTrack);
+      setAudioError(false);
+    } else {
+      setAudioError(true);
+    }
+  };
+
+  const speakText = (text: string, audioUrl?: string) => {
+    if (typeof window === "undefined") return;
+    if (audioUrl && audioUrl.trim()) {
+      try {
+        const audio = new Audio(audioUrl.trim());
+        const p = audio.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            if ("speechSynthesis" in window) {
+              window.speechSynthesis.cancel();
+              const u = new SpeechSynthesisUtterance(text);
+              u.lang = "de-DE";
+              u.rate = 0.9;
+              window.speechSynthesis.speak(u);
+            }
+          });
+        }
+        return;
+      } catch {
+        // fallback to speech synthesis
+      }
+    }
+    if ("speechSynthesis" in window) {
+      try {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "de-DE";
+        u.rate = 0.9;
+        window.speechSynthesis.speak(u);
+      } catch {
+        // ignore
+      }
+    }
+  };
+
+  if (!isMounted) {
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="light-study flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 text-center space-y-4 shadow-sm text-slate-900">
@@ -406,70 +507,6 @@ export function FocusedWorkbookWorkspace({
       workbook?.id?.toLowerCase().includes("hoeren"),
   );
 
-  const normalizeAudioUrl = (url?: string | null): string => {
-    if (!url) return "";
-    const trimmed = url.trim();
-    if (!trimmed) return "";
-    if (/^(https?:\/\/|blob:|data:)/i.test(trimmed)) {
-      return trimmed;
-    }
-    return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
-  };
-
-  const levelLower = (workbook?.level || "b1").toLowerCase();
-  const fallbackLocalTrack =
-    workbook?.id?.includes("b2-hoeren-02")
-      ? "/audio/hoeren/daf_b2_hoeren_02.mp3"
-      : workbook?.id?.includes("b2-hoeren") || levelLower === "b2"
-      ? "/audio/hoeren/daf_b2_hoeren_01.mp3"
-      : workbook?.id?.includes("b1-hoeren-02")
-      ? "/audio/hoeren/daf_b1_hoeren_02.mp3"
-      : workbook?.id?.includes("b1-hoeren") || workbook?.id?.includes("b1-lab") || levelLower === "b1"
-      ? "/audio/hoeren/daf_b1_hoeren_01.mp3"
-      : workbook?.id?.includes("a2-hoeren") || levelLower === "a2"
-      ? "/audio/hoeren/daf_a2_hoeren_01.mp3"
-      : "/audio/hoeren/daf_a1_hoeren_01.mp3";
-
-  const rawWorkbookAudioUrl = workbook?.audioUrl && workbook.audioUrl.trim() !== ""
-    ? workbook.audioUrl
-    : fallbackLocalTrack;
-
-  const resolvedAudioUrl = normalizeAudioUrl(rawWorkbookAudioUrl);
-
-  const [activeAudioSrc, setActiveAudioSrc] = useState(resolvedAudioUrl);
-  const [audioError, setAudioError] = useState(false);
-  const [triedFallback, setTriedFallback] = useState(false);
-
-  useEffect(() => {
-    setActiveAudioSrc(resolvedAudioUrl);
-    setAudioError(false);
-    setTriedFallback(false);
-  }, [resolvedAudioUrl]);
-
-  const handleAudioError = () => {
-    if (!triedFallback && fallbackLocalTrack && activeAudioSrc !== fallbackLocalTrack) {
-      console.warn("[FocusedWorkbookWorkspace] Primary audio source failed, attempting local verified fallback:", fallbackLocalTrack);
-      setTriedFallback(true);
-      setActiveAudioSrc(fallbackLocalTrack);
-      setAudioError(false);
-    } else {
-      setAudioError(true);
-    }
-  };
-
-  const speakText = (text: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = "de-DE";
-      u.rate = 0.9;
-      window.speechSynthesis.speak(u);
-    } catch {
-      // ignore
-    }
-  };
-
   const flashcardsList = Array.isArray(workbook?.flashcards) ? workbook.flashcards : [];
   const currentCard = flashcardsList.length > 0 ? flashcardsList[cardIndex % flashcardsList.length] : null;
 
@@ -564,8 +601,11 @@ export function FocusedWorkbookWorkspace({
 
                     <button
                       type="button"
-                      onClick={() => speakText(currentCard.german)}
-                      className="relative z-20 rounded-lg border border-slate-200 bg-slate-50 p-1.5 text-slate-700 hover:bg-slate-100 transition shadow-xs cursor-pointer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        speakText(currentCard.frontText || currentCard.german, currentCard.audioUrl);
+                      }}
+                      className="relative z-50 cursor-pointer pointer-events-auto rounded-lg border border-slate-200 bg-slate-50 p-1.5 text-slate-700 hover:bg-slate-100 transition shadow-xs"
                       title="Aussprache anhören"
                     >
                       <Volume2 className="h-4 w-4" />
@@ -575,41 +615,45 @@ export function FocusedWorkbookWorkspace({
                   {/* Flippable Card Body */}
                   <div
                     onClick={() => setIsFlipped(!isFlipped)}
-                    className="relative z-20 min-h-[170px] rounded-xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col justify-center items-center text-center cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-white"
+                    className="relative z-10 cursor-pointer pointer-events-auto min-h-[170px] rounded-xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:shadow-md hover:bg-white"
                   >
                     {!isFlipped ? (
-                      <div className="space-y-2">
+                      <div className="space-y-2 pointer-events-none">
                         <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
                           DEUTSCH · TIPPE ZUM WENDEN
                         </span>
                         <h4 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-                          {currentCard.german}
+                          {currentCard.frontText || currentCard.german}
                         </h4>
                         {currentCard.phonetic && (
                           <p className="font-mono text-xs text-slate-500">
                             [{currentCard.phonetic}]
                           </p>
                         )}
-                        <p className="text-xs text-slate-600 italic pt-1">
-                          &ldquo;{currentCard.exampleDe}&rdquo;
-                        </p>
+                        {currentCard.exampleDe && (
+                          <p className="text-xs text-slate-600 italic pt-1">
+                            &ldquo;{currentCard.exampleDe}&rdquo;
+                          </p>
+                        )}
                       </div>
                     ) : (
-                      <div className="space-y-2">
+                      <div className="space-y-2 pointer-events-none">
                         <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
                           BEDEUTUNG &amp; HINWEISE
                         </span>
                         <h4 className="text-xl sm:text-2xl font-bold text-slate-900">
-                          {currentCard.english}
+                          {currentCard.backText || currentCard.english}
                         </h4>
                         {currentCard.hindi && (
                           <p className="text-sm font-semibold text-emerald-700">
                             {currentCard.hindi}
                           </p>
                         )}
-                        <p className="text-xs text-slate-600 italic">
-                          {currentCard.exampleTranslation}
-                        </p>
+                        {currentCard.exampleTranslation && (
+                          <p className="text-xs text-slate-600 italic">
+                            {currentCard.exampleTranslation}
+                          </p>
+                        )}
                         {currentCard.grammarTip && (
                           <div className="rounded-lg bg-amber-50 border border-amber-200 px-3 py-1 text-[11px] text-amber-800 font-medium mt-2">
                             💡 {currentCard.grammarTip}
@@ -623,11 +667,12 @@ export function FocusedWorkbookWorkspace({
                   <div className="flex items-center justify-between pt-1">
                     <button
                       type="button"
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setIsFlipped(false);
                         setCardIndex((prev) => (prev > 0 ? prev - 1 : flashcardsList.length - 1));
                       }}
-                      className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
+                      className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs"
                     >
                       <ChevronLeft className="h-4 w-4" />
                       <span>Zurück</span>
@@ -635,8 +680,11 @@ export function FocusedWorkbookWorkspace({
 
                     <button
                       type="button"
-                      onClick={() => setIsFlipped(!isFlipped)}
-                      className="relative z-20 inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-200 transition shadow-xs cursor-pointer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsFlipped(!isFlipped);
+                      }}
+                      className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-200 transition shadow-xs"
                     >
                       <RotateCw className="h-3.5 w-3.5" />
                       <span>{isFlipped ? "Vorderseite" : "Umdrehen"}</span>
@@ -644,11 +692,12 @@ export function FocusedWorkbookWorkspace({
 
                     <button
                       type="button"
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setIsFlipped(false);
                         setCardIndex((prev) => (prev + 1) % flashcardsList.length);
                       }}
-                      className="relative z-20 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
+                      className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-800 transition shadow-sm"
                     >
                       <span>Weiter</span>
                       <ChevronRight className="h-4 w-4" />
@@ -843,5 +892,13 @@ export function FocusedWorkbookWorkspace({
         </div>
       </div>
     </div>
+  );
+}
+
+export function FocusedWorkbookWorkspace(props: FocusedWorkbookWorkspaceProps) {
+  return (
+    <Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
+      <FocusedWorkbookWorkspaceInner {...props} />
+    </Suspense>
   );
 }

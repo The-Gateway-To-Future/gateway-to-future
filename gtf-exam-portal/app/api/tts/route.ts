@@ -180,7 +180,29 @@ export async function GET(req: Request) {
     setMemoryCache(hash, mp3Buf);
     return buildAudioResponse(mp3Buf, rangeHeader);
   } catch (err) {
-    console.error("[gtf tts] Google Cloud TTS synthesis error:", err);
+    console.warn("[gtf tts] Google Cloud TTS synthesis fallback to edge engine:", err);
+    try {
+      const cleanSnippet = text.slice(0, 300);
+      const edgeUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(cleanSnippet)}&tl=de&client=tw-ob`;
+      const edgeRes = await fetch(edgeUrl, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          Accept: "*/*",
+        },
+      });
+      if (edgeRes.ok) {
+        const arrayBuf = await edgeRes.arrayBuffer();
+        const buf = Buffer.from(arrayBuf);
+        if (buf.length > 0) {
+          setMemoryCache(hash, buf);
+          return buildAudioResponse(buf, rangeHeader);
+        }
+      }
+    } catch (edgeErr) {
+      console.error("[gtf tts] Edge audio synthesis failed:", edgeErr);
+    }
+
     return NextResponse.json(
       { error: "Unable to synthesize German audio at this time." },
       { status: 503 },
