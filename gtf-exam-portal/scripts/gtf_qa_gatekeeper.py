@@ -326,7 +326,7 @@ def extract_new_topic_from_ts(topic_id: str) -> dict[str, Any] | None:
     if skill == "grammar" or "-grammar-" in topic_id:
         cards = [
             c for c in seeder.HIGH_DENSITY_FLASHCARDS if c["level"].lower() == lvl
-        ][:4] or seeder.HIGH_DENSITY_FLASHCARDS[:4]
+        ][:30] or seeder.HIGH_DENSITY_FLASHCARDS[:30]
         doc = {
             "id": topic_id,
             "level": lvl,

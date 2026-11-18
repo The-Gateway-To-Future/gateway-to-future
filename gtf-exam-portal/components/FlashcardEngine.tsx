@@ -683,7 +683,7 @@ function FlashcardEngineInner({
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-          {/* Smart Filter Toggle Chips: Hide Mastered (X) vs Review All (30) */}
+          {/* Smart Filter Toggle Chips: Active Queue (Unmastered) vs Review All (30) */}
           <div className="inline-flex rounded-xl border border-slate-200 bg-slate-100 p-1">
             <button
               type="button"
@@ -700,8 +700,8 @@ function FlashcardEngineInner({
               }`}
             >
               <EyeOff className="h-3.5 w-3.5" />
-              <span key={`toggle-hide-${masteredCount}`}>
-                {`Hide Mastered (${masteredCount})`}
+              <span key={`toggle-hide-${unmasteredCount}`}>
+                {`Active Queue (Unmastered · ${unmasteredCount})`}
               </span>
             </button>
             <button

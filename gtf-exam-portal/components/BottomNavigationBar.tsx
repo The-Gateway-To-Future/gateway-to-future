@@ -58,7 +58,7 @@ export function BottomNavigationBar({}: BottomNavigationBarProps = {}) {
     },
     {
       id: "profile",
-      label: isAuthenticated ? (user?.fullName?.split(" ")[0] || user?.userEmail?.split("@")[0] || "Profile") : "Log In",
+      label: isAuthenticated ? "Profile" : "Log In",
       icon: User,
       href: isAuthenticated ? "/profile" : "/login",
       isActive: pathname === "/profile" || pathname === "/login" || pathname === "/register",
