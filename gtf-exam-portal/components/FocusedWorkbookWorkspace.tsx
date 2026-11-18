@@ -24,7 +24,6 @@ import { getFirebaseFirestore } from "@/lib/firebase";
 import Link from "next/link";
 import type { WorkbookClientView } from "@/lib/types";
 import { getCoreLabById, convertLabToWorkbook } from "@/lib/curriculum-labs";
-import { generateFallbackLesson } from "@/lib/fallback-lessons";
 
 interface GradedWorkbookItem {
   id: string;
@@ -47,14 +46,16 @@ const MINI_UMLAUTS = ["ä", "ö", "ü", "ß"] as const;
 interface FocusedWorkbookWorkspaceProps {
   workbookId: string;
   levelHint?: string;
+  moduleHint?: string;
   topicTitleHint?: string;
   topicSubtitleHint?: string;
-  onWorkbookLoaded?: (wb: WorkbookClientView) => void;
+  onWorkbookLoaded?: (wb: WorkbookClientView | null) => void;
 }
 
 function FocusedWorkbookWorkspaceInner({
   workbookId,
   levelHint,
+  moduleHint,
   topicTitleHint,
   topicSubtitleHint,
   onWorkbookLoaded,
@@ -78,9 +79,23 @@ function FocusedWorkbookWorkspaceInner({
 
   const [activeAudioSrc, setActiveAudioSrc] = useState<string>("");
   const [audioError, setAudioError] = useState(false);
-  const [triedFallback, setTriedFallback] = useState(false);
 
   const storageKey = `gtf_wb_answers_${workbookId}`;
+
+  // Reset all state when workbookId, levelHint, or moduleHint changes
+  useEffect(() => {
+    setWorkbook(null);
+    setCurrentPage(1);
+    setAnswers({});
+    setGraded(null);
+    setGrading(false);
+    setError(null);
+    setCardIndex(0);
+    setIsFlipped(false);
+    setActiveAudioSrc("");
+    setAudioError(false);
+    setLoading(true);
+  }, [workbookId, levelHint, moduleHint]);
 
   const fetchWorkbook = useCallback(
     async (emailOverride?: string) => {
@@ -89,9 +104,11 @@ function FocusedWorkbookWorkspaceInner({
       try {
         const email = emailOverride || getActiveUserEmail();
         const cleanId = decodeURIComponent(workbookId || "").trim();
+        const cleanLevel = (levelHint || "").toLowerCase().trim();
+        const cleanModule = (moduleHint || "").toLowerCase().trim().replace(/^\d+-/, "");
 
-        // 1. Immediate local lookup from 40 Core Labs repository (0ms delay)
-        const coreLab = getCoreLabById(cleanId, levelHint);
+        // 1. Immediate local lookup from 40 Core Labs repository (strictly explicit lab matching)
+        const coreLab = getCoreLabById(cleanId, cleanLevel || undefined);
         if (coreLab) {
           const wb = convertLabToWorkbook(coreLab);
           const clientWb: WorkbookClientView = {
@@ -109,63 +126,92 @@ function FocusedWorkbookWorkspaceInner({
           return;
         }
 
-        // 2. Fetch server API with strict 4-second timeout
-        const controller = new AbortController();
-        const apiTimeoutId = setTimeout(() => controller.abort(), 4000);
+        // 2. Fetch server API with strict candidate IDs and timeout
+        const candidateIds = Array.from(
+          new Set(
+            [
+              cleanId,
+              cleanLevel && cleanModule ? `${cleanLevel}-${cleanModule}-${cleanId}` : "",
+              cleanLevel ? `${cleanLevel}-${cleanId}` : "",
+              cleanId.replace(/^(wb-|workbook-)/, ""),
+              `wb-${cleanId}`,
+              cleanLevel && cleanModule
+                ? `${cleanLevel}-${cleanModule}-${cleanId.replace(/^(wb-|workbook-)/, "")}`
+                : "",
+            ].filter(Boolean),
+          ),
+        );
 
-        try {
-          const res = await fetch(
-            `/api/workbooks/${encodeURIComponent(cleanId)}?email=${encodeURIComponent(email)}`,
-            { signal: controller.signal },
-          );
-          clearTimeout(apiTimeoutId);
-          if (res.ok) {
-            const data = (await res.json()) as { workbook?: WorkbookClientView };
-            if (data?.workbook) {
-              setWorkbook(data.workbook);
-              onWorkbookLoaded?.(data.workbook);
-              setLoading(false);
-              return;
+        let apiFoundWorkbook: WorkbookClientView | null = null;
+        for (const testId of candidateIds) {
+          try {
+            const controller = new AbortController();
+            const apiTimeoutId = setTimeout(() => controller.abort(), 2000);
+            const res = await fetch(
+              `/api/workbooks/${encodeURIComponent(testId)}?email=${encodeURIComponent(email)}`,
+              { signal: controller.signal },
+            );
+            clearTimeout(apiTimeoutId);
+            if (res.ok) {
+              const data = (await res.json()) as { workbook?: WorkbookClientView };
+              if (data?.workbook) {
+                apiFoundWorkbook = data.workbook;
+                break;
+              }
             }
+          } catch {
+            // continue checking candidate IDs
           }
-        } catch {
-          clearTimeout(apiTimeoutId);
         }
 
-        // 3. Client-side Firestore check with strict 4-second timeout race
+        if (apiFoundWorkbook) {
+          setWorkbook(apiFoundWorkbook);
+          onWorkbookLoaded?.(apiFoundWorkbook);
+          setLoading(false);
+          return;
+        }
+
+        // 3. Client-side Firestore check with strict candidate IDs and 3-second timeout
         try {
           const firestoreQueryPromise = (async () => {
             const db = getFirebaseFirestore();
-            const matRef = doc(db, "materials", cleanId);
-            const matSnap = await getDoc(matRef);
-            if (matSnap.exists()) {
-              return matSnap.data();
-            }
-            const wbRef = doc(db, "workbooks", cleanId);
-            const wbSnap = await getDoc(wbRef);
-            if (wbSnap.exists()) {
-              return wbSnap.data();
+            for (const testId of candidateIds) {
+              try {
+                const wbRef = doc(db, "workbooks", testId);
+                const wbSnap = await getDoc(wbRef);
+                if (wbSnap.exists()) {
+                  return { id: testId, data: wbSnap.data() };
+                }
+                const matRef = doc(db, "materials", testId);
+                const matSnap = await getDoc(matRef);
+                if (matSnap.exists()) {
+                  return { id: testId, data: matSnap.data() };
+                }
+              } catch {
+                // ignore and continue
+              }
             }
             return null;
           })();
 
           const timeoutPromise = new Promise<null>((_, reject) =>
-            setTimeout(() => reject(new Error("Firestore timeout after 4000ms")), 4000),
+            setTimeout(() => reject(new Error("Firestore timeout after 3000ms")), 3000),
           );
 
-          const fsData = await Promise.race([firestoreQueryPromise, timeoutPromise]);
-          if (fsData) {
+          const fsResult = await Promise.race([firestoreQueryPromise, timeoutPromise]);
+          if (fsResult && fsResult.data) {
+            const fsData = fsResult.data;
             const clientWb: WorkbookClientView = {
-              id: cleanId,
-              title: fsData.title || cleanId,
-              subtitle: fsData.subtitle || "",
-              level: fsData.level || (levelHint as any) || "b1",
+              id: fsResult.id,
+              title: fsData.title || topicTitleHint || cleanId,
+              subtitle: fsData.subtitle || topicSubtitleHint || "",
+              level: fsData.level || (cleanLevel as any) || "b1",
               pages: fsData.pages || 4,
               topics: Array.isArray(fsData.topics) ? fsData.topics : [],
               questions: Array.isArray(fsData.questions) ? fsData.questions : [],
               unlocked: true,
               viewerEmail: email,
-              productSlug: fsData.productSlug || cleanId,
+              productSlug: fsData.productSlug || fsResult.id,
               audioUrl: fsData.audioUrl || undefined,
               isFree: true,
               coverColor: fsData.coverColor || "#0F172A",
@@ -181,33 +227,19 @@ function FocusedWorkbookWorkspaceInner({
           // Firestore timed out or errored
         }
 
-        // 4. GUARANTEED ZERO-SPIN FALLBACK LESSON GENERATION
-        // If Firestore document does not exist, never leave the user waiting!
-        const fallback = generateFallbackLesson(
-          cleanId,
-          levelHint,
-          topicTitleHint,
-          topicSubtitleHint,
-          email,
-        );
-        setWorkbook(fallback);
-        onWorkbookLoaded?.(fallback);
+        // 4. Content not found: DO NOT inject Hören mock data!
+        // Render clean context-aware empty state instead
+        setWorkbook(null);
+        onWorkbookLoaded?.(null);
       } catch (err) {
-        console.error("[FocusedWorkbookWorkspace] Unexpected load error:", err);
-        const fallback = generateFallbackLesson(
-          workbookId,
-          levelHint,
-          topicTitleHint,
-          topicSubtitleHint,
-          emailOverride,
-        );
-        setWorkbook(fallback);
-        onWorkbookLoaded?.(fallback);
+        console.warn("[FocusedWorkbookWorkspace] Content query ended without match:", err);
+        setWorkbook(null);
+        onWorkbookLoaded?.(null);
       } finally {
         setLoading(false);
       }
     },
-    [workbookId, levelHint, topicTitleHint, topicSubtitleHint, onWorkbookLoaded],
+    [workbookId, levelHint, moduleHint, topicTitleHint, topicSubtitleHint, onWorkbookLoaded],
   );
 
   useEffect(() => {
@@ -314,47 +346,19 @@ function FocusedWorkbookWorkspaceInner({
     return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
   };
 
-  const levelLower = (workbook?.level || "b1").toLowerCase();
-  const fallbackLocalTrack =
-    workbook?.id?.includes("b2-hoeren-02")
-      ? "/audio/hoeren/daf_b2_hoeren_02.mp3"
-      : workbook?.id?.includes("b2-hoeren") || levelLower === "b2"
-      ? "/audio/hoeren/daf_b2_hoeren_01.mp3"
-      : workbook?.id?.includes("b1-hoeren-02")
-      ? "/audio/hoeren/daf_b1_hoeren_02.mp3"
-      : workbook?.id?.includes("b1-hoeren") || workbook?.id?.includes("b1-lab") || levelLower === "b1"
-      ? "/audio/hoeren/daf_b1_hoeren_01.mp3"
-      : workbook?.id?.includes("a2-hoeren") || levelLower === "a2"
-      ? "/audio/hoeren/daf_a2_hoeren_01.mp3"
-      : "/audio/hoeren/daf_a1_hoeren_01.mp3";
-
-  const rawWorkbookAudioUrl =
-    workbook?.audioUrl && workbook.audioUrl.trim() !== ""
-      ? workbook.audioUrl
-      : fallbackLocalTrack;
-
-  const resolvedAudioUrl = normalizeAudioUrl(rawWorkbookAudioUrl);
+  const resolvedAudioUrl = normalizeAudioUrl(workbook?.audioUrl);
 
   useEffect(() => {
     if (resolvedAudioUrl) {
       setActiveAudioSrc(resolvedAudioUrl);
       setAudioError(false);
-      setTriedFallback(false);
+    } else {
+      setActiveAudioSrc("");
     }
   }, [resolvedAudioUrl]);
 
   const handleAudioError = () => {
-    if (!triedFallback && fallbackLocalTrack && activeAudioSrc !== fallbackLocalTrack) {
-      console.warn(
-        "[FocusedWorkbookWorkspace] Primary audio source failed, attempting local verified fallback:",
-        fallbackLocalTrack,
-      );
-      setTriedFallback(true);
-      setActiveAudioSrc(fallbackLocalTrack);
-      setAudioError(false);
-    } else {
-      setAudioError(true);
-    }
+    setAudioError(true);
   };
 
   const speakText = (text: string, audioUrl?: string) => {
@@ -409,35 +413,70 @@ function FocusedWorkbookWorkspaceInner({
   }
 
   if (error || !workbook) {
+    const rawTopicName =
+      topicTitleHint?.trim() ||
+      decodeURIComponent(workbookId || "")
+        .replace(/^(wb-factory-|wb-fc-|book-|dossier-|wb-|lab-|grammar-)/i, "")
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const titleDisplay = `${rawTopicName} — Content Generating`;
+    const levelDisplay = (levelHint || "b1").toUpperCase();
+    const moduleDisplay = (moduleHint || "02-grammar")
+      .replace(/^\d+-/, "")
+      .replace(/[-_]+/g, " ")
+      .toUpperCase();
+
     return (
-      <div className="light-study mx-auto max-w-xl rounded-2xl border border-red-200 bg-white p-8 text-center space-y-4 shadow-sm text-slate-900">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-red-200 bg-red-50 text-red-600">
-          <XCircle className="h-6 w-6" />
-        </div>
-        <div className="space-y-1">
-          <h3 className="text-base font-semibold text-slate-900">
-            Arbeitsheft nicht verfügbar
-          </h3>
-          <p className="text-sm text-slate-600">
-            {error || "Content not found or still generating."}
-          </p>
-        </div>
-        <div className="flex items-center justify-center gap-3 pt-2">
-          <button
-            onClick={() => {
-              setError(null);
-              fetchWorkbook();
-            }}
-            className="relative z-20 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-700 hover:bg-slate-100 transition shadow-xs cursor-pointer"
-          >
-            Erneut versuchen
-          </button>
-          <Link
-            href="/academy"
-            className="relative z-20 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
-          >
-            Zurück zur Akademie
-          </Link>
+      <div className="light-study space-y-6 select-none text-slate-900 max-w-3xl mx-auto">
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-12 text-center space-y-6 shadow-sm">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-600 shadow-xs">
+            <Sparkles className="h-7 w-7 animate-pulse" />
+          </div>
+
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-700">
+              <span>{levelDisplay}</span>
+              <span>·</span>
+              <span>{moduleDisplay}</span>
+              <span>·</span>
+              <span className="text-amber-700 font-bold">IN PRODUKTION</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+              {titleDisplay}
+            </h2>
+            <p className="text-sm font-medium text-slate-700 max-w-md mx-auto leading-relaxed pt-1">
+              Die GTF AI-Factory erstellt derzeit dieses Material.
+            </p>
+            <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+              Dieses Modul wird für Ihren Vorbereitungspfad qualitätsgeprüft generiert. Audio-Player und Antwortbogen werden automatisch freigeschaltet, sobald das Material bereitsteht.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-xs text-slate-500 space-y-1 text-left max-w-md mx-auto font-mono">
+            <p><span className="font-semibold text-slate-700">Level:</span> {levelDisplay}</p>
+            <p><span className="font-semibold text-slate-700">Modul:</span> {moduleDisplay}</p>
+            <p><span className="font-semibold text-slate-700">Topic ID:</span> {decodeURIComponent(workbookId)}</p>
+            <p><span className="font-semibold text-slate-700">Status:</span> Content In Production (AI Factory Queue)</p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-slate-100">
+            <Link
+              href={`/academy/${levelHint || "b1"}/${moduleHint || "02-grammar"}`}
+              className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span>Zurück zu den Themen</span>
+            </Link>
+
+            <Link
+              href={`/academy/${levelHint || "b1"}/01-vocabulary/core-deck`}
+              className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
+            >
+              <span>Vokabel-Deck öffnen</span>
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -501,10 +540,11 @@ function FocusedWorkbookWorkspaceInner({
   }
 
   const isListeningWorkbook = Boolean(
-    workbook?.audioUrl ||
-      workbook?.skill === "hoeren" ||
-      workbook?.title?.toLowerCase().includes("hören") ||
-      workbook?.id?.toLowerCase().includes("hoeren"),
+    workbook?.audioUrl &&
+      workbook.audioUrl.trim() !== "" &&
+      (workbook.skill === "hoeren" ||
+        workbook.title?.toLowerCase().includes("hören") ||
+        workbook.id?.toLowerCase().includes("hoeren")),
   );
 
   const flashcardsList = Array.isArray(workbook?.flashcards) ? workbook.flashcards : [];

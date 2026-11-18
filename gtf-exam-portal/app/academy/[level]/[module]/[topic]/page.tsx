@@ -47,6 +47,11 @@ export default function AcademyTopicWorkspacePage() {
   const [catalogLoaded, setCatalogLoaded] = useState(false);
   const [workbookMeta, setWorkbookMeta] = useState<WorkbookClientView | null>(null);
 
+  // Reset workbook metadata when navigating between topics
+  useEffect(() => {
+    setWorkbookMeta(null);
+  }, [rawLevel, rawModule, rawTopic]);
+
   useEffect(() => {
     let active = true;
     getUserProgress(uid).then((prog) => {
@@ -377,6 +382,7 @@ export default function AcademyTopicWorkspacePage() {
                 <FocusedWorkbookWorkspace
                   workbookId={rawTopic}
                   levelHint={info?.levelKey || rawLevel}
+                  moduleHint={rawModule}
                   topicTitleHint={matchedTopic?.title || pageTitle}
                   topicSubtitleHint={matchedTopic?.subtitle || pageSubtitle}
                   onWorkbookLoaded={(wb) => setWorkbookMeta(wb)}
