@@ -175,20 +175,15 @@ export function Navbar({
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {isAuthenticated && (
             <>
-              {/* Monochrome Streak Pill */}
+              {/* Streak Pill */}
               <div
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-800 shrink-0"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-950 shrink-0 shadow-xs"
                 title={`Daily Learning Streak · Last active: ${progress?.lastLoginDate || "Today"}`}
               >
-                <svg
-                  className="h-2.5 w-2.5 text-emerald-600 shrink-0"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <circle cx="5" cy="5" r="3.5" stroke="currentColor" strokeWidth="1.5" />
-                  <circle cx="5" cy="5" r="1.5" fill="currentColor" />
-                </svg>
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+                </span>
                 <span className="whitespace-nowrap">STREAK · {streakFormatted}D</span>
               </div>
 

@@ -358,24 +358,24 @@ function PricingContentInner() {
   const renderCellIcon = (type: "text" | "check" | "cross", value?: string, isHighlighted?: boolean) => {
     if (type === "check") {
       return (
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 shadow-xs">
-          <Check className="h-4 w-4 stroke-[2.5]" />
+        <span className="inline-flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 shadow-2xs">
+          <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-600 stroke-[3]" />
         </span>
       );
     }
     if (type === "cross") {
       return (
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-400">
-          <X className="h-4 w-4 stroke-[2]" />
+        <span className="inline-flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-slate-100 border border-slate-200 text-slate-400">
+          <X className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-slate-400 stroke-[2.5]" />
         </span>
       );
     }
     return (
       <span
-        className={`inline-block rounded-md px-2 py-0.5 text-[10px] sm:text-xs font-bold leading-tight ${
+        className={`inline-block rounded-md px-1.5 sm:px-2.5 py-0.5 text-[9px] sm:text-xs font-bold leading-tight text-center ${
           isHighlighted
-            ? "bg-emerald-100 text-emerald-900 border border-emerald-200"
-            : "bg-slate-100 text-slate-700 border border-slate-200"
+            ? "bg-emerald-50 text-emerald-950 border border-emerald-300"
+            : "bg-slate-100 text-slate-800 border border-slate-200"
         }`}
       >
         {value}
@@ -723,11 +723,11 @@ function PricingContentInner() {
       </main>
 
       {/* Prominent Sticky CTA Bar at Bottom (Single Action) */}
-      <aside aria-label="Selected plan checkout action" className="fixed bottom-0 inset-x-0 z-30 border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-3 sm:py-4 shadow-[0_-8px_25px_rgba(0,0,0,0.08)] pb-safe">
+      <aside aria-label="Selected plan checkout action" className="fixed bottom-[58px] lg:bottom-0 inset-x-0 z-45 border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-3 sm:py-4 shadow-[0_-8px_25px_rgba(0,0,0,0.08)] pb-safe">
         <div className="mx-auto max-w-5xl flex items-center justify-between gap-3 sm:gap-6">
           <div className="min-w-0">
             <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 truncate">
-              Selected: <span className="text-slate-900">{selectedTier.name}</span>
+              Selected: <span className="text-slate-900 font-extrabold">{selectedTier.name}</span>
             </p>
             <p className="text-sm sm:text-base font-black text-slate-900 truncate">
               {selectedTier.priceLabel}{" "}
@@ -741,7 +741,7 @@ function PricingContentInner() {
             type="button"
             disabled={submittingTier === selectedTier.id}
             onClick={() => handleTierAction(selectedTier)}
-            className="h-12 px-5 sm:px-8 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-bold uppercase tracking-[0.14em] inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-md disabled:opacity-50 shrink-0 cursor-pointer"
+            className="h-11 sm:h-12 px-4 sm:px-8 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-bold uppercase tracking-[0.14em] inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-md disabled:opacity-50 shrink-0 cursor-pointer"
           >
             {submittingTier === selectedTier.id ? (
               <>
