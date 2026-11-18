@@ -156,7 +156,7 @@ export default function CEOCompanyStatusPage() {
   // Password Lock Screen
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-slate-900 border border-amber-500/30 rounded-2xl p-8 shadow-2xl shadow-amber-950/20">
           <div className="flex flex-col items-center text-center mb-6">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500/20 to-indigo-500/20 border border-amber-500/40 flex items-center justify-center mb-4">
@@ -169,7 +169,7 @@ export default function CEOCompanyStatusPage() {
               GTF CEO Progress Tracker
             </h1>
             <p className="text-xs text-slate-400 mt-2">
-              EMP-16 COO Operations Center for Founders Ashutosh Sharma &amp; Sarbjit Kour.
+              EMP-16 COO Operations Center for Sarbjit Kour (Founder &amp; CEO, Gateway To Future).
             </p>
           </div>
 
@@ -184,7 +184,7 @@ export default function CEOCompanyStatusPage() {
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
                   placeholder="Passwort eingeben..."
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 pl-11 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors"
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 pl-11 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors"
                   autoFocus
                 />
                 <KeyRound className="w-4 h-4 text-slate-500 absolute left-4 top-3.5" />
@@ -245,7 +245,7 @@ export default function CEOCompanyStatusPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-white">
+    <div className="min-h-screen bg-slate-900 text-slate-100 selection:bg-amber-500 selection:text-white">
       {/* Top Banner Navigation */}
       <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
@@ -283,8 +283,8 @@ export default function CEOCompanyStatusPage() {
             </button>
             <div className="h-4 w-px bg-slate-800" />
             <div className="text-right hidden md:block">
-              <div className="text-xs font-bold text-slate-200">Ashutosh Sharma &amp; Sarbjit Kour</div>
-              <div className="text-[10px] text-emerald-400 font-mono">Founders &amp; Executive Directors</div>
+              <div className="text-xs font-bold text-slate-200">Sarbjit Kour</div>
+              <div className="text-[10px] text-emerald-400 font-mono">Founder &amp; CEO · Gateway To Future</div>
             </div>
           </div>
         </div>
@@ -317,7 +317,7 @@ export default function CEOCompanyStatusPage() {
                     {metrics.grandCompletionPercent}% ({metrics.totalCompletedAssets} / {metrics.totalTargetAssets})
                   </span>
                 </div>
-                <div className="h-4 w-full bg-slate-950 border border-slate-800 rounded-full overflow-hidden p-0.5">
+                <div className="h-4 w-full bg-slate-900 border border-slate-800 rounded-full overflow-hidden p-0.5">
                   <div
                     className="h-full bg-gradient-to-r from-amber-500 via-emerald-400 to-cyan-400 rounded-full transition-all duration-1000 shadow-lg shadow-amber-500/30"
                     style={{ width: `${Math.max(2, metrics.grandCompletionPercent)}%` }}
@@ -333,7 +333,7 @@ export default function CEOCompanyStatusPage() {
                     {metrics.grandApprovalPercent}% Approved ({metrics.totalApprovedAssets} / {metrics.totalTargetAssets})
                   </span>
                 </div>
-                <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-emerald-500 rounded-full transition-all duration-1000"
                     style={{ width: `${metrics.grandApprovalPercent}%` }}
@@ -343,7 +343,7 @@ export default function CEOCompanyStatusPage() {
             </div>
 
             {/* Right KPI Card */}
-            <div className="lg:col-span-4 bg-slate-950/70 border border-slate-800 rounded-2xl p-6 space-y-4">
+            <div className="lg:col-span-4 bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-4">
               <div className="text-xs uppercase tracking-wider text-slate-400 font-bold">
                 Live Inventory Status
               </div>
@@ -526,7 +526,7 @@ export default function CEOCompanyStatusPage() {
                         {emp.completedCount} / {emp.targetCount} ({emp.progressPercent}%)
                       </span>
                     </div>
-                    <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden">
                       <div
                         className={`h-full rounded-full transition-all duration-700 ${
                           is100
@@ -580,7 +580,7 @@ export default function CEOCompanyStatusPage() {
                 {data.rejectionLogs.map((rej, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-slate-950 border border-red-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                    className="p-4 rounded-xl bg-slate-900 border border-red-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -614,7 +614,7 @@ export default function CEOCompanyStatusPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-2">
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2">
                 <div className="text-xs font-bold text-amber-400">1. Run Full Daily Company Operations Shift:</div>
                 <pre className="p-3 bg-slate-900 rounded-xl font-mono text-xs text-emerald-400 overflow-x-auto">
                   python content-factory/run_daily_company.py --daily-shift
@@ -625,7 +625,7 @@ export default function CEOCompanyStatusPage() {
                 </p>
               </div>
 
-              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-2">
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2">
                 <div className="text-xs font-bold text-amber-400">2. Inspect Master CEO Dashboard in Terminal:</div>
                 <pre className="p-3 bg-slate-900 rounded-xl font-mono text-xs text-emerald-400 overflow-x-auto">
                   python content-factory/run_daily_company.py --status
@@ -635,7 +635,7 @@ export default function CEOCompanyStatusPage() {
                 </p>
               </div>
 
-              <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-2">
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2">
                 <div className="text-xs font-bold text-amber-400">3. Execute Shift with Custom Quota:</div>
                 <pre className="p-3 bg-slate-900 rounded-xl font-mono text-xs text-emerald-400 overflow-x-auto">
                   python content-factory/run_daily_company.py --daily-shift --limit 5

@@ -8,6 +8,7 @@ const config: CapacitorConfig = {
     url: "https://app.gatewaytofuture.com",
     cleartext: false,
     androidScheme: "https",
+    errorPath: "index.html",
     allowNavigation: [
       "app.gatewaytofuture.com",
       "*.gatewaytofuture.com",
@@ -22,19 +23,19 @@ const config: CapacitorConfig = {
     allowMixedContent: false,
     captureInput: true,
     webContentsDebuggingEnabled: false,
-    backgroundColor: "#0A1628",
+    backgroundColor: "#f8fafc",
   },
   ios: {
     contentInset: "always",
     allowsLinkPreview: false,
     scrollEnabled: true,
-    backgroundColor: "#0A1628",
+    backgroundColor: "#f8fafc",
   },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,
       launchAutoHide: true,
-      backgroundColor: "#0A1628",
+      backgroundColor: "#f8fafc",
       androidSplashResourceName: "splash",
       androidScaleType: "CENTER_CROP",
       showSpinner: false,
@@ -42,8 +43,8 @@ const config: CapacitorConfig = {
       splashImmersive: true,
     },
     StatusBar: {
-      style: "DARK",
-      backgroundColor: "#0A1628",
+      style: "LIGHT",
+      backgroundColor: "#f8fafc",
       overlaysWebView: false,
     },
   },

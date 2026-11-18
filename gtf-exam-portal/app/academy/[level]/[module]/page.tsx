@@ -57,7 +57,7 @@ export default function AcademySubdivisionTopicIndexPage() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#07090E] text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar activeDivision={info.divisionId} />
 
       <main className="flex-1 pb-24 lg:pb-12">
@@ -77,16 +77,16 @@ export default function AcademySubdivisionTopicIndexPage() {
         />
 
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/10 pb-4">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 LEVEL 04 · TOPIC &amp; EXERCISE INDEX
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
+              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
                 Select One Focused Topic
               </h2>
             </div>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/45">
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
               {loaded ? `${topics.length} Topic${topics.length === 1 ? "" : "s"}` : "Syncing…"}
             </span>
           </div>
@@ -109,19 +109,19 @@ export default function AcademySubdivisionTopicIndexPage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-[#07090E] py-10 pb-24 lg:pb-10 px-4 sm:px-8">
-        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-white/50">
-          <p className="font-medium tracking-wide text-white/80">
+      <footer className="border-t border-slate-200 bg-white py-10 pb-24 lg:pb-10 px-4 sm:px-8">
+        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          <p className="font-semibold tracking-wide text-slate-900">
             {BRAND.name} · {BRAND.headquarters}
           </p>
-          <div className="flex flex-wrap items-center gap-6 font-medium uppercase tracking-[0.14em] text-[11px]">
-            <Link href={`/academy/${info.levelKey}`} className="hover:text-white transition">
+          <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">
+            <Link href={`/academy/${info.levelKey}`} className="text-slate-600 hover:text-slate-900 transition">
               {info.label} Subdivisions
             </Link>
-            <Link href={info.divisionHref} className="hover:text-white transition">
+            <Link href={info.divisionHref} className="text-slate-600 hover:text-slate-900 transition">
               {info.divisionLabel}
             </Link>
-            <Link href="/dashboard" className="hover:text-white transition">
+            <Link href="/dashboard" className="text-slate-600 hover:text-slate-900 transition">
               Hub
             </Link>
           </div>

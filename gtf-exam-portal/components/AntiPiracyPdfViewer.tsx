@@ -144,7 +144,7 @@ export function AntiPiracyPdfViewer({
       onCopy={(e) => e.preventDefault()}
     >
       {/* Top anti-piracy toolbar (Zero download/print buttons) */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 bg-slate-950/90 px-4 py-2.5 rounded-t-2xl">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 bg-slate-900 px-4 py-2.5 rounded-t-2xl">
         <div className="flex items-center gap-2 text-xs">
           <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/20 px-2 py-0.5 font-semibold text-emerald-300">
             <Lock className="h-3 w-3" />

@@ -30,6 +30,7 @@ import {
   cleanWorkbookTitle,
   getTopicsForSubdivision,
 } from "@/lib/subdivisions";
+import { getCoreLabById } from "@/lib/curriculum-labs";
 import type { FlashcardDeckItem, WorkbookClientView } from "@/lib/types";
 
 export default function AcademyTopicWorkspacePage() {
@@ -137,6 +138,7 @@ export default function AcademyTopicWorkspacePage() {
   // Resolve workspace kind cleanly
   const isCoreDeck = rawTopic === "core-deck";
   const isFactoryDeck = rawTopic.startsWith("wb-fc-");
+  const isVocabLabDeck = rawModule === "01-vocabulary" && rawTopic.startsWith("vocab-");
   const isStkWorkspace =
     rawTopic === "stk-workspace" || rawTopic === "stk-syllabus";
   const isPflegeHub =
@@ -179,6 +181,31 @@ export default function AcademyTopicWorkspacePage() {
       title: "German Vocabulary Flashcards",
       deck: [],
     };
+
+  const vocabLabDeck: FlashcardDeckItem[] = useMemo(() => {
+    if (!isVocabLabDeck) return [];
+    const labSlug = rawTopic.slice("vocab-".length);
+    const lab = getCoreLabById(labSlug, info.levelKey);
+    if (!lab) return coreDeckConfig?.deck || [];
+    const labCards: FlashcardDeckItem[] = (lab.questions || []).slice(0, 8).map((q, idx) => {
+      const answerStr = Array.isArray(q.answer) ? q.answer[0] : q.answer || "";
+      const chosenOption =
+        q.type === "mcq" && Array.isArray(q.options)
+          ? q.options.find((o) => o.id === answerStr)?.text || answerStr
+          : answerStr;
+      return {
+        id: `${lab.id}-vc-${idx + 1}`,
+        german: chosenOption || q.label || lab.title,
+        category: q.label || lab.topics[0] || "Wortschatz",
+        english: q.prompt || lab.subtitle,
+        hindi: q.explanation || `Lab ${lab.level.toUpperCase()} — ${lab.title}`,
+        exampleDe: q.prompt || lab.title,
+        exampleTranslation: chosenOption ? `Lösung: ${chosenOption}` : lab.subtitle,
+        grammarTip: q.explanation || "",
+      };
+    });
+    return labCards.length > 0 ? labCards : (coreDeckConfig?.deck || []);
+  }, [isVocabLabDeck, rawTopic, info.levelKey, coreDeckConfig]);
 
   const pageTitle =
     matchedTopic?.title ||
@@ -227,9 +254,9 @@ export default function AcademyTopicWorkspacePage() {
         />
 
         <section className="mx-auto w-full max-w-6xl px-4 sm:px-8 py-10">
-          {/* 1. Core or Factory Flashcard Deck */}
-          {(isCoreDeck || isFactoryDeck) && (
-            <div className="mx-auto max-w-4xl">
+          {/* 1. Core, Lab Vocab, or Factory Flashcard Deck */}
+          {(isCoreDeck || isFactoryDeck || isVocabLabDeck) && (
+            <div key={`deck-wrap-${rawTopic}`} className="mx-auto max-w-4xl">
               {isFactoryDeck && !catalogLoaded ? (
                 <div className="rounded-2xl border border-slate-200 bg-white p-8 text-sm text-slate-600 shadow-sm">
                   Loading flashcard deck…
@@ -254,11 +281,15 @@ export default function AcademyTopicWorkspacePage() {
                     title={
                       isFactoryDeck && factoryWorkbook
                         ? cleanWorkbookTitle(factoryWorkbook.title)
+                        : isVocabLabDeck
+                        ? (matchedTopic?.title || `${info.label} Lab Vocabulary`)
                         : (coreDeckConfig?.title || "German Vocabulary Flashcards")
                     }
                     deck={
                       isFactoryDeck && Array.isArray(factoryWorkbook?.flashcards)
                         ? (factoryWorkbook.flashcards as FlashcardDeckItem[])
+                        : isVocabLabDeck
+                        ? vocabLabDeck
                         : (coreDeckConfig?.deck || [])
                     }
                     masteredCardIds={userProgress?.masteredFlashcards}
@@ -375,6 +406,7 @@ export default function AcademyTopicWorkspacePage() {
           {/* 5. Any Workbook / Chapter Dossier */}
           {!isCoreDeck &&
             !isFactoryDeck &&
+            !isVocabLabDeck &&
             !isStkWorkspace &&
             !isPflegeHub &&
             !isExamLauncher && (

@@ -76,7 +76,7 @@ PIN / Postal Code: 247663
 Country: India
 
 European / Operational Headquarters:
-Ketschendorfer Weg 33, 12683 Berlin, Germany
+Schönefelder Straße 2, GStU, 12355 Berlin, Germany
 
 Official Website:
 https://www.gatewaytofuture.com
@@ -118,7 +118,7 @@ Thank you for your assistance. Please find below the verified corporate details 
 3. Indian GSTIN: 05AAOPR7336L3Z0 (State: Uttarakhand - Code 05)
 4. Indian PAN: AAOPR7336L
 5. Registered Address: Mahant Building, Main Market Road, Laksar, Haridwar, Uttarakhand - 247663, India
-6. European Operations HQ: Ketschendorfer Weg 33, 12683 Berlin, Germany
+6. European Operations HQ: Schönefelder Straße 2, GStU, 12355 Berlin, Germany
 7. Official Website: https://www.gatewaytofuture.com
 8. Web Application: https://app.gatewaytofuture.com
 9. Authorized Representative:

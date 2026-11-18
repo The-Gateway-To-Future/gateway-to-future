@@ -22,8 +22,39 @@ import { BRAND } from "@/lib/config";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirebaseFirestore } from "@/lib/firebase";
 import Link from "next/link";
-import type { WorkbookClientView } from "@/lib/types";
+import type { WorkbookClientView, WorkbookContentType } from "@/lib/types";
 import { getCoreLabById, convertLabToWorkbook } from "@/lib/curriculum-labs";
+
+function resolveStrictContentType(wb: WorkbookClientView | null, moduleHint?: string): WorkbookContentType {
+  if (wb?.contentType) {
+    return wb.contentType;
+  }
+  const mod = (wb?.module || moduleHint || "").toLowerCase();
+  const sk = (wb?.skill || "").toLowerCase();
+  const id = (wb?.id || "").toLowerCase();
+  const title = (wb?.title || "").toLowerCase();
+
+  if (sk === "schreiben" || id.includes("schreiben")) return "exam_schreiben";
+  if (sk === "sprechen" || id.includes("sprechen")) return "exam_sprechen";
+  if (sk === "hoeren" || id.includes("hoeren") || title.includes("hören")) return "exam_hoeren";
+  if (
+    sk === "lesen" ||
+    id.includes("lesen") ||
+    id.includes("sprachbausteine") ||
+    id.includes("pruefungstraining") ||
+    id.includes("modelltest") ||
+    title.includes("lesen") ||
+    title.includes("prüfungstraining") ||
+    mod.includes("03-hoeren-lesen") ||
+    mod.includes("04-modelltests")
+  ) {
+    return "exam_lesen";
+  }
+  if (mod.includes("02-grammar") || sk === "grammar" || id.includes("grammar") || id.includes("grammatik")) {
+    return "grammar";
+  }
+  return "exam_lesen";
+}
 
 interface GradedWorkbookItem {
   id: string;
@@ -101,52 +132,121 @@ function FocusedWorkbookWorkspaceInner({
     async (emailOverride?: string) => {
       setLoading(true);
       setError(null);
-      try {
-        const email = emailOverride || getActiveUserEmail();
-        const cleanId = decodeURIComponent(workbookId || "").trim();
-        const cleanLevel = (levelHint || "").toLowerCase().trim();
-        const cleanModule = (moduleHint || "").toLowerCase().trim().replace(/^\d+-/, "");
 
-        // 1. Immediate local lookup from 40 Core Labs repository (strictly explicit lab matching)
+      const email = emailOverride || getActiveUserEmail();
+      const cleanId = decodeURIComponent(workbookId || "").trim();
+      const cleanLevel = (levelHint || "").toLowerCase().trim();
+      const cleanModule = (moduleHint || "").toLowerCase().trim().replace(/^\d+-/, "");
+
+      const resolveLocalLabFallback = (): WorkbookClientView | null => {
         const coreLab = getCoreLabById(cleanId, cleanLevel || undefined);
-        if (coreLab) {
-          const wb = convertLabToWorkbook(coreLab);
-          const clientWb: WorkbookClientView = {
-            ...wb,
-            unlocked: true,
-            viewerEmail: email,
-            isFree: true,
-            coverColor: wb.coverColor || "#0F172A",
-            priceEur: wb.priceEur || 0,
-            priceInr: wb.priceInr || 0,
-          };
-          setWorkbook(clientWb);
-          onWorkbookLoaded?.(clientWb);
-          setLoading(false);
-          return;
+        if (!coreLab) return null;
+        const wb = convertLabToWorkbook(coreLab);
+        return {
+          ...wb,
+          unlocked: true,
+          viewerEmail: email,
+          isFree: true,
+          coverColor: wb.coverColor || "#0F172A",
+          priceEur: wb.priceEur || 0,
+          priceInr: wb.priceInr || 0,
+        };
+      };
+
+      const candidateIds = Array.from(
+        new Set(
+          [
+            cleanId,
+            cleanLevel && cleanModule ? `${cleanLevel}-${cleanModule}-${cleanId}` : "",
+            cleanLevel ? `${cleanLevel}-${cleanId}` : "",
+            cleanId.replace(/^(wb-|workbook-)/, ""),
+            `wb-${cleanId}`,
+            cleanLevel && cleanModule
+              ? `${cleanLevel}-${cleanModule}-${cleanId.replace(/^(wb-|workbook-)/, "")}`
+              : "",
+          ].filter(Boolean),
+        ),
+      );
+
+      const loadPipeline = async (): Promise<WorkbookClientView | null> => {
+        // 1. Primary: Parallel Firestore lookup (`workbooks` & `materials`)
+        try {
+          const db = getFirebaseFirestore();
+          const fsChecks = candidateIds.map(async (testId) => {
+            try {
+              const wbSnap = await getDoc(doc(db, "workbooks", testId));
+              if (wbSnap.exists()) {
+                return { id: testId, data: wbSnap.data() };
+              }
+              const matSnap = await getDoc(doc(db, "materials", testId));
+              if (matSnap.exists()) {
+                return { id: testId, data: matSnap.data() };
+              }
+            } catch {
+              // ignore individual doc errors
+            }
+            return null;
+          });
+
+          const fsMatches = await Promise.all(fsChecks);
+          const fsResult = fsMatches.find((r) => r !== null && Boolean(r.data)) || null;
+
+          if (fsResult && fsResult.data) {
+            const fsData = fsResult.data;
+            const fsContentType = fsData.contentType as WorkbookContentType | undefined;
+            const isGrammarDoc = fsContentType === "grammar";
+            return {
+              id: fsResult.id,
+              title: fsData.title || topicTitleHint || cleanId,
+              subtitle: fsData.subtitle || topicSubtitleHint || "",
+              level: fsData.level || (cleanLevel as any) || "b1",
+              contentType: fsContentType,
+              module: fsData.module || undefined,
+              skill: fsData.skill || undefined,
+              pages: fsData.pages || 4,
+              topics: Array.isArray(fsData.topics) ? fsData.topics : [],
+              questions: isGrammarDoc
+                ? []
+                : Array.isArray(fsData.questions)
+                ? fsData.questions
+                : [],
+              flashcards: isGrammarDoc && Array.isArray(fsData.flashcards) ? fsData.flashcards : [],
+              grammarNotes:
+                isGrammarDoc && fsData.grammarNotes && typeof fsData.grammarNotes === "object"
+                  ? fsData.grammarNotes
+                  : undefined,
+              readingPassage:
+                !isGrammarDoc && typeof fsData.readingPassage === "string" && fsData.readingPassage.trim()
+                  ? fsData.readingPassage
+                  : undefined,
+              unlocked: true,
+              viewerEmail: email,
+              productSlug: fsData.productSlug || fsResult.id,
+              audioUrl:
+                fsContentType === "exam_hoeren" || fsContentType === "exam_sprechen"
+                  ? fsData.audioUrl || undefined
+                  : undefined,
+              isFree: true,
+              coverColor: fsData.coverColor || "#0F172A",
+              priceEur: typeof fsData.priceEur === "number" ? fsData.priceEur : 0,
+              priceInr: typeof fsData.priceInr === "number" ? fsData.priceInr : 0,
+            };
+          }
+        } catch {
+          // Firestore timed out or errored; fall through immediately
         }
 
-        // 2. Fetch server API with strict candidate IDs and timeout
-        const candidateIds = Array.from(
-          new Set(
-            [
-              cleanId,
-              cleanLevel && cleanModule ? `${cleanLevel}-${cleanModule}-${cleanId}` : "",
-              cleanLevel ? `${cleanLevel}-${cleanId}` : "",
-              cleanId.replace(/^(wb-|workbook-)/, ""),
-              `wb-${cleanId}`,
-              cleanLevel && cleanModule
-                ? `${cleanLevel}-${cleanModule}-${cleanId.replace(/^(wb-|workbook-)/, "")}`
-                : "",
-            ].filter(Boolean),
-          ),
-        );
+        // 2. Immediate Local Core Labs & Grammar Pillars lookup before slow network fallbacks
+        const localFallback = resolveLocalLabFallback();
+        if (localFallback) {
+          return localFallback;
+        }
 
-        let apiFoundWorkbook: WorkbookClientView | null = null;
-        for (const testId of candidateIds) {
+        // 3. Secondary: Server API (/api/workbooks/[id]) for catalog PDFs & custom workbooks
+        for (const testId of candidateIds.slice(0, 3)) {
           try {
             const controller = new AbortController();
-            const apiTimeoutId = setTimeout(() => controller.abort(), 2000);
+            const apiTimeoutId = setTimeout(() => controller.abort(), 1500);
             const res = await fetch(
               `/api/workbooks/${encodeURIComponent(testId)}?email=${encodeURIComponent(email)}`,
               { signal: controller.signal },
@@ -155,8 +255,7 @@ function FocusedWorkbookWorkspaceInner({
             if (res.ok) {
               const data = (await res.json()) as { workbook?: WorkbookClientView };
               if (data?.workbook) {
-                apiFoundWorkbook = data.workbook;
-                break;
+                return data.workbook;
               }
             }
           } catch {
@@ -164,83 +263,43 @@ function FocusedWorkbookWorkspaceInner({
           }
         }
 
-        if (apiFoundWorkbook) {
-          setWorkbook(apiFoundWorkbook);
-          onWorkbookLoaded?.(apiFoundWorkbook);
-          setLoading(false);
-          return;
+        return null;
+      };
+
+      try {
+        const hardTimeoutPromise = new Promise<"TIMEOUT">((resolve) =>
+          setTimeout(() => resolve("TIMEOUT"), 2800),
+        );
+
+        const raceResult = await Promise.race([loadPipeline(), hardTimeoutPromise]);
+        if (raceResult === "TIMEOUT") {
+          const localFallback = resolveLocalLabFallback();
+          setWorkbook(localFallback);
+          onWorkbookLoaded?.(localFallback);
+        } else {
+          setWorkbook(raceResult);
+          onWorkbookLoaded?.(raceResult);
         }
-
-        // 3. Client-side Firestore check with strict candidate IDs and 3-second timeout
-        try {
-          const firestoreQueryPromise = (async () => {
-            const db = getFirebaseFirestore();
-            for (const testId of candidateIds) {
-              try {
-                const wbRef = doc(db, "workbooks", testId);
-                const wbSnap = await getDoc(wbRef);
-                if (wbSnap.exists()) {
-                  return { id: testId, data: wbSnap.data() };
-                }
-                const matRef = doc(db, "materials", testId);
-                const matSnap = await getDoc(matRef);
-                if (matSnap.exists()) {
-                  return { id: testId, data: matSnap.data() };
-                }
-              } catch {
-                // ignore and continue
-              }
-            }
-            return null;
-          })();
-
-          const timeoutPromise = new Promise<null>((_, reject) =>
-            setTimeout(() => reject(new Error("Firestore timeout after 3000ms")), 3000),
-          );
-
-          const fsResult = await Promise.race([firestoreQueryPromise, timeoutPromise]);
-          if (fsResult && fsResult.data) {
-            const fsData = fsResult.data;
-            const clientWb: WorkbookClientView = {
-              id: fsResult.id,
-              title: fsData.title || topicTitleHint || cleanId,
-              subtitle: fsData.subtitle || topicSubtitleHint || "",
-              level: fsData.level || (cleanLevel as any) || "b1",
-              pages: fsData.pages || 4,
-              topics: Array.isArray(fsData.topics) ? fsData.topics : [],
-              questions: Array.isArray(fsData.questions) ? fsData.questions : [],
-              unlocked: true,
-              viewerEmail: email,
-              productSlug: fsData.productSlug || fsResult.id,
-              audioUrl: fsData.audioUrl || undefined,
-              isFree: true,
-              coverColor: fsData.coverColor || "#0F172A",
-              priceEur: typeof fsData.priceEur === "number" ? fsData.priceEur : 0,
-              priceInr: typeof fsData.priceInr === "number" ? fsData.priceInr : 0,
-            };
-            setWorkbook(clientWb);
-            onWorkbookLoaded?.(clientWb);
-            setLoading(false);
-            return;
-          }
-        } catch {
-          // Firestore timed out or errored
-        }
-
-        // 4. Content not found: DO NOT inject Hören mock data!
-        // Render clean context-aware empty state instead
-        setWorkbook(null);
-        onWorkbookLoaded?.(null);
       } catch (err) {
         console.warn("[FocusedWorkbookWorkspace] Content query ended without match:", err);
-        setWorkbook(null);
-        onWorkbookLoaded?.(null);
+        const localFallback = resolveLocalLabFallback();
+        setWorkbook(localFallback);
+        onWorkbookLoaded?.(localFallback);
       } finally {
         setLoading(false);
       }
     },
     [workbookId, levelHint, moduleHint, topicTitleHint, topicSubtitleHint, onWorkbookLoaded],
   );
+
+  // Hard 3-second UI watchdog so loading spinner can NEVER spin infinitely
+  useEffect(() => {
+    if (!loading) return;
+    const watchdog = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+    return () => clearTimeout(watchdog);
+  }, [loading, workbookId]);
 
   useEffect(() => {
     fetchWorkbook();
@@ -402,12 +461,17 @@ function FocusedWorkbookWorkspaceInner({
 
   if (loading) {
     return (
-      <div className="light-study flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 text-center space-y-4 shadow-sm text-slate-900">
+      <div
+        key="wb-loading"
+        className="light-study flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 text-center space-y-4 shadow-sm text-slate-900"
+      >
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-slate-900 border-t-transparent" />
         <div className="text-sm font-semibold text-slate-800">
-          Lade geschütztes GTF Arbeitsheft…
+          <span key="wb-loading-title">Lade geschütztes GTF Arbeitsheft…</span>
         </div>
-        <p className="text-xs text-slate-500">Synchronisiere Lernmaterialien &amp; Audio-Streams</p>
+        <p className="text-xs text-slate-500">
+          <span key="wb-loading-sub">Synchronisiere Lernmaterialien &amp; Audio-Streams</span>
+        </p>
       </div>
     );
   }
@@ -428,7 +492,10 @@ function FocusedWorkbookWorkspaceInner({
       .toUpperCase();
 
     return (
-      <div className="light-study space-y-6 select-none text-slate-900 max-w-3xl mx-auto">
+      <div
+        key={`wb-empty-${workbookId}`}
+        className="light-study space-y-6 select-none text-slate-900 max-w-3xl mx-auto"
+      >
         <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-12 text-center space-y-6 shadow-sm">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-600 shadow-xs">
             <Sparkles className="h-7 w-7 animate-pulse" />
@@ -436,28 +503,30 @@ function FocusedWorkbookWorkspaceInner({
 
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-700">
-              <span>{levelDisplay}</span>
-              <span>·</span>
-              <span>{moduleDisplay}</span>
-              <span>·</span>
-              <span className="text-amber-700 font-bold">IN PRODUKTION</span>
+              <span key="empty-lvl">{levelDisplay}</span>
+              <span key="empty-sep1">·</span>
+              <span key="empty-mod">{moduleDisplay}</span>
+              <span key="empty-sep2">·</span>
+              <span key="empty-badge" className="text-amber-700 font-bold">IN PRODUKTION</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
-              {titleDisplay}
+              <span key={`empty-title-${workbookId}`}>{titleDisplay}</span>
             </h2>
             <p className="text-sm font-medium text-slate-700 max-w-md mx-auto leading-relaxed pt-1">
-              Die GTF AI-Factory erstellt derzeit dieses Material.
+              <span key="empty-desc-1">Die GTF AI-Factory erstellt derzeit dieses Material.</span>
             </p>
             <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-              Dieses Modul wird für Ihren Vorbereitungspfad qualitätsgeprüft generiert. Audio-Player und Antwortbogen werden automatisch freigeschaltet, sobald das Material bereitsteht.
+              <span key="empty-desc-2">
+                Dieses Modul wird für Ihren Vorbereitungspfad qualitätsgeprüft generiert. Audio-Player und Antwortbogen werden automatisch freigeschaltet, sobald das Material bereitsteht.
+              </span>
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-xs text-slate-500 space-y-1 text-left max-w-md mx-auto font-mono">
-            <p><span className="font-semibold text-slate-700">Level:</span> {levelDisplay}</p>
-            <p><span className="font-semibold text-slate-700">Modul:</span> {moduleDisplay}</p>
-            <p><span className="font-semibold text-slate-700">Topic ID:</span> {decodeURIComponent(workbookId)}</p>
-            <p><span className="font-semibold text-slate-700">Status:</span> Content In Production (AI Factory Queue)</p>
+            <p><span className="font-semibold text-slate-700">Level:</span>{" "}<span key="meta-lvl">{levelDisplay}</span></p>
+            <p><span className="font-semibold text-slate-700">Modul:</span>{" "}<span key="meta-mod">{moduleDisplay}</span></p>
+            <p><span className="font-semibold text-slate-700">Topic ID:</span>{" "}<span key="meta-id">{decodeURIComponent(workbookId)}</span></p>
+            <p><span className="font-semibold text-slate-700">Status:</span>{" "}<span key="meta-status">Content In Production (AI Factory Queue)</span></p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-slate-100">
@@ -484,7 +553,10 @@ function FocusedWorkbookWorkspaceInner({
 
   if (!workbook.unlocked) {
     return (
-      <div className="light-study mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white p-8 text-center space-y-5 shadow-sm text-slate-900">
+      <div
+        key={`wb-locked-${workbook.id}`}
+        className="light-study mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white p-8 text-center space-y-5 shadow-sm text-slate-900"
+      >
         <AntiPiracyShield
           userEmail={workbook.viewerEmail}
           resourceTitle={`${workbook.title} (${workbook.level.toUpperCase()})`}
@@ -493,15 +565,19 @@ function FocusedWorkbookWorkspaceInner({
           <Lock className="h-7 w-7" />
         </div>
         <div className="space-y-2">
-          <span className="inline-block rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-700">
-            Level {workbook.level.toUpperCase()} Digital Workbook · {workbook.pages} Pages
+          <span
+            key="locked-badge"
+            className="inline-block rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-700"
+          >
+            {`Level ${workbook.level.toUpperCase()} Digital Workbook · ${workbook.pages} Pages`}
           </span>
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-            {workbook.title} — {workbook.subtitle}
+            <span key="locked-title">{`${workbook.title} — ${workbook.subtitle}`}</span>
           </h2>
           <p className="text-sm text-slate-600 leading-relaxed">
-            Includes {(workbook.questions || []).length} interactive exercises ({(Array.isArray(workbook.topics) ? workbook.topics : []).join(" · ")})
-            with anti-piracy in-app PDF streaming and instant answer-sheet grading.
+            <span key="locked-desc">
+              {`Includes ${(workbook.questions || []).length} interactive exercises (${(Array.isArray(workbook.topics) ? workbook.topics : []).join(" · ")}) with anti-piracy in-app PDF streaming and instant answer-sheet grading.`}
+            </span>
           </p>
         </div>
 
@@ -525,412 +601,506 @@ function FocusedWorkbookWorkspaceInner({
         </div>
 
         <p className="text-xs text-slate-500">
-          Questions? Contact Official GTF Support:{" "}
+          <span>Questions? Contact Official GTF Support: </span>
           <a
             href={BRAND.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="font-semibold text-emerald-600 hover:underline"
           >
-            {BRAND.supportPhone}
+            <span key="locked-phone">{BRAND.supportPhone}</span>
           </a>
         </p>
       </div>
     );
   }
 
-  const isListeningWorkbook = Boolean(
-    workbook?.audioUrl &&
-      workbook.audioUrl.trim() !== "" &&
-      (workbook.skill === "hoeren" ||
-        workbook.title?.toLowerCase().includes("hören") ||
-        workbook.id?.toLowerCase().includes("hoeren")),
-  );
+  const effectiveContentType = resolveStrictContentType(workbook, moduleHint);
+  const isGrammarMode = effectiveContentType === "grammar";
+  const isExamLesenMode = effectiveContentType === "exam_lesen";
+  const isExamHoerenMode = effectiveContentType === "exam_hoeren";
+  const isExamSchreibenMode = effectiveContentType === "exam_schreiben";
+  const isExamSprechenMode = effectiveContentType === "exam_sprechen";
 
-  const flashcardsList = Array.isArray(workbook?.flashcards) ? workbook.flashcards : [];
-  const currentCard = flashcardsList.length > 0 ? flashcardsList[cardIndex % flashcardsList.length] : null;
+  const showAudioPlayer =
+    !isGrammarMode &&
+    !isExamLesenMode &&
+    !isExamSchreibenMode &&
+    (isExamHoerenMode || isExamSprechenMode) &&
+    Boolean(activeAudioSrc && activeAudioSrc.trim() !== "");
+
+  const showGrammarSection = isGrammarMode;
+  const showFlashcardsSection = isGrammarMode;
+  const showReadingSection = !isGrammarMode;
+  const showAnswerSheet = !isGrammarMode;
+
+  const flashcardsList =
+    showFlashcardsSection && Array.isArray(workbook?.flashcards) ? workbook.flashcards : [];
+  const currentCard =
+    flashcardsList.length > 0 ? flashcardsList[cardIndex % flashcardsList.length] : null;
+  const activeCardKey = currentCard?.id || `card-${cardIndex}`;
 
   return (
-    <div className="light-study space-y-6 select-none text-slate-900">
+    <div key={`wb-root-${workbook.id}-${effectiveContentType}`} className="light-study space-y-6 select-none text-slate-900">
       <AntiPiracyShield
         userEmail={workbook.viewerEmail}
         resourceTitle={`${workbook.title} (${workbook.level.toUpperCase()})`}
       />
 
-      <div className="grid gap-6 lg:grid-cols-12">
-        {/* Left Column: Audio + PDF (or Rich Study Dossier) */}
-        <div className="lg:col-span-7 space-y-5">
-          {isListeningWorkbook && (
-            <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 text-slate-900 shadow-sm">
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 shrink-0">
-                    <Headphones className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                        Goethe / telc Studio Audio
-                      </span>
-                      <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
-                        128 kbps HD
-                      </span>
-                    </div>
-                    <h3 className="text-xs sm:text-sm font-semibold text-slate-900 truncate">
-                      {workbook.title}
-                    </h3>
-                  </div>
+      {isGrammarMode ? (
+        /* STRICT GRAMMAR MODE: ONLY Grammar Explanations & Grammar Flashcards.
+           Exam Answer Sheets, Audio Players, and Reading Comprehension Passages are hidden. */
+        <div key={`wb-grammar-${workbook.id}`} className="mx-auto max-w-4xl space-y-6" data-content-type="grammar">
+          {showGrammarSection && (
+            <div key={`wb-grammar-notes-${workbook.id}`} className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-amber-600" />
+                  <span key="gr-header-title" className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                    Grammatik-Blueprint &amp; Strukturregeln
+                  </span>
                 </div>
-                <span className="hidden sm:inline-flex rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-600 shrink-0">
-                  Prüfungsmodus Hören
+                <span key="gr-header-badge" className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-indigo-700">
+                  122 Säulen · Theorie
                 </span>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-slate-50 p-2">
-                <audio
-                  controls
-                  preload="metadata"
-                  playsInline
-                  src={activeAudioSrc}
-                  onError={handleAudioError}
-                  onCanPlay={() => setAudioError(false)}
-                  onLoadedMetadata={() => setAudioError(false)}
-                  className="w-full h-10"
-                />
-                {audioError && (
-                  <div className="mt-2 rounded-lg border border-red-200 bg-red-50 p-2.5 text-xs font-semibold text-red-600 flex items-center gap-1.5">
-                    <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
-                    <span>Hinweis: Lokaler Audiotrack wird für diese Übungssitzung bereitgestellt.</span>
-                  </div>
-                )}
-              </div>
+              {Array.isArray(workbook.topics) && workbook.topics.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {workbook.topics.map((topic) => (
+                    <span
+                      key={topic}
+                      className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700"
+                    >
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              )}
 
-              <p className="mt-2.5 text-[11px] text-slate-500 leading-snug">
-                <span className="text-amber-700 font-semibold uppercase tracking-wider">
-                  PRÜFUNGSHINWEIS ·
-                </span>{" "}
-                Der Audiotext wird während der Prüfung 1x bis 2x abgespielt. Notieren Sie Ihre Antworten im Antwortblatt rechts.
-              </p>
-            </div>
-          )}
+              {workbook.grammarNotes ? (
+                <div key={`gr-notes-body-${workbook.id}`} className="space-y-4">
+                  <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                    <span key="gr-rule">{workbook.grammarNotes.rule}</span>
+                  </p>
 
-          {/* Conditional: If PDF token exists, render canvas viewer. Otherwise, render Rich Study Dossier */}
-          {workbook.pdfToken ? (
-            <AntiPiracyPdfViewer
-              pdfToken={workbook.pdfToken}
-              viewerEmail={workbook.viewerEmail || "demo@gatewaytofuture.com"}
-              workbookTitle={`${workbook.title} (${workbook.level.toUpperCase()})`}
-              totalPages={workbook.pages}
-              currentPage={currentPage}
-              onPageChange={setCurrentPage}
-            />
-          ) : (
-            <div className="space-y-5">
-              {/* 1. Interactive Flashcard Module */}
-              {currentCard && (
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-md border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-700">
-                        {currentCard.category || "Vokabel"}
+                  {workbook.grammarNotes.proTip && (
+                    <div key="gr-protip-box" className="rounded-xl border border-amber-200 bg-amber-50/70 p-4 space-y-1.5">
+                      <span key="gr-protip-label" className="text-[10px] font-bold uppercase tracking-widest text-amber-800">
+                        ⚡ GRAMMATIK-PRO-TIPP
                       </span>
-                      <span className="text-xs font-semibold text-slate-500">
-                        Karte {cardIndex + 1} von {flashcardsList.length}
-                      </span>
+                      <p className="text-xs text-amber-900 leading-relaxed">
+                        <span key="gr-protip-text">{workbook.grammarNotes.proTip}</span>
+                      </p>
                     </div>
-
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        speakText(currentCard.frontText || currentCard.german, currentCard.audioUrl);
-                      }}
-                      className="relative z-50 cursor-pointer pointer-events-auto rounded-lg border border-slate-200 bg-slate-50 p-1.5 text-slate-700 hover:bg-slate-100 transition shadow-xs"
-                      title="Aussprache anhören"
-                    >
-                      <Volume2 className="h-4 w-4" />
-                    </button>
-                  </div>
-
-                  {/* Flippable Card Body */}
-                  <div
-                    onClick={() => setIsFlipped(!isFlipped)}
-                    className="relative z-10 cursor-pointer pointer-events-auto min-h-[170px] rounded-xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:shadow-md hover:bg-white"
-                  >
-                    {!isFlipped ? (
-                      <div className="space-y-2 pointer-events-none">
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                          DEUTSCH · TIPPE ZUM WENDEN
-                        </span>
-                        <h4 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-                          {currentCard.frontText || currentCard.german}
-                        </h4>
-                        {currentCard.phonetic && (
-                          <p className="font-mono text-xs text-slate-500">
-                            [{currentCard.phonetic}]
-                          </p>
-                        )}
-                        {currentCard.exampleDe && (
-                          <p className="text-xs text-slate-600 italic pt-1">
-                            &ldquo;{currentCard.exampleDe}&rdquo;
-                          </p>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="space-y-2 pointer-events-none">
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                          BEDEUTUNG &amp; HINWEISE
-                        </span>
-                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900">
-                          {currentCard.backText || currentCard.english}
-                        </h4>
-                        {currentCard.hindi && (
-                          <p className="text-sm font-semibold text-emerald-700">
-                            {currentCard.hindi}
-                          </p>
-                        )}
-                        {currentCard.exampleTranslation && (
-                          <p className="text-xs text-slate-600 italic">
-                            {currentCard.exampleTranslation}
-                          </p>
-                        )}
-                        {currentCard.grammarTip && (
-                          <div className="rounded-lg bg-amber-50 border border-amber-200 px-3 py-1 text-[11px] text-amber-800 font-medium mt-2">
-                            💡 {currentCard.grammarTip}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Flashcard Navigation Buttons */}
-                  <div className="flex items-center justify-between pt-1">
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsFlipped(false);
-                        setCardIndex((prev) => (prev > 0 ? prev - 1 : flashcardsList.length - 1));
-                      }}
-                      className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                      <span>Zurück</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsFlipped(!isFlipped);
-                      }}
-                      className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-200 transition shadow-xs"
-                    >
-                      <RotateCw className="h-3.5 w-3.5" />
-                      <span>{isFlipped ? "Vorderseite" : "Umdrehen"}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsFlipped(false);
-                        setCardIndex((prev) => (prev + 1) % flashcardsList.length);
-                      }}
-                      className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-800 transition shadow-sm"
-                    >
-                      <span>Weiter</span>
-                      <ChevronRight className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* 2. Reading / Listening Passage */}
-              {workbook.readingPassage && (
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-3">
-                  <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-                    <BookOpen className="h-4 w-4 text-slate-700" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
-                      Lesetext / Dialogmanuskript
-                    </span>
-                  </div>
-                  <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line font-normal">
-                    {workbook.readingPassage}
-                  </p>
-                </div>
-              )}
-
-              {/* 3. Grammar Blueprint & Exam Pro-Tips */}
-              {workbook.grammarNotes && (
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
-                  <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-                    <Sparkles className="h-4 w-4 text-amber-600" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
-                      Grammatik-Blueprint &amp; Prüfungsregeln
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                    {workbook.grammarNotes.rule}
-                  </p>
-
-                  <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-4 space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800">
-                      ⚡ GOETHE / TELC PRO-TIPP
-                    </span>
-                    <p className="text-xs text-amber-900 leading-relaxed">
-                      {workbook.grammarNotes.proTip}
-                    </p>
-                  </div>
+                  )}
 
                   {Array.isArray(workbook.grammarNotes.examples) &&
                     workbook.grammarNotes.examples.length > 0 && (
-                      <div className="space-y-1.5 pt-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                      <div key="gr-examples-box" className="space-y-2 pt-1">
+                        <span key="gr-examples-label" className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                           Musterbeispiele:
                         </span>
-                        <ul className="list-disc list-inside text-xs text-slate-600 space-y-1">
+                        <ul className="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1.5">
                           {workbook.grammarNotes.examples.map((ex, idx) => (
-                            <li key={idx}>{ex}</li>
+                            <li key={`ex-${idx}`}>
+                              <span key={`ex-span-${idx}`}>{ex}</span>
+                            </li>
                           ))}
                         </ul>
                       </div>
                     )}
                 </div>
+              ) : (
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  <span key="gr-fallback-sub">{workbook.subtitle || workbook.title}</span>
+                </p>
               )}
             </div>
           )}
-        </div>
 
-        {/* Right Column: Interactive Answer Sheet */}
-        <div className="lg:col-span-5 space-y-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-sm">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Interactive Answer Sheet
-                </span>
-                <h2 className="text-base font-semibold text-slate-900 german-headline">
-                  Antwortblatt ({(workbook.questions || []).length} Aufgaben)
-                </h2>
+          {showFlashcardsSection && currentCard && (
+            <div key={`wb-fc-box-${workbook.id}`} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <span
+                    key={`wb-fc-cat-${activeCardKey}`}
+                    className="rounded-md border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-700"
+                  >
+                    {currentCard.category || "Grammatik-Karte"}
+                  </span>
+                  <span
+                    key={`wb-fc-counter-${cardIndex}`}
+                    className="text-xs font-semibold text-slate-500"
+                  >
+                    {`Karte ${cardIndex + 1} von ${flashcardsList.length}`}
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    speakText(currentCard.frontText || currentCard.german, currentCard.audioUrl);
+                  }}
+                  className="relative z-50 cursor-pointer pointer-events-auto rounded-lg border border-slate-200 bg-slate-50 p-1.5 text-slate-700 hover:bg-slate-100 transition shadow-xs"
+                  title="Aussprache anhören"
+                >
+                  <Volume2 className="h-4 w-4" />
+                </button>
               </div>
 
-              {graded && (
-                <span className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                  Score: {graded.score}/{graded.total} ({graded.percent}%)
-                </span>
-              )}
-            </div>
-
-            <div className="max-h-[560px] space-y-3.5 overflow-y-auto pr-1">
-              {(Array.isArray(workbook?.questions) ? workbook.questions : []).map((q) => {
-                if (!q) return null;
-                const val = answers[q.id] || "";
-                const gradedItem = (graded?.items || []).find((it) => it.id === q.id);
-
-                return (
-                  <div
-                    key={q.id}
-                    className={`rounded-xl border p-4 text-xs transition ${
-                      gradedItem
-                        ? gradedItem.isCorrect
-                          ? "border-emerald-300 bg-emerald-50/70"
-                          : "border-amber-300 bg-amber-50/70"
-                        : "border-slate-200 bg-slate-50/60"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="font-semibold text-slate-900">{q.label}</span>
-                      <span className="text-[10px] font-medium text-slate-500">
-                        Teil {q.page || 1}
-                      </span>
-                    </div>
-
-                    <p className="mt-1.5 text-xs font-medium text-slate-800">{q.prompt}</p>
-
-                    {q.type === "mcq" && Array.isArray(q.options) && q.options.length > 0 ? (
-                      <div className="mt-2.5 grid grid-cols-1 gap-2">
-                        {(q.options || []).map((opt) => {
-                          const active = val === opt.id;
-                          return (
-                            <button
-                              key={opt.id}
-                              type="button"
-                              onClick={() => setAnswer(q.id, opt.id)}
-                              className={`relative z-20 text-left rounded-lg border px-3 py-2 text-xs font-semibold transition cursor-pointer ${
-                                active
-                                  ? "border-slate-900 bg-slate-900 text-white shadow-xs"
-                                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 shadow-xs"
-                              }`}
-                            >
-                              <span className="mr-2 uppercase font-mono">{opt.id})</span>
-                              {opt.text}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      <div className="mt-2.5 space-y-1.5">
-                        <div className="flex items-center gap-1">
-                          {(MINI_UMLAUTS || []).map((u) => (
-                            <button
-                              key={u}
-                              type="button"
-                              onClick={() => setAnswer(q.id, val + u)}
-                              className="relative z-20 rounded border border-slate-200 bg-white px-2 py-0.5 font-mono text-xs font-semibold text-slate-700 hover:bg-slate-900 hover:text-white transition shadow-xs cursor-pointer"
-                            >
-                              {u}
-                            </button>
-                          ))}
-                        </div>
-                        <input
-                          type="text"
-                          value={val}
-                          onChange={(e) => setAnswer(q.id, e.target.value)}
-                          placeholder="Ihre Lösung eingeben…"
-                          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                        />
-                      </div>
+              <div
+                onClick={() => setIsFlipped(!isFlipped)}
+                className="relative z-10 cursor-pointer pointer-events-auto min-h-[180px] rounded-xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:shadow-md hover:bg-white"
+              >
+                {!isFlipped ? (
+                  <div key={`wb-fc-front-${activeCardKey}`} className="space-y-2 pointer-events-none">
+                    <span key="wb-fc-front-label" className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                      GRAMMATIK-STRUKTUR · TIPPE ZUM WENDEN
+                    </span>
+                    <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+                      <span key={`wb-fc-front-text-${activeCardKey}`}>{currentCard.frontText || currentCard.german}</span>
+                    </h4>
+                    {currentCard.phonetic && (
+                      <p className="font-mono text-xs text-slate-500">
+                        <span key={`wb-fc-phonetic-${activeCardKey}`}>{`[${currentCard.phonetic}]`}</span>
+                      </p>
                     )}
-
-                    {gradedItem && (
-                      <div className="mt-2.5 rounded-lg border border-slate-200 bg-white p-2.5 text-[11px] space-y-1 shadow-xs">
-                        <div className="flex items-center gap-1.5 font-semibold">
-                          {gradedItem.isCorrect ? (
-                            <span className="inline-flex items-center gap-1 text-emerald-700">
-                              <CheckCircle2 className="h-3.5 w-3.5" /> Richtig!
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 text-amber-700">
-                              <XCircle className="h-3.5 w-3.5" /> Lösung: {gradedItem.correctAnswer}
-                            </span>
-                          )}
-                        </div>
-                        {gradedItem.explanation && (
-                          <p className="text-slate-600 german-reading leading-relaxed">
-                            {gradedItem.explanation}
-                          </p>
-                        )}
+                    {currentCard.exampleDe && (
+                      <p className="text-xs text-slate-600 italic pt-1">
+                        <span key={`wb-fc-exde-${activeCardKey}`}>{`\u201C${currentCard.exampleDe}\u201D`}</span>
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div key={`wb-fc-back-${activeCardKey}`} className="space-y-2 pointer-events-none">
+                    <span key="wb-fc-back-label" className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                      REGEL &amp; BEDEUTUNG
+                    </span>
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-900">
+                      <span key={`wb-fc-back-text-${activeCardKey}`}>{currentCard.backText || currentCard.english}</span>
+                    </h4>
+                    {currentCard.hindi && (
+                      <p className="text-sm font-semibold text-emerald-700">
+                        <span key={`wb-fc-hindi-${activeCardKey}`}>{currentCard.hindi}</span>
+                      </p>
+                    )}
+                    {currentCard.exampleTranslation && (
+                      <p className="text-xs text-slate-600 italic">
+                        <span key={`wb-fc-extrans-${activeCardKey}`}>{currentCard.exampleTranslation}</span>
+                      </p>
+                    )}
+                    {currentCard.grammarTip && (
+                      <div key={`wb-fc-tip-${activeCardKey}`} className="rounded-lg bg-amber-50 border border-amber-200 px-3 py-1.5 text-[11px] text-amber-800 font-medium mt-2">
+                        <span>{`💡 ${currentCard.grammarTip}`}</span>
                       </div>
                     )}
                   </div>
-                );
-              })}
-            </div>
+                )}
+              </div>
 
-            <button
-              type="button"
-              disabled={grading}
-              onClick={handleGrade}
-              className="relative z-20 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm disabled:opacity-50 cursor-pointer"
-            >
-              <Sparkles className="h-4 w-4" />
-              <span>{grading ? "Prüfe Antworten…" : "Antwortblatt jetzt auswerten"}</span>
-            </button>
-          </div>
+              <div className="flex items-center justify-between pt-1">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsFlipped(false);
+                    setCardIndex((prev) => (prev > 0 ? prev - 1 : flashcardsList.length - 1));
+                  }}
+                  className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  <span>Zurück</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsFlipped(!isFlipped);
+                  }}
+                  className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-200 transition shadow-xs"
+                >
+                  <RotateCw className="h-3.5 w-3.5" />
+                  <span key={`wb-fc-flip-btn-${isFlipped ? "front" : "back"}`}>
+                    {isFlipped ? "Vorderseite" : "Umdrehen"}
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsFlipped(false);
+                    setCardIndex((prev) => (prev + 1) % flashcardsList.length);
+                  }}
+                  className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-800 transition shadow-sm"
+                >
+                  <span>Weiter</span>
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      ) : (
+        /* STRICT PRÜFUNGSTRAINING MODE (exam_lesen / exam_hoeren / exam_schreiben / exam_sprechen):
+           Grammar Pillars and Flashcards are hidden completely.
+           exam_lesen hides the Audio Player and renders text + Answer Sheet. */
+        <div key={`wb-exam-${workbook.id}-${effectiveContentType}`} className="grid gap-6 lg:grid-cols-12" data-content-type={effectiveContentType}>
+          {/* Left Column: Audio (only Hören/Sprechen) + Reading Passage / PDF */}
+          <div className="lg:col-span-7 space-y-5">
+            {showAudioPlayer && (
+              <div key={`wb-audio-${workbook.id}`} className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 text-slate-900 shadow-sm">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 shrink-0">
+                      <Headphones className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span key="audio-studio-label" className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                          Goethe / telc Studio Audio
+                        </span>
+                        <span key="audio-hd-badge" className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
+                          128 kbps HD
+                        </span>
+                      </div>
+                      <h3 className="text-xs sm:text-sm font-semibold text-slate-900 truncate">
+                        <span key="audio-wb-title">{workbook.title}</span>
+                      </h3>
+                    </div>
+                  </div>
+                  <span key="audio-mode-badge" className="hidden sm:inline-flex rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-600 shrink-0">
+                    Prüfungsmodus Hören
+                  </span>
+                </div>
+
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-2">
+                  <audio
+                    controls
+                    preload="metadata"
+                    playsInline
+                    src={activeAudioSrc}
+                    onError={handleAudioError}
+                    onCanPlay={() => setAudioError(false)}
+                    onLoadedMetadata={() => setAudioError(false)}
+                    className="w-full h-10"
+                  />
+                  {audioError && (
+                    <div key="audio-err-box" className="mt-2 rounded-lg border border-red-200 bg-red-50 p-2.5 text-xs font-semibold text-red-600 flex items-center gap-1.5">
+                      <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
+                      <span>Hinweis: Lokaler Audiotrack wird für diese Übungssitzung bereitgestellt.</span>
+                    </div>
+                  )}
+                </div>
+
+                <p className="mt-2.5 text-[11px] text-slate-500 leading-snug">
+                  <span className="text-amber-700 font-semibold uppercase tracking-wider">
+                    PRÜFUNGSHINWEIS ·
+                  </span>{" "}
+                  <span>
+                    Der Audiotext wird während der Prüfung 1x bis 2x abgespielt. Notieren Sie Ihre Antworten im Antwortblatt rechts.
+                  </span>
+                </p>
+              </div>
+            )}
+
+            {showReadingSection && workbook.pdfToken ? (
+              <AntiPiracyPdfViewer
+                key={`wb-pdf-${workbook.id}`}
+                pdfToken={workbook.pdfToken}
+                viewerEmail={workbook.viewerEmail || "demo@gatewaytofuture.com"}
+                workbookTitle={`${workbook.title} (${workbook.level.toUpperCase()})`}
+                totalPages={workbook.pages}
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
+              />
+            ) : (
+              showReadingSection && (
+                <div key={`wb-reading-${workbook.id}`} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-3">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="h-4 w-4 text-slate-700" />
+                      <span key={`reading-heading-${effectiveContentType}`} className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                        {isExamLesenMode
+                          ? "Lesetext & Prüfungsaufgabe"
+                          : isExamSchreibenMode
+                          ? "Schreibaufgabe & Kriterien"
+                          : isExamSprechenMode
+                          ? "Sprechaufgabe & Redemittel-Briefing"
+                          : "Hörverstehen — Aufgabenkontext"}
+                      </span>
+                    </div>
+                    <span key={`reading-badge-${effectiveContentType}`} className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                      {effectiveContentType.replace("_", " ").toUpperCase()}
+                    </span>
+                  </div>
+
+                  {workbook.readingPassage ? (
+                    <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line font-normal german-reading">
+                      <span key={`reading-passage-${workbook.id}`}>{workbook.readingPassage}</span>
+                    </p>
+                  ) : (
+                    <div key={`reading-fallback-${workbook.id}`} className="space-y-2 text-sm text-slate-600 leading-relaxed">
+                      <p className="font-semibold text-slate-800">
+                        <span key="reading-fb-title">{workbook.title}</span>
+                      </p>
+                      <p>
+                        <span key="reading-fb-sub">{workbook.subtitle}</span>
+                      </p>
+                      {isExamHoerenMode && (
+                        <p className="text-xs text-slate-500">
+                          <span key="reading-fb-hoeren">
+                            Hören Sie die Audioaufnahme oben aufmerksam an und markieren Sie die richtigen Antworten im Antwortblatt rechts.
+                          </span>
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Right Column: Interactive Answer Sheet */}
+          {showAnswerSheet && (
+            <div key={`wb-sheet-${workbook.id}`} className="lg:col-span-5 space-y-4">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-sm">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Interactive Answer Sheet
+                    </span>
+                    <h2 className="text-base font-semibold text-slate-900 german-headline">
+                      <span key="sheet-count">{`Antwortblatt (${(workbook.questions || []).length} Aufgaben)`}</span>
+                    </h2>
+                  </div>
+
+                  {graded && (
+                    <span key="sheet-score" className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                      {`Score: ${graded.score}/${graded.total} (${graded.percent}%)`}
+                    </span>
+                  )}
+                </div>
+
+                <div className="max-h-[560px] space-y-3.5 overflow-y-auto pr-1">
+                  {(Array.isArray(workbook?.questions) ? workbook.questions : []).map((q) => {
+                    if (!q) return null;
+                    const val = answers[q.id] || "";
+                    const gradedItem = (graded?.items || []).find((it) => it.id === q.id);
+
+                    return (
+                      <div
+                        key={q.id}
+                        className={`rounded-xl border p-4 text-xs transition ${
+                          gradedItem
+                            ? gradedItem.isCorrect
+                              ? "border-emerald-300 bg-emerald-50/70"
+                              : "border-amber-300 bg-amber-50/70"
+                            : "border-slate-200 bg-slate-50/60"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span key={`q-lbl-${q.id}`} className="font-semibold text-slate-900">{q.label}</span>
+                          <span key={`q-page-${q.id}`} className="text-[10px] font-medium text-slate-500">
+                            {`Teil ${q.page || 1}`}
+                          </span>
+                        </div>
+
+                        <p className="mt-1.5 text-xs font-medium text-slate-800">
+                          <span key={`q-prompt-${q.id}`}>{q.prompt}</span>
+                        </p>
+
+                        {q.type === "mcq" && Array.isArray(q.options) && q.options.length > 0 ? (
+                          <div className="mt-2.5 grid grid-cols-1 gap-2">
+                            {(q.options || []).map((opt) => {
+                              const active = val === opt.id;
+                              return (
+                                <button
+                                  key={opt.id}
+                                  type="button"
+                                  onClick={() => setAnswer(q.id, opt.id)}
+                                  className={`relative z-20 text-left rounded-lg border px-3 py-2 text-xs font-semibold transition cursor-pointer ${
+                                    active
+                                      ? "border-slate-900 bg-slate-900 text-white shadow-xs"
+                                      : "border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 shadow-xs"
+                                  }`}
+                                >
+                                  <span className="mr-2 uppercase font-mono">{`${opt.id})`}</span>
+                                  <span key={`opt-text-${q.id}-${opt.id}`}>{opt.text}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        ) : (
+                          <div className="mt-2.5 space-y-1.5">
+                            <div className="flex items-center gap-1">
+                              {(MINI_UMLAUTS || []).map((u) => (
+                                <button
+                                  key={u}
+                                  type="button"
+                                  onClick={() => setAnswer(q.id, val + u)}
+                                  className="relative z-20 rounded border border-slate-200 bg-white px-2 py-0.5 font-mono text-xs font-semibold text-slate-700 hover:bg-slate-900 hover:text-white transition shadow-xs cursor-pointer"
+                                >
+                                  <span>{u}</span>
+                                </button>
+                              ))}
+                            </div>
+                            <input
+                              type="text"
+                              value={val}
+                              onChange={(e) => setAnswer(q.id, e.target.value)}
+                              placeholder="Ihre Lösung eingeben…"
+                              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
+                            />
+                          </div>
+                        )}
+
+                        {gradedItem && (
+                          <div key={`graded-${q.id}`} className="mt-2.5 rounded-lg border border-slate-200 bg-white p-2.5 text-[11px] space-y-1 shadow-xs">
+                            <div className="flex items-center gap-1.5 font-semibold">
+                              {gradedItem.isCorrect ? (
+                                <span key={`graded-ok-${q.id}`} className="inline-flex items-center gap-1 text-emerald-700">
+                                  <CheckCircle2 className="h-3.5 w-3.5" />
+                                  <span>Richtig!</span>
+                                </span>
+                              ) : (
+                                <span key={`graded-err-${q.id}`} className="inline-flex items-center gap-1 text-amber-700">
+                                  <XCircle className="h-3.5 w-3.5" />
+                                  <span>{`Lösung: ${gradedItem.correctAnswer}`}</span>
+                                </span>
+                              )}
+                            </div>
+                            {gradedItem.explanation && (
+                              <p className="text-slate-600 german-reading leading-relaxed">
+                                <span key={`graded-exp-${q.id}`}>{gradedItem.explanation}</span>
+                              </p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <button
+                  type="button"
+                  disabled={grading}
+                  onClick={handleGrade}
+                  className="relative z-20 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm disabled:opacity-50 cursor-pointer"
+                >
+                  <Sparkles className="h-4 w-4" />
+                  <span key={`grade-btn-${grading ? "busy" : "idle"}`}>
+                    {grading ? "Prüfe Antworten…" : "Antwortblatt jetzt auswerten"}
+                  </span>
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -15,7 +15,11 @@ import { clearGtfAuthCookie, setGtfAuthCookie, useAuth } from "@/lib/auth-contex
 import { mapFirebaseAuthError } from "@/lib/auth-errors";
 import { saveActiveUserProfile } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
-import { ensureFirebaseLocalPersistence, getFirebaseAuth } from "@/lib/firebase";
+import {
+  ensureFirebaseLocalPersistence,
+  getFirebaseAuth,
+  pushSignupToN8nWebhook,
+} from "@/lib/firebase";
 
 const EMAIL_ACTION_CODE_SETTINGS = {
   url: "https://app.gatewaytofuture.com/login",
@@ -28,6 +32,7 @@ export default function RegisterPage() {
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -83,27 +88,43 @@ export default function RegisterPage() {
         await sendEmailVerification(credential.user, EMAIL_ACTION_CODE_SETTINGS);
         clearGtfAuthCookie();
 
+        const studentId = `GTF-2026-${credential.user.uid.slice(-4).toUpperCase()}`;
+        const cleanPhone = phone.trim();
+
         // Persist candidate record without issuing active session until verified login
         fetch("/api/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            studentId,
             name: cleanName,
             fullName: cleanName,
             email: cleanEmail,
+            phone: cleanPhone,
             password,
             course: "sprachakademie",
             requireEmailVerification: true,
           }),
         }).catch(() => {});
 
-        // TODO: Connect to n8n/WhatsApp API to send the Official GTF Welcome Message.
+        // Push new user data directly to GTF n8n WhatsApp webhook (non-blocking)
+        void pushSignupToN8nWebhook({
+          studentId,
+          fullName: cleanName,
+          email: cleanEmail,
+          phone: cleanPhone,
+          course: "A1",
+          uid: credential.user.uid,
+        });
+
         fetch("/api/auth/welcome", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            studentId,
             email: cleanEmail,
             name: cleanName,
+            phone: cleanPhone,
             uid: credential.user.uid,
           }),
         }).catch(() => {});
@@ -123,6 +144,7 @@ export default function RegisterPage() {
           throw fbErr;
         }
 
+        const cleanPhone = phone.trim();
         const res = await fetch("/api/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -130,6 +152,7 @@ export default function RegisterPage() {
             name: cleanName,
             fullName: cleanName,
             email: cleanEmail.toLowerCase(),
+            phone: cleanPhone,
             password,
             course: "sprachakademie",
             requireEmailVerification: false,
@@ -138,13 +161,24 @@ export default function RegisterPage() {
         const data = await res.json().catch(() => ({}));
 
         if (res.ok && (data.success || data.ok) && data.user) {
-          // TODO: Connect to n8n/WhatsApp API to send the Official GTF Welcome Message.
+          const fallbackStudentId = data.user.studentId || data.user.id || "";
+          void pushSignupToN8nWebhook({
+            studentId: fallbackStudentId,
+            fullName: cleanName,
+            email: cleanEmail.toLowerCase(),
+            phone: cleanPhone || data.user.phone || "",
+            course: data.user.course || "A1",
+            uid: data.user.id || data.user.studentId,
+          });
+
           fetch("/api/auth/welcome", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+              studentId: fallbackStudentId,
               email: cleanEmail.toLowerCase(),
               name: cleanName,
+              phone: cleanPhone || data.user.phone || "",
               uid: data.user.id || data.user.studentId,
             }),
           }).catch(() => {});
@@ -242,7 +276,7 @@ export default function RegisterPage() {
         studentId: `GTF-2026-${reloaded.uid.slice(-4).toUpperCase()}`,
         userEmail: (reloaded.email || verificationSentTo).trim().toLowerCase(),
         fullName: reloaded.displayName || fullName.trim() || verificationSentTo.split("@")[0],
-        phone: "",
+        phone: phone.trim(),
         phoneVerified: true,
         course: "sprachakademie",
         deviceType: "web",
@@ -264,7 +298,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#07090E] text-white flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-between overflow-x-hidden">
       <AuthToast toast={toast} onDismiss={() => setToast(null)} />
 
       {/* Architectural Obsidian Lighting */}
@@ -397,7 +431,7 @@ export default function RegisterPage() {
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="First and last name"
-                      className="w-full h-12 rounded-xl border border-white/15 bg-[#07090E] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
+                      className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
                     />
                   </div>
 
@@ -415,7 +449,25 @@ export default function RegisterPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="w-full h-12 rounded-xl border border-white/15 bg-[#07090E] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
+                      className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="register-phone"
+                      className="block text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-400"
+                    >
+                      WhatsApp / Phone <span className="text-zinc-500 lowercase">(optional)</span>
+                    </label>
+                    <input
+                      id="register-phone"
+                      type="tel"
+                      autoComplete="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="+49 152 28372894 / +91 98..."
+                      className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
                     />
                   </div>
 
@@ -434,7 +486,7 @@ export default function RegisterPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Minimum 6 characters"
-                        className="w-full h-12 rounded-xl border border-white/15 bg-[#07090E] pl-4 pr-11 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
+                        className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 pl-4 pr-11 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
                       />
                       <button
                         type="button"

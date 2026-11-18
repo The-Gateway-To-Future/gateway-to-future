@@ -368,7 +368,7 @@ export default function FounderAdminPortalPage() {
   // ── Password Gate Screen ─────────────────────────────────────────────────
   if (!authenticated) {
     return (
-      <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-slate-950 via-gtf-dark to-gtf-primary text-white">
+      <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-slate-900 via-gtf-dark to-gtf-primary text-white">
         <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
           <Link href="/dashboard" className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gtf-gold font-extrabold text-gtf-ink">
@@ -413,7 +413,7 @@ export default function FounderAdminPortalPage() {
                     value={adminPassword}
                     onChange={(e) => setAdminPassword(e.target.value)}
                     placeholder="Enter ADMIN_SECRET_PASSWORD..."
-                    className="w-full rounded-xl border border-white/15 bg-slate-950/90 py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 focus:border-gtf-gold focus:outline-none"
+                    className="w-full rounded-xl border border-white/15 bg-slate-900/90 py-2.5 pl-10 pr-4 text-sm text-white placeholder-slate-500 focus:border-gtf-gold focus:outline-none"
                     required
                   />
                 </div>
@@ -481,7 +481,7 @@ export default function FounderAdminPortalPage() {
                   Founder Admin Command Center
                 </span>
                 <span className="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-300">
-                  Ashutosh Sharma &amp; Sarbjit Kour
+                  Sarbjit Kour · Founder &amp; CEO
                 </span>
               </div>
               <p className="text-xs text-amber-300">
@@ -1045,7 +1045,7 @@ export default function FounderAdminPortalPage() {
               </div>
 
               {factoryLog && (
-                <pre className="mt-4 max-h-48 overflow-auto rounded-xl bg-slate-950 p-4 font-mono text-[11px] text-emerald-300">
+                <pre className="mt-4 max-h-48 overflow-auto rounded-xl bg-slate-900 p-4 font-mono text-[11px] text-emerald-300">
                   {factoryLog}
                 </pre>
               )}

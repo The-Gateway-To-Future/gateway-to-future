@@ -174,11 +174,26 @@ export interface WorkbookQuestion {
   explanation?: string;
 }
 
+export type WorkbookContentType =
+  | "grammar"
+  | "exam_lesen"
+  | "exam_hoeren"
+  | "exam_schreiben"
+  | "exam_sprechen";
+
+export interface GrammarNotes {
+  rule: string;
+  proTip: string;
+  examples: string[];
+}
+
 export interface Workbook {
   id: string;
   title: string;
   subtitle: string;
   level: Level;
+  contentType?: WorkbookContentType;
+  module?: string;
   productSlug: string;
   isFree: boolean;
   priceEur: number;
@@ -189,6 +204,8 @@ export interface Workbook {
   audioUrl?: string;
   skill?: string;
   flashcards?: FlashcardDeckItem[];
+  grammarNotes?: GrammarNotes;
+  readingPassage?: string;
   /** Server-only. Local file in /data/pdfs (offline demo) or Drive reference. */
   pdf?: { localFile?: string } & DriveRef;
   questions: WorkbookQuestion[];
@@ -199,14 +216,12 @@ export interface WorkbookClientView extends Omit<Workbook, "pdf"> {
   /** Opaque token for /api/drive/stream-pdf, only present when unlocked. */
   pdfToken?: string;
   viewerEmail?: string;
+  contentType?: WorkbookContentType;
+  module?: string;
   audioUrl?: string;
   skill?: string;
   flashcards?: FlashcardDeckItem[];
-  grammarNotes?: {
-    rule: string;
-    proTip: string;
-    examples: string[];
-  };
+  grammarNotes?: GrammarNotes;
   readingPassage?: string;
 }
 

@@ -1,0 +1,157 @@
+{
+  "id": "gtf-whatsapp-onboarding-001",
+  "name": "GTF — Firebase Auth Webhook to WhatsApp Business Onboarding Engine",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "firebase-auth-signup",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "id": "gtf-node-001-auth-webhook",
+      "name": "Firebase Auth Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        200,
+        340
+      ],
+      "webhookId": "firebase-auth-signup"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ==============================================================================\n// GTF Student Signup Normalization & WhatsApp Onboarding Message Formatter\n// ==============================================================================\nconst raw = $input.first().json.body || $input.first().json || {};\n\n// 1. Extract and Clean Student Identity\nconst fullName = (raw.fullName || raw.displayName || raw.name || 'GTF Student').trim();\nconst email = (raw.email || raw.userEmail || '').toLowerCase().trim();\nconst rawPhone = String(raw.phone || raw.phoneNumber || raw.whatsapp || '+4917660720947').trim();\nconst cleanPhone = rawPhone.replace(/[^0-9]/g, '');\nconst whatsappE164 = cleanPhone.startsWith('+') ? cleanPhone : (cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone);\n\n// 2. Target Level & Program\nconst rawCourse = (raw.course || raw.targetLevel || raw.level || 'A1').toUpperCase().trim();\nconst course = ['A1', 'A2', 'B1', 'B2', 'STUDIENKOLLEG', 'PFLEGE'].includes(rawCourse) ? rawCourse : 'A1';\n\n// 3. Generate Valid GTF Student ID (GTF-YYYY-XXXX format)\nconst year = new Date().getFullYear();\nconst randomSuffix = Math.floor(1000 + Math.random() * 9000);\nconst studentId = raw.studentId && /^GTF-[0-9]{4}-[A-Za-z0-9]{4}$/.test(raw.studentId)\n  ? raw.studentId\n  : `GTF-${year}-${randomSuffix}`;\n\n// 4. Portal Credentials & Direct Links\nconst portalUrl = 'https://app.gatewaytofuture.com';\nconst dashboardLink = `${portalUrl}/dashboard?email=${encodeURIComponent(email)}`;\nconst academyLink = `${portalUrl}/academy/${course.toLowerCase()}`;\nconst loginPasscode = raw.loginPassword || `GTF-${email.split('@')[0].slice(0, 5).toUpperCase()}-2026`;\nconst nowIso = new Date().toISOString();\n\n// 5. Construct Founder & CEO-Led Trilingual WhatsApp Onboarding Message\nconst whatsappMessage = `*Herzlich willkommen bei The Gateway to Future (GTF) Berlin!* 🇩🇪🇮🇳\\n\\nGuten Tag *${fullName}*,\\n\\nAapka German *${course}* Learning & Relocation Portal officially activate ho chuka hai! Berlin HQ se Sarbjit Kour (Founder & CEO, Gateway To Future) aapka swagat karti hain.\\n\\n━━━━━━━━━━━━━━━━━━━━\\n🎓 *AAPKE GTF PORTAL LOGIN CREDENTIALS:*\\n• *Student ID:* \\`${studentId}\\`\\n• *Registered Email:* ${email}\\n• *Access Passcode:* \\`${loginPasscode}\\`\\n• *Direct Dashboard Link:* ${dashboardLink}\\n• *Your Course Hub:* ${academyLink}\\n━━━━━━━━━━━━━━━━━━━━\\n\\n🚀 *WHAT TO DO IN YOUR FIRST 24 HOURS:*\\n1. *Vocabulary Decks & Flashcards:* Daily 10 cards drill karein (with native studio audio + Hindi memory tricks).\\n2. *122 Säulen Grammar Dossiers:* Open Subdivision 02 for structured rulebooks.\\n3. *Hören & Lesen Labs:* 40 interactive Goethe/telc style labs with instant Musterlösung.\\n4. *7 Proprietary Workbooks:* Download your official workbook suite from the portal.\\n\\n📞 *FOUNDER & CEO SUPPORT:*\\nAgar aapko course, blocked account (Sperrkonto), visa checklist, ya hospital/university placement mein koi bhi sawal ho, toh seedha Berlin HQ (+49 152 28372894) par WhatsApp message bhej sakte hain.\\n\\nWir wünschen Ihnen viel Erfolg bei Ihrer Vorbereitung!\\n\\n*Sarbjit Kour (Founder & CEO, Gateway To Future)*\\nThe Gateway to Future (GTF)\\n_Schönefelder Straße 2, GStU, 12355 Berlin, Germany_\\nwww.gatewaytofuture.com`;\n\nreturn [\n  {\n    json: {\n      studentId,\n      email,\n      fullName,\n      phone: rawPhone,\n      whatsappE164,\n      course,\n      role: 'student',\n      registeredAt: nowIso,\n      updatedAt: nowIso,\n      loginPasscode,\n      dashboardLink,\n      whatsappMessage,\n      onboardingStatus: 'READY_TO_DISPATCH'\n    }\n  }\n];"
+      },
+      "id": "gtf-node-002-normalize-student",
+      "name": "Normalize Student Profile & Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://firestore.googleapis.com/v1/projects/gateway-to-future/databases/(default)/documents/students/{{ $json.studentId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"studentId\": { \"stringValue\": \"{{ $json.studentId }}\" },\n    \"email\": { \"stringValue\": \"{{ $json.email }}\" },\n    \"fullName\": { \"stringValue\": \"{{ $json.fullName }}\" },\n    \"phone\": { \"stringValue\": \"{{ $json.phone }}\" },\n    \"course\": { \"stringValue\": \"{{ $json.course }}\" },\n    \"role\": { \"stringValue\": \"student\" },\n    \"registeredAt\": { \"timestampValue\": \"{{ $json.registeredAt }}\" },\n    \"updatedAt\": { \"timestampValue\": \"{{ $json.updatedAt }}\" }\n  }\n}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "gtf-node-003-firestore-student",
+      "name": "Save Student to Firestore (students/{id})",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        220
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $env.META_WHATSAPP_PHONE_NUMBER_ID || 'GTF_WHATSAPP_PHONE_ID' }}/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.META_WHATSAPP_ACCESS_TOKEN || 'GTF_WHATSAPP_ACCESS_TOKEN' }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"recipient_type\": \"individual\",\n  \"to\": \"{{ $json.whatsappE164 }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"preview_url\": true,\n    \"body\": \"{{ $json.whatsappMessage.replace(/\"/g, '\\\\\"').replace(/\\n/g, '\\\\n') }}\"\n  }\n}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "gtf-node-004-meta-whatsapp",
+      "name": "Dispatch WhatsApp Welcome via Meta API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        460
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"ok\": true,\n  \"brand\": \"The Gateway to Future (GTF) Berlin\",\n  \"studentId\": \"{{ $json.studentId }}\",\n  \"email\": \"{{ $json.email }}\",\n  \"fullName\": \"{{ $json.fullName }}\",\n  \"course\": \"{{ $json.course }}\",\n  \"whatsappOnboardingDispatched\": true,\n  \"portalDashboard\": \"{{ $json.dashboardLink }}\",\n  \"status\": \"STUDENT_ONBOARDED_SUCCESSFULLY\",\n  \"timestamp\": \"{{ $now.toISOString() }}\"\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "gtf-node-005-respond-ok",
+      "name": "Respond HTTP 200 to Client",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1000,
+        340
+      ]
+    }
+  ],
+  "connections": {
+    "Firebase Auth Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Normalize Student Profile & Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Student Profile & Message": {
+      "main": [
+        [
+          {
+            "node": "Save Student to Firestore (students/{id})",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Dispatch WhatsApp Welcome via Meta API",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond HTTP 200 to Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

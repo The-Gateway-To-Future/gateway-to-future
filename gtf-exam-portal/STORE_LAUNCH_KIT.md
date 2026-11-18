@@ -29,8 +29,9 @@
 | **Engine Framework** | Capacitor 8 Native Container + Next.js App Router |
 | **Production Target URL** | `https://app.gatewaytofuture.com` |
 | **Allowed Navigation Rules** | `app.gatewaytofuture.com`, `*.gatewaytofuture.com`, `gatewaytofuture.com`, `*.firebaseapp.com`, `*.googleapis.com`, `accounts.google.com` |
-| **Required Permissions (Android)** | `INTERNET`, `ACCESS_NETWORK_STATE`, `RECORD_AUDIO`, `MODIFY_AUDIO_SETTINGS` |
-| **Required Permissions (iOS)** | `NSMicrophoneUsageDescription` (AI German Sprechen practice) |
+| **Required Permissions (Android)** | `INTERNET`, `ACCESS_NETWORK_STATE`, `RECORD_AUDIO`, `MODIFY_AUDIO_SETTINGS`, `WAKE_LOCK`, `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK` |
+| **Required Permissions (iOS)** | `NSMicrophoneUsageDescription` (AI German Sprechen practice), `UIBackgroundModes` (`audio`) |
+| **Offline Fallback Handling** | Configured via `server.errorPath: "index.html"` loading bundled native offline recovery page from `webDir: "out"` with auto-reconnect |
 | **Primary Category** | Education / Language Learning |
 | **Secondary Category** | Productivity / International Careers |
 
@@ -75,7 +76,7 @@ PIN / Postal Code: 247663
 Country: India
 
 European / Operational Headquarters:
-Ketschendorfer Weg 33, 12683 Berlin, Germany
+Schönefelder Straße 2, GStU, 12355 Berlin, Germany
 
 Official Website:
 https://www.gatewaytofuture.com
@@ -91,16 +92,11 @@ IFSC Code: SBIN0002405
 Branch: Laksar (Haridwar)
 
 Authorized Signatory / Primary Contact:
-Full Name: Ashutosh Sharma
-Title: Founder & Managing Director
-Direct Phone: +49 152 28372894 (or +49 1522 8372894)
-Primary Email: ashusharma@gatewaytofuture.com
-
-Secondary Contact / Master Coach:
 Full Name: Sarbjit Kour
-Title: Co-Founder & Master Language Coach
+Title: Founder & CEO, Gateway To Future
 Direct Phone: +49 176 60720947
-Email: Skour8786@gmail.com
+Primary Email: info@gatewaytofuture.com
+Secondary Email: Skour8786@gmail.com
 ```
 
 ---
@@ -122,14 +118,14 @@ Thank you for your assistance. Please find below the verified corporate details 
 3. Indian GSTIN: 05AAOPR7336L3Z0 (State: Uttarakhand - Code 05)
 4. Indian PAN: AAOPR7336L
 5. Registered Address: Mahant Building, Main Market Road, Laksar, Haridwar, Uttarakhand - 247663, India
-6. European Operations HQ: Ketschendorfer Weg 33, 12683 Berlin, Germany
+6. European Operations HQ: Schönefelder Straße 2, GStU, 12355 Berlin, Germany
 7. Official Website: https://www.gatewaytofuture.com
 8. Web Application: https://app.gatewaytofuture.com
 9. Authorized Representative:
-   - Name: Ashutosh Sharma
-   - Title: Founder & Managing Director
-   - Email: ashusharma@gatewaytofuture.com
-   - Phone: +49 152 28372894
+   - Name: Sarbjit Kour
+   - Title: Founder & CEO, Gateway To Future
+   - Email: info@gatewaytofuture.com (or Skour8786@gmail.com)
+   - Phone: +49 176 60720947
 
 Attached Documents:
 - GST Registration Certificate (Form GST REG-06) showing GSTIN 05AAOPR7336L3Z0
@@ -142,11 +138,11 @@ Kindly process our D-U-N-S assignment / Apple Developer account verification at 
 
 Sincerely,
 
-Ashutosh Sharma
-Founder & Managing Director
+Sarbjit Kour
+Founder & CEO, Gateway To Future
 The Gateway to Future
-ashusharma@gatewaytofuture.com
-+49 152 28372894
+info@gatewaytofuture.com
++49 176 60720947
 www.gatewaytofuture.com
 ```
 
@@ -201,8 +197,8 @@ Whether your goal is studying at a German tuition-free public university, attend
 • Healthcare & Pflegefachkraft: Specialized medical German terminology and Fachsprachenprüfung (FSP) preparation.
 • Berlin Relocation & Mobility: Step-by-step guidance on APS certification, blocked accounts (Sperrkonto), visa filing, and Berlin city registration (Anmeldung).
 
-5. DIRECT FOUNDER MENTORSHIP
-• Guided by Berlin relocation specialists and certified German language coaches.
+5. DIRECT FOUNDER & CEO MENTORSHIP
+• Guided directly by Sarbjit Kour (Founder & CEO, Gateway To Future) — Berlin relocation leadership and certified German language coaching.
 • "Creating Career Without Borders" — personal mentorship ensuring you never navigate the German visa or admissions system alone.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -268,7 +264,14 @@ keyPassword=YOUR_KEY_PASSWORD
 ```
 
 ### Step 3: Build Signed Release App Bundle (`.aab`)
-Run from `gtf-exam-portal`:
+
+**Option 1: From Project Root (1-Click npm command)**
+```bash
+npm run build:aab
+```
+
+**Option 2: Direct Gradle Terminal Command**
+From `gtf-exam-portal`:
 
 ```bash
 # 1. Sync web assets & Capacitor config
@@ -276,8 +279,23 @@ npx cap sync android
 
 # 2. Compile signed Android App Bundle (.aab)
 cd android
+
+# On Windows (PowerShell / CMD):
+.\gradlew.bat bundleRelease
+
+# On macOS / Linux:
 ./gradlew bundleRelease
 ```
+
+**Option 3: Via Android Studio IDE**
+```bash
+npx cap open android
+```
+In Android Studio:
+1. Go to **Build > Generate Signed Bundle / APK...**
+2. Choose **Android App Bundle**.
+3. Select your keystore `gtf-release-key.jks`, enter credentials, and select **release**.
+4. Click **Create**.
 
 The compiled release bundle will be generated at:
 ```text
@@ -312,8 +330,10 @@ In Xcode:
 6. When the Organizer window opens, click **Distribute App** > **App Store Connect** > **Upload**.
 
 **Option B: Headless Terminal Build via `xcodebuild`**
+Ensure `ExportOptions.plist` is present (already configured in `ios/App/ExportOptions.plist`):
+
 ```bash
-# Archive the iOS App
+# 1. Archive the iOS App
 xcodebuild -workspace ios/App/App.xcworkspace \
   -scheme App \
   -sdk iphoneos \
@@ -321,14 +341,36 @@ xcodebuild -workspace ios/App/App.xcworkspace \
   -archivePath build/App.xcarchive \
   clean archive
 
-# Export Signed IPA using ExportOptions.plist
+# 2. Export Signed IPA using ExportOptions.plist
 xcodebuild -exportArchive \
   -archivePath build/App.xcarchive \
-  -exportOptionsPlist ExportOptions.plist \
+  -exportOptionsPlist ios/App/ExportOptions.plist \
   -exportPath build/ipa
 
-# Upload directly to App Store Connect via xcrun altool
-xcrun altool --upload-app -f build/ipa/App.ipa -t ios -u "ashusharma@gatewaytofuture.com" -p "YOUR_APP_SPECIFIC_PASSWORD"
+# 3. Upload directly to App Store Connect via xcrun altool or transporter
+xcrun altool --upload-app -f build/ipa/App.ipa -t ios -u "info@gatewaytofuture.com" -p "YOUR_APP_SPECIFIC_PASSWORD"
+```
+
+#### Reference: `ExportOptions.plist` Template
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>destination</key>
+	<string>export</string>
+	<key>method</key>
+	<string>app-store</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>teamID</key>
+	<string>YOUR_APPLE_TEAM_ID</string>
+	<key>uploadSymbols</key>
+	<true/>
+</dict>
+</plist>
 ```
 
 ---

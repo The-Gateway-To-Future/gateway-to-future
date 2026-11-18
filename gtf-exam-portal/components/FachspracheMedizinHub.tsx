@@ -93,7 +93,7 @@ export function FachspracheMedizinHub({
                 <Hospital className="h-3.5 w-3.5" />
                 <span>Clinical German &amp; FSP Pflege</span>
               </span>
-              <span className="rounded-full border border-white/10 bg-[#07090E] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+              <span className="rounded-full border border-white/10 bg-slate-900 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                 German Hospital Standard
               </span>
             </div>
@@ -184,7 +184,7 @@ export function FachspracheMedizinHub({
           </div>
 
           {showDialogueToggle && (
-            <div className="flex flex-wrap gap-1.5 rounded-xl bg-[#07090E] p-1 border border-white/10">
+            <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-900 p-1 border border-white/10">
               <button
                 type="button"
                 onClick={() => setActiveView("dialogue")}
@@ -288,7 +288,7 @@ export function FachspracheMedizinHub({
                         })
                       }
                       placeholder="z.B. Herr Walter Becker, 62 Jahre, Notaufnahme Vivantes..."
-                      className="w-full rounded-xl border border-white/15 bg-[#07090E] p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-slate-900 p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
                     />
                   </div>
 
@@ -309,7 +309,7 @@ export function FachspracheMedizinHub({
                         })
                       }
                       placeholder="z.B. Retrosternaler Druckschmerz seit 45 Minuten..."
-                      className="w-full rounded-xl border border-white/15 bg-[#07090E] p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-slate-900 p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
                     />
                   </div>
 
@@ -330,7 +330,7 @@ export function FachspracheMedizinHub({
                         })
                       }
                       placeholder="z.B. Arterielle Hypertonie unter Ramipril, Nikotinabusus..."
-                      className="w-full rounded-xl border border-white/15 bg-[#07090E] p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-slate-900 p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
                     />
                   </div>
 
@@ -351,7 +351,7 @@ export function FachspracheMedizinHub({
                         })
                       }
                       placeholder="z.B. ST-Hebungen in V1-V4, RR 165/95, Troponin positiv..."
-                      className="w-full rounded-xl border border-white/15 bg-[#07090E] p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-slate-900 p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -373,7 +373,7 @@ export function FachspracheMedizinHub({
                       })
                     }
                     placeholder="z.B. Sofortige PCI im Herzkatheterlabor, ASS 250mg i.v., Heparin..."
-                    className="w-full rounded-xl border border-white/15 bg-[#07090E] p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                    className="w-full rounded-xl border border-white/15 bg-slate-900 p-2.5 text-xs font-semibold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
                   />
                 </div>
 

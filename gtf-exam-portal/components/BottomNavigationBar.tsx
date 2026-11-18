@@ -68,7 +68,7 @@ export function BottomNavigationBar({}: BottomNavigationBarProps = {}) {
   return (
     <div
       id="bottom-nav-bar"
-      className="fixed bottom-0 left-0 right-0 z-40 block lg:hidden border-t border-white/10 bg-[#07090E]/95 select-none"
+      className="fixed bottom-0 left-0 right-0 z-40 block lg:hidden border-t border-slate-200 bg-white/95 select-none text-slate-900 shadow-sm"
       style={{
         paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))",
         WebkitBackdropFilter: "blur(10px)",
@@ -93,13 +93,13 @@ export function BottomNavigationBar({}: BottomNavigationBarProps = {}) {
                 <Icon
                   className={`h-5 w-5 transition-transform duration-200 ${
                     active
-                      ? "text-white scale-105"
-                      : "text-white/45 hover:text-white/80"
+                      ? "text-slate-900 scale-105"
+                      : "text-slate-400 hover:text-slate-700"
                   }`}
                 />
                 <span
                   className={`mt-1 text-[10px] font-semibold tracking-wider uppercase transition-colors truncate max-w-full px-1 ${
-                    active ? "text-white" : "text-white/45"
+                    active ? "text-slate-900 font-bold" : "text-slate-500"
                   }`}
                 >
                   {item.label}
@@ -107,7 +107,7 @@ export function BottomNavigationBar({}: BottomNavigationBarProps = {}) {
                 {active && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className="absolute -top-1.5 h-0.5 w-6 rounded-full !bg-white"
+                    className="absolute -top-1.5 h-0.5 w-6 rounded-full !bg-slate-900"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}

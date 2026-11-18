@@ -1,0 +1,24 @@
+{
+  "name": "gateway-to-future-master",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Gateway to Future (GTF) Berlin Master Workspace & Student Exam Portal",
+  "scripts": {
+    "build": "npm --prefix gtf-exam-portal run build",
+    "dev": "npm --prefix gtf-exam-portal run dev",
+    "start": "npm --prefix gtf-exam-portal run start",
+    "lint": "npm --prefix gtf-exam-portal run lint",
+    "typecheck": "npm --prefix gtf-exam-portal run typecheck",
+    "safe-deploy": "python scripts/gtf_qa_gatekeeper.py",
+    "cap:sync": "npm --prefix gtf-exam-portal run cap:sync",
+    "cap:android": "npm --prefix gtf-exam-portal run cap:android",
+    "cap:ios": "npm --prefix gtf-exam-portal run cap:ios",
+    "build:aab": "npm --prefix gtf-exam-portal run build:aab"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/cli": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/ios": "^8.6.2"
+  }
+}

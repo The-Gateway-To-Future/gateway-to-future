@@ -59,4 +59,4 @@ Die rhetorische Analyse verdeutlicht das Zusammenspiel von antithetischen Begrif
 In der dialektischen Erörterung werden Sachurteil und neuzeitliches Werturteil differenziert abgewogen. Aus verfassungsrechtlicher und geschichtsphilosophischer Sicht erweist sich das Zusammenspiel von demokratischer Partizipation und institutioneller Gewaltenteilung als unerlässliche Voraussetzung zur Verhinderung antidemokratischer Tendenzen.
 
 ---
-*GTF Studienkolleg Akademie Berlin • Ketschendorfer Weg 33, 12683 Berlin • [www.gatewaytofuture.com](https://www.gatewaytofuture.com)*
+*GTF Studienkolleg Akademie Berlin • Schönefelder Straße 2, GStU, 12355 Berlin • [www.gatewaytofuture.com](https://www.gatewaytofuture.com)*

@@ -1,7 +1,7 @@
 /* ==========================================================================
    The Gateway to Future (GTF) - Master Client JavaScript
    Twin-Brand Architecture, Firebase SDK SSO Bridge & Dynamic Lead Engine
-   Headquarters: Ketschendorfer Weg 33, 12683 Berlin
+   Headquarters: Schönefelder Straße 2, GStU, 12355 Berlin
    ========================================================================== */
 
 // ── 1. Google Cloud Firebase & Firestore Initialization ────────────────────────

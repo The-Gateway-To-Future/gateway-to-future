@@ -1,4 +1,11 @@
-import type { Level, Workbook, WorkbookQuestion } from "./types";
+import type {
+  FlashcardDeckItem,
+  GrammarNotes,
+  Level,
+  Workbook,
+  WorkbookContentType,
+  WorkbookQuestion,
+} from "./types";
 
 export interface CurriculumLabMeta {
   id: string;
@@ -11,14 +18,38 @@ export interface CurriculumLabMeta {
   topics: string[];
   pages: number;
   audioUrl: string;
-  skill: "hoeren" | "lesen" | "allround";
+  skill: "hoeren" | "lesen" | "schreiben" | "sprechen" | "grammar" | "allround";
+  contentType: WorkbookContentType;
+  module: "02-grammar" | "03-hoeren-lesen" | "04-modelltests";
+  grammarNotes?: GrammarNotes;
+  readingPassage?: string;
+  flashcards?: FlashcardDeckItem[];
   questions: WorkbookQuestion[];
 }
 
+type RawExamLabMeta = Omit<CurriculumLabMeta, "contentType" | "module" | "skill"> & {
+  skill: "hoeren" | "lesen" | "allround";
+};
+
+function normalizeExamLab(raw: RawExamLabMeta): CurriculumLabMeta {
+  const isAllround = raw.skill === "allround";
+  const isLesen = raw.skill === "lesen";
+  const contentType: WorkbookContentType = isAllround || isLesen ? "exam_lesen" : "exam_hoeren";
+  const module: "03-hoeren-lesen" | "04-modelltests" = isAllround ? "04-modelltests" : "03-hoeren-lesen";
+  return {
+    ...raw,
+    contentType,
+    module,
+    audioUrl: contentType === "exam_hoeren" ? raw.audioUrl : "",
+    grammarNotes: undefined,
+    flashcards: [],
+  };
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
-// LEVEL A1: 10 CORE LABS
+// LEVEL A1: 10 CORE EXAM LABS (HÖREN & LESEN)
 // ─────────────────────────────────────────────────────────────────────────────
-export const A1_CORE_LABS: CurriculumLabMeta[] = [
+const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
   {
     id: "a1-lab-01-begruessung",
     level: "a1",
@@ -871,10 +902,12 @@ export const A1_CORE_LABS: CurriculumLabMeta[] = [
   },
 ];
 
+export const A1_CORE_LABS: CurriculumLabMeta[] = A1_CORE_LABS_RAW.map(normalizeExamLab);
+
 // ─────────────────────────────────────────────────────────────────────────────
-// LEVEL A2: 10 CORE LABS
+// LEVEL A2: 10 CORE EXAM LABS (HÖREN & LESEN)
 // ─────────────────────────────────────────────────────────────────────────────
-export const A2_CORE_LABS: CurriculumLabMeta[] = [
+const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
   {
     id: "a2-lab-01-wegbeschreibung",
     level: "a2",
@@ -1707,8 +1740,10 @@ export const A2_CORE_LABS: CurriculumLabMeta[] = [
   },
 ];
 
+export const A2_CORE_LABS: CurriculumLabMeta[] = A2_CORE_LABS_RAW.map(normalizeExamLab);
+
 // ─────────────────────────────────────────────────────────────────────────────
-// LEVEL B1: 10 EXAM-FOCUSED LABS
+// LEVEL B1: 10 EXAM-FOCUSED LABS (STRICTLY PRÜFUNGSTRAINING: HÖREN/LESEN/SCHREIBEN/SPRECHEN)
 // ─────────────────────────────────────────────────────────────────────────────
 export const B1_CORE_LABS: CurriculumLabMeta[] = [
   {
@@ -1723,6 +1758,9 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     pages: 4,
     audioUrl: "/audio/hoeren/daf_b1_hoeren_01.mp3",
     skill: "hoeren",
+    contentType: "exam_hoeren",
+    module: "03-hoeren-lesen",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -1816,6 +1854,9 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     pages: 4,
     audioUrl: "/audio/hoeren/daf_b1_hoeren_02.mp3",
     skill: "hoeren",
+    contentType: "exam_hoeren",
+    module: "03-hoeren-lesen",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -1903,8 +1944,16 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "LESEN TEIL 1",
     topics: ["Lesen B1", "Blogbeitrag", "Nachhaltigkeit", "Argumente"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b1_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
+    contentType: "exam_lesen",
+    module: "03-hoeren-lesen",
+    readingPassage:
+      "BERLIN-BLOG: Gemeinsam gärtnern — Berlins grüne Oasen im Wandel\n\n" +
+      "Wer am Sonntagnachmittag über das Tempelhofer Feld spaziert, entdeckt längst nicht mehr nur Skater und Jogger, sondern auch zahlreiche Hochbeete. Auf dem ehemaligen Flughafenareal betreiben Anwohnerinnen und Anwohner ein gemeinschaftliches Urban-Gardening-Projekt für Nachbarn aus allen Generationen. Das Tempelhofer Feld ist ein Ort, auf den viele Berliner besonders stolz sind, denn hier wachsen mitten in der Großstadt frische Kräuter, Tomaten und Kürbisse.\n\n" +
+      "Stadtökologen betonen den enormen Nutzen solcher Projekte für das Stadtklima: Die bepflanzten Grünflächen sorgen für spürbare Kühlung bei sommerlicher Hitze und fördern gleichzeitig die Biodiversität von Wildbienen und Schmetterlingen in dicht bebauten Quartieren.\n\n" +
+      "Direkt neben dem Gemeinschaftsgarten entsteht außerdem eine nachhaltige Nachbarschaftskultur. Immer mehr Bewohner kaufen in einem nahegelegenen Unverpackt-Laden ein — einem Geschäft, in dem Lebensmittel konsequent ohne Einwegplastik verkauft werden und Kunden ihre eigenen Gläser mitbringen. Mein persönliches Fazit: Nachhaltiger Konsum im Alltag ist mit etwas Planung für fast jeden leicht umsetzbar.",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -1993,12 +2042,22 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     index: 4,
     indexLabel: "LAB 04 · SPRACHBAUSTEINE B1",
     title: "telc B1 Sprachbausteine — Lückentext & Grammatik",
-    subtitle: "Prüfungsrelevante Grammatikcloze-Übungen: Zweiteilige Konnektoren, Passivpräsens, Verben mit festen Präpositionen.",
+    subtitle: "Prüfungsrelevante Lückentextaufgaben im telc B1 Format: Feste Präpositionen, Relativpronomen, Konjunktiv II und Konnektoren.",
     badge: "SPRACHBAUSTEINE",
-    topics: ["Sprachbausteine", "Konnektoren", "Verben mit Präposition", "Dativ/Akkusativ"],
+    topics: ["Sprachbausteine", "Lückentext", "Bewerbungsbrief", "Prüfungsformat"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b1_hoeren_02.mp3",
+    audioUrl: "",
     skill: "lesen",
+    contentType: "exam_lesen",
+    module: "03-hoeren-lesen",
+    readingPassage:
+      "AUFGABE: Lesen Sie den folgenden Text und schließen Sie die Lücken (1–6) im Antwortblatt rechts.\n\n" +
+      "Sehr geehrte Frau Weber,\n\n" +
+      "ich interessiere mich sehr [1] Ihre Stellenausschreibung als Krankenpfleger in Ihrer Berliner Klinik. Im Team arbeitet bereits eine frühere Kommilitonin von mir — das ist genau die Bewerberin, [2] Unterlagen bereits vollständig vorliegen.\n\n" +
+      "Ein Kollege aus meinem Jahrgang spricht [3] fließend Deutsch als auch hervorragend Englisch, und genau diese sprachliche Sicherheit bringe auch ich durch meine B1-Vorbereitung mit. Ich [4] mich sehr über eine Einladung zum persönlichen Vorstellungsgespräch freuen.\n\n" +
+      "[5] des starken Regens fand unser Kennenlerntreffen letzte Woche draußen auf dem Campus statt, und ich habe nun fest vor, im kommenden Semester zusätzlich Gesundheitsmanagement an der TU Berlin zu [6].\n\n" +
+      "Mit freundlichen Grüßen\nSarbjit Kour",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2083,6 +2142,9 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     pages: 4,
     audioUrl: "/audio/hoeren/b1_hoeren_03.mp3",
     skill: "hoeren",
+    contentType: "exam_hoeren",
+    module: "03-hoeren-lesen",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2170,8 +2232,19 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "ANZEIGENABGLEICH",
     topics: ["Lesen Teil 2", "Kriterien", "Stellenanzeigen", "Selektiv"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b1_hoeren_04.mp3",
+    audioUrl: "",
     skill: "lesen",
+    contentType: "exam_lesen",
+    module: "03-hoeren-lesen",
+    readingPassage:
+      "ANZEIGENBOARD BERLIN — Kriterienabgleich (Lesen Teil 2)\n\n" +
+      "Anzeige A · Seniorenresidenz Havelblick (Berlin-Spandau)\n" +
+      "Wir suchen ab sofort zuverlässige Unterstützung für die Wochenenddienste in der Pflegeassistenz (20 Std/Woche, Teilzeit). Ideal für Quereinsteiger und Studierende. Extras: kostenloses Deutschlandticket (Jobticket) und betriebliche Altersvorsorge.\n\n" +
+      "Anzeige B · GTF Abendakademie Berlin\n" +
+      "Intensivkurs Medizinische Fachsprache B2 Online (Mo & Mi, 18:30–21:00 Uhr). Zielgruppe: Internationale Pflegekräfte und Ärztinnen, die berufsbegleitend abends trainieren möchten.\n\n" +
+      "Anzeige C · Klinikverbund Nord\n" +
+      "Gesucht: Pflegefachkraft in Vollzeit (40 Std/Woche) im rotierenden 3-Schicht-System inklusive regelmäßiger Nachtschichten. Bewerbungsfrist: 30. November (spätere Einsendungen können im Auswahlverfahren nicht berücksichtigt werden). Ihre Unterlagen richten Sie bitte direkt an unsere Personalabteilung, Frau Schneider.",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2259,8 +2332,19 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "SCHREIBTRAINING",
     topics: ["B1 Schreiben", "Beschwerdebrief", "DIN Norm", "Redemittel"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b1_hoeren_01.mp3",
-    skill: "lesen",
+    audioUrl: "",
+    skill: "schreiben",
+    contentType: "exam_schreiben",
+    module: "04-modelltests",
+    readingPassage:
+      "PRÜFUNGSAUFGABE B1 SCHREIBEN · FORMELLE BESCHWERDE (DIN 5008)\n\n" +
+      "Situation: Sie haben online ein neues Laptop-Modell bestellt, doch bei der Lieferung ist das Gerät defekt. Sie kennen den Namen der Sachbearbeiterin oder des Sachbearbeiters nicht.\n\n" +
+      "Schreiben Sie eine formelle Beschwerde nach Goethe/telc B1 Standard:\n" +
+      "1. Verwenden Sie eine sachliche, anonyme Anrede und eine klare Reklamationseinleitung.\n" +
+      "2. Setzen Sie eine konkrete Frist (z. B. bis zum 15. Oktober), um den Mangel zu beheben oder zu beseitigen.\n" +
+      "3. Begründen Sie Ihre Forderung (Umtausch) mit einem Kausalkonnektor und weisen Sie auf den möglichen Vertragsrücktritt hin.\n" +
+      "4. Beachten Sie beim Schlussgruß ('Mit freundlichen Grüßen') die deutsche Zeichensetzungsregel ohne Komma.",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2344,7 +2428,18 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     topics: ["Sprechen Teil 2", "Präsentation", "Redemittel", "Struktur"],
     pages: 4,
     audioUrl: "/audio/hoeren/b1_sprechen_examiner_sample.mp3",
-    skill: "hoeren",
+    skill: "sprechen",
+    contentType: "exam_sprechen",
+    module: "04-modelltests",
+    readingPassage:
+      "PRÜFUNGSAUFGABE B1 SPRECHEN TEIL 2 · THEMA PRÄSENTIEREN (ca. 3–4 Minuten)\n\n" +
+      "Struktur der 5 Folien:\n" +
+      "• Stufe 1: Thema vorstellen ('Das Thema meiner heutigen Präsentation lautet...')\n" +
+      "• Stufe 2: Persönliche Erfahrungen ('Aus meiner persönlichen Erfahrung kann ich berichten, dass...')\n" +
+      "• Stufe 3: Situation im Heimatland (Vergleich mit Indien / Heimatland)\n" +
+      "• Stufe 4: Vor- und Nachteile ('Einerseits ... andererseits ...')\n" +
+      "• Stufe 5: Fazit & Übergabe an die Prüfer ('Damit bin ich am Ende meiner Präsentation. Haben Sie noch Fragen?')",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2433,7 +2528,16 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     topics: ["Sprechen Teil 3", "Planung", "Kompromiss", "Gegenargumente"],
     pages: 4,
     audioUrl: "/audio/hoeren/daf_b1_hoeren_02.mp3",
-    skill: "hoeren",
+    skill: "sprechen",
+    contentType: "exam_sprechen",
+    module: "04-modelltests",
+    readingPassage:
+      "PRÜFUNGSAUFGABE B1 SPRECHEN TEIL 3 · GEMEINSAM ETWAS PLANEN\n\n" +
+      "Situation: Ihre Sprachkursgruppe möchte am Wochenende eine kleine Abschiedsfeier organisieren. Planen Sie gemeinsam mit Ihrem Prüfungspartner:\n" +
+      "• Wann und wo treffen Sie sich?\n" +
+      "• Wer übernimmt Getränke, Essen und Musik?\n" +
+      "• Reagieren Sie höflich auf Vorschläge Ihres Partners und fassen Sie die Einigung am Ende klar zusammen.",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2521,8 +2625,17 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "EXAM GENERALPROBE",
     topics: ["B1 Volltest", "Zeitmanagement", "Punktematrix", "Goethe Zertifikat"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b1_hoeren_01.mp3",
+    audioUrl: "",
     skill: "allround",
+    contentType: "exam_lesen",
+    module: "04-modelltests",
+    readingPassage:
+      "OFFIZIELLE PRÜFUNGSORDNUNG & GENERALPROBE · GOETHE / TELC B1\n\n" +
+      "• Bestehensgrenze: In jedem Prüfungsteil (Lesen, Hören, Schreiben, Sprechen) müssen mindestens 60 % der Gesamtpunkte erreicht werden.\n" +
+      "• Zeitvorgabe Lesen: 65 Minuten für alle fünf Teile inklusive Übertragungszeit auf den offiziellen Antwortbogen.\n" +
+      "• Hilfsmittelverbot: Zweisprachige Wörterbücher, Smartphones und Notizzettel sind im Prüfungsraum strengstens untersagt.\n" +
+      "• Bewertung & Visum: Gewertet werden ausschließlich Ihre Markierungen auf dem Antwortbogen. Offizielle Zertifikate verfallen formal nicht, deutsche Botschaften prüfen jedoch meist eine Aktualität unter 1–2 Jahren.",
+    flashcards: [],
     questions: [
       {
         id: "q1",
@@ -2608,9 +2721,9 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// LEVEL B2: 10 PROFESSIONAL LABS
+// LEVEL B2: 10 PROFESSIONAL EXAM LABS (HÖREN & LESEN)
 // ─────────────────────────────────────────────────────────────────────────────
-export const B2_CORE_LABS: CurriculumLabMeta[] = [
+const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
   {
     id: "b2-lab-01-beruf-arbeitswelt",
     level: "b2",
@@ -3502,7 +3615,987 @@ export const B2_CORE_LABS: CurriculumLabMeta[] = [
   },
 ];
 
-// Map of all 40 labs by ID
+export const B2_CORE_LABS: CurriculumLabMeta[] = B2_CORE_LABS_RAW.map(normalizeExamLab);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DEDICATED PURE GRAMMAR PILLARS (contentType: "grammar", module: "02-grammar")
+// Strictly theory, rules & grammar-focused flashcards. ZERO exam tasks or audio!
+// ─────────────────────────────────────────────────────────────────────────────
+export const A1_GRAMMAR_PILLARS: CurriculumLabMeta[] = [
+  {
+    id: "a1-grammar-01-satzbau-v2",
+    level: "a1",
+    index: 1,
+    indexLabel: "SÄULE 01 · GRAMMATIK A1",
+    title: "Säule 01 · Verbposition 2, W-Fragen & Satzklammer",
+    subtitle: "Grundlagen des deutschen Satzbaus: Aussagesatz, Ja/Nein-Frage und Verbkonjugation im Präsens.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Verbposition 2", "W-Fragen", "Präsens", "Sein & Haben"],
+    pages: 3,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Im deutschen Aussagesatz steht das konjugierte Verb IMMER auf Position 2 (Subjekt + Verb + Rest oder Zeit/Ort + Verb + Subjekt). In der Ja/Nein-Frage wandert das Verb auf Position 1.",
+      proTip: "Merke: Bei Inversion (z. B. 'Heute gehe ich...') bleibt das Subjekt direkt hinter dem Verb. Hindi/English word order ko German V2 par override na karein!",
+      examples: [
+        "Ich wohne seit zwei Wochen in Berlin.",
+        "Heute lerne ich intensiv deutsche Grammatik.",
+        "Wohnen Sie auch in Berlin-Mitte? (Ja/Nein-Frage → Position 1)",
+        "Woher kommen Sie? (W-Frage → W-Wort Pos. 1, Verb Pos. 2)",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_a1_gr_01_v2",
+        german: "Verbposition 2 (Hauptsatz)",
+        phonetic: "fairb-po-zee-tsee-ohn tsvy",
+        category: "Satzbau Regel",
+        english: "Conjugated verb always takes 2nd position in statements",
+        hindi: "सामान्य वाक्य में क्रिया हमेशा दूसरे स्थान (Position 2) पर आती है",
+        exampleDe: "Morgen fahre ich mit der U-Bahn zum Kurs.",
+        exampleTranslation: "Tomorrow I am taking the subway to the course.",
+        grammarTip: "Even when time ('Morgen') is Position 1, the verb ('fahre') stays Position 2.",
+      },
+      {
+        id: "fc_a1_gr_02_ja_nein",
+        german: "Ja/Nein-Frage (Position 1)",
+        phonetic: "yah-nine-frah-ge",
+        category: "Fragesatz",
+        english: "Yes/No question starts directly with the conjugated verb",
+        hindi: "हाँ/नहीं वाले प्रश्न हमेशा क्रिया (Verb) से शुरू होते हैं",
+        exampleDe: "Haben Sie heute einen Termin beim Bürgeramt?",
+        exampleTranslation: "Do you have an appointment at the citizen office today?",
+        grammarTip: "No auxiliary 'Do' in German! Put the main verb first.",
+      },
+      {
+        id: "fc_a1_gr_03_sein_haben",
+        german: "sein & haben (Präsens)",
+        phonetic: "zine oont HAH-ben",
+        category: "Hilfsverben",
+        english: "to be (ich bin, du bist, er ist) & to have (ich habe, du hast, er hat)",
+        hindi: "होना (sein) और पास होना (haben) के मूल रूप",
+        exampleDe: "Ich bin Arzt und habe einen Arbeitsvertrag.",
+        exampleTranslation: "I am a doctor and have an employment contract.",
+        grammarTip: "'du hast' and 'er/sie/es hat' drop the 'b'!",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "a1-grammar-02-akkusativ-artikel",
+    level: "a1",
+    index: 2,
+    indexLabel: "SÄULE 02 · GRAMMATIK A1",
+    title: "Säule 02 · Bestimmte/Unbestimmte Artikel & Akkusativ",
+    subtitle: "Maskulinum-Wechsel (der → den, ein → einen), Verben mit Akkusativ und Verneinung mit kein/nicht.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Akkusativ", "Artikel", "Negation kein/nicht"],
+    pages: 3,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Im Akkusativ (Wen oder was?) ändert sich NUR das Maskulinum: der → den, ein → einen, kein → keinen, mein → meinen. Femininum (die/eine), Neutrum (das/ein) und Plural (die) bleiben unverändert.",
+      proTip: "Typische Akkusativ-Verben: haben, kaufen, brauchen, suchen, lesen, trinken, essen, möchten. Nomen immer mit 'kein' verneinen, Verben/Adjektive mit 'nicht'.",
+      examples: [
+        "Ich brauche einen neuen Reisepass. (der Reisepass → einen)",
+        "Wir suchen eine helle Wohnung in Berlin. (die Wohnung → eine)",
+        "Er hat kein Auto, aber er fährt nicht gern Bus.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_a1_gr_04_akk",
+        german: "der → den / ein → einen",
+        phonetic: "dair -> den / eyen -> EYE-nen",
+        category: "Akkusativ Maskulinum",
+        english: "Only masculine nouns change articles in Accusative",
+        hindi: "Akkusativ में केवल पुल्लिंग (der/ein) बदलकर den/einen बनता है",
+        exampleDe: "Ich trinke einen Kaffee und lese den Text.",
+        exampleTranslation: "I am drinking a coffee and reading the text.",
+        grammarTip: "'die' and 'das' stay identical in Nominative and Accusative.",
+      },
+      {
+        id: "fc_a1_gr_05_kein_nicht",
+        german: "kein vs. nicht (Verneinung)",
+        phonetic: "kine fair-zoos nikht",
+        category: "Negation",
+        english: "'kein' negates nouns without definite article; 'nicht' negates verbs & adjectives",
+        hindi: "संज्ञा (Noun) के लिए 'kein' और क्रिया/विशेषण के लिए 'nicht' का प्रयोग",
+        exampleDe: "Ich habe keine Zeit und wohne nicht weit weg.",
+        exampleTranslation: "I have no time and do not live far away.",
+        grammarTip: "Never write 'nicht ein' — always merge into 'kein / keine / keinen'.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "a1-grammar-03-trennbare-modalverben",
+    level: "a1",
+    index: 3,
+    indexLabel: "SÄULE 03 · GRAMMATIK A1",
+    title: "Säule 03 · Trennbare Verben, Modalverben & Zeitpräpositionen",
+    subtitle: "Die Satzklammer mit können/müssen/wollen, trennbare Vorsilben (auf-, an-, ein-) und um/am/im.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Trennbare Verben", "Modalverben", "Satzklammer", "Präpositionen"],
+    pages: 3,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Bei trennbaren Verben wandert das Präfix (auf, an, ab, ein, mit) ans Satzende: 'Ich stehe um 6 Uhr auf.' Bei Modalverben (können, müssen, wollen, dürfen) steht das Modalverb auf Position 2 und der Infinitiv am Satzende.",
+      proTip: "Temporale Faustregel: um + Uhrzeit (um 8 Uhr), am + Tag/Tageszeit (am Montag, am Morgen), im + Monat/Jahreszeit (im Juli, im Winter).",
+      examples: [
+        "Der ICE nach Berlin fährt am Montag um 7:15 Uhr ab.",
+        "Ich muss heute meine Unterlagen beim Bürgeramt abgeben.",
+        "Im Sommer kann man im Park gut Deutsch lernen.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_a1_gr_06_trennbar",
+        german: "Trennbare Verben (Satzklammer)",
+        phonetic: "TREN-bah-re VAIR-ben",
+        category: "Verbstruktur",
+        english: "Separable prefix moves to the very end of a main clause",
+        hindi: "विभाज्य क्रियाओं का उपसर्ग (auf, an, ein) वाक्य के सबसे अंत में जाता है",
+        exampleDe: "Sie ruft ihre Kollegin um 14 Uhr an.",
+        exampleTranslation: "She calls her colleague at 2 p.m.",
+        grammarTip: "With a modal verb, separable verbs stay together at the end: 'Sie muss anrufen'.",
+      },
+      {
+        id: "fc_a1_gr_07_um_am_im",
+        german: "um (Uhr) · am (Tag) · im (Monat)",
+        phonetic: "oom · ahm · im",
+        category: "Zeitpräpositionen",
+        english: "um = clock time | am = days/dayparts | im = months/seasons",
+        hindi: "समय (um), दिन (am) और महीने/मौसम (im) के सही Prepositions",
+        exampleDe: "Am Freitag im Mai beginnt der Kurs um 9 Uhr.",
+        exampleTranslation: "On Friday in May the course starts at 9 a.m.",
+        grammarTip: "Exception: 'in der Nacht' (at night) uses 'in der'.",
+      },
+    ],
+    questions: [],
+  },
+];
+
+export const A2_GRAMMAR_PILLARS: CurriculumLabMeta[] = [
+  {
+    id: "a2-grammar-01-perfekt-vergangenheit",
+    level: "a2",
+    index: 1,
+    indexLabel: "SÄULE 01 · GRAMMATIK A2",
+    title: "Säule 01 · Perfekt mit haben & sein + Partizip II",
+    subtitle: "Vergangenheitsbildung für Gespräche und Briefe: Ortswechsel, Zustandsänderung und untrennbare Verben.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Perfekt", "haben vs. sein", "Partizip II", "Präteritum sein/haben"],
+    pages: 3,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Das Perfekt bildet eine Satzklammer aus Hilfsverb (haben/sein auf Position 2) + Partizip II am Satzende. 'sein' nutzt man bei Verben der Ortsveränderung (gehen, fahren, fliegen, kommen) und Zustandsänderung (aufwachen, einschlafen) sowie sein/bleiben/werden.",
+      proTip: "Verben auf '-ieren' (telefonieren → telefoniert, studieren → studiert) und untrennbare Präfixe (be-, emp-, ent-, er-, ver-, zer-) bekommen KEIN 'ge-'!",
+      examples: [
+        "Ich bin gestern mit dem Zug nach Berlin gefahren.",
+        "Wir haben im Büro alle Verträge sorgfältig geprüft.",
+        "Er hat drei Jahre in München Medizin studiert. (kein ge-!)",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_a2_gr_01_sein",
+        german: "Perfekt mit 'sein' (Bewegung)",
+        phonetic: "PAIR-fekt mit zine",
+        category: "Vergangenheit",
+        english: "Use 'sein' for movement A → B or change of state",
+        hindi: "स्थान परिवर्तन (जाना, आना, उड़ना) के साथ हमेशा 'sein' का प्रयोग करें",
+        exampleDe: "Bist du letzte Woche nach Deutschland geflogen?",
+        exampleTranslation: "Did you fly to Germany last week?",
+        grammarTip: "sein, bleiben, werden, passieren also ALWAYS take 'sein'!",
+      },
+      {
+        id: "fc_a2_gr_02_partizip",
+        german: "Partizip II ohne 'ge-'",
+        phonetic: "par-tee-TSEEP tsvy",
+        category: "Wortbildung",
+        english: "No 'ge-' for '-ieren' verbs or inseparable prefixes (be-, er-, ver-)",
+        hindi: "'-ieren' और be-/er-/ver- क्रियाओं में 'ge-' नहीं जुड़ता",
+        exampleDe: "Ich habe das Formular heute Morgen unterschrieben.",
+        exampleTranslation: "I signed the form this morning.",
+        grammarTip: "Separable verbs put 'ge' in the middle: aufgestanden, eingekauft.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "a2-grammar-02-wechselpraepositionen",
+    level: "a2",
+    index: 2,
+    indexLabel: "SÄULE 02 · GRAMMATIK A2",
+    title: "Säule 02 · Wechselpräpositionen (Wo? Dativ vs. Wohin? Akkusativ)",
+    subtitle: "Die 9 Wechselpräpositionen (in, an, auf, neben, hinter, über, unter, vor, zwischen) mit legen/liegen, stellen/stehen.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Wechselpräpositionen", "Dativ", "Akkusativ", "Positionsverben"],
+    pages: 3,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Die neun Wechselpräpositionen verlangen auf die Frage 'Wohin?' (Richtung/Bewegung mit legen, stellen, setzen, hängen) den Akkusativ. Auf die Frage 'Wo?' (statische Position mit liegen, stehen, sitzen, hängen) verlangen sie den Dativ.",
+      proTip: "Verschmelzungen im Alltag: an + dem = am, in + dem = im, an + das = ans, in + das = ins.",
+      examples: [
+        "Wohin? → Ich lege den Vertrag auf den Schreibtisch. (Akkusativ)",
+        "Wo? → Der Vertrag liegt schon auf dem Schreibtisch. (Dativ)",
+        "Wir hängen den Dienstplan an die Wand. / Er hängt an der Wand.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_a2_gr_03_wo_wohin",
+        german: "Wo? (+ Dativ) vs. Wohin? (+ Akkusativ)",
+        phonetic: "voh (DAH-teef) vs. voh-HIN (AH-koo-zah-teef)",
+        category: "Präpositionen",
+        english: "Static location = Dative | Directional movement = Accusative",
+        hindi: "जगह (कहाँ / Wo?) = Dativ | दिशा/गति (किधर / Wohin?) = Akkusativ",
+        exampleDe: "Ich stelle die Akte ins Regal; jetzt steht sie im Regal.",
+        exampleTranslation: "I put the file onto the shelf; now it stands in the shelf.",
+        grammarTip: "Dativ articles: dem (m/n), der (f), den + -n (pl).",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "a2-grammar-03-nebensaetze-adjektive",
+    level: "a2",
+    index: 3,
+    indexLabel: "SÄULE 03 · GRAMMATIK A2",
+    title: "Säule 03 · Nebensätze (weil, dass, wenn) & Adjektivdeklination",
+    subtitle: "Verbendstellung nach Subjunktionen sowie Adjektivendungen nach bestimmten und unbestimmten Artikeln.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["weil/dass/wenn", "Verbendstellung", "Adjektivdeklination", "Komparativ"],
+    pages: 3,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Nach 'weil' (Grund), 'dass' (Fakt) und 'wenn' (Bedingung/Zeit) steht das konjugierte Verb ganz am Ende des Nebensatzes. Steht der Nebensatz vor dem Hauptsatz, beginnt der Hauptsatz sofort mit dem Verb (Verb-Komma-Verb-Regel).",
+      proTip: "Nach bestimmtem Artikel (der/die/das) im Nominativ Singular enden Adjektive auf '-e'; nach Dativ/Plural immer auf '-en'!",
+      examples: [
+        "Ich lerne Deutsch, weil ich in einem Berliner Krankenhaus arbeiten möchte.",
+        "Wenn ich die B2-Prüfung bestehe, bekomme ich meine Anerkennung.",
+        "Der neue Dienstplan hängt im modernen Stationszimmer.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_a2_gr_04_verb_ende",
+        german: "Nebensatz: weil / dass / wenn → Verb am Ende",
+        phonetic: "NAY-ben-zats: fairb am EN-de",
+        category: "Satzgefüge",
+        english: "Subordinating conjunctions send the conjugated verb to the end",
+        hindi: "weil, dass, wenn के बाद मुख्य क्रिया वाक्य के एकदम अंत में जाती है",
+        exampleDe: "Weil er krank war, ist er zu Hause geblieben.",
+        exampleTranslation: "Because he was sick, he stayed at home.",
+        grammarTip: "Notice Verb-Komma-Verb when the Nebensatz comes first: '...war, ist...'",
+      },
+    ],
+    questions: [],
+  },
+];
+
+export const B1_GRAMMAR_PILLARS: CurriculumLabMeta[] = [
+  {
+    id: "b1-grammar-01-nebensaetze-konnektoren",
+    level: "b1",
+    index: 1,
+    indexLabel: "SÄULE 01 · GRAMMATIK B1",
+    title: "Säule 01 · Nebensätze & Konnektoren (weil, obwohl, damit, sodass)",
+    subtitle: "122 Säulen Grammatiktheorie: Verbendstellung bei Subjunktionen vs. Inversion bei Konjunktionaladverbien (deshalb, trotzdem).",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["weil / da", "obwohl / trotzdem", "damit / sodass", "Verbposition"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Subjunktionen (weil, da, obwohl, damit, sodass, während, bevor, nachdem) leiten einen Nebensatz ein → das konjugierte Verb steht am Satzende. Konjunktionaladverbien (deshalb, darum, trotzdem, außerdem, sonst) stehen auf Position 1 oder 3 im Hauptsatz → das Verb folgt direkt auf Position 2.",
+      proTip: "Achten Sie auf den klassischen B1-Fehler: 'obwohl' = Verb am Ende ('Obwohl es regnet, gehe ich...'), 'trotzdem' = Verb auf Position 2 ('Es regnet. Trotzdem gehe ich...').",
+      examples: [
+        "Kausal (Grund): Ich lerne täglich Fachvokabeln, weil/da ich die B1-Prüfung bestehen möchte.",
+        "Konzessiv (Gegensatz): Obwohl der Schichtdienst anstrengend ist, macht mir die Arbeit Freude.",
+        "Konzessiv (Hauptsatz): Der Schichtdienst ist anstrengend. Trotzdem macht mir die Arbeit Freude.",
+        "Final vs. Konsekutiv: Ich erkläre alles langsam, damit der Patient es versteht. / Es war laut, sodass ich nichts hörte.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b1_gr_01_obwohl_trotzdem",
+        german: "obwohl (Nebensatz) vs. trotzdem (Hauptsatz)",
+        phonetic: "op-VOHL vs. TROTS-dem",
+        category: "Konzessiv-Konnektoren",
+        english: "although (verb at end) vs. nevertheless (verb in position 2)",
+        hindi: "obwohl = क्रिया अंत में (हालाँकि) | trotzdem = क्रिया Position 2 पर (फिर भी)",
+        exampleDe: "Obwohl die Prüfung schwer war, hat er sie bestanden. / Die Prüfung war schwer; trotzdem hat er bestanden.",
+        exampleTranslation: "Although the exam was hard, he passed. / The exam was hard; nevertheless he passed.",
+        grammarTip: "Never use 'trotzdem' with the verb at the end in formal written German!",
+      },
+      {
+        id: "fc_b1_gr_02_damit_sodass",
+        german: "damit (Absicht) vs. sodass (Folge)",
+        phonetic: "DAH-mit vs. zoh-DAS",
+        category: "Final & Konsekutiv",
+        english: "so that (purpose/intention) vs. with the result that (consequence)",
+        hindi: "damit = उद्देश्य (ताकि) | sodass = परिणाम (जिससे कि)",
+        exampleDe: "Sie spricht deutlich, damit alle sie verstehen.",
+        exampleTranslation: "She speaks clearly so that everyone understands her.",
+        grammarTip: "If both clauses share the same subject, replace 'damit' with 'um ... zu + Infinitiv'.",
+      },
+      {
+        id: "fc_b1_gr_03_deshalb_weil",
+        german: "deshalb / daher vs. weil / da",
+        phonetic: "DES-halp vs. vile",
+        category: "Kausal-Konnektoren",
+        english: "therefore (Position 1 + Verb) vs. because (Verb at end)",
+        hindi: "deshalb = इसलिए (Pos 1 + Verb) | weil/da = क्योंकि (Verb अंत में)",
+        exampleDe: "Da ich einen Termin habe, muss ich früher gehen. = Ich habe einen Termin, deshalb muss ich früher gehen.",
+        exampleTranslation: "Since I have an appointment, I must leave earlier.",
+        grammarTip: "'da' is preferred when placing the reason BEFORE the main clause.",
+      },
+      {
+        id: "fc_b1_gr_04_nachdem",
+        german: "nachdem (Vorzeitigkeit / Zeitenfolge)",
+        phonetic: "nakh-DAYM",
+        category: "Temporalsätze",
+        english: "after (requires one tense step earlier than main clause)",
+        hindi: "nachdem (के बाद) — मुख्य वाक्य से एक काल (Tense) पहले का उपयोग होता है",
+        exampleDe: "Nachdem er das Zertifikat erhalten hatte, beantragte er das Visum.",
+        exampleTranslation: "After he had received the certificate, he applied for the visa.",
+        grammarTip: "Main clause Präsens → nachdem Perfekt. Main clause Präteritum → nachdem Plusquamperfekt.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b1-grammar-02-passiv-formen",
+    level: "b1",
+    index: 2,
+    indexLabel: "SÄULE 02 · GRAMMATIK B1",
+    title: "Säule 02 · Vorgangspassiv (Präsens, Präteritum & Modalverben)",
+    subtitle: "122 Säulen Grammatiktheorie: Fokus auf die Handlung statt auf den Handelnden — werden + Partizip II, von vs. durch.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Passiv Präsens", "Passiv Präteritum", "Modalverb + Passiv", "von / durch"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Das Vorgangspassiv wird mit 'werden' + Partizip II gebildet. Das Akkusativobjekt des Aktivsatzes wird zum Subjekt (Nominativ) im Passivsatz. Präsens: 'wird/werden + Partizip II'; Präteritum: 'wurde/wurden + Partizip II'; mit Modalverb: 'Modalverb + Partizip II + werden'.",
+      proTip: "Handelnde Personen oder Institutionen werden mit 'von' (+ Dativ) angeschlossen, Mittel/Instrumente oder Ursachen mit 'durch' (+ Akkusativ).",
+      examples: [
+        "Präsens: Die Medikamente werden vom Arzt verordnet.",
+        "Präteritum: Das Krankenhaus wurde im Jahr 1998 modernisiert.",
+        "Perfekt Passiv: Der Antrag ist bereits vollständig bearbeitet worden. (nicht 'geworden'!)",
+        "Mit Modalverb: Die Unterlagen müssen bis Freitag eingereicht werden.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b1_gr_05_passiv_praes",
+        german: "Passiv Präsens: wird / werden + Partizip II",
+        phonetic: "PAS-seef PRAY-zens",
+        category: "Passivbildung",
+        english: "Present passive: conjugated 'werden' + past participle at end",
+        hindi: "वर्तमान कर्मवाच्य: wird/werden + Partizip II (वाक्य के अंत में)",
+        exampleDe: "Der Patient wird jeden Morgen untersucht.",
+        exampleTranslation: "The patient is examined every morning.",
+        grammarTip: "Only 'werden' conjugates; the Partizip II never changes.",
+      },
+      {
+        id: "fc_b1_gr_06_passiv_praet",
+        german: "Passiv Präteritum: wurde / wurden + Partizip II",
+        phonetic: "VOOR-de + par-tee-TSEEP",
+        category: "Passiv Vergangenheit",
+        english: "Simple past passive (standard in reports and news)",
+        hindi: "भूतकाल कर्मवाच्य: wurde/wurden + Partizip II (रिपोर्ट व समाचारों में)",
+        exampleDe: "Die Visumunterlagen wurden gestern geprüft.",
+        exampleTranslation: "The visa documents were checked yesterday.",
+        grammarTip: "In Perfekt Passiv, always use 'worden' (NOT 'geworden'): 'ist geprüft worden'.",
+      },
+      {
+        id: "fc_b1_gr_07_passiv_modal",
+        german: "Modalverb + Partizip II + werden",
+        phonetic: "moh-DAHL-vairb + VAIR-den",
+        category: "Passiv mit Modalverb",
+        english: "Modal verb (Pos 2) ... Partizip II + infinitive 'werden' (end)",
+        hindi: "Modalverb (Pos 2) ... Partizip II + werden (अंत में)",
+        exampleDe: "Die Schweigepflicht muss immer eingehalten werden.",
+        exampleTranslation: "Confidentiality must always be observed.",
+        grammarTip: "In a Nebensatz, the Modalverb goes to the very end: '...eingehalten werden muss.'",
+      },
+      {
+        id: "fc_b1_gr_08_von_durch",
+        german: "Agens: von (+ Dativ) vs. durch (+ Akkusativ)",
+        phonetic: "fon vs. doorkh",
+        category: "Passiv Agens",
+        english: "'von' for person/agent | 'durch' for cause/instrument/medium",
+        hindi: "व्यक्ति/संस्था के लिए 'von (+Dat)' और माध्यम/कारण के लिए 'durch (+Akk)'",
+        exampleDe: "Der Brief wurde von der Leitung durch einen Boten geschickt.",
+        exampleTranslation: "The letter was sent by management via a courier.",
+        grammarTip: "Do not confuse 'von' + Dativ with English 'from'.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b1-grammar-03-relativsaetze",
+    level: "b1",
+    index: 3,
+    indexLabel: "SÄULE 03 · GRAMMATIK B1",
+    title: "Säule 03 · Relativsätze in allen vier Kasus & mit Präpositionen",
+    subtitle: "122 Säulen Grammatiktheorie: Bezugswort bestimmt Genus & Numerus — Verb im Relativsatz bestimmt Kasus (der/dem/denen/dessen/deren).",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Relativpronomen", "Dativ denen", "Genitiv dessen/deren", "Präposition + Relativ"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Die goldene Zwei-Schritt-Regel: (1) Genus und Numerus (Maskulin, Feminin, Neutrum, Plural) kommen vom Bezugswort im Hauptsatz. (2) Der Kasus (Nominativ, Akkusativ, Dativ, Genitiv) richtet sich ausschließlich nach der Funktion (Verb oder Präposition) IM Relativsatz.",
+      proTip: "Besonders prüfungsrelevant in B1: Dativ Plural = 'denen' (NICHT 'den'!), Genitiv Maskulin/Neutrum = 'dessen', Genitiv Feminin/Plural = 'deren'.",
+      examples: [
+        "Dativ Feminin: Das ist die Kollegin, der ich gestern bei der Übergabe geholfen habe. (helfen + Dativ)",
+        "Dativ Plural: Die Patienten, denen wir das Formular gaben, waren sehr dankbar.",
+        "Genitiv: Die Bewerberin, deren Unterlagen vollständig sind, wird eingeladen.",
+        "Mit Präposition: Das Krankenhaus, in dem (= wo) sie arbeitet, liegt in Berlin-Mitte.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b1_gr_09_rel_denen",
+        german: "Dativ Plural Relativpronomen: denen",
+        phonetic: "DAY-nen",
+        category: "Relativsätze",
+        english: "Dative plural relative pronoun is 'denen' (NOT 'den'!)",
+        hindi: "बहुवचन Dativ में Relativpronomen हमेशा 'denen' होता है",
+        exampleDe: "Die Kolleginnen, mit denen ich arbeite, sind sehr hilfsbereit.",
+        exampleTranslation: "The colleagues with whom I work are very helpful.",
+        grammarTip: "Same distinction: Definite article is 'den', Relative/Demonstrative pronoun is 'denen'.",
+      },
+      {
+        id: "fc_b1_gr_10_rel_genitiv",
+        german: "Genitiv Relativ: dessen (m/n) · deren (f/pl)",
+        phonetic: "DES-sen · DAY-ren",
+        category: "Relativsätze Genitiv",
+        english: "whose: 'dessen' (masc/neut) & 'deren' (fem/plural) — no article on following noun",
+        hindi: "जिसका/जिसकी (whose): पुल्लिंग/नपुंसक = dessen | स्त्रीलिंग/बहुवचन = deren",
+        exampleDe: "Der Patient, dessen Fieber gesunken ist, darf heute nach Hause.",
+        exampleTranslation: "The patient whose fever has dropped may go home today.",
+        grammarTip: "Drop the article on the possessed noun right after dessen/deren!",
+      },
+      {
+        id: "fc_b1_gr_11_rel_praep",
+        german: "Präposition + Relativpronomen",
+        phonetic: "pray-po-zee-tsee-OHN + re-lah-TEEF",
+        category: "Feste Präpositionen",
+        english: "Preposition stays BEFORE the relative pronoun and governs its case",
+        hindi: "Preposition हमेशा Relativpronomen के ठीक पहले आती है",
+        exampleDe: "Der Beruf, für den ich mich interessiere, bietet gute Perspektiven.",
+        exampleTranslation: "The profession in which I am interested offers good prospects.",
+        grammarTip: "For places, 'in dem / auf dem' can often be replaced by 'wo'.",
+      },
+      {
+        id: "fc_b1_gr_12_rel_was",
+        german: "Relativpronomen 'was' & 'wo'",
+        phonetic: "vas oont voh",
+        category: "Spezielle Relativsätze",
+        english: "'was' after alles, etwas, nichts, superlatives, or whole clauses",
+        hindi: "alles, etwas, nichts या पूरे वाक्य के संदर्भ में 'was' का उपयोग",
+        exampleDe: "Alles, was wir im B1-Kurs gelernt haben, war in der Prüfung nützlich.",
+        exampleTranslation: "Everything that we learned in the B1 course was useful in the exam.",
+        grammarTip: "Use 'wo' after city/country names without preposition: 'Berlin, wo ich wohne'.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b1-grammar-04-konjunktiv-ii",
+    level: "b1",
+    index: 4,
+    indexLabel: "SÄULE 04 · GRAMMATIK B1",
+    title: "Säule 04 · Konjunktiv II (Höflichkeit, Wünsche & Ratschläge)",
+    subtitle: "122 Säulen Grammatiktheorie: würde + Infinitiv, wäre, hätte, könnte, sollte und irreale Bedingungssätze mit 'wenn'.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["würde + Infinitiv", "wäre / hätte", "sollte / könnte", "Irreale Wünsche"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Im B1-Alltag nutzt man für sein → wäre, haben → hätte, werden → würde und für Modalverben Umlautformen (könnte, dürfte, müsste, sollte — Achtung: 'sollte' und 'wollte' ohne Umlaut!). Alle anderen Verben bildet man mit 'würde + Infinitiv'.",
+      proTip: "In formellen E-Mails und Bewerbungen wirkt 'Ich würde mich sehr über eine Rückmeldung freuen' oder 'Könnten Sie mir bitte...' sofort diplomatisch und höflich.",
+      examples: [
+        "Höfliche Bitte: Könnten Sie mir bitte die Bescheinigung bis morgen zusenden?",
+        "Ratschlag: An deiner Stelle würde ich täglich 20 Minuten laut lesen. / Du solltest früher schlafen.",
+        "Irrealer Wunsch: Wenn ich doch nur mehr Zeit für die Prüfungsvorbereitung hätte!",
+        "Bedingung: Wenn die Miete günstiger wäre, würden wir sofort umziehen.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b1_gr_13_waere_haette",
+        german: "wäre · hätte · könnte · würde",
+        phonetic: "VAY-re · HET-te · KÖN-te · VÜR-de",
+        category: "Konjunktiv II Formen",
+        english: "Core irregular subjunctive II forms (never use 'würde sein' or 'würde haben'!)",
+        hindi: "sein (wäre), haben (hätte), können (könnte) — इनके साथ 'würde' कभी न लगाएं",
+        exampleDe: "Wenn ich in Berlin wäre, hätte ich weniger Fahrtzeit.",
+        exampleTranslation: "If I were in Berlin, I would have less commute time.",
+        grammarTip: "'sollte' (should) and 'wollte' take NO umlaut.",
+      },
+      {
+        id: "fc_b1_gr_14_hoeflichkeit",
+        german: "Höfliche Bitten (Konjunktiv II)",
+        phonetic: "HÖF-likh-kites-for-men",
+        category: "Schreiben & Sprechen",
+        english: "Polite requests for emails, phone calls, and customer service",
+        hindi: "औपचारिक ईमेल व बातचीत में विनम्र अनुरोध के लिए Konjunktiv II",
+        exampleDe: "Ich würde mich über eine Einladung zum Gespräch sehr freuen.",
+        exampleTranslation: "I would be very pleased about an invitation to an interview.",
+        grammarTip: "Watch out: 'wurde' (no umlaut) is past passive; 'würde' (umlaut!) is Konjunktiv II.",
+      },
+      {
+        id: "fc_b1_gr_15_ratschlag",
+        german: "Ratschlag: Du solltest ... / An deiner Stelle...",
+        phonetic: "ahn DY-ner SHTEL-le",
+        category: "Beratung & Redemittel",
+        english: "Giving advice politely with 'sollte' or 'An deiner Stelle würde ich...'",
+        hindi: "सलाह देना: Du solltest... (तुम्हें चाहिए) / An deiner Stelle... (तुम्हारी जगह मैं)",
+        exampleDe: "An Ihrer Stelle würde ich den Arbeitsvertrag vorab genau prüfen.",
+        exampleTranslation: "In your place, I would check the employment contract carefully beforehand.",
+        grammarTip: "Used heavily in B1 Schreiben Teil 2/3 & Sprechen Teil 3.",
+      },
+      {
+        id: "fc_b1_gr_16_irreal_ohne_wenn",
+        german: "Irrealer Bedingungssatz ohne 'wenn'",
+        phonetic: "ee-ray-AH-ler be-DIN-goongs-zats",
+        category: "Erweiterter Satzbau",
+        english: "Drop 'wenn' by placing the Konjunktiv II verb in Position 1",
+        hindi: "बिना 'wenn' के शर्त वाले वाक्य (क्रिया Position 1 पर रखें)",
+        exampleDe: "Hätte ich mehr Zeit, würde ich noch eine Sprache lernen.",
+        exampleTranslation: "Had I more time, I would learn another language.",
+        grammarTip: "Same meaning as 'Wenn ich mehr Zeit hätte, ...' — adds style points in B1/B2!",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b1-grammar-05-infinitivsaetze",
+    level: "b1",
+    index: 5,
+    indexLabel: "SÄULE 05 · GRAMMATIK B1",
+    title: "Säule 05 · Infinitivkonstruktionen (zu, um ... zu, ohne ... zu, statt ... zu)",
+    subtitle: "122 Säulen Grammatiktheorie: Wann steht 'zu + Infinitiv', wo sitzt 'zu' bei trennbaren Verben und wann braucht man KEIN 'zu'?",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Infinitiv mit zu", "um ... zu", "ohne ... zu / statt ... zu", "Null-zu Verben"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Nach vielen Verben (vorhaben, planen, versuchen, vergessen, hoffen, beginnen) und Ausdrücken ('Es ist wichtig / möglich / verboten') folgt ', ... zu + Infinitiv'. Bei trennbaren Verben rutscht 'zu' zwischen Präfix und Stamm (einzukaufen, aufzustehen). 'um ... zu' drückt ein Ziel bei IDENTISCHEM Subjekt aus.",
+      proTip: "KEIN 'zu' steht nach Modalverben (können, müssen...), Bewegungsverben (gehen, fahren, kommen), Wahrnehmungsverben (sehen, hören) sowie 'lassen' und 'bleiben'!",
+      examples: [
+        "Einfacher Infinitivsatz: Ich habe vor, im nächsten Jahr in Berlin zu arbeiten.",
+        "Trennbares Verb: Vergessen Sie nicht, Ihr Ticket vor der Fahrt zu entwerten / abzustempeln.",
+        "Final (gleiches Subjekt): Sie besucht einen Kurs, um fließend Deutsch zu sprechen.",
+        "Ohne 'zu': Ich gehe heute einkaufen. / Wir bleiben sitzen.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b1_gr_17_zu_trennbar",
+        german: "zu + trennbares Verb: aufzustehen / einzukaufen",
+        phonetic: "owf-tsoo-SHTAY-en",
+        category: "Infinitiv-Morphologie",
+        english: "'zu' sits BETWEEN the separable prefix and the verb stem (one word)",
+        hindi: "विभाज्य क्रियाओं में 'zu' उपसर्ग और क्रिया के बीच जुड़कर एक शब्द बनाता है",
+        exampleDe: "Es ist notwendig, alle Unterlagen rechtzeitig einzureichen.",
+        exampleTranslation: "It is necessary to submit all documents on time.",
+        grammarTip: "Written as ONE single word: ein-zu-reichen, vor-zu-bereiten, teil-zu-nehmen.",
+      },
+      {
+        id: "fc_b1_gr_18_um_zu_vs_damit",
+        german: "um ... zu (gleiches Subjekt) vs. damit (verschiedene Subjekte)",
+        phonetic: "oom ... tsoo vs. DAH-mit",
+        category: "Finalsätze",
+        english: "Same subject = um...zu | Different subjects = damit",
+        hindi: "दोनों वाक्यों में एक ही कर्ता = um...zu | अलग-अलग कर्ता = damit",
+        exampleDe: "Ich lerne Deutsch, um in Berlin zu studieren. / Ich erkläre es, damit du es verstehst.",
+        exampleTranslation: "I learn German in order to study in Berlin. / I explain it so you understand.",
+        grammarTip: "Never put a subject pronoun inside an 'um ... zu' clause.",
+      },
+      {
+        id: "fc_b1_gr_19_ohne_statt_zu",
+        german: "ohne ... zu · (an)statt ... zu",
+        phonetic: "OH-ne ... tsoo · ahn-SHTAT ... tsoo",
+        category: "Infinitivkonstruktionen",
+        english: "without ... -ing / instead of ... -ing (same subject)",
+        hindi: "बिना ... किए (ohne...zu) / के बजाय (statt...zu)",
+        exampleDe: "Er ging aus dem Haus, ohne sich zu verabschieden.",
+        exampleTranslation: "He left the house without saying goodbye.",
+        grammarTip: "With different subjects, use 'ohne dass' or 'anstatt dass'.",
+      },
+      {
+        id: "fc_b1_gr_20_kein_zu",
+        german: "Verben OHNE 'zu': Modalverben, gehen, bleiben, lassen",
+        phonetic: "OH-ne tsoo",
+        category: "Ausnahmen",
+        english: "No 'zu' after modals, gehen, fahren, sehen, hören, lassen, bleiben",
+        hindi: "Modalverben, gehen, bleiben, lassen के बाद कभी 'zu' नहीं लगता",
+        exampleDe: "Der Arzt lässt den Patienten zwei Tage im Bett bleiben.",
+        exampleTranslation: "The doctor lets the patient stay in bed for two days.",
+        grammarTip: "'helfen' and 'lernen' also typically omit 'zu' in short phrases.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b1-grammar-06-genitiv-n-deklination",
+    level: "b1",
+    index: 6,
+    indexLabel: "SÄULE 06 · GRAMMATIK B1",
+    title: "Säule 06 · Genitiv-Präpositionen, n-Deklination & Doppelkonnektoren",
+    subtitle: "122 Säulen Grammatiktheorie: wegen/trotz/während + Genitiv, maskuline Nomen auf -n/-en und zweiteilige Konnektoren.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Genitiv wegen/trotz", "n-Deklination", "sowohl ... als auch", "weder ... noch"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Die vier wichtigsten B1-Genitivpräpositionen lauten wegen, trotz, während und (an)statt. Maskulinum und Neutrum bekommen im Genitiv die Endung '-s' oder '-es' (trotz des Regens, während des Kurses). Bei der n-Deklination erhalten bestimmte maskuline Nomen (der Patient, der Kollege, der Mensch, der Name) in Akkusativ, Dativ und Genitiv die Endung '-n' oder '-en'.",
+      proTip: "Zweiteilige Konnektoren verbinden Satzteile symmetrisch: 'sowohl ... als auch' (beides), 'nicht nur ... sondern auch', 'weder ... noch' (keins von beiden — KEIN zusätzliches 'nicht'!), 'entweder ... oder', 'zwar ... aber'.",
+      examples: [
+        "Genitiv: Trotz des schlechten Wetters kamen alle Teilnehmer pünktlich. / Wegen einer Krankheit fehlt er.",
+        "n-Deklination: Die Ärztin untersucht den Patienten (Akk.) und spricht mit dem Kollegen (Dat.).",
+        "Doppelkonnektor: Sie beherrscht sowohl Deutsch als auch Englisch verhandlungssicher.",
+        "Verneinung: Er hat weder angerufen noch eine E-Mail geschrieben.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b1_gr_21_genitiv_praep",
+        german: "wegen · trotz · während · statt (+ Genitiv)",
+        phonetic: "VAY-gen · trots · VAY-rent · shtat",
+        category: "Genitivpräpositionen",
+        english: "because of / despite / during / instead of (+ Genitive: des + -(e)s, der)",
+        hindi: "wegen (के कारण), trotz (के बावजूद), während (के दौरान), statt (के बजाय) + Genitiv",
+        exampleDe: "Während der Probezeit beträgt die Kündigungsfrist zwei Wochen.",
+        exampleTranslation: "During the probation period, the notice period is two weeks.",
+        grammarTip: "Plural Genitive uses 'der': 'wegen der hohen Kosten'.",
+      },
+      {
+        id: "fc_b1_gr_22_n_deklination",
+        german: "n-Deklination: der Patient → den/dem/des Patienten",
+        phonetic: "en-day-klee-nah-tsee-OHN",
+        category: "Substantiv-Deklination",
+        english: "Certain masculine nouns add -(e)n in every case EXCEPT Nominative singular",
+        hindi: "der Patient, der Kollege, der Herr, der Student को Nominative छोड़ हर जगह -(e)n लगता है",
+        exampleDe: "Ich habe den Kollegen im Krankenhaus nach dem Namen gefragt.",
+        exampleTranslation: "I asked the colleague in the hospital for the name.",
+        grammarTip: "Watch for nouns ending in -e (Kollege), -ent (Patient/Student), -ant (Praktikant), -ist (Polizist).",
+      },
+      {
+        id: "fc_b1_gr_23_sowohl",
+        german: "sowohl ... als auch / nicht nur ... sondern auch",
+        phonetic: "zoh-VOHL ... als owkh",
+        category: "Zweiteilige Konnektoren",
+        english: "both ... and / not only ... but also",
+        hindi: "दोनों (sowohl ... als auch) / न केवल ... बल्कि (nicht nur ... sondern auch)",
+        exampleDe: "Das Programm fördert sowohl die Sprache als auch den Berufseinstieg.",
+        exampleTranslation: "The program promotes both language and career entry.",
+        grammarTip: "Subject + 'sowohl A als auch B' takes plural verb when connecting two subjects.",
+      },
+      {
+        id: "fc_b1_gr_24_weder_noch",
+        german: "weder ... noch / entweder ... oder",
+        phonetic: "VAY-der ... nokh",
+        category: "Zweiteilige Konnektoren",
+        english: "neither ... nor / either ... or",
+        hindi: "न तो ... न ही (weder ... noch) / या तो ... या (entweder ... oder)",
+        exampleDe: "In der Prüfung sind weder Wörterbücher noch Mobiltelefone erlaubt.",
+        exampleTranslation: "In the exam neither dictionaries nor mobile phones are permitted.",
+        grammarTip: "Never add 'nicht' or 'kein' when using 'weder ... noch' — it already negates!",
+      },
+    ],
+    questions: [],
+  },
+];
+
+export const B2_GRAMMAR_PILLARS: CurriculumLabMeta[] = [
+  {
+    id: "b2-grammar-01-nominalstil",
+    level: "b2",
+    index: 1,
+    indexLabel: "SÄULE 01 · GRAMMATIK B2",
+    title: "Säule 01 · Nominalisierung & Nomen-Verb-Verbindungen",
+    subtitle: "122 Säulen B2-Architektur: Verbalstil vs. Nominalstil in Verträgen, Behördenschreiben und klinischen Berichten.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Nominalstil", "Nomen-Verb-Verbindungen", "Genitivketten", "Wissenschaftssprache"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Im B2-Nominalstil werden Nebensätze (weil, obwohl, während, wenn) durch eine Präposition + Nomen + Genitiv ersetzt: 'Weil die Kosten steigen...' → 'Wegen des Anstiegs der Kosten...'. Nomen-Verb-Verbindungen (in Erwägung ziehen, eine Entscheidung treffen, zur Verfügung stehen) verleihen Texten juristische und fachliche Präzision.",
+      proTip: "Transformationsregel: 'weil' → wegen/aufgrund (+ Gen.), 'obwohl' → trotz (+ Gen.), 'wenn' → bei (+ Dat.), 'damit' → zur (+ Dat.).",
+      examples: [
+        "Verbal: Die Klinikleitung erwägt eine neue Schichtregelung. → Nominal: Die Klinikleitung zieht eine Neuregelung in Erwägung.",
+        "Aufgrund der hohen Nachfrage wird ein zusätzlicher B2-Kurs eingerichtet.",
+        "Zur Vermeidung von Missverständnissen erfolgt die Dokumentation nach ISBAR.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b2_gr_01_nvv",
+        german: "in Erwägung ziehen / in Kraft treten",
+        phonetic: "in er-VAY-goong TSEE-en",
+        category: "Nomen-Verb-Verbindungen",
+        english: "to take into consideration / to enter into force",
+        hindi: "विचार में लेना (erwägen) / लागू होना (gültig werden)",
+        exampleDe: "Das neue Fachkräfteeinwanderungsgesetz trat am 1. März in Kraft.",
+        exampleTranslation: "The new Skilled Immigration Act entered into force on March 1.",
+        grammarTip: "The noun carries the core meaning while the verb only carries tense/person.",
+      },
+      {
+        id: "fc_b2_gr_02_praep_nom",
+        german: "aufgrund (+ Gen) · angesichts (+ Gen) · zwecks (+ Gen)",
+        phonetic: "owf-GROONT · AHN-ge-zikhts",
+        category: "Nominalstil-Präpositionen",
+        english: "due to / in view of / for the purpose of (+ Genitive)",
+        hindi: "के कारण (aufgrund), को देखते हुए (angesichts), के उद्देश्य से (zwecks)",
+        exampleDe: "Angesichts des Fachkräftemangels beschleunigt Berlin die Anerkennung.",
+        exampleTranslation: "In view of the skilled labor shortage, Berlin is accelerating recognition.",
+        grammarTip: "Watch genitive endings on the noun: 'des Mangels', 'der Nachfrage'.",
+      },
+      {
+        id: "fc_b2_gr_03_genitiv_kausal",
+        german: "infolge (+ Gen) · mangels (+ Gen) · anhand (+ Gen)",
+        phonetic: "in-FOL-ge · MANG-els · ahn-HANT",
+        category: "Nominalstil-Präpositionen",
+        english: "as a consequence of / for lack of / on the basis of (+ Genitive)",
+        hindi: "के परिणामस्वरूप (infolge), के अभाव में (mangels), के आधार पर (anhand)",
+        exampleDe: "Anhand der aktuellen Laborwerte wurde die Therapie angepasst.",
+        exampleTranslation: "Based on the current laboratory values, the therapy was adjusted.",
+        grammarTip: "Replace 'weil es fehlt' concisely with 'mangels + Genitiv'.",
+      },
+      {
+        id: "fc_b2_gr_04_nvv_entscheidung",
+        german: "eine Entscheidung treffen · zur Verfügung stehen",
+        phonetic: "EYE-ne ent-SHY-doong TREF-fen",
+        category: "Nomen-Verb-Verbindungen",
+        english: "to make a decision / to be available",
+        hindi: "निर्णय लेना (entscheiden) / उपलब्ध होना (verfügbar sein)",
+        exampleDe: "Für Rückfragen steht Ihnen die Stationsleitung jederzeit zur Verfügung.",
+        exampleTranslation: "The ward management is available to you at any time for questions.",
+        grammarTip: "'zur Verfügung stellen' = to provide; 'zur Verfügung stehen' = to be available.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b2-grammar-02-passiversatz-konjunktiv1",
+    level: "b2",
+    index: 2,
+    indexLabel: "SÄULE 02 · GRAMMATIK B2",
+    title: "Säule 02 · Passiversatzformen & Konjunktiv I (Indirekte Rede)",
+    subtitle: "122 Säulen B2-Architektur: sein + zu + Infinitiv, sich lassen + Infinitiv, -bar/-lich und Konjunktiv I in Berichten.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Passiversatz", "sein + zu + Infinitiv", "sich lassen", "Konjunktiv I"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "'sein + zu + Infinitiv' ersetzt Passiv mit müssen/sollen oder können ('Die Werte sind zu prüfen' = müssen geprüft werden). 'sich lassen + Infinitiv' und Adjektive auf '-bar/-lich' ersetzen Passiv mit können ('Das Problem lässt sich lösen / ist lösbar'). Konjunktiv I (er sei, habe, werde, komme) markiert neutrale indirekte Rede in Arztbriefen und Nachrichten.",
+      proTip: "Wenn Konjunktiv I und Indikativ gleich sind (z. B. 'sie haben'), weicht man auf Konjunktiv II ('sie hätten') aus!",
+      examples: [
+        "Obligation: Alle Befunde sind unverzüglich an den Stationsarzt weiterzuleiten.",
+        "Possibility: Die Nebenwirkungen lassen sich medikamentös gut kontrollieren.",
+        "Indirekte Rede: Der Patient gab an, er habe seit drei Tagen starke Schmerzen und sei gestern gestürzt.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b2_gr_05_sein_zu",
+        german: "sein + zu + Infinitiv (= müssen / können + Passiv)",
+        phonetic: "zine + tsoo + IN-fee-nee-teef",
+        category: "Passiversatz",
+        english: "must be / can be + past participle",
+        hindi: "किया जाना अनिवार्य है / किया जा सकता है (sein + zu + Infinitiv)",
+        exampleDe: "Die Hygienevorschriften sind strengstens einzuhalten.",
+        exampleTranslation: "The hygiene regulations must be strictly observed.",
+        grammarTip: "Separable verbs keep 'zu' inside: ein-zu-halten, ab-zu-geben.",
+      },
+      {
+        id: "fc_b2_gr_06_konj1",
+        german: "Konjunktiv I: er sei / sie habe / es werde",
+        phonetic: "kon-yoonk-TEEF eyens",
+        category: "Indirekte Rede",
+        english: "Reported speech form for medical/journalistic objectivity",
+        hindi: "अप्रत्यक्ष कथन (Reported speech): मेडिकल व न्यूज़ रिपोर्टिंग के लिए",
+        exampleDe: "Die Zeugin erklärte, sie habe den Vorfall genau beobachtet.",
+        exampleTranslation: "The witness stated that she had observed the incident closely.",
+        grammarTip: "Verb stem + -e (er komme, sie arbeite); 'sein' has no -e: 'er sei'.",
+      },
+      {
+        id: "fc_b2_gr_07_sich_lassen",
+        german: "sich lassen + Infinitiv (= können + Passiv)",
+        phonetic: "zikh LAS-sen",
+        category: "Passiversatz",
+        english: "can be done (modal possibility passive alternative)",
+        hindi: "किया जा सकता है (sich lassen + Infinitiv)",
+        exampleDe: "Dieses Problem lässt sich durch klare Kommunikation schnell lösen.",
+        exampleTranslation: "This problem can be solved quickly through clear communication.",
+        grammarTip: "Always requires reflexive 'sich' + conjugated 'lassen' + Infinitiv.",
+      },
+      {
+        id: "fc_b2_gr_08_bar_lich",
+        german: "Adjektive auf -bar / -lich (lösbar · verständlich)",
+        phonetic: "LÖS-bahr · fer-SHTENT-likh",
+        category: "Passiversatz",
+        english: "Adjectives in -bar / -lich expressing passive possibility (-able/-ible)",
+        hindi: "'-bar / -lich' प्रत्यय से Passiv क्षमता (किया जा सकने योग्य)",
+        exampleDe: "Der medizinische Befund ist für Laien kaum verständlich.",
+        exampleTranslation: "The medical finding is hardly understandable for laypersons.",
+        grammarTip: "erklärbar = kann erklärt werden; nachweisbar = kann nachgewiesen werden.",
+      },
+    ],
+    questions: [],
+  },
+  {
+    id: "b2-grammar-03-partizipialattribute",
+    level: "b2",
+    index: 3,
+    indexLabel: "SÄULE 03 · GRAMMATIK B2",
+    title: "Säule 03 · Partizip I/II als Adjektiv & Subjektive Modalverben",
+    subtitle: "122 Säulen B2-Architektur: Erweiterte Partizipialattribute links vom Nomen und Vermutungen mit müssen/dürften/sollen.",
+    badge: "122 SÄULEN · GRAMMAR",
+    topics: ["Partizip I vs. II", "Linksattribut", "Subjektive Modalverben", "Vermutung"],
+    pages: 4,
+    audioUrl: "",
+    skill: "grammar",
+    contentType: "grammar",
+    module: "02-grammar",
+    grammarNotes: {
+      rule: "Partizip I (Infinitiv + -d: der behandelnde Arzt) ist aktiv und gleichzeitig. Partizip II (der untersuchte Patient) ist passiv und meist vorzeitig. Bei subjektiven Modalverben drückt 'muss' ~95% Sicherheit aus, 'dürfte' ~75%, 'kann/könnte' ~50%, und 'soll' eine unbestätigte Information Dritter.",
+      proTip: "Lösen Sie lange Linksattribute von rechts nach links auf: 'der [seit gestern auf Station 4 liegende] Patient' = der Patient, der seit gestern auf Station 4 liegt.",
+      examples: [
+        "Partizip I (Aktiv): Die zunehmende Nachfrage nach Pflegekräften erfordert schnelle Verfahren.",
+        "Partizip II (Passiv): Das von der Behörde anerkannte Diplom berechtigt zur Arbeitsaufnahme.",
+        "Subjektives Modalverb: Er dürfte bereits in Berlin angekommen sein. / Die Klinik soll sehr modern sein.",
+      ],
+    },
+    flashcards: [
+      {
+        id: "fc_b2_gr_09_part1_part2",
+        german: "Partizip I (-d, Aktiv) vs. Partizip II (Passiv)",
+        phonetic: "par-tee-TSEEP eyens vs. tsvy",
+        category: "Attribute",
+        english: "Participle I = active ongoing action | Participle II = passive completed state",
+        hindi: "Partizip I (-d) = सक्रिय कार्य | Partizip II = पूर्ण/कर्मवाच्य स्थिति",
+        exampleDe: "Der behandelnde Oberarzt bespricht den operierten Patienten.",
+        exampleTranslation: "The treating senior physician discusses the operated patient.",
+        grammarTip: "Both take standard adjective declension endings (-e, -en, -er, -es).",
+      },
+      {
+        id: "fc_b2_gr_10_linksattribut",
+        german: "Erweitertes Linksattribut (Relativsatz-Ersatz)",
+        phonetic: "LINKS-at-tree-boot",
+        category: "B2 Satzbau",
+        english: "Extended pre-nominal modifier placed between article and noun",
+        hindi: "संज्ञा से ठीक पहले जुड़ा लंबा विशेषण वाक्यांश (Linksattribut)",
+        exampleDe: "Das im Januar eingereichte Visum wurde genehmigt.",
+        exampleTranslation: "The visa submitted in January was approved.",
+        grammarTip: "Article + [Modifiers/Prepositional phrases] + Participle + Ending + Noun.",
+      },
+      {
+        id: "fc_b2_gr_11_subjektiv_modal",
+        german: "Subjektive Modalverben: muss (95%) · dürfte (75%) · soll (Gerücht)",
+        phonetic: "zoop-yek-TEE-ve moh-DAHL-vair-ben",
+        category: "Vermutungsausdruck",
+        english: "Expressing probability or unverified hearsay with modal verbs",
+        hindi: "अनुमान (muss/dürfte) और अफवाह (soll) व्यक्त करने के लिए Modalverben",
+        exampleDe: "Er dürfte bereits in Berlin angekommen sein.",
+        exampleTranslation: "He has probably already arrived in Berlin.",
+        grammarTip: "Past presumption uses: Modalverb + Partizip II + haben/sein.",
+      },
+      {
+        id: "fc_b2_gr_12_je_desto",
+        german: "je + Komparativ ... desto/umso + Komparativ",
+        phonetic: "yay ... DES-toh",
+        category: "Proportionale Konnektoren",
+        english: "the more ... the more",
+        hindi: "जितना अधिक ... उतना ही अधिक (je ... desto)",
+        exampleDe: "Je länger man übt, desto sicherer spricht man im Klinikalltag.",
+        exampleTranslation: "The longer one practices, the more confidently one speaks.",
+        grammarTip: "'je' clause sends verb to the END; 'desto' clause puts verb right after adjective!",
+      },
+    ],
+    questions: [],
+  },
+];
+
+export const ALL_GRAMMAR_PILLARS: CurriculumLabMeta[] = [
+  ...A1_GRAMMAR_PILLARS,
+  ...A2_GRAMMAR_PILLARS,
+  ...B1_GRAMMAR_PILLARS,
+  ...B2_GRAMMAR_PILLARS,
+];
+
+export const GRAMMAR_PILLARS_MAP = new Map<string, CurriculumLabMeta>(
+  ALL_GRAMMAR_PILLARS.map((pillar) => [pillar.id.toLowerCase(), pillar]),
+);
+
+export function getGrammarPillarsForLevel(level: string): CurriculumLabMeta[] {
+  const lvl = (level || "a1").toLowerCase().trim();
+  switch (lvl) {
+    case "a1":
+      return A1_GRAMMAR_PILLARS;
+    case "a2":
+      return A2_GRAMMAR_PILLARS;
+    case "b1":
+      return B1_GRAMMAR_PILLARS;
+    case "b2":
+      return B2_GRAMMAR_PILLARS;
+    default:
+      return [];
+  }
+}
+
+export function getGrammarPillarById(id: string): CurriculumLabMeta | null {
+  if (!id) return null;
+  const cleanId = decodeURIComponent(id).trim().toLowerCase();
+  return GRAMMAR_PILLARS_MAP.get(cleanId) || null;
+}
+
+// Map of all 40 exam labs by ID (strictly Hören / Lesen / Schreiben / Sprechen / Modelltest)
 export const ALL_CORE_LABS: CurriculumLabMeta[] = [
   ...A1_CORE_LABS,
   ...A2_CORE_LABS,
@@ -3511,7 +4604,7 @@ export const ALL_CORE_LABS: CurriculumLabMeta[] = [
 ];
 
 export const CORE_LABS_MAP = new Map<string, CurriculumLabMeta>(
-  ALL_CORE_LABS.map((lab) => [lab.id, lab]),
+  ALL_CORE_LABS.map((lab) => [lab.id.toLowerCase(), lab]),
 );
 
 export function getCoreLabsForLevel(level: string): CurriculumLabMeta[] {
@@ -3534,18 +4627,23 @@ export function getCoreLabById(id: string, levelHint?: string): CurriculumLabMet
   if (!id) return null;
   const cleanId = decodeURIComponent(id).trim().toLowerCase();
 
-  // 1. Exact ID match in core labs map
+  // 1. Exact ID match in dedicated Grammar Pillars map
+  if (GRAMMAR_PILLARS_MAP.has(cleanId)) {
+    return GRAMMAR_PILLARS_MAP.get(cleanId)!;
+  }
+
+  // 2. Exact ID match in exam core labs map
   if (CORE_LABS_MAP.has(cleanId)) {
     return CORE_LABS_MAP.get(cleanId)!;
   }
 
-  // 2. Exact match in ALL_CORE_LABS
+  // 3. Exact match across ALL_CORE_LABS
   const exact = ALL_CORE_LABS.find((l) => l.id.toLowerCase() === cleanId);
   if (exact) return exact;
 
-  // 3. Stripped subdivision prefix (e.g. 'grammar-b1-lab-01' -> 'b1-lab-01')
-  if (cleanId.startsWith("grammar-") || cleanId.startsWith("vocab-")) {
-    const stripped = cleanId.replace(/^(grammar-|vocab-)/, "");
+  // 4. ONLY allow 'vocab-' prefix stripping for vocabulary decks; NEVER strip 'grammar-' to blend exam tasks into grammar!
+  if (cleanId.startsWith("vocab-")) {
+    const stripped = cleanId.replace(/^vocab-/, "");
     if (CORE_LABS_MAP.has(stripped)) {
       return CORE_LABS_MAP.get(stripped)!;
     }
@@ -3553,8 +4651,8 @@ export function getCoreLabById(id: string, levelHint?: string): CurriculumLabMet
     if (foundStripped) return foundStripped;
   }
 
-  // 4. Strict explicit lab format ONLY: e.g. 'b1-lab-01', 'a2-lab-05', 'lab-01'
-  // NEVER match generic topic slugs like 'b1-pruefungstraining' or 'grammar-pillars'
+  // 5. Strict explicit lab format ONLY: e.g. 'b1-lab-01', 'a2-lab-05', 'lab-01'
+  // NEVER match generic topic slugs or 'grammar-*' routes
   const explicitLabMatch = cleanId.match(/^(?:([a-z0-9_]+)-)?lab-?0?([1-9]|10)(?:-.*|$)/);
   if (explicitLabMatch) {
     const rawLvl = explicitLabMatch[1] || levelHint || "";
@@ -3578,20 +4676,26 @@ export function getCoreLabById(id: string, levelHint?: string): CurriculumLabMet
 }
 
 export function convertLabToWorkbook(lab: CurriculumLabMeta): Workbook {
+  const isGrammar = lab.contentType === "grammar";
   return {
     id: lab.id,
     title: lab.title,
     subtitle: lab.subtitle,
     level: lab.level as Level,
+    contentType: lab.contentType,
+    module: lab.module,
     productSlug: lab.id,
     isFree: true,
     priceEur: 0,
     priceInr: 0,
     pages: lab.pages,
-    coverColor: "#0D1017",
+    coverColor: isGrammar ? "#134074" : "#0D1017",
     topics: lab.topics,
-    audioUrl: lab.audioUrl,
+    audioUrl: lab.contentType === "exam_hoeren" || lab.contentType === "exam_sprechen" ? lab.audioUrl : "",
     skill: lab.skill,
-    questions: lab.questions,
+    grammarNotes: isGrammar ? lab.grammarNotes : undefined,
+    readingPassage: !isGrammar ? lab.readingPassage : undefined,
+    flashcards: isGrammar ? (lab.flashcards || []) : [],
+    questions: isGrammar ? [] : lab.questions,
   };
 }

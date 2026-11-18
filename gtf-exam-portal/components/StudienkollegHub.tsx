@@ -310,7 +310,7 @@ export function StudienkollegHub({
               <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-[#121620] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-amber-300">
                 {currentTrackMeta.name}
               </span>
-              <span className="rounded-full border border-white/10 bg-[#07090E] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              <span className="rounded-full border border-white/10 bg-slate-800 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                 Aufnahmeprüfung · FSP Standard
               </span>
             </div>
@@ -366,7 +366,7 @@ export function StudienkollegHub({
 
         {/* 4-Track Switcher with clean flex-wrap for mobile viewports */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/10">
-          <div className="flex flex-wrap gap-1.5 rounded-xl bg-[#07090E] p-1 border border-white/10">
+          <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-900 p-1 border border-white/10">
             {(["t_kurs", "m_kurs", "w_kurs", "g_kurs"] as const).map((trk) => {
               const meta = trackMeta[trk];
               const Icon = meta.icon;
@@ -399,7 +399,7 @@ export function StudienkollegHub({
           </div>
 
           {showSyllabusToggle && (
-            <div className="flex flex-wrap gap-1.5 rounded-xl bg-[#07090E] p-1 border border-white/10">
+            <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-900 p-1 border border-white/10">
               <button
                 type="button"
                 onClick={() => setActiveView("syllabus")}
@@ -549,7 +549,7 @@ export function StudienkollegHub({
                             [key]: isNaN(val) ? 0 : val,
                           }));
                         }}
-                        className="w-full rounded-lg border border-white/15 bg-[#07090E] px-3 py-1.5 text-xs font-bold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
+                        className="w-full rounded-lg border border-white/15 bg-slate-900 px-3 py-1.5 text-xs font-bold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
                       />
                     </div>
                   );
@@ -850,12 +850,12 @@ export function StudienkollegHub({
                         </div>
 
                         {card.formulaOrExample && (
-                          <div className="mt-3 rounded-xl border border-white/10 bg-[#07090E] p-2.5 font-mono text-xs font-bold text-amber-300">
+                          <div className="mt-3 rounded-xl border border-white/10 bg-slate-900 p-2.5 font-mono text-xs font-bold text-amber-300">
                             {card.formulaOrExample}
                           </div>
                         )}
 
-                        <div className="mt-3 rounded-xl border border-white/10 bg-[#07090E] p-2.5">
+                        <div className="mt-3 rounded-xl border border-white/10 bg-slate-900 p-2.5">
                           <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                             Mentor Tip (Hinglish):
                           </p>

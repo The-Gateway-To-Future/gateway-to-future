@@ -36,6 +36,8 @@ export async function GET(req: Request) {
     level: wb.level,
     divisionId: (wb as unknown as { divisionId?: string }).divisionId || "sprachakademie",
     track: (wb as unknown as { track?: string }).track,
+    contentType: wb.contentType,
+    module: wb.module,
     skill: wb.skill,
     audioUrl: wb.audioUrl
       ? wb.audioUrl.startsWith("/")

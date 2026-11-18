@@ -933,9 +933,10 @@ function FlashcardEngineInner({
   };
 
   const isMastered = Boolean(masteredIds[currentCard.id]);
+  const cardKey = currentCard.id || `card-${safeIndex}`;
 
   return (
-    <div className="light-study rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6 text-slate-900 shadow-sm relative z-10 pointer-events-auto">
+    <div key={`fc-root-${activeOption?.id || "core"}`} className="light-study rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6 text-slate-900 shadow-sm relative z-10 pointer-events-auto">
       <audio
         ref={audioRef}
         playsInline
@@ -956,19 +957,19 @@ function FlashcardEngineInner({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-700">
+            <span key="fc-badge-interactive" className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-700">
               <Sparkles className="h-3 w-3 text-slate-600" />
               <span>Interactive Flashcard Deck</span>
             </span>
             {validDynamicDecks.length > 0 && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-600">
+              <span key="fc-badge-dynamic" className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-600">
                 <Layers className="h-3 w-3" />
-                <span>+{validDynamicDecks.length} Factory JSON Deck{validDynamicDecks.length > 1 ? "s" : ""}</span>
+                <span>{`+${validDynamicDecks.length} Factory JSON Deck${validDynamicDecks.length > 1 ? "s" : ""}`}</span>
               </span>
             )}
           </div>
           <h4 className="mt-2.5 text-lg sm:text-xl font-semibold tracking-tight text-slate-900 break-words hyphens-auto">
-            {activeOption?.title || title}
+            <span key={`fc-title-${activeOption?.id || "core"}`}>{activeOption?.title || title}</span>
           </h4>
         </div>
 
@@ -978,7 +979,9 @@ function FlashcardEngineInner({
               Deck Progress
             </p>
             <p className="text-xs font-bold text-slate-900">
-              {masteredCount} / {cards.length} Mastered ({progressPct}%)
+              <span key={`fc-progress-${masteredCount}-${cards.length}-${progressPct}`}>
+                {`${masteredCount} / ${cards.length} Mastered (${progressPct}%)`}
+              </span>
             </p>
           </div>
           <button
@@ -1012,7 +1015,7 @@ function FlashcardEngineInner({
                     : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                 }`}
               >
-                {opt.title} ({(opt.cards || []).length})
+                <span key={`opt-${opt.id}`}>{`${opt.title} (${(opt.cards || []).length})`}</span>
               </button>
             );
           })}
@@ -1030,19 +1033,20 @@ function FlashcardEngineInner({
       {/* Browser / Safari TTS Fallback Alert */}
       {ttsError && (
         <div
+          key="fc-tts-error"
           role="alert"
           className="flex items-center justify-between gap-2 rounded-xl border border-amber-300 bg-amber-50 px-3.5 py-2.5 text-xs font-medium text-amber-800"
         >
           <span className="flex items-center gap-2">
             <AlertCircle className="h-4 w-4 text-amber-600 shrink-0" />
-            <span>{ttsError}</span>
+            <span key="fc-tts-err-msg">{ttsError}</span>
           </span>
           <button
             type="button"
             onClick={() => setTtsError(null)}
             className="relative z-50 cursor-pointer pointer-events-auto text-[11px] font-semibold text-amber-700 hover:underline"
           >
-            Dismiss
+            <span>Dismiss</span>
           </button>
         </div>
       )}
@@ -1065,15 +1069,18 @@ function FlashcardEngineInner({
         }`}
       >
         <div className="flex flex-wrap items-center justify-between gap-3 pointer-events-auto">
-          <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-600">
+          <span
+            key={`fc-side-badge-${cardKey}-${isFlipped ? "back" : "front"}`}
+            className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-600"
+          >
             {isFlipped
               ? "BACK · ENGLISH / HINDI & EXAMPLE"
               : `FRONT · ${(currentCard.category || "VOKABEL").toUpperCase()}`}
           </span>
 
           <div className="flex items-center gap-2.5">
-            <span className="text-xs font-medium text-slate-500">
-              Card {safeIndex + 1} / {cards.length}
+            <span key={`fc-counter-${safeIndex}-${cards.length}`} className="text-xs font-medium text-slate-500">
+              {`Card ${safeIndex + 1} / ${cards.length}`}
             </span>
             <button
               type="button"
@@ -1082,7 +1089,9 @@ function FlashcardEngineInner({
               title="Listen in German (de-DE)"
             >
               <Volume2 className={`h-3.5 w-3.5 text-white ${speaking ? "animate-pulse" : ""}`} />
-              <span>{speaking ? "Speaking..." : "LISTEN (DE-DE)"}</span>
+              <span key={`fc-listen-${speaking ? "on" : "off"}`}>
+                {speaking ? "Speaking..." : "LISTEN (DE-DE)"}
+              </span>
             </button>
           </div>
         </div>
@@ -1090,25 +1099,25 @@ function FlashcardEngineInner({
         {/* Center Content with smooth transition */}
         <div className="pointer-events-none transition-all duration-300 ease-out">
           {!isFlipped ? (
-            <div className="my-8 space-y-3 text-center">
+            <div key={`fc-front-${cardKey}`} className="my-8 space-y-3 text-center">
               <p className="text-2xl sm:text-4xl font-semibold tracking-tight leading-snug text-slate-900 break-words hyphens-auto">
-                {currentCard.frontText || currentCard.german}
+                <span key={`fc-front-text-${cardKey}`}>{currentCard.frontText || currentCard.german}</span>
               </p>
               {currentCard.phonetic && (
                 <p className="text-xs sm:text-sm font-medium text-slate-500 italic">
-                  Pronunciation: {currentCard.phonetic}
+                  <span key={`fc-phonetic-${cardKey}`}>{`Pronunciation: ${currentCard.phonetic}`}</span>
                 </p>
               )}
             </div>
           ) : (
-            <div className="my-4 space-y-4">
+            <div key={`fc-back-${cardKey}`} className="my-4 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
                     English Meaning
                   </p>
                   <p className="mt-1.5 text-sm sm:text-base font-semibold text-slate-900">
-                    {currentCard.backText || currentCard.english}
+                    <span key={`fc-back-en-${cardKey}`}>{currentCard.backText || currentCard.english}</span>
                   </p>
                 </div>
                 <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4">
@@ -1116,28 +1125,32 @@ function FlashcardEngineInner({
                     Hindi / Hinglish Translation
                   </p>
                   <p className="mt-1.5 text-sm sm:text-base font-semibold text-slate-900">
-                    {currentCard.hindi || "—"}
+                    <span key={`fc-back-hi-${cardKey}`}>{currentCard.hindi || "—"}</span>
                   </p>
                 </div>
               </div>
 
               {(currentCard.exampleDe || currentCard.exampleTranslation) && (
-                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1">
+                <div key={`fc-ex-box-${cardKey}`} className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 space-y-1">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
                     Example in Real German Life
                   </p>
                   {currentCard.exampleDe && (
-                    <p className="text-sm font-semibold text-slate-900">{currentCard.exampleDe}</p>
+                    <p className="text-sm font-semibold text-slate-900">
+                      <span key={`fc-ex-de-${cardKey}`}>{currentCard.exampleDe}</span>
+                    </p>
                   )}
                   {currentCard.exampleTranslation && (
-                    <p className="text-xs text-slate-600">{currentCard.exampleTranslation}</p>
+                    <p className="text-xs text-slate-600">
+                      <span key={`fc-ex-tr-${cardKey}`}>{currentCard.exampleTranslation}</span>
+                    </p>
                   )}
                 </div>
               )}
 
               {currentCard.grammarTip && (
-                <p className="text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2.5 font-medium">
-                  Pro Tip: {currentCard.grammarTip}
+                <p key={`fc-tip-${cardKey}`} className="text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2.5 font-medium">
+                  <span>{`Pro Tip: ${currentCard.grammarTip}`}</span>
                 </p>
               )}
             </div>
@@ -1148,7 +1161,7 @@ function FlashcardEngineInner({
         <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs pointer-events-none">
           <span className="font-medium flex items-center gap-1.5 text-slate-500">
             <RotateCw className={`h-3.5 w-3.5 transition-transform duration-300 ${isFlipped ? "rotate-180 text-indigo-600" : ""}`} />
-            <span>
+            <span key={`fc-hint-${isFlipped ? "back" : "front"}`}>
               {isFlipped
                 ? "Tap anywhere on card to view German Front"
                 : "Tap card to flip to English & Hindi translation"}
@@ -1156,8 +1169,9 @@ function FlashcardEngineInner({
           </span>
 
           {isMastered && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700">
-              <CheckCircle2 className="h-3 w-3" /> Mastered
+            <span key={`fc-mastered-badge-${cardKey}`} className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+              <CheckCircle2 className="h-3 w-3" />
+              <span>Mastered</span>
             </span>
           )}
         </div>
@@ -1196,7 +1210,9 @@ function FlashcardEngineInner({
             }`}
           >
             <CheckCircle2 className="h-4 w-4" />
-            <span>{isMastered ? "Mastered ✓" : "Mark Mastered"}</span>
+            <span key={`fc-master-btn-${cardKey}-${isMastered ? "yes" : "no"}`}>
+              {isMastered ? "Mastered ✓" : "Mark Mastered"}
+            </span>
           </button>
 
           <button
@@ -1233,7 +1249,7 @@ function FlashcardEngineInner({
                   : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900"
               }`}
             >
-              {idx + 1}
+              <span>{idx + 1}</span>
             </button>
           );
         })}

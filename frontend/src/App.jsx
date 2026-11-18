@@ -65,7 +65,7 @@ function App() {
         </Routes>
       </main>
       <footer className="site-footer">
-        <p>© 2026 The Gateway To Future. All rights reserved.</p>
+        <p>© 2026 The Gateway To Future · Schönefelder Straße 2, GStU, 12355 Berlin. All rights reserved.</p>
       </footer>
     </HelmetProvider>
   );

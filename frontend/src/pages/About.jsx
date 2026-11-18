@@ -17,7 +17,7 @@ export default function About() {
             <div className="section-kicker" style={{ fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "2px", color: "hsl(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l))", marginBottom: "0.5rem", fontWeight: "bold" }}>Who We Are</div>
             <h2 style={{ fontSize: "2rem", marginBottom: "1rem", lineHeight: "1.3" }}>Built for learners planning a serious future in Germany.</h2>
             <p style={{ marginBottom: "1rem" }}>
-              Gateway to Future (GTF) is an international career and education academy headquartered at Ketschendorfer Weg 33, 12683 Berlin, Germany, led exclusively by <strong>Sarbjit Kour (Founder &amp; CEO, Gateway To Future)</strong>.
+              Gateway to Future (GTF) is an international career and education academy headquartered at Schönefelder Straße 2, GStU, 12355 Berlin, Germany, led exclusively by <strong>Sarbjit Kour (Founder &amp; CEO, Gateway To Future)</strong>.
             </p>
             <p>
               We provide a CEFR-aligned German language ecosystem (A1–C1), Studienkolleg preparation, public university admissions, healthcare Anerkennung, overseas job placements, and visa guidance.
@@ -29,7 +29,7 @@ export default function About() {
           <aside className="glass-card about-stat-card" style={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
             <span style={{ textTransform: "uppercase", fontSize: "0.85rem", letterSpacing: "1px" }}>European Headquarters</span>
             <strong style={{ fontSize: "2.5rem", color: "hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l))", display: "block", margin: "0.5rem 0" }}>Berlin, DE</strong>
-            <p style={{ padding: "0 1rem", fontSize: "0.95rem" }}>Ketschendorfer Weg 33, 12683 Berlin — led by Sarbjit Kour (Founder &amp; CEO).</p>
+            <p style={{ padding: "0 1rem", fontSize: "0.95rem" }}>Schönefelder Straße 2, GStU, 12355 Berlin — led by Sarbjit Kour (Founder &amp; CEO).</p>
           </aside>
         </AnimatedSection>
       </section>

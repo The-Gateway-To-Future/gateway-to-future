@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: `${BRAND.name} (${BRAND.shortName}) — German Academy & Studienkolleg Hub`,
   description: `${BRAND.name} (${BRAND.shortName}) — ${BRAND.tagline}. Multi-division German ecosystem: German Language Academy (A1.1–B2.2), Studienkolleg Hub (T, M, W, G Kurs), and Fachsprache Pflege & Dual Ausbildung.`,
   manifest: "/manifest.json?v=gtf-official",
+  other: {
+    google: "notranslate",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -47,8 +50,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className="h-full antialiased bg-slate-50 text-slate-900">
+    <html lang="de" translate="no" className="notranslate h-full antialiased bg-slate-50 text-slate-900">
       <head>
+        <meta name="google" content="notranslate" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>

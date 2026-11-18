@@ -16,6 +16,9 @@ export async function POST(request: NextRequest) {
     const phone = typeof body.phone === "string" ? body.phone.trim() : "";
     const course = typeof body.course === "string" ? body.course.trim() : "A1";
     const uid = typeof body.uid === "string" ? body.uid.trim() : "";
+    const rawStudentId = typeof body.studentId === "string" ? body.studentId.trim() : "";
+    const studentId =
+      rawStudentId || (uid ? `GTF-2026-${uid.slice(-4).toUpperCase()}` : "");
 
     if (!email || !email.includes("@")) {
       return NextResponse.json(
@@ -24,8 +27,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Connect to n8n/WhatsApp API to send the Official GTF Welcome Message.
     triggerStudentWelcomeWebhook({
+      studentId,
       name: name || email.split("@")[0] || "GTF Candidate",
       email,
       phone,
@@ -39,6 +42,7 @@ export async function POST(request: NextRequest) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           event: "gtf.user.registered",
+          studentId,
           name: name || "GTF Candidate",
           email,
           phone,

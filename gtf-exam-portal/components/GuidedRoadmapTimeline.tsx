@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -28,7 +28,7 @@ import {
   USER_PROGRESS_EVENT,
   type UserProgress,
 } from "@/lib/firebase/progress";
-import type { DivisionId, FlashcardDeckItem } from "@/lib/types";
+import type { DivisionId, FlashcardDeckItem, WorkbookContentType } from "@/lib/types";
 
 export interface RoadmapWorkbookSummary {
   id: string;
@@ -37,6 +37,8 @@ export interface RoadmapWorkbookSummary {
   level: Level;
   divisionId?: DivisionId;
   track?: string;
+  contentType?: WorkbookContentType;
+  module?: string;
   skill?: string;
   audioUrl?: string;
   productSlug: string;
@@ -351,14 +353,16 @@ export function GuidedRoadmapTimeline({
       subtitle: `Master active ${trackLabel} basics & vocabulary (${deckConfig.title}) with dynamic JSON flashcard decks and native German pronunciation.`,
       content: (
         <div className="space-y-4">
-          <FlashcardEngine
-            title={deckConfig.title}
-            deck={deckConfig.deck}
-            dynamicDecks={dynamicDecks}
-            masteredCardIds={userProgress?.masteredFlashcards}
-            onToggleMasteredCard={handleToggleMasteredCard}
-            onCompleteDeck={() => void completeStepsAndAdvance([1], 2)}
-          />
+          <Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
+            <FlashcardEngine
+              title={deckConfig.title}
+              deck={deckConfig.deck}
+              dynamicDecks={dynamicDecks}
+              masteredCardIds={userProgress?.masteredFlashcards}
+              onToggleMasteredCard={handleToggleMasteredCard}
+              onCompleteDeck={() => void completeStepsAndAdvance([1], 2)}
+            />
+          </Suspense>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs text-slate-500">
               Flip through cards or mark mastered, then mark Step 1 complete to unlock Step 2 ({step1Id}).

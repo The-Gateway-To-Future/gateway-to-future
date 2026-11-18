@@ -1,7 +1,7 @@
 ﻿# =============================================================================
 # THE GATEWAY TO FUTURE (GTF) — GCP N8N ENGINE AUTOMATED DEPLOYMENT (PowerShell)
 # Target Project: gateway-to-future | Region: europe-west3 (Frankfurt/Berlin)
-# Headquarters: Ketschendorfer Weg 33, 12683 Berlin
+# Headquarters: Schönefelder Straße 2, GStU, 12355 Berlin
 # =============================================================================
 
 [CmdletBinding()]

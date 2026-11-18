@@ -89,7 +89,7 @@ const PLAN_STAGES: PlanStage[] = [
 
 export default function PathwaysPlanPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#07090E] text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar />
 
       <main className="flex-1 pb-24 lg:pb-12">
@@ -107,12 +107,12 @@ export default function PathwaysPlanPage() {
         />
 
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/10 pb-4">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 ROADMAP MILESTONES
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
+              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
                 6 Sequential Stages to Germany
               </h2>
             </div>
@@ -120,9 +120,9 @@ export default function PathwaysPlanPage() {
               href={BRAND.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/85 hover:border-white/30 transition"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-800 shadow-sm hover:border-slate-400 transition"
             >
-              <span>Consult Founder Mentorship</span>
+              <span>Consult {BRAND.founderName} (Founder &amp; CEO)</span>
             </a>
           </div>
 
@@ -144,22 +144,30 @@ export default function PathwaysPlanPage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-[#07090E] py-10 pb-24 lg:pb-10 px-4 sm:px-8">
-        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-white/50">
-          <p className="font-medium tracking-wide text-white/80">
-            {BRAND.name} · {BRAND.headquarters}
-          </p>
-          <div className="flex flex-wrap items-center gap-6 font-medium uppercase tracking-[0.14em] text-[11px]">
-            <Link href="/dashboard" className="hover:text-white transition">
+      <footer className="border-t border-slate-200 bg-white py-10 pb-24 lg:pb-10 px-4 sm:px-8">
+        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="space-y-1">
+            <p className="font-semibold tracking-wide text-slate-900">
+              {BRAND.name} · {BRAND.headquarters}
+            </p>
+            <p className="text-[11px] text-slate-600">
+              {BRAND.founderName} — {BRAND.founderTitle}
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">
+            <Link href="/about" className="text-slate-600 hover:text-slate-900 transition">
+              About
+            </Link>
+            <Link href="/dashboard" className="text-slate-600 hover:text-slate-900 transition">
               Hub
             </Link>
-            <Link href="/academy" className="hover:text-white transition">
+            <Link href="/academy" className="text-slate-600 hover:text-slate-900 transition">
               Academy
             </Link>
-            <Link href="/studienkolleg" className="hover:text-white transition">
+            <Link href="/studienkolleg" className="text-slate-600 hover:text-slate-900 transition">
               Studienkolleg
             </Link>
-            <Link href="/pflege" className="hover:text-white transition">
+            <Link href="/pflege" className="text-slate-600 hover:text-slate-900 transition">
               Pflege
             </Link>
           </div>

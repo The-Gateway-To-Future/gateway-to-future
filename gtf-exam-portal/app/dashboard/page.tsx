@@ -48,7 +48,7 @@ export default function DashboardHubPage() {
   const streakFormatted = String(progress?.currentStreak ?? 1).padStart(2, "0");
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#07090E] text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar />
 
       <main className="flex-1 pb-24 lg:pb-12">
@@ -87,16 +87,16 @@ export default function DashboardHubPage() {
 
         {/* Level 1: The 3 Core Divisions */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/10 pb-4">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 01 / CORE DIVISIONS
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
+              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
                 Choose Your Division
               </h2>
             </div>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/45">
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
               One Workspace at a Time
             </span>
           </div>
@@ -139,11 +139,11 @@ export default function DashboardHubPage() {
 
         {/* Secondary Navigation Cards: Dedicated Plan & Quick Resume */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 pb-12 space-y-6">
-          <div className="border-b border-white/10 pb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+          <div className="border-b border-slate-200 pb-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
               02 / DIRECT NAVIGATION
             </p>
-            <h2 className="mt-1 text-xl sm:text-2xl font-light tracking-tight text-white">
+            <h2 className="mt-1 text-xl sm:text-2xl font-light tracking-tight text-slate-900">
               Guided Pathways &amp; Active Track
             </h2>
           </div>
@@ -174,25 +174,33 @@ export default function DashboardHubPage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-[#07090E] py-10 pb-24 lg:pb-10 px-4 sm:px-8">
-        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-white/50">
-          <p className="font-medium tracking-wide text-white/80">
-            {BRAND.name} · {BRAND.headquarters}
-          </p>
-          <div className="flex flex-wrap items-center gap-6 font-medium uppercase tracking-[0.14em] text-[11px]">
-            <Link href="/" className="hover:text-white transition">
+      <footer className="border-t border-slate-200 bg-white py-10 pb-24 lg:pb-10 px-4 sm:px-8">
+        <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="space-y-1">
+            <p className="font-semibold tracking-wide text-slate-900">
+              {BRAND.name} · {BRAND.headquarters}
+            </p>
+            <p className="text-[11px] text-slate-600">
+              {BRAND.founderName} — {BRAND.founderTitle}
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">
+            <Link href="/" className="text-slate-600 hover:text-slate-900 transition">
               Home
             </Link>
-            <Link href="/academy" className="hover:text-white transition">
+            <Link href="/about" className="text-slate-600 hover:text-slate-900 transition">
+              About
+            </Link>
+            <Link href="/academy" className="text-slate-600 hover:text-slate-900 transition">
               Academy
             </Link>
-            <Link href="/studienkolleg" className="hover:text-white transition">
+            <Link href="/studienkolleg" className="text-slate-600 hover:text-slate-900 transition">
               Studienkolleg
             </Link>
-            <Link href="/pflege" className="hover:text-white transition">
+            <Link href="/pflege" className="text-slate-600 hover:text-slate-900 transition">
               Pflege
             </Link>
-            <Link href="/pathways" className="hover:text-white transition">
+            <Link href="/pathways" className="text-slate-600 hover:text-slate-900 transition">
               My Plan
             </Link>
           </div>

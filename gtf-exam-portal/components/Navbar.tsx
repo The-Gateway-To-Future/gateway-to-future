@@ -108,7 +108,7 @@ export function Navbar({
 
   return (
     <header
-      className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#07090E]/95 transition-colors pt-[env(safe-area-inset-top)]"
+      className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 text-slate-900 transition-colors pt-[env(safe-area-inset-top)]"
       style={{ WebkitBackdropFilter: "blur(10px)", backdropFilter: "blur(10px)" }}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-3 sm:px-6 py-2.5 sm:py-3 overflow-hidden">
@@ -120,21 +120,21 @@ export function Navbar({
           <img
             src="/gtf_logo.jpg"
             alt="Gateway to Future"
-            className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg border border-white/10 object-cover shrink-0 transition duration-300 group-hover:border-white/30"
+            className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg border border-slate-200 object-cover shrink-0 transition duration-300 group-hover:border-slate-300"
           />
           <div className="flex flex-col min-w-0">
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase text-white truncate">
+            <span className="text-xs sm:text-sm font-bold tracking-[0.14em] uppercase text-slate-900 truncate">
               <span className="sm:hidden">GTF</span>
               <span className="hidden sm:inline">GATEWAY TO FUTURE</span>
             </span>
-            <span className="text-[10px] tracking-[0.18em] uppercase text-white/45 hidden lg:block truncate">
+            <span className="text-[10px] tracking-[0.18em] uppercase text-slate-500 hidden lg:block truncate">
               {BRAND.tagline}
             </span>
           </div>
         </Link>
 
         {/* 3-Division Pill Switcher (Desktop >= lg) */}
-        <div className="hidden lg:flex items-center gap-1 rounded-2xl bg-white/[0.04] p-1 border border-white/10 shrink-0">
+        <div className="hidden lg:flex items-center gap-1 rounded-2xl bg-slate-100 p-1 border border-slate-200 shrink-0">
           {DIVISIONS.map((divId) => {
             const Icon = divisionIcons[divId];
             const isSelected = resolvedDivision === divId;
@@ -147,21 +147,21 @@ export function Navbar({
                 title={DIVISION_META[divId].shortTitle}
                 className={`relative flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors select-none ${
                   isSelected
-                    ? "!text-[#07090E]"
-                    : "text-white/65 hover:text-white hover:bg-white/[0.04]"
+                    ? "!text-white"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
                 }`}
               >
                 {isSelected && (
                   <motion.div
                     layoutId="active-division-pill-navbar"
-                    className="absolute inset-0 rounded-xl !bg-white shadow-xs"
+                    className="absolute inset-0 rounded-xl !bg-slate-900 shadow-xs"
                     transition={{ type: "spring", stiffness: 450, damping: 32 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-1.5">
                   <Icon
                     className={`h-3.5 w-3.5 ${
-                      isSelected ? "!text-[#07090E]" : "text-white/50"
+                      isSelected ? "!text-white" : "text-slate-500"
                     }`}
                   />
                   <span>{divisionShortLabels[divId]}</span>
@@ -175,13 +175,13 @@ export function Navbar({
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {isAuthenticated && (
             <>
-              {/* Monochrome BMW-style Streak Pill */}
+              {/* Monochrome Streak Pill */}
               <div
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-white/85 shrink-0"
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-800 shrink-0"
                 title={`Daily Learning Streak · Last active: ${progress?.lastLoginDate || "Today"}`}
               >
                 <svg
-                  className="h-2.5 w-2.5 text-emerald-400 shrink-0"
+                  className="h-2.5 w-2.5 text-emerald-600 shrink-0"
                   viewBox="0 0 10 10"
                   fill="none"
                   aria-hidden="true"
@@ -195,14 +195,14 @@ export function Navbar({
               {/* Dedicated My Plan / Roadmap Link */}
               <Link
                 href="/pathways"
-                className={`hidden sm:inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition shrink-0 ${
+                className={`hidden sm:inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition shrink-0 ${
                   isPlanActive
-                    ? "border-white/40 bg-white/[0.12] text-white"
-                    : "border-white/10 bg-white/[0.03] text-white/75 hover:text-white hover:border-white/25"
+                    ? "border-slate-300 bg-slate-100 text-slate-900"
+                    : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300"
                 }`}
                 title="View My Plan & Career Roadmap"
               >
-                <Compass className="h-3.5 w-3.5 text-white/60 shrink-0" />
+                <Compass className="h-3.5 w-3.5 text-slate-500 shrink-0" />
                 <span>My Plan</span>
               </Link>
             </>
@@ -211,10 +211,10 @@ export function Navbar({
           {/* Dedicated Pricing Link */}
           <Link
             href="/pricing"
-            className={`hidden sm:inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition shrink-0 ${
+            className={`hidden sm:inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition shrink-0 ${
               isPricingActive
-                ? "border-white/40 bg-white/[0.12] text-white"
-                : "border-white/10 bg-white/[0.03] text-white/75 hover:text-white hover:border-white/25"
+                ? "border-slate-300 bg-slate-100 text-slate-900"
+                : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300"
             }`}
             title="Membership & Pricing"
           >
@@ -226,7 +226,7 @@ export function Navbar({
             href={BRAND.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center h-8 w-8 sm:h-auto sm:w-auto sm:px-3 sm:py-1.5 rounded-xl border border-white/10 bg-white/[0.04] text-[11px] font-medium uppercase tracking-[0.14em] text-white/80 hover:text-white hover:border-white/25 transition shrink-0"
+            className="inline-flex items-center justify-center h-8 w-8 sm:h-auto sm:w-auto sm:px-3 sm:py-1.5 rounded-xl border border-slate-200 bg-white text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 hover:text-slate-900 hover:border-slate-300 transition shrink-0"
             title="Official GTF Berlin WhatsApp Helpline"
           >
             <Phone className="h-3.5 w-3.5 shrink-0" />
@@ -238,8 +238,8 @@ export function Navbar({
             <div
               className={`inline-flex items-center gap-1.5 rounded-xl border px-2 py-1 sm:px-2.5 text-xs shrink-0 transition ${
                 isProfileActive
-                  ? "border-white/40 bg-white/[0.12]"
-                  : "border-white/15 bg-white/[0.05]"
+                  ? "border-slate-300 bg-slate-100"
+                  : "border-slate-200 bg-slate-50"
               }`}
             >
               <Link
@@ -247,15 +247,15 @@ export function Navbar({
                 className="inline-flex items-center gap-1.5 rounded-lg hover:opacity-85 transition focus:outline-none"
                 title="Open Profile & Subscription"
               >
-                <div className="flex h-6 w-6 items-center justify-center rounded-full !bg-white text-[10px] font-bold !text-[#07090E] shrink-0">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white shrink-0">
                   {(user.fullName || user.userEmail || "S").charAt(0).toUpperCase()}
                 </div>
                 <div className="hidden sm:flex flex-col text-left max-w-[100px]">
-                  <span className="truncate font-semibold text-white leading-tight text-xs">
+                  <span className="truncate font-semibold text-slate-900 leading-tight text-xs">
                     {(user.fullName || user.userEmail?.split("@")[0] || "Student").split(" ")[0]}
                   </span>
                   {user.studentId && (
-                    <span className="text-[9px] font-medium text-white/55 tracking-wider truncate">
+                    <span className="text-[9px] font-medium text-slate-500 tracking-wider truncate">
                       {user.studentId}
                     </span>
                   )}
@@ -264,7 +264,7 @@ export function Navbar({
               <button
                 type="button"
                 onClick={logout}
-                className="text-white/50 hover:text-red-400 transition ml-0.5 p-0.5 rounded-md hover:bg-white/5"
+                className="text-slate-400 hover:text-red-600 transition ml-0.5 p-0.5 rounded-md hover:bg-slate-100"
                 title="Log out"
               >
                 <LogOut className="h-3.5 w-3.5" />
@@ -273,9 +273,9 @@ export function Navbar({
           ) : (
             <Link
               href="/login"
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/15 !bg-white px-2.5 sm:px-3.5 py-1.5 text-xs font-semibold tracking-wide !text-[#07090E] hover:opacity-90 transition whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white hover:bg-slate-800 transition whitespace-nowrap shrink-0 shadow-xs"
             >
-              <User className="h-3.5 w-3.5 !text-[#07090E]" />
+              <User className="h-3.5 w-3.5 text-white" />
               <span>Log In</span>
             </Link>
           )}

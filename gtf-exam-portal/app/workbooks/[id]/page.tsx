@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
@@ -39,10 +39,12 @@ export default function WorkbookReaderPage() {
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 light-study">
-        <FocusedWorkbookWorkspace
-          workbookId={workbookId}
-          onWorkbookLoaded={(wb) => setLoadedWb(wb)}
-        />
+        <Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
+          <FocusedWorkbookWorkspace
+            workbookId={workbookId}
+            onWorkbookLoaded={(wb) => setLoadedWb(wb)}
+          />
+        </Suspense>
       </main>
 
       <BottomNavigationBar />

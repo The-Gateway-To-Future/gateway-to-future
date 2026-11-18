@@ -4,13 +4,13 @@
 
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --background: #07090E;
-  --foreground: #F2F4F7;
-  --primary: #07090E;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #0f172a;
   --royal: #134074;
-  --gold: #FFD166;
-  --gold-glow: rgba(255, 209, 102, 0.35);
-  color-scheme: dark;
+  --gold: #b45309;
+  --gold-glow: rgba(180, 83, 9, 0.15);
+  color-scheme: light;
 }
 
 * {
@@ -31,8 +31,8 @@ body {
   width: 100%;
   overscroll-behavior-x: none;
   touch-action: pan-y;
-  background-color: #07090E;
-  color: #F2F4F7;
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 body {

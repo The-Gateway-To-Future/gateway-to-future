@@ -44,37 +44,37 @@ export function BreadcrumbHeader({
   const safeCrumbs = Array.isArray(breadcrumbs) ? breadcrumbs.filter(Boolean) : [];
 
   return (
-    <section className="relative w-full overflow-hidden border-b border-white/10 bg-[#07090E] py-12 sm:py-16 px-4 sm:px-8">
+    <section className="relative w-full overflow-hidden border-b border-slate-200 bg-white py-10 sm:py-14 px-4 sm:px-8 text-slate-900">
       {/* Ambient 3D Architectural Background */}
       <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-10"
         style={{ backgroundImage: `url('${bgUrl}')` }}
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -inset-x-12 bottom-0 h-3/4 opacity-35 bmw-mesh-grid"
+        className="pointer-events-none absolute -inset-x-12 bottom-0 h-3/4 opacity-15 bmw-mesh-grid"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07090E] via-[#07090E]/80 to-[#07090E]/55"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#07090E]/90 via-[#07090E]/55 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl space-y-6">
+      <div className="relative z-10 mx-auto max-w-6xl space-y-5">
         {/* Top Row: Breadcrumb Trail & Optional Right Badge */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <nav
             aria-label="Breadcrumb"
-            className="flex flex-wrap items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-white/55"
+            className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500"
           >
             {backHref && (
               <Link
                 href={backHref}
-                className="mr-2 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/85 transition hover:border-white/30 hover:bg-white/[0.08]"
+                className="mr-2 inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-700 transition hover:bg-slate-200"
               >
                 <ArrowLeft className="h-3 w-3" />
                 <span>{backLabel}</span>
@@ -86,19 +86,19 @@ export function BreadcrumbHeader({
               return (
                 <span key={`${crumb.label}-${idx}`} className="inline-flex items-center gap-1.5 min-w-0">
                   {idx > 0 && (
-                    <ChevronRight className="h-3 w-3 text-white/30 shrink-0" aria-hidden="true" />
+                    <ChevronRight className="h-3 w-3 text-slate-400 shrink-0" aria-hidden="true" />
                   )}
                   {crumb.href && !isLast ? (
                     <Link
                       href={crumb.href}
-                      className="truncate max-w-[160px] sm:max-w-none hover:text-white transition-colors"
+                      className="truncate max-w-[160px] sm:max-w-none text-slate-600 hover:text-slate-900 transition-colors"
                     >
                       {crumb.label}
                     </Link>
                   ) : (
                     <span
                       className={`truncate max-w-[200px] sm:max-w-none ${
-                        isLast ? "text-white font-semibold" : "text-white/55"
+                        isLast ? "text-slate-900 font-bold" : "text-slate-500"
                       }`}
                     >
                       {crumb.label}
@@ -113,17 +113,17 @@ export function BreadcrumbHeader({
         </div>
 
         {/* Eyebrow, Headline & Subtitle */}
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {eyebrow && (
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/55">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500">
               {eyebrow}
             </p>
           )}
-          <h1 className="text-3xl sm:text-5xl font-light tracking-tight leading-[1.1] text-white">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-slate-900">
             {title}
           </h1>
           {subtitle && (
-            <p className="max-w-2xl text-sm sm:text-base font-normal text-white/65 leading-relaxed">
+            <p className="max-w-2xl text-sm sm:text-base font-medium text-slate-600 leading-relaxed">
               {subtitle}
             </p>
           )}

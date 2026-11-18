@@ -229,9 +229,9 @@ export default function SetupWizardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-900 text-slate-100">
       {/* Top Header */}
-      <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-gtf-gold to-amber-500 font-extrabold text-slate-950 shadow-md">
@@ -271,7 +271,7 @@ export default function SetupWizardPage() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Banner / Title */}
-        <div className="mb-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-950 p-6 shadow-xl sm:p-8">
+        <div className="mb-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 p-6 shadow-xl sm:p-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-400">
@@ -465,7 +465,7 @@ export default function SetupWizardPage() {
                   className={`relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-6 text-center transition ${
                     dragActive
                       ? "border-amber-400 bg-amber-400/10"
-                      : "border-slate-700 bg-slate-950/50 hover:border-slate-600"
+                      : "border-slate-700 bg-slate-900/50 hover:border-slate-600"
                   }`}
                 >
                   <UploadCloud className="h-9 w-9 text-slate-400" />
@@ -501,7 +501,7 @@ export default function SetupWizardPage() {
                     value={clientEmail}
                     onChange={(e) => setClientEmail(e.target.value)}
                     placeholder="gtf-vault@project.iam.gserviceaccount.com"
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
                   />
                 </div>
 
@@ -515,7 +515,7 @@ export default function SetupWizardPage() {
                     value={driveFolderInput}
                     onChange={(e) => handleDriveFolderChange(e.target.value)}
                     placeholder="https://drive.google.com/drive/folders/1aBcDeF... or raw ID"
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400"
                   />
                 </div>
               </div>
@@ -534,7 +534,7 @@ export default function SetupWizardPage() {
                       value={privateKey}
                       onChange={(e) => setPrivateKey(e.target.value)}
                       placeholder="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwgg..."
-                      className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 font-mono text-xs text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-700 bg-slate-900 p-3 font-mono text-xs text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
                 </details>
@@ -575,7 +575,7 @@ export default function SetupWizardPage() {
                     value={groqKey}
                     onChange={(e) => setGroqKey(e.target.value)}
                     placeholder={data?.config.groqApiKeyMasked || "gsk_..."}
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                   />
                   <p className="mt-1 text-[11px] text-slate-400">
                     Llama-3.3-70B (Writing) + Whisper-large-v3 (Speaking)
@@ -599,7 +599,7 @@ export default function SetupWizardPage() {
                     value={geminiKey}
                     onChange={(e) => setGeminiKey(e.target.value)}
                     placeholder={data?.config.geminiApiKeyMasked || "AIzaSy..."}
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                   />
                   <p className="mt-1 text-[11px] text-slate-400">
                     Gemini 2.5 Flash for PDF processing & multi-agent evaluation
@@ -634,7 +634,7 @@ export default function SetupWizardPage() {
                     value={supabaseUrl}
                     onChange={(e) => setSupabaseUrl(e.target.value)}
                     placeholder="https://xyzcompany.supabase.co"
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                   />
                 </div>
 
@@ -648,7 +648,7 @@ export default function SetupWizardPage() {
                       value={supabaseAnonKey}
                       onChange={(e) => setSupabaseAnonKey(e.target.value)}
                       placeholder={data?.config.supabaseAnonKeyMasked || "eyJhbGciOiJIUzI1NiIsInR5cCI6..."}
-                      className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
@@ -661,7 +661,7 @@ export default function SetupWizardPage() {
                       value={supabaseServiceKey}
                       onChange={(e) => setSupabaseServiceKey(e.target.value)}
                       placeholder={data?.config.supabaseServiceRoleKeyMasked || "eyJhbGciOiJIUzI1NiIsInR5cCI6..."}
-                      className="w-full rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -693,7 +693,7 @@ export default function SetupWizardPage() {
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
                   placeholder="gtf-berlin-founder-2026"
-                  className="w-full max-w-md rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
+                  className="w-full max-w-md rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-mono text-slate-200 placeholder-slate-600 focus:border-amber-400 focus:outline-none"
                 />
               </div>
             </div>
@@ -771,7 +771,7 @@ export default function SetupWizardPage() {
                 </button>
 
                 {showSchemaPreview && (
-                  <pre className="mt-2.5 max-h-64 overflow-x-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-[10px] font-mono text-slate-300">
+                  <pre className="mt-2.5 max-h-64 overflow-x-auto rounded-lg border border-slate-800 bg-slate-900 p-3 text-[10px] font-mono text-slate-300">
                     {data?.schemaSql || "Loading schema..."}
                   </pre>
                 )}
@@ -788,7 +788,7 @@ export default function SetupWizardPage() {
                 Created automatically in your Google Drive by <code className="text-amber-300">drive_initializer.py</code>:
               </p>
 
-              <div className="mt-3.5 rounded-xl border border-slate-800 bg-slate-950 p-3 text-[11px] font-mono text-slate-300">
+              <div className="mt-3.5 rounded-xl border border-slate-800 bg-slate-900 p-3 text-[11px] font-mono text-slate-300">
                 <p className="text-amber-400 font-bold">/GTF_App_Vault/</p>
                 <p className="pl-3 text-slate-400">├── A1/ (Lesen, Hoeren, Schreiben, Sprechen...)</p>
                 <p className="pl-3 text-slate-400">├── A2/ ...</p>
@@ -796,7 +796,7 @@ export default function SetupWizardPage() {
                 <p className="pl-3 text-slate-400">└── B2/ (Pflege & Anerkennung)</p>
               </div>
 
-              <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/60 p-3 text-xs text-slate-300">
+              <div className="mt-4 rounded-xl border border-slate-800 bg-slate-900/60 p-3 text-xs text-slate-300">
                 <span className="font-semibold text-amber-400">Generated Sample Audio:</span>
                 <p className="mt-1 text-[11px] text-slate-400">
                   {data?.hasAudio

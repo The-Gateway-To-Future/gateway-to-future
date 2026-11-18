@@ -2,7 +2,7 @@ import type { RoadmapWorkbookSummary } from "@/components/GuidedRoadmapTimeline"
 import type { SubdivisionTheme } from "@/components/SubdivisionCard";
 import { LEVEL_META, type DivisionKey, type SectionKey } from "@/lib/config";
 import type { StudienkollegTrack } from "@/lib/types";
-import { getCoreLabsForLevel } from "@/lib/curriculum-labs";
+import { getCoreLabsForLevel, getGrammarPillarsForLevel } from "@/lib/curriculum-labs";
 
 export type CoreModuleSlug =
   | "01-vocabulary"
@@ -240,11 +240,35 @@ export function filterWorkbooksForLevel(
 }
 
 export function classifyWorkbookModule(wb: RoadmapWorkbookSummary): CoreModuleSlug {
+  const ct = (wb.contentType || "").toLowerCase();
+  const explicitMod = (wb.module || "").toLowerCase();
+
+  if (ct === "grammar" || explicitMod === "02-grammar") {
+    return "02-grammar";
+  }
+  if (ct === "exam_lesen" || ct === "exam_hoeren" || explicitMod === "03-hoeren-lesen") {
+    return "03-hoeren-lesen";
+  }
+  if (ct === "exam_schreiben" || ct === "exam_sprechen" || explicitMod === "04-modelltests") {
+    return "04-modelltests";
+  }
+
   const skill = (wb.skill || "").toLowerCase();
   const id = wb.id.toLowerCase();
   const title = wb.title.toLowerCase();
 
-  if (id.includes("modelltest") || id.includes("aufnahme_deutsch") || title.includes("modelltest")) {
+  if (
+    id.includes("modelltest") ||
+    id.includes("aufnahme_deutsch") ||
+    id.includes("pruefungstraining") ||
+    id.includes("vollsimulation") ||
+    id.includes("vorbereitungsheft") ||
+    title.includes("modelltest") ||
+    title.includes("prüfungstraining") ||
+    title.includes("vollsimulation") ||
+    skill === "schreiben" ||
+    skill === "sprechen"
+  ) {
     return "04-modelltests";
   }
   if (
@@ -253,8 +277,10 @@ export function classifyWorkbookModule(wb: RoadmapWorkbookSummary): CoreModuleSl
     Boolean(wb.audioUrl) ||
     id.includes("hoeren") ||
     id.includes("lesen") ||
+    id.includes("sprachbausteine") ||
     title.includes("hören") ||
-    title.includes("lesen")
+    title.includes("lesen") ||
+    title.includes("sprachbausteine")
   ) {
     return "03-hoeren-lesen";
   }
@@ -288,8 +314,21 @@ export function getSubdivisionsForLevel(
     ? "03 · Clinical Dialogues, Hören & ISBAR Lab"
     : "03 · Hören & Lesen Lab";
 
-  const coreLabs = !info.isStudienkolleg && !info.isPflege ? getCoreLabsForLevel(info.levelKey) : [];
-  const labCount = coreLabs.length > 0 ? coreLabs.length + labWorkbooks.length : 2 + labWorkbooks.length;
+  const coreLabs =
+    !info.isStudienkolleg && !info.isPflege
+      ? getCoreLabsForLevel(info.levelKey).filter((lab) => lab.module === "03-hoeren-lesen")
+      : [];
+  const grammarPillars =
+    !info.isStudienkolleg && !info.isPflege ? getGrammarPillarsForLevel(info.levelKey) : [];
+  const grammarTotal = new Set([
+    ...grammarPillars.map((g) => g.id),
+    ...grammarWorkbooks.map((w) => w.id),
+  ]).size;
+  const labTotal = new Set([
+    ...coreLabs.map((l) => l.id),
+    ...labWorkbooks.map((w) => w.id),
+  ]).size;
+  const labCount = labTotal > 0 ? labTotal : 2 + labWorkbooks.length;
 
   const subdivisions: SubdivisionFolderItem[] = [
     {
@@ -309,7 +348,7 @@ export function getSubdivisionsForLevel(
       subtitle: info.isStudienkolleg
         ? `Structured ${info.label} university syllabus, interactive formula calculators, and academic grammar dossiers.`
         : `Structured ${info.label} grammar dossiers, 122 Säulen foundations, and interactive chapter workbooks.`,
-      badge: `${Math.max(1, grammarWorkbooks.length)} MODULE${grammarWorkbooks.length === 1 ? "" : "S"}`,
+      badge: `${Math.max(1, grammarTotal)} MODULE${grammarTotal === 1 ? "" : "S"}`,
       theme: "grammar",
       href: `/academy/${info.levelKey}/02-grammar`,
       metaItems: info.isStudienkolleg ? ["Formula Engine", "Syllabus"] : ["122 Säulen", "PDF Dossiers"],
@@ -512,20 +551,20 @@ export function getTopicsForSubdivision(
     }
 
     if (!info.isStudienkolleg && !info.isPflege) {
-      const coreLabs = getCoreLabsForLevel(info.levelKey);
-      coreLabs.forEach((lab) => {
+      const grammarPillars = getGrammarPillarsForLevel(info.levelKey);
+      grammarPillars.forEach((pillar) => {
         topics.push({
-          id: `grammar-${lab.id}`,
-          indexLabel: `SÄULE ${String(lab.index).padStart(2, "0")} · GRAMMATIK`,
-          title: `${lab.title} — Grammatik & Struktur`,
-          subtitle: `122 Säulen Grammatikregeln, Satzbau, Signalwörter & Goethe/telc Prüfungsaufgaben.`,
-          badge: "122 SÄULEN",
+          id: pillar.id,
+          indexLabel: pillar.indexLabel,
+          title: pillar.title,
+          subtitle: pillar.subtitle,
+          badge: pillar.badge,
           theme: "grammar",
-          href: `/academy/${info.levelKey}/02-grammar/${encodeURIComponent(`grammar-${lab.id}`)}`,
-          ctaLabel: "Open Grammar Lab",
-          metaItems: [lab.topics.slice(0, 2).join(" · "), "Aufgaben & Regeln"],
+          href: `/academy/${info.levelKey}/02-grammar/${encodeURIComponent(pillar.id)}`,
+          ctaLabel: "Open Grammar Pillar",
+          metaItems: [pillar.topics.slice(0, 2).join(" · "), "Theorie & Flashcards"],
           kind: "workbook",
-          workbookId: lab.id,
+          workbookId: pillar.id,
         });
       });
     }
@@ -534,16 +573,20 @@ export function getTopicsForSubdivision(
       (wb) => classifyWorkbookModule(wb) === "02-grammar",
     );
     grammarWorkbooks.forEach((wb, i) => {
+      if (topics.some((t) => t.id === wb.id)) return;
       topics.push({
         id: wb.id,
         indexLabel: `CHAPTER ${String(i + 1).padStart(2, "0")} · GRAMMAR`,
         title: cleanWorkbookTitle(wb.title),
         subtitle: wb.subtitle || `${wb.pages} pages · ${wb.topics.slice(0, 3).join(" · ")}`,
-        badge: `${wb.pages} PAGES`,
+        badge: wb.contentType === "grammar" ? "122 SÄULEN" : `${wb.pages} PAGES`,
         theme: "grammar",
         href: `/academy/${info.levelKey}/02-grammar/${encodeURIComponent(wb.id)}`,
-        ctaLabel: "Open Workbook",
-        metaItems: [`${wb.questionCount} Exercises`, "Protected PDF"],
+        ctaLabel: "Open Grammar Pillar",
+        metaItems:
+          wb.contentType === "grammar"
+            ? [wb.topics.slice(0, 2).join(" · "), "Theorie & Flashcards"]
+            : [`${wb.questionCount} Exercises`, "Protected PDF"],
         kind: "workbook",
         workbookId: wb.id,
       });
@@ -595,8 +638,12 @@ export function getTopicsForSubdivision(
         },
       );
     } else if (!info.isStudienkolleg) {
-      // 10 Comprehensive Core Audio & Reading Labs for CEFR Language Academy (A1–B2)
-      const coreLabs = getCoreLabsForLevel(info.levelKey);
+      // Dedicated Exam Audio & Reading Labs ONLY (contentType: exam_hoeren | exam_lesen)
+      const coreLabs = getCoreLabsForLevel(info.levelKey).filter(
+        (lab) =>
+          lab.module === "03-hoeren-lesen" &&
+          (lab.contentType === "exam_hoeren" || lab.contentType === "exam_lesen"),
+      );
       for (const lab of coreLabs) {
         topics.push({
           id: lab.id,
@@ -609,7 +656,7 @@ export function getTopicsForSubdivision(
           ctaLabel: "Open Lab",
           metaItems: [
             `${lab.questions.length} Tasks`,
-            lab.audioUrl ? "128 kbps MP3" : "Reading Passages",
+            lab.contentType === "exam_hoeren" && lab.audioUrl ? "128 kbps MP3" : "Reading Passages",
           ],
           kind: "workbook",
           workbookId: lab.id,
@@ -724,10 +771,33 @@ export function getTopicsForSubdivision(
       });
     }
 
+    if (!info.isStudienkolleg && !info.isPflege) {
+      const modelCoreLabs = getCoreLabsForLevel(info.levelKey).filter(
+        (lab) => lab.module === "04-modelltests",
+      );
+      modelCoreLabs.forEach((lab) => {
+        if (topics.some((t) => t.id === lab.id)) return;
+        topics.push({
+          id: lab.id,
+          indexLabel: lab.indexLabel,
+          title: lab.title,
+          subtitle: lab.subtitle,
+          badge: lab.badge,
+          theme: lab.contentType === "exam_sprechen" ? "audio" : "exam",
+          href: `/academy/${info.levelKey}/04-modelltests/${encodeURIComponent(lab.id)}`,
+          ctaLabel: "Open Paper",
+          metaItems: [`${lab.questions.length} Tasks`, "Prüfungstraining"],
+          kind: "workbook",
+          workbookId: lab.id,
+        });
+      });
+    }
+
     const testWorkbooks = levelWorkbooks.filter(
       (wb) => classifyWorkbookModule(wb) === "04-modelltests",
     );
     testWorkbooks.forEach((wb, i) => {
+      if (topics.some((t) => t.id === wb.id)) return;
       topics.push({
         id: wb.id,
         indexLabel: `DOSSIER ${String(i + 1).padStart(2, "0")} · PAST PAPER`,

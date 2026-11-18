@@ -427,10 +427,9 @@ export async function GET(req: Request) {
     ok: true,
     timestamp: new Date().toISOString(),
     institution: "The Gateway to Future (GTF) Berlin",
-    headquarters: "Ketschendorfer Weg 33, 12683 Berlin",
+    headquarters: "Schönefelder Straße 2, GStU, 12355 Berlin",
     founders: [
-      { name: "Ashutosh Sharma", title: "Founder & Relocation Specialist" },
-      { name: "Sarbjit Kour", title: "Founder & Language Master Coach" },
+      { name: "Sarbjit Kour", title: "Founder & CEO, Gateway To Future" },
     ],
     cooOrchestrator: "EMP-16 (Chief Operating Officer)",
     metrics: {

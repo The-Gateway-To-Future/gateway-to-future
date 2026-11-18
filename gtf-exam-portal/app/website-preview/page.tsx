@@ -107,7 +107,7 @@ export default function WebsitePreviewPage() {
         : "w-full";
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-white font-sans">
+    <div className="min-h-screen flex flex-col bg-slate-900 text-white font-sans">
       {/* Top Interactive Control Bar */}
       <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/95 backdrop-blur-md px-4 py-3 shadow-lg">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">

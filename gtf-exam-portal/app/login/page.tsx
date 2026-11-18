@@ -404,7 +404,7 @@ function LoginScreenInner() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#07090E] text-white flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-between overflow-x-hidden">
       <AuthToast toast={toast} onDismiss={() => setToast(null)} />
 
       {/* Architectural Obsidian Lighting */}
@@ -553,7 +553,7 @@ function LoginScreenInner() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="w-full h-12 rounded-xl border border-white/15 bg-[#07090E] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
+                      className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
                     />
                   </div>
 
@@ -582,7 +582,7 @@ function LoginScreenInner() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter password"
-                        className="w-full h-12 rounded-xl border border-white/15 bg-[#07090E] pl-4 pr-11 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
+                        className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 pl-4 pr-11 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
                       />
                       <button
                         type="button"
@@ -606,7 +606,7 @@ function LoginScreenInner() {
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="h-4 w-4 rounded border border-white/25 bg-[#07090E] text-white accent-white focus:ring-0"
+                      className="h-4 w-4 rounded border border-white/25 bg-slate-900 text-white accent-white focus:ring-0"
                     />
                     <span className="text-xs text-zinc-300 group-hover:text-white transition">
                       Remember me
@@ -663,8 +663,8 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#07090E] flex items-center justify-center">
-          <Loader2 className="h-5 w-5 animate-spin text-zinc-500" />
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+          <Loader2 className="h-5 w-5 animate-spin text-slate-500" />
         </div>
       }
     >

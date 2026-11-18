@@ -80,7 +80,7 @@ export function PwaRegistrar() {
       </button>
 
       {showIosGuide && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl bg-white p-6 text-slate-900 shadow-2xl">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-2.5">

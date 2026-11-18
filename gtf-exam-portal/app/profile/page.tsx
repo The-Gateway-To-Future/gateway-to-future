@@ -142,7 +142,7 @@ export default function ProfilePage() {
   const divisionLabel = DIVISION_META[divisionKey]?.shortTitle || "German Language Academy";
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#07090E] text-white pb-28 md:pb-12">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-28 md:pb-12">
       <Navbar />
       <AuthToast toast={toast} onDismiss={() => setToast(null)} />
 
@@ -189,7 +189,7 @@ export default function ProfilePage() {
               </div>
 
               <div className="space-y-3 pt-2 border-t border-white/10">
-                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#07090E] px-4 py-3">
+                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-900 px-4 py-3">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <UserIcon className="h-4 w-4 text-zinc-400 shrink-0" />
                     <div className="min-w-0">
@@ -201,7 +201,7 @@ export default function ProfilePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-[#07090E] px-4 py-3">
+                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-900 px-4 py-3">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <Mail className="h-4 w-4 text-zinc-400 shrink-0" />
                     <div className="min-w-0">

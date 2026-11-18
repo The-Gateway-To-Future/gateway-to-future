@@ -51,8 +51,12 @@ export async function POST(req: Request) {
       );
     }
 
-    // Generate official GTF Student ID: GTF-YYYY-XXXX (e.g. GTF-2026-4821)
-    const studentId = generateStudentId();
+    // Generate official GTF Student ID (or accept valid pre-computed Firebase student ID)
+    const incomingStudentId =
+      typeof body.studentId === "string" && /^GTF-[0-9]{4}-[A-Za-z0-9]{4}$/.test(body.studentId.trim())
+        ? body.studentId.trim()
+        : "";
+    const studentId = incomingStudentId || generateStudentId();
 
     // 2. Primary Auth: Supabase Service Role Admin API (Auto-confirmed, Non-blocking)
     const supabaseAdmin = getSupabaseServerClient();
@@ -160,6 +164,15 @@ export async function POST(req: Request) {
 
     const token = signStudentSessionToken(userPayload);
 
+    // 5. Automated Lead / Welcome Email & WhatsApp Webhook (Asynchronous & Non-blocking)
+    triggerStudentWelcomeWebhook({
+      studentId,
+      name,
+      email,
+      phone,
+      course,
+    });
+
     if (requireEmailVerification) {
       return NextResponse.json({
         success: true,
@@ -175,14 +188,6 @@ export async function POST(req: Request) {
         message: "Verification email dispatched. Verify your email before signing in.",
       });
     }
-
-    // 5. Automated Lead / Welcome Email Webhook (Asynchronous & Non-blocking)
-    triggerStudentWelcomeWebhook({
-      name,
-      email,
-      phone,
-      course,
-    });
 
     // 6. Build HTTP 200 response with Signed HTTP-Only Cookie
     const response = NextResponse.json({

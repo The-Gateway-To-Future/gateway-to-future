@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { useAuth } from "@/lib/auth-context";
 import { BRAND, GTF_BANK_DETAILS } from "@/lib/config";
@@ -84,13 +85,13 @@ const PRICING_TIERS: PricingTier[] = [
   },
   {
     id: "relocation_cohort",
-    badge: "FOUNDER MENTORSHIP",
+    badge: "CEO MENTORSHIP",
     name: "Berlin Relocation & § 81a",
     priceLabel: "Custom",
     subPriceLabel: "Tuition & placement roadmap",
     billingCycle: "cohort",
     description:
-      "End-to-end relocation guidance in Germany with Ashutosh Sharma & Sarbjit Kour — from language clearance to Berlin hospital or university placement.",
+      "End-to-end relocation guidance in Germany with Sarbjit Kour (Founder & CEO, Gateway To Future) — from language clearance to Berlin hospital or university placement.",
     ctaLabel: "Book Berlin Admissions",
     features: [
       "Everything included in GTF All-Access Pro",
@@ -286,7 +287,7 @@ function PricingContentInner() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#07090E] text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar />
 
       <main className="flex-1 pb-24 lg:pb-16">
@@ -446,7 +447,7 @@ function PricingContentInner() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="rounded-xl border border-white/10 bg-[#07090E] p-5 space-y-3">
+                <div className="rounded-xl border border-white/10 bg-slate-900 p-5 space-y-3">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
                     Direct Bank / Instant UPI (India &amp; International)
                   </p>
@@ -472,7 +473,7 @@ function PricingContentInner() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-[#07090E] p-5 flex flex-col justify-between space-y-4">
+                <div className="rounded-xl border border-white/10 bg-slate-900 p-5 flex flex-col justify-between space-y-4">
                   <div className="space-y-1.5">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
                       Berlin Admissions Concierge
@@ -498,6 +499,14 @@ function PricingContentInner() {
               </div>
             </div>
           )}
+
+          {/* Direct CEO Mentorship Showcase */}
+          <div className="space-y-3 pt-2">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+              EXECUTIVE LEADERSHIP &amp; MENTORSHIP
+            </p>
+            <CeoPortraitCard compact />
+          </div>
         </section>
       </main>
 
@@ -510,8 +519,8 @@ export default function PricingPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#07090E] flex items-center justify-center">
-          <Loader2 className="h-5 w-5 animate-spin text-white/50" />
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+          <Loader2 className="h-5 w-5 animate-spin text-slate-500" />
         </div>
       }
     >

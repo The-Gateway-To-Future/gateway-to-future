@@ -177,7 +177,24 @@ export function ProfileModal({ isOpen, onClose, onEmailChanged }: ProfileModalPr
 
               {/* Founder & Mentorship Support */}
               <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
-                <p className="text-xs font-bold text-slate-900">Founder Mentorship &amp; German Relocation</p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/public/images/ceo-sarbjit-kour.jpg"
+                    alt="Sarbjit Kour — Founder & CEO, Gateway To Future"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (!img.dataset.fallback) {
+                        img.dataset.fallback = "1";
+                        img.src = "/images/ceo-sarbjit-kour.jpg";
+                      }
+                    }}
+                    className="h-12 w-12 rounded-xl border border-slate-200 object-cover object-top shrink-0"
+                  />
+                  <div>
+                    <p className="text-xs font-bold text-slate-900">{BRAND.founderName}</p>
+                    <p className="text-[11px] font-semibold text-amber-700">{BRAND.founderTitle}</p>
+                  </div>
+                </div>
                 <div className="space-y-2 text-xs text-slate-600">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-3.5 w-3.5 text-gtf-primary shrink-0" />
