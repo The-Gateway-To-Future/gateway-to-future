@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { BRAND } from "@/lib/config";
 import { AuthProvider } from "@/lib/auth-context";
 import { CapacitorBridge } from "@/components/CapacitorBridge";
@@ -6,6 +7,7 @@ import "./globals.css";
 import "./obsidian-theme.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://app.gatewaytofuture.com"),
   title: `${BRAND.name} (${BRAND.shortName}) — German Academy & Studienkolleg Hub`,
   description: `${BRAND.name} (${BRAND.shortName}) — ${BRAND.tagline}. Multi-division German ecosystem: German Language Academy (A1.1–B2.2), Studienkolleg Hub (T, M, W, G Kurs), and Fachsprache Pflege & Dual Ausbildung.`,
   manifest: "/manifest.json?v=gtf-official",
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07090E",
+  themeColor: "#f8fafc",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -45,16 +47,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className="h-full antialiased dark gtf-obsidian bg-[#07090E] text-white">
+    <html lang="de" className="h-full antialiased bg-slate-50 text-slate-900">
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
-      <body className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#07090E] text-white selection:bg-white selection:text-[#07090E]">
+      <body className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-slate-50 text-slate-900 selection:bg-slate-900 selection:text-white">
         <AuthProvider>
           <CapacitorBridge />
           {children}
         </AuthProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
       </body>
     </html>
   );
