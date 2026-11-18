@@ -105,7 +105,7 @@ export default function LesenExamPage() {
     const wordBank = teil.wordBank || [];
 
     return (
-      <div className="leading-8 text-sm text-slate-200 sm:text-base whitespace-pre-wrap german-reading prose-optimal">
+      <div className="leading-8 text-sm text-slate-800 sm:text-base whitespace-pre-wrap german-reading prose-optimal">
         {segments.map((seg, idx) => {
           const match = /^\{\{(\d+)\}\}$/.exec(seg);
           if (!match) {

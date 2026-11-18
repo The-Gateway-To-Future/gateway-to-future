@@ -52,33 +52,33 @@ export default function StudienkollegPage() {
         />
 
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
-          <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 sm:p-6 text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 sm:p-6 text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
             <div className="space-y-1">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-amber-300">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800">
                 CURRICULUM NOTICE · A1–B2 PRIORITY
               </span>
-              <p className="text-sm font-medium text-white">
+              <p className="text-sm font-medium text-slate-800">
                 Studienkolleg tracks are paused while focusing 100% on Goethe / telc CEFR A1, A2, B1, and B2 certification.
               </p>
             </div>
             <Link
               href="/academy"
-              className="relative z-20 shrink-0 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-900 hover:bg-slate-100 transition shadow-sm cursor-pointer"
+              className="relative z-20 shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
             >
               Go to Language Academy
             </Link>
           </div>
 
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/10 pb-4">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 LEVEL 02 · ACADEMIC TRACKS
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
+              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
                 4 State Studienkolleg Tracks
               </h2>
             </div>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/45">
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
               Aufnahmeprüfung · FSP
             </span>
           </div>
@@ -105,11 +105,11 @@ export default function StudienkollegPage() {
 
         {/* Dedicated Interactive Formula & Past-Paper Suite */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 pb-12 space-y-6">
-          <div className="border-b border-white/10 pb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">
+          <div className="border-b border-slate-200 pb-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
               DEDICATED WORKSPACE
             </p>
-            <h2 className="mt-1 text-xl sm:text-2xl font-light tracking-tight text-white">
+            <h2 className="mt-1 text-xl sm:text-2xl font-light tracking-tight text-slate-900">
               Interactive Formula Engine &amp; Past-Paper Archive
             </h2>
           </div>

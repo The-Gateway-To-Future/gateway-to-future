@@ -148,86 +148,86 @@ export default function ProfilePage() {
 
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 sm:px-6 pt-8 sm:pt-12 space-y-6">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200 pb-6">
           <div className="space-y-1.5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
               GTF Account &amp; Security
             </p>
-            <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-white">
+            <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-slate-900">
               Candidate Profile
             </h1>
           </div>
 
           {user?.studentId && (
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs font-semibold text-zinc-200 w-fit">
-              <BadgeCheck className="h-3.5 w-3.5 text-emerald-400" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3.5 py-1.5 font-mono text-xs font-semibold text-slate-800 w-fit shadow-xs">
+              <BadgeCheck className="h-3.5 w-3.5 text-emerald-600" />
               <span>{user.studentId}</span>
             </span>
           )}
         </div>
 
         {isLoading && !fbReady ? (
-          <div className="rounded-2xl border border-white/10 bg-[#0D1017] p-10 flex items-center justify-center gap-3 text-sm text-zinc-400">
-            <Loader2 className="h-4 w-4 animate-spin text-zinc-300" />
+          <div className="rounded-2xl border border-slate-200 bg-white p-10 flex items-center justify-center gap-3 text-sm text-slate-500 shadow-xs">
+            <Loader2 className="h-4 w-4 animate-spin text-slate-600" />
             <span>Loading GTF profile…</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Identity & Email Verification Card */}
-            <section className="md:col-span-7 rounded-2xl border border-white/10 bg-[#0D1017] p-6 sm:p-7 space-y-6">
+            <section className="md:col-span-7 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 space-y-6 shadow-xs">
               <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl !bg-white !text-[#07090E] text-xl font-bold shrink-0">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-white text-xl font-bold shrink-0 shadow-xs">
                   {displayName.charAt(0).toUpperCase()}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                     Registered Candidate
                   </p>
-                  <h2 className="text-xl font-medium text-white truncate">{displayName}</h2>
-                  <p className="text-xs text-zinc-400 truncate mt-0.5">{divisionLabel}</p>
+                  <h2 className="text-xl font-semibold text-slate-900 truncate">{displayName}</h2>
+                  <p className="text-xs text-slate-600 truncate mt-0.5">{divisionLabel}</p>
                 </div>
               </div>
 
-              <div className="space-y-3 pt-2 border-t border-white/10">
-                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-900 px-4 py-3">
+              <div className="space-y-3 pt-2 border-t border-slate-100">
+                <div className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <UserIcon className="h-4 w-4 text-zinc-400 shrink-0" />
+                    <UserIcon className="h-4 w-4 text-slate-400 shrink-0" />
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
                         Full Name
                       </p>
-                      <p className="text-sm font-medium text-white truncate">{displayName}</p>
+                      <p className="text-sm font-medium text-slate-900 truncate">{displayName}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-900 px-4 py-3">
+                <div className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <Mail className="h-4 w-4 text-zinc-400 shrink-0" />
+                    <Mail className="h-4 w-4 text-slate-400 shrink-0" />
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
                         Email Address
                       </p>
-                      <p className="text-sm font-medium text-white truncate">{displayEmail}</p>
+                      <p className="text-sm font-medium text-slate-900 truncate">{displayEmail}</p>
                     </div>
                   </div>
 
                   {emailVerified ? (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-300 shrink-0">
-                      <ShieldCheck className="h-3.5 w-3.5" />
+                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 shrink-0">
+                      <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
                       <span>Verified</span>
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-300 shrink-0">
-                      <ShieldAlert className="h-3.5 w-3.5" />
+                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800 shrink-0">
+                      <ShieldAlert className="h-3.5 w-3.5 text-amber-600" />
                       <span>Unverified</span>
                     </span>
                   )}
                 </div>
 
                 {fbUser && !fbUser.emailVerified && (
-                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 space-y-3">
-                    <p className="text-xs text-amber-200 leading-relaxed">
+                  <div className="rounded-xl border border-amber-300 bg-amber-50 p-4 space-y-3">
+                    <p className="text-xs text-amber-900 leading-relaxed font-medium">
                       Your email is not verified yet. Send an official Firebase verification link to unlock full portal synchronization.
                     </p>
                     <div className="flex flex-wrap items-center gap-2">
@@ -235,12 +235,12 @@ export default function ProfilePage() {
                         type="button"
                         onClick={handleSendVerification}
                         disabled={resendingEmail}
-                        className="inline-flex items-center gap-1.5 rounded-lg !bg-white !text-[#07090E] px-3 py-1.5 text-xs font-semibold hover:bg-zinc-200 transition disabled:opacity-50"
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 text-white px-3 py-1.5 text-xs font-semibold hover:bg-slate-800 transition disabled:opacity-50"
                       >
                         {resendingEmail ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin !text-[#07090E]" />
+                          <Loader2 className="h-3.5 w-3.5 animate-spin text-white" />
                         ) : (
-                          <Mail className="h-3.5 w-3.5 !text-[#07090E]" />
+                          <Mail className="h-3.5 w-3.5 text-white" />
                         )}
                         <span>Send Verification Link</span>
                       </button>
@@ -248,7 +248,7 @@ export default function ProfilePage() {
                         type="button"
                         onClick={handleRefreshStatus}
                         disabled={refreshingVerification}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-zinc-200 hover:border-white/30 transition"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition"
                       >
                         <RefreshCw className={`h-3.5 w-3.5 ${refreshingVerification ? "animate-spin" : ""}`} />
                         <span>Refresh Status</span>
@@ -262,25 +262,25 @@ export default function ProfilePage() {
             {/* Subscription Status & Sign Out Column */}
             <div className="md:col-span-5 space-y-6">
               {/* Subscription Status Card */}
-              <section className="rounded-2xl border border-white/10 bg-[#0D1017] p-6 space-y-5">
+              <section className="rounded-2xl border border-slate-200 bg-white p-6 space-y-5 shadow-xs">
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                       Subscription Status
                     </p>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-2xl font-light text-white">{subscriptionTier}</h3>
+                      <h3 className="text-2xl font-semibold text-slate-900">{subscriptionTier}</h3>
                       {subscriptionTier === "Pro" && (
-                        <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                        <CheckCircle2 className="h-5 w-5 text-emerald-600" />
                       )}
                     </div>
                   </div>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.04]">
-                    <Crown className={`h-5 w-5 ${subscriptionTier === "Pro" ? "text-amber-300" : "text-zinc-400"}`} />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50">
+                    <Crown className={`h-5 w-5 ${subscriptionTier === "Pro" ? "text-amber-500" : "text-slate-400"}`} />
                   </div>
                 </div>
 
-                <p className="text-xs leading-relaxed text-zinc-400">
+                <p className="text-xs leading-relaxed text-slate-600">
                   {subscriptionTier === "Pro"
                     ? `Active GTF Pro entitlements detected (${unlockedCount} unlocked module${unlockedCount === 1 ? "" : "s"}).`
                     : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, 30+ German workbooks, Studienkolleg & Pflege trainers."}
@@ -288,20 +288,20 @@ export default function ProfilePage() {
 
                 <Link
                   href="/pricing"
-                  className="w-full h-11 rounded-xl !bg-white !text-[#07090E] text-xs font-semibold uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2 hover:bg-zinc-200 transition"
+                  className="w-full h-11 rounded-xl bg-slate-900 text-white text-xs font-semibold uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-xs"
                 >
                   <span>{subscriptionTier === "Pro" ? "Manage Membership" : "Upgrade to Pro (€50/mo)"}</span>
-                  <ArrowRight className="h-3.5 w-3.5 !text-[#07090E]" />
+                  <ArrowRight className="h-3.5 w-3.5 text-white" />
                 </Link>
               </section>
 
               {/* Sign Out Security Card */}
-              <section className="rounded-2xl border border-red-500/20 bg-[#0D1017] p-6 space-y-4">
+              <section className="rounded-2xl border border-red-200 bg-white p-6 space-y-4 shadow-xs">
                 <div className="space-y-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-400/90">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-600">
                     Session Control
                   </p>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     End your active GTF Portal and Firebase session on this device.
                   </p>
                 </div>
@@ -310,16 +310,16 @@ export default function ProfilePage() {
                   type="button"
                   onClick={handleSignOut}
                   disabled={signingOut}
-                  className="w-full h-12 rounded-xl border border-red-500/40 bg-red-500/15 text-xs font-bold uppercase tracking-[0.18em] text-red-200 inline-flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-400/70 transition disabled:opacity-50"
+                  className="w-full h-12 rounded-xl border border-red-300 bg-red-50 text-xs font-bold uppercase tracking-[0.18em] text-red-700 inline-flex items-center justify-center gap-2 hover:bg-red-100 hover:border-red-400 transition disabled:opacity-50"
                 >
                   {signingOut ? (
                     <>
-                      <Loader2 className="h-4 w-4 animate-spin text-red-200" />
+                      <Loader2 className="h-4 w-4 animate-spin text-red-700" />
                       <span>Signing Out…</span>
                     </>
                   ) : (
                     <>
-                      <LogOut className="h-4 w-4 text-red-300" />
+                      <LogOut className="h-4 w-4 text-red-600" />
                       <span>Sign Out</span>
                     </>
                   )}

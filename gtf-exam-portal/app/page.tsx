@@ -28,7 +28,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/login"
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/[0.04] px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/[0.08]"
+              className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-800 transition hover:bg-slate-50 hover:border-slate-400 shadow-xs"
             >
               Log In
             </Link>

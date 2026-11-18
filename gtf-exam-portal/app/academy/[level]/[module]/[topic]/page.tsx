@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import {
+  ensureFullTrilingualDeck,
   FlashcardEngine,
   TRACK_FLASHCARD_DECKS,
 } from "@/components/FlashcardEngine";
@@ -183,29 +184,62 @@ export default function AcademyTopicWorkspacePage() {
     };
 
   const vocabLabDeck: FlashcardDeckItem[] = useMemo(() => {
-    if (!isVocabLabDeck) return [];
+    const coreCards = coreDeckConfig?.deck || [];
+    if (!isVocabLabDeck) return coreCards;
     const labSlug = rawTopic.slice("vocab-".length);
     const lab = getCoreLabById(labSlug, info.levelKey);
-    if (!lab) return coreDeckConfig?.deck || [];
-    const labCards: FlashcardDeckItem[] = (lab.questions || []).slice(0, 8).map((q, idx) => {
+    if (!lab) {
+      return ensureFullTrilingualDeck(coreCards, info.flashcardKey || info.levelKey);
+    }
+    const labCards: FlashcardDeckItem[] = (lab.questions || []).slice(0, 12).map((q, idx) => {
       const answerStr = Array.isArray(q.answer) ? q.answer[0] : q.answer || "";
       const chosenOption =
         q.type === "mcq" && Array.isArray(q.options)
           ? q.options.find((o) => o.id === answerStr)?.text || answerStr
           : answerStr;
+      const germanTerm = chosenOption || q.label || lab.title;
+      const englishMeaning = q.prompt || lab.subtitle;
+      const rawExpl = (q.explanation || "").trim();
+      const hinglishLine = /^[A-Za-z0-9'"(/\-]/.test(rawExpl)
+        ? rawExpl
+        : `Lab ${lab.level.toUpperCase()} Concept: ${englishMeaning} (${rawExpl || lab.title})`;
       return {
         id: `${lab.id}-vc-${idx + 1}`,
-        german: chosenOption || q.label || lab.title,
+        german: germanTerm,
         category: q.label || lab.topics[0] || "Wortschatz",
-        english: q.prompt || lab.subtitle,
-        hindi: q.explanation || `Lab ${lab.level.toUpperCase()} — ${lab.title}`,
+        english: englishMeaning,
+        hindi: hinglishLine,
         exampleDe: q.prompt || lab.title,
-        exampleTranslation: chosenOption ? `Lösung: ${chosenOption}` : lab.subtitle,
-        grammarTip: q.explanation || "",
+        exampleTranslation: chosenOption
+          ? `Key term / Answer: ${chosenOption} — ${lab.subtitle}`
+          : lab.subtitle,
+        grammarTip: rawExpl || `Exam focus for ${lab.level.toUpperCase()} (${lab.topics[0] || "Wortschatz"}).`,
       };
     });
-    return labCards.length > 0 ? labCards : (coreDeckConfig?.deck || []);
-  }, [isVocabLabDeck, rawTopic, info.levelKey, coreDeckConfig]);
+    return ensureFullTrilingualDeck(
+      [...labCards, ...coreCards],
+      info.flashcardKey || info.levelKey,
+      matchedTopic?.title || lab.title,
+    );
+  }, [isVocabLabDeck, rawTopic, info.levelKey, info.flashcardKey, coreDeckConfig, matchedTopic?.title]);
+
+  const { nextTopicHref, nextTopicLabel } = useMemo(() => {
+    if (Array.isArray(topics) && topics.length > 1) {
+      const currIdx = topics.findIndex((t) => t.id === rawTopic);
+      const nextIdx = currIdx >= 0 ? (currIdx + 1) % topics.length : 0;
+      const nextItem = topics[nextIdx];
+      if (nextItem?.href && nextItem.id !== rawTopic) {
+        return {
+          nextTopicHref: nextItem.href,
+          nextTopicLabel: `Load Next Topic Deck (${nextItem.title.slice(0, 28)}${nextItem.title.length > 28 ? "..." : ""})`,
+        };
+      }
+    }
+    return {
+      nextTopicHref: `/academy/${info.levelKey}/${moduleSlug === "01-vocabulary" ? "02-grammar" : moduleSlug}`,
+      nextTopicLabel: "Load Next Topic Deck",
+    };
+  }, [topics, rawTopic, info.levelKey, moduleSlug]);
 
   const pageTitle =
     matchedTopic?.title ||
@@ -292,6 +326,9 @@ export default function AcademyTopicWorkspacePage() {
                         ? vocabLabDeck
                         : (coreDeckConfig?.deck || [])
                     }
+                    trackHint={info.flashcardKey || info.levelKey}
+                    nextTopicHref={nextTopicHref}
+                    nextTopicLabel={nextTopicLabel}
                     masteredCardIds={userProgress?.masteredFlashcards}
                     onToggleMasteredCard={handleToggleMasteredCard}
                     onCompleteDeck={() => {
@@ -417,6 +454,8 @@ export default function AcademyTopicWorkspacePage() {
                   moduleHint={rawModule}
                   topicTitleHint={matchedTopic?.title || pageTitle}
                   topicSubtitleHint={matchedTopic?.subtitle || pageSubtitle}
+                  nextTopicHref={nextTopicHref}
+                  nextTopicLabel={nextTopicLabel}
                   onWorkbookLoaded={(wb) => setWorkbookMeta(wb)}
                 />
               </Suspense>

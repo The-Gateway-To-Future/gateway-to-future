@@ -124,11 +124,11 @@ export default function AcademyLevelSubdivisionsPage() {
           </div>
 
           {!loaded ? (
-            <div className="rounded-2xl border border-white/10 bg-[#0D1017] p-8 text-sm text-white/55">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-sm text-slate-600 shadow-xs">
               Loading dynamic textbook chapters for {info.label}…
             </div>
           ) : dynamicChapters.length === 0 ? (
-            <div className="rounded-2xl border border-white/10 bg-[#0D1017] p-8 text-sm text-white/60">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-sm text-slate-600 shadow-xs">
               All {info.label} interactive tools are organized inside the 4 subdivision folders above.
             </div>
           ) : (
