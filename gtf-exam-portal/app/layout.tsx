@@ -61,7 +61,7 @@ export default function RootLayout({
           <CapacitorBridge />
           {children}
         </AuthProvider>
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-CFB6FD052Q"} />
       </body>
     </html>
   );

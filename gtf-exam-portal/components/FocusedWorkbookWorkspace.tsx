@@ -10,13 +10,12 @@ import {
   ExternalLink,
   Headphones,
   Lock,
-  RotateCw,
   Sparkles,
-  Volume2,
   XCircle,
 } from "lucide-react";
 import { AntiPiracyPdfViewer } from "@/components/AntiPiracyPdfViewer";
 import { AntiPiracyShield } from "@/components/AntiPiracyShield";
+import { FlashcardEngine } from "@/components/FlashcardEngine";
 import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
 import { doc, getDoc } from "firebase/firestore";
@@ -80,6 +79,8 @@ interface FocusedWorkbookWorkspaceProps {
   moduleHint?: string;
   topicTitleHint?: string;
   topicSubtitleHint?: string;
+  nextTopicHref?: string;
+  nextTopicLabel?: string;
   onWorkbookLoaded?: (wb: WorkbookClientView | null) => void;
 }
 
@@ -89,6 +90,8 @@ function FocusedWorkbookWorkspaceInner({
   moduleHint,
   topicTitleHint,
   topicSubtitleHint,
+  nextTopicHref,
+  nextTopicLabel,
   onWorkbookLoaded,
 }: FocusedWorkbookWorkspaceProps) {
   const [isMounted, setIsMounted] = useState(false);
@@ -104,10 +107,6 @@ function FocusedWorkbookWorkspaceInner({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // In-lesson interactive flashcard state (when no PDF)
-  const [cardIndex, setCardIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-
   const [activeAudioSrc, setActiveAudioSrc] = useState<string>("");
   const [audioError, setAudioError] = useState(false);
 
@@ -121,8 +120,6 @@ function FocusedWorkbookWorkspaceInner({
     setGraded(null);
     setGrading(false);
     setError(null);
-    setCardIndex(0);
-    setIsFlipped(false);
     setActiveAudioSrc("");
     setAudioError(false);
     setLoading(true);
@@ -420,41 +417,6 @@ function FocusedWorkbookWorkspaceInner({
     setAudioError(true);
   };
 
-  const speakText = (text: string, audioUrl?: string) => {
-    if (typeof window === "undefined") return;
-    if (audioUrl && audioUrl.trim()) {
-      try {
-        const audio = new Audio(audioUrl.trim());
-        const p = audio.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            if ("speechSynthesis" in window) {
-              window.speechSynthesis.cancel();
-              const u = new SpeechSynthesisUtterance(text);
-              u.lang = "de-DE";
-              u.rate = 0.9;
-              window.speechSynthesis.speak(u);
-            }
-          });
-        }
-        return;
-      } catch {
-        // fallback to speech synthesis
-      }
-    }
-    if ("speechSynthesis" in window) {
-      try {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = "de-DE";
-        u.rate = 0.9;
-        window.speechSynthesis.speak(u);
-      } catch {
-        // ignore
-      }
-    }
-  };
-
   if (!isMounted) {
     return null;
   }
@@ -636,9 +598,6 @@ function FocusedWorkbookWorkspaceInner({
 
   const flashcardsList =
     showFlashcardsSection && Array.isArray(workbook?.flashcards) ? workbook.flashcards : [];
-  const currentCard =
-    flashcardsList.length > 0 ? flashcardsList[cardIndex % flashcardsList.length] : null;
-  const activeCardKey = currentCard?.id || `card-${cardIndex}`;
 
   return (
     <div key={`wb-root-${workbook.id}-${effectiveContentType}`} className="light-study space-y-6 select-none text-slate-900">
@@ -719,128 +678,26 @@ function FocusedWorkbookWorkspaceInner({
             </div>
           )}
 
-          {showFlashcardsSection && currentCard && (
-            <div key={`wb-fc-box-${workbook.id}`} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2">
-                  <span
-                    key={`wb-fc-cat-${activeCardKey}`}
-                    className="rounded-md border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-700"
-                  >
-                    {currentCard.category || "Grammatik-Karte"}
-                  </span>
-                  <span
-                    key={`wb-fc-counter-${cardIndex}`}
-                    className="text-xs font-semibold text-slate-500"
-                  >
-                    {`Karte ${cardIndex + 1} von ${flashcardsList.length}`}
-                  </span>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    speakText(currentCard.frontText || currentCard.german, currentCard.audioUrl);
-                  }}
-                  className="relative z-50 cursor-pointer pointer-events-auto rounded-lg border border-slate-200 bg-slate-50 p-1.5 text-slate-700 hover:bg-slate-100 transition shadow-xs"
-                  title="Aussprache anhören"
-                >
-                  <Volume2 className="h-4 w-4" />
-                </button>
-              </div>
-
-              <div
-                onClick={() => setIsFlipped(!isFlipped)}
-                className="relative z-10 cursor-pointer pointer-events-auto min-h-[180px] rounded-xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:shadow-md hover:bg-white"
+          {showFlashcardsSection && (
+            <div key={`wb-fc-engine-${workbook.id}`}>
+              <Suspense
+                fallback={
+                  <p className="text-sm text-slate-500 py-4">
+                    Lade Trilingual Grammatik-Flashcards…
+                  </p>
+                }
               >
-                {!isFlipped ? (
-                  <div key={`wb-fc-front-${activeCardKey}`} className="space-y-2 pointer-events-none">
-                    <span key="wb-fc-front-label" className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                      GRAMMATIK-STRUKTUR · TIPPE ZUM WENDEN
-                    </span>
-                    <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
-                      <span key={`wb-fc-front-text-${activeCardKey}`}>{currentCard.frontText || currentCard.german}</span>
-                    </h4>
-                    {currentCard.phonetic && (
-                      <p className="font-mono text-xs text-slate-500">
-                        <span key={`wb-fc-phonetic-${activeCardKey}`}>{`[${currentCard.phonetic}]`}</span>
-                      </p>
-                    )}
-                    {currentCard.exampleDe && (
-                      <p className="text-xs text-slate-600 italic pt-1">
-                        <span key={`wb-fc-exde-${activeCardKey}`}>{`\u201C${currentCard.exampleDe}\u201D`}</span>
-                      </p>
-                    )}
-                  </div>
-                ) : (
-                  <div key={`wb-fc-back-${activeCardKey}`} className="space-y-2 pointer-events-none">
-                    <span key="wb-fc-back-label" className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                      REGEL &amp; BEDEUTUNG
-                    </span>
-                    <h4 className="text-lg sm:text-xl font-bold text-slate-900">
-                      <span key={`wb-fc-back-text-${activeCardKey}`}>{currentCard.backText || currentCard.english}</span>
-                    </h4>
-                    {currentCard.hindi && (
-                      <p className="text-sm font-semibold text-emerald-700">
-                        <span key={`wb-fc-hindi-${activeCardKey}`}>{currentCard.hindi}</span>
-                      </p>
-                    )}
-                    {currentCard.exampleTranslation && (
-                      <p className="text-xs text-slate-600 italic">
-                        <span key={`wb-fc-extrans-${activeCardKey}`}>{currentCard.exampleTranslation}</span>
-                      </p>
-                    )}
-                    {currentCard.grammarTip && (
-                      <div key={`wb-fc-tip-${activeCardKey}`} className="rounded-lg bg-amber-50 border border-amber-200 px-3 py-1.5 text-[11px] text-amber-800 font-medium mt-2">
-                        <span>{`💡 ${currentCard.grammarTip}`}</span>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              <div className="flex items-center justify-between pt-1">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsFlipped(false);
-                    setCardIndex((prev) => (prev > 0 ? prev - 1 : flashcardsList.length - 1));
-                  }}
-                  className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                  <span>Zurück</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsFlipped(!isFlipped);
-                  }}
-                  className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-200 transition shadow-xs"
-                >
-                  <RotateCw className="h-3.5 w-3.5" />
-                  <span key={`wb-fc-flip-btn-${isFlipped ? "front" : "back"}`}>
-                    {isFlipped ? "Vorderseite" : "Umdrehen"}
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsFlipped(false);
-                    setCardIndex((prev) => (prev + 1) % flashcardsList.length);
-                  }}
-                  className="relative z-50 cursor-pointer pointer-events-auto inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-800 transition shadow-sm"
-                >
-                  <span>Weiter</span>
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
+                <FlashcardEngine
+                  title={`${workbook.title} — Grammatik & Vokabel-Flashcards`}
+                  deck={flashcardsList}
+                  trackHint={levelHint || workbook.level}
+                  nextTopicHref={
+                    nextTopicHref ||
+                    `/academy/${(levelHint || workbook.level || "a1").toLowerCase()}/02-grammar`
+                  }
+                  nextTopicLabel={nextTopicLabel || "Load Next Grammar Topic"}
+                />
+              </Suspense>
             </div>
           )}
         </div>
