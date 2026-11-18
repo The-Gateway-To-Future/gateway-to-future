@@ -1,0 +1,54 @@
+{
+  "id": "stk_lab_03_acid_base_titration",
+  "title": "Lab 03: Säure-Base-Titration & pH-Metrie",
+  "discipline": "Chemie (M-Kurs)",
+  "topic": "Analytische Chemie & Massenwirkungsgesetz",
+  "engine": "GTF-Interactive-STEM-Simulator-v2.0",
+  "parameters": {
+    "analyte": "HCl 0.1 M",
+    "titrant": "NaOH 0.1 M",
+    "indicator": "Phenolphthalein"
+  },
+  "protocol": "Erfassung der Titrationskurve und Bestimmung des Äquivalenzpunktes (pH 7.00).",
+  "generated_by": "EMP-12: Studienkolleg Virtual STEM Lab Specialist",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "created_at": "2026-11-12T13:40:09.569142+00:00",
+  "qa_status": "auto_verified",
+  "interactive_controls": [
+    {
+      "type": "slider",
+      "name": "primary_variable",
+      "min": 0.1,
+      "max": 10.0,
+      "step": 0.1
+    },
+    {
+      "type": "toggle",
+      "name": "show_theoretical_curve",
+      "default": true
+    },
+    {
+      "type": "button",
+      "name": "run_simulation",
+      "label": "Simulation starten"
+    },
+    {
+      "type": "button",
+      "name": "reset_lab",
+      "label": "Messwerte zurücksetzen"
+    }
+  ],
+  "quiz_questions": [
+    {
+      "question": "Welche zentrale physikalische bzw. chemische Gesetzmäßigkeit wird in Lab 03: Säure-Base-Titration & pH-Metrie demonstriert?",
+      "options": [
+        "Analytische Chemie & Massenwirkungsgesetz",
+        "Ideales Gasgesetz",
+        "Ohmsches Gesetz",
+        "Coulomb-Kraft"
+      ],
+      "correct_index": 0,
+      "explanation": "In diesem Experiment steht Analytische Chemie & Massenwirkungsgesetz im Mittelpunkt des empirischen Nachweises."
+    }
+  ]
+}

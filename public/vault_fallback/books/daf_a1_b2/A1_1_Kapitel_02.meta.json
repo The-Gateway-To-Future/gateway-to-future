@@ -1,0 +1,43 @@
+{
+  "id": "book-a1-kapitel-2-a1_1_kapitel_02",
+  "slug": "book-a1-kapitel-2-a1_1_kapitel_02",
+  "type": "language_textbook",
+  "level": "a1",
+  "sublevel": "A1.1",
+  "chapterNumber": 2,
+  "title": "GTF Deutsch A1 Lehrbuch • Kapitel 2: Im Supermarkt & der Akkusativ",
+  "subtitle": "Offizielles DaF-Lehrwerk (Deutsch - English - Hinglish) • Einkaufen bei Edeka & Rewe in Berlin • Bestimmte & unbestimmte Artikel, Negation mit kein/nicht & Akkusativobjekt",
+  "topics": [
+    "Das Akkusativ-Prinzip: Wen oder was brauche ich?",
+    "Typische Verben mit obligatorischem Akkusativ",
+    "Die Verneinung im Deutschen: 'kein' vs. 'nicht'",
+    "Mengenangaben, Verpackungen & Maßeinheiten"
+  ],
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) DaF-Akademie Berlin",
+  "pdfFilename": "A1_1_Kapitel_02.pdf",
+  "pageCount": 13,
+  "wordCount": 4909,
+  "fileSizeBytes": 41994,
+  "fileSizeFormatted": "41.0 KB",
+  "vaultRelativePath": "books/daf_a1_b2/A1_1_Kapitel_02.pdf",
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "isFree": false,
+  "previewAvailable": true,
+  "createdAt": "2026-11-11T19:02:21.843930+00:00",
+  "cefrGoals": [
+    "Lebensmittel, Getränke und Mengenangaben im deutschen Supermarkt sicher benennen",
+    "Das Akkusativobjekt verstehen und anwenden: Wen oder was brauche / kaufe / suche ich?",
+    "Den Artikelwechsel im Akkusativ beherrschen: Nur maskuline Artikel ändern sich (der -> den, ein -> einen, kein -> keinen)!",
+    "Die Verneinung mit 'kein' (für Nomen) vs. 'nicht' (für Verben, Adjektive, Eigennamen) fehlerfrei differenzieren",
+    "Einkaufs- und Bezahlgespräche an der Kasse (Bargeld, Girokarte, Pfandautomat) führen"
+  ],
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:35.242868+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin"
+}

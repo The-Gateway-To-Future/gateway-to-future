@@ -1,0 +1,175 @@
+{
+  "id": "stk-de-tu_berlin-01",
+  "setNumber": 1,
+  "institute": "TU Berlin",
+  "instituteFullName": "Studienkolleg an der Technischen Universität Berlin",
+  "examTitle": "Studienkolleg an der Technischen Universität Berlin — Aufnahmeprüfung Deutsch (Modelltest 1)",
+  "kursTypes": [
+    "T-Kurs",
+    "W-Kurs"
+  ],
+  "academicFocus": "Ingenieurwissenschaften, Digitalisierung & Urbane Infrastruktur",
+  "targetLevel": "B2/C1 (GER)",
+  "durationMinutes": 90,
+  "pageCount": 9,
+  "fileSizeBytes": 25358,
+  "publishedAt": "2026-11-11T19:02:11.538481+00:00",
+  "author": "The Gateway to Future (GTF) - EMP-04 Academic Directorate Berlin",
+  "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am TU Berlin (T-Kurs, W-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
+  "examSections": {
+    "cTest": {
+      "totalGaps": 80,
+      "points": 40,
+      "texts": [
+        {
+          "index": 1,
+          "title": "Städtische Infrastruktur im Wandel",
+          "rawText": "Die modernen Großstädte stehen weltweit vor immensen infrastrukturellen Herausforderungen. Infolge des stetigen Bevölkerungswachstums müssen die Verkehrs- und Versorgungsnetze grundlegend erneuert werden. Viele Kommunen setzen heute auf intelligente Sensorsysteme, um den Energieverbrauch effizient zu steuern. Dadurch können Engpässe frühzeitig erkannt und behoben werden. Experten betonen jedoch, dass neben technischen Innovationen auch nachhaltige Investitionen in den öffentlichen Nahverkehr unumgänglich bleiben. Nur so lässt sich die prognostizierte Verkehrsüberlastung wirksam verhindern."
+        },
+        {
+          "index": 2,
+          "title": "Energiespeicher der Zukunft",
+          "rawText": "Die Energiewende erfordert neuartige Methoden zur langfristigen Speicherung elektrischer Energie. Da Sonnen- und Windenergie witterungsabhängig schwanken, sind verlässliche Puffer unverzichtbar. Forscher entwickeln derzeit Feststoffbatterien mit deutlich höherer Energiedichte und kürzeren Ladezeiten als herkömmliche Lithium-Ionen-Akkus. Zugleich gewinnt grüner Wasserstoff als chemischer Energieträger an Bedeutung. Bei der Elektrolyse wird Wasser mithilfe von Ökostrom in Sauerstoff und Wasserstoff gespalten. Dieser Kraftstoff kann in Brennstoffzellen rückverstromt oder in der chemischen Industrie genutzt werden."
+        },
+        {
+          "index": 3,
+          "title": "Robotik in der industriellen Fertigung",
+          "rawText": "Die industrielle Produktion hat durch autonome Robotersysteme eine fundamentale Wandlung erfahren. Moderne Leichtbauroboter arbeiten heute Hand in Hand mit menschlichen Fachkräften in Montagehallen. Ausgestattet mit taktilen Sensoren und Bilderkennungssystemen passen sie ihre Bewegungen in Echtzeit an. Dies steigert nicht nur die Präzision, sondern verringert auch die körperliche Belastung der Arbeiter. Kritiker mahnen gleichwohl zur Vorsicht, da automatisierte Prozesse neue Qualifikationsanforderungen an Beschäftigte stellen. Universitäten müssen Ingenieure daher interdisziplinär ausbilden."
+        },
+        {
+          "index": 4,
+          "title": "Klimaneutrale Baumaterialien",
+          "rawText": "Der Bausektor verursacht einen beträchtlichen Anteil der weltweiten Kohlendioxidemissionen. Aus diesem Grund forschen Bauingenieure intensiv an CO2-armen Alternativen zu traditionellem Zement. Geopolymere und mineralische Recyclingbaustoffe bieten vielversprechende Ansätze zur Ressourcenschonung. Zudem erlebt der konstruktive Holzbau eine bemerkenswerte Renaissance im urbanen Mehrgeschossbau. Holz bindet Kohlenstoff über Jahrzehnte und besitzt hervorragende statische wie auch dämmende Eigenschaften. Die Einhaltung strenger Brandschutzauflagen erfordert freilich präzise ingenieurmäßige Planung."
+        }
+      ]
+    },
+    "grammar": {
+      "points": 25,
+      "nominalisierung": [
+        [
+          "Weil die Temperaturen im Reaktor stetig steigen, muss die Kühlung aktiviert werden.",
+          "Aufgrund des stetigen Anstiegs der Temperaturen im Reaktor muss die Kühlung aktiviert werden."
+        ],
+        [
+          "Bevor die neue Software installiert wurde, überprüften die Techniker alle Systemkomponenten.",
+          "Vor der Installation der neuen Software überprüften die Techniker alle Systemkomponenten."
+        ],
+        [
+          "Indem man modernste Filtertechnologien anwendet, kann der Schadstoffausstoß gesenkt werden.",
+          "Durch die Anwendung modernster Filtertechnologien kann der Schadstoffausstoß gesenkt werden."
+        ],
+        [
+          "Obwohl die Rohstoffpreise stark anstiegen, konnte das Unternehmen rentabel wirtschaften.",
+          "Trotz des starken Anstiegs der Rohstoffpreise konnte das Unternehmen rentabel wirtschaften."
+        ]
+      ],
+      "partizipialattribute": [
+        [
+          "Die Turbine, die von den Ingenieuren neu konstruiert wurde, läuft geräuscharm.",
+          "Die von den Ingenieuren neu konstruierte Turbine läuft geräuscharm."
+        ],
+        [
+          "Das Forschungsteam analysierte Daten, die während des Experiments erfasst worden waren.",
+          "Das Forschungsteam analysierte die während des Experiments erfassten Daten."
+        ],
+        [
+          "Aufgaben, die von den Kollegiaten unverzüglich gelöst werden müssen, stehen an der Tafel.",
+          "Die von den Kollegiaten unverzüglich zu lösenden Aufgaben stehen an der Tafel."
+        ],
+        [
+          "Der Versuchsaufbau erfordert Instrumente, die äußerst präzise messen.",
+          "Der Versuchsaufbau erfordert äußerst präzise messende Instrumente."
+        ]
+      ],
+      "passivErsatz": [
+        [
+          "Die thermodynamischen Gleichungen lassen sich mit dieser Formel berechnen.",
+          "Die thermodynamischen Gleichungen können mit dieser Formel berechnet werden."
+        ],
+        [
+          "Das Sicherheitsprotokoll ist von allen Labormitarbeitern einzuhalten.",
+          "Das Sicherheitsprotokoll muss von allen Labormitarbeitern eingehalten werden."
+        ],
+        [
+          "Diese technischen Defekte sind nicht mehr reparierbar.",
+          "Diese technischen Defekte können nicht mehr repariert werden."
+        ],
+        [
+          "Das Messergebnis lässt keine Zweifel zu.",
+          "An dem Messergebnis kann nicht gezweifelt werden."
+        ]
+      ],
+      "indirekteRede": [
+        [
+          "Der Studienleiter erklärte: 'Wir haben alle Messreihen dreimal wiederholt und sind uns sicher.'",
+          "Der Studienleiter erklärte, sie hätten alle Messreihen dreimal wiederholt und seien sich sicher."
+        ],
+        [
+          "Die Forscherin betonte: 'Das neue Verfahren wird die Produktionskosten nachhaltig senken.'",
+          "Die Forscherin betonte, das neue Verfahren werde die Produktionskosten nachhaltig senken."
+        ],
+        [
+          "Der Dekan sagte: 'Die Universität bietet ausländischen Bewerbern exzellente Rahmenbedingungen.'",
+          "Der Dekan sagte, die Universität biete ausländischen Bewerbern exzellente Rahmenbedingungen."
+        ]
+      ]
+    },
+    "reading": {
+      "points": 20,
+      "title": "Wasserstoff als Hoffnungsträger der Energiewende in Deutschland",
+      "text": "Die Bundesrepublik Deutschland hat sich das ehrgeizige Ziel gesetzt, bis zum Jahr 2045 vollständig klimaneutral zu wirtschaften. Um dieses Vorhaben in energieintensiven Industriezweigen wie der Stahl- und Chemieproduktion zu verwirklichen, gilt grüner Wasserstoff als unverzichtbarer Schlüsselrohstoff. Traditionelle Hochöfen, die bislang mit Koks betrieben werden, können durch Direktreduktionsanlagen ersetzt werden, die reinen Wasserstoff als Reduktionsmittel nutzen. Dadurch ließe sich der industrielle CO2-Ausstoß um über neunzig Prozent reduzieren. Allerdings steht der flächendeckende Markthochlauf vor beträchtlichen Hürden. Zum einen reicht die heimische Erzeugung aus erneuerbaren Energien bei weitem nicht aus, um den prognostizierten Bedarf von jährlich über einhundert Terawattstunden zu decken. Deutschland wird folglich auf massive Importe aus sonnen- und windreichen Weltregionen wie Nordafrika oder Südamerika angewiesen sein. Zum anderen erfordert der Transport von molekularem Wasserstoff erhebliche Umrüstungen des bestehenden Erdgasleitungsnetzes sowie den Bau neuer Flüssigwasserstoffterminals in Nordseehäfen. Wissenschaftler mahnen daher zur Beschleunigung von Genehmigungsverfahren und fordern klare Investitionsanreize für den privatwirtschaftlichen Mittelstand.",
+      "tfQuestions": [
+        [
+          "Grüner Wasserstoff kann in der Stahlproduktion fossilen Koks ersetzen.",
+          "Richtig",
+          "Z. 4-6"
+        ],
+        [
+          "Deutschland kann seinen Wasserstoffbedarf künftig vollständig autark aus heimischen Windparks decken.",
+          "Falsch",
+          "Z. 9-11"
+        ],
+        [
+          "Der Transport von Wasserstoff erfordert Anpassungen der vorhandenen Erdgasnetze.",
+          "Richtig",
+          "Z. 12-14"
+        ],
+        [
+          "Wasserstoff wird in Deutschland bereits seit über 50 Jahren industriell importiert.",
+          "Nicht im Text",
+          "-"
+        ],
+        [
+          "Wissenschaftler fordern eine Verlangsamung des Markthochlaufs zur Prüfung von Sicherheitsrisiken.",
+          "Falsch",
+          "Z. 14-16"
+        ]
+      ],
+      "openQuestions": [
+        [
+          "Erläutern Sie in eigenen Worten zwei zentrale Herausforderungen beim Einsatz von Wasserstoff in Deutschland.",
+          "Musterlösung: 1. Der heimische Ökostrom reicht nicht aus, weshalb Deutschland auf internationale Importe angewiesen ist. 2. Die Transportinfrastruktur (Pipelines, Terminals) muss mit hohem finanziellem Aufwand modernisiert und neu erbaut werden."
+        ],
+        [
+          "Warum ist Wasserstoff für die Stahlindustrie von existenzieller Bedeutung?",
+          "Musterlösung: Weil Wasserstoff in Direktreduktionsanlagen Koks ersetzen kann und dadurch der CO2-Ausstoß um über 90 % gesenkt werden kann."
+        ]
+      ]
+    },
+    "essay": {
+      "points": 15,
+      "type": "Erörterung",
+      "topic": "Digitalisierung der Hochschullehre: Vollständige Online-Vorlesungen oder Rückkehr zur Präsenzpflicht?",
+      "prompt": "Viele deutsche Universitäten haben während der Pandemie ihre Lehrveranstaltungen digitalisiert. Diskutieren Sie die Vor- und Nachteile von virtuellen Lehrformaten im Vergleich zum klassischen Präsenzstudium an einem Studienkolleg. Nehmen Sie anschließend begründet Stellung.",
+      "modelEssay": "Die fortschreitende Digitalisierung hat die akademische Lehrlandschaft in Deutschland tiefgreifend verändert. Während vor einigen Jahren der persönliche Besuch von Vorlesungen und Seminaren unverzichtbar war, ermöglichen digitale Plattformen heute ortsunabhängiges Lernen auf Knopfdruck. Diese Entwicklung birgt sowohl erhebliche Chancen als auch nicht zu unterschätzende Risiken für Studierende. \n\nAuf der einen Seite spricht für virtuelle Lehrformate eine unbestreitbare zeitliche und räumliche Flexibilität. Studierende können Vorlesungsaufzeichnungen im individuellen Lerntempo wiederholen und komplexe Inhalte mehrfach rekapitulieren. Darüber hinaus entfallen zeitaufwendige Anfahrtswege, was insbesondere internationalen Kollegiaten zugutekommt, die oft noch mit der Wohnungssuche in Ballungsräumen wie Berlin kämpfen. \n\nAuf der anderen Seite birgt die reine Online-Lehre erhebliche Gefahren für den akademischen Erfolg. Der persönliche Diskurs mit Dozenten sowie die spontane Interaktion in Übungsgruppen lassen sich durch Videokonferenzen nur unvollkommen ersetzen. Zudem erfordert das Selbststudium vor dem Bildschirm ein hohes Maß an Eigenverantwortung und intrinsischer Disziplin; fehlen diese, drohen soziale Isolation und Studienabbruch. Insbesondere an Studienkollegs ist das sprachliche Eintauchen in den deutschen Hochschulalltag essenziell. \n\nZusammenfassend lässt sich konstatieren, dass weder eine vollständige Virtualisierung noch ein rigider Verzicht auf digitale Medien zukunftsfähig sind. Das zukunftsträchtige Modell liegt in einer hybriden Didaktik: Präsenzveranstaltungen für intensive Diskussionen und praktische Experimente, ergänzt durch qualitativ hochwertige digitale Ressourcen zum asynchronen Nachbereiten."
+    }
+  },
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-11T19:19:50.350245+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "wordCount": 2133,
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "title": "Stk-De-Tu Berlin-01",
+  "slug": "stk_aufnahme_deutsch-stk-de-tu-berlin-01"
+}

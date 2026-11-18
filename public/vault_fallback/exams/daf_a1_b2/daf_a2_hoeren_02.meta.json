@@ -1,0 +1,84 @@
+{
+  "id": "daf_a2_hoeren_02",
+  "slug": "daf-audio-exams-daf-a2-hoeren-02",
+  "title": "A2 Hören — WG-Zimmer-Besichtigung und Mietvertrag in Berlin-Prenzlauer Berg",
+  "subtitle": "Goethe-Zertifikat A2 / telc Deutsch A2 Vorbereitung (Hören + Musterlösung)",
+  "level": "a2",
+  "topic": "Wohnungssuche, Mietvertrag und WG-Leben in Berlin",
+  "topics": [
+    "Hörverstehen",
+    "Goethe/telc Simulation",
+    "Musterlösung",
+    "Transkript",
+    "Wohnungssuche, Mietvertrag und WG-Leben in Berlin"
+  ],
+  "divisionId": "sprachakademie",
+  "divisionName": "German Language Academy",
+  "type": "audio_exam",
+  "transcript": "Mitbewohner Jonas: Hi Sarbjit! Komm doch erst mal rein in die Küche. Das hier ist unsere Dreier-WG im Prenzlauer Berg.\nFrau Kaur: Hallo Jonas! Vielen Dank für die Einladung zur Besichtigung. Die Wohnung hat wirklich schöne hohe Altbaudecken.\nMitbewohner Jonas: Ja, das Zimmer, das frei wird, hat zwanzig Quadratmeter und geht zum ruhigen Innenhof hinaus. Die Warmmiete beträgt 490 Euro im Monat inklusive aller Nebenkosten und schnellem Internet.\nFrau Kaur: Das klingt fair für diese Lage. Wie hoch ist die Kaution und ab wann ist das Zimmer bezugsfrei?\nMitbewohner Jonas: Die Kaution beträgt zwei Monatsmieten, also 980 Euro. Einzugstermin ist der erste November. Ein wichtiger Punkt: Wir haben einen wöchentlichen Putzplan für Bad und Küche.\nFrau Kaur: Sehr gut, Sauberkeit und Ordnung sind mir auch sehr wichtig. Ich gebe dir gerne meine SCHUFA-Auskunft und den Arbeitsvertrag für die Vermieterin.\nMitbewohner Jonas: Super! Wir entscheiden uns bis morgen Abend und rufen dich sofort an. Schön, dass du da warst!",
+  "audioScript": "Mitbewohner Jonas: Hi Sarbjit! Komm doch erst mal rein in die Küche. Das hier ist unsere Dreier-WG im Prenzlauer Berg.\nFrau Kaur: Hallo Jonas! Vielen Dank für die Einladung zur Besichtigung. Die Wohnung hat wirklich schöne hohe Altbaudecken.\nMitbewohner Jonas: Ja, das Zimmer, das frei wird, hat zwanzig Quadratmeter und geht zum ruhigen Innenhof hinaus. Die Warmmiete beträgt 490 Euro im Monat inklusive aller Nebenkosten und schnellem Internet.\nFrau Kaur: Das klingt fair für diese Lage. Wie hoch ist die Kaution und ab wann ist das Zimmer bezugsfrei?\nMitbewohner Jonas: Die Kaution beträgt zwei Monatsmieten, also 980 Euro. Einzugstermin ist der erste November. Ein wichtiger Punkt: Wir haben einen wöchentlichen Putzplan für Bad und Küche.\nFrau Kaur: Sehr gut, Sauberkeit und Ordnung sind mir auch sehr wichtig. Ich gebe dir gerne meine SCHUFA-Auskunft und den Arbeitsvertrag für die Vermieterin.\nMitbewohner Jonas: Super! Wir entscheiden uns bis morgen Abend und rufen dich sofort an. Schön, dass du da warst!",
+  "dialogue": [
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Hi Sarbjit! Komm doch erst mal rein in die Küche. Das hier ist unsere Dreier-WG im Prenzlauer Berg."
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Wohnungssuchende (Prüferin)",
+      "text": "Hallo Jonas! Vielen Dank für die Einladung zur Besichtigung. Die Wohnung hat wirklich schöne hohe Altbaudecken."
+    },
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Ja, das Zimmer, das frei wird, hat zwanzig Quadratmeter und geht zum ruhigen Innenhof hinaus. Die Warmmiete beträgt 490 Euro im Monat inklusive aller Nebenkosten und schnellem Internet."
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Wohnungssuchende (Prüferin)",
+      "text": "Das klingt fair für diese Lage. Wie hoch ist die Kaution und ab wann ist das Zimmer bezugsfrei?"
+    },
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Die Kaution beträgt zwei Monatsmieten, also 980 Euro. Einzugstermin ist der erste November. Ein wichtiger Punkt: Wir haben einen wöchentlichen Putzplan für Bad und Küche."
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Wohnungssuchende (Prüferin)",
+      "text": "Sehr gut, Sauberkeit und Ordnung sind mir auch sehr wichtig. Ich gebe dir gerne meine SCHUFA-Auskunft und den Arbeitsvertrag für die Vermieterin."
+    },
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Super! Wir entscheiden uns bis morgen Abend und rufen dich sofort an. Schön, dass du da warst!"
+    }
+  ],
+  "audioFile": "daf_a2_hoeren_02.mp3",
+  "audioPath": "/vault_fallback/exams/daf_a1_b2/daf_a2_hoeren_02.mp3",
+  "audioSizeBytes": 988364,
+  "audioBitrate": "192kbps",
+  "pdfFile": "daf_a2_hoeren_02.pdf",
+  "pdfPath": "/vault_fallback/exams/daf_a1_b2/daf_a2_hoeren_02.pdf",
+  "pdfSizeBytes": 14315,
+  "jsonFile": "daf_a2_hoeren_02.json",
+  "pageCount": 5,
+  "wordCount": 1317,
+  "isFree": false,
+  "priceEur": 14.99,
+  "priceInr": 1399,
+  "qa_status": "approved",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "generated_at": "2026-11-13T21:24:42.912143+00:00",
+  "updatedAt": "2026-11-13T21:24:42.912143+00:00",
+  "qa_audited_at": "2026-11-13T21:28:36.760638+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor"
+}

@@ -66,6 +66,9 @@
     .sidebar-metric {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       padding: 0.75rem 0;
       border-bottom: 1px dashed var(--color-border);
       font-size: 0.95rem;
@@ -83,6 +86,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       background: white;
       padding: 0.75rem 1rem;
       border-radius: var(--radius-sm);
@@ -107,6 +112,15 @@
         top: 0;
       }
     }
+    @media (max-width: 768px) {
+      .details-grid {
+        padding: 1.75rem 0;
+        gap: 1.75rem;
+      }
+      .sidebar-card {
+        padding: 1.25rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -117,7 +131,17 @@
       <a href="index.html" class="brand" aria-label="The Gateway to Future">
         <img src="assets/logo.jpg?v=2" alt="Gateway to Future" class="brand-logo" style="height: 48px; width: auto; display: block;" />
       </a>
-      <nav class="menu" aria-label="Primary navigation">
+      <div class="nav-actions-mobile">
+        <a href="https://app.gatewaytofuture.com/dashboard" target="_blank" rel="noopener noreferrer" class="btn-portal-mobile-direct" aria-label="GTF Student and Exam Portal">
+          <span>Portal</span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+      <nav class="menu" id="nav-menu" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="ausbildung.html" class="active-page">Ausbildung</a>
         <a href="courses.html">Programs</a>
@@ -216,7 +240,7 @@
 
           <div style="margin-top: 2rem;">
             <a class="btn btn-primary" href="contact.html" style="width: 100%; text-align: center; margin-bottom: 0.75rem;">Check Eligibility</a>
-            <a class="btn btn-secondary" href="https://wa.me/918126933346" target="_blank" rel="noopener" style="width: 100%; text-align: center;">WhatsApp Support</a>
+            <a class="btn btn-secondary" href="https://wa.me/4915228372894" target="_blank" rel="noopener" style="width: 100%; text-align: center;">WhatsApp Support</a>
           </div>
         </div>
       </div>
@@ -231,7 +255,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <h3>The Gateway to Future</h3>
-          <p>Premium Berlin-based education mentorship for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
+          <p>Premium Berlin-based education mentorship led by Sarbjit Kour (Founder &amp; CEO, Gateway To Future) for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
         </div>
         <div class="footer-col">
           <h4>Navigate</h4>
@@ -255,17 +279,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Support & Legal</h4>
+          <h4>Support &amp; Legal</h4>
           <ul>
             <li><a href="courses.html">Blocked Accounts</a></li>
             <li><a href="courses.html">Settlement Aid</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html">Meet Founder</a></li>
+            <li><a href="about.html">Leadership: Sarbjit Kour (Founder &amp; CEO)</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 The Gateway to Future. Germany & India. All rights reserved.</p>
+        <p>&copy; 2026 The Gateway to Future. Led exclusively by Sarbjit Kour (Founder &amp; CEO, Gateway To Future). All rights reserved.</p>
         <div class="footer-bottom-links">
           <span>German Courses</span> •
           <span>Admissions Mentorship</span> •

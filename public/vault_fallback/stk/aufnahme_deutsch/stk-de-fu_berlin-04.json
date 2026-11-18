@@ -1,0 +1,175 @@
+{
+  "id": "stk-de-fu_berlin-04",
+  "setNumber": 4,
+  "institute": "FU Berlin",
+  "instituteFullName": "Studienkolleg an der Freien Universität Berlin",
+  "examTitle": "Studienkolleg an der Freien Universität Berlin — Aufnahmeprüfung Deutsch (Modelltest 4)",
+  "kursTypes": [
+    "M-Kurs",
+    "G-Kurs"
+  ],
+  "academicFocus": "Medizinische Ethik, Epigenetik & Pandemieprävention",
+  "targetLevel": "B2/C1 (GER)",
+  "durationMinutes": 90,
+  "pageCount": 8,
+  "fileSizeBytes": 21756,
+  "publishedAt": "2026-11-12T13:40:02.854200+00:00",
+  "author": "The Gateway to Future (GTF) - EMP-04 Academic Directorate Berlin",
+  "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am FU Berlin (M-Kurs, G-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
+  "examSections": {
+    "cTest": {
+      "totalGaps": 80,
+      "points": 40,
+      "texts": [
+        {
+          "index": 1,
+          "title": "Antibiotikaresistenzen",
+          "rawText": "Die Entdeckung des Penicillins leitete vor knapp einhundert Jahren eine Revolution der Medizin ein. Zuvor tödlich verlaufende Infektionen konnten plötzlich geheilt werden. Durch den übermäßigen Einsatz von Antibiotika bilden Krankheitserreger jedoch zunehmend Resistenzen aus. Wenn Reserveantibiotika ihre Wirksamkeit einbüßen, drohen selbst harmlose Operationen lebensgefährlich zu werden. Forscher weltweit suchen daher fieberhaft nach alternativen Wirkstoffen wie Bakteriophagen."
+        },
+        {
+          "index": 2,
+          "title": "Epigenetik und Umwelt",
+          "rawText": "Die Epigenetik erforscht zelluläre Mechanismen, die Genaktivitäten steuern, ohne den genetischen Code zu verändern. Umweltfaktoren wie Ernährung, chronischer Stress oder Umweltgifte hinterlassen molekulare Markierungen an der Erbsubstanz. Diese Modifikationen bestimmen, welche Gene abgelesen oder stummgeschaltet werden. Besonders faszinierend ist die Erkenntnis, dass epigenetische Prägungen über Generationen hinweg vererbt werden können."
+        },
+        {
+          "index": 3,
+          "title": "Psychosomatik im Fokus",
+          "rawText": "Körperliche und seelische Vorgänge stehen in ständiger wechselseitiger Beeinflussung. Das vegetative Nervensystem und das Immunsystem reagieren empfindlich auf chronische seelische Belastungen. Patienten mit funktionellen Magen-Darm-Beschwerden oder Verspannungen weisen häufig ungelöste Konflikte auf. Eine ganzheitliche Therapie kombiniert deshalb somatische Diagnostik mit psychotherapeutischer Begleitung."
+        },
+        {
+          "index": 4,
+          "title": "Pandemieprävention",
+          "rawText": "Globale Pandemien stellen die Weltgesundheitsorganisation vor enorme organisatorische Aufgaben. Das Vordringen des Menschen in unberührte Naturräume erhöht das Risiko von Zoonosen, bei denen Viren von Wildtieren auf den Menschen überspringen. Internationale Frühwarnsysteme überwachen Mutationen von Erregern in Echtzeit. Nur durch weltweite Kooperation und Vorhaltung von Impfstoffreserven lassen sich künftige Ausbrüche eindämmen."
+        }
+      ]
+    },
+    "grammar": {
+      "points": 25,
+      "nominalisierung": [
+        [
+          "Weil Bakterien resistent werden, schlagen Therapien fehl.",
+          "Aufgrund des Resistentwerdens der Bakterien schlagen Therapien fehl."
+        ],
+        [
+          "Bevor die Substanz appliziert wird, erfolgt ein Allergietest.",
+          "Vor der Applikation der Substanz erfolgt ein Allergietest."
+        ],
+        [
+          "Indem man Stressfaktoren reduziert, stärkt man das Immunsystem.",
+          "Durch die Reduktion von Stressfaktoren stärkt man das Immunsystem."
+        ],
+        [
+          "Obwohl der Patient skeptisch war, willigte er in die Therapie ein.",
+          "Trotz der Skepsis des Patienten willigte er in die Therapie ein."
+        ]
+      ],
+      "partizipialattribute": [
+        [
+          "Das Gen, das durch Methylierung stummgeschaltet wurde, bleibt inaktiv.",
+          "Das durch Methylierung stummgeschaltete Gen bleibt inaktiv."
+        ],
+        [
+          "Die Bakterien, die sich exponentiell vermehren, bedrohen den Organismus.",
+          "Die sich exponentiell vermehrenden Bakterien bedrohen den Organismus."
+        ],
+        [
+          "Die Dosis, die vom Notarzt verabreicht werden muss, beträgt fünf Milligramm.",
+          "Die vom Notarzt zu verabreichende Dosis beträgt fünf Milligramm."
+        ],
+        [
+          "Die Zellen, die bei der Biopsie entnommen wurden, werden mikroskopiert.",
+          "Die bei der Biopsie entnommenen Zellen werden mikroskopiert."
+        ]
+      ],
+      "passivErsatz": [
+        [
+          "Diese Infektion lässt sich mit herkömmlichen Mitteln nicht kurieren.",
+          "Diese Infektion kann mit herkömmlichen Mitteln nicht kuriert werden."
+        ],
+        [
+          "Die Richtlinien zur Krankenhaushygiene sind peinlich genau zu beachten.",
+          "Die Richtlinien zur Krankenhaushygiene müssen peinlich genau beachtet werden."
+        ],
+        [
+          "Die Symptome sind eindeutig nachweisbar.",
+          "Die Symptome können eindeutig nachgewiesen werden."
+        ],
+        [
+          "Die Wirkung lässt sich im Tiermodell belegen.",
+          "Die Wirkung kann im Tiermodell belegt werden."
+        ]
+      ],
+      "indirekteRede": [
+        [
+          "Der Virologe betonte: 'Das Virus mutiert schneller als bisher angenommen.'",
+          "Der Virologe betonte, das Virus mutiere schneller als bisher angenommen."
+        ],
+        [
+          "Die Chefärztin sagte: 'Wir haben den Patienten erfolgreich stabilisiert.'",
+          "Die Chefärztin sagte, sie hätten den Patienten erfolgreich stabilisiert."
+        ],
+        [
+          "Der Minister erklärte: 'Die Vorräte an Schutzausrüstung reichen für sechs Monate.'",
+          "Der Minister erklärte, die Vorräte an Schutzausrüstung reichten für sechs Monate."
+        ]
+      ]
+    },
+    "reading": {
+      "points": 20,
+      "title": "Der Kampf gegen multiresistente Krankenhauskeime",
+      "text": "In europäischen Kliniken infizieren sich jährlich Hunderttausende Patienten mit Krankenhauskeimen, die gegen gängige Antibiotika unempfindlich sind. Diese Keime besiedeln Türklinken, Beatmungsschläuche und Katheter. Ursache ist häufig ein unkritischer Einsatz von Breitbandantibiotika in der Humanmedizin sowie in der industriellen Nutztierhaltung. Um die Ausbreitung einzudämmen, setzen deutsche Universitätskliniken auf strikte Screening-Programme bei der stationären Aufnahme und rigide Händehygiene des Personals.",
+      "tfQuestions": [
+        [
+          "Krankenhauskeime sind häufig gegen herkömmliche Antibiotika resistent.",
+          "Richtig",
+          "Z. 1-3"
+        ],
+        [
+          "Die Keime übertragen sich ausschließlich über die Luft.",
+          "Falsch",
+          "Z. 3-4"
+        ],
+        [
+          "Übermäßiger Antibiotikaeinsatz in der Massentierhaltung begünstigt Resistenzen.",
+          "Richtig",
+          "Z. 4-6"
+        ],
+        [
+          "Antibiotika wurden im antiken Rom erfunden.",
+          "Nicht im Text",
+          "-"
+        ],
+        [
+          "Screening-Programme bei der Aufnahme helfen, Keime frühzeitig zu erkennen.",
+          "Richtig",
+          "Z. 6-8"
+        ]
+      ],
+      "openQuestions": [
+        [
+          "Nennen Sie zwei Hauptursachen für das Entstehen multiresistenter Keime.",
+          "Musterlösung: 1. Unkritischer Einsatz von Breitbandantibiotika bei Menschen. 2. Massenhafter Einsatz von Antibiotika in der Nutztierhaltung."
+        ],
+        [
+          "Welche Präventionsmaßnahmen ergreifen deutsche Universitätskliniken?",
+          "Musterlösung: Strikte Screening-Programme bei Neuaufnahme und konsequente Händehygiene des Klinikpersonals."
+        ]
+      ]
+    },
+    "essay": {
+      "points": 15,
+      "type": "Erörterung",
+      "topic": "Gesetzliche Impfpflicht bei transmissiblen Krankheiten: Schutz der Allgemeinheit oder unzulässiger Eingriff in Grundrechte?",
+      "prompt": "Wägen Sie das Recht auf körperliche Unversehrtheit gegen den gesellschaftlichen Schutz vulnerabler Gruppen ab.",
+      "modelEssay": "Die Einführung einer gesetzlichen Impfpflicht berührt das Spannungsverhältnis zwischen individueller Selbstbestimmung und dem Gemeinwohl. Einerseits schützt eine hohe Impfquote Neugeborene und Immungeschwächte, die selbst nicht geimpft werden können. Andererseits greift ein staatlicher Zwang tief in das Grundrecht auf körperliche Unversehrtheit ein. Aufklärung und niederschwellige Angebote sind deshalb stets vor repressiven Maßnahmen zu bevorzugen; eine Impfpflicht kann nur als Ultima Ratio bei existenzbedrohenden Erregern mit hoher Letalität legitimiert werden."
+    }
+  },
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-12T13:40:11.625237+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "wordCount": 1686,
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "title": "Stk-De-Fu Berlin-04",
+  "slug": "stk_aufnahme_deutsch-stk-de-fu-berlin-04"
+}

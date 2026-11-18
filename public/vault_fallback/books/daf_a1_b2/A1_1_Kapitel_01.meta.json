@@ -1,0 +1,43 @@
+{
+  "id": "book-a1-kapitel-1-a1_1_kapitel_01",
+  "slug": "book-a1-kapitel-1-a1_1_kapitel_01",
+  "type": "language_textbook",
+  "level": "a1",
+  "sublevel": "A1.1",
+  "chapterNumber": 1,
+  "title": "GTF Deutsch A1 Lehrbuch • Kapitel 1: Guten Tag, Deutschland! Begrüßung, Alphabet & Phonetik",
+  "subtitle": "Offizielles DaF-Lehrwerk (Deutsch - English - Hinglish) • Erste Schritte in Berlin • Personalpronomen, Verbkonjugation im Präsens & Satzbau Position 2",
+  "topics": [
+    "Das deutsche Alphabet, Umlaute und Ausspracheregeln",
+    "Personalpronomen und Verbkonjugation im Präsens",
+    "Die Hilfsverben 'sein' (to be) und 'haben' (to have)",
+    "Der deutsche Hauptsatz: Verbposition 2 & Fragesatz-Inversion"
+  ],
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) DaF-Akademie Berlin",
+  "pdfFilename": "A1_1_Kapitel_01.pdf",
+  "pageCount": 13,
+  "wordCount": 4756,
+  "fileSizeBytes": 42174,
+  "fileSizeFormatted": "41.2 KB",
+  "vaultRelativePath": "books/daf_a1_b2/A1_1_Kapitel_01.pdf",
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "isFree": false,
+  "previewAvailable": true,
+  "createdAt": "2026-11-11T19:02:21.592102+00:00",
+  "cefrGoals": [
+    "Sich und andere formell und informell auf Deutsch begrüßen und vorstellen (Name, Herkunft, Beruf)",
+    "Das deutsche Alphabet, Umlaute (ä, ö, ü) und das Eszett (ß) korrekt aussprechen und buchstabieren",
+    "Regelmäßige Verben (lernen, kommen, wohnen, heißen) und unregelmäßige Hilfsverben (sein, haben) im Präsens konjugieren",
+    "Die unverrückbare Grundregel des deutschen Hauptsatzes anwenden: Verbposition 2",
+    "W-Fragen (Wer, Wie, Wo, Woher, Was) und Ja/Nein-Entscheidungsfragen sicher bilden"
+  ],
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:34.971372+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin"
+}

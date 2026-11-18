@@ -224,6 +224,22 @@
       color: var(--color-text-secondary);
       line-height: 1.5;
     }
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .social-proof-strip {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+      .services-section-box {
+        padding: 2rem 1.25rem !important;
+      }
+      .cta-section-box {
+        padding: 2.25rem 1.25rem !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -234,7 +250,17 @@
       <a href="index.html" class="brand" aria-label="The Gateway to Future">
         <img src="assets/logo.jpg?v=2" alt="Gateway to Future" class="brand-logo" style="height: 48px; width: auto; display: block;" />
       </a>
-      <nav class="menu" aria-label="Primary navigation">
+      <div class="nav-actions-mobile">
+        <a href="https://app.gatewaytofuture.com/dashboard" target="_blank" rel="noopener noreferrer" class="btn-portal-mobile-direct" aria-label="GTF Student and Exam Portal">
+          <span>Portal</span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+      <nav class="menu" id="nav-menu" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="ausbildung.html" class="active-page">Ausbildung</a>
         <a href="courses.html">Programs</a>
@@ -325,7 +351,7 @@
     </section>
 
     <!-- 3. Gateway to Future Services Summary -->
-    <section id="services" class="shell reveal" style="background: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 4rem 2rem; margin: 3rem auto;">
+    <section id="services" class="shell reveal services-section-box" style="background: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: 4rem 2rem; margin: 3rem auto;">
       <h2>How Gateway to Future Supports You End-to-End</h2>
       <p style="max-width: 720px; margin-bottom: 2rem;">Securing an Ausbildung from India requires navigation of language benchmarks, resume formats, employer interviews, and visa laws. We bridge the gap from our office in Berlin and partners in India.</p>
       
@@ -929,13 +955,13 @@
     </section>
 
     <!-- Final Strategy CTA -->
-    <section id="cta" class="shell reveal" style="background: linear-gradient(135deg, var(--color-primary-light) 0%, #ffffff 100%); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 5rem 3rem; text-align: center; margin-bottom: 5rem;">
+    <section id="cta" class="shell reveal cta-section-box" style="background: linear-gradient(135deg, var(--color-primary-light) 0%, #ffffff 100%); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 5rem 3rem; text-align: center; margin-bottom: 5rem;">
       <span class="badge badge-indigo">Limited Intake Slots Available</span>
       <h2 style="text-align: center; margin-bottom: 1rem;">Ready to Secure Your Career in Germany?</h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.1rem; color: var(--color-text-secondary);">Book a 1:1 strategy mapping session with our Berlin-based counselors. We will evaluate your qualifications and map out your Ausbildung placement timeline.</p>
+      <p style="max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.1rem; color: var(--color-text-secondary);">Book a 1:1 strategy mapping session directly from Berlin with Sarbjit Kour (Founder &amp; CEO, Gateway To Future). We will evaluate your qualifications and map out your Ausbildung placement timeline.</p>
       <div class="hero-actions" style="justify-content: center;">
         <a class="btn btn-primary" href="contact.html">Book strategy call</a>
-        <a class="btn btn-secondary" href="https://wa.me/918126933346" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-secondary" href="https://wa.me/4915228372894" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
     </section>
 
@@ -947,7 +973,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <h3>The Gateway to Future</h3>
-          <p>Premium Berlin-based education mentorship for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
+          <p>Premium Berlin-based education mentorship led by Sarbjit Kour (Founder &amp; CEO, Gateway To Future) for Indian students aiming for public universities, Studienkolleg prep, student visas, and Ausbildung placements.</p>
         </div>
         <div class="footer-col">
           <h4>Navigate</h4>
@@ -971,17 +997,17 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Support & Legal</h4>
+          <h4>Support &amp; Legal</h4>
           <ul>
             <li><a href="courses.html">Blocked Accounts</a></li>
             <li><a href="courses.html">Settlement Aid</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html">Meet Founder</a></li>
+            <li><a href="about.html">Leadership: Sarbjit Kour (Founder &amp; CEO)</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 The Gateway to Future. Germany & India. All rights reserved.</p>
+        <p>&copy; 2026 The Gateway to Future. Led exclusively by Sarbjit Kour (Founder &amp; CEO, Gateway To Future). All rights reserved.</p>
         <div class="footer-bottom-links">
           <span>German Courses</span> •
           <span>Admissions Mentorship</span> •

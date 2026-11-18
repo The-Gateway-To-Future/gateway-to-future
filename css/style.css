@@ -22,6 +22,11 @@
     font-family: var(--font-body);
 }
 
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body {
     background:
         linear-gradient(180deg, #ffffff 0%, #f8fafc 44%, #ffffff 100%),
@@ -29,6 +34,7 @@ body {
         var(--light);
     color: #111827;
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 .shell {
@@ -162,6 +168,40 @@ header {
     box-shadow: 0 14px 28px rgba(29, 78, 216, 0.22);
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 42px;
+    height: 42px;
+    background: #ffffff;
+    border: 1.5px solid var(--nav-border);
+    border-radius: 0.7rem;
+    padding: 9px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 2.5px;
+    background-color: var(--nav-text);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+.nav-toggle.active .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 720px) {
     header {
         width: calc(100% - 0.6rem);
@@ -171,17 +211,72 @@ header {
     }
 
     .nav {
-        align-items: flex-start;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.65rem 0.9rem;
+    }
+
+    .brand-logo {
+        height: 38px !important;
+    }
+
+    .nav-toggle {
+        display: flex;
     }
 
     .menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
         width: 100%;
+        padding-top: 0.75rem;
+        margin-top: 0.25rem;
+        border-top: 1px solid var(--nav-border);
+        gap: 0.35rem;
+    }
+
+    .menu.active {
+        display: flex;
     }
 
     .menu a {
-        flex: 1;
+        flex: none;
+        width: 100%;
+        text-align: left;
+        padding: 0.68rem 0.85rem;
+    }
+
+    .menu .cta-mini {
         text-align: center;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 60vh;
+        padding: 3.5rem 1.25rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.85rem, 6vw, 2.35rem);
+        line-height: 1.15;
+    }
+
+    .page-header h1 {
+        font-size: clamp(1.85rem, 6vw, 2.3rem);
+        line-height: 1.15;
+    }
+
+    .course-card {
+        min-height: auto;
+        grid-template-rows: auto;
+    }
+
+    .course-card h2 {
+        max-width: calc(100% - 3.25rem);
+        min-height: 0;
+        font-size: 1.15rem;
     }
 }
 

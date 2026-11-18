@@ -1,0 +1,609 @@
+{
+  "quizId": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung",
+  "chapterId": "stk_w_dossier_02",
+  "chapterStem": "W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung",
+  "title": "GTF Interaktives Quiz & C-Test • Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
+  "level": "b1",
+  "domain": "stk_w_kurs",
+  "division": "Studienkolleg Hub",
+  "questionCount": 15,
+  "createdAt": "2026-11-12T13:40:08.405231+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "questions": [
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-01",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-02",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-03",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-04",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-05",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-06",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-07",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-08",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-09",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-10",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-11",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-12",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-13",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-14",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung-15",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    }
+  ]
+}

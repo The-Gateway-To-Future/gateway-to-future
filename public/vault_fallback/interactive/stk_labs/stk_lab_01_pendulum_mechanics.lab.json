@@ -1,0 +1,58 @@
+{
+  "id": "stk_lab_01_pendulum_mechanics",
+  "title": "Lab 01: Harmonische Schwingungen & Reversionspendel",
+  "discipline": "Physik (T-Kurs)",
+  "topic": "Klassische Mechanik & Gravitationsfeld",
+  "engine": "GTF-Interactive-STEM-Simulator-v2.0",
+  "parameters": {
+    "length_m": [
+      0.5,
+      1.0,
+      1.5
+    ],
+    "gravity_ms2": 9.81,
+    "damping": 0.02
+  },
+  "protocol": "Bestimmung der Erdbeschleunigung g mittels Periodendauermessung T = 2*pi*sqrt(L/g).",
+  "generated_by": "EMP-12: Studienkolleg Virtual STEM Lab Specialist",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "created_at": "2026-11-11T19:56:14.874691+00:00",
+  "qa_status": "auto_verified",
+  "interactive_controls": [
+    {
+      "type": "slider",
+      "name": "primary_variable",
+      "min": 0.1,
+      "max": 10.0,
+      "step": 0.1
+    },
+    {
+      "type": "toggle",
+      "name": "show_theoretical_curve",
+      "default": true
+    },
+    {
+      "type": "button",
+      "name": "run_simulation",
+      "label": "Simulation starten"
+    },
+    {
+      "type": "button",
+      "name": "reset_lab",
+      "label": "Messwerte zurücksetzen"
+    }
+  ],
+  "quiz_questions": [
+    {
+      "question": "Welche zentrale physikalische bzw. chemische Gesetzmäßigkeit wird in Lab 01: Harmonische Schwingungen & Reversionspendel demonstriert?",
+      "options": [
+        "Klassische Mechanik & Gravitationsfeld",
+        "Ideales Gasgesetz",
+        "Ohmsches Gesetz",
+        "Coulomb-Kraft"
+      ],
+      "correct_index": 0,
+      "explanation": "In diesem Experiment steht Klassische Mechanik & Gravitationsfeld im Mittelpunkt des empirischen Nachweises."
+    }
+  ]
+}

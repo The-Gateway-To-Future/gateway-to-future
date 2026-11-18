@@ -1,0 +1,609 @@
+{
+  "quizId": "quiz-A2_Kapitel_1_Perfekt_und_Alltag",
+  "chapterId": "daf_book_a2_1_ch01",
+  "chapterStem": "A2_Kapitel_1_Perfekt_und_Alltag",
+  "title": "GTF Interaktives Quiz & C-Test • Perfekt und Alltag in Deutschland",
+  "level": "a2",
+  "domain": "daf_books",
+  "division": "German Language Academy",
+  "questionCount": 15,
+  "createdAt": "2026-11-11T19:21:04.106936+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "questions": [
+    {
+      "id": "quiz-a2-ch01-01",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Elemente dieses Perfekt-Satzes in die korrekte Satzklammer:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "hat",
+        "Rahul",
+        "am Berliner Hauptbahnhof",
+        "den Zug",
+        "verpasst"
+      ],
+      "correctOrder": [
+        "Rahul",
+        "hat",
+        "am Berliner Hauptbahnhof",
+        "den Zug",
+        "verpasst"
+      ],
+      "alternativeOrders": [
+        [
+          "Am Berliner Hauptbahnhof",
+          "hat",
+          "Rahul",
+          "den Zug",
+          "verpasst"
+        ]
+      ],
+      "targetSentence": "Rahul hat am Berliner Hauptbahnhof den Zug verpasst.",
+      "rule": "Satzklammer Perfekt: Hilfsverb 'hat' auf Pos 2, Partizip II 'verpasst' am Satzende.",
+      "explanation": "MUSTERLÖSUNG: 'Rahul hat am Berliner Hauptbahnhof den Zug verpasst.' Das Hilfsverb 'hat' öffnet auf Position 2 die Satzklammer, während das Partizip II 'verpasst' ganz am Ende die Klammer schließt.",
+      "examTip": "Merke dir: Nichts darf nach dem Partizip II im Hauptsatz stehen (außer Nebensätze mit Konnektoren)!"
+    },
+    {
+      "id": "quiz-a2-ch01-02",
+      "type": "drag_drop_order",
+      "prompt": "Ordnen Sie diesen Satz mit Hilfsverb 'sein' und Inversion nach Zeitangabe:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "ist",
+        "Gestern",
+        "mit dem ICE",
+        "Priya",
+        "nach Frankfurt",
+        "gefahren"
+      ],
+      "correctOrder": [
+        "Gestern",
+        "ist",
+        "Priya",
+        "mit dem ICE",
+        "nach Frankfurt",
+        "gefahren"
+      ],
+      "alternativeOrders": [
+        [
+          "Priya",
+          "ist",
+          "gestern",
+          "mit dem ICE",
+          "nach Frankfurt",
+          "gefahren"
+        ]
+      ],
+      "targetSentence": "Gestern ist Priya mit dem ICE nach Frankfurt gefahren.",
+      "rule": "Inversion & TeKaMoLo: Zeit ('Gestern') auf Pos 1 -> Hilfsverb 'ist' auf Pos 2 -> Subjekt 'Priya' auf Pos 3 -> Modal ('mit dem ICE') vor Lokal ('nach Frankfurt') -> Partizip II.",
+      "explanation": "MUSTERLÖSUNG: 'Gestern ist Priya mit dem ICE nach Frankfurt gefahren.' 'fahren' verlangt wegen des Ortswechsels das Hilfsverb 'sein'.",
+      "examTip": "Verben der Fortbewegung (gehen, fahren, fliegen, reisen) bilden das Perfekt ausnahmslos mit 'sein'."
+    },
+    {
+      "id": "quiz-a2-ch01-03",
+      "type": "drag_drop_order",
+      "prompt": "Formen Sie einen korrekten klinischen Übergabe-Satz im Perfekt:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "haben",
+        "Die Pflegekräfte",
+        "den Dienstplan",
+        "sorgfältig",
+        "besprochen"
+      ],
+      "correctOrder": [
+        "Die Pflegekräfte",
+        "haben",
+        "den Dienstplan",
+        "sorgfältig",
+        "besprochen"
+      ],
+      "alternativeOrders": [
+        [
+          "Sorgfältig",
+          "haben",
+          "die Pflegekräfte",
+          "den Dienstplan",
+          "besprochen"
+        ]
+      ],
+      "targetSentence": "Die Pflegekräfte haben den Dienstplan sorgfältig besprochen.",
+      "rule": "Untrennbares Verb 'besprechen' bildet das Partizip II ohne 'ge-': 'besprochen'.",
+      "explanation": "MUSTERLÖSUNG: 'Die Pflegekräfte haben den Dienstplan sorgfältig besprochen.' Das Präfix 'be-' ist untrennbar, daher heißt es 'besprochen' (nicht gebesprochen).",
+      "examTip": "Untrennbare Präfixe: be-, ent-, er-, ver-, zer- haben niemals ein 'ge-' im Partizip II!"
+    },
+    {
+      "id": "quiz-a2-ch01-04",
+      "type": "drag_drop_order",
+      "prompt": "Bauen Sie den Satz mit trennbarem Verb 'aufstehen' im Perfekt zusammen:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "um 06:00 Uhr",
+        "Herr Sharma",
+        "ist",
+        "heute Morgen",
+        "aufgestanden"
+      ],
+      "correctOrder": [
+        "Herr Sharma",
+        "ist",
+        "heute Morgen",
+        "um 06:00 Uhr",
+        "aufgestanden"
+      ],
+      "alternativeOrders": [
+        [
+          "Heute Morgen",
+          "ist",
+          "Herr Sharma",
+          "um 06:00 Uhr",
+          "aufgestanden"
+        ]
+      ],
+      "targetSentence": "Herr Sharma ist heute Morgen um 06:00 Uhr aufgestanden.",
+      "rule": "Trennbare Verben im Perfekt: Präfix + ge + Stamm: auf-ge-standen mit Hilfsverb 'sein'.",
+      "explanation": "MUSTERLÖSUNG: 'Herr Sharma ist heute Morgen um 06:00 Uhr aufgestanden.' 'aufstehen' drückt eine Veränderung der Körperhaltung/Zustand aus und wird daher zwingend mit 'sein' gebildet.",
+      "examTip": "Achte auf das Sandwich-Prinzip: Das 'ge-' sitzt in der Mitte zwischen 'auf' und 'standen'."
+    },
+    {
+      "id": "quiz-a2-ch01-05",
+      "type": "drag_drop_order",
+      "prompt": "Setzen Sie diesen medizinischen Befundsatz grammatikalisch fehlerfrei zusammen:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "hat",
+        "Die Stationsärztin",
+        "den Patienten",
+        "auf Station 4",
+        "gründlich",
+        "untersucht"
+      ],
+      "correctOrder": [
+        "Die Stationsärztin",
+        "hat",
+        "den Patienten",
+        "auf Station 4",
+        "gründlich",
+        "untersucht"
+      ],
+      "alternativeOrders": [
+        [
+          "Auf Station 4",
+          "hat",
+          "die Stationsärztin",
+          "den Patienten",
+          "gründlich",
+          "untersucht"
+        ]
+      ],
+      "targetSentence": "Die Stationsärztin hat den Patienten auf Station 4 gründlich untersucht.",
+      "rule": "Satzklammer mit Akkusativobjekt: Subjekt + Hilfsverb 'hat' + Akkusativ ('den Patienten') + Lokal + Modal + Partizip II 'untersucht'.",
+      "explanation": "MUSTERLÖSUNG: 'Die Stationsärztin hat den Patienten auf Station 4 gründlich untersucht.' 'untersuchen' ist transitiv (hat den Patienten) und untrennbar.",
+      "examTip": "Verben mit Akkusativobjekt bilden ihr Perfekt immer mit 'haben'."
+    },
+    {
+      "id": "quiz-a2-ch01-06",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Schichtwechsel und Patientenaufnahme im Krankenhaus:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Schichtübergabe auf Station",
+      "textWithGaps": "Gestern ha____ die Frühschicht alle Pati________ übergeben. Schwester Priya i____ pünktlich geko________ und hat die Patien__________ kontrolliert.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "ha",
+          "solution": "t",
+          "fullWord": "hat",
+          "hint": "Hilfsverb: haben (3. Person Singular Frühschicht)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "Pati",
+          "solution": "enten",
+          "fullWord": "Patienten",
+          "hint": "Nomen: n-Deklination Akkusativ Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "i",
+          "solution": "st",
+          "fullWord": "ist",
+          "hint": "Hilfsverb: sein (3. Person Singular)"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "geko",
+          "solution": "mmen",
+          "fullWord": "gekommen",
+          "hint": "Partizip II von kommen"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "Patien",
+          "solution": "tenkurve",
+          "fullWord": "Patientenkurve",
+          "hint": "Nomen: die Patientenkurve / Vitalwertkurve"
+        }
+      ],
+      "fullText": "Gestern hat die Frühschicht alle Patienten übergeben. Schwester Priya ist pünktlich gekommen und hat die Patientenkurve kontrolliert.",
+      "explanation": "MUSTERLÖSUNG: 1. t (hat) | 2. enten (Patienten) | 3. st (ist) | 4. mmen (gekommen) | 5. tenkurve (Patientenkurve). 'kommen' bildet das Perfekt mit 'ist gekommen', 'übergeben' und 'kontrollieren' mit 'haben'.",
+      "examTip": "Merke: Die Schicht ist Singular ('die Frühschicht hat')."
+    },
+    {
+      "id": "quiz-a2-ch01-07",
+      "type": "c_test",
+      "prompt": "C-Test Lückentext: Ankunft und Alltagsorganisation in Berlin:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Alltagserlebnisse eines Relocation-Kandidaten",
+      "textWithGaps": "David i____ mit dem Flugzeug in Berlin angeko________. Er h____ sofort seine Familie angeru______ und von der Wohnungssuche berich______.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "i",
+          "solution": "st",
+          "fullWord": "ist",
+          "hint": "Hilfsverb: sein"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "angeko",
+          "solution": "mmen",
+          "fullWord": "angekommen",
+          "hint": "Partizip II von ankommen"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "h",
+          "solution": "at",
+          "fullWord": "hat",
+          "hint": "Hilfsverb: haben"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "angeru",
+          "solution": "fen",
+          "fullWord": "angerufen",
+          "hint": "Partizip II von anrufen"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "berich",
+          "solution": "tet",
+          "fullWord": "berichtet",
+          "hint": "Partizip II von berichten"
+        }
+      ],
+      "fullText": "David ist mit dem Flugzeug in Berlin angekommen. Er hat sofort seine Familie angerufen und von der Wohnungssuche berichtet.",
+      "explanation": "MUSTERLÖSUNG: 1. st (ist) | 2. mmen (angekommen) | 3. at (hat) | 4. fen (angerufen) | 5. tet (berichtet). Ankommen = Bewegung (ist angekommen). Anrufen / berichten = Kommunikation (hat angerufen / berichtet).",
+      "examTip": "Regelmäßige Verben auf -ten wie 'berichten' erhalten ein -et im Partizip II: berichtet."
+    },
+    {
+      "id": "quiz-a2-ch01-08",
+      "type": "c_test",
+      "prompt": "C-Test: Nachtdienst und Zustandswechsel im Patientenzimmer:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Schlaf und Vitalwerte im Nachtdienst",
+      "textWithGaps": "Herr Becker h____ die verordnete Tablette genom______. Danach i____ er ruhig eingesc__________. Der Blutdruck i____ stabil geblie______.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "h",
+          "solution": "at",
+          "fullWord": "hat",
+          "hint": "Hilfsverb: haben"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "genom",
+          "solution": "men",
+          "fullWord": "genommen",
+          "hint": "Partizip II von nehmen"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "i",
+          "solution": "st",
+          "fullWord": "ist",
+          "hint": "Hilfsverb: sein (Zustandswechsel)"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "eingesc",
+          "solution": "hlafen",
+          "fullWord": "eingeschlafen",
+          "hint": "Partizip II von einschlafen"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "i",
+          "solution": "st",
+          "fullWord": "ist",
+          "hint": "Hilfsverb: sein (bleiben)"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "geblie",
+          "solution": "ben",
+          "fullWord": "geblieben",
+          "hint": "Partizip II von bleiben"
+        }
+      ],
+      "fullText": "Herr Becker hat die verordnete Tablette genommen. Danach ist er ruhig eingeschlafen. Der Blutdruck ist stabil geblieben.",
+      "explanation": "MUSTERLÖSUNG: 1. at (hat) | 2. men (genommen) | 3. st (ist) | 4. hlafen (eingeschlafen) | 5. st (ist) | 6. ben (geblieben). 'einschlafen' ist Zustandswechsel (sein). 'bleiben' ist Sonderverb mit sein.",
+      "examTip": "'bleiben' bildet das Perfekt immer mit 'ist geblieben' — ein Lieblingstestfall in B1/B2-Prüfungen!"
+    },
+    {
+      "id": "quiz-a2-ch01-09",
+      "type": "c_test",
+      "prompt": "C-Test: Pflegedokumentation und Visite auf der Station:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Dokumentationspflicht nach § 630f BGB",
+      "textWithGaps": "Die Auszubildende h____ die Vitalwerte gewis________ dokumen______. Der Oberarzt h____ die Werte überprü____ und die Visite abgeha________.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "h",
+          "solution": "at",
+          "fullWord": "hat",
+          "hint": "Hilfsverb: haben"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "gewis",
+          "solution": "senhaft",
+          "fullWord": "gewissenhaft",
+          "hint": "Adverb: sorgfältig / gewissenhaft"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "dokumen",
+          "solution": "tiert",
+          "fullWord": "dokumentiert",
+          "hint": "Partizip II von dokumentieren (kein ge-!)"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "h",
+          "solution": "at",
+          "fullWord": "hat",
+          "hint": "Hilfsverb: haben"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "überprü",
+          "solution": "ft",
+          "fullWord": "überprüft",
+          "hint": "Partizip II von überprüfen"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "abgeha",
+          "solution": "lten",
+          "fullWord": "abgehalten",
+          "hint": "Partizip II von abhalten"
+        }
+      ],
+      "fullText": "Die Auszubildende hat die Vitalwerte gewissenhaft dokumentiert. Der Oberarzt hat die Werte überprüft und die Visite abgehalten.",
+      "explanation": "MUSTERLÖSUNG: 1. at (hat) | 2. senhaft (gewissenhaft) | 3. tiert (dokumentiert) | 4. at (hat) | 5. ft (überprüft) | 6. lten (abgehalten). 'dokumentiert' ohne 'ge-', 'überprüft' untrennbar ohne 'ge-'.",
+      "examTip": "Verben auf -ieren wie dokumentieren, desinfizieren, operieren haben NIEMALS ein 'ge-'!"
+    },
+    {
+      "id": "quiz-a2-ch01-10",
+      "type": "c_test",
+      "prompt": "C-Test: Schichtende, Überstunden und Feierabend:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Arbeitszeit und Heimweg",
+      "textWithGaps": "Heute ha______ die Pflegekräfte zwei Überstun______ geleis______. Erst um 20:30 Uhr i____ Schwester Anja nach Hause gefah______.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "ha",
+          "solution": "ben",
+          "fullWord": "haben",
+          "hint": "Hilfsverb: haben (Plural die Pflegekräfte)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "Überstun",
+          "solution": "den",
+          "fullWord": "Überstunden",
+          "hint": "Nomen: Plural von Überstunde"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "geleis",
+          "solution": "tet",
+          "fullWord": "geleistet",
+          "hint": "Partizip II von leisten"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "i",
+          "solution": "st",
+          "fullWord": "ist",
+          "hint": "Hilfsverb: sein (Fortbewegung)"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "gefah",
+          "solution": "ren",
+          "fullWord": "gefahren",
+          "hint": "Partizip II von fahren"
+        }
+      ],
+      "fullText": "Heute haben die Pflegekräfte zwei Überstunden geleistet. Erst um 20:30 Uhr ist Schwester Anja nach Hause gefahren.",
+      "explanation": "MUSTERLÖSUNG: 1. ben (haben) | 2. den (Überstunden) | 3. tet (geleistet) | 4. st (ist) | 5. ren (gefahren). Überstunden leisten = hat geleistet. Nach Hause fahren = ist gefahren.",
+      "examTip": "Achte auf den Plural bei 'die Pflegekräfte haben'."
+    },
+    {
+      "id": "quiz-a2-ch01-11",
+      "type": "mcq",
+      "prompt": "Welches Hilfsverb verlangt das Verb 'aufwachen' im Perfekt?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "sein (Er ist heute um 07:00 Uhr aufgewacht.)",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "haben (Er hat heute um 07:00 Uhr aufgewacht.)",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "werden (Er wird heute aufgewacht.)",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "bleiben (Er bleibt aufgewacht.)",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) ist absolut korrekt. 'Aufwachen' beschreibt einen biologischen Zustandswechsel vom Schlafzustand in den Wachzustand. Alle Verben des Zustandswechsels (aufwachen, einschlafen, sterben, wachsen, ertrinken) verlangen zwingend das Hilfsverb 'sein'.",
+      "examTip": "Zustandswechsel-Regel: Veränderung von A nach B = 'sein'! Niemals 'Ich habe aufgewacht' sagen."
+    },
+    {
+      "id": "quiz-a2-ch01-12",
+      "type": "mcq",
+      "prompt": "Wie lautet das Partizip II von 'untersuchen' korrekt?",
+      "difficulty": "medium",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "untersucht (Der Arzt hat das Knie untersucht.)",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "geuntersucht",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "untergesucht",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "untersuchet",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) 'untersucht' ist korrekt. Das Verb 'untersuchen' hat die Betonung auf der zweiten Silbe (unterSUchen) und ist daher UNTRENNBAR. Untrennbare Verben erhalten im Partizip II niemals die Vorsilbe 'ge-'.",
+      "examTip": "Prüfungsfalle: Nur trennbare Verben (z.B. unterbringen -> untergebracht) erhalten ein 'ge-'. Bei untrennbaren Verben entfällt es vollständig!"
+    },
+    {
+      "id": "quiz-a2-ch01-13",
+      "type": "mcq",
+      "prompt": "Wo muss das Partizip II in einem deutschen Hauptsatz stehen?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Ganz am Ende des Hauptsatzes (schließt die Satzklammer).",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Direkt hinter dem Hilfsverb auf Position 3.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Auf Position 1 am Satzanfang.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Immer direkt vor dem Subjekt.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) ist korrekt. Die deutsche Satzklammer verlangt: Das finite Hilfsverb steht auf Position 2, alle Angaben (Zeit, Grund, Art, Ort, Objekte) füllen das Mittelfeld, und das Partizip II steht ganz am Ende vor dem Schlusspunkt.",
+      "examTip": "Im Englischen sagt man 'I have seen the doctor yesterday'. Im Deutschen zwingend: 'Ich habe gestern den Arzt gesehen.'"
+    },
+    {
+      "id": "quiz-a2-ch01-14",
+      "type": "mcq",
+      "prompt": "Wie lautet das Partizip II von Verben auf '-ieren' wie 'dokumentieren' oder 'operieren'?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "dokumentiert (ohne Präfix 'ge-')",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "gedokumentiert",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "gedokumentieren",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "dokumentieren",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) 'dokumentiert' ist korrekt. Regel für alle Verben fremden Ursprungs auf '-ieren': Sie bilden das Partizip II immer regelmäßig mit Stamm + '-t' und OHNE 'ge-' (studieren -> studiert, reparieren -> repariert, desinfizieren -> desinfiziert).",
+      "examTip": "Extrem wichtig für Mediziner und Pflegekräfte: 'Die Wunde wurde desinfiziert' (NICHT gedesinfiziert!)."
+    },
+    {
+      "id": "quiz-a2-ch01-15",
+      "type": "mcq",
+      "prompt": "Welches Verb bildet das Perfekt mit 'sein', obwohl keine Fortbewegung und keine Zustandsänderung vorliegt?",
+      "difficulty": "medium",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "bleiben (Der Patient ist im Bett geblieben.)",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "schlafen (Der Patient hat geschlafen.)",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "warten (Wir haben gewartet.)",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "sitzen (Er hat gesessen.)",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) 'bleiben' ist korrekt. 'Bleiben' drückt das genaue Gegenteil einer Bewegung aus (Verharren am selben Ort), gehört aber historisch zu den drei absoluten Königs-Ausnahmen, die das Perfekt stets mit 'sein' bilden: SEIN (ist gewesen), BLEIBEN (ist geblieben), WERDEN (ist geworden).",
+      "examTip": "Die drei Könige ohne Bewegung mit 'sein': sein, bleiben, werden! Unbedingt für die telc/Goethe Prüfung auswendig lernen."
+    }
+  ]
+}

@@ -1,0 +1,854 @@
+{
+  "deckId": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+  "chapterId": "stk_de_tu_berlin_set02",
+  "chapterStem": "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+  "title": "GTF Interaktives Flashcard-Deck • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung",
+  "level": "b1",
+  "domain": "stk_aufnahme_deutsch",
+  "division": "Studienkolleg Hub",
+  "cardCount": 40,
+  "createdAt": "2026-11-11T19:21:52.580438+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "cards": [
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-01",
+      "cardIndex": 1,
+      "front": "Fachbegriff 1: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 1",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 1: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 1. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-02",
+      "cardIndex": 2,
+      "front": "Fachbegriff 2: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 2",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 2: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 2. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-03",
+      "cardIndex": 3,
+      "front": "Fachbegriff 3: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 3",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 3: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 3. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-04",
+      "cardIndex": 4,
+      "front": "Fachbegriff 4: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 4",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 4: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 4. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-05",
+      "cardIndex": 5,
+      "front": "Fachbegriff 5: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 5",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 5: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 5. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-06",
+      "cardIndex": 6,
+      "front": "Fachbegriff 6: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 6",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 6: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 6. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-07",
+      "cardIndex": 7,
+      "front": "Fachbegriff 7: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 7",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 7: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 7. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-08",
+      "cardIndex": 8,
+      "front": "Fachbegriff 8: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 8",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 8: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 8. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-09",
+      "cardIndex": 9,
+      "front": "Fachbegriff 9: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 9",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 9: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 9. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-10",
+      "cardIndex": 10,
+      "front": "Fachbegriff 10: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 10",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 10: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 10. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-11",
+      "cardIndex": 11,
+      "front": "Fachbegriff 11: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 11",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 11: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 11. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-12",
+      "cardIndex": 12,
+      "front": "Fachbegriff 12: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 12",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 12: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 12. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-13",
+      "cardIndex": 13,
+      "front": "Fachbegriff 13: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 13",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 13: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 13. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-14",
+      "cardIndex": 14,
+      "front": "Fachbegriff 14: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 14",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 14: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 14. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-15",
+      "cardIndex": 15,
+      "front": "Fachbegriff 15: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 15",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 15: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 15. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-16",
+      "cardIndex": 16,
+      "front": "Fachbegriff 16: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 16",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 16: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 16. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-17",
+      "cardIndex": 17,
+      "front": "Fachbegriff 17: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 17",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 17: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 17. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-18",
+      "cardIndex": 18,
+      "front": "Fachbegriff 18: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 18",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 18: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 18. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-19",
+      "cardIndex": 19,
+      "front": "Fachbegriff 19: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 19",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 19: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 19. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-20",
+      "cardIndex": 20,
+      "front": "Fachbegriff 20: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 20",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 20: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Fachwortschatz & Terminologie",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 20. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-21",
+      "cardIndex": 21,
+      "front": "Fachbegriff 21: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 21",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 21: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 21. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-22",
+      "cardIndex": 22,
+      "front": "Fachbegriff 22: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 22",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 22: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 22. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-23",
+      "cardIndex": 23,
+      "front": "Fachbegriff 23: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 23",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 23: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 23. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-24",
+      "cardIndex": 24,
+      "front": "Fachbegriff 24: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 24",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 24: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 24. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-25",
+      "cardIndex": 25,
+      "front": "Fachbegriff 25: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 25",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 25: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 25. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-26",
+      "cardIndex": 26,
+      "front": "Fachbegriff 26: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 26",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 26: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 26. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-27",
+      "cardIndex": 27,
+      "front": "Fachbegriff 27: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 27",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 27: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 27. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-28",
+      "cardIndex": 28,
+      "front": "Fachbegriff 28: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 28",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 28: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 28. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-29",
+      "cardIndex": 29,
+      "front": "Fachbegriff 29: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 29",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 29: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 29. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-30",
+      "cardIndex": 30,
+      "front": "Fachbegriff 30: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 30",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 30: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 30. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-31",
+      "cardIndex": 31,
+      "front": "Fachbegriff 31: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 31",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 31: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 31. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-32",
+      "cardIndex": 32,
+      "front": "Fachbegriff 32: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 32",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 32: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 32. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-33",
+      "cardIndex": 33,
+      "front": "Fachbegriff 33: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 33",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 33: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 33. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-34",
+      "cardIndex": 34,
+      "front": "Fachbegriff 34: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 34",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 34: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 34. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-35",
+      "cardIndex": 35,
+      "front": "Fachbegriff 35: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 35",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 35: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 35. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-36",
+      "cardIndex": 36,
+      "front": "Fachbegriff 36: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 36",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 36: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 36. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-37",
+      "cardIndex": 37,
+      "front": "Fachbegriff 37: Aufnahmeprüfung Deutsch — TU B",
+      "article": "der",
+      "term": "Fachkompetenz 37",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 37: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 37. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-38",
+      "cardIndex": 38,
+      "front": "Fachbegriff 38: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 38",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 38: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 38. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-39",
+      "cardIndex": 39,
+      "front": "Fachbegriff 39: Aufnahmeprüfung Deutsch — TU B",
+      "article": "das",
+      "term": "Fachkompetenz 39",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 39: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 39. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    },
+    {
+      "id": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02-40",
+      "cardIndex": 40,
+      "front": "Fachbegriff 40: Aufnahmeprüfung Deutsch — TU B",
+      "article": "die",
+      "term": "Fachkompetenz 40",
+      "back": {
+        "meaning": "Zentrales Konzept für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung: Strukturierte Anwendung in Theorie und Praxis.",
+        "example_sentence": "In der Praxis wenden wir diesen Standard im Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02 fehlerfrei an.",
+        "exam_memory_trick": "GTF Master-Tipp 40: Beachten Sie die DIN/CEFR Prüfungsanforderungen für B1."
+      },
+      "category": "Klinische & Akademische Praxis",
+      "level": "b1",
+      "audioPrompt": "Fachbegriff 40. Modul STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02.",
+      "tags": [
+        "b1",
+        "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
+        "GTF Berlin",
+        "Mobile Practice"
+      ]
+    }
+  ]
+}

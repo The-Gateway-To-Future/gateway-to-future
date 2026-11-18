@@ -1,0 +1,38 @@
+{
+  "id": "pflege-modul-1",
+  "slug": "Pflege_Modul_1_Anamnese_und_Patientenaufnahme",
+  "title": "Modul 1: Stationäre Patientenaufnahme & Pflegeanamnese in der Praxis",
+  "subtitle": "Strukturierte Erstaufnahme im Krankenhaus, Erhebung der Pflegeanamnese nach AEDL/SIS, Schmerzerfassung nach NRS, Allergiedokumentation und empathische Patientenkommunikation.",
+  "category": "pflege_ausbildung",
+  "track": "Pflegefachkraft (Generalistik) & Duale Ausbildung",
+  "level": "B1-B2 Fachsprache Pflege",
+  "target_group": "Pflegefachkräfte im Anerkennungsverfahren, Auszubildende zur/zum Pflegefachfrau/-mann",
+  "pdf_filename": "Pflege_Modul_1_Anamnese_und_Patientenaufnahme.pdf",
+  "relative_path": "vault_fallback/books/pflege_ausbildung/Pflege_Modul_1_Anamnese_und_Patientenaufnahme.pdf",
+  "file_size_bytes": 14264,
+  "page_count": 4,
+  "topics": [
+    "die Pflegeanamnese",
+    "das Aufnahmeformular",
+    "die Vorerkrankung",
+    "die Allergie",
+    "die Schmerzskala (NRS)",
+    "das Hilfsmittel",
+    "die Patientenkurve",
+    "die Mobilitätseinschränkung"
+  ],
+  "learning_objectives": [
+    "Patienten auf der Station willkommen heißen und das Aufnahmegespräch strukturiert führen",
+    "Biografische Daten, Vorerkrankungen und Allergien fehlerfrei erheben und dokumentieren",
+    "Schmerzintensität mit der Numerischen Rating-Skala (NRS) präzise erfassen",
+    "Körperliche Einschränkungen, Mobilitätsstatus und Dekubitusrisiko (Braden-Skala) beurteilen",
+    "Empathische Deeskalation bei ängstlichen oder verwirrten Patienten anwenden"
+  ],
+  "isFree": false,
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "author": "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)",
+  "publisher": "The Gateway to Future (GTF) - Berlin Medical & Nursing Anerkennung Unit (DIV-03)",
+  "createdAt": "2026-11-11T18:46:19.395694+00:00",
+  "updatedAt": "2026-11-11T18:46:19.395694+00:00"
+}

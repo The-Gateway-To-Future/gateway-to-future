@@ -1,0 +1,39 @@
+{
+  "id": "book-a1-kapitel-4-a1_1_kapitel_04",
+  "slug": "book-a1-kapitel-4-a1_1_kapitel_04",
+  "type": "language_textbook",
+  "level": "a1",
+  "sublevel": "A1.1",
+  "chapterNumber": 4,
+  "title": "GTF Deutsch A1 Lehrbuch • Kapitel 4: Familie, Freunde & Possessivartikel",
+  "subtitle": "Offizielles DaF-Lehrwerk (Deutsch - English - Hinglish) • Beziehungen beschreiben • mein, dein, sein, ihr im Nominativ und Akkusativ & Personalpronomen im Akkusativ",
+  "topics": [
+    "Kernregel: Possessivartikel (mein, dein, sein, ihr, unser, euer) & Personalpronomen im Akkusativ (mich, dich, ihn)"
+  ],
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) DaF-Akademie Berlin",
+  "pdfFilename": "A1_1_Kapitel_04.pdf",
+  "pageCount": 13,
+  "wordCount": 4304,
+  "fileSizeBytes": 27491,
+  "fileSizeFormatted": "26.8 KB",
+  "vaultRelativePath": "books/daf_a1_b2/A1_1_Kapitel_04.pdf",
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "isFree": false,
+  "previewAvailable": true,
+  "createdAt": "2026-11-12T13:39:43.221914+00:00",
+  "cefrGoals": [
+    "Beherrschung des Kernwortschatzes zum Thema: Familienmitglieder, Verwandtschaft & Freunde",
+    "Sichere Anwendung der Grammatikregeln: Possessivartikel (mein, dein, sein, ihr, unser, euer) & Personalpronomen im Akkusativ (mich, dich, ihn)",
+    "Kompetente Sprachverwendung im universitären und klinischen Alltag in Berlin",
+    "Erfolgreiches Bestehen der standardisierten Prüfungsformate (Goethe / telc)"
+  ],
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:35.632913+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin"
+}

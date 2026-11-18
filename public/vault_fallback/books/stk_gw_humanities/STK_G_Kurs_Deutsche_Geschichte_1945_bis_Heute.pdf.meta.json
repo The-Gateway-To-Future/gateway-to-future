@@ -1,0 +1,38 @@
+{
+  "id": "gtf-stk-g-kurs-stk_g_kurs_deutsche_geschichte_1945_bis_heute",
+  "slug": "dossier-stk-g-kurs-stk_g_kurs_deutsche_geschichte_1945_bis_heute",
+  "filename": "STK_G_Kurs_Deutsche_Geschichte_1945_bis_Heute.pdf",
+  "title": "STK G-Kurs: Deutsche Geschichte 1945 bis zur Gegenwart",
+  "subtitle": "Akademisches Aufnahmeprüfungs-Dossier mit Primärquellen, Zeitleisten & C-Test",
+  "courseCode": "STK-G-HIST",
+  "track": "G-Kurs",
+  "divisionId": "studienkolleg",
+  "type": "studienkolleg_dossier",
+  "level": "b2-c1",
+  "language": "de",
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) Studienkolleg Akademie Berlin",
+  "address": "Ketschendorfer Weg 33, 12683 Berlin",
+  "targetExams": [
+    "Studienkolleg Aufnahmeprüfung",
+    "Feststellungsprüfung (FSP)",
+    "Hochschul-C-Test Deutsch"
+  ],
+  "priceEur": 19.0,
+  "priceInr": 1699,
+  "isFree": false,
+  "topics": [
+    "Potsdamer Konferenz & Stunde Null",
+    "Marshall-Plan & Währungsreform 1948",
+    "Doppelte Staatsgründung (BRD & DDR 1949)",
+    "17. Juni 1953 & Berliner Mauerbau 1961",
+    "Neue Ostpolitik von Willy Brandt",
+    "Friedliche Revolution 1989 & Mauerfall",
+    "Zwei-plus-Vier-Vertrag & Deutsche Einheit 1990"
+  ],
+  "fileSizeBytes": 22627,
+  "generatedAt": "2026-11-11T18:49:24.955045+00:00",
+  "drivePath": "books/stk_gw_humanities/STK_G_Kurs_Deutsche_Geschichte_1945_bis_Heute.pdf"
+}

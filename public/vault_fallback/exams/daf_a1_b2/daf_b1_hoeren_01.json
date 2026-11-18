@@ -1,0 +1,114 @@
+{
+  "id": "daf_b1_hoeren_01",
+  "level": "B1",
+  "examType": "Goethe-Zertifikat B1 / telc Deutsch B1",
+  "title": "B1 Hören — Goethe/telc B1 Interview: Mobiles Arbeiten, Homeoffice und neue Arbeitskultur in Berlin",
+  "topic": "Arbeitswelt, New Work, Homeoffice und Vereinbarkeit von Beruf und Familie",
+  "audio": {
+    "fileName": "daf_b1_hoeren_01.mp3",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_01.mp3",
+    "sizeBytes": 1635404,
+    "bitrate": "192kbps",
+    "format": "mp3"
+  },
+  "pdf": {
+    "fileName": "daf_b1_hoeren_01.pdf",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_01.pdf",
+    "sizeBytes": 15186,
+    "format": "pdf"
+  },
+  "transcript": "Moderatorin: Herzlich willkommen zu unserer Sendung 'Zukunft der Arbeit'. Heute im Studio ist Frau Sarbjit Kour, Gründerin und CEO eines deutsch-indischen Bildungsunternehmens in Berlin. Frau Kour, die Pandemie hat die Arbeitswelt revolutioniert. Wie gestaltet sich das mobile Arbeiten in Ihrem Unternehmen?\nFrau Kour: Guten Tag, Frau Meyer. Bei uns setzen wir auf ein hybrides Modell. Unsere Dozenten und Berater können bis zu drei Tage pro Woche remote im Homeoffice arbeiten, während zwei Tage der Präsenzarbeit und dem persönlichen Austausch im Berliner Büro gewidmet sind.\nModeratorin: Viele Kritiker befürchten beim Homeoffice einen Verlust an sozialer Nähe und Schwierigkeiten bei der Trennung von Beruf und Privatleben. Welche Erfahrungen haben Sie gemacht?\nFrau Kour: Natürlich erfordert mobiles Arbeiten ein hohes Maß an Selbstdisziplin und klar definierte Kommunikationsregeln. Wenn Arbeitnehmer abends die geschäftlichen E-Mails nicht ausschalten, droht Überarbeitung. Deshalb gilt bei uns die Vereinbarung, nach 18 Uhr keine dienstlichen Nachrichten mehr zu versenden.\nModeratorin: Das klingt nach einer durchdachten Regelung. Welche Vorteile sehen Ihre internationalen Mitarbeiter gegenüber der klassischen Büropräsenz?\nFrau Kour: Vor allem die Zeitersparnis beim täglichen Pendeln in Berlin ist enorm. Viele Kolleginnen und Kollegen nutzen diese zwei gewonnenen Stunden am Tag für sportliche Aktivitäten, Weiterbildung oder ihre Familie. Die Zufriedenheit und Produktivität sind dadurch spürbar gestiegen.",
+  "dialogue": [
+    {
+      "speaker": "Moderatorin",
+      "voice": "female",
+      "role": "Journalistin Deutschlandfunk Kultur (Prüferin)",
+      "text": "Herzlich willkommen zu unserer Sendung 'Zukunft der Arbeit'. Heute im Studio ist Frau Sarbjit Kour, Gründerin und CEO eines deutsch-indischen Bildungsunternehmens in Berlin. Frau Kour, die Pandemie hat die Arbeitswelt revolutioniert. Wie gestaltet sich das mobile Arbeiten in Ihrem Unternehmen?"
+    },
+    {
+      "speaker": "Frau Kour",
+      "voice": "female",
+      "role": "Gründerin & CEO, Gateway To Future (Kandidatin)",
+      "text": "Guten Tag, Frau Meyer. Bei uns setzen wir auf ein hybrides Modell. Unsere Dozenten und Berater können bis zu drei Tage pro Woche remote im Homeoffice arbeiten, während zwei Tage der Präsenzarbeit und dem persönlichen Austausch im Berliner Büro gewidmet sind."
+    },
+    {
+      "speaker": "Moderatorin",
+      "voice": "female",
+      "role": "Journalistin Deutschlandfunk Kultur (Prüferin)",
+      "text": "Viele Kritiker befürchten beim Homeoffice einen Verlust an sozialer Nähe und Schwierigkeiten bei der Trennung von Beruf und Privatleben. Welche Erfahrungen haben Sie gemacht?"
+    },
+    {
+      "speaker": "Frau Kour",
+      "voice": "female",
+      "role": "Gründerin & CEO, Gateway To Future (Kandidatin)",
+      "text": "Natürlich erfordert mobiles Arbeiten ein hohes Maß an Selbstdisziplin und klar definierte Kommunikationsregeln. Wenn Arbeitnehmer abends die geschäftlichen E-Mails nicht ausschalten, droht Überarbeitung. Deshalb gilt bei uns die Vereinbarung, nach 18 Uhr keine dienstlichen Nachrichten mehr zu versenden."
+    },
+    {
+      "speaker": "Moderatorin",
+      "voice": "female",
+      "role": "Journalistin Deutschlandfunk Kultur (Prüferin)",
+      "text": "Das klingt nach einer durchdachten Regelung. Welche Vorteile sehen Ihre internationalen Mitarbeiter gegenüber der klassischen Büropräsenz?"
+    },
+    {
+      "speaker": "Frau Kour",
+      "voice": "female",
+      "role": "Gründerin & CEO, Gateway To Future (Kandidatin)",
+      "text": "Vor allem die Zeitersparnis beim täglichen Pendeln in Berlin ist enorm. Viele Kolleginnen und Kollegen nutzen diese zwei gewonnenen Stunden am Tag für sportliche Aktivitäten, Weiterbildung oder ihre Familie. Die Zufriedenheit und Produktivität sind dadurch spürbar gestiegen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Welches Arbeitszeitmodell praktiziert das Unternehmen von Frau Kour?",
+      "options": [
+        "Ausschließlich vollständige Telearbeit ohne Bürotage",
+        "Ein hybrides Modell mit drei Tagen Homeoffice und zwei Präsenztagen",
+        "Klassische Fünftage-Woche mit verpflichtender Anwesenheit"
+      ],
+      "correct_answer": "Ein hybrides Modell mit drei Tagen Homeoffice und zwei Präsenztagen",
+      "explanation": "Frau Kour beschreibt explizit bis zu drei Tage remote und zwei Tage Präsenz im Berliner Büro."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Welche interne Regelung verhindert die ständige Erreichbarkeit nach Dienstschluss?",
+      "options": [
+        "Die Diensthandys müssen im Büro eingeschlossen werden",
+        "Nach 18 Uhr werden keine geschäftlichen E-Mails mehr versendet",
+        "Homeoffice ist freitags grundsätzlich verboten"
+      ],
+      "correct_answer": "Nach 18 Uhr werden keine geschäftlichen E-Mails mehr versendet",
+      "explanation": "Frau Kour erläutert die feste Vereinbarung, nach 18 Uhr keine dienstlichen Nachrichten mehr zu verschicken."
+    },
+    {
+      "id": "q3",
+      "type": "richtig_falsch",
+      "statement": "Laut Frau Kour spart das Arbeiten im Homeoffice rund zwei Stunden tägliche Pendelzeit ein.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correct_answer": "Richtig",
+      "explanation": "Frau Kour betont: 'Viele Kolleginnen und Kollegen nutzen diese zwei gewonnenen Stunden am Tag für Familie und Sport.'"
+    }
+  ],
+  "sprechen_prompt": {
+    "part": "Teil 2: Ein Thema präsentieren",
+    "theme": "Vor- und Nachteile des Homeoffice",
+    "task": "Präsentieren Sie Ihre persönliche Meinung zu flexiblen Arbeitsmodellen und schildern Sie die Situation in Ihrem Heimatland."
+  },
+  "schreiben_prompt": {
+    "part": "Teil 2: Einen Forumsbeitrag verfassen",
+    "task": "Schreiben Sie einen Forumsbeitrag (ca. 80 Wörter) zum Thema 'Homeoffice — Fluch oder Segen?'. Äußern Sie Ihre Meinung und nennen Sie Alternativen."
+  },
+  "musterloesung": {
+    "sprechen": "In meiner Präsentation beschäftige ich mich mit der Frage, ob Homeoffice die Arbeitswelt verbessert. Meiner Ansicht nach bietet ein hybrides Modell die optimale Balance zwischen konzentriertem Arbeiten zu Hause und kollegialem Teamgeist im Büro.",
+    "schreiben": "In der heutigen Diskussion über moderne Arbeitsformen möchte ich betonen, dass Homeoffice erhebliche Vorteile für die Work-Life-Balance bietet. Wer nicht täglich im Stau steht, spart wertvolle Lebenszeit. Dennoch ist der persönliche Kontakt unverzichtbar, weshalb ich ein Modell mit zwei Bürotagen und drei Tagen Homeoffice für zukunftsweisend halte.",
+    "examiner_rubric": "Goethe B1 Kriterien: Klare Gliederung, logische Argumentationsstruktur mit Konnektoren (dennoch, weshalb, einerseits/andererseits), Passiv- und Konjunktiv-II-Formen.",
+    "detailed_justifications": "Frage 1: Option B ist wörtlich durch die 3/2-Tage-Regelung belegt. Frage 2: Option B spiegelt die 18-Uhr-Abschaltregel wider. Frage 3: 'Richtig' ist durch die Zeitersparnis von 2 Stunden belegt."
+  },
+  "status": "completed",
+  "qa_status": "approved",
+  "generated_at": "2026-11-13T21:25:19.033423+00:00"
+}

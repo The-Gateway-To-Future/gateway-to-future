@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).catch(() => {});
             } catch (e) {}
 
-            alert(`Thank you, ${name}! Your Strategy Call Request has been received. Founders Ashutosh Sharma & Sarbjit Kour will confirm your 9:00 PM IST slot via WhatsApp.`);
+            alert(`Thank you, ${name}! Your Strategy Call Request has been received. Sarbjit Kour (Founder & CEO, Gateway To Future) will confirm your 9:00 PM IST slot via WhatsApp.`);
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
             strategyForm.reset();

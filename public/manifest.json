@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "id": "/dashboard",
+  "name": "Gateway To Future — German Academy & Studienkolleg Hub",
+  "short_name": "GTF Academy",
+  "description": "Official German language academy (A1.1–B2.2), Studienkolleg entrance examination hub (T, M, W, G Kurs), and clinical Pflege & dual vocational training by Gateway To Future Berlin.",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0A3358",
+  "theme_color": "#0F4C81",
+  "lang": "de-DE",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": ["education", "books", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "German Language Academy",
+      "short_name": "Language",
+      "description": "Start Goethe/telc CEFR German exam simulation",
+      "url": "/dashboard?division=sprachakademie",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Studienkolleg Hub",
+      "short_name": "Studienkolleg",
+      "description": "Aufnahmeprüfung and 1-Year Syllabus for T, M, W, G Kurs",
+      "url": "/dashboard?division=studienkolleg",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Fachsprache Pflege & Ausbildung",
+      "short_name": "Pflege & Ausbildung",
+      "description": "Clinical German, ISBAR and Dual Ausbildung tracks",
+      "url": "/dashboard?division=fachsprache_medizin",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

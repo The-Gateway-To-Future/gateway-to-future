@@ -1,0 +1,35 @@
+{
+  "id": "book-a2-kapitel-1-a2_kapitel_1_perfekt_und_alltag",
+  "slug": "book-a2-kapitel-1-a2_kapitel_1_perfekt_und_alltag",
+  "type": "language_textbook",
+  "level": "a2",
+  "sublevel": "A2.1",
+  "chapterNumber": 1,
+  "title": "GTF Deutsch A2 Lehrbuch • Kapitel 1: Perfekt und Alltag in Deutschland",
+  "subtitle": "Offizielles DaF-Lehrwerk (Deutsch - English - Hinglish) • Vergangenes fehlerfrei erzählen: Hilfsverben 'haben' vs. 'sein' und das Partizip II (ge- -t / ge- -en)",
+  "topics": [
+    "Die Struktur des Perfekts und die deutsche Satzklammer",
+    "Wann nutzt man 'sein' und wann 'haben'?",
+    "Bildung des Partizip II: Regelmäßig, Unregelmäßig und Trennbar"
+  ],
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) DaF-Akademie Berlin",
+  "pdfFilename": "A2_Kapitel_1_Perfekt_und_Alltag.pdf",
+  "pageCount": 7,
+  "fileSizeBytes": 24235,
+  "fileSizeFormatted": "23.7 KB",
+  "vaultRelativePath": "books/language_a1_b2/A2_Kapitel_1_Perfekt_und_Alltag.pdf",
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "isFree": false,
+  "previewAvailable": true,
+  "createdAt": "2026-11-11T18:48:17.541063+00:00",
+  "cefrGoals": [
+    "Vergangene Handlungen, Erlebnisse und berufliche Tätigkeiten fließend im Perfekt beschreiben",
+    "Sicher entscheiden, wann 'haben' und wann 'sein' als Hilfsverb verwendet wird",
+    "Regelmäßige, unregelmäßige und trennbare Verben im Partizip II korrekt bilden",
+    "Die Satzklammer im Perfekt beherrschen (Hilfsverb an Position 2, Partizip II am Satzende)"
+  ]
+}

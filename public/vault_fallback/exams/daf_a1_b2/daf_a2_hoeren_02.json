@@ -1,0 +1,120 @@
+{
+  "id": "daf_a2_hoeren_02",
+  "level": "A2",
+  "examType": "Goethe-Zertifikat A2 / telc Deutsch A2",
+  "title": "A2 Hören — WG-Zimmer-Besichtigung und Mietvertrag in Berlin-Prenzlauer Berg",
+  "topic": "Wohnungssuche, Mietvertrag und WG-Leben in Berlin",
+  "audio": {
+    "fileName": "daf_a2_hoeren_02.mp3",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_a2_hoeren_02.mp3",
+    "sizeBytes": 988364,
+    "bitrate": "192kbps",
+    "format": "mp3"
+  },
+  "pdf": {
+    "fileName": "daf_a2_hoeren_02.pdf",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_a2_hoeren_02.pdf",
+    "sizeBytes": 14315,
+    "format": "pdf"
+  },
+  "transcript": "Mitbewohner Jonas: Hi Sarbjit! Komm doch erst mal rein in die Küche. Das hier ist unsere Dreier-WG im Prenzlauer Berg.\nFrau Kaur: Hallo Jonas! Vielen Dank für die Einladung zur Besichtigung. Die Wohnung hat wirklich schöne hohe Altbaudecken.\nMitbewohner Jonas: Ja, das Zimmer, das frei wird, hat zwanzig Quadratmeter und geht zum ruhigen Innenhof hinaus. Die Warmmiete beträgt 490 Euro im Monat inklusive aller Nebenkosten und schnellem Internet.\nFrau Kaur: Das klingt fair für diese Lage. Wie hoch ist die Kaution und ab wann ist das Zimmer bezugsfrei?\nMitbewohner Jonas: Die Kaution beträgt zwei Monatsmieten, also 980 Euro. Einzugstermin ist der erste November. Ein wichtiger Punkt: Wir haben einen wöchentlichen Putzplan für Bad und Küche.\nFrau Kaur: Sehr gut, Sauberkeit und Ordnung sind mir auch sehr wichtig. Ich gebe dir gerne meine SCHUFA-Auskunft und den Arbeitsvertrag für die Vermieterin.\nMitbewohner Jonas: Super! Wir entscheiden uns bis morgen Abend und rufen dich sofort an. Schön, dass du da warst!",
+  "dialogue": [
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Hi Sarbjit! Komm doch erst mal rein in die Küche. Das hier ist unsere Dreier-WG im Prenzlauer Berg."
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Wohnungssuchende (Prüferin)",
+      "text": "Hallo Jonas! Vielen Dank für die Einladung zur Besichtigung. Die Wohnung hat wirklich schöne hohe Altbaudecken."
+    },
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Ja, das Zimmer, das frei wird, hat zwanzig Quadratmeter und geht zum ruhigen Innenhof hinaus. Die Warmmiete beträgt 490 Euro im Monat inklusive aller Nebenkosten und schnellem Internet."
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Wohnungssuchende (Prüferin)",
+      "text": "Das klingt fair für diese Lage. Wie hoch ist die Kaution und ab wann ist das Zimmer bezugsfrei?"
+    },
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Die Kaution beträgt zwei Monatsmieten, also 980 Euro. Einzugstermin ist der erste November. Ein wichtiger Punkt: Wir haben einen wöchentlichen Putzplan für Bad und Küche."
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Wohnungssuchende (Prüferin)",
+      "text": "Sehr gut, Sauberkeit und Ordnung sind mir auch sehr wichtig. Ich gebe dir gerne meine SCHUFA-Auskunft und den Arbeitsvertrag für die Vermieterin."
+    },
+    {
+      "speaker": "Mitbewohner Jonas",
+      "voice": "male",
+      "role": "Hauptmieter WG Prenzlauer Berg (Kandidat)",
+      "text": "Super! Wir entscheiden uns bis morgen Abend und rufen dich sofort an. Schön, dass du da warst!"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Wie hoch ist die monatliche Warmmiete für das WG-Zimmer?",
+      "options": [
+        "390 Euro",
+        "490 Euro",
+        "980 Euro"
+      ],
+      "correct_answer": "490 Euro",
+      "explanation": "Jonas nennt 490 Euro Warmmiete inklusive Internet und Nebenkosten."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Zu welchem Datum kann das Zimmer bezogen werden?",
+      "options": [
+        "Ab dem 15. Oktober",
+        "Ab dem 1. November",
+        "Ab dem 1. Dezember"
+      ],
+      "correct_answer": "Ab dem 1. November",
+      "explanation": "Der genannte Einzugstermin ist der erste November."
+    },
+    {
+      "id": "q3",
+      "type": "richtig_falsch",
+      "statement": "Die Kaution für das Zimmer beträgt 980 Euro (zwei Monatskaltmieten).",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correct_answer": "Richtig",
+      "explanation": "Jonas erklärt: 'Die Kaution beträgt zwei Monatsmieten, also 980 Euro.'"
+    }
+  ],
+  "sprechen_prompt": {
+    "part": "Teil 3: Gemeinsam etwas aushandeln",
+    "theme": "Zusammenleben in einer WG",
+    "task": "Besprechen Sie mit Ihrem Mitbewohner die Aufgaben im Haushalt und die WG-Kasse."
+  },
+  "schreiben_prompt": {
+    "part": "Teil 2: Eine persönliche E-Mail schreiben",
+    "task": "Schreiben Sie eine E-Mail an Jonas (ca. 45 Wörter): Bedanken Sie sich für das Gespräch, betonen Sie Ihr großes Interesse und bieten Sie weitere Unterlagen an."
+  },
+  "musterloesung": {
+    "sprechen": "Für mich ist wichtig, dass wir das Bad und die Küche immer sauber halten. Wir können abwechselnd putzen und einen festen Plan an den Kühlschrank hängen.",
+    "schreiben": "Lieber Jonas,\nvielen Dank für das nette Kennenlernen gestern! Das Zimmer gefällt mir ausgezeichnet und ich würde mich sehr freuen, in eure WG einzuziehen. Falls die Vermieterin noch weitere Unterlagen benötigt, reiche ich diese gerne nach.\nHerzliche Grüße,\nSarbjit Kaur",
+    "examiner_rubric": "A2 Prüfungsstandard: Korrekte Modalverben, Datums- und Preisangaben sowie flüssige Textkohärenz.",
+    "detailed_justifications": "Frage 1: 490 Euro ist die monatliche Miete. Frage 2: 1. November ist der Einzugstermin. Frage 3: 'Richtig', die Kaution beträgt 980 Euro."
+  },
+  "status": "completed",
+  "qa_status": "approved",
+  "generated_at": "2026-11-13T21:24:42.912143+00:00"
+}

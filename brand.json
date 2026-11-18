@@ -1,0 +1,146 @@
+{
+  "brand": {
+    "name": "The Gateway to Future",
+    "acronym": "GTF",
+    "website": "https://www.gatewaytofuture.com",
+    "tagline": "Premium German Language & Germany Education Mentorship",
+    "slogan": "Creating Career Without Borders",
+    "industry": "German Education, Vocational Training & Healthcare Relocation Consultancy",
+    "headquarters": {
+      "city": "Berlin",
+      "country": "Germany",
+      "address": "Ketschendorfer Weg 33, 12683 Berlin"
+    },
+    "targetAudience": [
+      "Indian Students & Study Abroad Applicants",
+      "International Medical Graduates & Doctors",
+      "Registered Nurses & Psychiatric Care Specialists",
+      "Ausbildung Vocational Training Candidates"
+    ],
+    "coreMission": "To eliminate agency guesswork by offering structured, direct guidance from zero German (A1) to Goethe/telc certificates (C1), Studienkolleg, tuition-free public university admissions, healthcare Anerkennung, and post-arrival settlement support in Germany.",
+    "coreVision": "To be the premier, most transparent Berlin-headquartered mentorship ecosystem bridging 10,000+ Indian students, nurses, and medical professionals directly to German public universities, hospital networks, and career pathways by 2028.",
+    "values": [
+      {
+        "name": "Direct CEO & Founder Guidance",
+        "description": "Mentorship directly from Berlin-based Founder & CEO Sarbjit Kour, combining German C1 mastery with hands-on healthcare and vocational training experience in Germany."
+      },
+      {
+        "name": "Academic & Legal Precision",
+        "description": "Strict compliance with anabin qualification checks, APS certificate guidelines, and state medical chambers (Landesärztekammer)."
+      },
+      {
+        "name": "Cultural & Language Mastery",
+        "description": "Proprietary 7 course workbooks and 300+ speaking practice hours tailored specifically for Indian learners."
+      },
+      {
+        "name": "End-to-End Settlement",
+        "description": "On-the-ground assistance in Berlin covering housing, city registration (Anmeldung), health insurance, and banking."
+      }
+    ],
+    "programCatalog": [
+      {
+        "id": "german-language",
+        "name": "German Language Tracks (A1–C1)",
+        "description": "Live interactive small-group lectures aligned with Goethe-Zertifikat, telc, and TestDaF exams. 7 proprietary workbooks for Indian learners."
+      },
+      {
+        "id": "studienkolleg-prep",
+        "name": "Studienkolleg Entrance Coaching",
+        "description": "Preparation for Aufnahmeprüfung exams across T-Course, M-Course, W-Course, G-Course, and S-Course."
+      },
+      {
+        "id": "university-admissions",
+        "name": "Tuition-Free Public University Admissions",
+        "description": "Targeted public university shortlisting, anabin database verification, uni-assist portal filing, and SOP/LOR reviews."
+      },
+      {
+        "id": "ausbildung-pathway",
+        "name": "Dual Vocational Training (Ausbildung)",
+        "description": "Guaranteed contract placement in Nursing, IT, Hospitality, or Technical trades with €1,000–€1,400/month stipend from day one."
+      },
+      {
+        "id": "healthcare-anerkennung",
+        "name": "Medical & Nursing Anerkennung Pathway",
+        "description": "Approbation, Berufserlaubnis, and Pflegedienst credential recognition, FSP medical language prep, and clinical placement in German hospital networks."
+      },
+      {
+        "id": "student-visas-aps",
+        "name": "Student Visas & APS Certificate Guidance",
+        "description": "Indian-specific document validation, Academic Evaluation Centre (APS) guidance, Sperrkonto blocked account creation, and embassy mock interviews."
+      },
+      {
+        "id": "blocked-account-partners",
+        "name": "Blocked Account Guidance",
+        "description": "Structured comparison and setup support for Kotak Mahindra Bank, Expatrio, and Fintiba."
+      },
+      {
+        "id": "post-arrival-settlement",
+        "name": "Post-Arrival Settlement in Berlin",
+        "description": "Housing/WG assistance, Bürgeramt city registration (Anmeldung), Girokonto bank account, TK/AOK health insurance, and residence permit extension."
+      }
+    ],
+    "brandColors": {
+      "primary": "#0F4C81",
+      "primaryDark": "#0A3358",
+      "secondary": "#2A9D8F",
+      "accent": "#E76F51",
+      "gold": "#FFD166",
+      "neutralDark": "#0F172A",
+      "neutralLight": "#F8FAFC"
+    }
+  },
+  "team": [
+    {
+      "name": "Sarbjit Kour",
+      "role": "Founder & CEO, Gateway To Future",
+      "location": "Berlin, Germany",
+      "contact": {
+        "email": "info@gatewaytofuture.com",
+        "phone": "+49 176 60720947"
+      },
+      "languages": ["German (C1)", "English (C1)", "Punjabi (Native)", "Hindi (Native)"],
+      "background": "Sole Founder & CEO of Gateway To Future, dedicated language coach from A1 through B2/C1 with extensive experience in German vocational training, healthcare, and Berlin operations.",
+      "media": {
+        "portrait": "/public/images/ceo-sarbjit-kour.jpg",
+        "exhibition": "assets/images/sarbjit_kour_exhibition.jpeg"
+      }
+    }
+  ],
+  "mncDivisions": [
+    { "code": "DIV-01", "name": "Academic & Language Institute", "lead": "Sarbjit Kour", "targetScope": "3,500 simultaneous learners" },
+    { "code": "DIV-02", "name": "Global Mobility & Visas", "lead": "Operations Lead", "targetScope": "1,000 cases/mo" },
+    { "code": "DIV-03", "name": "Medical & Nursing Anerkennung Unit", "lead": "Sarbjit Kour", "targetScope": "2,500 doctors & nurses" },
+    { "code": "DIV-04", "name": "Public University & Studienkolleg Placement", "lead": "Academic Lead", "targetScope": "2,000 university students" },
+    { "code": "DIV-05", "name": "Corporate & Hospital Placement Partnerships", "lead": "B2B Director", "targetScope": "500 hospital & corporate networks" },
+    { "code": "DIV-06", "name": "Post-Arrival Relocation & Housing Operations", "lead": "Sarbjit Kour", "targetScope": "10,000+ Berlin/Munich/Frankfurt arrivals" },
+    { "code": "DIV-07", "name": "Enterprise Tech & Analytics", "lead": "Tech Lead", "targetScope": "Antigravity Pro Workspace & AI Mentorship" }
+  ],
+  "historicalMilestones": [
+    { "year": "2020-2022", "phase": "Founder Foundation", "detail": "Medical studies in Ukraine, relocation to Berlin, Pflegefachmann Ausbildung, healthcare management." },
+    { "year": "2023", "phase": "GTF Founding & Curriculum", "detail": "Establish Berlin HQ, author 7 proprietary workbooks, launch A1-C1 intensive language coaching." },
+    { "year": "2024", "phase": "Indian Corridor & APS", "detail": "Implement anabin audit SOP, Expatrio/Kotak partnerships, APS checklist verification." },
+    { "year": "2025", "phase": "Healthcare & Nursing Expansion", "detail": "Launch FMG Approbation & FSP coaching, Nursing Ausbildung contracts, Berlin housing network." },
+    { "year": "2026", "phase": "MNC Enterprise Workspace", "detail": "Antigravity Pro workspace deployment, 7 division structuring, 10k candidate scaling action plan." }
+  ],
+  "failureRetrospectives": [
+    { "id": "INC-2024-01", "area": "Visas & APS", "issue": "DigiLocker verification missing", "sopSolution": "Mandatory APS Pre-Submission Audit Protocol (SOP-MOB-012)" },
+    { "id": "INC-2024-02", "area": "Settlement & Housing", "issue": "Berlin winter housing friction", "sopSolution": "GTF Master-Leased Student Housing Reserve (SOP-SET-004)" },
+    { "id": "INC-2024-03", "area": "Language Training", "issue": "B2 oral exam failure spike", "sopSolution": "300+ Speaking Hour Threshold & 3 Mock Orals (SOP-LANG-008)" },
+    { "id": "INC-2025-01", "area": "Medical Anerkennung", "issue": "Medical chamber syllabus rejection", "sopSolution": "Medical Syllabus Equivalence Audit Standardizer (SOP-MED-003)" },
+    { "id": "INC-2025-02", "area": "Visas & Finance", "issue": "Blocked account transfer hold", "sopSolution": "Expatrio / Kotak Direct Wire Checklist with LRS codes" },
+    { "id": "INC-2025-03", "area": "Placement & Adaption", "issue": "Nursing ward adaptation shock", "sopSolution": "Post-Arrival Orientation & Medical Dialect Workshop" },
+    { "id": "INC-2026-01", "area": "Enterprise Tech & Ops", "issue": "OpenClaw AI Gateway Disconnect", "sopSolution": "Multi-Provider Dynamic Router & gtf_openclaw_bridge.py (SOP-TECH-007)" }
+  ],
+  "roadmapTo10k": {
+    "targetCandidateVolume": 10000,
+    "targetEmployerContracts": 500,
+    "passRateFloor": "90%+",
+    "targetYear": 2028,
+    "phases": [
+      { "phase": 1, "timeline": "Q1-Q2 2026", "target": 500, "focus": "Foundation & Antigravity Pro Workspace Setup" },
+      { "phase": 2, "timeline": "Q3-Q4 2026", "target": 2000, "focus": "New Delhi Operations Hub & 50 Hospital Contracts" },
+      { "phase": 3, "timeline": "Q1-Q4 2027", "target": 5000, "focus": "Bengaluru Hub & 200 Hospital Network" },
+      { "phase": 4, "timeline": "Q1-Q4 2028", "target": 10000, "focus": "Global Mobility Hub & 500+ Employer Partners" }
+    ]
+  }
+}

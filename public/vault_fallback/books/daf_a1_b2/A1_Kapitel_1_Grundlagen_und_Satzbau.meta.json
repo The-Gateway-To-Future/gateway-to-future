@@ -1,0 +1,41 @@
+{
+  "id": "book-a1-kapitel-1-a1_kapitel_1_grundlagen_und_satzbau",
+  "slug": "book-a1-kapitel-1-a1_kapitel_1_grundlagen_und_satzbau",
+  "type": "language_textbook",
+  "level": "a1",
+  "sublevel": "A1.1",
+  "chapterNumber": 1,
+  "title": "GTF Deutsch A1 Lehrbuch • Kapitel 1: Grundlagen, Begrüßung und Satzbau",
+  "subtitle": "Offizielles DaF-Lehrwerk (Deutsch - English - Hinglish) • Von den Grundlagen zum perfekten deutschen Hauptsatz (Präsens, Personalpronomen & Satzbau Position 2)",
+  "topics": [
+    "Personalpronomen und Konjugation regelmäßiger Verben im Präsens",
+    "Der deutsche Hauptsatz: Das Gesetz der Verbposition 2",
+    "W-Fragen vs. Ja/Nein-Fragen (Satzmelodie und Struktur)"
+  ],
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) DaF-Akademie Berlin",
+  "pdfFilename": "A1_Kapitel_1_Grundlagen_und_Satzbau.pdf",
+  "pageCount": 7,
+  "fileSizeBytes": 24109,
+  "fileSizeFormatted": "23.5 KB",
+  "vaultRelativePath": "books/language_a1_b2/A1_Kapitel_1_Grundlagen_und_Satzbau.pdf",
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "isFree": false,
+  "previewAvailable": true,
+  "createdAt": "2026-11-11T18:48:17.386389+00:00",
+  "cefrGoals": [
+    "Sich selbst und andere vorstellen (Name, Herkunft, Beruf, Wohnort)",
+    "Einfache Fragen stellen (W-Fragen) und beantworten (Ja/Nein-Fragen)",
+    "Regelmäßige Verben im Präsens fehlerfrei konjugieren",
+    "Die feste Satzklammer und Verbposition 2 im deutschen Hauptsatz anwenden"
+  ],
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:35.891356+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "wordCount": 2039,
+  "verifiedBy": "GTF Academic Directorate Berlin"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "daf_a1_hoeren_02",
+  "slug": "daf-audio-exams-daf-a1-hoeren-02",
+  "title": "A1 Hören — In der Bäckerei und Arztterminvereinbarung in Berlin-Mitte",
+  "subtitle": "Goethe-Zertifikat A1 / telc Deutsch A1 Vorbereitung (Hören + Musterlösung)",
+  "level": "a1",
+  "topic": "Alltag, Einkaufen in der Bäckerei und Arztterminvereinbarung",
+  "topics": [
+    "Hörverstehen",
+    "Goethe/telc Simulation",
+    "Musterlösung",
+    "Transkript",
+    "Alltag, Einkaufen in der Bäckerei und Arztterminvereinbarung"
+  ],
+  "divisionId": "sprachakademie",
+  "divisionName": "German Language Academy",
+  "type": "audio_exam",
+  "transcript": "Bäcker: Guten Morgen! Der Nächste bitte! Was darf es für Sie sein?\nFrau Kaur: Guten Morgen. Ich hätte gern drei Vollkornbrötchen und ein Stück Apfelkuchen, bitte.\nBäcker: Sehr gerne. Der Apfelkuchen ist heute ganz frisch gebacken. Möchten Sie noch einen Kaffee zum Mitnehmen dazu?\nFrau Kaur: Nein danke, nur die Backwaren. Ich habe gleich um zehn Uhr einen Termin beim Arzt in der Praxis Dr. Weber.\nBäcker: Das macht zusammen 5 Euro 20, bitte. Zahlen Sie bar oder mit Karte?\nFrau Kaur: Mit Karte, bitte. Hier ist meine EC-Karte. Schönen Tag noch!\nBäcker: Vielen Dank, die Zahlung hat geklappt. Auf Wiedersehen und gute Besserung beim Arzt!",
+  "audioScript": "Bäcker: Guten Morgen! Der Nächste bitte! Was darf es für Sie sein?\nFrau Kaur: Guten Morgen. Ich hätte gern drei Vollkornbrötchen und ein Stück Apfelkuchen, bitte.\nBäcker: Sehr gerne. Der Apfelkuchen ist heute ganz frisch gebacken. Möchten Sie noch einen Kaffee zum Mitnehmen dazu?\nFrau Kaur: Nein danke, nur die Backwaren. Ich habe gleich um zehn Uhr einen Termin beim Arzt in der Praxis Dr. Weber.\nBäcker: Das macht zusammen 5 Euro 20, bitte. Zahlen Sie bar oder mit Karte?\nFrau Kaur: Mit Karte, bitte. Hier ist meine EC-Karte. Schönen Tag noch!\nBäcker: Vielen Dank, die Zahlung hat geklappt. Auf Wiedersehen und gute Besserung beim Arzt!",
+  "dialogue": [
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Guten Morgen! Der Nächste bitte! Was darf es für Sie sein?"
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Kundin (Prüferin)",
+      "text": "Guten Morgen. Ich hätte gern drei Vollkornbrötchen und ein Stück Apfelkuchen, bitte."
+    },
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Sehr gerne. Der Apfelkuchen ist heute ganz frisch gebacken. Möchten Sie noch einen Kaffee zum Mitnehmen dazu?"
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Kundin (Prüferin)",
+      "text": "Nein danke, nur die Backwaren. Ich habe gleich um zehn Uhr einen Termin beim Arzt in der Praxis Dr. Weber."
+    },
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Das macht zusammen 5 Euro 20, bitte. Zahlen Sie bar oder mit Karte?"
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Kundin (Prüferin)",
+      "text": "Mit Karte, bitte. Hier ist meine EC-Karte. Schönen Tag noch!"
+    },
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Vielen Dank, die Zahlung hat geklappt. Auf Wiedersehen und gute Besserung beim Arzt!"
+    }
+  ],
+  "audioFile": "daf_a1_hoeren_02.mp3",
+  "audioPath": "/vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_02.mp3",
+  "audioSizeBytes": 591404,
+  "audioBitrate": "192kbps",
+  "pdfFile": "daf_a1_hoeren_02.pdf",
+  "pdfPath": "/vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_02.pdf",
+  "pdfSizeBytes": 13866,
+  "jsonFile": "daf_a1_hoeren_02.json",
+  "pageCount": 5,
+  "wordCount": 1241,
+  "isFree": false,
+  "priceEur": 14.99,
+  "priceInr": 1399,
+  "qa_status": "approved",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "generated_at": "2026-11-13T21:23:45.752353+00:00",
+  "updatedAt": "2026-11-13T21:23:45.752353+00:00",
+  "qa_audited_at": "2026-11-13T21:28:36.455213+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor"
+}

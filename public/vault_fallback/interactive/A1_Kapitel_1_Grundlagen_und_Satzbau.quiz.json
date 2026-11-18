@@ -1,0 +1,577 @@
+{
+  "quizId": "quiz-A1_Kapitel_1_Grundlagen_und_Satzbau",
+  "chapterId": "daf_book_a1_1_ch01",
+  "chapterStem": "A1_Kapitel_1_Grundlagen_und_Satzbau",
+  "title": "GTF Interaktives Quiz & C-Test • Grundlagen, Begrüßung und Satzbau",
+  "level": "a1",
+  "domain": "daf_books",
+  "division": "German Language Academy",
+  "questionCount": 15,
+  "createdAt": "2026-11-11T19:21:04.100117+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "questions": [
+    {
+      "id": "quiz-a1-ch01-01",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Satzglieder in die korrekte Reihenfolge eines deutschen Hauptsatzes (Verbzweitstellung):",
+      "difficulty": "easy",
+      "points": 2,
+      "tokens": [
+        "lernt",
+        "Rahul",
+        "am Goethe-Institut",
+        "jeden Tag",
+        "Deutsch"
+      ],
+      "correctOrder": [
+        "Rahul",
+        "lernt",
+        "jeden Tag",
+        "Deutsch",
+        "am Goethe-Institut"
+      ],
+      "alternativeOrders": [
+        [
+          "Jeden Tag",
+          "lernt",
+          "Rahul",
+          "Deutsch",
+          "am Goethe-Institut"
+        ],
+        [
+          "Rahul",
+          "lernt",
+          "Deutsch",
+          "jeden Tag",
+          "am Goethe-Institut"
+        ]
+      ],
+      "targetSentence": "Rahul lernt jeden Tag Deutsch am Goethe-Institut.",
+      "rule": "Verbposition 2: Das finite Verb 'lernt' muss zwingend auf Position 2 stehen.",
+      "explanation": "MUSTERLÖSUNG: 'Rahul lernt jeden Tag Deutsch am Goethe-Institut.' Das finite Verb 'lernt' besetzt unumstößlich Position 2. Position 1 gehört dem Subjekt 'Rahul' oder der Zeitangabe 'Jeden Tag'.",
+      "examTip": "Faustregel für telc/Goethe A1: Wenn du mit der Zeitangabe beginnst ('Jeden Tag...'), wandert das Subjekt direkt hinter das Verb ('lernt Rahul')."
+    },
+    {
+      "id": "quiz-a1-ch01-02",
+      "type": "drag_drop_order",
+      "prompt": "Ordnen Sie diesen Satz mit Voranstellung der temporalen Angabe (Inversion):",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "fährt",
+        "Heute",
+        "mit der U-Bahn",
+        "Priya",
+        "zum Bürgeramt"
+      ],
+      "correctOrder": [
+        "Heute",
+        "fährt",
+        "Priya",
+        "mit der U-Bahn",
+        "zum Bürgeramt"
+      ],
+      "alternativeOrders": [
+        [
+          "Priya",
+          "fährt",
+          "heute",
+          "mit der U-Bahn",
+          "zum Bürgeramt"
+        ]
+      ],
+      "targetSentence": "Heute fährt Priya mit der U-Bahn zum Bürgeramt.",
+      "rule": "Inversion: Beginnt der Satz mit einer Zeitangabe ('Heute'), folgt direkt das Verb und dann das Subjekt.",
+      "explanation": "MUSTERLÖSUNG: 'Heute fährt Priya mit der U-Bahn zum Bürgeramt.' Steht 'Heute' auf Position 1, besetzt das Verb 'fährt' Position 2 und das Subjekt 'Priya' rückt auf Position 3.",
+      "examTip": "Häufige Stolperfalle von Englisch-Sprechern: Niemals 'Today Priya drives' übersetzen ('Heute Priya fährt' ist FALSCH!)."
+    },
+    {
+      "id": "quiz-a1-ch01-03",
+      "type": "drag_drop_order",
+      "prompt": "Formen Sie eine korrekte Ja/Nein-Entscheidungsfrage:",
+      "difficulty": "easy",
+      "points": 2,
+      "tokens": [
+        "aus Neu-Delhi",
+        "Kommen",
+        "ursprünglich",
+        "Sie",
+        "?"
+      ],
+      "correctOrder": [
+        "Kommen",
+        "Sie",
+        "ursprünglich",
+        "aus Neu-Delhi",
+        "?"
+      ],
+      "alternativeOrders": [],
+      "targetSentence": "Kommen Sie ursprünglich aus Neu-Delhi?",
+      "rule": "Ja/Nein-Fragen beginnen immer mit dem finiten Verb auf Position 1 (Verberststellung).",
+      "explanation": "MUSTERLÖSUNG: 'Kommen Sie ursprünglich aus Neu-Delhi?' Da es sich um eine Entscheidungsfrage ohne W-Wort handelt, muss das Verb 'Kommen' ganz am Anfang stehen.",
+      "examTip": "Achte bei der mündlichen Prüfung auf die Intonation: Die Stimme steigt am Satzende hörbar an!"
+    },
+    {
+      "id": "quiz-a1-ch01-04",
+      "type": "drag_drop_order",
+      "prompt": "Bauen Sie eine korrekte W-Frage nach der Herkunft:",
+      "difficulty": "easy",
+      "points": 2,
+      "tokens": [
+        "Herr Sharma",
+        "kommen",
+        "Woher",
+        "und seine Familie",
+        "?"
+      ],
+      "correctOrder": [
+        "Woher",
+        "kommen",
+        "Herr Sharma",
+        "und seine Familie",
+        "?"
+      ],
+      "alternativeOrders": [],
+      "targetSentence": "Woher kommen Herr Sharma und seine Familie?",
+      "rule": "W-Frage Schema: 1. W-Wort ('Woher') + 2. Finites Verb ('kommen') + 3. Subjekt.",
+      "explanation": "MUSTERLÖSUNG: 'Woher kommen Herr Sharma und seine Familie?' Das Fragewort 'Woher' steht auf Pos 1, das konjugierte Verb 'kommen' auf Pos 2, gefolgt vom Subjekt.",
+      "examTip": "Merke: Nach dem Fragewort kommt im Deutschen sofort das Verb, niemals zuerst das Subjekt!"
+    },
+    {
+      "id": "quiz-a1-ch01-05",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Elemente dieses klinischen Alltags-Satzes in die richtige Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "im Berliner Unfallkrankenhaus",
+        "arbeitet",
+        "Frau Kour",
+        "seit drei Jahren"
+      ],
+      "correctOrder": [
+        "Frau Kour",
+        "arbeitet",
+        "seit drei Jahren",
+        "im Berliner Unfallkrankenhaus"
+      ],
+      "alternativeOrders": [
+        [
+          "Seit drei Jahren",
+          "arbeitet",
+          "Frau Kour",
+          "im Berliner Unfallkrankenhaus"
+        ]
+      ],
+      "targetSentence": "Frau Kour arbeitet seit drei Jahren im Berliner Unfallkrankenhaus.",
+      "rule": "TeKaMoLo Reihenfolge: Temporal ('seit drei Jahren') vor Lokal ('im Krankenhaus').",
+      "explanation": "MUSTERLÖSUNG: 'Frau Kour arbeitet seit drei Jahren im Berliner Unfallkrankenhaus.' Zeitangaben (Wann? 'seit drei Jahren') stehen im Mittelfeld fast immer vor Ortsangaben (Wo? 'im Krankenhaus').",
+      "examTip": "TeKaMoLo-Formel: Temporal (Wann?) -> Kausal (Warum?) -> Modal (Wie?) -> Lokal (Wo/Wohin?)."
+    },
+    {
+      "id": "quiz-a1-ch01-06",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die fehlenden Wortenden nach dem Halbwort-Prinzip:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Rahul am Berliner Hauptbahnhof",
+      "textWithGaps": "Rahul ko____ aus Indien. Er le____ jetzt in Ber____ und be______ einen Deutschkurs. Je______ Tag übt er fleißig neue Vokabeln.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "ko",
+          "solution": "mmt",
+          "fullWord": "kommt",
+          "hint": "Verb: kommen (3. Person Singular)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "le",
+          "solution": "bt",
+          "fullWord": "lebt",
+          "hint": "Verb: leben (3. Person Singular)"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Ber",
+          "solution": "lin",
+          "fullWord": "Berlin",
+          "hint": "Hauptstadt von Deutschland"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "be",
+          "solution": "sucht",
+          "fullWord": "besucht",
+          "hint": "Verb: einen Kurs besuchen"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "Je",
+          "solution": "den",
+          "fullWord": "Jeden",
+          "hint": "Akkusativ maskulin der Zeitangabe"
+        }
+      ],
+      "fullText": "Rahul kommt aus Indien. Er lebt jetzt in Berlin und besucht einen Deutschkurs. Jeden Tag übt er fleißig neue Vokabeln.",
+      "explanation": "MUSTERLÖSUNG C-TEST: 1. mmt (kommt) | 2. bt (lebt) | 3. lin (Berlin) | 4. sucht (besucht) | 5. den (Jeden Tag). Beim Halbwort-Prinzip bleibt die vordere Hälfte des Wortes stehen, die hintere Hälfte muss vom Prüfling ergänzt werden.",
+      "examTip": "Lies immer zuerst den gesamten Satz bis zum Punkt durch, bevor du die Lücke ausfüllst!"
+    },
+    {
+      "id": "quiz-a1-ch01-07",
+      "type": "c_test",
+      "prompt": "C-Test Lückentext: Behördengang zum Bürgeramt in Berlin:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Termin und Anmeldung beim Bürgeramt",
+      "textWithGaps": "Priya ge____ heute z____ Bürgeramt. Sie bra______ einen Ter____ für die Anme________. Der Beamte prü____ ihren Pass und das Formular.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "ge",
+          "solution": "ht",
+          "fullWord": "geht",
+          "hint": "Verb: gehen (3. Person Singular)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "z",
+          "solution": "um",
+          "fullWord": "zum",
+          "hint": "Präposition: zu + dem"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "bra",
+          "solution": "ucht",
+          "fullWord": "braucht",
+          "hint": "Verb: brauchen (er/sie)"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Ter",
+          "solution": "min",
+          "fullWord": "Termin",
+          "hint": "Nomen: der Termin"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "Anme",
+          "solution": "ldung",
+          "fullWord": "Anmeldung",
+          "hint": "Nomen: die Anmeldung"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "prü",
+          "solution": "ft",
+          "fullWord": "prüft",
+          "hint": "Verb: prüfen (er/sie)"
+        }
+      ],
+      "fullText": "Priya geht heute zum Bürgeramt. Sie braucht einen Termin für die Anmeldung. Der Beamte prüft ihren Pass und das Formular.",
+      "explanation": "MUSTERLÖSUNG: 1. ht (geht) | 2. um (zum) | 3. ucht (braucht) | 4. min (Termin) | 5. ldung (Anmeldung) | 6. ft (prüft). Alle Substantive werden großgeschrieben, Verben klein.",
+      "examTip": "Achte bei C-Tests peinlich genau auf Groß- und Kleinschreibung! Ein klein geschriebenes Nomen gilt als Fehler."
+    },
+    {
+      "id": "quiz-a1-ch01-08",
+      "type": "c_test",
+      "prompt": "C-Test: Deutschkurs Vorstellungsrunde im Institut:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Vorstellung im Sprachkurs",
+      "textWithGaps": "Ich hei____ Amit und ko______ aus Neu-Delhi. Mein Fre____ heißt David und spri____ fließend Spanisch. Wir ler______ gemeinsam Deutsch.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "hei",
+          "solution": "ße",
+          "fullWord": "heiße",
+          "hint": "Verb: heißen (1. Person Singular)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ko",
+          "solution": "mme",
+          "fullWord": "komme",
+          "hint": "Verb: kommen (1. Person Singular)"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Fre",
+          "solution": "und",
+          "fullWord": "Freund",
+          "hint": "Nomen: der Freund"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "spri",
+          "solution": "cht",
+          "fullWord": "spricht",
+          "hint": "Verb: sprechen (Vokalwechsel e->i)"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb: lernen (wir-Form)"
+        }
+      ],
+      "fullText": "Ich heiße Amit und komme aus Neu-Delhi. Mein Freund heißt David und spricht fließend Spanisch. Wir lernen gemeinsam Deutsch.",
+      "explanation": "MUSTERLÖSUNG: 1. ße (heiße) | 2. mme (komme) | 3. und (Freund) | 4. cht (spricht) | 5. nen (lernen). Beachte den Vokalwechsel bei 'er spricht'.",
+      "examTip": "Das 'ß' bei heißen bleibt in allen Gegenwartsformen erhalten (heiße, heißt)."
+    },
+    {
+      "id": "quiz-a1-ch01-09",
+      "type": "c_test",
+      "prompt": "C-Test: Ausbildung zum Pflegefachmann im Berliner Klinikum:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Ausbildungsbeginn Krankenhaus",
+      "textWithGaps": "Sanjay mac____ eine Ausbi________ in Berlin. Er arbei______ im Kran________ und betre____ die Patienten sehr einfühlsam.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "mac",
+          "solution": "ht",
+          "fullWord": "macht",
+          "hint": "Verb: machen (er/sie)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "Ausbi",
+          "solution": "ldung",
+          "fullWord": "Ausbildung",
+          "hint": "Nomen: die Ausbildung"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "arbei",
+          "solution": "tet",
+          "fullWord": "arbeitet",
+          "hint": "Verb: arbeiten (Einschub -e- vor Endung)"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Kran",
+          "solution": "kenhaus",
+          "fullWord": "Krankenhaus",
+          "hint": "Nomen: das Krankenhaus"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "betre",
+          "solution": "ut",
+          "fullWord": "betreut",
+          "hint": "Verb: betreuen (er/sie)"
+        }
+      ],
+      "fullText": "Sanjay macht eine Ausbildung in Berlin. Er arbeitet im Krankenhaus und betreut die Patienten sehr einfühlsam.",
+      "explanation": "MUSTERLÖSUNG: 1. ht (macht) | 2. ldung (Ausbildung) | 3. tet (arbeitet) | 4. kenhaus (Krankenhaus) | 5. ut (betreut). 'arbeitet' benötigt das Bindevokal -e-.",
+      "examTip": "Zusammengesetzte Wörter wie 'Krankenhaus' haben viele Buchstaben — zähle die fehlende Hälfte genau ab!"
+    },
+    {
+      "id": "quiz-a1-ch01-10",
+      "type": "c_test",
+      "prompt": "C-Test: Telefonnummer, Adresse und Buchstabieren:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Erfassung der Kontaktdaten",
+      "textWithGaps": "Frau Müller fra____ nach der Telefo__________ von Rahul. Er antwo______ sofort und buchs________ seinen Nachnamen für die Akte.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "fra",
+          "solution": "gt",
+          "fullWord": "fragt",
+          "hint": "Verb: fragen (sie)"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "Telefo",
+          "solution": "nnummer",
+          "fullWord": "Telefonnummer",
+          "hint": "Nomen: die Telefonnummer"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "antwo",
+          "solution": "rtet",
+          "fullWord": "antwortet",
+          "hint": "Verb: antworten (Einschub -e-)"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "buchs",
+          "solution": "tabiert",
+          "fullWord": "buchstabiert",
+          "hint": "Verb: buchstabieren"
+        }
+      ],
+      "fullText": "Frau Müller fragt nach der Telefonnummer von Rahul. Er antwortet sofort und buchstabiert seinen Nachnamen für die Akte.",
+      "explanation": "MUSTERLÖSUNG: 1. gt (fragt) | 2. nnummer (Telefonnummer mit Doppel-N!) | 3. rtet (antwortet) | 4. tabiert (buchstabiert).",
+      "examTip": "Achtung bei 'Telefonnummer': 'Telefon' + 'Nummer' ergibt Doppel-N in der Wortmitte!"
+    },
+    {
+      "id": "quiz-a1-ch01-11",
+      "type": "mcq",
+      "prompt": "Welcher Fragesatz ist grammatikalisch absolut fehlerfrei?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Woher kommst du?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Woher du kommst?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Kommst woher du?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Du kommst woher?",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) 'Woher kommst du?' ist korrekt. Bei einer W-Frage steht das W-Wort zwingend auf Position 1, das finite Verb auf Position 2 und das Subjekt auf Position 3. In Option (b) steht das Verb fälschlicherweise am Ende, in (c) und (d) ist die Abfolge invertiert.",
+      "examTip": "Formel merken: W-Wort (1) + Verb (2) + Subjekt (3)? Niemals das Subjekt vor das Verb stellen!"
+    },
+    {
+      "id": "quiz-a1-ch01-12",
+      "type": "mcq",
+      "prompt": "Welche Verbform ist grammatikalisch korrekt für 'arbeiten' in der 3. Person Singular?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Herr Sharma arbeitet im Krankenhaus.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Herr Sharma arbeitt im Krankenhaus.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Herr Sharma arbeite im Krankenhaus.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Herr Sharma arbeitst im Krankenhaus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) 'arbeitet' ist korrekt. Endet der Verbstamm auf -t oder -d (arbeit-), muss vor den Endungen -st und -t ein 'e' zur leichteren Aussprache eingefügt werden (arbeit-e-t).",
+      "examTip": "Gleiche Regel gilt für: 'antworten' -> er antwortet, 'kosten' -> es kostet, 'warten' -> er wartet."
+    },
+    {
+      "id": "quiz-a1-ch01-13",
+      "type": "mcq",
+      "prompt": "Wie lautet der Satz bei Voranstellung der temporalen Angabe 'Morgen' korrekt?",
+      "difficulty": "medium",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Morgen fahre ich nach Potsdam.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Morgen ich fahre nach Potsdam.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Morgen fahren ich nach Potsdam.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Fahre morgen ich nach Potsdam.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) 'Morgen fahre ich nach Potsdam' ist korrekt. Das Gesetz der Verbposition 2 besagt: Steht 'Morgen' auf Position 1, MUSS das Verb 'fahre' auf Position 2 folgen. Das Subjekt 'ich' rückt auf Position 3.",
+      "examTip": "Häufigster Fehler bei A1-Prüfungen: 'Morgen ich gehe...' -> Durchgefallen! Immer: 'Morgen gehe ich...'!"
+    },
+    {
+      "id": "quiz-a1-ch01-14",
+      "type": "mcq",
+      "prompt": "Wie lautet die korrekte formelle Begrüßung und Frage an einen Beamten im Bürgeramt?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Guten Tag, wie heißen Sie?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Hallo, wie heißt du?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Guten Tag, wie heißt Sie?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Tschüss, wer bist du?",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) ist korrekt. Im amtlichen und beruflichen Kontext wird immer die formelle Höflichkeitsanrede 'Sie' mit der Verbendung '-en' ('heißen Sie') und 'Guten Tag' verwendet. 'du' ist unhöflich.",
+      "examTip": "In Deutschland gilt mit Behörden und Vorgesetzten strikt das 'Sie', bis das 'Du' explizit angeboten wird."
+    },
+    {
+      "id": "quiz-a1-ch01-15",
+      "type": "mcq",
+      "prompt": "Welche Aussage über deutsche Ja/Nein-Entscheidungsfragen ist wahr?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Das konjugierte Verb steht auf Position 1 (Satzanfang).",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Das Verb steht immer am Satzende.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Sie müssen immer mit dem Fragewort 'Warum' beginnen.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Das Subjekt steht immer auf Position 1 vor dem Verb.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "MUSTERLÖSUNG: Option (a) ist wahr. Eine Ja/Nein-Frage ('Entscheidungsfrage') zeichnet sich dadurch aus, dass das finite Verb an die allererste Stelle (Position 1) springt: 'Kommen Sie aus Indien?'",
+      "examTip": "Zusammenfassung Satzbau: Aussagesatz = Verb Pos 2 | W-Frage = Verb Pos 2 | Ja/Nein-Frage = Verb Pos 1!"
+    }
+  ]
+}

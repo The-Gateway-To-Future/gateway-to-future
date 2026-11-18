@@ -1,0 +1,35 @@
+{
+  "id": "stk-mathematik-1-fachbegriffe-und-gleichungen",
+  "slug": "stk-mathematik-1-fachbegriffe-und-gleichungen",
+  "title": "Studienkolleg Mathematik Band 1: Fachbegriffe, Algebra & Gleichungslehre",
+  "subtitle": "Aufnahmeprüfung M-Kurs & T-Kurs: Termumformung, Binome, Bruch-, Wurzel- und Betragsgleichungen",
+  "course": "M-Kurs & T-Kurs",
+  "courseType": "stk_science",
+  "category": "Studienkolleg Mathematik",
+  "subjects": [
+    "Mathematik",
+    "Algebra",
+    "Gleichungen"
+  ],
+  "standard": "TU Berlin / FU Berlin / KIT",
+  "level": "C1/B2 Fachsprache & Abitur-Niveau",
+  "pages": 3,
+  "filename": "STK_Mathematik_1_Fachbegriffe_und_Gleichungen.pdf",
+  "type": "pdf_workbook",
+  "priceEur": 7.99,
+  "priceInr": 699,
+  "isFree": false,
+  "publishedAt": "2026-11-11T18:47:52.615386+00:00",
+  "author": "The Gateway to Future (GTF) - Academic Directorate Berlin",
+  "description": "Lehrbuchartige Fachvorbereitung Mathematik für die Aufnahmeprüfung am Studienkolleg (M- und T-Kurs). Umfassende Fachbegriffe-Tabelle, Formelsammlung, gerechnete Musterbeispiele und Prüfungsaufgaben ohne Taschenrechner.",
+  "tags": [
+    "studienkolleg",
+    "mathematik",
+    "aufnahmepruefung",
+    "algebra",
+    "gleichungen",
+    "tu-berlin",
+    "t-kurs",
+    "m-kurs"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "pflege-modul-2",
+  "slug": "Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht",
+  "title": "Modul 2: Mündliche Dienstübergabe (ISBAR) & Rechtssicherer Pflegebericht",
+  "subtitle": "Strukturierte Schichtübergabe nach dem internationalen ISBAR-Standard, lückenlose Formulierung von Pflegeverlaufsberichten nach W-Fragen, rechtliche Relevanz der Dokumentation im PflBG.",
+  "category": "pflege_ausbildung",
+  "track": "Pflegefachkraft (Generalistik) & Duale Ausbildung",
+  "level": "B1-B2 Fachsprache Pflege",
+  "target_group": "Pflegefachkräfte im Anerkennungsverfahren, Auszubildende im Krankenhaus und Pflegeheim",
+  "pdf_filename": "Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht.pdf",
+  "relative_path": "vault_fallback/books/pflege_ausbildung/Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht.pdf",
+  "file_size_bytes": 12484,
+  "page_count": 3,
+  "topics": [
+    "die Schichtübergabe",
+    "das ISBAR-Schema",
+    "der Pflegebericht",
+    "die ärztliche Anordnung",
+    "die Dekompensation",
+    "das Handzeichen",
+    "die Ausscheidungskontrolle",
+    "die Vitalwertabweichung"
+  ],
+  "learning_objectives": [
+    "Patientenübergaben zielgerichtet und zeiteffizient nach dem ISBAR-Prinzip durchführen",
+    "Verlaufsberichte objektiv, zeitnah und rechtssicher formulieren",
+    "Fachsprachliche Passivkonstruktionen und medizinische Abkürzungen korrekt anwenden",
+    "Kritische Veränderungen und ärztliche Anordnungen hervorheben und an Folgekollegen delegieren",
+    "Häufige Dokumentationsfehler (z.B. Wertungen, Rückdatierungen, Unleserlichkeit) strikt vermeiden"
+  ],
+  "isFree": false,
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "author": "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)",
+  "publisher": "The Gateway to Future (GTF) - Berlin Medical & Nursing Anerkennung Unit (DIV-03)",
+  "createdAt": "2026-11-11T18:46:19.519917+00:00",
+  "updatedAt": "2026-11-11T18:46:19.519917+00:00"
+}

@@ -1,0 +1,934 @@
+{
+  "deckId": "fc-A2_Kapitel_1_Perfekt_und_Alltag",
+  "chapterId": "daf_book_a2_1_ch01",
+  "chapterStem": "A2_Kapitel_1_Perfekt_und_Alltag",
+  "title": "GTF Interaktives Flashcard-Deck • Perfekt und Alltag in Deutschland",
+  "level": "a2",
+  "domain": "daf_books",
+  "division": "German Language Academy",
+  "cardCount": 40,
+  "createdAt": "2026-11-11T19:21:04.106936+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "cards": [
+    {
+      "id": "fc-a2-ch01-01",
+      "cardIndex": 1,
+      "front": "das Perfekt",
+      "article": "das",
+      "term": "Perfekt",
+      "back": {
+        "meaning": "Conversational past tense formed with auxiliary (haben/sein) + past participle (Partizip II).",
+        "example_sentence": "„Gestern habe ich meine Bewerbung für die Charité abgeschickt.“",
+        "exam_memory_trick": "GESPRÄCHS-VERGANGENHEIT: In 90% aller Alltags- und Prüfungsgespräche wird das Perfekt statt Präteritum verwendet!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Perfekt. „Gestern habe ich meine Bewerbung für die Charité abgeschickt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-02",
+      "cardIndex": 2,
+      "front": "das Hilfsverb „haben“",
+      "article": "das",
+      "term": "Hilfsverb haben",
+      "back": {
+        "meaning": "Auxiliary verb used with transitive verbs (taking an accusative object) and static verbs.",
+        "example_sentence": "„Ich habe das Formular gestern unterschrieben.“",
+        "exam_memory_trick": "MEHRHEITS-REGEL: Rund 80% aller deutschen Verben bilden das Perfekt mit 'haben' (alle mit Akkusativ-Objekt!)."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Hilfsverb „haben“. „Ich habe das Formular gestern unterschrieben.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-03",
+      "cardIndex": 3,
+      "front": "das Hilfsverb „sein“",
+      "article": "das",
+      "term": "Hilfsverb sein",
+      "back": {
+        "meaning": "Auxiliary verb used with verbs of movement (A -> B), state change, and 3 special kings.",
+        "example_sentence": "„Der Arzt ist sofort auf Station 4 geeilt.“",
+        "exam_memory_trick": "SEIN-FORMEL: 1. Ortswechsel (A->B), 2. Zustandswechsel (Schlaf->Wach), 3. Drei Könige (sein, werden, bleiben)."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Hilfsverb „sein“. „Der Arzt ist sofort auf Station 4 geeilt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-04",
+      "cardIndex": 4,
+      "front": "das Partizip II",
+      "article": "das",
+      "term": "Partizip II",
+      "back": {
+        "meaning": "Non-finite verbal form ending the sentence bracket (e.g. gelernt, gefahren).",
+        "example_sentence": "„Haben Sie die Vitalwerte des Patienten bereits dokumentiert?“",
+        "exam_memory_trick": "SATZKLAMMER: Das Hilfsverb steht auf Pos 2, das Partizip II steht unerbittlich ganz am Ende des Hauptsatzes!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Partizip II. „Haben Sie die Vitalwerte des Patienten bereits dokumentiert?“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-05",
+      "cardIndex": 5,
+      "front": "die Satzklammer im Perfekt",
+      "article": "die",
+      "term": "Satzklammer",
+      "back": {
+        "meaning": "Structural frame: Auxiliary opens bracket at Position 2, Partizip II closes bracket at sentence end.",
+        "example_sentence": "„Wir [haben] gestern Abend im Krankenhaus sehr viele Notfälle [versorgt].“",
+        "exam_memory_trick": "KLAMMER-MERKVERS: Pos 2 macht die Türe auf, das Partizip ganz hinten schließt den Satz wieder ab!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "die Satzklammer im Perfekt. „Wir [haben] gestern Abend im Krankenhaus sehr viele Notfälle [versorgt].“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-06",
+      "cardIndex": 6,
+      "front": "regelmäßige Partizipien (ge- -t)",
+      "article": "",
+      "term": "regelmäßige Verben",
+      "back": {
+        "meaning": "Standard weak verb participle structure: ge- + stem + -t.",
+        "example_sentence": "„Er hat fleißig für die B2-Prüfung gelernt.“",
+        "exam_memory_trick": "BILDUNGS-FORMEL: ge- + lern + -t = gelernt. ge- + mach + -t = gemacht."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "regelmäßige Partizipien (ge- -t). „Er hat fleißig für die B2-Prüfung gelernt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-07",
+      "cardIndex": 7,
+      "front": "unregelmäßige Partizipien (ge- -en)",
+      "article": "",
+      "term": "unregelmäßige Verben",
+      "back": {
+        "meaning": "Strong verb participle structure: ge- + (ablaut stem) + -en.",
+        "example_sentence": "„Schwester Priya hat gestern lange mit dem Oberarzt gesprochen.“",
+        "exam_memory_trick": "STAMMVOKALWECHSEL: sprechen -> gesprochen, trinken -> getrunken, schreiben -> geschrieben."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "unregelmäßige Partizipien (ge- -en). „Schwester Priya hat gestern lange mit dem Oberarzt gesprochen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-08",
+      "cardIndex": 8,
+      "front": "trennbare Verben (Präfix-ge-Stamm)",
+      "article": "",
+      "term": "trennbare Verben",
+      "back": {
+        "meaning": "Prefix + ge- + stem + suffix (-t / -en).",
+        "example_sentence": "„Rahul ist heute schon um 05:30 Uhr aufgestanden.“",
+        "exam_memory_trick": "SANDWICH-PRINZIP: Das 'ge-' schlüpft wie Käse ins Sandwich zwischen Präfix und Stamm: auf-ge-standen!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "trennbare Verben (Präfix-ge-Stamm). „Rahul ist heute schon um 05:30 Uhr aufgestanden.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-09",
+      "cardIndex": 9,
+      "front": "untrennbare Verben (ohne ge-!)",
+      "article": "",
+      "term": "untrennbare Verben",
+      "back": {
+        "meaning": "Prefixes be-, ent-, er-, ge-, ver-, zer- form Partizip II WITHOUT 'ge-'.",
+        "example_sentence": "„Die Ärztin hat den Befund ausführlich erklärt.“",
+        "exam_memory_trick": "MERKVERS: Be-, emp-, ent-, er-, ge-, ver-, zer- und miss — kein 'ge-' im Partizip gewiss!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "untrennbare Verben (ohne ge-!). „Die Ärztin hat den Befund ausführlich erklärt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-10",
+      "cardIndex": 10,
+      "front": "Verben auf „-ieren“ (ohne ge-!)",
+      "article": "",
+      "term": "Verben auf -ieren",
+      "back": {
+        "meaning": "Verbs of foreign origin ending in -ieren form participle with stem + -t (NO ge-).",
+        "example_sentence": "„Die Krankenschwester hat die Wunde steril verbunden und dokumentiert.“",
+        "exam_memory_trick": "KLINIK-HACK: dokumentieren -> dokumentiert, operieren -> operiert, desinfizieren -> desinfiziert!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "Verben auf „-ieren“ (ohne ge-!). „Die Krankenschwester hat die Wunde steril verbunden und dokumentiert.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-11",
+      "cardIndex": 11,
+      "front": "das Sonderverb „sein“ (ist gewesen)",
+      "article": "",
+      "term": "sein im Perfekt",
+      "back": {
+        "meaning": "Auxiliary verb 'sein' always forms its own perfect with 'sein'.",
+        "example_sentence": "„Wo bist du gestern gewesen? – Ich bin im Sprachinstitut gewesen.“",
+        "exam_memory_trick": "DREI KÖNIGE #1: Keine Bewegung, trotzdem 'sein'! 'Ich bin gewesen' (NICHT ich habe gewesen)."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Sonderverb „sein“ (ist gewesen). „Wo bist du gestern gewesen? – Ich bin im Sprachinstitut gewesen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-12",
+      "cardIndex": 12,
+      "front": "das Sonderverb „bleiben“ (ist geblieben)",
+      "article": "",
+      "term": "bleiben im Perfekt",
+      "back": {
+        "meaning": "Verb denoting remaining in place — exception forming perfect with 'sein'.",
+        "example_sentence": "„Der Patient ist über Nacht im Bett geblieben.“",
+        "exam_memory_trick": "DREI KÖNIGE #2: Null Bewegung, trotzdem 'sein'! 'ist geblieben'."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Sonderverb „bleiben“ (ist geblieben). „Der Patient ist über Nacht im Bett geblieben.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-13",
+      "cardIndex": 13,
+      "front": "das Sonderverb „werden“ (ist geworden)",
+      "article": "",
+      "term": "werden im Perfekt",
+      "back": {
+        "meaning": "Verb denoting transformation/state change formed with 'sein'.",
+        "example_sentence": "„Herr Sharma ist ein anerkannter Arzt in Berlin geworden.“",
+        "exam_memory_trick": "DREI KÖNIGE #3: Zustandsänderung = 'ist geworden'."
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "das Sonderverb „werden“ (ist geworden). „Herr Sharma ist ein anerkannter Arzt in Berlin geworden.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-14",
+      "cardIndex": 14,
+      "front": "der Ortswechsel (A nach B)",
+      "article": "der",
+      "term": "Ortswechsel",
+      "back": {
+        "meaning": "Physical movement from point A to point B requiring auxiliary 'sein'.",
+        "example_sentence": "„Priya ist mit der S-Bahn zum Alexanderplatz gefahren.“",
+        "exam_memory_trick": "BEWEGUNG: gehen, fahren, fliegen, laufen, reisen, kommen, rennen -> alle mit SEIN!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "der Ortswechsel (A nach B). „Priya ist mit der S-Bahn zum Alexanderplatz gefahren.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-15",
+      "cardIndex": 15,
+      "front": "der Zustandswechsel",
+      "article": "der",
+      "term": "Zustandswechsel",
+      "back": {
+        "meaning": "Transition from one physical/biological state to another requiring 'sein'.",
+        "example_sentence": "„Das Kind ist um 20 Uhr friedlich eingeschlafen und um 07 Uhr aufgewacht.“",
+        "exam_memory_trick": "ZUSTAND: einschlafen (Wach -> Schlaf), aufwachen (Schlaf -> Wach), sterben (Leben -> Tod) -> SEIN!"
+      },
+      "category": "Perfekt Grammatik & Hilfsverben",
+      "level": "a2",
+      "audioPrompt": "der Zustandswechsel. „Das Kind ist um 20 Uhr friedlich eingeschlafen und um 07 Uhr aufgewacht.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-16",
+      "cardIndex": 16,
+      "front": "der Alltag",
+      "article": "der",
+      "term": "Alltag",
+      "back": {
+        "meaning": "Daily life, daily routine and regular schedule in Germany.",
+        "example_sentence": "„Der Alltag im Berliner Krankenhaus verlangt hohe Konzentration.“",
+        "exam_memory_trick": "KOMPOSITUM: all + Tag = der Alltag (Maskulin)."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "der Alltag. „Der Alltag im Berliner Krankenhaus verlangt hohe Konzentration.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-17",
+      "cardIndex": 17,
+      "front": "die Schichtarbeit",
+      "article": "die",
+      "term": "Schichtarbeit",
+      "back": {
+        "meaning": "Shift work system in hospitals and industry (morning, late, night shift).",
+        "example_sentence": "„Pflegefachkräfte arbeiten oft im Dreischichtsystem.“",
+        "exam_memory_trick": "ARBEIT-REGEL: Grundwort 'die Arbeit' -> 'die Schichtarbeit' (Feminin)."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "die Schichtarbeit. „Pflegefachkräfte arbeiten oft im Dreischichtsystem.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-18",
+      "cardIndex": 18,
+      "front": "der Dienstplan",
+      "article": "der",
+      "term": "Dienstplan",
+      "back": {
+        "meaning": "Monthly work and duty roster for ward personnel.",
+        "example_sentence": "„Mein Name steht für die Nachtschicht im Dienstplan.“",
+        "exam_memory_trick": "PLAN-REGEL: 'Der Plan' -> 'der Dienstplan', 'der Terminplan' (Maskulin)."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "der Dienstplan. „Mein Name steht für die Nachtschicht im Dienstplan.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-19",
+      "cardIndex": 19,
+      "front": "die Dienstübergabe",
+      "article": "die",
+      "term": "Dienstübergabe",
+      "back": {
+        "meaning": "Verbal shift handover between incoming and outgoing nursing staff.",
+        "example_sentence": "„Die Dienstübergabe findet um 14:15 Uhr im Stationszimmer statt.“",
+        "exam_memory_trick": "KOMMUNIKATION: Übergabe nach ISBAR-Schema ist zentraler Bestandteil der B2-Fachsprache."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "die Dienstübergabe. „Die Dienstübergabe findet um 14:15 Uhr im Stationszimmer statt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-20",
+      "cardIndex": 20,
+      "front": "das Pflegeprotokoll",
+      "article": "das",
+      "term": "Pflegeprotokoll",
+      "back": {
+        "meaning": "Official written nursing care record / medical chart.",
+        "example_sentence": "„Bitte tragen Sie die Medikamentengabe ins Pflegeprotokoll ein.“",
+        "exam_memory_trick": "PROTOKOLL: Fremdwörter auf '-oll' sind meist Neutrum ('das Protokoll')."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "das Pflegeprotokoll. „Bitte tragen Sie die Medikamentengabe ins Pflegeprotokoll ein.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-21",
+      "cardIndex": 21,
+      "front": "die ärztliche Visite",
+      "article": "die",
+      "term": "Visite",
+      "back": {
+        "meaning": "Daily bedside ward rounds by doctors and nurses.",
+        "example_sentence": "„Während der Visite hat der Chefarzt die Medikation angepasst.“",
+        "exam_memory_trick": "FEMININ-REGEL: Substantive auf französisches '-e' sind feminin ('die Visite')."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "die ärztliche Visite. „Während der Visite hat der Chefarzt die Medikation angepasst.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-22",
+      "cardIndex": 22,
+      "front": "aufstehen (ist aufgestanden)",
+      "article": "",
+      "term": "aufstehen",
+      "back": {
+        "meaning": "To get out of bed in the morning (change of posture/place -> sein).",
+        "example_sentence": "„Heute bin ich pünktlich um sechs Uhr aufgestanden.“",
+        "exam_memory_trick": "SANDWICH & SEIN: auf-ge-standen mit 'sein', weil man die Körperlage ändert!"
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "aufstehen (ist aufgestanden). „Heute bin ich pünktlich um sechs Uhr aufgestanden.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-23",
+      "cardIndex": 23,
+      "front": "ankommen (ist angekommen)",
+      "article": "",
+      "term": "ankommen",
+      "back": {
+        "meaning": "To arrive at destination.",
+        "example_sentence": "„Der Zug aus München ist mit zehn Minuten Verspätung angekommen.“",
+        "exam_memory_trick": "ZIEL-ERREICHUNG: ankommen = Ortswechsel abgeschlossen -> Hilfsverb 'sein'!"
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "ankommen (ist angekommen). „Der Zug aus München ist mit zehn Minuten Verspätung angekommen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-24",
+      "cardIndex": 24,
+      "front": "abfahren (ist abgefahren)",
+      "article": "",
+      "term": "abfahren",
+      "back": {
+        "meaning": "To depart / leave by vehicle.",
+        "example_sentence": "„Der Bus ist pünktlich an der Haltestelle abgefahren.“",
+        "exam_memory_trick": "ORTWECHSEL BEGINN: abfahren = Start der Bewegung -> Hilfsverb 'sein'!"
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "abfahren (ist abgefahren). „Der Bus ist pünktlich an der Haltestelle abgefahren.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-25",
+      "cardIndex": 25,
+      "front": "anrufen (hat angerufen)",
+      "article": "",
+      "term": "anrufen",
+      "back": {
+        "meaning": "To telephone / call someone.",
+        "example_sentence": "„Herr Sharma hat gestern seine Relocation-Beraterin angerufen.“",
+        "exam_memory_trick": "KOMMUNIKATION: Kein Ortswechsel -> Hilfsverb 'haben'! 'hat angerufen'."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "anrufen (hat angerufen). „Herr Sharma hat gestern seine Relocation-Beraterin angerufen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-26",
+      "cardIndex": 26,
+      "front": "untersuchen (hat untersucht)",
+      "article": "",
+      "term": "untersuchen",
+      "back": {
+        "meaning": "To medically examine a patient.",
+        "example_sentence": "„Der Notarzt hat den Verletzten gründlich untersucht.“",
+        "exam_memory_trick": "UNTRENNBAR: 'unter-' ist hier unbetont und untrennbar -> 'hat untersucht' (OHNE ge-!)."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "untersuchen (hat untersucht). „Der Notarzt hat den Verletzten gründlich untersucht.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-27",
+      "cardIndex": 27,
+      "front": "dokumentieren (hat dokumentiert)",
+      "article": "",
+      "term": "dokumentieren",
+      "back": {
+        "meaning": "To record data, clinical parameters or vital signs.",
+        "example_sentence": "„Die Pflegerin hat die Schmerzkurve lückenlos dokumentiert.“",
+        "exam_memory_trick": "-IEREN ENDUNG: 'hat dokumentiert' — niemals 'gedokumentiert' sagen!"
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "dokumentieren (hat dokumentiert). „Die Pflegerin hat die Schmerzkurve lückenlos dokumentiert.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-28",
+      "cardIndex": 28,
+      "front": "verabreichen (hat verabreicht)",
+      "article": "",
+      "term": "verabreichen",
+      "back": {
+        "meaning": "To administer medication or injections to patients.",
+        "example_sentence": "„Die Krankenschwester hat dem Patienten 500 mg Paracetamol verabreicht.“",
+        "exam_memory_trick": "UNTRENNBARES 'VER-': ver- + abreich + -t = 'hat verabreicht'."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "verabreichen (hat verabreicht). „Die Krankenschwester hat dem Patienten 500 mg Paracetamol verabreicht.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-29",
+      "cardIndex": 29,
+      "front": "verlegen (hat verlegt)",
+      "article": "",
+      "term": "verlegen",
+      "back": {
+        "meaning": "To transfer a patient to another ward or intensive care unit (ICU).",
+        "example_sentence": "„Wir haben den instabilen Patienten auf die Intensivstation verlegt.“",
+        "exam_memory_trick": "KLINIK-BEGRIFF: 'verlegen' = Transfer von Station A nach Station B."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "verlegen (hat verlegt). „Wir haben den instabilen Patienten auf die Intensivstation verlegt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-30",
+      "cardIndex": 30,
+      "front": "entlassen (hat entlassen)",
+      "article": "",
+      "term": "entlassen",
+      "back": {
+        "meaning": "To discharge a patient from the hospital.",
+        "example_sentence": "„Der Patient wurde heute nach vollständiger Genesung entlassen.“",
+        "exam_memory_trick": "STARK & UNTRENNBAR: entlassen -> hat entlassen (Vokal bleibt 'a')."
+      },
+      "category": "Klinik & Berufsalltag",
+      "level": "a2",
+      "audioPrompt": "entlassen (hat entlassen). „Der Patient wurde heute nach vollständiger Genesung entlassen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-31",
+      "cardIndex": 31,
+      "front": "die Verspätung",
+      "article": "die",
+      "term": "Verspätung",
+      "back": {
+        "meaning": "Train or bus delay.",
+        "example_sentence": "„Wegen einer Weichenstörung hatte die S-Bahn 15 Minuten Verspätung.“",
+        "exam_memory_trick": "ALLTAGS-REALITÄT: Deutsche Bahn Entschuldigungsgrund Nummer 1!"
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "die Verspätung. „Wegen einer Weichenstörung hatte die S-Bahn 15 Minuten Verspätung.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-32",
+      "cardIndex": 32,
+      "front": "der Feierabend",
+      "article": "der",
+      "term": "Feierabend",
+      "back": {
+        "meaning": "End of the working day / Closing time.",
+        "example_sentence": "„Ich wünsche dir einen schönen Feierabend! Bis morgen!“",
+        "exam_memory_trick": "KULTUR-BEGRIFF: 'Feierabend' ist heilig in Deutschland — markiert die strikte Trennung von Arbeit und Freizeit."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "der Feierabend. „Ich wünsche dir einen schönen Feierabend! Bis morgen!“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-33",
+      "cardIndex": 33,
+      "front": "die Überstunde",
+      "article": "die",
+      "term": "Überstunde",
+      "back": {
+        "meaning": "Overtime hour worked beyond regular shift time.",
+        "example_sentence": "„Diesen Monat habe ich zehn Überstunden geleistet.“",
+        "exam_memory_trick": "PLURAL-FALLE: Fast immer im Plural verwendet: 'Überstunden abbauen' oder 'auszahlen'."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "die Überstunde. „Diesen Monat habe ich zehn Überstunden geleistet.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-34",
+      "cardIndex": 34,
+      "front": "die Pause",
+      "article": "die",
+      "term": "Pause",
+      "back": {
+        "meaning": "Work break (30 min required after 6 hours by ArbZG).",
+        "example_sentence": "„In der Mittagspause haben wir im Mitarbeiterbistro gegessen.“",
+        "exam_memory_trick": "ARBEITSSCHUTZ: Das Arbeitszeitgesetz (ArbZG) garantiert feste Pausenzeiten."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "die Pause. „In der Mittagspause haben wir im Mitarbeiterbistro gegessen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-35",
+      "cardIndex": 35,
+      "front": "erledigen (hat erledigt)",
+      "article": "",
+      "term": "erledigen",
+      "back": {
+        "meaning": "To complete, settle or take care of a task.",
+        "example_sentence": "„Ich habe alle Formalitäten bei der Ausländerbehörde erledigt.“",
+        "exam_memory_trick": "ACTION-VERB: 'etwas erledigen' = eine Aufgabe erfolgreich zu Ende bringen."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "erledigen (hat erledigt). „Ich habe alle Formalitäten bei der Ausländerbehörde erledigt.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-36",
+      "cardIndex": 36,
+      "front": "besprechen (hat besprochen)",
+      "article": "",
+      "term": "besprechen",
+      "back": {
+        "meaning": "To discuss a case or plan in detail.",
+        "example_sentence": "„Die Ärzte haben die Röntgenbilder in der Konferenz besprochen.“",
+        "exam_memory_trick": "VOKALWECHSEL: besprechen -> hat besprochen (untrennbar mit be-)."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "besprechen (hat besprochen). „Die Ärzte haben die Röntgenbilder in der Konferenz besprochen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-37",
+      "cardIndex": 37,
+      "front": "teilnehmen an + Dativ (hat teilgenommen)",
+      "article": "",
+      "term": "teilnehmen",
+      "back": {
+        "meaning": "To participate / take part in a meeting or seminar.",
+        "example_sentence": "„Alle Pflegekräfte haben an der Brandschutzschulung teilgenommen.“",
+        "exam_memory_trick": "TRENNBAR & STARK: teil-ge-nommen mit Dativ ('an der Besprechung')."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "teilnehmen an + Dativ (hat teilgenommen). „Alle Pflegekräfte haben an der Brandschutzschulung teilgenommen.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-38",
+      "cardIndex": 38,
+      "front": "die TeKaMoLo-Regel",
+      "article": "die",
+      "term": "TeKaMoLo",
+      "back": {
+        "meaning": "Word order in middle field: Temporal -> Kausal -> Modal -> Lokal.",
+        "example_sentence": "„Ich bin [gestern] [wegen des Regens] [mit dem Taxi] [zur Klinik] gefahren.“",
+        "exam_memory_trick": "GOLDENE FORMEL: Te (Wann?) -> Ka (Warum?) -> Mo (Wie?) -> Lo (Wohin/Wo?)."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "die TeKaMoLo-Regel. „Ich bin [gestern] [wegen des Regens] [mit dem Taxi] [zur Klinik] gefahren.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-39",
+      "cardIndex": 39,
+      "front": "das Missverständnis",
+      "article": "das",
+      "term": "Missverständnis",
+      "back": {
+        "meaning": "Misunderstanding caused by linguistic or communicative gaps.",
+        "example_sentence": "„Durch die genaue ISBAR-Übergabe haben wir jedes Missverständnis vermieden.“",
+        "exam_memory_trick": "SICHERHEIT: Klare deutsche Fachsprache verhindert gefährliche Missverständnisse im Krankenhaus!"
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "das Missverständnis. „Durch die genaue ISBAR-Übergabe haben wir jedes Missverständnis vermieden.“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    },
+    {
+      "id": "fc-a2-ch01-40",
+      "cardIndex": 40,
+      "front": "„Wie ist dein Tag gewesen?“",
+      "article": "",
+      "term": "Konversation",
+      "back": {
+        "meaning": "High-frequency conversational question to ask about someone's day.",
+        "example_sentence": "„Hallo Rahul! Wie ist dein erster Tag auf Station gewesen?“",
+        "exam_memory_trick": "PERFEKT IM DIALOG: 'ist gewesen' ist die natürliche Alltagsfrage nach dem Feierabend."
+      },
+      "category": "Arbeitsrecht & Alltagsredemittel",
+      "level": "a2",
+      "audioPrompt": "„Wie ist dein Tag gewesen?“. „Hallo Rahul! Wie ist dein erster Tag auf Station gewesen?“",
+      "tags": [
+        "A2.1",
+        "Kapitel 1",
+        "Perfekt",
+        "Satzklammer",
+        "Goethe A2",
+        "telc A2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "id": "stk-de-tu_berlin-03",
+  "setNumber": 3,
+  "institute": "TU Berlin",
+  "instituteFullName": "Studienkolleg an der Technischen Universität Berlin",
+  "examTitle": "Studienkolleg an der Technischen Universität Berlin — Aufnahmeprüfung Deutsch (Modelltest 3)",
+  "kursTypes": [
+    "W-Kurs",
+    "T-Kurs"
+  ],
+  "academicFocus": "Smart Cities, Kreislaufwirtschaft & Nachhaltige Mobilität",
+  "targetLevel": "B2/C1 (GER)",
+  "durationMinutes": 90,
+  "pageCount": 9,
+  "fileSizeBytes": 24599,
+  "publishedAt": "2026-11-12T13:40:02.741014+00:00",
+  "author": "The Gateway to Future (GTF) - EMP-04 Academic Directorate Berlin",
+  "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am TU Berlin (W-Kurs, T-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
+  "examSections": {
+    "cTest": {
+      "totalGaps": 80,
+      "points": 40,
+      "texts": [
+        {
+          "index": 1,
+          "title": "Konzepte vernetzter Smart Cities",
+          "rawText": "Die Vision der Smart City zielt auf eine ökologische und lebenswerte Stadtlandschaft ab. Durch die Vernetzung öffentlicher Verkehrsmittel, Ampelanlagen und Energieversorger lassen sich Verkehrsflüsse optimieren und Staus drastisch reduzieren. Intelligente Mülltonnen melden ihren Füllstand automatisch an die Entsorgungsbetriebe, was unnötige Fahrten vermeidet. Bürger können administrative Dienstleistungen digital über gesicherte Portale wahrnehmen. Datenschützer warnen allerdings vor lückenloser Überwachung im öffentlichen Raum."
+        },
+        {
+          "index": 2,
+          "title": "Urbanes Recycling von Wertstoffen",
+          "rawText": "In Großstädten schlummern gewaltige Mengen wertvoller Rohstoffe in ausrangierten Geräten. Dieses sogenannte Urban Mining gewinnt angesichts steigender Rohstoffpreise massiv an Bedeutung. Aus alten Computern und Smartphones lassen sich Gold, Kupfer und Kobalt zurückgewinnen. Im Vergleich zum traditionellen Bergbau ist das Recycling metallischer Wertstoffe deutlich energiesparender und schont sensible Ökosysteme weltweit. Viele Kommunen errichten moderne Wertstoffzentren, um Bürger zur fachgerechten Entsorgung von Elektroschrott zu motivieren."
+        },
+        {
+          "index": 3,
+          "title": "Autonome Shuttles im Nahverkehr",
+          "rawText": "Selbstfahrende Kleinbusse könnten die letzte Meile im öffentlichen Nahverkehr revolutionieren. In zahlreichen Modellregionen testen Verkehrsbetriebe bereits autonome Shuttles ohne Fahrpersonal. Gesteuert durch Lidar-Sensoren und hochpräzise GPS-Karten manövrieren die Fahrzeuge sicher durch verkehrsberuhigte Zonen. Fahrgäste können die Busse flexibel per Smartphone-App bestellen. Damit wird auch mobilitätseingeschränkten Menschen in Vororten eine komfortable Anbindung an regionale Bahnknotenpunkte geboten."
+        },
+        {
+          "index": 4,
+          "title": "Wärmewende durch Tiefengeothermie",
+          "rawText": "Die Beheizung von Gebäuden macht einen Großteil des fossilen Energieverbrauchs aus. Die Tiefengeothermie nutzt die im Erdinneren gespeicherte Wärme zur emissionsfreien Wärmeerzeugung. In Tiefen von mehreren tausend Metern herrschen Temperaturen von über einhundert Grad Celsius. Heißes Thermalwasser wird an die Oberfläche gefördert, wo Wärmetauscher die Energie auf Fernwärmenetze übertragen. Anschließend wird das abgekühlte Wasser vollständig in den Untergrund zurückgeleitet. Dies gewährleistet einen geschlossenen, umweltfreundlichen Kreislauf."
+        }
+      ]
+    },
+    "grammar": {
+      "points": 25,
+      "nominalisierung": [
+        [
+          "Weil die Stadtbevölkerung rasant wächst, müssen Wohnungen gebaut werden.",
+          "Aufgrund des rasanten Wachstums der Stadtbevölkerung müssen Wohnungen gebaut werden."
+        ],
+        [
+          "Bevor die Geothermiebohrung begann, führten Geologen seismische Messungen durch.",
+          "Vor dem Beginn der Geothermiebohrung führten Geologen seismische Messungen durch."
+        ],
+        [
+          "Indem man Wertstoffe recycelt, schont man primäre Rohstoffvorkommen.",
+          "Durch das Recycling von Wertstoffen schont man primäre Rohstoffvorkommen."
+        ],
+        [
+          "Obwohl die Anschaffungskosten hoch sind, rentiert sich die Anlage langfristig.",
+          "Trotz der hohen Anschaffungskosten rentiert sich die Anlage langfristig."
+        ]
+      ],
+      "partizipialattribute": [
+        [
+          "Die Busse, die autonom durch die Innenstadt fahren, befördern täglich Hunderte Pendler.",
+          "Die autonom durch die Innenstadt fahrenden Busse befördern täglich Hunderte Pendler."
+        ],
+        [
+          "Die Wärme, die aus der Tiefe gefördert wird, speist das Fernwärmenetz.",
+          "Die aus der Tiefe geförderte Wärme speist das Fernwärmenetz."
+        ],
+        [
+          "Die Richtlinien, die von der Umweltbehörde vorgegeben werden, sind streng.",
+          "Die von der Umweltbehörde vorgegebenen Richtlinien sind streng."
+        ],
+        [
+          "Das Konzept, das noch optimiert werden muss, überzeugt den Stadtrat.",
+          "Das noch zu optimierende Konzept überzeugt den Stadtrat."
+        ]
+      ],
+      "passivErsatz": [
+        [
+          "Die Sensordaten lassen sich über Funk übertragen.",
+          "Die Sensordaten können über Funk übertragen werden."
+        ],
+        [
+          "Der CO2-Ausstoß ist bis 2030 um fünfzig Prozent zu senken.",
+          "Der CO2-Ausstoß muss bis 2030 um fünfzig Prozent gesenkt werden."
+        ],
+        [
+          "Die Batterien sind problemlos austauschbar.",
+          "Die Batterien können problemlos ausgetauscht werden."
+        ],
+        [
+          "Die Effizienz lässt sich weiter steigern.",
+          "Die Effizienz kann weiter gesteigert werden."
+        ]
+      ],
+      "indirekteRede": [
+        [
+          "Der Oberbürgermeister betonte: 'Wir investieren massiv in den Ausbau der Radwege.'",
+          "Der Oberbürgermeister betonte, sie investierten massiv in den Ausbau der Radwege."
+        ],
+        [
+          "Die Stadtplanerin sagte: 'Das neue Quartier wird vollkommen autofrei bleiben.'",
+          "Die Stadtplanerin sagte, das neue Quartier werde vollkommen autofrei bleiben."
+        ],
+        [
+          "Der Gutachter versicherte: 'Die geothermische Bohrung birgt keinerlei Erdbebenrisiko.'",
+          "Der Gutachter versicherte, die geothermische Bohrung berge keinerlei Erdbebenrisiko."
+        ]
+      ]
+    },
+    "reading": {
+      "points": 20,
+      "title": "Die Mobilitätswende in europäischen Metropolen",
+      "text": "Europäische Großstädte ersticken zunehmend im motorisierten Individualverkehr. Staus, Lärmbelastung und Feinstaubemissionen mindern die Lebensqualität in Innenstädten gravierend. Als Vorreiter einer radikalen Verkehrswende gelten Metropolen wie Kopenhagen und Paris. Durch den konsequenten Rückbau von Autospuren zugunsten breiter Schnellradwege und Fußgängerzonen konnte der Radverkehrsanteil in diesen Städten auf über vierzig Prozent gesteigert werden. Gleichzeitig investieren Stadtverwaltungen in den Ausbau taktgebundener U- und Straßenbahnen, subventionieren Jahrestickets und führen City-Mauten für schwere Verbrenner ein. Wirtschaftsverbände äußern jedoch Besorgnis über die Erreichbarkeit von Einzelhandelsgeschäften für Kunden aus dem Umland und fordern Ausnahmeregelungen für Handwerker und Lieferdienste. Stadtforscher entgegnen, dass verkehrsberuhigte Zonen die Aufenthaltsqualität steigern und Umsätze im urbanen Handel nachweislich beleben.",
+      "tfQuestions": [
+        [
+          "Kopenhagen und Paris bauten Autospuren zurück, um Radwege zu erweitern.",
+          "Richtig",
+          "Z. 4-6"
+        ],
+        [
+          "Der Radverkehrsanteil in Kopenhagen sank nach den Reformen deutlich.",
+          "Falsch",
+          "Z. 5-7"
+        ],
+        [
+          "Wirtschaftsverbände befürchten Umsatzeinbußen bei Geschäften durch schlechtere Erreichbarkeit.",
+          "Richtig",
+          "Z. 8-10"
+        ],
+        [
+          "In Berlin wurde bereits eine allgemeine Pkw-Maut für alle Straßen eingeführt.",
+          "Nicht im Text",
+          "-"
+        ],
+        [
+          "Laut Stadtforschern verringern Fußgängerzonen die Umsätze von Geschäften dauerhaft.",
+          "Falsch",
+          "Z. 11-13"
+        ]
+      ],
+      "openQuestions": [
+        [
+          "Welche zwei Maßnahmen ergreifen Städte neben dem Radwegebau zur Förderung der Verkehrswende?",
+          "Musterlösung: 1. Ausbau von U- und Straßenbahnen mit dichterem Takt und günstigen Jahrestickets. 2. Einführung von City-Mauten für schwere Verbrenner-Pkw."
+        ],
+        [
+          "Was entgegnen Stadtforscher den Befürchtungen der Wirtschaftsverbände?",
+          "Musterlösung: Sie entgegnen, dass verkehrsberuhigte Zonen die Aufenthaltsqualität verbessern und dadurch die Umsätze im städtischen Handel beleben."
+        ]
+      ]
+    },
+    "essay": {
+      "points": 15,
+      "type": "Erörterung",
+      "topic": "Autofreie Innenstädte: Radikaler Zwang oder zukunftsweisende Notwendigkeit?",
+      "prompt": "Diskutieren Sie, ob historische Stadtkerne in deutschen Großstädten komplett für den privaten Pkw-Verkehr gesperrt werden sollten. Wägen Sie Vor- und Nachteile ab und beziehen Sie Position.",
+      "modelEssay": "Die Frage, wem der öffentliche Raum in Großstädten gehört, entfacht in Politik und Gesellschaft hitzige Debatten. Angesichts fortschreitender Erderwärmung und chronisch verstopfter Straßen fordern Umweltschützer ein generelles Fahrverbot für private Automobile in Innenstädten. Eine solche Maßnahme verspricht zwar erhebliche Vorzüge für Umwelt und Gesundheit, stößt aber zugleich auf praktische und soziale Barrieren. \n\nUnbestreitbar brächte eine autofreie City monumentale Verbesserungen der Lebensqualität mit sich. Wo heute Blechlawinen rollen und Parksuchverkehr die Luft verpestet, könnten Grünflächen, Straßencafés und sichere Spielräume für Kinder entstehen. Zudem sinken Lärmpegel und Stickoxidbelastung drastisch, was akuten Atemwegserkrankungen vorbeugt. Für die Klimabilanz einer Kommune wäre die Einsparung fossiler Treibstoffe ein Meilenstein. \n\nAuf der anderen Seite darf die Mobilität breiter Bevölkerungsschichten nicht leichtfertig beschnitten werden. Pendler aus ländlichen Regionen, in denen der öffentliche Nahverkehr unzureichend ausgebaut ist, sind auf ihr Fahrzeug angewiesen, um ihren Arbeitsplatz zu erreichen. Ebenso benötigen Handwerksbetriebe, Pflegedienste und gehbehinderte Bürger direkte Zufahrtsmöglichkeiten. Ein rigides Verbot ohne leistungsfähige P+R-Konzepte würde einkommensschwächere Schichten überproportional benachteiligen. \n\nFazit: Eine lebenswerte Stadt der Zukunft erfordert keine absolute Tabuisierung, sondern ein klug abgestuftes Verkehrskonzept. Schrittweise Reduktion von Parkflächen, privilegierte Erreichbarkeit für Anwohner und Versorger sowie massiver Ausbau bezahlbarer ÖPNV-Trassen schaffen Akzeptanz und machen das Auto in der City letztlich schlicht überflüssig."
+    }
+  },
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:38.143102+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "wordCount": 2007,
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "title": "Stk-De-Tu Berlin-03",
+  "slug": "stk_aufnahme_deutsch-stk-de-tu-berlin-03"
+}

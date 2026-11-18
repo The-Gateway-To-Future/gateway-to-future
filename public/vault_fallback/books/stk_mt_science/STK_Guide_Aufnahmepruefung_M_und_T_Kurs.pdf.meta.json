@@ -1,0 +1,36 @@
+{
+  "id": "stk-guide-aufnahmepruefung-m-und-t-kurs",
+  "slug": "stk-guide-aufnahmepruefung-m-und-t-kurs",
+  "title": "Studienkolleg Aufnahmeprüfung Master-Guide: M-Kurs & T-Kurs",
+  "subtitle": "Der ultimative Vorbereitungs-Leitfaden für TU Berlin, FU Berlin, KIT & staatliche Studienkollegs in Deutschland",
+  "course": "M-Kurs & T-Kurs",
+  "courseType": "stk_science",
+  "category": "Studienkolleg Aufnahmeprüfung",
+  "subjects": [
+    "Mathematik",
+    "Physik",
+    "Chemie",
+    "Biologie",
+    "Deutsch C-Test"
+  ],
+  "standard": "TU Berlin / FU Berlin / KIT",
+  "level": "C1/B2 Fachsprache & Abitur-Niveau",
+  "pages": 3,
+  "filename": "STK_Guide_Aufnahmepruefung_M_und_T_Kurs.pdf",
+  "type": "pdf_workbook",
+  "priceEur": 9.99,
+  "priceInr": 899,
+  "isFree": false,
+  "publishedAt": "2026-11-11T18:47:52.543522+00:00",
+  "author": "The Gateway to Future (GTF) - Academic Directorate Berlin",
+  "description": "Umfassender Master-Guide für die Aufnahmeprüfung an deutschen Studienkollegs (TU Berlin / FU Berlin Standard). Systemvergleich M-Kurs vs. T-Kurs, Fachwörterbuch, Diagnosetest und 12-Wochen-Crashkurs-Roadmap.",
+  "tags": [
+    "studienkolleg",
+    "aufnahmepruefung",
+    "t-kurs",
+    "m-kurs",
+    "mathematik",
+    "tu-berlin",
+    "fu-berlin"
+  ]
+}

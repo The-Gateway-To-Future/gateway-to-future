@@ -1,0 +1,108 @@
+{
+  "id": "daf_b2_hoeren_01",
+  "level": "B2",
+  "examType": "Goethe-Zertifikat B2 / telc Deutsch B2",
+  "title": "B2 Hören — Deutschlandfunk Kultur: Radio-Podiumsdiskussion über Künstliche Intelligenz in der modernen Medizin und Pflege",
+  "topic": "Digitalisierung, KI im Gesundheitswesen, Robotik in der Pflege und medizinische Ethik",
+  "audio": {
+    "fileName": "daf_b2_hoeren_01.mp3",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_b2_hoeren_01.mp3",
+    "sizeBytes": 2281004,
+    "bitrate": "192kbps",
+    "format": "mp3"
+  },
+  "pdf": {
+    "fileName": "daf_b2_hoeren_01.pdf",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_b2_hoeren_01.pdf",
+    "sizeBytes": 15878,
+    "format": "pdf"
+  },
+  "transcript": "Moderatorin: Guten Abend, meine Damen und Herren zur heutigen Sendung 'Streitkultur' im Deutschlandfunk. Der Einsatz von generativer und diagnostischer Künstlicher Intelligenz spaltet die medizinische Fachwelt. Während Optimisten von einer Entlastung des Personals und präziseren Diagnosen sprechen, warnen Kritiker vor einer Entmenschlichung der Heilkunde. Ich begrüße dazu Herrn Dr. med. Lukas Weber, Chefarzt für Intensivmedizin, und Frau Prof. Dr. Sarbjit Kaur vom Deutschen Ethikrat.\nDr. Weber: Vielen Dank für die Einladung, Frau Kollegin. Lassen Sie mich eingangs klarstellen: KI-Algorithmen sind keine Konkurrenz für ärztliche Intuition, sondern ein unverzichtbares Assistenzsystem. In der Radiologie und Kardiologie erkennen neuronale Netze subtile Mikrofrakturen oder beginnende Myokardischämien mit einer Spezifität von über 98 Prozent. Das rettet Menschenleben, insbesondere in unterbesetzten Nachtschichten.\nProf. Dr. Kaur: Den diagnostischen Nutzen bestreite ich keineswegs, Herr Dr. Weber. Jedoch werfen automatisierte Entscheidungssysteme fundamentale haftungsrechtliche und epistemologische Fragen auf. Wenn ein Algorithmus eine Fehleinschätzung trifft und ein Patient Schaden erleidet: Wer haftet dann primär? Der behandelnde Arzt, die Klinikleitung oder das Softwareunternehmen? Zudem droht der Verlust der Empathie, wenn Pflegekräfte durch Überwachungsmonitore ersetzt werden.\nDr. Weber: Hier möchte ich vehement widersprechen. Das Primat der ärztlichen Therapieentscheidung bleibt stets unangetastet — der 'Human-in-the-Loop'-Grundsatz ist im europäischen AI Act verbindlich verankert. Die Automatisierung bürokratischer Dokumentationspflichten, die bislang bis zu 40 Prozent unserer Arbeitszeit verschlingt, verschafft dem medizinischen Personal vielmehr wieder dringend benötigte Zeit am Patientenbett.\nModeratorin: Einigkeit besteht offenbar darin, dass die Technologie nicht das Pflegepersonal ersetzen darf, sondern als Werkzeug zur Reduktion von Arbeitsüberlastung dienen muss. Wir danken beiden Gästen für diese differenzierte Debatte.",
+  "dialogue": [
+    {
+      "speaker": "Moderatorin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin DLF (Prüferin)",
+      "text": "Guten Abend, meine Damen und Herren zur heutigen Sendung 'Streitkultur' im Deutschlandfunk. Der Einsatz von generativer und diagnostischer Künstlicher Intelligenz spaltet die medizinische Fachwelt. Während Optimisten von einer Entlastung des Personals und präziseren Diagnosen sprechen, warnen Kritiker vor einer Entmenschlichung der Heilkunde. Ich begrüße dazu Herrn Dr. med. Lukas Weber, Chefarzt für Intensivmedizin, und Frau Prof. Dr. Sarbjit Kaur vom Deutschen Ethikrat."
+    },
+    {
+      "speaker": "Dr. Weber",
+      "voice": "male",
+      "role": "Chefarzt Intensivmedizin (Kandidat)",
+      "text": "Vielen Dank für die Einladung, Frau Kollegin. Lassen Sie mich eingangs klarstellen: KI-Algorithmen sind keine Konkurrenz für ärztliche Intuition, sondern ein unverzichtbares Assistenzsystem. In der Radiologie und Kardiologie erkennen neuronale Netze subtile Mikrofrakturen oder beginnende Myokardischämien mit einer Spezifität von über 98 Prozent. Das rettet Menschenleben, insbesondere in unterbesetzten Nachtschichten."
+    },
+    {
+      "speaker": "Prof. Dr. Kaur",
+      "voice": "female",
+      "role": "Mitglied Deutscher Ethikrat (Prüferin)",
+      "text": "Den diagnostischen Nutzen bestreite ich keineswegs, Herr Dr. Weber. Jedoch werfen automatisierte Entscheidungssysteme fundamentale haftungsrechtliche und epistemologische Fragen auf. Wenn ein Algorithmus eine Fehleinschätzung trifft und ein Patient Schaden erleidet: Wer haftet dann primär? Der behandelnde Arzt, die Klinikleitung oder das Softwareunternehmen? Zudem droht der Verlust der Empathie, wenn Pflegekräfte durch Überwachungsmonitore ersetzt werden."
+    },
+    {
+      "speaker": "Dr. Weber",
+      "voice": "male",
+      "role": "Chefarzt Intensivmedizin (Kandidat)",
+      "text": "Hier möchte ich vehement widersprechen. Das Primat der ärztlichen Therapieentscheidung bleibt stets unangetastet — der 'Human-in-the-Loop'-Grundsatz ist im europäischen AI Act verbindlich verankert. Die Automatisierung bürokratischer Dokumentationspflichten, die bislang bis zu 40 Prozent unserer Arbeitszeit verschlingt, verschafft dem medizinischen Personal vielmehr wieder dringend benötigte Zeit am Patientenbett."
+    },
+    {
+      "speaker": "Moderatorin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin DLF (Prüferin)",
+      "text": "Einigkeit besteht offenbar darin, dass die Technologie nicht das Pflegepersonal ersetzen darf, sondern als Werkzeug zur Reduktion von Arbeitsüberlastung dienen muss. Wir danken beiden Gästen für diese differenzierte Debatte."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Welchen Hauptvorteil von KI-Systemen hebt Dr. Weber für den klinischen Alltag hervor?",
+      "options": [
+        "Die vollständige Autonomie von Diagnosen ohne ärztliche Kontrolle",
+        "Hohe diagnostische Spezifität und Entlastung bei der Dokumentation",
+        "Kostensenkungen durch die Entlassung von Pflegepersonal"
+      ],
+      "correct_answer": "Hohe diagnostische Spezifität und Entlastung bei der Dokumentation",
+      "explanation": "Dr. Weber verweist auf 98% Spezifität und die Automatisierung von bis zu 40% bürokratischer Dokumentation."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Welches rechtlich-ethische Bedenken äußert Frau Prof. Dr. Kaur?",
+      "options": [
+        "Die unzureichende Rechenleistung europäischer Server",
+        "Ungeklärte Haftungsfragen bei Fehlentscheidungen und Empathieverlust",
+        "Die zu hohen Lizenzgebühren für Krankenhausbetreiber"
+      ],
+      "correct_answer": "Ungeklärte Haftungsfragen bei Fehlentscheidungen und Empathieverlust",
+      "explanation": "Prof. Kaur problematisiert die Haftungskette zwischen Arzt, Klinik und Softwarehersteller sowie den Verlust zwischenmenschlicher Nähe."
+    },
+    {
+      "id": "q3",
+      "type": "richtig_falsch",
+      "statement": "Nach dem europäischen AI Act ist der 'Human-in-the-Loop'-Grundsatz verbindlich vorgegeben.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correct_answer": "Richtig",
+      "explanation": "Dr. Weber bestätigt die gesetzliche Verankerung des Grundsatzes, dass die finale Entscheidung beim Menschen liegt."
+    }
+  ],
+  "sprechen_prompt": {
+    "part": "Teil 1: Einen Vortrag halten und diskutieren",
+    "theme": "Künstliche Intelligenz in Pflege und Medizin",
+    "task": "Erläutern Sie Chancen und Risiken moderner KI-Assistenzsysteme im Krankenhaus und beziehen Sie Stellung."
+  },
+  "schreiben_prompt": {
+    "part": "Teil 1: Eine formelle Stellungnahme / Leserbrief verfassen",
+    "task": "Verfassen Sie einen fundierten Leserbrief an die Redaktion des Deutschlandfunks (ca. 150 Wörter) zu den ethischen Grenzen von KI in der Pflege."
+  },
+  "musterloesung": {
+    "sprechen": "In meinem Vortrag beleuchte ich die Implementierung künstlicher Intelligenz in der klinischen Versorgung. Zwar optimieren Algorithmen die diagnostische Treffsicherheit, doch darf das Vertrauensverhältnis zwischen Arzt und Patient keinesfalls delegiert werden.",
+    "schreiben": "Sehr geehrte Redaktion,\nmit großem Interesse habe ich Ihre Podiumsdiskussion über KI in der Medizin verfolgt. Als Angehöriger des Gesundheitswesens teile ich die Ansicht, dass Technologie dem Wohle des Patienten dienen muss, anstatt bloßen Einsparungszielen untergeordnet zu werden. Solange Algorithmen bürokratische Lasten minimieren und Pflegenden wieder mehr Zeit für Zuwendung schenken, ist ihr Einsatz ethisch zu begrüßen. Grenzen sind jedoch dort zu ziehen, wo therapeutische Verantwortung maschinell anonymisiert wird.\nMit vorzüglicher Hochachtung,\nSarbjit Kour",
+    "examiner_rubric": "Goethe/telc B2 Kriterien: Nomen-Verb-Verbindungen (Stellung beziehen, Grenzen ziehen, Lasten minimieren), hypotaktischer Satzbau und gehobener Fachwortschatz.",
+    "detailed_justifications": "Frage 1: Option B fasst die Argumente von Dr. Weber exakt zusammen. Frage 2: Option B nennt die zentralen juristisch-ethischen Einwände von Prof. Kaur. Frage 3: 'Richtig' belegt die Relevanz des EU AI Acts."
+  },
+  "status": "completed",
+  "qa_status": "approved",
+  "generated_at": "2026-11-13T21:26:48.335693+00:00"
+}

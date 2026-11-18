@@ -1,0 +1,175 @@
+{
+  "id": "stk-de-tu_berlin-02",
+  "setNumber": 2,
+  "institute": "TU Berlin",
+  "instituteFullName": "Studienkolleg an der Technischen Universität Berlin",
+  "examTitle": "Studienkolleg an der Technischen Universität Berlin — Aufnahmeprüfung Deutsch (Modelltest 2)",
+  "kursTypes": [
+    "T-Kurs",
+    "M-Kurs"
+  ],
+  "academicFocus": "Bionik, Nanotechnologie & Künstliche Intelligenz",
+  "targetLevel": "B2/C1 (GER)",
+  "durationMinutes": 90,
+  "pageCount": 9,
+  "fileSizeBytes": 24939,
+  "publishedAt": "2026-11-11T19:02:11.699571+00:00",
+  "author": "The Gateway to Future (GTF) - EMP-04 Academic Directorate Berlin",
+  "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am TU Berlin (T-Kurs, M-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
+  "examSections": {
+    "cTest": {
+      "totalGaps": 80,
+      "points": 40,
+      "texts": [
+        {
+          "index": 1,
+          "title": "Bionik: Lernen von der Natur",
+          "rawText": "Die Bionik verbindet Biologie und Technik zu faszinierenden zukunftsträchtigen Innovationen. Über Jahrmillionen der Evolution haben lebende Organismen hocheffiziente Mechanismen entwickelt. Ingenieure analysieren beispielsweise den Lotuseffekt, um selbstreinigende Fassadenfarben und Gläser herzustellen. Ebenso dient die Schuppenstruktur von Haifischhaut als Vorbild für strömungsgünstige Beschichtungen von Flugzeugen und Schiffen. Durch derartige Konstruktionen kann der Treibstoffverbrauch messbar gesenkt werden. Die Natur liefert somit geniale Baupläne."
+        },
+        {
+          "index": 2,
+          "title": "Nanomaterialien in der Elektronik",
+          "rawText": "Die fortschreitende Miniaturisierung elektronischer Bauteile stößt an physikalische Grenzen. Konventionelle Siliziumtransistoren können nicht mehr beliebig verkleinert werden, ohne dass störende Quanteneffekte auftreten. Forscher untersuchen daher zweidimensionale Materialien wie Graphen, das aus einer einzigen Schicht von Kohlenstoffatomen besteht. Graphen leitet Strom und Wärme hervorragend und ist zugleich extrem reißfest. Bis zu einer großtechnischen Anwendung müssen jedoch noch reproduzierbare Herstellungsverfahren im industriellen Maßstab etabliert werden."
+        },
+        {
+          "index": 3,
+          "title": "Künstliche neuronale Netze",
+          "rawText": "Moderne Algorithmen des maschinellen Lernens orientieren sich an der Funktionsweise des menschlichen Gehirns. Künstliche neuronale Netze bestehen aus zahlreichen miteinander verknüpften Schichten mathematischer Knoten. Anhand gewaltiger Datenmengen lernen diese Systeme selbstständig, komplexe Muster zu erkennen. In der medizinischen Diagnostik übertreffen sie bei der Analyse radiologischer Aufnahmen bisweilen bereits erfahrene Fachärzte. Gleichwohl bleibt das Problem der mangelnden Nachvollziehbarkeit bestehen, weshalb die Wissenschaft intensiv an transparenter und erklärbarer künstlicher Intelligenz forscht."
+        },
+        {
+          "index": 4,
+          "title": "Biosensoren im Gesundheitswesen",
+          "rawText": "Biosensoren ermöglichen die sekundenschnelle Detektion biochemischer Parameter im menschlichen Körper. Kombiniert mit miniaturisierten Mikrochips können sie Biomarker für Entzündungen oder Glukosewerte erfassen. Diabetespatienten profitieren heute von kontinuierlich messenden Glukosesensoren unter der Haut, die manuelle Blutentnahmen überflüssig machen. In Zukunft sollen tragbare Systeme sogar Tumorzellen im Frühstadium im Blutkreislauf aufspüren. Dies eröffnet revolutionäre Perspektiven für eine zielgerichtete und schonende individualisierte Therapie."
+        }
+      ]
+    },
+    "grammar": {
+      "points": 25,
+      "nominalisierung": [
+        [
+          "Weil die Nanopartikel verklumpen, verliert die Suspension ihre Stabilität.",
+          "Aufgrund des Verklumpens der Nanopartikel verliert die Suspension ihre Stabilität."
+        ],
+        [
+          "Nachdem die Versuchspersonen untersucht worden waren, werteten die Ärzte die Daten aus.",
+          "Nach der Untersuchung der Versuchspersonen werteten die Ärzte die Daten aus."
+        ],
+        [
+          "Indem man den Druck kontinuierlich erhöht, beschleunigt sich die chemische Reaktion.",
+          "Durch die kontinuierliche Erhöhung des Drucks beschleunigt sich die chemische Reaktion."
+        ],
+        [
+          "Obwohl die Substanz toxisch wirkt, wird sie in minimaler Dosierung verwendet.",
+          "Trotz der toxischen Wirkung der Substanz wird sie in minimaler Dosierung verwendet."
+        ]
+      ],
+      "partizipialattribute": [
+        [
+          "Der Algorithmus, der von dem Berliner Institut programmiert wurde, arbeitet fehlerfrei.",
+          "Der von dem Berliner Institut programmierte Algorithmus arbeitet fehlerfrei."
+        ],
+        [
+          "Die Probe, die unter dem Mikroskop fluoresziert, enthält Antikörper.",
+          "Die unter dem Mikroskop fluoreszierende Probe enthält Antikörper."
+        ],
+        [
+          "Die Versuchsbedingungen, die exakt eingehalten werden müssen, sind im Protokoll notiert.",
+          "Die exakt einzuhaltenden Versuchsbedingungen sind im Protokoll notiert."
+        ],
+        [
+          "Die Strahlung, die von der Probe emittiert wird, lässt sich messen.",
+          "Die von der Probe emittierte Strahlung lässt sich messen."
+        ]
+      ],
+      "passivErsatz": [
+        [
+          "Diese biologische Struktur lässt sich nicht künstlich nachbilden.",
+          "Diese biologische Struktur kann nicht künstlich nachgebildet werden."
+        ],
+        [
+          "Die Messwerte sind vor der Publikation statistisch abzusichern.",
+          "Die Messwerte müssen vor der Publikation statistisch abgesichert werden."
+        ],
+        [
+          "Das Enzym ist bei hohen Temperaturen nicht mehr aktivierbar.",
+          "Das Enzym kann bei hohen Temperaturen nicht mehr aktiviert werden."
+        ],
+        [
+          "Die Laborgeräte sind vor jeder Messung sorgfältig zu kalibrieren.",
+          "Die Laborgeräte müssen vor jeder Messung sorgfältig kalibriert werden."
+        ]
+      ],
+      "indirekteRede": [
+        [
+          "Die Ärztin versicherte: 'Die Behandlung zeigt bei den meisten Patienten rasche Erfolge.'",
+          "Die Ärztin versicherte, die Behandlung zeige bei den meisten Patienten rasche Erfolge."
+        ],
+        [
+          "Der Biochemiker erklärte: 'Wir stehen kurz vor der Entdeckung eines neuen Wirkstoffes.'",
+          "Der Biochemiker erklärte, sie stünden kurz vor der Entdeckung eines neuen Wirkstoffes."
+        ],
+        [
+          "Der Gutachter urteilte: 'Die Studie erfüllt alle internationalen wissenschaftlichen Standards.'",
+          "Der Gutachter urteilte, die Studie erfülle alle internationalen wissenschaftlichen Standards."
+        ]
+      ]
+    },
+    "reading": {
+      "points": 20,
+      "title": "Künstliche Intelligenz in der klinischen Radiologie",
+      "text": "Die Bildgebung mittels Computertomografie und Magnetresonanztomografie erzeugt heutzutage gigantische Datenmengen, die von Radiologen im Klinikalltag unter hohem Zeitdruck beurteilt werden müssen. Hierbei erweist sich der Einsatz von Deep-Learning-Algorithmen als bahnbrechende Unterstützung. Speziell trainierte Netzwerke sind in der Lage, selbst kleinste Gewebeveränderungen wie Lungenrundherde oder frühe Schlaganfallzeichen mit bemerkenswerter Treffsicherheit zu lokalisieren. Sie fungieren gleichsam als digitaler Zweitbefunder, der dem Arzt verdächtige Areale farblich markiert. Dies reduziert Ermüdungsfehler bei Nachtschichten signifikant. Dennoch betonen Berufsverbände, dass die Letztverantwortung zwingend beim approbierten Mediziner verbleiben muss. Eine KI versteht den klinischen Gesamtkontext des Patienten nicht und kann seltene Begleiterkrankungen fehlinterpretieren. Zudem bedürfen Haftungsfragen bei Fehldiagnosen einer eindeutigen gesetzlichen Klärung.",
+      "tfQuestions": [
+        [
+          "KI-Algorithmen dienen in der Radiologie als digitale Unterstützung für Ärzte.",
+          "Richtig",
+          "Z. 4-6"
+        ],
+        [
+          "Die Letztverantwortung für Diagnosen soll laut Berufsverbänden auf die KI übertragen werden.",
+          "Falsch",
+          "Z. 8-10"
+        ],
+        [
+          "Deep-Learning-Netzwerke können winzige Gewebeveränderungen auf Tomografiebildern erkennen.",
+          "Richtig",
+          "Z. 5-7"
+        ],
+        [
+          "KI-Systeme werden in deutschen Krankenhäusern bereits seit 1995 flächendeckend eingesetzt.",
+          "Nicht im Text",
+          "-"
+        ],
+        [
+          "Eine KI kann seltene Begleiterkrankungen aufgrund mangelnden Kontextverständnisses fehlinterpretieren.",
+          "Richtig",
+          "Z. 10-12"
+        ]
+      ],
+      "openQuestions": [
+        [
+          "Welchen konkreten Nutzen bietet KI bei radiologischen Nachtschichten?",
+          "Musterlösung: Sie reduziert Ermüdungsfehler des ärztlichen Personals durch farbliches Markieren verdächtiger Areale."
+        ],
+        [
+          "Welche juristische Frage ist vor dem breiten Einsatz von KI in der Medizin noch ungeklärt?",
+          "Musterlösung: Die Frage der Haftung im Falle von Fehldiagnosen durch autonome Algorithmen."
+        ]
+      ]
+    },
+    "essay": {
+      "points": 15,
+      "type": "Erörterung",
+      "topic": "Künstliche Intelligenz in der Wissenschaft: Bereicherung oder Gefahr für die wissenschaftliche Integrität?",
+      "prompt": "Automatisierte Textgeneratoren und Datenanalyse-Tools halten Einzug in universitäre Labore und Schreibstuben. Erörtern Sie die Chancen und Gefahren von KI-Werkzeugen im universitären Studienalltag und formulieren Sie klare Verhaltensregeln für angehende Studienkollegiaten.",
+      "modelEssay": "In der gegenwärtigen Debatte über den Hochschulunterricht der Zukunft nimmt der Einfluss von Systemen der künstlichen Intelligenz eine zentrale Stellung ein. Mit dem Aufkommen generativer Sprachmodelle und automatisierter Analysetools stehen Studierende und Wissenschaftler vor einem tiefgreifenden Paradigmenwechsel. Während Befürworter eine Demokratisierung des Wissens preisen, warnen Skeptiker vor einem Verfall akademischer Standards und dem Verlust kritischen Denkens. \n\nAuf der Habenseite bieten KI-Systeme beispiellose Möglichkeiten zur Produktivitätssteigerung. Sie unterstützen Studierende beim Durchforsten unüberschaubarer Fachliteratur, übersetzen komplexe Fachtexte fehlerfrei in die Zweitsprache Deutsch und helfen beim Debuggen von Programmcode im MINT-Bereich. Für internationale Kollegiaten kann eine KI somit als persönlicher Tutor fungieren, der sprachliche Barrieren rasch nivelliert. \n\nDemgegenüber stehen jedoch fundamentale Bedenken hinsichtlich der akademischen Redlichkeit. Die Gefahr, dass Seminararbeiten und Laborberichte ohne eigene gedankliche Durchdringung per Mausklick generiert werden, ist akut. Dadurch wird der Erwerb basaler Kompetenzen wie Quellenkritik, methodischer Strenge und originärer Schreibfähigkeit untergraben. Überdies neigen Sprachmodelle zu plausibel klingenden Falschinformationen (Halluzinationen), die ohne fundiertes Fachwissen nicht entlarvt werden können. \n\nAus diesen Gründen ist ein differenzierter Umgang geboten. Ein pauschales Verbot greift zu kurz; vielmehr müssen Studienkollegs transparente Leitlinien etablieren: KI darf als Hilfsmittel zur Recherche und Grammatikkontrolle genutzt werden, die inhaltliche Argumentation und Synthese müssen jedoch transparent ausgewiesen und geistiges Eigentum des Autors bleiben."
+    }
+  },
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-11T19:19:50.563782+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "wordCount": 2053,
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "title": "Stk-De-Tu Berlin-02",
+  "slug": "stk_aufnahme_deutsch-stk-de-tu-berlin-02"
+}

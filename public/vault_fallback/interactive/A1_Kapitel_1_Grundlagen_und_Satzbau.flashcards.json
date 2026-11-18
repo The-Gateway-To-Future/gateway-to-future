@@ -1,0 +1,894 @@
+{
+  "deckId": "fc-A1_Kapitel_1_Grundlagen_und_Satzbau",
+  "chapterId": "daf_book_a1_1_ch01",
+  "chapterStem": "A1_Kapitel_1_Grundlagen_und_Satzbau",
+  "title": "GTF Interaktives Flashcard-Deck • Grundlagen, Begrüßung und Satzbau",
+  "level": "a1",
+  "domain": "daf_books",
+  "division": "German Language Academy",
+  "cardCount": 40,
+  "createdAt": "2026-11-11T19:21:04.100117+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "cards": [
+    {
+      "id": "fc-a1-ch01-01",
+      "cardIndex": 1,
+      "front": "der Hauptbahnhof",
+      "article": "der",
+      "term": "Hauptbahnhof",
+      "back": {
+        "meaning": "Central train station / Main railway station in German cities.",
+        "example_sentence": "„Wir treffen uns um 14 Uhr am Berliner Hauptbahnhof.“",
+        "exam_memory_trick": "GOLDEN MEMORY: Jeder große deutsche Bahnhof ist ein 'Hauptbahnhof' — fast immer Maskulin ('der')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "der Hauptbahnhof. „Wir treffen uns um 14 Uhr am Berliner Hauptbahnhof.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-02",
+      "cardIndex": 2,
+      "front": "das Bürgeramt",
+      "article": "das",
+      "term": "Bürgeramt",
+      "back": {
+        "meaning": "Citizens registration office (mandatory for residence registration / Anmeldung).",
+        "example_sentence": "„Ich habe morgen einen Termin beim Bürgeramt in Berlin.“",
+        "exam_memory_trick": "AMTLICHE FAUSTREGEL: Ämter sind meistens Neutrum ('das Amt', 'das Bürgeramt', 'das Finanzamt')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "das Bürgeramt. „Ich habe morgen einen Termin beim Bürgeramt in Berlin.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-03",
+      "cardIndex": 3,
+      "front": "die Anmeldung",
+      "article": "die",
+      "term": "Anmeldung",
+      "back": {
+        "meaning": "Official residence registration required within 14 days of moving into a flat.",
+        "example_sentence": "„Für das Sperrkonto brauche ich die Bestätigung der Anmeldung.“",
+        "exam_memory_trick": "ENDUNGS-TRICK: Alle Wörter auf '-ung' sind zu 100% feminin ('die Anmeldung', 'die Wohnung')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "die Anmeldung. „Für das Sperrkonto brauche ich die Bestätigung der Anmeldung.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-04",
+      "cardIndex": 4,
+      "front": "die Ausbildung",
+      "article": "die",
+      "term": "Ausbildung",
+      "back": {
+        "meaning": "Dual vocational apprenticeship with monthly stipend (€1,000–€1,400).",
+        "example_sentence": "„Er beginnt im Oktober seine Ausbildung als Krankenpfleger.“",
+        "exam_memory_trick": "DUALES SYSTEM: Wieder '-ung' = Feminin! Ausbildung = Berufsschule + praktische Arbeit im Betrieb."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "die Ausbildung. „Er beginnt im Oktober seine Ausbildung als Krankenpfleger.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-05",
+      "cardIndex": 5,
+      "front": "der Ausweis",
+      "article": "der",
+      "term": "Ausweis",
+      "back": {
+        "meaning": "Identity document, passport, or official ID card.",
+        "example_sentence": "„Bitte zeigen Sie Ihren Ausweis an der Sicherheitskontrolle.“",
+        "exam_memory_trick": "MEMORY HOOK: 'Weisen' heißt zeigen. Der Ausweis ist das Dokument, das man vorweisen muss (Maskulin)."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "der Ausweis. „Bitte zeigen Sie Ihren Ausweis an der Sicherheitskontrolle.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-06",
+      "cardIndex": 6,
+      "front": "das Visum",
+      "article": "das",
+      "term": "Visum",
+      "back": {
+        "meaning": "Entry and study/work visa issued by the German Embassy.",
+        "example_sentence": "„Mein nationales Visum für Deutschland wurde gestern erteilt.“",
+        "exam_memory_trick": "LATEIN-TRICK: Fremdwörter auf '-um' sind fast immer Neutrum ('das Visum', 'das Zentrum', 'das Praktikum')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "das Visum. „Mein nationales Visum für Deutschland wurde gestern erteilt.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-07",
+      "cardIndex": 7,
+      "front": "die Krankenversicherung",
+      "article": "die",
+      "term": "Krankenversicherung",
+      "back": {
+        "meaning": "Statutory or private health insurance policy (e.g. TK, AOK).",
+        "example_sentence": "„In Deutschland ist die Krankenversicherung gesetzlich vorgeschrieben.“",
+        "exam_memory_trick": "BERLIN-SURVIVAL: Ohne 'die Krankenversicherung' gibt es keine Immatrikulation an der Universität!"
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "die Krankenversicherung. „In Deutschland ist die Krankenversicherung gesetzlich vorgeschrieben.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-08",
+      "cardIndex": 8,
+      "front": "das Formular",
+      "article": "das",
+      "term": "Formular",
+      "back": {
+        "meaning": "Official administrative questionnaire or application form.",
+        "example_sentence": "„Bitte füllen Sie dieses Formular vollständig aus.“",
+        "exam_memory_trick": "DOKUMENTE: Papiere und Formulare sind meistens Neutrum ('das Blatt', 'das Dokument', 'das Formular')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "das Formular. „Bitte füllen Sie dieses Formular vollständig aus.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-09",
+      "cardIndex": 9,
+      "front": "der Vorname",
+      "article": "der",
+      "term": "Vorname",
+      "back": {
+        "meaning": "Given name / First name.",
+        "example_sentence": "„Mein Vorname ist Rahul und mein Familienname ist Sharma.“",
+        "exam_memory_trick": "NAME-REGEL: Fast alle Namen-Wörter sind maskulin ('der Name', 'der Vorname', 'der Nachname')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "der Vorname. „Mein Vorname ist Rahul und mein Familienname ist Sharma.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-10",
+      "cardIndex": 10,
+      "front": "der Nachname",
+      "article": "der",
+      "term": "Nachname",
+      "back": {
+        "meaning": "Family name / Surname.",
+        "example_sentence": "„Schreiben Sie bitte Ihren Nachnamen in Druckbuchstaben.“",
+        "exam_memory_trick": "ZUSAMMENSETZUNG: Das Grundwort 'der Name' bestimmt den Artikel für den 'Nachnamen'."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "der Nachname. „Schreiben Sie bitte Ihren Nachnamen in Druckbuchstaben.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-11",
+      "cardIndex": 11,
+      "front": "die Adresse",
+      "article": "die",
+      "term": "Adresse",
+      "back": {
+        "meaning": "Street address and postal code in Germany.",
+        "example_sentence": "„Wie lautet Ihre aktuelle Adresse in Berlin?“",
+        "exam_memory_trick": "FEMININ-TRICK: Substantive auf französisches '-e' sind meist feminin ('die Adresse', 'die Straße')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "die Adresse. „Wie lautet Ihre aktuelle Adresse in Berlin?“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-12",
+      "cardIndex": 12,
+      "front": "die Telefonnummer",
+      "article": "die",
+      "term": "Telefonnummer",
+      "back": {
+        "meaning": "Telephone / Mobile contact number.",
+        "example_sentence": "„Geben Sie bitte Ihre Telefonnummer für Rückfragen an.“",
+        "exam_memory_trick": "NUMMER-REGEL: 'Die Nummer' ist feminin, genau wie alle Zahlen und Telefonnummern."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "die Telefonnummer. „Geben Sie bitte Ihre Telefonnummer für Rückfragen an.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-13",
+      "cardIndex": 13,
+      "front": "das Krankenhaus",
+      "article": "das",
+      "term": "Krankenhaus",
+      "back": {
+        "meaning": "Hospital / Clinic ward where medical trainees work.",
+        "example_sentence": "„Das Charité-Krankenhaus liegt mitten in Berlin.“",
+        "exam_memory_trick": "HAUS-KOMPOSITUM: Grundwort 'das Haus' -> 'das Krankenhaus' (Neutrum)."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "das Krankenhaus. „Das Charité-Krankenhaus liegt mitten in Berlin.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-14",
+      "cardIndex": 14,
+      "front": "der Arzt",
+      "article": "der",
+      "term": "Arzt",
+      "back": {
+        "meaning": "Physician / Medical doctor.",
+        "example_sentence": "„Der Arzt untersucht den Patienten auf Station 3.“",
+        "exam_memory_trick": "BERUF-REGEL: Männliche Berufsbezeichnungen sind maskulin ('der Arzt', 'der Pfleger', 'der Lehrer')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "der Arzt. „Der Arzt untersucht den Patienten auf Station 3.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-15",
+      "cardIndex": 15,
+      "front": "die Krankenschwester",
+      "article": "die",
+      "term": "Krankenschwester",
+      "back": {
+        "meaning": "Nurse / Healthcare professional (modern: Pflegefachfrau).",
+        "example_sentence": "„Die Krankenschwester misst den Blutdruck des Patienten.“",
+        "exam_memory_trick": "PERSONENBEZEICHNUNG: Weibliche Berufsformen auf '-schwester' oder '-in' sind feminin ('die')."
+      },
+      "category": "Lexik & Wortschatz",
+      "level": "a1",
+      "audioPrompt": "die Krankenschwester. „Die Krankenschwester misst den Blutdruck des Patienten.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-16",
+      "cardIndex": 16,
+      "front": "kommen (kommt, kam, ist gekommen)",
+      "article": "",
+      "term": "kommen",
+      "back": {
+        "meaning": "To originate or travel from a place (used with preposition 'aus').",
+        "example_sentence": "„Ich komme aus Neu-Delhi und wohne jetzt in Berlin.“",
+        "exam_memory_trick": "PRÄPOSITIONEN-PAAR: 'kommen aus' + Dativ (Land/Stadt). 'Woher kommst du?' verlangt 'aus'."
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "kommen (kommt, kam, ist gekommen). „Ich komme aus Neu-Delhi und wohne jetzt in Berlin.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-17",
+      "cardIndex": 17,
+      "front": "wohnen (wohnt, wohnte, hat gewohnt)",
+      "article": "",
+      "term": "wohnen",
+      "back": {
+        "meaning": "To reside / live in a flat or city (used with preposition 'in').",
+        "example_sentence": "„Wir wohnen in einer schönen Wohngemeinschaft (WG).“",
+        "exam_memory_trick": "PRÄPOSITIONEN-PAAR: 'wohnen in' + Dativ (Stadt/Land). 'Wo wohnst du?' verlangt 'in'."
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "wohnen (wohnt, wohnte, hat gewohnt). „Wir wohnen in einer schönen Wohngemeinschaft (WG).“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-18",
+      "cardIndex": 18,
+      "front": "heißen (heißt, hieß, hat geheißen)",
+      "article": "",
+      "term": "heißen",
+      "back": {
+        "meaning": "To be called / named.",
+        "example_sentence": "„Wie heißen Sie? – Ich heiße Sarbjit Kour.“",
+        "exam_memory_trick": "ORTHOGRAPHIE-FALLE: Nach 'ß' entfällt bei 'du' das 's': 'du heißt' (NICHT du heißst)!"
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "heißen (heißt, hieß, hat geheißen). „Wie heißen Sie? – Ich heiße Sarbjit Kour.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-19",
+      "cardIndex": 19,
+      "front": "sprechen (spricht, sprach, hat gesprochen)",
+      "article": "",
+      "term": "sprechen",
+      "back": {
+        "meaning": "To speak a language (Irregular verb with vowel shift e -> i).",
+        "example_sentence": "„Er spricht fließend Englisch, Hindi und Deutsch.“",
+        "exam_memory_trick": "VOKALWECHSEL: In der 2. und 3. Person Singular wechselt 'e' zu 'i': du sprichst, er spricht!"
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "sprechen (spricht, sprach, hat gesprochen). „Er spricht fließend Englisch, Hindi und Deutsch.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-20",
+      "cardIndex": 20,
+      "front": "arbeiten (arbeitet, arbeitete, hat gearbeitet)",
+      "article": "",
+      "term": "arbeiten",
+      "back": {
+        "meaning": "To work in a profession or company.",
+        "example_sentence": "„Frau Müller arbeitet als Pflegedienstleiterin.“",
+        "exam_memory_trick": "E-EINSCHUB: Wenn der Stamm auf -t oder -d endet (arbeit-), wird vor -st und -t ein -e- eingefügt: er arbeitet!"
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "arbeiten (arbeitet, arbeitete, hat gearbeitet). „Frau Müller arbeitet als Pflegedienstleiterin.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-21",
+      "cardIndex": 21,
+      "front": "lernen (lernt, lernte, hat gelernt)",
+      "article": "",
+      "term": "lernen",
+      "back": {
+        "meaning": "To study or acquire knowledge/skills (e.g. German language).",
+        "example_sentence": "„Rahul lernt jeden Tag drei Stunden deutsche Grammatik.“",
+        "exam_memory_trick": "REGELMÄSSIGES MUSTER: ich lerne, du lernst, er lernt, wir lernen, ihr lernt, sie lernen."
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "lernen (lernt, lernte, hat gelernt). „Rahul lernt jeden Tag drei Stunden deutsche Grammatik.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-22",
+      "cardIndex": 22,
+      "front": "verstehen (versteht, verstand, hat verstanden)",
+      "article": "",
+      "term": "verstehen",
+      "back": {
+        "meaning": "To comprehend / understand spoken or written German.",
+        "example_sentence": "„Entschuldigung, ich habe diesen Satz nicht verstanden.“",
+        "exam_memory_trick": "UNTRENNBAR: Präfix 'ver-' ist untrennbar! Im Partizip II kein 'ge-': 'hat verstanden'."
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "verstehen (versteht, verstand, hat verstanden). „Entschuldigung, ich habe diesen Satz nicht verstanden.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-23",
+      "cardIndex": 23,
+      "front": "buchstabieren (buchstabiert)",
+      "article": "",
+      "term": "buchstabieren",
+      "back": {
+        "meaning": "To spell out a name or word letter by letter.",
+        "example_sentence": "„Könnten Sie bitte Ihren Nachnamen buchstabieren?“",
+        "exam_memory_trick": "-IEREN REGEL: Fremdwörter auf -ieren bilden das Partizip II ohne 'ge-': 'buchstabiert'."
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "buchstabieren (buchstabiert). „Könnten Sie bitte Ihren Nachnamen buchstabieren?“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-24",
+      "cardIndex": 24,
+      "front": "sein (ist, war, ist gewesen)",
+      "article": "",
+      "term": "sein",
+      "back": {
+        "meaning": "To be (irregular auxiliary and copular verb).",
+        "example_sentence": "„Ich bin Student am Studienkolleg Berlin.“",
+        "exam_memory_trick": "UNREGELMÄSSIG: ich bin, du bist, er ist, wir sind, ihr seid, sie/Sie sind!"
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "sein (ist, war, ist gewesen). „Ich bin Student am Studienkolleg Berlin.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-25",
+      "cardIndex": 25,
+      "front": "haben (hat, hatte, hat gehabt)",
+      "article": "",
+      "term": "haben",
+      "back": {
+        "meaning": "To have / possess (auxiliary verb).",
+        "example_sentence": "„Wir haben morgen einen Termin bei der Ausländerbehörde.“",
+        "exam_memory_trick": "B-AUSFALL: Bei 'du hast' und 'er hat' fällt das 'b' des Verbstamms weg!"
+      },
+      "category": "Verben & Konjugation",
+      "level": "a1",
+      "audioPrompt": "haben (hat, hatte, hat gehabt). „Wir haben morgen einen Termin bei der Ausländerbehörde.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-26",
+      "cardIndex": 26,
+      "front": "der Hauptsatz (Position 2)",
+      "article": "der",
+      "term": "Hauptsatz",
+      "back": {
+        "meaning": "Independent main clause with strict verb second rule (Verbzweitstellung).",
+        "example_sentence": "„Heute lerne ich fleißig Deutsch für meine Zukunft in Berlin.“",
+        "exam_memory_trick": "GOLDENES GESETZ: Egal welches Satzglied auf Position 1 steht — das finite Verb steht IMMER auf Position 2!"
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "der Hauptsatz (Position 2). „Heute lerne ich fleißig Deutsch für meine Zukunft in Berlin.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-27",
+      "cardIndex": 27,
+      "front": "die Inversion (Satzumstellung)",
+      "article": "die",
+      "term": "Inversion",
+      "back": {
+        "meaning": "Swapping Position 1 to an adverb while moving the subject directly behind the verb.",
+        "example_sentence": "„Morgen fahre ich nach Berlin.“ (Zeit auf Pos 1 -> Verb auf Pos 2 -> Subjekt auf Pos 3).",
+        "exam_memory_trick": "SUBJEKT-RUTSCH: Beginnt der Satz mit Zeit oder Ort, rutscht das Subjekt sofort auf Position 3 hinter das Verb!"
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "die Inversion (Satzumstellung). „Morgen fahre ich nach Berlin.“ (Zeit auf Pos 1 -> Verb auf Pos 2 -> Subjekt auf Pos 3).",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-28",
+      "cardIndex": 28,
+      "front": "die W-Frage (Informationsfrage)",
+      "article": "die",
+      "term": "W-Frage",
+      "back": {
+        "meaning": "Open question introduced by an interrogative pronoun (wer, wie, was, wo, woher).",
+        "example_sentence": "„Woher kommen Sie ursprünglich?“",
+        "exam_memory_trick": "W-FORMEL: Pos 1 = W-Wort, Pos 2 = Finites Verb, Pos 3 = Subjekt!"
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "die W-Frage (Informationsfrage). „Woher kommen Sie ursprünglich?“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-29",
+      "cardIndex": 29,
+      "front": "die Ja/Nein-Frage (Entscheidungsfrage)",
+      "article": "die",
+      "term": "Ja/Nein-Frage",
+      "back": {
+        "meaning": "Closed question starting directly with the conjugated verb.",
+        "example_sentence": "„Sprechen Sie Deutsch? – Ja, ein bisschen.“",
+        "exam_memory_trick": "SPITZENSTELLUNG: Bei Ja/Nein-Fragen springt das Verb auf Position 1! Keine W-Wörter erlaubt."
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "die Ja/Nein-Frage (Entscheidungsfrage). „Sprechen Sie Deutsch? – Ja, ein bisschen.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-30",
+      "cardIndex": 30,
+      "front": "das Personalpronomen",
+      "article": "das",
+      "term": "Personalpronomen",
+      "back": {
+        "meaning": "Subject pronouns: ich, du, er, sie, es, wir, ihr, sie, Sie.",
+        "example_sentence": "„Sie (Frau Kour) unterrichtet die C1-Meisterklasse.“",
+        "exam_memory_trick": "GROSSSCHREIBUNG: Die Höflichkeitsform 'Sie' wird im Deutschen IMMER großgeschrieben!"
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "das Personalpronomen. „Sie (Frau Kour) unterrichtet die C1-Meisterklasse.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-31",
+      "cardIndex": 31,
+      "front": "die Konjugationsendung",
+      "article": "die",
+      "term": "Konjugationsendung",
+      "back": {
+        "meaning": "Grammatical suffix added to verb stems: -e, -st, -t, -en, -t, -en.",
+        "example_sentence": "„Ich mach-e, du mach-st, er mach-t, wir mach-en.“",
+        "exam_memory_trick": "MERKFORMEL 'EST-TEN-TEN': e (ich), st (du), t (er), en (wir), t (ihr), en (sie/Sie)."
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "die Konjugationsendung. „Ich mach-e, du mach-st, er mach-t, wir mach-en.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-32",
+      "cardIndex": 32,
+      "front": "die Höflichkeitsform „Sie“",
+      "article": "die",
+      "term": "Höflichkeitsform",
+      "back": {
+        "meaning": "Formal address used with adults, officials, teachers, and patients.",
+        "example_sentence": "„Guten Tag Frau Müller, wie geht es Ihnen heute?“",
+        "exam_memory_trick": "DISTANZ & RESPEKT: Im Berufsleben, Krankenhaus und Bürgeramt gilt ausnahmslos das formelle 'Sie'."
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "die Höflichkeitsform „Sie“. „Guten Tag Frau Müller, wie geht es Ihnen heute?“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-33",
+      "cardIndex": 33,
+      "front": "das Fragewort „Woher“",
+      "article": "das",
+      "term": "Fragewort Woher",
+      "back": {
+        "meaning": "Interrogative asking for geographic origin / birthplace.",
+        "example_sentence": "„Woher kommst du? – Aus Indien.“",
+        "exam_memory_trick": "RICHTUNGS-MERKMAL: 'Woher' fragt immer nach dem Ausgangspunkt (Antwort mit 'aus')."
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "das Fragewort „Woher“. „Woher kommst du? – Aus Indien.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-34",
+      "cardIndex": 34,
+      "front": "das Fragewort „Wohin“",
+      "article": "das",
+      "term": "Fragewort Wohin",
+      "back": {
+        "meaning": "Interrogative asking for destination / target direction.",
+        "example_sentence": "„Wohin fährst du am Wochenende? – Nach Hamburg.“",
+        "exam_memory_trick": "RICHTUNGS-MERKMAL: 'Wohin' fragt nach dem Ziel (Antwort mit 'nach' oder 'zu')."
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "das Fragewort „Wohin“. „Wohin fährst du am Wochenende? – Nach Hamburg.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-35",
+      "cardIndex": 35,
+      "front": "die Satzklammer (Grundprinzip)",
+      "article": "die",
+      "term": "Satzklammer",
+      "back": {
+        "meaning": "Framing sentence structure where verbal elements embrace the sentence brackets.",
+        "example_sentence": "„Ich stehe jeden Morgen um sechs Uhr auf.“ (aufstehen)",
+        "exam_memory_trick": "KLAMMER-PRINZIP: Finiter Verbbestandteil auf Pos 2, infiniter Teil oder Präfix ganz am Satzende!"
+      },
+      "category": "Grammatik & Satzbau",
+      "level": "a1",
+      "audioPrompt": "die Satzklammer (Grundprinzip). „Ich stehe jeden Morgen um sechs Uhr auf.“ (aufstehen)",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-36",
+      "cardIndex": 36,
+      "front": "„Auf Wiedersehen“ vs. „Tschüss“",
+      "article": "",
+      "term": "Verabschiedung",
+      "back": {
+        "meaning": "Formal vs. informal leave-taking.",
+        "example_sentence": "„Auf Wiedersehen, Herr Professor!“ (Formell) | „Tschüss Rahul!“ (Informell)",
+        "exam_memory_trick": "PRÜFUNGS-REGEL: Im Mündlichen Teil der telc/Goethe Prüfung die Prüfer immer mit 'Auf Wiedersehen' verabschieden!"
+      },
+      "category": "Redemittel & Prüfungsstrategie",
+      "level": "a1",
+      "audioPrompt": "„Auf Wiedersehen“ vs. „Tschüss“. „Auf Wiedersehen, Herr Professor!“ (Formell) | „Tschüss Rahul!“ (Informell)",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-37",
+      "cardIndex": 37,
+      "front": "„Entschuldigung, bitte wiederholen Sie.“",
+      "article": "",
+      "term": "Kompensationsstrategie",
+      "back": {
+        "meaning": "High-scoring oral exam compensation formula when an utterance wasn't understood.",
+        "example_sentence": "„Entschuldigen Sie bitte, könnten Sie das noch einmal wiederholen?“",
+        "exam_memory_trick": "NOTEN-RETTER: Wer nicht versteht, darf fragen! Zeigt aktive Gesprächsführung statt stummem Schweigen."
+      },
+      "category": "Redemittel & Prüfungsstrategie",
+      "level": "a1",
+      "audioPrompt": "„Entschuldigung, bitte wiederholen Sie.“. „Entschuldigen Sie bitte, könnten Sie das noch einmal wiederholen?“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-38",
+      "cardIndex": 38,
+      "front": "„Wie bitte?“",
+      "article": "",
+      "term": "Nachfrage",
+      "back": {
+        "meaning": "Polite, short inquiry when audio is unclear.",
+        "example_sentence": "„Wie bitte? Ich habe den Namen leider nicht verstanden.“",
+        "exam_memory_trick": "HÖFLICHKEIT: Niemals nur 'Was?' sagen — immer 'Wie bitte?' oder 'Entschuldigung?'."
+      },
+      "category": "Redemittel & Prüfungsstrategie",
+      "level": "a1",
+      "audioPrompt": "„Wie bitte?“. „Wie bitte? Ich habe den Namen leider nicht verstanden.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-39",
+      "cardIndex": 39,
+      "front": "die Satzmelodie (Intonation)",
+      "article": "die",
+      "term": "Satzmelodie",
+      "back": {
+        "meaning": "Pitch contour: falling in statements and W-questions, rising in Yes/No questions.",
+        "example_sentence": "„Kommen Sie aus Berlin? ↗ (Stimme steigt am Ende)“",
+        "exam_memory_trick": "HÖRVERSTEHEN-TIPP: An der steigenden Satzmelodie am Satzende erkennt man sofort Entscheidungsfragen!"
+      },
+      "category": "Redemittel & Prüfungsstrategie",
+      "level": "a1",
+      "audioPrompt": "die Satzmelodie (Intonation). „Kommen Sie aus Berlin? ↗ (Stimme steigt am Ende)“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    },
+    {
+      "id": "fc-a1-ch01-40",
+      "cardIndex": 40,
+      "front": "der Steckbrief zur Selbstvorstellung",
+      "article": "der",
+      "term": "Steckbrief",
+      "back": {
+        "meaning": "Standard format for oral exam Part 1 (Name, Alter, Land, Wohnort, Beruf, Sprachen, Hobbys).",
+        "example_sentence": "„Mein Name ist Rahul, ich bin 22 Jahre alt und komme aus Indien.“",
+        "exam_memory_trick": "MÜNDLICHE PRÜFUNG: Teil 1 ist immer die Selbstvorstellung. Die 7 Punkte müssen wie im Schlaf sitzen!"
+      },
+      "category": "Redemittel & Prüfungsstrategie",
+      "level": "a1",
+      "audioPrompt": "der Steckbrief zur Selbstvorstellung. „Mein Name ist Rahul, ich bin 22 Jahre alt und komme aus Indien.“",
+      "tags": [
+        "A1.1",
+        "Kapitel 1",
+        "Satzbau",
+        "Goethe A1",
+        "telc A1"
+      ]
+    }
+  ]
+}

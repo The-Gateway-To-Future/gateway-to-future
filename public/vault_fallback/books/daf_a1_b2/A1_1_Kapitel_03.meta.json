@@ -1,0 +1,39 @@
+{
+  "id": "book-a1-kapitel-3-a1_1_kapitel_03",
+  "slug": "book-a1-kapitel-3-a1_1_kapitel_03",
+  "type": "language_textbook",
+  "level": "a1",
+  "sublevel": "A1.1",
+  "chapterNumber": 3,
+  "title": "GTF Deutsch A1 Lehrbuch • Kapitel 3: Mein Tagesablauf & trennbare Verben",
+  "subtitle": "Offizielles DaF-Lehrwerk (Deutsch - English - Hinglish) • Vom Aufstehen bis zum Schlafengehen • Zeitangaben, Uhrzeiten & Satzklammer bei trennbaren Verben",
+  "topics": [
+    "Kernregel: Trennbare Verben (aufstehen, anrufen, einkaufen) & temporale Präpositionen (um, am, im)"
+  ],
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) DaF-Akademie Berlin",
+  "pdfFilename": "A1_1_Kapitel_03.pdf",
+  "pageCount": 12,
+  "wordCount": 3942,
+  "fileSizeBytes": 25858,
+  "fileSizeFormatted": "25.3 KB",
+  "vaultRelativePath": "books/daf_a1_b2/A1_1_Kapitel_03.pdf",
+  "priceEur": 9.0,
+  "priceInr": 499,
+  "isFree": false,
+  "previewAvailable": true,
+  "createdAt": "2026-11-12T13:39:42.969874+00:00",
+  "cefrGoals": [
+    "Beherrschung des Kernwortschatzes zum Thema: Tagesablauf, Uhrzeiten & Wochentage",
+    "Sichere Anwendung der Grammatikregeln: Trennbare Verben (aufstehen, anrufen, einkaufen) & temporale Präpositionen (um, am, im)",
+    "Kompetente Sprachverwendung im universitären und klinischen Alltag in Berlin",
+    "Erfolgreiches Bestehen der standardisierten Prüfungsformate (Goethe / telc)"
+  ],
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:35.430283+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin"
+}

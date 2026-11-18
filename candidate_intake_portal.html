@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTF Candidate Intake & Eligibility Portal | Germany Career Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0F4C81;
+            --primary-dark: #0A3358;
+            --secondary: #2A9D8F;
+            --accent: #E76F51;
+            --gold: #FFD166;
+            --dark: #0F172A;
+            --card-bg: #1E293B;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(42, 157, 143, 0.2);
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.25);
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--secondary), #1d7369);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(42, 157, 143, 0.4);
+        }
+        .result-box {
+            display: none;
+            background: rgba(15, 76, 129, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .result-title {
+            font-family: 'Outfit', sans-serif;
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .whatsapp-btn:hover {
+            background: #1ebc59;
+        }
+        @media(max-width: 600px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="badge"><i class="fa-solid fa-graduation-cap"></i> THE GATEWAY TO FUTURE (GTF) BERLIN</div>
+        <h1>Candidate Eligibility & Career Assessment</h1>
+        <p class="subtitle">Evaluate your degree for Germany, calculate your Bavarian GPA, and get a personalized visa roadmap.</p>
+    </div>
+
+    <div class="card">
+        <form id="assessmentForm">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-user"></i> Full Name</label>
+                    <input type="text" id="fullName" placeholder="e.g. Rahul Sharma" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-phone"></i> WhatsApp Number</label>
+                    <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-layer-group"></i> Target Career Sector</label>
+                    <select id="sector" required>
+                        <option value="">Select your sector...</option>
+                        <option value="healthcare_doctor">Healthcare: Medical Doctor (MBBS / FSP)</option>
+                        <option value="healthcare_nurse">Healthcare: Registered Nurse (B.Sc / GNM)</option>
+                        <option value="healthcare_ausbildung">Healthcare: Nursing / OTA / ATA Apprenticeship</option>
+                        <option value="logistics">Logistics & Supply Chain (Ausbildung / Job)</option>
+                        <option value="hospitality">Hospitality & Hotel Management (Hotelfach / Chef)</option>
+                        <option value="it">Information Technology (App Dev / Cloud / Blue Card)</option>
+                        <option value="engineering">Engineering & Mechatronics (Degree / Ausbildung)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-language"></i> Current German Level</label>
+                    <select id="germanLevel" required>
+                        <option value="A0">A0 (Complete Beginner)</option>
+                        <option value="A1">A1 (Basic)</option>
+                        <option value="A2">A2 (Elementary)</option>
+                        <option value="B1">B1 (Intermediate)</option>
+                        <option value="B2">B2 (Professional Fluency)</option>
+                        <option value="C1">C1 (Advanced / Medical)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-percent"></i> Indian Degree / Class 12 Marks (%)</label>
+                    <input type="number" id="percentage" placeholder="e.g. 78.5" min="35" max="100" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-city"></i> City & State in India</label>
+                    <input type="text" id="city" placeholder="e.g. Delhi, Punjab, Kerala" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn"><i class="fa-solid fa-calculator"></i> Evaluate My Profile & Calculate German GPA</button>
+        </form>
+
+        <div id="resultBox" class="result-box">
+            <div class="result-title"><i class="fa-solid fa-circle-check"></i> Assessment Result & Career Roadmap</div>
+            <p id="bavarianGpa" style="font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 12px;"></p>
+            <p id="roadmapAdvice" style="color: var(--text-muted); margin-bottom: 20px;"></p>
+            
+            <a id="whatsappLink" href="#" target="_blank" class="btn whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> Send Assessment to Founder &amp; CEO Sarbjit Kour in Berlin
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('fullName').value;
+    const phone = document.getElementById('phone').value;
+    const sector = document.getElementById('sector').value;
+    const german = document.getElementById('germanLevel').value;
+    const pct = parseFloat(document.getElementById('percentage').value);
+    const city = document.getElementById('city').value;
+
+    // Bavarian Formula: German GPA = 1 + 3 * (Nmax - Nd) / (Nmax - Nmin)
+    // Nmax = 100, Nmin = 40 (standard Indian passing threshold)
+    let gpa = 1 + 3 * (100 - pct) / (100 - 40);
+    gpa = Math.max(1.0, Math.min(4.0, gpa)).toFixed(2);
+
+    let gpaText = `German Grade Equivalent: ${gpa} (German Scale: 1.0 is Best, 4.0 is Passing)`;
+    let advice = "";
+
+    if (sector === "healthcare_doctor") {
+        advice = `🩺 Doctor Approbation Track: With a ${pct}% score (German ${gpa}), your degree is eligible for state medical chamber recognition. Target German Level: C1 + Fachsprachenprüfung (FSP). Expected Resident Physician starting salary: €5,200 - €6,800/mo.`;
+    } else if (sector === "healthcare_nurse") {
+        advice = `🏥 Registered Nurse Track: Eligible for direct Anerkennung in Berlin/Brandenburg hospitals under TVöD-P (€2,800 - €3,800/mo). Target German Level: B2 Pflege with 300+ speaking practice hours.`;
+    } else if (sector === "healthcare_ausbildung" || sector === "logistics" || sector === "hospitality") {
+        advice = `🎓 100% Tuition-Free Dual Ausbildung Track: Eligible for guaranteed apprenticeship contracts with €950 - €1,450/month stipend from Day 1. Target German Level: B1/B2.`;
+    } else {
+        advice = `💻 IT / Engineering Track: Direct Public University Admission (€0 tuition) or Skilled Worker Blue Card (§ 18b). Target German Level: B1/B2.`;
+    }
+
+    document.getElementById('bavarianGpa').innerText = gpaText;
+    document.getElementById('roadmapAdvice').innerText = advice;
+    
+    const waMsg = encodeURIComponent(
+        `Hello Sarbjit Ma'am! My name is ${name} from ${city}.\n` +
+        `Target Track: ${sector}\n` +
+        `Current German: ${german}\n` +
+        `Marks: ${pct}% (German GPA: ${gpa})\n` +
+        `I would like to book a 1:1 strategy audit for Berlin!`
+    );
+    document.getElementById('whatsappLink').href = `https://wa.me/4915228372894?text=${waMsg}`;
+
+    document.getElementById('resultBox').style.display = 'block';
+    document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>

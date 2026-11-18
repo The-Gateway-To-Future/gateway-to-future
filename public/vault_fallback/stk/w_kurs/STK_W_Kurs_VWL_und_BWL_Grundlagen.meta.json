@@ -1,0 +1,46 @@
+{
+  "id": "gtf-stk-w-kurs-stk_w_kurs_vwl_und_bwl_grundlagen",
+  "slug": "dossier-stk-w-kurs-stk_w_kurs_vwl_und_bwl_grundlagen",
+  "filename": "STK_W_Kurs_VWL_und_BWL_Grundlagen.pdf",
+  "title": "STK W-Kurs: Grundlagen der VWL und BWL",
+  "subtitle": "Akademisches Aufnahmeprüfungs-Dossier: Mikroökonomie, Makroökonomie, Soziale Marktwirtschaft & C-Test",
+  "courseCode": "STK-W-ECON",
+  "track": "W-Kurs",
+  "divisionId": "studienkolleg",
+  "type": "studienkolleg_dossier",
+  "level": "b2-c1",
+  "language": "de",
+  "authors": [
+    "Sarbjit Kour (Founder & CEO, Gateway To Future — Berlin)"
+  ],
+  "institution": "The Gateway to Future (GTF) Studienkolleg Akademie Berlin",
+  "address": "Ketschendorfer Weg 33, 12683 Berlin",
+  "targetExams": [
+    "Studienkolleg Aufnahmeprüfung",
+    "Feststellungsprüfung (FSP)",
+    "Hochschul-C-Test Deutsch"
+  ],
+  "priceEur": 19.0,
+  "priceInr": 1699,
+  "isFree": false,
+  "topics": [
+    "Knappheit, Bedürfnisse & Opportunitätskosten",
+    "Das ökonomische Prinzip (Maximal-/Minimalprinzip)",
+    "Preistheorie: Angebot, Nachfrage & Marktgleichgewicht",
+    "Marktformen nach Stackelberg (Polypol, Oligopol, Monopol)",
+    "Soziale Marktwirtschaft & Ordoliberalismus (Walter Eucken, Ludwig Erhard)",
+    "Makroökonomie: BIP (3 Berechnungsarten), Inflation & VPI",
+    "Europäische Zentralbank & Leitzinssteuerung",
+    "BWL Grundlagen: Rechtsformen (GmbH, AG), Bilanz & Break-Even-Point"
+  ],
+  "fileSizeBytes": 19526,
+  "generatedAt": "2026-11-11T18:49:25.045778+00:00",
+  "drivePath": "books/stk_gw_humanities/STK_W_Kurs_VWL_und_BWL_Grundlagen.pdf",
+  "qa_status": "approved",
+  "qa_audited_at": "2026-11-13T21:28:38.322096+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "pageCount": 5,
+  "wordCount": 1868,
+  "verifiedBy": "GTF Academic Directorate Berlin"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "daf_a1_hoeren_01",
+  "slug": "daf-audio-exams-daf-a1-hoeren-01",
+  "title": "A1 Hören — Am Berliner Hauptbahnhof: Gleiswechsel und Fahrkartenschalter",
+  "subtitle": "Goethe-Zertifikat A1 / telc Deutsch A1 Vorbereitung (Hören + Musterlösung)",
+  "level": "a1",
+  "topic": "Reisen, Bahnhofsdurchsagen und Fahrkartenkauf",
+  "topics": [
+    "Hörverstehen",
+    "Goethe/telc Simulation",
+    "Musterlösung",
+    "Transkript",
+    "Reisen, Bahnhofsdurchsagen und Fahrkartenkauf"
+  ],
+  "divisionId": "sprachakademie",
+  "divisionName": "German Language Academy",
+  "type": "audio_exam",
+  "transcript": "Schalterbeamtin: Guten Tag! Willkommen am Berliner Hauptbahnhof. Wie kann ich Ihnen heute helfen?\nHerr Sharma: Guten Tag. Ich muss dringend nach Potsdam zu einem Vorstellungsgespräch. Wann fährt die nächste S-Bahn dorthin?\nSchalterbeamtin: Die Linie S7 fährt in genau sieben Minuten. Aber bitte beachten Sie: Wegen kurzfristiger Bauarbeiten fährt der Zug heute nicht von Gleis 3, sondern ausnahmsweise von Gleis 16 oben ab.\nHerr Sharma: Vielen Dank für den Hinweis! Welches Ticket benötige ich dafür? Reicht der Tarifbereich Berlin AB aus?\nSchalterbeamtin: Nein, Potsdam liegt im Tarifbereich C. Sie benötigen einen Einzelfahrschein Berlin ABC. Er kostet genau 4 Euro 40 und ist ab Entwertung zwei Stunden lang gültig.\nHerr Sharma: Alles klar, hier sind fünf Euro. Vielen herzlichen Dank für Ihre Hilfe und einen schönen Tag!\nSchalterbeamtin: Hier sind sechzig Cent Rückgeld und Ihre Fahrkarte. Gute Fahrt und viel Erfolg beim Vorstellungsgespräch!",
+  "audioScript": "Schalterbeamtin: Guten Tag! Willkommen am Berliner Hauptbahnhof. Wie kann ich Ihnen heute helfen?\nHerr Sharma: Guten Tag. Ich muss dringend nach Potsdam zu einem Vorstellungsgespräch. Wann fährt die nächste S-Bahn dorthin?\nSchalterbeamtin: Die Linie S7 fährt in genau sieben Minuten. Aber bitte beachten Sie: Wegen kurzfristiger Bauarbeiten fährt der Zug heute nicht von Gleis 3, sondern ausnahmsweise von Gleis 16 oben ab.\nHerr Sharma: Vielen Dank für den Hinweis! Welches Ticket benötige ich dafür? Reicht der Tarifbereich Berlin AB aus?\nSchalterbeamtin: Nein, Potsdam liegt im Tarifbereich C. Sie benötigen einen Einzelfahrschein Berlin ABC. Er kostet genau 4 Euro 40 und ist ab Entwertung zwei Stunden lang gültig.\nHerr Sharma: Alles klar, hier sind fünf Euro. Vielen herzlichen Dank für Ihre Hilfe und einen schönen Tag!\nSchalterbeamtin: Hier sind sechzig Cent Rückgeld und Ihre Fahrkarte. Gute Fahrt und viel Erfolg beim Vorstellungsgespräch!",
+  "dialogue": [
+    {
+      "speaker": "Schalterbeamtin",
+      "voice": "female",
+      "role": "DB Schalterbeamtin (Prüferin)",
+      "text": "Guten Tag! Willkommen am Berliner Hauptbahnhof. Wie kann ich Ihnen heute helfen?"
+    },
+    {
+      "speaker": "Herr Sharma",
+      "voice": "male",
+      "role": "Reisender (Kandidat)",
+      "text": "Guten Tag. Ich muss dringend nach Potsdam zu einem Vorstellungsgespräch. Wann fährt die nächste S-Bahn dorthin?"
+    },
+    {
+      "speaker": "Schalterbeamtin",
+      "voice": "female",
+      "role": "DB Schalterbeamtin (Prüferin)",
+      "text": "Die Linie S7 fährt in genau sieben Minuten. Aber bitte beachten Sie: Wegen kurzfristiger Bauarbeiten fährt der Zug heute nicht von Gleis 3, sondern ausnahmsweise von Gleis 16 oben ab."
+    },
+    {
+      "speaker": "Herr Sharma",
+      "voice": "male",
+      "role": "Reisender (Kandidat)",
+      "text": "Vielen Dank für den Hinweis! Welches Ticket benötige ich dafür? Reicht der Tarifbereich Berlin AB aus?"
+    },
+    {
+      "speaker": "Schalterbeamtin",
+      "voice": "female",
+      "role": "DB Schalterbeamtin (Prüferin)",
+      "text": "Nein, Potsdam liegt im Tarifbereich C. Sie benötigen einen Einzelfahrschein Berlin ABC. Er kostet genau 4 Euro 40 und ist ab Entwertung zwei Stunden lang gültig."
+    },
+    {
+      "speaker": "Herr Sharma",
+      "voice": "male",
+      "role": "Reisender (Kandidat)",
+      "text": "Alles klar, hier sind fünf Euro. Vielen herzlichen Dank für Ihre Hilfe und einen schönen Tag!"
+    },
+    {
+      "speaker": "Schalterbeamtin",
+      "voice": "female",
+      "role": "DB Schalterbeamtin (Prüferin)",
+      "text": "Hier sind sechzig Cent Rückgeld und Ihre Fahrkarte. Gute Fahrt und viel Erfolg beim Vorstellungsgespräch!"
+    }
+  ],
+  "audioFile": "daf_a1_hoeren_01.mp3",
+  "audioPath": "/vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_01.mp3",
+  "audioSizeBytes": 1021004,
+  "audioBitrate": "192kbps",
+  "pdfFile": "daf_a1_hoeren_01.pdf",
+  "pdfPath": "/vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_01.pdf",
+  "pdfSizeBytes": 14190,
+  "jsonFile": "daf_a1_hoeren_01.json",
+  "pageCount": 5,
+  "wordCount": 1287,
+  "isFree": true,
+  "priceEur": 14.99,
+  "priceInr": 1399,
+  "qa_status": "approved",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "generated_at": "2026-11-13T21:23:28.170878+00:00",
+  "updatedAt": "2026-11-13T21:23:28.170878+00:00",
+  "qa_audited_at": "2026-11-13T21:28:36.300168+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor"
+}

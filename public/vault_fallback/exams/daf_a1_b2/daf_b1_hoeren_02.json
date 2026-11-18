@@ -1,0 +1,114 @@
+{
+  "id": "daf_b1_hoeren_02",
+  "level": "B1",
+  "examType": "Goethe-Zertifikat B1 / telc Deutsch B1",
+  "title": "B1 Hören — Universitätsleben an der TU Berlin und nachhaltige Umweltgewohnheiten",
+  "topic": "Hochschulalltag, studentische Nachhaltigkeit, Mülltrennung und Mobilität",
+  "audio": {
+    "fileName": "daf_b1_hoeren_02.mp3",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_02.mp3",
+    "sizeBytes": 1477004,
+    "bitrate": "192kbps",
+    "format": "mp3"
+  },
+  "pdf": {
+    "fileName": "daf_b1_hoeren_02.pdf",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_02.pdf",
+    "sizeBytes": 14893,
+    "format": "pdf"
+  },
+  "transcript": "Campus-Reporterin: Willkommen zu unserem Campus-Report der TU Berlin! Wir sprechen heute mit internationalen Studierenden über ihren Alltag in Berlin und ihr Engagement für den Klimaschutz. Bei mir ist Rohan aus Mumbai, der im dritten Semester Maschinenbau studiert.\nStudent Rohan: Hallo! Als ich vor einem Jahr nach Berlin kam, war die Umstellung auf das deutsche Universitätssystem zunächst eine Herausforderung. Besonders überrascht hat mich jedoch das ausgeprägte Umweltbewusstsein auf dem Campus Charlottenburg.\nCampus-Reporterin: Worin zeigt sich diese Nachhaltigkeit ganz konkret im studentischen Alltag?\nStudent Rohan: Das fängt schon bei der Mülltrennung in den Studentenwohnheimen an, die sehr strikt nach Papier, Bioabfall, Plastik und Restmüll erfolgt. Zudem nutzen fast alle Studierenden das Deutschlandticket für den öffentlichen Nahverkehr oder das Fahrrad. Auf dem Campus gibt es eine studentische Fahrradwerkstatt, in der man Räder kostenlos reparieren kann.\nCampus-Reporterin: Auch in der Mensa hat sich in den letzten Semestern einiges verändert. Was sind dort die beliebtesten Angebote?\nStudent Rohan: Die vegetarische und vegane Mensa 'Veggie No. 1' ist mittags immer voll. Rund siebzig Prozent der angebotenen Gerichte sind mittlerweile pflanzlich und stammen aus regionalem Bio-Anbau. Das schont nicht nur die Umwelt, sondern ist mit 2 Euro 80 pro Menü auch sehr bezahlbar für Studierende.",
+  "dialogue": [
+    {
+      "speaker": "Campus-Reporterin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin Campus TV (Prüferin)",
+      "text": "Willkommen zu unserem Campus-Report der TU Berlin! Wir sprechen heute mit internationalen Studierenden über ihren Alltag in Berlin und ihr Engagement für den Klimaschutz. Bei mir ist Rohan aus Mumbai, der im dritten Semester Maschinenbau studiert."
+    },
+    {
+      "speaker": "Student Rohan",
+      "voice": "male",
+      "role": "Masterstudent TU Berlin (Kandidat)",
+      "text": "Hallo! Als ich vor einem Jahr nach Berlin kam, war die Umstellung auf das deutsche Universitätssystem zunächst eine Herausforderung. Besonders überrascht hat mich jedoch das ausgeprägte Umweltbewusstsein auf dem Campus Charlottenburg."
+    },
+    {
+      "speaker": "Campus-Reporterin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin Campus TV (Prüferin)",
+      "text": "Worin zeigt sich diese Nachhaltigkeit ganz konkret im studentischen Alltag?"
+    },
+    {
+      "speaker": "Student Rohan",
+      "voice": "male",
+      "role": "Masterstudent TU Berlin (Kandidat)",
+      "text": "Das fängt schon bei der Mülltrennung in den Studentenwohnheimen an, die sehr strikt nach Papier, Bioabfall, Plastik und Restmüll erfolgt. Zudem nutzen fast alle Studierenden das Deutschlandticket für den öffentlichen Nahverkehr oder das Fahrrad. Auf dem Campus gibt es eine studentische Fahrradwerkstatt, in der man Räder kostenlos reparieren kann."
+    },
+    {
+      "speaker": "Campus-Reporterin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin Campus TV (Prüferin)",
+      "text": "Auch in der Mensa hat sich in den letzten Semestern einiges verändert. Was sind dort die beliebtesten Angebote?"
+    },
+    {
+      "speaker": "Student Rohan",
+      "voice": "male",
+      "role": "Masterstudent TU Berlin (Kandidat)",
+      "text": "Die vegetarische und vegane Mensa 'Veggie No. 1' ist mittags immer voll. Rund siebzig Prozent der angebotenen Gerichte sind mittlerweile pflanzlich und stammen aus regionalem Bio-Anbau. Das schont nicht nur die Umwelt, sondern ist mit 2 Euro 80 pro Menü auch sehr bezahlbar für Studierende."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Welche studentische Initiative zur nachhaltigen Mobilität erwähnt Rohan?",
+      "options": [
+        "Einen kostenlosen universitären E-Scooter-Verleih",
+        "Eine Do-It-Yourself Fahrradwerkstatt zur kostenlosen Reparatur",
+        "Einen Shuttleservice zwischen den Campus-Standorten"
+      ],
+      "correct_answer": "Eine Do-It-Yourself Fahrradwerkstatt zur kostenlosen Reparatur",
+      "explanation": "Rohan erwähnt ausdrücklich die studentische Fahrradwerkstatt auf dem Campus zur kostenfreien Reparatur."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Welcher Anteil des Essensangebots in der Mensa ist mittlerweile pflanzlich?",
+      "options": [
+        "Rund 30 Prozent",
+        "Rund 50 Prozent",
+        "Rund 70 Prozent"
+      ],
+      "correct_answer": "Rund 70 Prozent",
+      "explanation": "Rohan nennt die Zahl von rund siebzig Prozent pflanzlichen Bio-Gerichten."
+    },
+    {
+      "id": "q3",
+      "type": "richtig_falsch",
+      "statement": "Für das studentische Menü in der Mensa zahlen Studierende durchschnittlich 6 Euro 50.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correct_answer": "Falsch",
+      "explanation": "Rohan nennt ausdrücklich den günstigen Preis von 2 Euro 80 pro Menü."
+    }
+  ],
+  "sprechen_prompt": {
+    "part": "Teil 2: Gemeinsam etwas planen",
+    "theme": "Umweltschutz an der Universität",
+    "task": "Planen Sie mit einem Kommilitonen eine Informationsveranstaltung zur Müllvermeidung und nachhaltigen Ernährung am Campus."
+  },
+  "schreiben_prompt": {
+    "part": "Teil 1: Eine persönliche E-Mail",
+    "task": "Schreiben Sie an einen Freund in Ihrer Heimat (ca. 80 Wörter): Berichten Sie über Ihre Erfahrungen mit Mülltrennung und Fahrradfahren in Berlin."
+  },
+  "musterloesung": {
+    "sprechen": "Wir sollten ein Plakat in der Mensa aufhängen und einen Workshop organisieren, in dem wir zeigen, wie man Verpackungsmüll beim Einkaufen reduziert.",
+    "schreiben": "Lieber Vikram,\nmein Studium an der TU Berlin läuft sehr gut. Beeindruckt bin ich von den nachhaltigen Gewohnheiten der Menschen hier. Überall trennt man den Müll sorgfältig und fast jeder fährt mit dem Fahrrad oder der U-Bahn. Das Essen in der Bio-Mensa schmeckt hervorragend und ist mit unter drei Euro unschlagbar günstig.\nHerzliche Grüße,\nRohan",
+    "examiner_rubric": "B1 Sprachkompetenz: Themenspezifischer Wortschatz (Mülltrennung, Bio-Anbau, Mobilität), korrekte Rektion der Verben und kohärente Konjunktionen.",
+    "detailed_justifications": "Frage 1: Option B ist durch die Fahrradwerkstatt belegt. Frage 2: Option C (70%) ist die genannte Quote. Frage 3: 'Falsch', der Preis liegt bei 2,80 Euro."
+  },
+  "status": "completed",
+  "qa_status": "approved",
+  "generated_at": "2026-11-13T21:25:52.883296+00:00"
+}

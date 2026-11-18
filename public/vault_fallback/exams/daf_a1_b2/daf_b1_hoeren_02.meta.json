@@ -1,0 +1,78 @@
+{
+  "id": "daf_b1_hoeren_02",
+  "slug": "daf-audio-exams-daf-b1-hoeren-02",
+  "title": "B1 Hören — Universitätsleben an der TU Berlin und nachhaltige Umweltgewohnheiten",
+  "subtitle": "Goethe-Zertifikat B1 / telc Deutsch B1 Vorbereitung (Hören + Musterlösung)",
+  "level": "b1",
+  "topic": "Hochschulalltag, studentische Nachhaltigkeit, Mülltrennung und Mobilität",
+  "topics": [
+    "Hörverstehen",
+    "Goethe/telc Simulation",
+    "Musterlösung",
+    "Transkript",
+    "Hochschulalltag, studentische Nachhaltigkeit, Mülltrennung und Mobilität"
+  ],
+  "divisionId": "sprachakademie",
+  "divisionName": "German Language Academy",
+  "type": "audio_exam",
+  "transcript": "Campus-Reporterin: Willkommen zu unserem Campus-Report der TU Berlin! Wir sprechen heute mit internationalen Studierenden über ihren Alltag in Berlin und ihr Engagement für den Klimaschutz. Bei mir ist Rohan aus Mumbai, der im dritten Semester Maschinenbau studiert.\nStudent Rohan: Hallo! Als ich vor einem Jahr nach Berlin kam, war die Umstellung auf das deutsche Universitätssystem zunächst eine Herausforderung. Besonders überrascht hat mich jedoch das ausgeprägte Umweltbewusstsein auf dem Campus Charlottenburg.\nCampus-Reporterin: Worin zeigt sich diese Nachhaltigkeit ganz konkret im studentischen Alltag?\nStudent Rohan: Das fängt schon bei der Mülltrennung in den Studentenwohnheimen an, die sehr strikt nach Papier, Bioabfall, Plastik und Restmüll erfolgt. Zudem nutzen fast alle Studierenden das Deutschlandticket für den öffentlichen Nahverkehr oder das Fahrrad. Auf dem Campus gibt es eine studentische Fahrradwerkstatt, in der man Räder kostenlos reparieren kann.\nCampus-Reporterin: Auch in der Mensa hat sich in den letzten Semestern einiges verändert. Was sind dort die beliebtesten Angebote?\nStudent Rohan: Die vegetarische und vegane Mensa 'Veggie No. 1' ist mittags immer voll. Rund siebzig Prozent der angebotenen Gerichte sind mittlerweile pflanzlich und stammen aus regionalem Bio-Anbau. Das schont nicht nur die Umwelt, sondern ist mit 2 Euro 80 pro Menü auch sehr bezahlbar für Studierende.",
+  "audioScript": "Campus-Reporterin: Willkommen zu unserem Campus-Report der TU Berlin! Wir sprechen heute mit internationalen Studierenden über ihren Alltag in Berlin und ihr Engagement für den Klimaschutz. Bei mir ist Rohan aus Mumbai, der im dritten Semester Maschinenbau studiert.\nStudent Rohan: Hallo! Als ich vor einem Jahr nach Berlin kam, war die Umstellung auf das deutsche Universitätssystem zunächst eine Herausforderung. Besonders überrascht hat mich jedoch das ausgeprägte Umweltbewusstsein auf dem Campus Charlottenburg.\nCampus-Reporterin: Worin zeigt sich diese Nachhaltigkeit ganz konkret im studentischen Alltag?\nStudent Rohan: Das fängt schon bei der Mülltrennung in den Studentenwohnheimen an, die sehr strikt nach Papier, Bioabfall, Plastik und Restmüll erfolgt. Zudem nutzen fast alle Studierenden das Deutschlandticket für den öffentlichen Nahverkehr oder das Fahrrad. Auf dem Campus gibt es eine studentische Fahrradwerkstatt, in der man Räder kostenlos reparieren kann.\nCampus-Reporterin: Auch in der Mensa hat sich in den letzten Semestern einiges verändert. Was sind dort die beliebtesten Angebote?\nStudent Rohan: Die vegetarische und vegane Mensa 'Veggie No. 1' ist mittags immer voll. Rund siebzig Prozent der angebotenen Gerichte sind mittlerweile pflanzlich und stammen aus regionalem Bio-Anbau. Das schont nicht nur die Umwelt, sondern ist mit 2 Euro 80 pro Menü auch sehr bezahlbar für Studierende.",
+  "dialogue": [
+    {
+      "speaker": "Campus-Reporterin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin Campus TV (Prüferin)",
+      "text": "Willkommen zu unserem Campus-Report der TU Berlin! Wir sprechen heute mit internationalen Studierenden über ihren Alltag in Berlin und ihr Engagement für den Klimaschutz. Bei mir ist Rohan aus Mumbai, der im dritten Semester Maschinenbau studiert."
+    },
+    {
+      "speaker": "Student Rohan",
+      "voice": "male",
+      "role": "Masterstudent TU Berlin (Kandidat)",
+      "text": "Hallo! Als ich vor einem Jahr nach Berlin kam, war die Umstellung auf das deutsche Universitätssystem zunächst eine Herausforderung. Besonders überrascht hat mich jedoch das ausgeprägte Umweltbewusstsein auf dem Campus Charlottenburg."
+    },
+    {
+      "speaker": "Campus-Reporterin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin Campus TV (Prüferin)",
+      "text": "Worin zeigt sich diese Nachhaltigkeit ganz konkret im studentischen Alltag?"
+    },
+    {
+      "speaker": "Student Rohan",
+      "voice": "male",
+      "role": "Masterstudent TU Berlin (Kandidat)",
+      "text": "Das fängt schon bei der Mülltrennung in den Studentenwohnheimen an, die sehr strikt nach Papier, Bioabfall, Plastik und Restmüll erfolgt. Zudem nutzen fast alle Studierenden das Deutschlandticket für den öffentlichen Nahverkehr oder das Fahrrad. Auf dem Campus gibt es eine studentische Fahrradwerkstatt, in der man Räder kostenlos reparieren kann."
+    },
+    {
+      "speaker": "Campus-Reporterin",
+      "voice": "female",
+      "role": "Wissenschaftsjournalistin Campus TV (Prüferin)",
+      "text": "Auch in der Mensa hat sich in den letzten Semestern einiges verändert. Was sind dort die beliebtesten Angebote?"
+    },
+    {
+      "speaker": "Student Rohan",
+      "voice": "male",
+      "role": "Masterstudent TU Berlin (Kandidat)",
+      "text": "Die vegetarische und vegane Mensa 'Veggie No. 1' ist mittags immer voll. Rund siebzig Prozent der angebotenen Gerichte sind mittlerweile pflanzlich und stammen aus regionalem Bio-Anbau. Das schont nicht nur die Umwelt, sondern ist mit 2 Euro 80 pro Menü auch sehr bezahlbar für Studierende."
+    }
+  ],
+  "audioFile": "daf_b1_hoeren_02.mp3",
+  "audioPath": "/vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_02.mp3",
+  "audioSizeBytes": 1477004,
+  "audioBitrate": "192kbps",
+  "pdfFile": "daf_b1_hoeren_02.pdf",
+  "pdfPath": "/vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_02.pdf",
+  "pdfSizeBytes": 14893,
+  "jsonFile": "daf_b1_hoeren_02.json",
+  "pageCount": 5,
+  "wordCount": 1384,
+  "isFree": false,
+  "priceEur": 14.99,
+  "priceInr": 1399,
+  "qa_status": "approved",
+  "qa_verdict": "PASSED ALL 5 CHECKS: Verified Textbook-Grade Quality",
+  "verifiedBy": "GTF Academic Directorate Berlin",
+  "generated_at": "2026-11-13T21:25:52.881291+00:00",
+  "updatedAt": "2026-11-13T21:25:52.881291+00:00",
+  "qa_audited_at": "2026-11-13T21:28:37.088147+00:00",
+  "qa_auditor": "EMP-10: Strict Quality Assurance Director & Academic Auditor"
+}

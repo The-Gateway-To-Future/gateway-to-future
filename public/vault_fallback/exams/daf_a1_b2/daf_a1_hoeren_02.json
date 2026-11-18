@@ -1,0 +1,120 @@
+{
+  "id": "daf_a1_hoeren_02",
+  "level": "A1",
+  "examType": "Goethe-Zertifikat A1 / telc Deutsch A1",
+  "title": "A1 Hören — In der Bäckerei und Arztterminvereinbarung in Berlin-Mitte",
+  "topic": "Alltag, Einkaufen in der Bäckerei und Arztterminvereinbarung",
+  "audio": {
+    "fileName": "daf_a1_hoeren_02.mp3",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_02.mp3",
+    "sizeBytes": 591404,
+    "bitrate": "192kbps",
+    "format": "mp3"
+  },
+  "pdf": {
+    "fileName": "daf_a1_hoeren_02.pdf",
+    "relativePath": "/vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_02.pdf",
+    "sizeBytes": 13866,
+    "format": "pdf"
+  },
+  "transcript": "Bäcker: Guten Morgen! Der Nächste bitte! Was darf es für Sie sein?\nFrau Kaur: Guten Morgen. Ich hätte gern drei Vollkornbrötchen und ein Stück Apfelkuchen, bitte.\nBäcker: Sehr gerne. Der Apfelkuchen ist heute ganz frisch gebacken. Möchten Sie noch einen Kaffee zum Mitnehmen dazu?\nFrau Kaur: Nein danke, nur die Backwaren. Ich habe gleich um zehn Uhr einen Termin beim Arzt in der Praxis Dr. Weber.\nBäcker: Das macht zusammen 5 Euro 20, bitte. Zahlen Sie bar oder mit Karte?\nFrau Kaur: Mit Karte, bitte. Hier ist meine EC-Karte. Schönen Tag noch!\nBäcker: Vielen Dank, die Zahlung hat geklappt. Auf Wiedersehen und gute Besserung beim Arzt!",
+  "dialogue": [
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Guten Morgen! Der Nächste bitte! Was darf es für Sie sein?"
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Kundin (Prüferin)",
+      "text": "Guten Morgen. Ich hätte gern drei Vollkornbrötchen und ein Stück Apfelkuchen, bitte."
+    },
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Sehr gerne. Der Apfelkuchen ist heute ganz frisch gebacken. Möchten Sie noch einen Kaffee zum Mitnehmen dazu?"
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Kundin (Prüferin)",
+      "text": "Nein danke, nur die Backwaren. Ich habe gleich um zehn Uhr einen Termin beim Arzt in der Praxis Dr. Weber."
+    },
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Das macht zusammen 5 Euro 20, bitte. Zahlen Sie bar oder mit Karte?"
+    },
+    {
+      "speaker": "Frau Kaur",
+      "voice": "female",
+      "role": "Kundin (Prüferin)",
+      "text": "Mit Karte, bitte. Hier ist meine EC-Karte. Schönen Tag noch!"
+    },
+    {
+      "speaker": "Bäcker",
+      "voice": "male",
+      "role": "Bäcker am Alexanderplatz (Kandidat)",
+      "text": "Vielen Dank, die Zahlung hat geklappt. Auf Wiedersehen und gute Besserung beim Arzt!"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "question": "Was bestellt die Kundin in der Bäckerei?",
+      "options": [
+        "Zwei Croissants und einen Kaffee",
+        "Drei Vollkornbrötchen und Apfelkuchen",
+        "Ein Vollkornbrot"
+      ],
+      "correct_answer": "Drei Vollkornbrötchen und Apfelkuchen",
+      "explanation": "Frau Kaur bestellt drei Vollkornbrötchen und ein Stück Apfelkuchen."
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "question": "Um wie viel Uhr hat die Kundin ihren Termin in der Arztpraxis?",
+      "options": [
+        "Um 9:30 Uhr",
+        "Um 10:00 Uhr",
+        "Um 11:15 Uhr"
+      ],
+      "correct_answer": "Um 10:00 Uhr",
+      "explanation": "Sie erwähnt ausdrücklich ihren Arzttermin um zehn Uhr bei Dr. Weber."
+    },
+    {
+      "id": "q3",
+      "type": "richtig_falsch",
+      "statement": "Die Kundin bezahlt den Betrag von 5 Euro 20 mit Bargeld.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correct_answer": "Falsch",
+      "explanation": "Frau Kaur bezahlt bargeldlos mit ihrer EC-Karte."
+    }
+  ],
+  "sprechen_prompt": {
+    "part": "Teil 1: Sich vorstellen und Einkaufen",
+    "theme": "Einkaufen in der Bäckerei",
+    "task": "Bestellen Sie beim Bäcker Brötchen und fragen Sie nach dem Gesamtpreis."
+  },
+  "schreiben_prompt": {
+    "part": "Teil 1: Formular ausfüllen & Notiz",
+    "task": "Schreiben Sie eine kurze Nachricht an die Arztpraxis: Sie kommen zum Termin um 10 Uhr und bringen Ihre Versichertenkarte mit."
+  },
+  "musterloesung": {
+    "sprechen": "Guten Tag! Ich hätte gern vier Brötchen und ein Stück Kuchen. Was kostet das zusammen? Kann ich mit Karte bezahlen?",
+    "schreiben": "Guten Tag Praxis Dr. Weber,\nich bestätige meinen Termin heute um 10:00 Uhr. Meine elektronische Gesundheitskarte bringe ich mit.\nFreundliche Grüße,\nSarbjit Kaur",
+    "examiner_rubric": "Goethe/telc A1 Kriterien: Korrekte Mengenangaben, Höflichkeitsfloskeln und elementare Satzstrukturen.",
+    "detailed_justifications": "Frage 1: Option B ist wörtlich im Dialog belegt. Frage 2: Option B (10:00 Uhr) wird exakt genannt. Frage 3: 'Falsch' ist korrekt, da mit Karte gezahlt wird."
+  },
+  "status": "completed",
+  "qa_status": "approved",
+  "generated_at": "2026-11-13T21:23:45.752353+00:00"
+}

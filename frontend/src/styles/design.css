@@ -70,6 +70,7 @@ body {
 .bg-glow-1 {
   position: absolute;
   width: 700px;
+  max-width: 100vw;
   height: 700px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(170, 59, 255, 0.18) 0%, rgba(0,0,0,0) 70%);
@@ -80,6 +81,7 @@ body {
 .bg-glow-2 {
   position: absolute;
   width: 600px;
+  max-width: 100vw;
   height: 600px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, rgba(0,0,0,0) 70%);

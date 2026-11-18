@@ -1,0 +1,609 @@
+{
+  "quizId": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01",
+  "chapterId": "stk_de_tu_berlin_set01",
+  "chapterStem": "STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01",
+  "title": "GTF Interaktives Quiz & C-Test • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
+  "level": "b1",
+  "domain": "stk_aufnahme_deutsch",
+  "division": "Studienkolleg Hub",
+  "questionCount": 15,
+  "createdAt": "2026-11-11T19:21:52.564544+00:00",
+  "institution": "The Gateway to Future (GTF) Berlin",
+  "questions": [
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-01",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-02",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-03",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-04",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-05",
+      "type": "drag_drop_order",
+      "prompt": "Bringen Sie die Fachbegriffe für 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' in die grammatikalisch korrekte Reihenfolge:",
+      "difficulty": "medium",
+      "points": 2,
+      "tokens": [
+        "wenden an",
+        "Die Fachkräfte",
+        "in der Berliner Praxis",
+        "diesen Standard"
+      ],
+      "correctOrder": [
+        "Die Fachkräfte",
+        "wenden an",
+        "diesen Standard",
+        "in der Berliner Praxis"
+      ],
+      "alternativeOrders": [
+        [
+          "In der Berliner Praxis",
+          "wenden an",
+          "die Fachkräfte",
+          "diesen Standard"
+        ]
+      ],
+      "targetSentence": "Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.",
+      "rule": "Fachsprachlicher Satzbau mit Verbzweitstellung.",
+      "explanation": "Musterlösung: 'Die Fachkräfte wenden diesen Standard in der Berliner Praxis an.' Subjekt + finites Verb auf Pos 2.",
+      "examTip": "Satzbau gründlich prüfen: Finites Verb auf Position 2!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-06",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-07",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-08",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-09",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-10",
+      "type": "c_test",
+      "prompt": "Authentischer C-Test: Ergänzen Sie die Wortenden nach dem Halbwort-Prinzip für Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation:",
+      "difficulty": "medium",
+      "points": 4,
+      "passageContext": "Praxisanwendung: Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
+      "textWithGaps": "In die____ Modul ler____ die Teilne______ wichtige Grundla____ für ih____ berufliche Zuku____ in Deutschland.",
+      "gaps": [
+        {
+          "gapIndex": 1,
+          "prefix": "die",
+          "solution": "sem",
+          "fullWord": "diesem",
+          "hint": "Dativ maskulin/neutral"
+        },
+        {
+          "gapIndex": 2,
+          "prefix": "ler",
+          "solution": "nen",
+          "fullWord": "lernen",
+          "hint": "Verb lernen Plural"
+        },
+        {
+          "gapIndex": 3,
+          "prefix": "Teilne",
+          "solution": "hmer",
+          "fullWord": "Teilnehmer",
+          "hint": "Nomen: die Teilnehmer"
+        },
+        {
+          "gapIndex": 4,
+          "prefix": "Grundla",
+          "solution": "gen",
+          "fullWord": "Grundlagen",
+          "hint": "Nomen: Grundlagen Plural"
+        },
+        {
+          "gapIndex": 5,
+          "prefix": "ih",
+          "solution": "re",
+          "fullWord": "ihre",
+          "hint": "Possessivartikel"
+        },
+        {
+          "gapIndex": 6,
+          "prefix": "Zuku",
+          "solution": "nft",
+          "fullWord": "Zukunft",
+          "hint": "Nomen: die Zukunft"
+        }
+      ],
+      "fullText": "In diesem Modul lernen die Teilnehmer wichtige Grundlagen für ihre berufliche Zukunft in Deutschland.",
+      "explanation": "Musterlösung: 1. sem (diesem) | 2. nen (lernen) | 3. hmer (Teilnehmer) | 4. gen (Grundlagen) | 5. re (ihre) | 6. nft (Zukunft).",
+      "examTip": "Ergänze fehlende Wortenden stets passend zum grammatikalischen Kasus!"
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-11",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-12",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-13",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-14",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    },
+    {
+      "id": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01-15",
+      "type": "mcq",
+      "prompt": "Welche Aussage trifft auf die Standards von 'Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation' zu?",
+      "difficulty": "easy",
+      "points": 1,
+      "options": [
+        {
+          "id": "a",
+          "text": "Alle Standards müssen präzise nach den Vorgaben dokumentiert werden.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dokumentationen sind im Alltag optional.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Die Fachbegriffe weichen von den deutschen Prüfungsnormen ab.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Eine mündliche Bestätigung reicht immer aus.",
+          "isCorrect": false
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterlösung: Option (a) ist korrekt. Im deutschen Berufs- und Prüfungssystem ist die präzise Dokumentation gemäß geltenden Standards verbindlich.",
+      "examTip": "Sicherheit und Nachvollziehbarkeit haben im deutschen System oberste Priorität."
+    }
+  ]
+}

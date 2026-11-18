@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTF Candidate Portal & Learning Tracker | Berlin Mobility</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0F4C81;
+            --primary-dark: #0A3358;
+            --secondary: #2A9D8F;
+            --accent: #E76F51;
+            --gold: #FFD166;
+            --dark: #0F172A;
+            --card-bg: #1E293B;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+        }
+        .status-badge {
+            background: rgba(42, 157, 143, 0.2);
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .stat-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 5px 0;
+        }
+        .stat-lbl {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .candidate-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .candidate-row:last-child { border-bottom: none; }
+        .cand-name { font-weight: 600; color: #fff; font-size: 1.05rem; }
+        .cand-sub { color: var(--text-muted); font-size: 0.85rem; }
+        .match-tag {
+            background: rgba(15, 76, 129, 0.4);
+            color: #60A5FA;
+            border: 1px solid #3B82F6;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            height: 8px;
+            width: 100%;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, var(--secondary), var(--gold));
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>GTF Candidate Lifecycle Portal</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">The Gateway to Future (GTF) Berlin • Real-Time Pipeline Hub</p>
+        </div>
+        <div class="status-badge"><i class="fa-solid fa-circle-check"></i> System Operational (100% Zero-Error)</div>
+    </div>
+
+    <div class="grid-3">
+        <div class="stat-card">
+            <div class="stat-lbl"><i class="fa-solid fa-users"></i> Enrolled Candidates</div>
+            <div class="stat-val">5 Active</div>
+            <div class="stat-lbl">Assigned to Berlin leadership</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-lbl"><i class="fa-solid fa-hospital"></i> Matched Employer Partners</div>
+            <div class="stat-val">3 Networks</div>
+            <div class="stat-lbl">Vivantes, DHL Hub, Motel One</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-lbl"><i class="fa-solid fa-award"></i> Goethe/telc Pass Rate Floor</div>
+            <div class="stat-val">94%+</div>
+            <div class="stat-lbl">300+ Speaking Practice Hours</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-title"><i class="fa-solid fa-clipboard-check"></i> Active Candidate Roster & Match Status</div>
+        
+        <div class="candidate-row">
+            <div>
+                <div class="cand-name">Dr. Rohan Gupta</div>
+                <div class="cand-sub">MBBS ➔ Medical Approbation & FSP Track</div>
+            </div>
+            <div style="text-align: right;">
+                <span class="match-tag">95% Match ➔ Vivantes Berlin</span>
+                <div class="cand-sub" style="margin-top: 4px;">Mentor: Sarbjit Kour (Founder &amp; CEO)</div>
+            </div>
+        </div>
+
+        <div class="candidate-row">
+            <div>
+                <div class="cand-name">Priya Patel</div>
+                <div class="cand-sub">B.Sc Nursing (GPA: 2.17) ➔ Pflegefachkraft Recognition</div>
+            </div>
+            <div style="text-align: right;">
+                <span class="match-tag">95% Match ➔ Vivantes Berlin</span>
+                <div class="cand-sub" style="margin-top: 4px;">Mentor: Sarbjit Kour (Founder &amp; CEO)</div>
+            </div>
+        </div>
+
+        <div class="candidate-row">
+            <div>
+                <div class="cand-name">Dr. Rohan Mukherjee</div>
+                <div class="cand-sub">MBBS (GPA: 2.59) ➔ Assistenzarzt Approbation</div>
+            </div>
+            <div style="text-align: right;">
+                <span class="match-tag">90% Match ➔ Vivantes Berlin</span>
+                <div class="cand-sub" style="margin-top: 4px;">Mentor: Sarbjit Kour (Founder &amp; CEO)</div>
+            </div>
+        </div>
+
+        <div class="candidate-row">
+            <div>
+                <div class="cand-name">Amit Kumar Verma</div>
+                <div class="cand-sub">Class 12 PCM (GPA: 2.30) ➔ Mechatronics Dual Ausbildung</div>
+            </div>
+            <div style="text-align: right;">
+                <span class="match-tag">90% Match ➔ DHL Freight Hub</span>
+                <div class="cand-sub" style="margin-top: 4px;">Mentor: Sarbjit Kour (Founder &amp; CEO)</div>
+            </div>
+        </div>
+
+        <div class="candidate-row">
+            <div>
+                <div class="cand-name">Ananya Nair</div>
+                <div class="cand-sub">B.Sc Hotel Mgmt (GPA: 1.95) ➔ Hotelfach Dual Ausbildung</div>
+            </div>
+            <div style="text-align: right;">
+                <span class="match-tag">98% Match ➔ Motel One Berlin</span>
+                <div class="cand-sub" style="margin-top: 4px;">Mentor: Sarbjit Kour</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-title"><i class="fa-solid fa-shield-halved"></i> 7-Stage Mobility Milestone Progress</div>
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                <span>Stage 1: Intake & anabin Profile Verification</span>
+                <strong style="color: var(--secondary);">100% Completed</strong>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                <span>Stage 2: German Language Coaching (A1–B2/C1, 300+ Oral Hours)</span>
+                <strong style="color: var(--gold);">In Progress (Active Batches)</strong>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                <span>Stage 3: APS DigiLocker Audit & Legalization</span>
+                <strong style="color: #60A5FA;">Pre-Audited (SOP-MOB-012)</strong>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+        </div>
+        <div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                <span>Stage 4: B2B Hospital Matching & § 81a Fast-Track Dossiers</span>
+                <strong style="color: var(--secondary);">5 Dossiers Generated</strong>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
