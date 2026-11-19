@@ -14,11 +14,11 @@ interface CeoPortraitCardProps {
  * as Founder & CEO, Gateway To Future.
  */
 export function CeoPortraitCard({ compact = false }: CeoPortraitCardProps) {
-  const [imgSrc, setImgSrc] = useState<string>("/public/images/ceo-sarbjit-kour.jpg");
+  const [imgSrc, setImgSrc] = useState<string>("/sarbjit-ceo.jpg");
 
   const handleImageError = () => {
-    if (imgSrc !== "/images/ceo-sarbjit-kour.jpg") {
-      setImgSrc("/images/ceo-sarbjit-kour.jpg");
+    if (imgSrc !== "/assets/images/sarbjit-ceo.jpg") {
+      setImgSrc("/assets/images/sarbjit-ceo.jpg");
     }
   };
 

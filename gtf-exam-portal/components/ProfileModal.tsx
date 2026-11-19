@@ -179,13 +179,13 @@ export function ProfileModal({ isOpen, onClose, onEmailChanged }: ProfileModalPr
               <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
                 <div className="flex items-center gap-3">
                   <img
-                    src="/public/images/ceo-sarbjit-kour.jpg"
+                    src="/sarbjit-ceo.jpg"
                     alt="Sarbjit Kour — Founder & CEO, Gateway To Future"
                     onError={(e) => {
                       const img = e.currentTarget;
                       if (!img.dataset.fallback) {
                         img.dataset.fallback = "1";
-                        img.src = "/images/ceo-sarbjit-kour.jpg";
+                        img.src = "/assets/images/sarbjit-ceo.jpg";
                       }
                     }}
                     className="h-12 w-12 rounded-xl border border-slate-200 object-cover object-top shrink-0"

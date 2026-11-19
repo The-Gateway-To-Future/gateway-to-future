@@ -9,7 +9,7 @@ export const BRAND = {
   tagline: "Creating Career Without Borders",
   founderName: "Sarbjit Kour",
   founderTitle: "Founder & CEO, Gateway To Future",
-  founderImage: "/public/images/ceo-sarbjit-kour.jpg",
+  founderImage: "/sarbjit-ceo.jpg",
   supportEmail: "info@gatewaytofuture.com",
   website: "https://www.gatewaytofuture.com",
   appUrl: "https://app.gatewaytofuture.com",

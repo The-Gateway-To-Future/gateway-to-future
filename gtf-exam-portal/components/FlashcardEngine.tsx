@@ -182,11 +182,11 @@ function fisherYatesShuffle(
     arr[j] = tmp;
   }
 
-  if (arr.length > 4 && recentIds.length > 0) {
-    const recentSet = new Set(recentIds.slice(-3));
+  if (arr.length > 5 && recentIds.length > 0) {
+    const recentSet = new Set(recentIds.slice(-5));
     const midStart = Math.floor(arr.length / 2);
-    for (const topPos of [0, 1]) {
-      if (recentSet.has(arr[topPos].id)) {
+    for (const topPos of [0, 1, 2]) {
+      if (topPos < arr.length && recentSet.has(arr[topPos].id)) {
         const swapIdx = arr.findIndex(
           (candidate, idx) => idx >= midStart && !recentSet.has(candidate.id),
         );
@@ -701,7 +701,7 @@ function FlashcardEngineInner({
             >
               <EyeOff className="h-3.5 w-3.5" />
               <span key={`toggle-hide-${unmasteredCount}`}>
-                {`Active Queue (Unmastered · ${unmasteredCount})`}
+                {`Hide Mastered (${unmasteredCount})`}
               </span>
             </button>
             <button
