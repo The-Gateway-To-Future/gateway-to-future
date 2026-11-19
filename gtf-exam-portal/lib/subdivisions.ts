@@ -300,9 +300,17 @@ export function getSubdivisionsForLevel(
 
   const vocabCount =
     1 + levelWorkbooks.filter((w) => Array.isArray(w.flashcards) && w.flashcards.length > 0).length;
-  const grammarWorkbooks = levelWorkbooks.filter((w) => classifyWorkbookModule(w) === "02-grammar");
+  const grammarWorkbooks = levelWorkbooks.filter(
+    (w) =>
+      classifyWorkbookModule(w) === "02-grammar" ||
+      w.title.toLowerCase().startsWith(`${info.levelKey} grammatik`),
+  );
   const labWorkbooks = levelWorkbooks.filter((w) => classifyWorkbookModule(w) === "03-hoeren-lesen");
-  const testWorkbooks = levelWorkbooks.filter((w) => classifyWorkbookModule(w) === "04-modelltests");
+  const testWorkbooks = levelWorkbooks.filter(
+    (w) =>
+      classifyWorkbookModule(w) === "04-modelltests" ||
+      (info.isStudienkolleg && w.id.toLowerCase().includes("stk-math-ctest")),
+  );
 
   const grammarTitle = info.isStudienkolleg
     ? "02 · Syllabus, Formulas & C-Test Grammar"
@@ -570,7 +578,9 @@ export function getTopicsForSubdivision(
     }
 
     const grammarWorkbooks = levelWorkbooks.filter(
-      (wb) => classifyWorkbookModule(wb) === "02-grammar",
+      (wb) =>
+        classifyWorkbookModule(wb) === "02-grammar" ||
+        wb.title.toLowerCase().startsWith(`${info.levelKey} grammatik`),
     );
     grammarWorkbooks.forEach((wb, i) => {
       if (topics.some((t) => t.id === wb.id)) return;
@@ -579,14 +589,19 @@ export function getTopicsForSubdivision(
         indexLabel: `CHAPTER ${String(i + 1).padStart(2, "0")} · GRAMMAR`,
         title: cleanWorkbookTitle(wb.title),
         subtitle: wb.subtitle || `${wb.pages} pages · ${wb.topics.slice(0, 3).join(" · ")}`,
-        badge: wb.contentType === "grammar" ? "122 SÄULEN" : `${wb.pages} PAGES`,
+        badge:
+          wb.contentType === "grammar"
+            ? "122 SÄULEN"
+            : wb.questionCount > 0
+            ? `${wb.questionCount} EXERCISES`
+            : `${wb.pages} PAGES`,
         theme: "grammar",
         href: `/academy/${info.levelKey}/02-grammar/${encodeURIComponent(wb.id)}`,
-        ctaLabel: "Open Grammar Pillar",
+        ctaLabel: wb.contentType === "grammar" ? "Open Grammar Pillar" : "Open Grammar Lab",
         metaItems:
           wb.contentType === "grammar"
             ? [wb.topics.slice(0, 2).join(" · "), "Theorie & Flashcards"]
-            : [`${wb.questionCount} Exercises`, "Protected PDF"],
+            : [`${wb.questionCount} Exercises`, "Regeln & Lösungen"],
         kind: "workbook",
         workbookId: wb.id,
       });
@@ -794,7 +809,9 @@ export function getTopicsForSubdivision(
     }
 
     const testWorkbooks = levelWorkbooks.filter(
-      (wb) => classifyWorkbookModule(wb) === "04-modelltests",
+      (wb) =>
+        classifyWorkbookModule(wb) === "04-modelltests" ||
+        (info.isStudienkolleg && wb.id.toLowerCase().includes("stk-math-ctest")),
     );
     testWorkbooks.forEach((wb, i) => {
       if (topics.some((t) => t.id === wb.id)) return;
