@@ -456,7 +456,7 @@ export default function AcademyTopicWorkspacePage() {
                   topicSubtitleHint={matchedTopic?.subtitle || pageSubtitle}
                   nextTopicHref={nextTopicHref}
                   nextTopicLabel={nextTopicLabel}
-                  onWorkbookLoaded={(wb) => setWorkbookMeta(wb)}
+                  onWorkbookLoaded={setWorkbookMeta}
                 />
               </Suspense>
             )}

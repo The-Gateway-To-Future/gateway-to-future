@@ -42,7 +42,7 @@ export default function WorkbookReaderPage() {
         <Suspense fallback={<p className="text-sm text-slate-500 py-4">Loading Workspace...</p>}>
           <FocusedWorkbookWorkspace
             workbookId={workbookId}
-            onWorkbookLoaded={(wb) => setLoadedWb(wb)}
+            onWorkbookLoaded={setLoadedWb}
           />
         </Suspense>
       </main>

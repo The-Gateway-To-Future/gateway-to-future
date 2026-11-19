@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useCallback, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import {
   AlertCircle,
   BookOpen,
@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Headphones,
   Lock,
+  RefreshCw,
   Sparkles,
   XCircle,
 } from "lucide-react";
@@ -110,6 +111,32 @@ function FocusedWorkbookWorkspaceInner({
   const [activeAudioSrc, setActiveAudioSrc] = useState<string>("");
   const [audioError, setAudioError] = useState(false);
 
+  // Keep unstable callback / hint props in refs so parent re-renders NEVER trigger infinite refetch loops
+  const onWorkbookLoadedRef = useRef(onWorkbookLoaded);
+  const topicTitleHintRef = useRef(topicTitleHint);
+  const topicSubtitleHintRef = useRef(topicSubtitleHint);
+  const fetchSeqRef = useRef(0);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    onWorkbookLoadedRef.current = onWorkbookLoaded;
+  }, [onWorkbookLoaded]);
+
+  useEffect(() => {
+    topicTitleHintRef.current = topicTitleHint;
+  }, [topicTitleHint]);
+
+  useEffect(() => {
+    topicSubtitleHintRef.current = topicSubtitleHint;
+  }, [topicSubtitleHint]);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+
   const storageKey = `gtf_wb_answers_${workbookId}`;
 
   // Reset all state when workbookId, levelHint, or moduleHint changes
@@ -125,8 +152,29 @@ function FocusedWorkbookWorkspaceInner({
     setLoading(true);
   }, [workbookId, levelHint, moduleHint]);
 
+  const resolveLocalLabFallback = useCallback(
+    (email: string): WorkbookClientView | null => {
+      const cleanId = decodeURIComponent(workbookId || "").trim();
+      const cleanLevel = (levelHint || "").toLowerCase().trim();
+      const coreLab = getCoreLabById(cleanId, cleanLevel || undefined);
+      if (!coreLab) return null;
+      const wb = convertLabToWorkbook(coreLab);
+      return {
+        ...wb,
+        unlocked: true,
+        viewerEmail: email,
+        isFree: true,
+        coverColor: wb.coverColor || "#0F172A",
+        priceEur: wb.priceEur || 0,
+        priceInr: wb.priceInr || 0,
+      };
+    },
+    [workbookId, levelHint],
+  );
+
   const fetchWorkbook = useCallback(
     async (emailOverride?: string) => {
+      const seq = ++fetchSeqRef.current;
       setLoading(true);
       setError(null);
 
@@ -134,21 +182,6 @@ function FocusedWorkbookWorkspaceInner({
       const cleanId = decodeURIComponent(workbookId || "").trim();
       const cleanLevel = (levelHint || "").toLowerCase().trim();
       const cleanModule = (moduleHint || "").toLowerCase().trim().replace(/^\d+-/, "");
-
-      const resolveLocalLabFallback = (): WorkbookClientView | null => {
-        const coreLab = getCoreLabById(cleanId, cleanLevel || undefined);
-        if (!coreLab) return null;
-        const wb = convertLabToWorkbook(coreLab);
-        return {
-          ...wb,
-          unlocked: true,
-          viewerEmail: email,
-          isFree: true,
-          coverColor: wb.coverColor || "#0F172A",
-          priceEur: wb.priceEur || 0,
-          priceInr: wb.priceInr || 0,
-        };
-      };
 
       const candidateIds = Array.from(
         new Set(
@@ -165,8 +198,16 @@ function FocusedWorkbookWorkspaceInner({
         ),
       );
 
-      const loadPipeline = async (): Promise<WorkbookClientView | null> => {
-        // 1. Primary: Parallel Firestore lookup (`workbooks` & `materials`)
+      const controller = new AbortController();
+      let timeoutHandle: ReturnType<typeof setTimeout> | null = null;
+      const hardTimeoutPromise = new Promise<"TIMEOUT">((resolve) => {
+        timeoutHandle = setTimeout(() => {
+          controller.abort();
+          resolve("TIMEOUT");
+        }, 3000);
+      });
+
+      const fetchFromFirestore = async (): Promise<WorkbookClientView | null> => {
         try {
           const db = getFirebaseFirestore();
           const fsChecks = candidateIds.map(async (testId) => {
@@ -180,22 +221,24 @@ function FocusedWorkbookWorkspaceInner({
                 return { id: testId, data: matSnap.data() };
               }
             } catch {
-              // ignore individual doc errors
+              // ignore individual doc errors (e.g. permission-denied / offline)
             }
             return null;
           });
 
-          const fsMatches = await Promise.all(fsChecks);
-          const fsResult = fsMatches.find((r) => r !== null && Boolean(r.data)) || null;
+          const fsTimeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1800));
+          const fsMatches = await Promise.race([Promise.all(fsChecks), fsTimeout]);
+          if (!fsMatches) return null;
 
+          const fsResult = fsMatches.find((r) => r !== null && Boolean(r.data)) || null;
           if (fsResult && fsResult.data) {
             const fsData = fsResult.data;
             const fsContentType = fsData.contentType as WorkbookContentType | undefined;
             const isGrammarDoc = fsContentType === "grammar";
             return {
               id: fsResult.id,
-              title: fsData.title || topicTitleHint || cleanId,
-              subtitle: fsData.subtitle || topicSubtitleHint || "",
+              title: fsData.title || topicTitleHintRef.current || cleanId,
+              subtitle: fsData.subtitle || topicSubtitleHintRef.current || "",
               level: fsData.level || (cleanLevel as any) || "b1",
               contentType: fsContentType,
               module: fsData.module || undefined,
@@ -232,23 +275,17 @@ function FocusedWorkbookWorkspaceInner({
         } catch {
           // Firestore timed out or errored; fall through immediately
         }
+        return null;
+      };
 
-        // 2. Immediate Local Core Labs & Grammar Pillars lookup before slow network fallbacks
-        const localFallback = resolveLocalLabFallback();
-        if (localFallback) {
-          return localFallback;
-        }
-
-        // 3. Secondary: Server API (/api/workbooks/[id]) for catalog PDFs & custom workbooks
+      const fetchFromApi = async (): Promise<WorkbookClientView | null> => {
         for (const testId of candidateIds.slice(0, 3)) {
+          if (controller.signal.aborted) break;
           try {
-            const controller = new AbortController();
-            const apiTimeoutId = setTimeout(() => controller.abort(), 1500);
             const res = await fetch(
               `/api/workbooks/${encodeURIComponent(testId)}?email=${encodeURIComponent(email)}`,
               { signal: controller.signal },
             );
-            clearTimeout(apiTimeoutId);
             if (res.ok) {
               const data = (await res.json()) as { workbook?: WorkbookClientView };
               if (data?.workbook) {
@@ -256,47 +293,83 @@ function FocusedWorkbookWorkspaceInner({
               }
             }
           } catch {
-            // continue checking candidate IDs
+            // aborted or network error — fall through
           }
         }
+        return null;
+      };
+
+      const loadPipeline = async (): Promise<WorkbookClientView | null> => {
+        // Kick off Firestore (1.8s cap) and same-origin API (3s AbortController) in parallel
+        // so an iOS Safari Firestore stall never delays catalog workbooks like Lab 11.
+        const fsPromise = fetchFromFirestore();
+        const apiPromise = fetchFromApi();
+
+        // 1. Prefer Firestore when it responds cleanly
+        const fsDoc = await fsPromise;
+        if (fsDoc) {
+          controller.abort();
+          return fsDoc;
+        }
+
+        // 2. Immediate Local Core Labs & Grammar Pillars fallback from curriculum-labs.ts
+        const localFallback = resolveLocalLabFallback(email);
+        if (localFallback) {
+          controller.abort();
+          return localFallback;
+        }
+
+        // 3. Secondary: Server API (/api/workbooks/[id]) already in flight, bounded by 3s AbortController
+        const apiDoc = await apiPromise;
+        if (apiDoc) return apiDoc;
 
         return null;
       };
 
       try {
-        const hardTimeoutPromise = new Promise<"TIMEOUT">((resolve) =>
-          setTimeout(() => resolve("TIMEOUT"), 2800),
-        );
-
         const raceResult = await Promise.race([loadPipeline(), hardTimeoutPromise]);
+        if (!isMountedRef.current || seq !== fetchSeqRef.current) return;
+
         if (raceResult === "TIMEOUT") {
-          const localFallback = resolveLocalLabFallback();
+          const localFallback = resolveLocalLabFallback(email);
           setWorkbook(localFallback);
-          onWorkbookLoaded?.(localFallback);
+          if (!localFallback) {
+            setError("Zeitüberschreitung beim Laden. Bitte erneut versuchen.");
+          }
+          onWorkbookLoadedRef.current?.(localFallback);
         } else {
           setWorkbook(raceResult);
-          onWorkbookLoaded?.(raceResult);
+          onWorkbookLoadedRef.current?.(raceResult);
         }
       } catch (err) {
+        if (!isMountedRef.current || seq !== fetchSeqRef.current) return;
         console.warn("[FocusedWorkbookWorkspace] Content query ended without match:", err);
-        const localFallback = resolveLocalLabFallback();
+        const localFallback = resolveLocalLabFallback(email);
         setWorkbook(localFallback);
-        onWorkbookLoaded?.(localFallback);
+        if (!localFallback) {
+          setError("Material konnte derzeit nicht geladen werden.");
+        }
+        onWorkbookLoadedRef.current?.(localFallback);
       } finally {
-        setLoading(false);
+        if (timeoutHandle) clearTimeout(timeoutHandle);
+        if (isMountedRef.current && seq === fetchSeqRef.current) {
+          setLoading(false);
+        }
       }
     },
-    [workbookId, levelHint, moduleHint, topicTitleHint, topicSubtitleHint, onWorkbookLoaded],
+    [workbookId, levelHint, moduleHint, resolveLocalLabFallback],
   );
 
   // Hard 3-second UI watchdog so loading spinner can NEVER spin infinitely
   useEffect(() => {
     if (!loading) return;
     const watchdog = setTimeout(() => {
+      if (!isMountedRef.current) return;
+      setWorkbook((prev) => prev ?? resolveLocalLabFallback(getActiveUserEmail()));
       setLoading(false);
     }, 3000);
     return () => clearTimeout(watchdog);
-  }, [loading, workbookId]);
+  }, [loading, workbookId, resolveLocalLabFallback]);
 
   useEffect(() => {
     fetchWorkbook();
@@ -492,6 +565,15 @@ function FocusedWorkbookWorkspaceInner({
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => void fetchWorkbook()}
+              className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-5 py-2.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition shadow-xs cursor-pointer"
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+              <span>Erneut laden</span>
+            </button>
+
             <Link
               href={`/academy/${levelHint || "b1"}/${moduleHint || "02-grammar"}`}
               className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"

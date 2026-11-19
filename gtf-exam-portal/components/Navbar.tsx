@@ -118,7 +118,7 @@ export function Navbar({
           className="flex items-center gap-2.5 group focus:outline-none select-none min-w-0"
         >
           <img
-            src="/gtf_logo.jpg"
+            src="/gtf-logo.jpg"
             alt="Gateway to Future"
             className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg border border-slate-200 object-cover shrink-0 transition duration-300 group-hover:border-slate-300"
           />
