@@ -45,6 +45,7 @@ export default function ImpressumPage() {
           </h2>
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-2 font-mono text-slate-800 break-words">
             <div><strong className="text-amber-700">Company / Brand:</strong> Gateway To Future (The Gateway to Future)</div>
+            <div><strong className="text-amber-700">Rechtsform (Legal Form):</strong> Einzelunternehmen (Inhaberin: {BRAND.founderName})</div>
             <div><strong className="text-amber-700">Sole Founder &amp; CEO:</strong> {BRAND.founderName} — Sole Founder &amp; CEO, Gateway To Future</div>
             <div><strong className="text-amber-700">Berlin Headquarters:</strong> Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
             <div><strong className="text-amber-700">Editorial Responsibility (§ 18 Abs. 2 MStV):</strong> {BRAND.founderName}, Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
@@ -92,15 +93,10 @@ export default function ImpressumPage() {
             <strong>Copyright (Urheberrecht):</strong> All proprietary German workbooks, exam simulators, flashcards, and brand materials published on Gateway To Future are protected under German and international copyright law.
           </p>
           <p>
-            <strong>EU Online Dispute Resolution:</strong> The European Commission provides an online dispute resolution platform at{" "}
-            <a
-              href="https://ec.europa.eu/consumers/odr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-amber-700 underline hover:text-amber-800"
-            >
-              https://ec.europa.eu/consumers/odr/
-            </a>. We are neither obligated nor willing to participate in dispute settlement proceedings before a consumer arbitration board.
+            <strong>Consumer Dispute Resolution (§ 36 VSBG):</strong> Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. (We are neither willing nor obligated to participate in dispute settlement proceedings before a consumer arbitration board pursuant to § 36 VSBG.)
+          </p>
+          <p>
+            <strong>Non-Affiliation Trademark Notice:</strong> All third-party exam boards and institutions (such as Goethe-Institut, telc, TestDaF, Charité, or Vivantes) are trademarks of their respective owners. Gateway To Future is an independent training and guidance provider.
           </p>
         </section>
 

@@ -43,7 +43,7 @@ export default function AusbildungHub() {
     },
     {
       title: "Logistics & Commerce 📦",
-      desc: "Warehouse logistics specialists and port operators managing global supply chains for giants like DHL, DB Schenker, and Amazon.",
+      desc: "Warehouse logistics specialists and supply-chain coordinators supporting major German and European transport & distribution networks.",
       color: "rgba(20, 184, 166, 0.12)",
       borderColor: "rgba(20, 184, 166, 0.3)"
     }
@@ -130,10 +130,10 @@ export default function AusbildungHub() {
             While Training in a Premium German Trade
           </h1>
           <p style={{ fontSize: "1.25rem", color: "var(--text)", maxWidth: "800px", margin: "0 auto 2.5rem", lineHeight: "1.6" }}>
-            Zero tuition fees. Completely self-funded. 100% guaranteed job contract upon graduation. Gateway To Future is your professional Berlin-based mentor guiding you from language studies to your permanent German residency.
+            Zero public vocational school tuition fees. Paid directly by host German employers. Structured Ausbildung &amp; Career Guidance from Berlin — from A1–B2 German exam preparation to application and interview readiness.
           </p>
           <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "4rem" }}>
-            <Link to="/contact" className="btn" style={{ padding: "1rem 2.2rem", fontSize: "1.1rem" }}>Book Free Strategy Call</Link>
+            <Link to="/contact" className="btn" style={{ padding: "1rem 2.2rem", fontSize: "1.1rem" }}>Book Strategy Call</Link>
             <a href="#categories" className="btn" style={{ padding: "1rem 2.2rem", fontSize: "1.1rem", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", boxShadow: "none" }}>Explore 350+ Trades</a>
           </div>
 
@@ -141,18 +141,18 @@ export default function AusbildungHub() {
           <div className="grid-3" style={{ gap: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
             <div className="glass-card" style={{ padding: "1.5rem", textAlign: "center" }}>
               <span style={{ fontSize: "2.5rem", display: "block", marginBottom: "0.5rem" }}>💶</span>
-              <h3 style={{ fontSize: "1.2rem", margin: "0.25rem 0", color: "var(--text-h)" }}>No Blocked Account Needed</h3>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>Your training stipend satisfies German visa requirements completely.</p>
+              <h3 style={{ fontSize: "1.2rem", margin: "0.25rem 0", color: "var(--text-h)" }}>Employer-Paid Stipend</h3>
+              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>Host companies pay regulated monthly stipends that help meet visa livelihood criteria.</p>
             </div>
             <div className="glass-card" style={{ padding: "1.5rem", textAlign: "center" }}>
               <span style={{ fontSize: "2.5rem", display: "block", marginBottom: "0.5rem" }}>🏫</span>
-              <h3 style={{ fontSize: "1.2rem", margin: "0.25rem 0", color: "var(--text-h)" }}>100% Tuition-Free</h3>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>Fully sponsored by German state budgets and employer companies.</p>
+              <h3 style={{ fontSize: "1.2rem", margin: "0.25rem 0", color: "var(--text-h)" }}>Zero School Tuition</h3>
+              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>Public Berufsschule instruction is funded by German state budgets and host employers.</p>
             </div>
             <div className="glass-card" style={{ padding: "1.5rem", textAlign: "center" }}>
               <span style={{ fontSize: "2.5rem", display: "block", marginBottom: "0.5rem" }}>🛡️</span>
-              <h3 style={{ fontSize: "1.2rem", margin: "0.25rem 0", color: "var(--text-h)" }}>Guaranteed Placement</h3>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>95%+ of graduates sign permanent high-salary contracts with their employers.</p>
+              <h3 style={{ fontSize: "1.2rem", margin: "0.25rem 0", color: "var(--text-h)" }}>Structured Career Guidance</h3>
+              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>Dedicated B1/B2 German training, Lebenslauf drafting, and German interview coaching.</p>
             </div>
           </div>
         </section>
@@ -206,9 +206,9 @@ export default function AusbildungHub() {
                     <td style={{ padding: "0.9rem 0.5rem" }}>✅ Free (Public Universities)</td>
                   </tr>
                   <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                    <td style={{ padding: "0.9rem 0.5rem", fontWeight: "bold" }}>Post-Grad Job</td>
-                    <td style={{ padding: "0.9rem 0.5rem" }}>🛡️ 95%+ Direct Placement</td>
-                    <td style={{ padding: "0.9rem 0.5rem" }}>⚠️ Must hunt post-grad</td>
+                    <td style={{ padding: "0.9rem 0.5rem", fontWeight: "bold" }}>Post-Grad Outlook</td>
+                    <td style={{ padding: "0.9rem 0.5rem" }}>🛡️ Strong Industry Demand</td>
+                    <td style={{ padding: "0.9rem 0.5rem" }}>⚠️ Independent Job Search</td>
                   </tr>
                   <tr>
                     <td style={{ padding: "0.9rem 0.5rem", fontWeight: "bold" }}>Language Level</td>
@@ -483,6 +483,9 @@ export default function AusbildungHub() {
             We review and counsel only a limited batch of motivated candidates quarterly. Speak to our chief mentor today to check your qualifications and build a roadmap.
           </p>
           <Link to="/contact" className="btn" style={{ padding: "1rem 2.5rem", fontSize: "1.1rem" }}>Book Strategy Call Now</Link>
+          <p style={{ maxWidth: "680px", margin: "1.5rem auto 0", fontSize: "0.8rem", color: "rgba(255,255,255,0.55)" }}>
+            All third-party exam boards and institutions are trademarks of their respective owners. Gateway To Future is an independent training and guidance provider.
+          </p>
         </section>
       </AnimatedSection>
 

@@ -55,39 +55,39 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <SubdivisionCard
-              indexLabel="01 · LANGUAGE ACADEMY"
+              indexLabel="01 · LANGUAGE ACADEMY (ACTIVE)"
               title="German Language Academy"
               subtitle="Master CEFR A1 through B2 German across structured vocabulary decks, 122 Säulen grammar pillars, Hören labs, and Goethe/telc Modelltests."
               href="/academy"
               ctaLabel="Open Academy"
               theme="academy"
               imageUrl={HEADER_IMAGES.b1}
-              badge="CEFR A1 – B2"
-              metaItems={["4 Levels", "122 Säulen", "Studio Audio"]}
+              badge="LIVE · CEFR A1 – B2"
+              metaItems={["4 Levels Live", "122 Säulen", "Studio Audio"]}
             />
 
             <SubdivisionCard
-              indexLabel="02 · UNIVERSITY BRIDGE"
+              indexLabel="02 · UNIVERSITY BRIDGE (EARLY ACCESS)"
               title="Studienkolleg Hub"
-              subtitle="Prepare for public university Aufnahmeprüfungen and Feststellungsprüfung across T, M, W, and G-Kurs tracks with C-Tests and formula labs."
+              subtitle="Upcoming Aufnahmeprüfung and Feststellungsprüfung preparation across T, M, W, and G-Kurs tracks. Included when launched (Early Access)."
               href="/studienkolleg"
-              ctaLabel="Open Studienkolleg"
+              ctaLabel="View Early Access"
               theme="studienkolleg"
               imageUrl={HEADER_IMAGES.studienkolleg}
-              badge="T · M · W · G-KURS"
-              metaItems={["Aufnahmeprüfung", "C-Tests", "Formulas"]}
+              badge="INCLUDED WHEN LAUNCHED"
+              metaItems={["Early Access", "T · M · W · G", "A1–B2 Focus Now"]}
             />
 
             <SubdivisionCard
-              indexLabel="03 · CLINICAL HEALTHCARE"
+              indexLabel="03 · CLINICAL HEALTHCARE (EARLY ACCESS)"
               title="Fachsprache Pflege & Medizin"
-              subtitle="Hospital-grade clinical communication, ISBAR shift handover training, and B1–B2 Anerkennung preparation for Berlin & German hospital networks."
+              subtitle="Upcoming clinical communication, ISBAR shift handover simulator, and B1–B2 Anerkennung modules. Included when launched (Early Access)."
               href="/pflege"
-              ctaLabel="Open Pflege Hub"
+              ctaLabel="View Early Access"
               theme="pflege"
               imageUrl={HEADER_IMAGES.pflege}
-              badge="PFLEGE B1–B2 · FSP"
-              metaItems={["ISBAR Simulator", "Ward Audio", "Anerkennung"]}
+              badge="INCLUDED WHEN LAUNCHED"
+              metaItems={["Early Access", "ISBAR & FSP", "A1–B2 Focus Now"]}
             />
           </div>
         </section>
@@ -123,6 +123,9 @@ export default function HomePage() {
             </p>
             <p className="text-[11px] text-slate-600">
               Led by {BRAND.founderName} — {BRAND.founderTitle}
+            </p>
+            <p className="text-[10px] text-slate-500 max-w-xl leading-relaxed">
+              All third-party exam boards and institutions are trademarks of their respective owners. Gateway To Future is an independent training and guidance provider.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">

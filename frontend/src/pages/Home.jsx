@@ -31,9 +31,9 @@ export default function Home() {
       </AnimatedSection>
       <div className="metrics grid-3">
         {[
-          { value: "500+", label: "Students mentored" },
+          { value: "Berlin", label: "Direct founder mentorship" },
           { value: "A1–C1", label: "German language ecosystem" },
-          { value: "4.9★", label: "Student satisfaction" },
+          { value: "Goethe/telc", label: "Structured exam preparation" },
         ].map((m, i) => (
           <AnimatedSection key={i}>
             <div className="metric">

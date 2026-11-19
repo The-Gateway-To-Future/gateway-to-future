@@ -43,32 +43,41 @@ export default function PrivacyPolicyPage() {
             The data controller responsible for your personal information is:
           </p>
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-1.5 font-mono text-slate-800 break-words">
-            <div><strong className="text-amber-700">Legal Entity:</strong> The Gateway to Future</div>
+            <div><strong className="text-amber-700">Legal Entity:</strong> The Gateway to Future (Rechtsform: Einzelunternehmen)</div>
             <div><strong className="text-amber-700">Founder &amp; CEO:</strong> Sarbjit Kour (Founder &amp; CEO, Gateway To Future)</div>
             <div><strong className="text-amber-700">GSTIN:</strong> 05AAOPR7336L3Z0 | <strong className="text-amber-700">PAN:</strong> AAOPR7336L</div>
             <div><strong className="text-amber-700">India Registered Office:</strong> Mahant Building, Main Market Road, Laksar, Haridwar, Uttarakhand - 247663, India</div>
             <div><strong className="text-amber-700">European HQ:</strong> Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
             <div><strong className="text-amber-700">Official Website:</strong> https://www.gatewaytofuture.com</div>
             <div><strong className="text-amber-700">Support Email:</strong> info@gatewaytofuture.com</div>
-            <div><strong className="text-amber-700">Support Phone:</strong> +49 176 60720947 / +49 1522 8372894</div>
+            <div><strong className="text-amber-700">Support Phone:</strong> +49 1522 8372894</div>
           </div>
         </section>
 
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">
           <h2 className="text-lg sm:text-xl font-bold text-slate-900">2. Information We Collect</h2>
           <ul className="list-disc pl-5 space-y-2 text-slate-600">
-            <li><strong className="text-slate-900">Account Credentials:</strong> Name, email address, and authentication tokens via Firebase Auth (Google Sign-In and email/password).</li>
-            <li><strong className="text-slate-900">Academic & Learning Progress:</strong> Flashcard mastery scores, exam answers, workbook submissions, and CEFR level proficiency (A1, A2, B1, B2).</li>
-            <li><strong className="text-slate-900">Microphone & Audio Data:</strong> Audio permissions are requested exclusively to power AI German speaking practice (Sprechen modules). Voice input is processed in real time to assess pronunciation and grammar; audio recordings are not sold or transferred to third-party advertisers.</li>
-            <li><strong className="text-slate-900">Device & Usage Diagnostics:</strong> Crash logs, app performance telemetry, and device operating system version to ensure app reliability.</li>
+            <li><strong className="text-slate-900">Account Credentials:</strong> Name, email address, optional phone number, and authentication tokens via Google Firebase Authentication (email and password sign-in only).</li>
+            <li><strong className="text-slate-900">Academic &amp; Learning Progress:</strong> Flashcard mastery scores, exam answers, workbook submissions, and CEFR level proficiency (A1, A2, B1, B2).</li>
+            <li><strong className="text-slate-900">Microphone &amp; Audio Data:</strong> Audio permissions are requested exclusively when you use German speaking practice (Sprechen modules). Voice input is processed only to evaluate pronunciation and grammar; audio recordings are never sold or shared with advertisers.</li>
+            <li><strong className="text-slate-900">Optional Web Analytics (Consent-Gated):</strong> On web browsers, Google Analytics 4 (GA4) loads strictly after you click <em>Accept Analytics</em> in our Cookie Consent Banner (GDPR Art. 6(1)(a) &amp; TDDDG § 25). If you choose <em>Essential Only</em>—or when using our native Android/iOS companion app—GA4 tracking scripts are not loaded.</li>
           </ul>
         </section>
 
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900">3. How We Use Your Data</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900">3. How We Use Your Data &amp; Active Data Processors</h2>
           <p>
-            Your information is used strictly to provide educational services, evaluate German language proficiency exams, facilitate career pathway advisement (Studienkolleg, Ausbildung, medical Anerkennung), and maintain platform security. We never sell, rent, or trade your personal data.
+            Your information is used strictly to deliver educational services, grade German practice exams, manage your account entitlements, respond to counseling enquiries, and secure the platform. We never sell, rent, or trade your personal data. We rely on the following infrastructure processors:
           </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-slate-600">
+            <li><strong className="text-slate-900">Google Firebase (Authentication &amp; Cloud Firestore):</strong> Secure email/password sign-in, session tokens, and student study progress storage.</li>
+            <li><strong className="text-slate-900">Vercel Inc.:</strong> Web application hosting, TLS delivery, and serverless API execution for <code>app.gatewaytofuture.com</code>.</li>
+            <li><strong className="text-slate-900">Google Analytics 4 (Web, Opt-In Only):</strong> Aggregated traffic diagnostics loaded only after explicit user cookie consent.</li>
+            <li><strong className="text-slate-900">Razorpay (Web Checkout Only):</strong> Processes INR course payments exclusively on the web portal (<code>app.gatewaytofuture.com</code>). Payment processing is completely disabled inside native Android/iOS companion apps.</li>
+            <li><strong className="text-slate-900">Supabase:</strong> Stores submitted admissions enquiries and verified web course entitlements.</li>
+            <li><strong className="text-slate-900">Groq / Google Gemini AI:</strong> Processes submitted German writing (Schreiben) and speaking (Sprechen) prompts strictly to return automated CEFR feedback.</li>
+            <li><strong className="text-slate-900">n8n Workflow Automation:</strong> Dispatches welcome onboarding messages and admissions notifications when you register or submit an enquiry with your contact details.</li>
+          </ul>
         </section>
 
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">

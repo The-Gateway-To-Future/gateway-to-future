@@ -47,7 +47,7 @@ export default function TermsOfServicePage() {
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">
           <h2 className="text-lg sm:text-xl font-bold text-slate-900">2. Educational Services & Disclaimer</h2>
           <p>
-            The Gateway to Future provides German language training (A1, A2, B1, B2), exam preparation tools (Goethe, telc, TestDaF), and career pathway guidance (Studienkolleg, Ausbildung, medical Anerkennung in Germany). While we provide high-fidelity preparation material and advisory services, final visa issuance and university admission remain within the sole discretion of the German Embassy and admissions bodies.
+            The Gateway to Future provides German language training (A1, A2, B1, B2), exam preparation tools (Goethe, telc, TestDaF), and career pathway guidance (Studienkolleg, Ausbildung, medical Anerkennung in Germany). While we provide high-fidelity preparation material and advisory services, final visa issuance, employment contracts, and university admission remain within the sole discretion of the German authorities, employers, and admissions bodies. All third-party exam boards and institutions are trademarks of their respective owners; Gateway To Future is an independent training and guidance provider.
           </p>
         </section>
 

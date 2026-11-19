@@ -639,7 +639,7 @@ function FocusedWorkbookWorkspaceInner({
                 href={`/pricing?product=${encodeURIComponent(workbook.productSlug || workbook.id)}&title=${encodeURIComponent(workbook.title || "Workbook")}`}
                 className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm cursor-pointer"
               >
-                <span>Unlock with GTF Pro (€50 / mo)</span>
+                <span>Unlock with GTF Pro (₹4,999)</span>
               </Link>
 
               <a

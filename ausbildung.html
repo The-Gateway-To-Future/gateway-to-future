@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CFB6FD052Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CFB6FD052Q');
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" />
   <title>Ausbildung Hub — Premium Vocational Pathways in Germany | Gateway to Future</title>
-  <meta name="description" content="Discover 350+ Ausbildung (dual vocational training) programs in Germany. Get direct placements in Nursing, IT, Construction, & engineering. Earn €1,000–€1,650/month." />
+  <meta name="description" content="Discover 350+ Ausbildung (dual vocational training) programs in Germany. Structured Ausbildung & career guidance for Nursing, IT, Construction, and engineering tracks." />
   
   <!-- SEO Open Graph -->
   <meta property="og:title" content="Ausbildung Pathways in Germany — Gateway to Future" />
-  <meta property="og:description" content="Get direct placement in Germany's top dual vocational training (Ausbildung) programs with starting stipends up to €1,400+ per month." />
-  <meta property="og:image" content="assets/preview.png" />
+  <meta property="og:description" content="Structured Ausbildung & career guidance for Germany's dual vocational training programs with typical regulated stipends of €1,000–€1,400+/month." />
+  <meta property="og:image" content="assets/images/gtf_logo.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Typography & CSS -->
@@ -67,7 +61,7 @@
     }
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
       gap: 1.5rem;
     }
     .aus-card {
@@ -80,6 +74,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .aus-card:hover {
       transform: translateY(-5px);
@@ -90,6 +87,8 @@
       margin-bottom: 0.5rem;
       font-size: 1.35rem;
       color: var(--color-text-primary);
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .aus-card p {
       font-size: 0.95rem;
@@ -279,15 +278,15 @@
       <div class="hero-content">
         <span class="badge badge-indigo">Earn While You Learn in Germany</span>
         <h1>Kickstart Your Career in Germany with 350+ Ausbildung Programs</h1>
-        <p>Get direct, guaranteed vocational placements with starting monthly stipends ranging from €1,000 to €1,400+ during training. Work at leading German companies and qualify for permanent residency within 2 years of graduation. Gateway to Future handles your B2 language prep, visa, matches, and local settlement end-to-end from Berlin.</p>
+        <p>Structured Ausbildung &amp; Career Guidance to help you prepare for Germany's dual vocational training system, where host employers typically pay regulated monthly stipends of €1,000 to €1,400+ during training. Gateway to Future provides dedicated B1/B2 German language training, German CV &amp; interview preparation, visa documentation checklists, and personalized Berlin-based mentorship.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="contact.html">Apply for Ausbildung placement</a>
+          <a class="btn btn-primary" href="contact.html">Book Ausbildung Guidance</a>
           <a class="btn btn-secondary" href="#categories">Explore occupations</a>
         </div>
         <div class="social-proof-strip">
           <div class="proof-item">
-            <strong>100%</strong>
-            <span>Placement Success Rate</span>
+            <strong>Dual Track</strong>
+            <span>Structured Career Guidance</span>
           </div>
           <div class="proof-item">
             <strong>€1,000 - €1,650</strong>
@@ -343,9 +342,9 @@
           <p>You work 3 to 4 days per week in a real company under the strict supervision of a certified master trainer (Ausbilder). You learn by doing, on the production line, office, or hospital floor.</p>
         </div>
         <div class="service-card" style="background: white;">
-          <div class="service-number">100%</div>
-          <h4>Integrated Path to PR</h4>
-          <p>After graduating, you get an immediate 12-month job seeker visa. Because you paid social contributions during training, you qualify for permanent residency in Germany in just 2 years.</p>
+          <div class="service-number">2 Yrs</div>
+          <h4>Regulated Path to PR</h4>
+          <p>After graduating, eligible trainees can transition to full-time skilled employment or a job-search permit, and may qualify for permanent residency under German immigration law after 24 months of qualifying employment.</p>
         </div>
       </div>
     </section>
@@ -659,7 +658,7 @@
     <!-- 5. "House-Building & Skilled Trades" Focus Block -->
     <section id="skilled-trades" class="shell reveal">
       <h2>Focus Area: House-Building & Skilled Trades</h2>
-      <p style="max-width: 720px; margin-bottom: 2rem;">Germany's construction sector is booming. The Federal Government has streamlined visas for skilled construction trades. These programs offer some of the highest starting stipends, lower initial language hurdles (A2/B1), and guaranteed post-graduation jobs.</p>
+      <p style="max-width: 720px; margin-bottom: 2rem;">Germany's construction sector faces sustained skilled-labor demand. Skilled trades offer competitive regulated training stipends, accessible entry language targets (A2/B1), and strong post-graduation career prospects across Germany.</p>
       
       <div class="table-container">
         <table class="data-table">
@@ -1010,7 +1009,10 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 The Gateway to Future &middot; Schönefelder Straße 2, GStU, 12355 Berlin, Germany &middot; Led by Sarbjit Kour (Founder &amp; CEO, Gateway To Future). All rights reserved.</p>
+        <div>
+          <p>&copy; 2026 The Gateway to Future &middot; Schönefelder Straße 2, GStU, 12355 Berlin, Germany &middot; Led by Sarbjit Kour (Founder &amp; CEO, Gateway To Future). All rights reserved.</p>
+          <p style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.35rem;">All third-party exam boards and institutions are trademarks of their respective owners. Gateway To Future is an independent training and guidance provider.</p>
+        </div>
         <div class="footer-bottom-links">
           <a href="impressum.html">Impressum</a> &bull;
           <a href="https://app.gatewaytofuture.com/privacy" target="_blank" rel="noopener noreferrer">Privacy</a> &bull;
@@ -1021,6 +1023,7 @@
   </footer>
 
   <script src="js/main.js?v=2"></script>
+  <script src="js/cookie-consent.js" defer></script>
   <script>
     // Tab Switching Logic
     function switchTab(evt, tabId) {

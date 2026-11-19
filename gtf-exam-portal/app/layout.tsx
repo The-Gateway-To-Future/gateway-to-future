@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { BRAND } from "@/lib/config";
 import { AuthProvider } from "@/lib/auth-context";
 import { CapacitorBridge } from "@/components/CapacitorBridge";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import "./globals.css";
 import "./obsidian-theme.css";
 
@@ -39,8 +39,6 @@ export const viewport: Viewport = {
   themeColor: "#f8fafc",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: "cover",
 };
 
@@ -61,7 +59,7 @@ export default function RootLayout({
           <CapacitorBridge />
           {children}
         </AuthProvider>
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-CFB6FD052Q"} />
+        <CookieConsentBanner />
       </body>
     </html>
   );

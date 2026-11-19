@@ -20,7 +20,7 @@ import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { useAuth } from "@/lib/auth-context";
-import { BRAND, GTF_BANK_DETAILS } from "@/lib/config";
+import { BRAND, GTF_BANK_DETAILS, INR_PRICING_TIERS } from "@/lib/config";
 import { useIsNativeApp } from "@/lib/use-native-platform";
 
 interface CheckoutSessionPreview {
@@ -44,27 +44,27 @@ interface PricingTier {
   description: string;
   highlighted?: boolean;
   ctaLabel: string;
-  checkoutTierKey?: "studienkolleg_track" | "all_access_pass";
+  checkoutTierKey?: "level_bundle" | "studienkolleg_track" | "all_access_pass";
   features: string[];
 }
 
 const PRICING_TIERS: PricingTier[] = [
   {
     id: "single_division",
-    badge: "TRACK ACCESS",
-    name: "Single Division",
-    shortName: "Single Track",
-    priceLabel: "€29",
-    subPriceLabel: "₹2,499 / mo",
-    billingCycle: "/ month",
+    badge: "SINGLE LEVEL",
+    name: "CEFR Level Bundle",
+    shortName: "Level Bundle",
+    priceLabel: INR_PRICING_TIERS.level_bundle.formatted,
+    subPriceLabel: "Full A1, A2, B1, or B2",
+    billingCycle: "one-time",
     description:
-      "Focused access to one chosen preparation track — Language Academy, Studienkolleg Hub, or Pflege & Medizin.",
-    ctaLabel: "Select Single Division (€29/mo)",
-    checkoutTierKey: "studienkolleg_track",
+      "Focused active access to one complete CEFR German level (A1, A2, B1, or B2) inside the German Language Academy.",
+    ctaLabel: `Select Level Bundle (${INR_PRICING_TIERS.level_bundle.formatted})`,
+    checkoutTierKey: "level_bundle",
     features: [
-      "Complete workbooks & PDF reader for 1 division",
+      "Complete original GTF workbooks & PDF reader for 1 CEFR level",
       "Native de-DE flashcard decks & studio audio",
-      "Subdivision drills & interactive answer sheets",
+      "Grammar drills & interactive answer sheets",
       "Standard email & progress telemetry sync",
     ],
   },
@@ -73,20 +73,20 @@ const PRICING_TIERS: PricingTier[] = [
     badge: "MOST POPULAR",
     name: "GTF All-Access Pro",
     shortName: "GTF Pro",
-    priceLabel: "€50",
-    subPriceLabel: "₹4,499 / mo",
-    billingCycle: "/ month",
+    priceLabel: INR_PRICING_TIERS.all_access_pass.formatted,
+    subPriceLabel: "Complete A1–B2 Academy",
+    billingCycle: "all-access",
     description:
-      "The complete Berlin preparation engine across every CEFR level, Studienkolleg Aufnahmeprüfung track, and hospital Anerkennung simulation.",
+      "Complete active access to all CEFR A1–B2 German Language Academy levels, timed Goethe/telc Modelltests, and AI grading — with Studienkolleg & Pflege included when launched (Early Access).",
     highlighted: true,
-    ctaLabel: "Subscribe to GTF Pro (€50/mo)",
+    ctaLabel: `Unlock GTF Pro (${INR_PRICING_TIERS.all_access_pass.formatted})`,
     checkoutTierKey: "all_access_pass",
     features: [
-      "Unlimited Language Academy (A1, A2, B1, B2 & 122 Säulen)",
-      "Studienkolleg T, M, W, G-Kurs Formula Engine & C-Tests",
-      "Fachsprache Pflege ISBAR Simulator & ward audio",
-      "Unlimited Goethe/telc Modelltests with AI Schreiben & Sprechen grading",
-      "Verified candidate priority support from Berlin HQ",
+      "Unlimited German Language Academy (A1, A2, B1, B2 & 122 Säulen)",
+      "40 interactive Hören/Lesen labs & timed Goethe/telc Modelltests",
+      "AI Schreiben & Sprechen evaluation studio (de-DE)",
+      "Studienkolleg & Fachsprache Pflege: Included when launched (Early Access)",
+      "Verified student priority support from Berlin HQ",
     ],
   },
   {
@@ -95,16 +95,16 @@ const PRICING_TIERS: PricingTier[] = [
     name: "Berlin Relocation & § 81a",
     shortName: "Relocation",
     priceLabel: "Custom",
-    subPriceLabel: "Tuition & placement",
+    subPriceLabel: "Mentorship & guidance",
     billingCycle: "cohort",
     description:
-      "End-to-end relocation guidance in Germany with Sarbjit Kour (Founder & CEO, Gateway To Future) — from language clearance to Berlin hospital or university placement.",
+      "Personalized Berlin-based guidance with Sarbjit Kour (Founder & CEO, Gateway To Future) — covering German language strategy, anabin/APS checks, and application preparation.",
     ctaLabel: "Book Berlin Admissions",
     features: [
       "Everything included in GTF All-Access Pro",
-      "anabin, APS & uni-assist dossier verification",
-      "Sperrkonto setup & German embassy visa preparation",
-      "Direct German hospital & Ausbildung employer placement",
+      "anabin, APS & uni-assist dossier verification checklists",
+      "Sperrkonto checklist & German embassy interview preparation",
+      "Structured German CV, Bewerbung & employer interview coaching",
     ],
   },
 ];
@@ -121,11 +121,11 @@ interface ComparisonBenefit {
 const COMPARISON_BENEFITS: ComparisonBenefit[] = [
   {
     title: "CEFR A1–B2 Core Vocabulary & Grammar Flashcards (30/deck)",
-    note: "High-yield vocabulary decks & 122 Säulen grammar Dossiers",
+    note: "High-yield vocabulary decks & 122 Säulen original GTF grammar dossiers",
     singleType: "text",
-    singleValue: "Basic",
+    singleValue: "1 Level",
     proType: "text",
-    proValue: "Full All-Levels",
+    proValue: "All A1–B2",
   },
   {
     title: "Goethe & telc Interactive Hören / Lesen Labs (40 Labs)",
@@ -134,14 +134,14 @@ const COMPARISON_BENEFITS: ComparisonBenefit[] = [
     proType: "check",
   },
   {
-    title: "Official Exam Simulations & Modelltests (Timed)",
-    note: "Goethe & telc standard timed exam room with instant scoring",
+    title: "Timed Goethe & telc Style Modelltests",
+    note: "Exam-mode practice room with instant scoring and review",
     singleType: "cross",
     proType: "check",
   },
   {
     title: "AI Speaking & Pronunciation Studio (DE-DE)",
-    note: "Native Berlin de-DE phonetic grading & accent feedback",
+    note: "German phonetic & grammar feedback on submitted practice",
     singleType: "text",
     singleValue: "Limited",
     proType: "text",
@@ -149,9 +149,10 @@ const COMPARISON_BENEFITS: ComparisonBenefit[] = [
   },
   {
     title: "Studienkolleg (M/T/W/G-Kurs) & Pflege Modules",
-    note: "Foundation college formula suites, past papers & clinical ISBAR",
+    note: "Included when launched (Early Access) — active focus is CEFR A1–B2 Academy",
     singleType: "cross",
-    proType: "check",
+    proType: "text",
+    proValue: "Early Access",
   },
   {
     title: "Hindi + Roman Hinglish + English Explanations",
@@ -273,8 +274,8 @@ function PricingContentInner() {
           mode: "sandbox",
           tierName: tier.name,
           priceEur: tier.priceLabel,
-          priceInr: tier.subPriceLabel,
-          productTitle: requestedTitle || "GTF All-Access Pro Membership",
+          priceInr: tier.priceLabel,
+          productTitle: requestedTitle || tier.name,
         });
         return;
       }
@@ -288,7 +289,7 @@ function PricingContentInner() {
             amount: session.amountSubunits,
             currency: "INR",
             name: BRAND.name,
-            description: `${tier.name} (${tier.priceLabel}/mo)`,
+            description: `${tier.name} (${tier.priceLabel})`,
             order_id: session.orderId,
             prefill: {
               name: user?.fullName || "",
@@ -441,8 +442,8 @@ function PricingContentInner() {
           title="Engineered for Mastery."
           subtitle={
             requestedTitle
-              ? `Subscribe to GTF Pro (€50 / month) to unlock "${requestedTitle}" and every module across the Berlin ecosystem.`
-              : "Transparent SaaS membership for serious Germany candidates — compare features below and choose your plan."
+              ? `Unlock "${requestedTitle}" and every active CEFR A1–B2 module with GTF All-Access Pro (${INR_PRICING_TIERS.all_access_pass.formatted}).`
+              : "Transparent INR pricing aligned with our active CEFR A1–B2 German Language Academy — Studienkolleg & Pflege included when launched (Early Access)."
           }
           theme="hub"
           backgroundImage={HEADER_IMAGES.b2}
@@ -527,16 +528,16 @@ function PricingContentInner() {
                       Single
                     </span>
                     <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
-                      Single Track
+                      {PRICING_TIERS[0].shortName}
                     </h3>
                   </div>
 
                   <div className="mt-2 text-center">
                     <div className="text-base sm:text-2xl font-black text-slate-900">
-                      €29
+                      {PRICING_TIERS[0].priceLabel}
                     </div>
                     <div className="text-[9px] sm:text-[11px] text-slate-500 leading-tight">
-                      ₹2,499 / mo
+                      {PRICING_TIERS[0].subPriceLabel}
                     </div>
                   </div>
 
@@ -571,16 +572,16 @@ function PricingContentInner() {
                       <span>Popular</span>
                     </span>
                     <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
-                      GTF Pro
+                      {PRICING_TIERS[1].shortName}
                     </h3>
                   </div>
 
                   <div className="mt-2 text-center">
                     <div className="text-base sm:text-2xl font-black text-slate-900">
-                      €50
+                      {PRICING_TIERS[1].priceLabel}
                     </div>
                     <div className="text-[9px] sm:text-[11px] text-emerald-800 font-semibold leading-tight">
-                      ₹4,499 / mo
+                      {PRICING_TIERS[1].subPriceLabel}
                     </div>
                   </div>
 
@@ -658,17 +659,17 @@ function PricingContentInner() {
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">
                   <span className="rounded-full bg-amber-100 border border-amber-300 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900">
-                    CEO MENTORSHIP &amp; PLACEMENT
+                    CEO MENTORSHIP &amp; GUIDANCE
                   </span>
                   <span className="text-xs font-bold text-amber-800">
                     Limited 2026/27 Cohort
                   </span>
                 </div>
                 <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-slate-900">
-                  Berlin Relocation &amp; § 81a Fast-Track Cohort
+                  Berlin Relocation &amp; § 81a Guidance Cohort
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
-                  End-to-end relocation guidance in Germany with Sarbjit Kour (Founder &amp; CEO, Gateway To Future) — from anabin &amp; APS credential validation to Sperrkonto setup, German embassy visa filing, and direct placement into Berlin hospital or university networks.
+                  End-to-end relocation guidance in Germany with Sarbjit Kour (Founder &amp; CEO, Gateway To Future) — covering anabin &amp; APS credential verification checklists, Sperrkonto guidance, German embassy interview prep, and structured hospital or university application coaching.
                 </p>
               </div>
               <button
@@ -691,10 +692,10 @@ function PricingContentInner() {
                     GTF Berlin Instant SEPA / UPI Activation · {checkoutPreview.orderId || "GTF-DIRECT"}
                   </p>
                   <h3 className="text-2xl font-bold text-slate-900">
-                    {checkoutPreview.tierName} · {checkoutPreview.priceEur}/mo
+                    {checkoutPreview.tierName} · {checkoutPreview.priceInr}
                   </h3>
                   <p className="text-xs text-slate-600">
-                    Target Entitlement: {checkoutPreview.productTitle} · {checkoutPreview.priceInr} INR equivalent
+                    Target Entitlement: {checkoutPreview.productTitle} · {checkoutPreview.priceInr} INR
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-800">
@@ -709,7 +710,7 @@ function PricingContentInner() {
                     Direct Bank / Instant UPI (India &amp; International)
                   </p>
                   <p className="text-xs text-slate-700 leading-relaxed">
-                    Remit {checkoutPreview.priceEur} ({checkoutPreview.priceInr}) to official account{" "}
+                    Remit {checkoutPreview.priceInr} to official account{" "}
                     <span className="font-mono font-bold text-slate-900">
                       {GTF_BANK_DETAILS.beneficiary} ({GTF_BANK_DETAILS.bankName} · A/C {GTF_BANK_DETAILS.accountNumber})
                     </span>
@@ -741,7 +742,7 @@ function PricingContentInner() {
                   </div>
                   <a
                     href={`${BRAND.whatsappUrl}?text=${encodeURIComponent(
-                      `Hallo GTF Berlin! I want to activate ${checkoutPreview.tierName} (${checkoutPreview.priceEur}/mo) for ${
+                      `Hallo GTF Berlin! I want to activate ${checkoutPreview.tierName} (${checkoutPreview.priceInr}) for ${
                         user?.userEmail || "my account"
                       }. Ref: ${checkoutPreview.orderId || "PRICING"}`,
                     )}`}
@@ -764,6 +765,10 @@ function PricingContentInner() {
             </p>
             <CeoPortraitCard compact />
           </div>
+
+          <p className="text-[11px] text-slate-500 text-center leading-relaxed max-w-3xl mx-auto pt-2">
+            All third-party exam boards and institutions (such as Goethe-Institut, telc, TestDaF, Charité, or Vivantes) are trademarks of their respective owners. Gateway To Future is an independent training and guidance provider.
+          </p>
         </section>
       </main>
 
@@ -795,7 +800,7 @@ function PricingContentInner() {
               </>
             ) : (
               <>
-                <span>Continue with {selectedTier.name} →</span>
+                <span>Continue with {selectedTier.name}</span>
                 <ArrowRight className="h-4 w-4" />
               </>
             )}

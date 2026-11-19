@@ -158,21 +158,21 @@ export const INR_PRICING_TIERS = {
   },
   studienkolleg_track: {
     id: "studienkolleg_track",
-    title: "Studienkolleg Complete Track (M, T, W or G Kurs)",
+    title: "Studienkolleg Early-Access Track (M, T, W or G Kurs)",
     shortTitle: "Studienkolleg Track",
     amount: 2999,
     formatted: "₹2,999",
-    description: "Comprehensive 1-year syllabus dossiers, C-Test Aufnahmeprüfung archives, formula engine & FSP exam solutions.",
-    badge: "University Standard",
+    description: "German B1/B2 preparation pack plus Early Access to Studienkolleg dossiers and C-Test archives when launched.",
+    badge: "Early Access Included",
   },
   all_access_pass: {
     id: "all_access_pass",
-    title: "Full Academy All-Access Pass",
+    title: "Full Academy All-Access Pass (A1–B2 + Early Access)",
     shortTitle: "All-Access Pass",
     amount: 4999,
     formatted: "₹4,999",
-    description: "Institutional all-inclusive access across all 3 divisions: Language Academy + Studienkolleg Hub + Pflege & Ausbildung.",
-    badge: "Lifetime Ecosystem",
+    description: "Complete active CEFR A1–B2 German Language Academy (workbooks, Hören/Lesen labs, Goethe/telc Modelltests & AI grading) plus Studienkolleg & Pflege included when launched (Early Access).",
+    badge: "Complete A1–B2 Pass",
   },
 } as const;
 

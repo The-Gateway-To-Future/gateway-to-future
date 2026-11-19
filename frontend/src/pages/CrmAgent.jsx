@@ -223,7 +223,7 @@ export default function CrmAgent() {
           aiText = `Hi ${formData.name.split(" ")[0]} 🌟 Great news! Based on your profile, you're an excellent candidate for ${updatedLeadData.interest} in ${updatedLeadData.country}.\n\nOur expert counselor has a slot available for you.\n📅 Book your FREE consultation here: https://calendly.com/gtf-admissions\n📞 Or call us: +91-7417032155\n\nWe're excited to help you *Create a Career Without Borders!* 🚀\n— Team GTF`;
         } else if (updatedLeadData.score === "WARM") {
           await triggerN8n("node-warm-drip", 800);
-          aiText = `Hi ${formData.name.split(" ")[0]} 👋 This is GTF — just following up on your inquiry about ${updatedLeadData.interest}.\n\nDid you know we've helped 500+ students reach ${updatedLeadData.country} in the last 2 years? 🎓\nHere's a free guide to get you started: http://gatewaytofuture.com/guide\n\nReply anytime — we're here to help! 💬\n— Team GTF`;
+          aiText = `Hi ${formData.name.split(" ")[0]} 👋 This is GTF — just following up on your inquiry about ${updatedLeadData.interest}.\n\nWe provide structured A1–B2 German training and personalized Berlin-based guidance for ${updatedLeadData.country}. 🎓\nHere's a free guide to get you started: https://gatewaytofuture.com/resources.html\n\nReply anytime — we're here to help! 💬\n— Team GTF`;
         } else {
           await triggerN8n("node-cold-newsletter", 800);
           aiText = `Hi ${formData.name.split(" ")[0]}! Hope you're doing well 😊\n\nQuick update from *Gateway To Future* — we're now accepting applications for ${updatedLeadData.country} for the upcoming intake.\n\nNo pressure — just wanted to keep you in the loop! Whenever you're ready, we're here 🌍\n— Team GTF`;
@@ -677,7 +677,7 @@ export default function CrmAgent() {
                       <div style={{ padding: "0.75rem", background: "rgba(255,255,255,0.04)", borderRadius: "0.5rem", borderLeft: "3px solid #eab308" }}>
                         <strong>Day 1 Follow-up:</strong>
                         <p style={{ color: "#9ca3af", marginTop: "0.25rem" }}>
-                          "Hi {formData.name.split(" ")[0]} 👋 Just following up on your inquiry about {currentLeadData.interest || "[Service]"}. Did you know we've helped 500+ students reach Germany in 2 years? Here is your free guide..."
+                          "Hi {formData.name.split(" ")[0]} 👋 Just following up on your inquiry about {currentLeadData.interest || "[Service]"}. Ready to explore our structured A1–B2 German training and Berlin-based guidance? Here is your free guide..."
                         </p>
                       </div>
                       <div style={{ padding: "0.75rem", background: "rgba(255,255,255,0.04)", borderRadius: "0.5rem", borderLeft: "3px solid #eab308" }}>

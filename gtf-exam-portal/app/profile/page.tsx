@@ -386,14 +386,14 @@ export default function ProfilePage() {
                     <p className="text-xs leading-relaxed text-slate-600">
                       {subscriptionTier === "Pro"
                         ? `Active GTF Pro entitlements detected (${unlockedCount} unlocked module${unlockedCount === 1 ? "" : "s"}).`
-                        : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, 30+ German workbooks, Studienkolleg & Pflege trainers."}
+                        : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, CEFR A1–B2 workbooks, Goethe/telc Modelltests, and Early Access to Studienkolleg & Pflege when launched."}
                     </p>
 
                     <Link
                       href="/pricing"
                       className="w-full h-11 rounded-xl bg-slate-900 text-white text-xs font-semibold uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-xs"
                     >
-                      <span>{subscriptionTier === "Pro" ? "Manage Membership" : "Upgrade to Pro (€50/mo)"}</span>
+                      <span>{subscriptionTier === "Pro" ? "Manage Membership" : "Upgrade to Pro (₹4,999)"}</span>
                       <ArrowRight className="h-3.5 w-3.5 text-white" />
                     </Link>
                   </>
