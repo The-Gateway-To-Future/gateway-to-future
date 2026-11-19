@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  Ban,
   BookOpen,
   CheckCircle2,
   Puzzle,
   Sparkles,
 } from "lucide-react";
 import { ExamHeader } from "@/components/ExamHeader";
+import { MathText } from "@/components/MathText";
 import {
   getActiveUserEmail,
   loadExamState,
@@ -99,6 +101,11 @@ export default function LesenExamPage() {
 
   const teile: LesenTeil[] = test?.sections.lesen.teile || [];
   const currentTeil: LesenTeil | undefined = teile[activeTeilIdx];
+  const isStkExam =
+    level === "m_kurs" ||
+    level === "t_kurs" ||
+    level === "w_kurs" ||
+    level === "g_kurs";
 
   const renderSprachbausteinePassage = (teil: SprachbausteineTeil) => {
     const segments = teil.text.split(/(\{\{\d+\}\})/g);
@@ -228,9 +235,17 @@ export default function LesenExamPage() {
             </div>
 
             {/* Instructions banner */}
-            <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-medium text-slate-700 shadow-xs german-reading">
-              <strong className="text-slate-900">{currentTeil.title}:</strong>{" "}
-              {currentTeil.instructions}
+            <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-medium text-slate-700 shadow-xs german-reading flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <strong className="text-slate-900">{currentTeil.title}:</strong>{" "}
+                {currentTeil.instructions}
+              </div>
+              {isStkExam && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 shrink-0">
+                  <Ban className="h-3 w-3 text-slate-500 shrink-0" aria-hidden="true" />
+                  <span>Prüfungsmodus: Ohne Taschenrechner</span>
+                </span>
+              )}
             </div>
 
             {/* SPLIT-SCREEN EXAM WORKSPACE */}
@@ -255,9 +270,11 @@ export default function LesenExamPage() {
                       )}
                     </div>
 
-                    <div className="mt-5 space-y-4 text-sm sm:text-base text-slate-800 leading-relaxed sm:leading-loose german-reading prose-optimal">
+                    <div className="mt-5 space-y-4 text-sm sm:text-base text-slate-800 leading-relaxed sm:leading-loose german-reading prose-optimal overflow-x-auto">
                       {currentTeil.passage.split("\n\n").map((para, i) => (
-                        <p key={i}>{para}</p>
+                        <p key={i}>
+                          {isStkExam ? <MathText text={para} /> : para}
+                        </p>
                       ))}
                     </div>
                   </div>
@@ -289,7 +306,9 @@ export default function LesenExamPage() {
                         key={q.id}
                         className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm text-slate-900"
                       >
-                        <p className="text-sm font-bold text-slate-900">{q.prompt}</p>
+                        <p className="text-sm font-bold text-slate-900 overflow-x-auto">
+                          {isStkExam ? <MathText text={q.prompt} /> : q.prompt}
+                        </p>
 
                         {q.type === "richtig_falsch" ? (
                           <div className="mt-3 flex gap-3">
@@ -335,7 +354,9 @@ export default function LesenExamPage() {
                                   >
                                     {opt.id}
                                   </span>
-                                  <span>{opt.text}</span>
+                                  <span className="min-w-0 overflow-x-auto">
+                                    {isStkExam ? <MathText text={opt.text} /> : opt.text}
+                                  </span>
                                 </button>
                               );
                             })}

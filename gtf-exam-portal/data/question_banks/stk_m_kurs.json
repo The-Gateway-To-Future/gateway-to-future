@@ -1,0 +1,406 @@
+{
+  "id": "gtf-m_kurs-modelltest-1",
+  "level": "m_kurs",
+  "title": "GTF Studienkolleg M-Kurs Aufnahmeprüfung — Biologie, Chemie & Medizinischer C-Test",
+  "provider": "The Gateway to Future (GTF) — Studienkolleg Aufnahmeprüfung M-Kurs (TU Berlin / LMU / Uni Leipzig)",
+  "version": "2026.11",
+  "productSlug": "studienkolleg-m-kurs-crash",
+  "isFree": true,
+  "passPercent": 65,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 60,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Fachtext Biologie & Biochemie: Zellatmung und ATP-Synthese",
+          "instructions": "Lesen Sie den wissenschaftlichen Text und beantworten Sie die Fragen 1 bis 6 (richtig oder falsch).",
+          "passageTitle": "Die chemiosmotische Kopplung und mitochondriale ATP-Synthase",
+          "source": "Studienkolleg Berlin / LMU München M-Kurs Skript",
+          "passage": "Die zelluläre Energiegewinnung in aeroben Eukaryoten erfolgt primär in den Mitochondrien. Während der Glykolyse im Zytosol und des Citratzyklus in der mitochondrialen Matrix werden Reduktionsäquivalente in Form von NADH und $\\text{FADH}_2$ gebildet. Diese übertragen ihre energiereichen Elektronen auf die Atmungskette in der inneren Mitochondrienmembran.\n\nDer Elektronentransport durch die Komplexe I bis IV ist mit einem aktiven Protonentransport aus der Matrix in den Intermembranraum gekoppelt. Hierdurch entsteht ein elektrochemischer Protonengradient (Protonenmotorische Kraft). Die Rückströmung der Protonen durch den Kanal des F0-Teils der ATP-Synthase treibt die Konformationsänderung des katalytischen F1-Kopfes an, wodurch ADP und anorganisches Phosphat zu Adenosintriphosphat (ATP) kondensieren.\n\nEntkoppler wie 2,4-Dinitrophenol (DNP) zerstören diesen Gradienten, indem sie Protonen durch die Membran schleusen, ohne dass ATP synthetisiert wird; die freiwerdende Energie verpufft vollständig als Wärme.",
+          "questions": [
+            {
+              "id": "mk-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Der Citratzyklus findet in der inneren Mitochondrienmembran statt.",
+              "answer": "falsch",
+              "explanation": "Im Text: 'Citratzyklus in der mitochondrialen Matrix' — Citratzyklus Matrix mein hota hai, innere Membran mein nahi."
+            },
+            {
+              "id": "mk-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Protonen werden aktiv aus der Matrix in den Intermembranraum gepumpt.",
+              "answer": "richtig",
+              "explanation": "Im Text: 'aktiven Protonentransport aus der Matrix in den Intermembranraum'. Richtig."
+            },
+            {
+              "id": "mk-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Die ATP-Synthase nutzt die protonenmotorische Kraft zur Phosphorylierung von ADP.",
+              "answer": "richtig",
+              "explanation": "Im Text: Protonenrückstrom durch F0 treibt F1 zur ATP-Synthese an. Richtig."
+            },
+            {
+              "id": "mk-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Entkoppler wie DNP steigern die zelluläre ATP-Ausbeute.",
+              "answer": "falsch",
+              "explanation": "Im Text: DNP zerstört den Gradienten, Energie verpufft als Wärme ohne ATP-Gewinn. Falsch."
+            },
+            {
+              "id": "mk-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. NADH überträgt Elektronen direkt auf die Atmungskette.",
+              "answer": "richtig",
+              "explanation": "Im Text: NADH und $\\text{FADH}_2$ übertragen Elektronen auf Atmungskettenkomplexe. Richtig."
+            },
+            {
+              "id": "mk-l1-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Die Glykolyse findet innerhalb der Mitochondrien statt.",
+              "answer": "falsch",
+              "explanation": "Im Text: 'Glykolyse im Zytosol'. Falsch."
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Medizinische Chemie: Säure-Base-Puffer im Organismus",
+          "instructions": "Wählen Sie für die Aufgaben 7 bis 10 die chemisch und biologisch korrekte Antwortoption (a, b oder c).",
+          "passageTitle": "Der Kohlensäure-Bicarbonat-Puffer im Blutplasma",
+          "source": "Charité Berlin & Uni Heidelberg Propädeutikum",
+          "passage": "Das Kohlensäure-Bicarbonat-System ist das quantitativ bedeutendste Puffersystem des menschlichen Extrazellulärraums. Es handelt sich um ein offenes Puffersystem, da die flüchtige Komponente Kohlendioxid über die Lunge abgeatmet und die nicht-flüchtige Komponente Hydrogencarbonat über die Nieren tubulär rückresorbiert oder sezerniert werden kann.\n\nDie Henderson-Hasselbalch-Gleichung lautet: $\\text{pH} = \\text{p}K_s + \\lg\\left(\\frac{[\\text{HCO}_3^-]}{[\\text{CO}_2]}\\right)$. Bei einem physiologischen pKs von 6,1 und einem Verhältnis von Bicarbonat zu gelöstem $\\text{CO}_2$ von 20 zu 1 ergibt sich ein normaler Blut-pH-Wert von exakt 7,40.",
+          "questions": [
+            {
+              "id": "mk-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Warum wird das Bicarbonat-System als 'offenes Puffersystem' bezeichnet?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Weil der pH-Wert unbegrenzt schwanken darf."
+                },
+                {
+                  "id": "b",
+                  "text": "Weil $\\text{CO}_2$ respiratorisch über die Lunge abgeatmet werden kann."
+                },
+                {
+                  "id": "c",
+                  "text": "Weil Blut frei mit dem lymphatischen System zirkuliert."
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\text{CO}_2$ wird pulmonal abgeatmet und $\\text{HCO}_3^-$ renal reguliert, daher offenes System."
+            },
+            {
+              "id": "mk-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Welches Verhältnis $[\\text{HCO}_3^-]$ zu gelöstem $[\\text{CO}_2]$ sichert den physiologischen pH von 7,40?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "1 zu 1"
+                },
+                {
+                  "id": "b",
+                  "text": "10 zu 1"
+                },
+                {
+                  "id": "c",
+                  "text": "20 zu 1"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$\\text{pH} = 6{,}1 + \\lg(20) = 6{,}1 + 1{,}3 = 7{,}40$."
+            },
+            {
+              "id": "mk-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Was geschieht bei akuter Hyperventilation mit dem Blut-pH-Wert?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Der pH-Wert sinkt (Azidose)."
+                },
+                {
+                  "id": "b",
+                  "text": "Der pH-Wert steigt (respiratorische Alkalose)."
+                },
+                {
+                  "id": "c",
+                  "text": "Der pH-Wert bleibt unverändert."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Übermäßiges Abatmen von $\\text{CO}_2$ verschiebt das Gleichgewicht nach links: $[\\text{H}^+]$ sinkt, pH steigt (Alkalose)."
+            },
+            {
+              "id": "mk-l2-q10",
+              "type": "mcq",
+              "prompt": "10. Welches Organ reguliert primär die renale Hydrogencarbonat-Ausscheidung?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Nieren"
+                },
+                {
+                  "id": "b",
+                  "text": "Die Leber"
+                },
+                {
+                  "id": "c",
+                  "text": "Die Bauchspeicheldrüse"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Renal = Nieren."
+            }
+          ]
+        },
+        {
+          "id": "lesen-3",
+          "kind": "sprachbausteine",
+          "title": "Lesen Teil 3 — C-Test Deutsch & Fachterminologie M-Kurs",
+          "instructions": "Ergänzen Sie die Lücken im medizinisch-naturwissenschaftlichen Fachtext.",
+          "mode": "select",
+          "text": "Die menschliche Zelle ist die kleinste lebensfähige Baueinheit des Organismus. Alle biochemischen Reaktionen {{21}} durch spezifische Enzyme katalysiert. Mutationen in der DNA können {{22}} Störungen der Proteinstruktur führen. In deutschen Krankenhäusern spielt die Hygiene eine entscheidende {{23}} zur Verhinderung nosokomialer Infektionen. Internationale Studienbewerber müssen fundierte Kenntnisse in Chemie {{24}} Biologie nachweisen, um im M-Kurs erfolgreich zur Feststellungsprüfung {{25}} zu werden.",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "werden"
+                },
+                {
+                  "id": "b",
+                  "text": "haben"
+                },
+                {
+                  "id": "c",
+                  "text": "sind"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Passiv Präsens: werden + Partizip II (katalysiert)."
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "zu"
+                },
+                {
+                  "id": "b",
+                  "text": "nach"
+                },
+                {
+                  "id": "c",
+                  "text": "für"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Verbindung: führen zu (Dativ)."
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Rolle"
+                },
+                {
+                  "id": "b",
+                  "text": "Aufgabe"
+                },
+                {
+                  "id": "c",
+                  "text": "Bedeutung"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Kollokation: eine entscheidende Rolle spielen."
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "sowie"
+                },
+                {
+                  "id": "b",
+                  "text": "aber"
+                },
+                {
+                  "id": "c",
+                  "text": "denn"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Aufzählung: Chemie sowie Biologie."
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "zugelassen"
+                },
+                {
+                  "id": "b",
+                  "text": "angenommen"
+                },
+                {
+                  "id": "c",
+                  "text": "bestanden"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Zur Prüfung zugelassen werden."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 25,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Aufnahmeprüfung M-Kurs Hörverstehen",
+          "instructions": "Sie hören einen Fachausschnitt aus der molekularen Zellbiologie. Hören Sie den Text und beantworten Sie die Fragen.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/stk_m_kurs_01.mp3",
+          "script": [
+            {
+              "speaker": "Dozent Biologie",
+              "voice": "male",
+              "text": "Studienkolleg Aufnahmeprüfung M-Kurs. Hörverstehen: Molekulare Zellbiologie und Enzymkinetik. Enzyme sind biologische Biokatalysatoren, die die Aktivierungsenergie biochemischer Reaktionen drastisch senken, ohne dabei selbst verbraucht zu werden. Die Michaelis-Konstante KM entspricht der Substratkonzentration, bei der die halbe Maximalgeschwindigkeit erreicht wird."
+            }
+          ],
+          "questions": [
+            {
+              "id": "mk-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Welche primäre Funktion erfüllen Enzyme im zellulären Stoffwechsel?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Sie erhöhen die Aktivierungsenergie."
+                },
+                {
+                  "id": "b",
+                  "text": "Sie senken die Aktivierungsenergie biochemischer Reaktionen."
+                },
+                {
+                  "id": "c",
+                  "text": "Sie werden bei jeder Reaktion vollständig verbraucht."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Biokatalysatoren senken die Aktivierungsenergie."
+            },
+            {
+              "id": "mk-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Was definiert die Michaelis-Konstante KM?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die maximale Reaktionsgeschwindigkeit Vmax."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Substratkonzentration bei halbmaximaler Reaktionsgeschwindigkeit."
+                },
+                {
+                  "id": "c",
+                  "text": "Die optimale Arbeitstemperatur des Enzyms in Grad Celsius."
+                }
+              ],
+              "answer": "b",
+              "explanation": "KM = Substratkonzentration bei 0.5 * Vmax."
+            }
+          ]
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Säure-Base-Puffersysteme im Organismus",
+          "instructions": "Hören Sie die Vorlesung über chemische Gleichgewichte im Blut.",
+          "maxPlays": 1,
+          "audioUrl": "/audio/stk_m_kurs_02.mp3",
+          "script": [
+            {
+              "speaker": "Dozentin Chemie",
+              "voice": "female",
+              "text": "Der physiologische pH-Wert des menschlichen Blutes liegt in einem extrem engen Bereich zwischen 7,35 und 7,45. Das wichtigste physiologische Puffersystem ist der Kohlensäure-Bicarbonat-Puffer."
+            }
+          ],
+          "questions": [
+            {
+              "id": "mk-h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Der normale Blut-pH-Wert liegt zwischen 7,35 und 7,45.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: 7,35 bis 7,45 (Richtig)."
+            },
+            {
+              "id": "mk-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Das wichtigste Blutpuffersystem basiert auf Essigsäure und Acetat.",
+              "answer": "falsch",
+              "explanation": "Kohlensäure-Bicarbonat-Puffer, nicht Essigsäure. Falsch."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 45,
+      "tasks": [
+        {
+          "id": "mk-s1",
+          "title": "Wissenschaftliche Textproduktion: Ethische Aspekte der Gentechnik",
+          "register": "formell",
+          "instructions": "Verfassen Sie eine strukturierte Stellungnahme zu Chancen und Risiken der CRISPR-Cas9-Gentechnik in der Humanmedizin.",
+          "situation": "Aufnahmeprüfung Studienkolleg Fachrichtung M-Kurs. Textlänge mind. 180 Wörter.",
+          "leitpunkte": [
+            "Therapeutische Potenziale bei monogenen Erbkrankheiten",
+            "Ethische Bedenken hinsichtlich Keimbahneingriffen",
+            "Gesetzliche Regulierung im deutschen Embryonenschutzgesetz",
+            "Ihre persönliche Schlussfolgerung mit Begründung"
+          ],
+          "minWords": 180,
+          "recommendedMinutes": 45
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "mk-sp1",
+          "teil": 1,
+          "title": "Mündliche Prüfung: Präsentation eines biologischen Kreislaufs",
+          "instructions": "Präsentieren Sie den Sauerstoff- und Kohlendioxid-Transport im menschlichen Kreislauf.",
+          "card": {
+            "heading": "Gasaustausch und Hämoglobinbindung",
+            "bullets": [
+              "Alveolärer Gasaustausch in der Lunge",
+              "Kooperative Sauerstoffbindung an Hämoglobin",
+              "Bohr-Effekt im arbeitenden Gewebe",
+              "Rücktransport von $\\text{CO}_2$ als Bicarbonat"
+            ]
+          },
+          "examinerScript": "Guten Tag. Bitte erläutern Sie uns kurz den molekularen Mechanismus des Bohr-Effekts.",
+          "prepSeconds": 180,
+          "speakSeconds": 240
+        }
+      ]
+    }
+  }
+}

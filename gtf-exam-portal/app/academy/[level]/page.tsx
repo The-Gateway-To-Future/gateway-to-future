@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Ban } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
@@ -74,6 +75,14 @@ export default function AcademyLevelSubdivisionsPage() {
           backgroundImage={resolveHeaderImage(info.levelKey)}
           backHref={info.divisionHref}
           backLabel={info.divisionLabel}
+          rightBadge={
+            info.isStudienkolleg ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+                <Ban className="h-3 w-3 text-amber-300 shrink-0" aria-hidden="true" />
+                <span>Prüfungsmodus: Ohne Taschenrechner</span>
+              </span>
+            ) : undefined
+          }
         />
 
         {/* Core 4 Subdivision Folders */}

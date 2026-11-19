@@ -99,6 +99,26 @@ h1, h2, h3, h4, h5, h6 {
   font-feature-settings: "ss01", "cv02", "kern" 1;
 }
 
+/* KaTeX textbook typography & 375px–430px mobile overflow safeguards */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 0.35rem 0.25rem;
+  margin: 0.45rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex {
+  font-size: 1.03em;
+}
+
+.katex-inline-wrap {
+  display: inline;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
 /* Mobile reading gutters & comfort margins */
 @media (max-width: 640px) {
   .german-reading {

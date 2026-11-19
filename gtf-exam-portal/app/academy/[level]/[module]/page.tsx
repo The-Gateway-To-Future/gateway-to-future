@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Ban } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { CompactTopicList } from "@/components/CompactTopicRow";
@@ -75,6 +76,14 @@ export default function AcademySubdivisionTopicIndexPage() {
           backgroundImage={resolveHeaderImage(info.levelKey)}
           backHref={`/academy/${info.levelKey}`}
           backLabel={info.label}
+          rightBadge={
+            info.isStudienkolleg ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+                <Ban className="h-3 w-3 text-amber-300 shrink-0" aria-hidden="true" />
+                <span>Prüfungsmodus: Ohne Taschenrechner</span>
+              </span>
+            ) : undefined
+          }
         />
 
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-6 sm:py-9 space-y-4 sm:space-y-5">

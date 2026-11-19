@@ -3,6 +3,7 @@ import { BRAND } from "@/lib/config";
 import { AuthProvider } from "@/lib/auth-context";
 import { CapacitorBridge } from "@/components/CapacitorBridge";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import "katex/dist/katex.min.css";
 import "./globals.css";
 import "./obsidian-theme.css";
 

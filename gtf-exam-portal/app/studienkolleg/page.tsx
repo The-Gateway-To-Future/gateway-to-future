@@ -1,34 +1,104 @@
 import Link from "next/link";
+import { Ban, Sigma } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
+import { CompactTopicList } from "@/components/CompactTopicRow";
+import { MathText } from "@/components/MathText";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { BRAND, LEVEL_META } from "@/lib/config";
+import type { SubdivisionTopicItem } from "@/lib/subdivisions";
 
 const STK_TRACK_CARDS = [
   {
-    key: "t_kurs" as const,
-    indexLabel: "TRACK 01 · ENGINEERING & TECH",
-    badge: "COMING SOON · A1–B2 FOCUS",
-    metaItems: ["Mathematik", "Physik", "Deutsch C-Test"],
+    key: "m_kurs" as const,
+    indexLabel: "TRACK 01 · MEDIZIN & BIOLOGIE",
+    badge: "M-KURS · MEDIZIN",
+    metaItems: ["Biologie", "Chemie", "Mathematik & C-Test"],
   },
   {
-    key: "m_kurs" as const,
-    indexLabel: "TRACK 02 · MEDICINE & BIO",
-    badge: "COMING SOON · A1–B2 FOCUS",
-    metaItems: ["Biologie", "Chemie", "Deutsch C-Test"],
+    key: "t_kurs" as const,
+    indexLabel: "TRACK 02 · TECHNIK & MINT",
+    badge: "T-KURS · TECHNIK",
+    metaItems: ["Mathematik", "Physik & Mechanik", "Deutsch C-Test"],
   },
   {
     key: "w_kurs" as const,
-    indexLabel: "TRACK 03 · ECONOMICS & BUSINESS",
-    badge: "COMING SOON · A1–B2 FOCUS",
+    indexLabel: "TRACK 03 · WIRTSCHAFT & BWL",
+    badge: "W-KURS · WIRTSCHAFT",
     metaItems: ["VWL & BWL", "Wirtschaftsmathe", "Deutsch C-Test"],
   },
   {
     key: "g_kurs" as const,
-    indexLabel: "TRACK 04 · HUMANITIES & LAW",
-    badge: "COMING SOON · A1–B2 FOCUS",
-    metaItems: ["Geschichte", "Verfassung", "Literatur"],
+    indexLabel: "TRACK 04 · GEISTESWISSENSCHAFTEN",
+    badge: "G-KURS · HUMANITIES",
+    metaItems: ["Geschichte", "Verfassung (GG)", "Literatur & C-Test"],
+  },
+];
+
+const CORE_STK_PRACTICE_SETS: SubdivisionTopicItem[] = [
+  {
+    id: "wb-factory-stk-math-batch1",
+    indexLabel: "SET 01 · MATHEMATIK",
+    title: "Aufnahmeprüfung Mathematik — Analysis, Vektoren & Gleichungssysteme",
+    subtitle: "8 prüfungsnahe Mathematik-Aufgaben (M- & T-Kurs) mit Schritt-für-Schritt-Musterlösungen ohne Taschenrechner.",
+    badge: "8 TASKS",
+    theme: "studienkolleg",
+    href: "/academy/t_kurs/02-grammar/wb-factory-stk-math-batch1",
+    ctaLabel: "Open Set",
+    metaItems: ["8 Tasks", "Ohne Taschenrechner"],
+    kind: "workbook",
+    workbookId: "wb-factory-stk-math-batch1",
+  },
+  {
+    id: "stk-math-ctest-kompakt-01",
+    indexLabel: "SET 02 · KOMPAKT-TRAINING",
+    title: "Studienkolleg C-Test & Fachmathematik — Kompakt-Training Set #1",
+    subtitle: "TU-Berlin-Standard C-Test kombiniert mit Algebra, Logarithmen, Geraden & Exponentialwachstum.",
+    badge: "6 TASKS",
+    theme: "studienkolleg",
+    href: "/academy/t_kurs/02-grammar/stk-math-ctest-kompakt-01",
+    ctaLabel: "Open Set",
+    metaItems: ["6 Tasks", "C-Test + Mathe"],
+    kind: "workbook",
+    workbookId: "stk-math-ctest-kompakt-01",
+  },
+  {
+    id: "wb-factory-stk-ctest-batch1",
+    indexLabel: "SET 03 · DEUTSCH C-TEST",
+    title: "Aufnahmeprüfung Deutsch — Authentischer C-Test & Wissenschaftssprache",
+    subtitle: "Akademischer Lückentext, Partizipialattribute & Nominalstil für M-, T-, W- und G-Kurs.",
+    badge: "8 TASKS",
+    theme: "grammar",
+    href: "/academy/m_kurs/02-grammar/wb-factory-stk-ctest-batch1",
+    ctaLabel: "Open C-Test",
+    metaItems: ["8 Tasks", "Wissenschaftssprache"],
+    kind: "workbook",
+    workbookId: "wb-factory-stk-ctest-batch1",
+  },
+  {
+    id: "stk-workspace",
+    indexLabel: "SET 04 · FORMELSAMMLUNG",
+    title: "Formelsammlung & Lösungsbeispiele (M · T · W · G-Kurs)",
+    subtitle: "Geprüfte Kernformeln aus Mathematik, Physik, Chemie & VWL in Lehrbuch-Typografie mit Rechenbeispielen.",
+    badge: "FORMELN",
+    theme: "studienkolleg",
+    href: "/academy/t_kurs/02-grammar/stk-workspace",
+    ctaLabel: "Open Formelsammlung",
+    metaItems: ["Lehrbuch-Formeln", "Musterlösungen"],
+    kind: "stk-tool",
+  },
+  {
+    id: "stk-syllabus",
+    indexLabel: "SET 05 · ALTKLAUSUREN",
+    title: "2-Semester-Lehrplan & Universitäts-Altklausuren (TU Berlin, KIT, LMU, FU)",
+    subtitle: "Komplette Themenübersicht für Aufnahmeprüfung & Feststellungsprüfung (FSP) nach staatlichem Standard.",
+    badge: "FSP ARCHIV",
+    theme: "exam",
+    href: "/academy/t_kurs/02-grammar/stk-syllabus",
+    ctaLabel: "Open Archiv",
+    metaItems: ["8 Altklausuren", "2-Semester-Plan"],
+    kind: "stk-tool",
   },
 ];
 
@@ -45,56 +115,47 @@ export default function StudienkollegPage() {
           ]}
           eyebrow="DIVISION 02 · STUDIENKOLLEG HUB"
           title="Select Your Aufnahmeprüfung Track."
-          subtitle="Structured preparation for German public university foundation colleges across T, M, W, and G-Kurs tracks — C-Tests, 1-year syllabus dossiers, and formula engines."
+          subtitle="Structured preparation for German public university foundation colleges across M-, T-, W-, and G-Kurs tracks — textbook formulas, C-Tests, and FSP archives."
           theme="studienkolleg"
           backgroundImage={HEADER_IMAGES.studienkolleg}
           backHref="/dashboard"
           backLabel="Hub"
+          rightBadge={
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+              <Ban className="h-3 w-3 text-amber-300 shrink-0" aria-hidden="true" />
+              <span>Prüfungsmodus: Ohne Taschenrechner</span>
+            </span>
+          }
         />
 
+        {/* Level 2: 4 Core Studienkolleg Track Cards (Matching Language Academy 1:1) */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
-          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 sm:p-6 text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
-            <div className="space-y-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800">
-                CURRICULUM NOTICE · A1–B2 PRIORITY
-              </span>
-              <p className="text-sm font-medium text-slate-800">
-                Studienkolleg tracks are paused while focusing 100% on Goethe / telc CEFR A1, A2, B1, and B2 certification.
-              </p>
-            </div>
-            <Link
-              href="/academy"
-              className="relative z-20 shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
-            >
-              Go to Language Academy
-            </Link>
-          </div>
-
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                LEVEL 02 · ACADEMIC TRACKS
+                LEVEL 02 · ACADEMIC TRACK SELECTION
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
                 4 State Studienkolleg Tracks
               </h2>
             </div>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
-              Aufnahmeprüfung · FSP
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-700 shadow-2xs">
+              <Ban className="h-3 w-3 text-slate-500 shrink-0" aria-hidden="true" />
+              <span>Prüfungsmodus: Ohne Taschenrechner</span>
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(STK_TRACK_CARDS || []).map((item) => {
+            {STK_TRACK_CARDS.map((item) => {
               const meta = LEVEL_META[item.key];
               return (
                 <SubdivisionCard
                   key={item.key}
                   indexLabel={item.indexLabel}
-                  title={meta.label}
+                  title={`${meta.label} — ${meta.cefr}`}
                   subtitle={`${meta.description}. Target Universities: ${meta.exams}.`}
                   href={`/academy/${item.key}`}
-                  ctaLabel={`Open ${meta.label} Folder`}
+                  ctaLabel={`Open ${meta.label} Subdivisions`}
                   theme="studienkolleg"
                   imageUrl={HEADER_IMAGES.studienkolleg}
                   badge={item.badge}
@@ -105,29 +166,59 @@ export default function StudienkollegPage() {
           </div>
         </section>
 
-        {/* Dedicated Interactive Formula & Past-Paper Suite */}
+        {/* Core Practice Sets, C-Tests & Textbook Formula Reference (CompactTopicList) */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 pb-12 space-y-6">
-          <div className="border-b border-slate-200 pb-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-              DEDICATED WORKSPACE
-            </p>
-            <h2 className="mt-1 text-xl sm:text-2xl font-light tracking-tight text-slate-900">
-              Interactive Formula Engine &amp; Past-Paper Archive
-            </h2>
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-200 pb-3.5">
+            <div className="space-y-0.5">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                KERNMODULE · C-TESTS &amp; FACHMATHEMATIK
+              </p>
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
+                Direct Practice Sets &amp; Formelsammlung
+              </h2>
+            </div>
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-2xs">
+              {CORE_STK_PRACTICE_SETS.length} Modules
+            </span>
           </div>
 
-          <SubdivisionCard
-            indexLabel="ALL TRACKS · INTERACTIVE LAB"
-            title="Studienkolleg Formula Calculator & FSP Suite"
-            subtitle="Launch the dedicated interactive calculator console, 2-semester syllabus map, and TU Berlin / LMU / KIT C-Test archive in a single distraction-free view."
-            href="/academy/t_kurs/02-grammar/stk-workspace"
-            ctaLabel="Launch Formula Suite"
-            theme="studienkolleg"
-            imageUrl={HEADER_IMAGES.studienkolleg}
-            badge="FORMULA ENGINE"
-            metaItems={["T · M · W · G Switcher", "Live Calculators", "Past Papers"]}
-            aspectClassName="min-h-[220px]"
-          />
+          <CompactTopicList topics={CORE_STK_PRACTICE_SETS} />
+
+          {/* Clean Textbook Formula Preview Bar (KaTeX) */}
+          <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-xs space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-700">
+                <Sigma className="h-4 w-4 text-indigo-600" />
+                <span>Lehrbuch-Formelsammlung (KaTeX)</span>
+              </span>
+              <Link
+                href="/academy/t_kurs/02-grammar/stk-workspace"
+                className="text-xs font-semibold text-indigo-700 hover:text-indigo-900 transition"
+              >
+                Alle Formeln öffnen →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 space-y-1 min-w-0">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  T-Kurs · Energieerhaltung
+                </p>
+                <MathText
+                  text="E_{\text{gesamt}} = \frac{1}{2}mv^2 + mgh = \text{konstant}"
+                  display
+                />
+              </div>
+              <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 space-y-1 min-w-0">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  M-Kurs · Henderson-Hasselbalch
+                </p>
+                <MathText
+                  text="\text{pH} = \text{p}K_s + \lg\left(\frac{[\text{A}^-]}{[\text{HA}]}\right)"
+                  display
+                />
+              </div>
+            </div>
+          </div>
         </section>
       </main>
 
@@ -154,7 +245,6 @@ export default function StudienkollegPage() {
       </footer>
 
       <BottomNavigationBar />
-      
     </div>
   );
 }

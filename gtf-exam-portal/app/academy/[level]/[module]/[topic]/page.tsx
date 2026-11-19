@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { ArrowRight, Clock, ShieldCheck } from "lucide-react";
+import { ArrowRight, Ban, Clock, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
@@ -248,9 +248,9 @@ export default function AcademyTopicWorkspacePage() {
     (isExamLauncher
       ? `${info?.label || "Exam"} ${SECTION_META[resolvedSection]?.label || "Prüfung"}`
       : rawTopic === "stk-syllabus"
-      ? `${info?.label || "Studienkolleg"} Syllabus & Past Papers`
+      ? `${info?.label || "Studienkolleg"} 2-Semester-Lehrplan & Altklausuren`
       : isStkWorkspace
-      ? `${info?.label || "Studienkolleg"} Formula Calculator Engine`
+      ? `${info?.label || "Studienkolleg"} Formelsammlung & Rechenbeispiele`
       : rawTopic === "pflege-dialogues"
       ? "Clinical Ward Dialogues & Redemittel"
       : isPflegeHub
@@ -287,6 +287,14 @@ export default function AcademyTopicWorkspacePage() {
           backgroundImage={resolveHeaderImage(info.levelKey)}
           backHref={`/academy/${info.levelKey}/${moduleSlug}`}
           backLabel="Topics"
+          rightBadge={
+            info.isStudienkolleg ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+                <Ban className="h-3 w-3 text-amber-300 shrink-0" aria-hidden="true" />
+                <span>Prüfungsmodus: Ohne Taschenrechner</span>
+              </span>
+            ) : undefined
+          }
         />
 
         <section className="mx-auto w-full max-w-6xl px-4 sm:px-8 py-10">

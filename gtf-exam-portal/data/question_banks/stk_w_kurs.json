@@ -1,0 +1,406 @@
+{
+  "id": "gtf-w_kurs-modelltest-1",
+  "level": "w_kurs",
+  "title": "GTF Studienkolleg W-Kurs Aufnahmeprüfung — VWL, BWL & Wirtschaftsmathematik",
+  "provider": "The Gateway to Future (GTF) — Studienkolleg Aufnahmeprüfung W-Kurs (Uni Mannheim / Goethe-Uni Frankfurt / Uni Köln)",
+  "version": "2026.11",
+  "productSlug": "studienkolleg-w-kurs-crash",
+  "isFree": true,
+  "passPercent": 65,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 60,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Fachtext VWL: Preisbildung und Marktformen in der Sozialen Marktwirtschaft",
+          "instructions": "Lesen Sie den Fachtext und beantworten Sie die Aufgaben 1 bis 6 (richtig oder falsch).",
+          "passageTitle": "Vollkommener Wettbewerb versus Oligopol und Monopolmacht",
+          "source": "Uni Mannheim & Goethe-Universität Frankfurt W-Kurs Skript",
+          "passage": "In der mikroökonomischen Theorie modelliert das Modell des vollkommenen Marktes eine idealtypische Marktstruktur. Voraussetzungen hierfür sind homogene Güter, vollkommene Markttransparenz, unendlich schnelle Reaktionsgeschwindigkeit aller Marktteilnehmer sowie das Fehlen zeitlicher, räumlicher oder persönlicher Präferenzen. Unter diesen Prämissen agieren Anbieter und Nachfrager als reine Preisnehmer; der Gleichgewichtspreis stellt sich im Schnittpunkt von gesamtwirtschaftlichem Angebot und Nachfrage ein.\n\nIn realen Märkten hingegen herrschen unvollkommene Marktformen vor, insbesondere Oligopole und monopolistische Konkurrenz. Im Polypol teilen sich viele kleine Anbieter die Nachfrage, während im Oligopol wenige Großunternehmen einen signifikanten Marktanteil kontrollieren. Hier besteht die Gefahr von Preisabsprachen oder strategischem Parallelverhalten zum Nachteil der Konsumenten.\n\nDas deutsche Bundeskartellamt überwacht im Rahmen der Fusionskontrolle und des Gesetzes gegen Wettbewerbsbeschränkungen (GWB) die Erhaltung eines funktionsfähigen Wettbewerbs und sanktioniert missbräuchliche Ausnutzungen marktbeherrschender Stellungen.",
+          "questions": [
+            {
+              "id": "wk-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Auf einem vollkommenen Markt haben die Konsumenten ausgeprägte persönliche Vorlieben.",
+              "answer": "falsch",
+              "explanation": "Im Text: 'Fehlen zeitlicher, räumlicher oder persönlicher Präferenzen'. Falsch."
+            },
+            {
+              "id": "wk-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Im Modell des vollkommenen Wettbewerbs sind einzelne Unternehmen Preisnehmer.",
+              "answer": "richtig",
+              "explanation": "Im Text: 'agieren Anbieter und Nachfrager als reine Preisnehmer'. Richtig."
+            },
+            {
+              "id": "wk-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. In einem Oligopol gibt es nur einen einzigen Anbieter auf dem Markt.",
+              "answer": "falsch",
+              "explanation": "Oligopol = wenige Großunternehmen. Ein einziger Anbieter heißt Monopol. Falsch."
+            },
+            {
+              "id": "wk-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Das Bundeskartellamt kontrolliert Unternehmensfusionen in Deutschland.",
+              "answer": "richtig",
+              "explanation": "Im Text: Bundeskartellamt überwacht im Rahmen der Fusionskontrolle. Richtig."
+            },
+            {
+              "id": "wk-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Markttransparenz bedeutet, dass alle Akteure vollständige Information über Preise und Qualitäten besitzen.",
+              "answer": "richtig",
+              "explanation": "Vollkommene Markttransparenz ist Kernannahme des vollkommenen Marktes. Richtig."
+            },
+            {
+              "id": "wk-l1-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Reale Märkte entsprechen ausnahmslos dem Modell des vollkommenen Marktes.",
+              "answer": "falsch",
+              "explanation": "Im Text: In realen Märkten herrschen unvollkommene Marktformen vor. Falsch."
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — BWL & KLR: Deckungsbeitrag und Gewinnschwelle",
+          "instructions": "Wählen Sie für die Aufgaben 7 bis 10 die betriebswirtschaftlich zutreffende Antwort.",
+          "passageTitle": "Teilkostenrechnung und Break-Even-Analyse",
+          "source": "Uni Köln & Frankfurt School of Finance",
+          "passage": "Die Kosten- und Leistungsrechnung (KLR) bildet das fundamentale interne Steuerungsinstrument deutscher Unternehmen. Während die Vollkostenrechnung sämtliche Gemeinkosten proportional auf die Kostenträger verteilt, trennt die Teilkostenrechnung strikt in variable Kosten (beschäftigungsabhängig) und fixe Kosten (zeitabhängig).\n\nDer Deckungsbeitrag DB eines Produkts ist die Differenz zwischen Erlös E und variablen Kosten Kv: $DB = E - K_v$. Er gibt an, wie viel ein Erzeugnis zur Deckung der fixen Bereitschaftskosten und zum Betriebsgewinn beiträgt. Der Break-Even-Point (Gewinnschwelle) errechnet sich als Quotient aus fixen Gesamtkosten Kf und Stückdeckungsbeitrag db: $x_{\\text{BEP}} = \\frac{K_f}{db}$.",
+          "questions": [
+            {
+              "id": "wk-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Wie ist der Stückdeckungsbeitrag db rechnerisch definiert?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Verkaufspreis minus variable Stückkosten ($p - k_v$)"
+                },
+                {
+                  "id": "b",
+                  "text": "Verkaufspreis minus fixe Gesamtkosten ($p - K_f$)"
+                },
+                {
+                  "id": "c",
+                  "text": "Umsatzerlös geteilt durch Gesamtkosten"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$db = p - k_v$."
+            },
+            {
+              "id": "wk-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Ein Betrieb hat fixe Kosten von 100.000 € und einen Stückdeckungsbeitrag von 20 €. Wie hoch ist die Gewinnschwelle?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "2.000 Stück"
+                },
+                {
+                  "id": "b",
+                  "text": "5.000 Stück"
+                },
+                {
+                  "id": "c",
+                  "text": "10.000 Stück"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$x_{\\text{BEP}} = \\frac{K_f}{db} = \\frac{100.000\\,\\text{€}}{20\\,\\text{€}} = 5.000\\text{ Stück}$."
+            },
+            {
+              "id": "wk-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Was kennzeichnet die fixen Kosten eines Unternehmens kurzfristig?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Sie steuern direkt mit der Produktionsmenge."
+                },
+                {
+                  "id": "b",
+                  "text": "Sie fallen auch bei einer Produktionsmenge von null an (z.B. Miete, Abschreibungen)."
+                },
+                {
+                  "id": "c",
+                  "text": "Sie sinken bei steigender Produktion prozentual ab."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Fixkosten sind beschäftigungsunabhängig (Bereitschaftskosten)."
+            },
+            {
+              "id": "wk-l2-q10",
+              "type": "mcq",
+              "prompt": "10. Welches interne Rechnungswesen dient primär der Planung, Steuerung und Kontrolle?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Kosten- und Leistungsrechnung (KLR)"
+                },
+                {
+                  "id": "b",
+                  "text": "Die Handelsbilanz für das Finanzamt"
+                },
+                {
+                  "id": "c",
+                  "text": "Der Jahresabschluss nach IFRS"
+                }
+              ],
+              "answer": "a",
+              "explanation": "KLR ist internes Rechnungswesen für das Management."
+            }
+          ]
+        },
+        {
+          "id": "lesen-3",
+          "kind": "sprachbausteine",
+          "title": "Lesen Teil 3 — C-Test Deutsch für Wirtschaftswissenschaften",
+          "instructions": "Wählen Sie die korrekten sprachlichen Anschlüsse für die Lücken 21 bis 25.",
+          "mode": "select",
+          "text": "Die Bundesrepublik Deutschland zählt zu den führenden Exportnationen der Welt. Deutsche Unternehmen sind stark in globale Wertschöpfungsketten {{21}}. Die europäische Zentralbank verfolgt das vorrangige Ziel, die Preisstabilität zu {{22}}. Steigende Zinsen können die Investitionsbereitschaft von Unternehmen spürbar {{23}}. Studierende im W-Kurs erwerben fundierte Kenntnisse, um wirtschaftliche Zusammenhänge {{24}} analysieren. Nach bestandener Feststellungsprüfung steht ihnen das Studium der Betriebswirtschaftslehre {{25}}.",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "eingebunden"
+                },
+                {
+                  "id": "b",
+                  "text": "eingebaut"
+                },
+                {
+                  "id": "c",
+                  "text": "aufgestellt"
+                }
+              ],
+              "answer": "a",
+              "explanation": "eingebunden in globale Wertschöpfungsketten."
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "gewährleisten"
+                },
+                {
+                  "id": "b",
+                  "text": "schützen"
+                },
+                {
+                  "id": "c",
+                  "text": "steigern"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Preisstabilität gewährleisten (feste Kollokation)."
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "dämpfen"
+                },
+                {
+                  "id": "b",
+                  "text": "verhindern"
+                },
+                {
+                  "id": "c",
+                  "text": "ablehnen"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Investitionsbereitschaft dämpfen/bremsen."
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "zu"
+                },
+                {
+                  "id": "b",
+                  "text": "um"
+                },
+                {
+                  "id": "c",
+                  "text": "für"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Infinitiv mit zu: zu analysieren."
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "offen"
+                },
+                {
+                  "id": "b",
+                  "text": "bereit"
+                },
+                {
+                  "id": "c",
+                  "text": "frei"
+                }
+              ],
+              "answer": "a",
+              "explanation": "offenstehen: steht ihnen das Studium offen."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 25,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Aufnahmeprüfung W-Kurs Hörverstehen",
+          "instructions": "Sie hören einen Fachausschnitt aus der Volkswirtschaftslehre.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/stk_w_kurs_01.mp3",
+          "script": [
+            {
+              "speaker": "Dozent VWL",
+              "voice": "male",
+              "text": "Studienkolleg Aufnahmeprüfung W-Kurs. Hörverstehen: Volkswirtschaftslehre und Preisbildung. Auf einem vollkommenen Markt bildet sich der Gleichgewichtspreis im Schnittpunkt von Angebots- und Nachfragekurve. Die Preiselastizität der Nachfrage quantifiziert die prozentuale Veränderung der nachgefragten Menge in Reaktion auf eine Preisänderung."
+            }
+          ],
+          "questions": [
+            {
+              "id": "wk-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Wo bildet sich der Gleichgewichtspreis auf einem Markt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Am staatlich festgelegten Mindestpreis."
+                },
+                {
+                  "id": "b",
+                  "text": "Im Schnittpunkt von Angebots- und Nachfragekurve."
+                },
+                {
+                  "id": "c",
+                  "text": "Immer beim maximal möglichen Produzentengewinn."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Schnittpunkt von Angebot und Nachfrage."
+            },
+            {
+              "id": "wk-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Was misst die Preiselastizität der Nachfrage?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Inflationsrate des Vorjahres."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Reaktion der nachgefragten Menge auf eine relative Preisänderung."
+                },
+                {
+                  "id": "c",
+                  "text": "Die Höhe der Körperschaftsteuer."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Mengenänderung geteilt durch Preisänderung."
+            }
+          ]
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Kosten- und Leistungsrechnung",
+          "instructions": "Hören Sie den Vorlesungsausschnitt zur Betriebswirtschaftslehre.",
+          "maxPlays": 1,
+          "audioUrl": "/audio/stk_w_kurs_02.mp3",
+          "script": [
+            {
+              "speaker": "Dozentin BWL",
+              "voice": "female",
+              "text": "Die Deckungsbeitragsrechnung unterscheidet strikt zwischen fixen und variablen Kostenbestandteilen. Am Break-Even-Point decken die gesamten Deckungsbeiträge exakt die fixen Gesamtkosten, sodass der operative Betriebsgewinn gleich null ist."
+            }
+          ],
+          "questions": [
+            {
+              "id": "wk-h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Am Break-Even-Point beträgt der operative Betriebsgewinn null Euro.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: Erlös deckt Kosten, Gewinn = 0 (Richtig)."
+            },
+            {
+              "id": "wk-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Variable Kosten bleiben bei jeder Produktionsmenge konstant.",
+              "answer": "falsch",
+              "explanation": "Variable Kosten verändern sich mit der Produktionsmenge. Falsch."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 45,
+      "tasks": [
+        {
+          "id": "wk-s1",
+          "title": "Wirtschaftsanalytischer Aufsatz: Mindestlohn und Arbeitsmarkteffekte",
+          "register": "formell",
+          "instructions": "Diskutieren Sie die ökonomischen Vor- und Nachteile des gesetzlichen Mindestlohns in Deutschland.",
+          "situation": "Aufnahmeprüfung W-Kurs Uni Mannheim / Köln. Mindestens 180 Wörter.",
+          "leitpunkte": [
+            "Kaufkraftstärkung und Binnennachfrage",
+            "Kostenbelastung für personalintensive Dienstleistungsbetriebe",
+            "Auswirkungen auf Beschäftigung und Schwarzarbeit",
+            "Ihre begründete wirtschaftspolitische Empfehlung"
+          ],
+          "minWords": 180,
+          "recommendedMinutes": 45
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "wk-sp1",
+          "teil": 1,
+          "title": "Mündliche Prüfung: Analyse eines makroökonomischen Indikators",
+          "instructions": "Stellen Sie das Bruttoinlandsprodukt (BIP) und seine Aussagekraft vor.",
+          "card": {
+            "heading": "Bruttoinlandsprodukt (BIP)",
+            "bullets": [
+              "Entstehungs-, Verwendungs- und Verteilungsrechnung",
+              "Nominales versus reales BIP (Preisbereinigung)",
+              "Grenzen des BIP als Wohlstandsindikator (Umweltschäden, Schattenwirtschaft)",
+              "Alternative Indikatoren (Human Development Index)"
+            ]
+          },
+          "examinerScript": "Guten Tag. Bitte erläutern Sie den Unterschied zwischen nominalem und realem BIP.",
+          "prepSeconds": 180,
+          "speakSeconds": 240
+        }
+      ]
+    }
+  }
+}

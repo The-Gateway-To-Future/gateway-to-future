@@ -1,0 +1,406 @@
+{
+  "id": "gtf-t_kurs-modelltest-1",
+  "level": "t_kurs",
+  "title": "GTF Studienkolleg T-Kurs Aufnahmeprüfung — Mathematik, Physik & Technische Mechanik",
+  "provider": "The Gateway to Future (GTF) — Studienkolleg Aufnahmeprüfung T-Kurs (KIT Karlsruhe / RWTH Aachen / TU München)",
+  "version": "2026.11",
+  "productSlug": "studienkolleg-t-kurs-crash",
+  "isFree": true,
+  "passPercent": 65,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 60,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Fachtext Technische Mechanik: Statik und Kräftezerlegung",
+          "instructions": "Lesen Sie den Text zur Statik starrer Körper und beantworten Sie die Aufgaben 1 bis 6.",
+          "passageTitle": "Gleichgewichtsbedingungen in der zweidimensionalen Statik",
+          "source": "TU Berlin & RWTH Aachen T-Kurs Vorbereitungsskript",
+          "passage": "In der technischen Mechanik befasst sich die Statik mit dem Gleichgewicht von Kräften an ruhenden Körpern. Ein Starrkörper befindet sich im statischen Gleichgewicht, wenn weder eine translatorische Beschleunigung noch eine rotatorische Beschleunigung vorliegt. Für ein ebenes Kräftesystem in der xy-Ebene resultieren daraus drei unabhängige skalare Gleichgewichtsbedingungen:\n\n1. Die Summe aller Horizontalkräfte ist null: $\\sum F_x = 0$.\n2. Die Summe aller Vertikalkräfte ist null: $\\sum F_y = 0$.\n3. Die Summe aller statischen Momente bezüglich eines beliebigen Bezugspunkts P ist null: $\\sum M_P = 0$.\n\nEin Drehmoment M ist definiert als das Vektorprodukt aus dem Abstandsvektor r und dem Kraftvektor F: $\\vec{M} = \\vec{r} \\times \\vec{F}$. Ist die Anzahl der unbekannten Lagerreaktionen gleich der Anzahl der unabhängigen Gleichgewichtsbedingungen, so bezeichnet man das System als statisch bestimmt. Sind mehr Lagerreaktionen vorhanden, ist das System statisch unbestimmt und erfordert elastostatische Verformungsgleichungen zur Lösung.",
+          "questions": [
+            {
+              "id": "tk-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. In der ebenen Statik gibt es genau drei unabhängige Gleichgewichtsbedingungen.",
+              "answer": "richtig",
+              "explanation": "Im Text: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum M_P = 0$ (drei Bedingungen). Richtig."
+            },
+            {
+              "id": "tk-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Das Drehmoment M errechnet sich als skalares Punktprodukt aus r und F.",
+              "answer": "falsch",
+              "explanation": "Im Text: Vektorprodukt (Kreuzprodukt $\\vec{r} \\times \\vec{F}$), kein Punktprodukt. Falsch."
+            },
+            {
+              "id": "tk-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Ein statisch bestimmtes System besitzt genauso viele Unbekannte wie Gleichgewichtsbedingungen.",
+              "answer": "richtig",
+              "explanation": "Im Text: Anzahl unbekannter Lagerreaktionen gleich Anzahl der Bedingungen. Richtig."
+            },
+            {
+              "id": "tk-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Statisch unbestimmte Systeme können allein mit den drei Gleichgewichtsbedingungen vollständig berechnet werden.",
+              "answer": "falsch",
+              "explanation": "Im Text: Benötigen elastostatische Verformungsgleichungen. Falsch."
+            },
+            {
+              "id": "tk-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Die Summe der Momente muss bezüglich eines beliebigen Bezugspunkts null sein.",
+              "answer": "richtig",
+              "explanation": "Im Text: $\\sum M_P = 0$ bezüglich eines beliebigen Bezugspunkts. Richtig."
+            },
+            {
+              "id": "tk-l1-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Die Statik befasst sich mit beschleunigten Bewegungen.",
+              "answer": "falsch",
+              "explanation": "Statik = ruhende Körper ohne Beschleunigung. Kinetik befasst sich mit Beschleunigung. Falsch."
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Höhere Mathematik: Kurvendiskussion & Integralrechnung",
+          "instructions": "Wählen Sie für die Aufgaben 7 bis 10 die mathematisch exakte Lösung.",
+          "passageTitle": "Extremwertkriterien und Fundamentaltheorie der Analysis",
+          "source": "Karlsruher Institut für Technologie (KIT) T-Kurs",
+          "passage": "Gegeben sei eine zweimal stetig differenzierbare Funktion $f \\colon \\mathbb{R} \\to \\mathbb{R}$. Eine notwendige Bedingung für ein lokales Extremum an der Stelle $x_0$ ist das Verschwinden der ersten Ableitung: $f'(x_0) = 0$. Gilt zusätzlich $f''(x_0) > 0$, so besitzt f an der Stelle $x_0$ ein isoliertes lokales Minimum (Links-Krümmung). Gilt $f''(x_0) < 0$, so liegt ein isoliertes lokales Maximum vor (Rechts-Krümmung).\n\nDer Hauptsatz der Differential- und Integralrechnung verknüpft Ableitung und Integration: Ist F eine Stammfunktion der stetigen Funktion f, so gilt für das bestimmte Integral von a bis b: $\\int_a^b f(x)\\,dx = F(b) - F(a)$.",
+          "questions": [
+            {
+              "id": "tk-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Welches Kriterium sichert ein lokales Minimum an der Stelle $x_0$?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "$f'(x_0) = 0$ und $f''(x_0) < 0$"
+                },
+                {
+                  "id": "b",
+                  "text": "$f'(x_0) = 0$ und $f''(x_0) > 0$"
+                },
+                {
+                  "id": "c",
+                  "text": "$f''(x_0) = 0$ und $f'''(x_0) \\neq 0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$f'(x_0) = 0$ und $f''(x_0) > 0$ bedeutet Linkskrümmung und somit lokales Minimum."
+            },
+            {
+              "id": "tk-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Wie lautet die Ableitung der Funktion $f(x) = x \\cdot \\ln(x)$ für $x > 0$?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "$f'(x) = \\ln(x) + 1$"
+                },
+                {
+                  "id": "b",
+                  "text": "$f'(x) = \\frac{1}{x}$"
+                },
+                {
+                  "id": "c",
+                  "text": "$f'(x) = \\ln(x)$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Produktregel: $(u \\cdot v)' = u'v + uv' = 1 \\cdot \\ln(x) + x \\cdot \\frac{1}{x} = \\ln(x) + 1$."
+            },
+            {
+              "id": "tk-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Was besagt der Hauptsatz der Differential- und Integralrechnung?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "$\\int_a^b f(x)\\,dx = F(a) - F(b)$"
+                },
+                {
+                  "id": "b",
+                  "text": "$\\int_a^b f(x)\\,dx = F(b) - F(a)$"
+                },
+                {
+                  "id": "c",
+                  "text": "$\\int_a^b f(x)\\,dx = f'(b) - f'(a)$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Fundamentaltheorem: $\\int_a^b f(x)\\,dx = F(b) - F(a)$."
+            },
+            {
+              "id": "tk-l2-q10",
+              "type": "mcq",
+              "prompt": "10. Wann liegt an einer Stelle $x_0$ ein Wendepunkt vor?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Wenn $f'(x_0) = 0$ ist."
+                },
+                {
+                  "id": "b",
+                  "text": "Wenn $f''(x_0) = 0$ ist und das Vorzeichen der Krümmung wechselt."
+                },
+                {
+                  "id": "c",
+                  "text": "Wenn die Funktion dort nicht stetig ist."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Wendepunkt = Vorzeichenwechsel der zweiten Ableitung."
+            }
+          ]
+        },
+        {
+          "id": "lesen-3",
+          "kind": "sprachbausteine",
+          "title": "Lesen Teil 3 — C-Test Deutsch für Ingenieur- & Naturwissenschaften",
+          "instructions": "Wählen Sie die passenden Verben, Präpositionen und Fachwörter für die Lücken 21 bis 25.",
+          "mode": "select",
+          "text": "In deutschen Ingenieurstudiengängen nimmt die Angewandte Mathematik eine Schlüsselrolle {{21}}. Physikalische Gesetzmäßigkeiten lassen sich mathematisch präzise {{22}} Formeln beschreiben. Wer an einer deutschen Technischen Universität studieren möchte, muss {{23}} mathematischen Methoden vertraut sein. Bei technischen Berechnungen kommt es vor allem {{24}} Genauigkeit und logisches Denken an. Die erfolgreiche Teilnahme am T-Kurs berechtigt {{25}} Aufnahme aller ingenieurwissenschaftlichen Studiengänge.",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "ein"
+                },
+                {
+                  "id": "b",
+                  "text": "auf"
+                },
+                {
+                  "id": "c",
+                  "text": "aus"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Wendung: eine Schlüsselrolle einnehmen."
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "in"
+                },
+                {
+                  "id": "b",
+                  "text": "durch"
+                },
+                {
+                  "id": "c",
+                  "text": "von"
+                }
+              ],
+              "answer": "b",
+              "explanation": "durch Formeln beschreiben (Mittel/Instrument)."
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "mit"
+                },
+                {
+                  "id": "b",
+                  "text": "bei"
+                },
+                {
+                  "id": "c",
+                  "text": "über"
+                }
+              ],
+              "answer": "a",
+              "explanation": "vertraut sein MIT etwas (Dativ)."
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "auf"
+                },
+                {
+                  "id": "b",
+                  "text": "für"
+                },
+                {
+                  "id": "c",
+                  "text": "nach"
+                }
+              ],
+              "answer": "a",
+              "explanation": "es kommt an AUF (Akkusativ)."
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "zur"
+                },
+                {
+                  "id": "b",
+                  "text": "an"
+                },
+                {
+                  "id": "c",
+                  "text": "bei"
+                }
+              ],
+              "answer": "a",
+              "explanation": "berechtigen ZU (Dativ) -> zur Aufnahme."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 25,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Aufnahmeprüfung T-Kurs Hörverstehen",
+          "instructions": "Sie hören einen Fachausschnitt aus der Höheren Mathematik und Technischen Mechanik.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/stk_t_kurs_01.mp3",
+          "script": [
+            {
+              "speaker": "Dozent Technische Mechanik",
+              "voice": "male",
+              "text": "Studienkolleg Aufnahmeprüfung T-Kurs. Hörverstehen: Höhere Mathematik und Technische Mechanik. In der Differentialrechnung beschreibt die erste Ableitung die lokale Steigung der Tangente. In der technischen Mechanik formulieren wir das statische Gleichgewicht starrer Körper: Summe aller Kräfte gleich null, Summe aller Momente gleich null."
+            }
+          ],
+          "questions": [
+            {
+              "id": "tk-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Was beschreibt die erste Ableitung einer reellen Funktion geometrisch?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Krümmung der Funktion."
+                },
+                {
+                  "id": "b",
+                  "text": "Die lokale Steigung der Tangente an den Graphen."
+                },
+                {
+                  "id": "c",
+                  "text": "Die Fläche unterhalb des Graphen."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Erste Ableitung = Steigung der Tangente."
+            },
+            {
+              "id": "tk-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Welche Bedingungen müssen für das statische Gleichgewicht erfüllt sein?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Summe aller Kräfte = null und Summe aller Momente = null."
+                },
+                {
+                  "id": "b",
+                  "text": "Nur die kinetische Energie muss gleich null sein."
+                },
+                {
+                  "id": "c",
+                  "text": "Die Beschleunigung muss konstant größer als null sein."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Summe F = 0 und Summe M = 0."
+            }
+          ]
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Thermodynamik und Energieerhaltung",
+          "instructions": "Hören Sie den Vorlesungsausschnitt zur Technischen Physik.",
+          "maxPlays": 1,
+          "audioUrl": "/audio/stk_t_kurs_02.mp3",
+          "script": [
+            {
+              "speaker": "Dozentin Physik",
+              "voice": "female",
+              "text": "Der erste Hauptsatz der Thermodynamik postuliert die universelle Energieerhaltung. Die Änderung der inneren Energie Delta U ist gleich der Summe aus zugeführter Wärme Q und verrichteter Arbeit W."
+            }
+          ],
+          "questions": [
+            {
+              "id": "tk-h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Der erste Hauptsatz der Thermodynamik formuliert das Gesetz der Energieerhaltung.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: Erster Hauptsatz = Energieerhaltung (Richtig)."
+            },
+            {
+              "id": "tk-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Wärme und mechanische Arbeit können nicht ineinander umgewandelt werden.",
+              "answer": "falsch",
+              "explanation": "Erster Hauptsatz postuliert die Äquivalenz von Wärme und Arbeit. Falsch."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 45,
+      "tasks": [
+        {
+          "id": "tk-s1",
+          "title": "Wissenschaftlicher Aufsatz: Regenerative Energien und das deutsche Stromnetz",
+          "register": "formell",
+          "instructions": "Erörtern Sie die physikalischen und netztechnischen Herausforderungen der Energiewende in Deutschland.",
+          "situation": "Aufnahmeprüfung T-Kurs TU Berlin / RWTH Aachen. Mindestens 180 Wörter.",
+          "leitpunkte": [
+            "Volatilität von Photovoltaik und Windkraft",
+            "Netzstabilität und 50-Hertz-Frequenzhaltung",
+            "Speichertechnologien (Batteriespeicher, Pumpspeicher, Wasserstoff)",
+            "Ihre ingenieurwissenschaftliche Bewertung"
+          ],
+          "minWords": 180,
+          "recommendedMinutes": 45
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "tk-sp1",
+          "teil": 1,
+          "title": "Mündliche Prüfung: Physikalische Erklärung eines technischen Systems",
+          "instructions": "Erläutern Sie das Funktionsprinzip eines Drehstrom-Asynchronmotors.",
+          "card": {
+            "heading": "Elektromagnetische Induktion im Motor",
+            "bullets": [
+              "Drehfeldentstehung in den Statorwicklungen (120 Grad Phasenverschiebung)",
+              "Induktionsgesetz nach Faraday im Kurzschlussläufer",
+              "Lorentzkraft und Drehmomentbildung",
+              "Schlupf und Betriebskennlinie"
+            ]
+          },
+          "examinerScript": "Guten Tag. Bitte erklären Sie den Begriff des Schlupfes bei einer Asynchronmaschine.",
+          "prepSeconds": 180,
+          "speakSeconds": 240
+        }
+      ]
+    }
+  }
+}

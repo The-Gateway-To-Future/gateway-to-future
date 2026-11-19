@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   BookOpen,
-  Calculator,
   CheckCircle2,
   ChevronRight,
   ClipboardCheck,
@@ -11,6 +10,7 @@ import {
   Layers,
   Mic,
   PenTool,
+  Sigma,
   Stethoscope,
 } from "lucide-react";
 import type { SubdivisionTopicItem } from "@/lib/subdivisions";
@@ -207,7 +207,7 @@ function renderTopicIcon(topic: SubdivisionTopicItem, isCompleted?: boolean) {
     return <Layers className="h-4 w-4" aria-hidden="true" />;
   }
   if (topic.kind === "stk-tool") {
-    return <Calculator className="h-4 w-4" aria-hidden="true" />;
+    return <Sigma className="h-4 w-4" aria-hidden="true" />;
   }
   if (topic.kind === "pflege-tool") {
     return <Stethoscope className="h-4 w-4" aria-hidden="true" />;

@@ -1,0 +1,406 @@
+{
+  "id": "gtf-g_kurs-modelltest-1",
+  "level": "g_kurs",
+  "title": "GTF Studienkolleg G-Kurs Aufnahmeprüfung — Deutsche Geschichte, Verfassung & Literatur",
+  "provider": "The Gateway to Future (GTF) — Studienkolleg Aufnahmeprüfung G-Kurs (FU Berlin / HU Berlin / Uni Heidelberg)",
+  "version": "2026.11",
+  "productSlug": "studienkolleg-g-kurs-crash",
+  "isFree": true,
+  "passPercent": 65,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 60,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Neueste Geschichte: Die doppelte Staatsgründung 1949",
+          "instructions": "Lesen Sie den historischen Text und beantworten Sie die Aufgaben 1 bis 6 (richtig oder falsch).",
+          "passageTitle": "Die Entstehung von Bundesrepublik Deutschland und DDR im Schatten des Kalten Krieges",
+          "source": "Freie Universität Berlin & Humboldt-Universität G-Kurs",
+          "passage": "Nach dem Zusammenbruch des nationalsozialistischen Regimes im Mai 1945 wurde Deutschland von den vier alliierten Siegermächten in vier Besatzungszonen aufgeteilt und Berlin unter Viermächtestatus gestellt. Die zunehmenden weltpolitischen Spannungen zwischen den westlichen Demokratien und der Sowjetunion mündeten in den Kalten Krieg und führten zur Spaltung des Landes.\n\nAuf Empfehlung der Londoner Sechsmächtekonferenz erarbeitete der Parlamentarische Rat unter dem Vorsitz von Konrad Adenauer in Bonn ein provisorisches Grundgesetz, das am 23. Mai 1949 feierlich verkündet wurde. Damit war die Bundesrepublik Deutschland gegründet. Das Grundgesetz zog fundamentale Lehren aus dem Scheitern der Weimarer Republik: Es schuf ein wehrhaftes Verfassungsgericht (Bundesverfassungsgericht in Karlsruhe), beschränkte die Macht des Bundespräsidenten und stärkte den Bundeskanzler durch das konstruktive Misstrauensvotum.\n\nAls Reaktion auf die westdeutsche Staatsgründung proklamierte der Deutsche Volksrat in Ost-Berlin am 7. Oktober 1949 die Deutsche Demokratische Republik (DDR), die sich unter Führung der Sozialistischen Einheitspartei Deutschlands (SED) rasch zu einer sozialistischen Parteidiktatur entwickelte.",
+          "questions": [
+            {
+              "id": "gk-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Das Grundgesetz für die Bundesrepublik Deutschland wurde am 23. Mai 1949 verkündet.",
+              "answer": "richtig",
+              "explanation": "Im Text: 23. Mai 1949 feierlich verkündet. Richtig."
+            },
+            {
+              "id": "gk-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Konrad Adenauer war Vorsitzender des Parlamentarischen Rates in Bonn.",
+              "answer": "richtig",
+              "explanation": "Im Text: Parlamentarischer Rat unter Vorsitz von Konrad Adenauer. Richtig."
+            },
+            {
+              "id": "gk-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Die DDR wurde zeitgleich mit der Bundesrepublik im Mai 1949 gegründet.",
+              "answer": "falsch",
+              "explanation": "Im Text: Die DDR wurde am 7. Oktober 1949 gegründet, nicht im Mai. Falsch."
+            },
+            {
+              "id": "gk-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Das konstruktive Misstrauensvotum schwächt die Stellung des Bundeskanzlers.",
+              "answer": "falsch",
+              "explanation": "Im Text: stärkte den Bundeskanzler durch das konstruktive Misstrauensvotum. Falsch."
+            },
+            {
+              "id": "gk-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Berlin stand nach 1945 unter der Verwaltung aller vier alliierten Siegermächte.",
+              "answer": "richtig",
+              "explanation": "Im Text: Berlin unter Viermächtestatus. Richtig."
+            },
+            {
+              "id": "gk-l1-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Die Bundesrepublik Deutschland hatte von Beginn an eine endgültige Verfassung und kein Provisorium.",
+              "answer": "falsch",
+              "explanation": "Im Text: erarbeitete ein provisorisches Grundgesetz. Falsch."
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Sozialkunde & Verfassungsrecht: Die Prinzipien des Grundgesetzes",
+          "instructions": "Wählen Sie für die Aufgaben 7 bis 10 die verfassungsrechtlich korrekte Aussage.",
+          "passageTitle": "Die verfassungsrechtliche Ordnung nach Artikel 20 GG",
+          "source": "Bundeszentrale für politische Bildung (bpb)",
+          "passage": "Artikel 20 des Grundgesetzes legt die fünf unverbrüchlichen Staatsstrukturprinzipien der Bundesrepublik Deutschland fest: Republik, Demokratie, Sozialstaat, Bundesstaat (Föderalismus) und Rechtsstaat. Alle Staatsgewalt geht vom Volke aus; sie wird vom Volke in Wahlen und Abstimmungen und durch besondere Organe der Gesetzgebung, der vollziehenden Gewalt und der Rechtsprechung ausgeübt (Gewaltenteilung).\n\nDie sogenannte Ewigkeitsklausel in Artikel 79 Absatz 3 GG schützt die Gliederung des Bundes in Länder sowie die in den Artikeln 1 (Menschenwürde) und 20 niedergelegten Grundsätze vor jeder verfassungsändernden Gesetzgebung, selbst vor einstimmigen Parlamentsbeschlüssen.",
+          "questions": [
+            {
+              "id": "gk-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Welcher Grundsatz ist im deutschen Grundgesetz unantastbar über Art. 79 Abs. 3 geschützt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Höhe der Bundeseinkommensteuer"
+                },
+                {
+                  "id": "b",
+                  "text": "Die Würde des Menschen (Art. 1) und die Grundprinzipien aus Art. 20 GG"
+                },
+                {
+                  "id": "c",
+                  "text": "Die Anzahl der Ministerien im Bundeskabinett"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Ewigkeitsklausel schützt Art. 1 und Art. 20 GG."
+            },
+            {
+              "id": "gk-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Was versteht man unter dem Prinzip des Föderalismus in Deutschland?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Aufteilung der staatlichen Aufgaben zwischen Bund und den 16 Bundesländern"
+                },
+                {
+                  "id": "b",
+                  "text": "Die Vereinigung aller Gewalten beim Bundeskanzler"
+                },
+                {
+                  "id": "c",
+                  "text": "Die Bindung aller Gesetze an internationale Verträge"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Bundesstaat = Aufteilung zwischen Bund und Ländern."
+            },
+            {
+              "id": "gk-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Durch welches Gremium wirken die 16 Bundesländer bei der Bundesgesetzgebung mit?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Den Bundesrat"
+                },
+                {
+                  "id": "b",
+                  "text": "Den Bundestag"
+                },
+                {
+                  "id": "c",
+                  "text": "Das Europäische Parlament"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Der Bundesrat ist die Ländervertretung."
+            },
+            {
+              "id": "gk-l2-q10",
+              "type": "mcq",
+              "prompt": "10. Welches Gericht wacht in Karlsruhe über die Einhaltung des Grundgesetzes?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Das Bundesverfassungsgericht"
+                },
+                {
+                  "id": "b",
+                  "text": "Der Bundesgerichtshof"
+                },
+                {
+                  "id": "c",
+                  "text": "Das Bundesverwaltungsgericht"
+                }
+              ],
+              "answer": "a",
+              "explanation": "BVerfG in Karlsruhe ist Hüter der Verfassung."
+            }
+          ]
+        },
+        {
+          "id": "lesen-3",
+          "kind": "sprachbausteine",
+          "title": "Lesen Teil 3 — C-Test Deutsch für Geistes- & Kulturwissenschaften",
+          "instructions": "Wählen Sie die passenden Verben und Ausdrücke für die Lücken 21 bis 25.",
+          "mode": "select",
+          "text": "Die Geisteswissenschaften leisten einen unverzichtbaren Beitrag zur kritischen Selbstreflexion einer Gesellschaft. Historische Quellen müssen stets in ihrem geschichtlichen Kontext {{21}} werden. In wissenschaftlichen Arbeiten kommt es darauf an, präzise Begrifflichkeiten zu {{22}}. Internationale Studierende im G-Kurs setzen sich intensiv {{23}} philosophischen und literarischen Strömungen auseinander. Die Beherrschung der deutschen Schriftsprache bildet das entscheidende {{24}} für den Studienerfolg. Mit dem Bestehen der Feststellungsprüfung erwerben die Absolventen den Hochschulzugang für alle geisteswissenschaftlichen {{25}}.",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "interpretiert"
+                },
+                {
+                  "id": "b",
+                  "text": "verfasst"
+                },
+                {
+                  "id": "c",
+                  "text": "erklärt"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Quellen interpretieren (historische Fachsprache)."
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "verwenden"
+                },
+                {
+                  "id": "b",
+                  "text": "leisten"
+                },
+                {
+                  "id": "c",
+                  "text": "machen"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Begrifflichkeiten verwenden/anwenden."
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "mit"
+                },
+                {
+                  "id": "b",
+                  "text": "über"
+                },
+                {
+                  "id": "c",
+                  "text": "bei"
+                }
+              ],
+              "answer": "a",
+              "explanation": "sich auseinandersetzen MIT (Dativ)."
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Fundament"
+                },
+                {
+                  "id": "b",
+                  "text": "Kriterium"
+                },
+                {
+                  "id": "c",
+                  "text": "Hindernis"
+                }
+              ],
+              "answer": "a",
+              "explanation": "das entscheidende Fundament bilden."
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Fächer"
+                },
+                {
+                  "id": "b",
+                  "text": "Kurse"
+                },
+                {
+                  "id": "c",
+                  "text": "Berufe"
+                }
+              ],
+              "answer": "a",
+              "explanation": "geisteswissenschaftliche Fächer/Studiengänge."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 25,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Aufnahmeprüfung G-Kurs Hörverstehen",
+          "instructions": "Sie hören einen Fachausschnitt aus der deutschen Verfassungsgeschichte.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/stk_g_kurs_01.mp3",
+          "script": [
+            {
+              "speaker": "Dozentin Geschichte",
+              "voice": "female",
+              "text": "Studienkolleg Aufnahmeprüfung G-Kurs. Hörverstehen: Neueste Deutsche Geschichte und Verfassungsrecht. Das Grundgesetz für die Bundesrepublik Deutschland wurde am 23. Mai 1949 verkündet. Artikel 1 Absatz 1 setzt mit dem Satz 'Die Würde des Menschen ist unantastbar' das fundamentale Leitprinzip."
+            }
+          ],
+          "questions": [
+            {
+              "id": "gk-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Was formuliert Artikel 1 Absatz 1 des Grundgesetzes?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die freie Wahl des Wohnsitzes."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Unantastbarkeit der Menschenwürde."
+                },
+                {
+                  "id": "c",
+                  "text": "Die Wehrpflicht für alle Bürger."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Art. 1 Abs. 1 GG: Die Würde des Menschen ist unantastbar."
+            },
+            {
+              "id": "gk-h1-q2",
+              "type": "mcq",
+              "prompt": "2. In welchem Jahr wurde das Grundgesetz verkündet?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "1919"
+                },
+                {
+                  "id": "b",
+                  "text": "1945"
+                },
+                {
+                  "id": "c",
+                  "text": "1949"
+                }
+              ],
+              "answer": "c",
+              "explanation": "23. Mai 1949."
+            }
+          ]
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Deutsche Literaturgeschichte",
+          "instructions": "Hören Sie den Vorlesungsausschnitt zur Epoche der Weimarer Klassik.",
+          "maxPlays": 1,
+          "audioUrl": "/audio/stk_g_kurs_02.mp3",
+          "script": [
+            {
+              "speaker": "Dozent Literatur",
+              "voice": "male",
+              "text": "Die Weimarer Klassik, geprägt durch das Zusammenwirken von Johann Wolfgang von Goethe und Friedrich Schiller, strebte nach sittlicher Harmonie, Humanität und formaler Ausgewogenheit."
+            }
+          ],
+          "questions": [
+            {
+              "id": "gk-h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Goethe und Schiller waren zentrale Repräsentanten der Weimarer Klassik.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: Goethe und Schiller (Richtig)."
+            },
+            {
+              "id": "gk-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Weimarer Klassik lehnte das Ideal der Humanität strikt ab.",
+              "answer": "falsch",
+              "explanation": "Sie strebte nach sittlicher Harmonie und Humanität. Falsch."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 45,
+      "tasks": [
+        {
+          "id": "gk-s1",
+          "title": "Historisch-Politischer Essay: Erinnerungskultur im 21. Jahrhundert",
+          "register": "formell",
+          "instructions": "Erörtern Sie die Bedeutung einer lebendigen Erinnerungskultur für die Festigung demokratischer Werte in Deutschland.",
+          "situation": "Aufnahmeprüfung G-Kurs HU Berlin / FU Berlin. Mindestens 180 Wörter.",
+          "leitpunkte": [
+            "Historische Aufarbeitung des Nationalsozialismus und der SED-Diktatur",
+            "Gedenkstättenpädagogik und Schulunterricht",
+            "Gefahren von Geschichtsrevisionismus in digitalen Medien",
+            "Ihre persönliche Schlussfolgerung"
+          ],
+          "minWords": 180,
+          "recommendedMinutes": 45
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "gk-sp1",
+          "teil": 1,
+          "title": "Mündliche Prüfung: Analyse eines geschichtlichen Wendepunkts",
+          "instructions": "Erläutern Sie die Ursachen und Folgen des Mauerfalls am 9. November 1989.",
+          "card": {
+            "heading": "Die Friedliche Revolution 1989",
+            "bullets": [
+              "Wirtschaftliche Krise und Versorgungsengpässe in der DDR",
+              "Bürgerrechtsbewegung und Montagsdemonstrationen in Leipzig",
+              "Öffnung der innerdeutschen Grenze am 9. November 1989",
+              "Weg zur Wiedervereinigung am 3. Oktober 1990"
+            ]
+          },
+          "examinerScript": "Guten Tag. Welche Rolle spielten die Montagsdemonstrationen für die Friedliche Revolution?",
+          "prepSeconds": 180,
+          "speakSeconds": 240
+        }
+      ]
+    }
+  }
+}

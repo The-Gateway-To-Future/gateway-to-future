@@ -4,21 +4,23 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  Ban,
   BarChart3,
   BookOpen,
-  Calculator,
   CheckCircle2,
   ChevronRight,
+  FileText,
   GraduationCap,
   Headphones,
   Landmark,
   Layers,
   Lock,
   RotateCw,
+  Sigma,
   Stethoscope,
   Terminal,
-  Zap,
 } from "lucide-react";
+import { MathText } from "@/components/MathText";
 import {
   STUDIENKOLLEG_FLASHCARDS,
   STUDIENKOLLEG_FORMULAS,
@@ -42,6 +44,8 @@ interface StudienkollegHubProps {
   ) => void;
 }
 
+const TRACK_ORDER: StudienkollegTrack[] = ["m_kurs", "t_kurs", "w_kurs", "g_kurs"];
+
 export function StudienkollegHub({
   unlockedCourses = new Set(),
   initialTrack = "t_kurs",
@@ -58,32 +62,6 @@ export function StudienkollegHub({
   const [masteredCards, setMasteredCards] = useState<Record<string, boolean>>({});
 
   const trackMeta = {
-    t_kurs: {
-      name: "T-Kurs (Technik & Ingenieurwesen)",
-      short: "T-Kurs",
-      icon: Terminal,
-      subjects: "Höhere Mathematik, Physik, Technische Mechanik & Deutsch",
-      targetUnis: "TU Berlin, KIT Karlsruhe, TU München, TU Darmstadt, RWTH Aachen",
-      formulaId: "form-t-01",
-      semesters: [
-        {
-          sem: "Aufnahmeprüfung",
-          desc: "Algebra, Trigonometrie, Vektoren, Kinematik & MINT C-Test",
-        },
-        {
-          sem: "Semester 1",
-          desc: "Differential- & Integralrechnung, Newtonsche Mechanik, Schwingungen & E-Lehre",
-        },
-        {
-          sem: "Semester 2",
-          desc: "Lineare DGL, Mehrdimensionale Analysis, Elektromagnetismus & Wellenoptik",
-        },
-        {
-          sem: "FSP Examen",
-          desc: "Feststellungsprüfung Mathematik & Physik mit Musterlösungen",
-        },
-      ],
-    },
     m_kurs: {
       name: "M-Kurs (Medizin, Biologie & Pharmazie)",
       short: "M-Kurs",
@@ -109,6 +87,32 @@ export function StudienkollegHub({
         {
           sem: "FSP Examen",
           desc: "Feststellungsprüfung Biologie & Chemie mit Musterlösungen",
+        },
+      ],
+    },
+    t_kurs: {
+      name: "T-Kurs (Technik & Ingenieurwesen)",
+      short: "T-Kurs",
+      icon: Terminal,
+      subjects: "Höhere Mathematik, Physik, Technische Mechanik & Deutsch",
+      targetUnis: "TU Berlin, KIT Karlsruhe, TU München, TU Darmstadt, RWTH Aachen",
+      formulaId: "form-t-01",
+      semesters: [
+        {
+          sem: "Aufnahmeprüfung",
+          desc: "Algebra, Trigonometrie, Vektoren, Kinematik & MINT C-Test",
+        },
+        {
+          sem: "Semester 1",
+          desc: "Differential- & Integralrechnung, Newtonsche Mechanik, Schwingungen & E-Lehre",
+        },
+        {
+          sem: "Semester 2",
+          desc: "Lineare DGL, Mehrdimensionale Analysis, Elektromagnetismus & Wellenoptik",
+        },
+        {
+          sem: "FSP Examen",
+          desc: "Feststellungsprüfung Mathematik & Physik mit Musterlösungen",
         },
       ],
     },
@@ -170,12 +174,9 @@ export function StudienkollegHub({
     },
   };
 
-  // Formula Engine State initialized to current track default formula
   const [selectedFormulaId, setSelectedFormulaId] = useState<string>(
     trackMeta[initialTrack].formulaId,
   );
-  const [formulaInputs, setFormulaInputs] = useState<Record<string, number>>({});
-  const [calculatedResult, setCalculatedResult] = useState<string | null>(null);
 
   const isFreeLaunch = process.env.NEXT_PUBLIC_FREE_LAUNCH_MODE === "true";
   const isTrackUnlocked =
@@ -221,128 +222,48 @@ export function StudienkollegHub({
     setMasteredCards((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const handleComputeFormula = () => {
-    if (!currentFormula) return;
-    if (currentFormula.id === "form-m-01") {
-      const pks = formulaInputs.pKs ?? 4.76;
-      const aMinus = formulaInputs.A_minus ?? 0.1;
-      const ha = formulaInputs.HA ?? 0.1;
-      if (ha <= 0 || aMinus <= 0) {
-        setCalculatedResult("Error: Concentrations must be > 0");
-        return;
-      }
-      const ph = pks + Math.log10(aMinus / ha);
-      setCalculatedResult(
-        `Calculated pH = ${ph.toFixed(2)} (Standard Buffer Condition)`,
-      );
-    } else if (currentFormula.id === "form-m-02") {
-      const kAussen = formulaInputs.K_aussen ?? 4.5;
-      const kInnen = formulaInputs.K_innen ?? 140;
-      if (kAussen <= 0 || kInnen <= 0) {
-        setCalculatedResult("Error: Ion concentrations must be > 0");
-        return;
-      }
-      const eK = 61.5 * Math.log10(kAussen / kInnen);
-      setCalculatedResult(`Equilibrium Potential E_K = ${eK.toFixed(1)} mV`);
-    } else if (currentFormula.id === "form-t-01") {
-      const m = formulaInputs.m ?? 2;
-      const h = formulaInputs.h ?? 20;
-      const g = 9.81;
-      const ePot = m * g * h;
-      const v = Math.sqrt((2 * ePot) / m);
-      setCalculatedResult(
-        `Potential Energy E_pot = ${ePot.toFixed(1)} J | Impact Velocity v = ${v.toFixed(2)} m/s`,
-      );
-    } else if (currentFormula.id === "form-t-02") {
-      const f = formulaInputs.F ?? 250;
-      const r = formulaInputs.r ?? 1.6;
-      const alpha = formulaInputs.alpha ?? 90;
-      const rad = (alpha * Math.PI) / 180;
-      const torque = f * r * Math.sin(rad);
-      setCalculatedResult(
-        `Resulting Torque M = ${torque.toFixed(1)} N·m (Counter-torque needed: ${torque.toFixed(1)} N·m)`,
-      );
-    } else if (currentFormula.id === "form-w-01") {
-      const p = formulaInputs.P ?? 50;
-      const deltaP = formulaInputs.deltaP ?? 5;
-      const q = formulaInputs.Q ?? 1000;
-      const deltaQ = formulaInputs.deltaQ ?? -200;
-      if (p === 0 || q === 0 || deltaP === 0) {
-        setCalculatedResult("Error: P, Q, and deltaP must not be 0");
-        return;
-      }
-      const relP = deltaP / p;
-      const relQ = deltaQ / q;
-      const eps = relQ / relP;
-      setCalculatedResult(
-        `Preiselastizität ε = ${eps.toFixed(2)} (${Math.abs(eps) > 1 ? "Preiselastisch" : "Unelastisch"})`,
-      );
-    } else if (currentFormula.id === "form-w-02") {
-      const kFix = formulaInputs.K_fix ?? 50000;
-      const p = formulaInputs.p ?? 120;
-      const kVar = formulaInputs.k_var ?? 70;
-      const db = p - kVar;
-      if (db <= 0) {
-        setCalculatedResult(
-          "Error: Piece price p must be greater than unit variable costs k_var",
-        );
-        return;
-      }
-      const bep = kFix / db;
-      setCalculatedResult(
-        `Stückdeckungsbeitrag db = ${db.toFixed(2)} € | Break-Even Menge x_BEP = ${Math.ceil(bep)} Einheiten`,
-      );
-    } else if (currentFormula.id === "form-g-01") {
-      setCalculatedResult(
-        "FSP Quellenkritik: Formalia geprüft, Adressatenanalyse vollständig, historischer Kontext hergestellt.",
-      );
-    }
-  };
-
-  const showSyllabusToggle =
-    initialView === "syllabus" || initialView === "past_papers";
-
   return (
-    <div className="space-y-6 text-white">
-      {/* Compact Obsidian Track & Quick-Exam Bar (No Marketing Hero) */}
-      <div className="rounded-2xl border border-white/10 bg-[#0D1017] p-5 flex flex-col gap-4">
+    <div className="space-y-6 text-slate-900">
+      {/* Unified Light Academic Control Bar (Language Academy Aesthetic) */}
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-xs flex flex-col gap-4">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div className="space-y-1.5">
+          <div className="space-y-2 min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-[#121620] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-amber-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-indigo-800">
                 {currentTrackMeta.name}
               </span>
-              <span className="rounded-full border border-white/10 bg-slate-800 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                Aufnahmeprüfung · FSP Standard
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-[11px] font-semibold text-slate-700">
+                <Ban className="h-3 w-3 text-slate-500 shrink-0" aria-hidden="true" />
+                <span>Prüfungsmodus: Ohne Taschenrechner</span>
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               Target Unis:{" "}
-              <strong className="text-slate-200">{currentTrackMeta.targetUnis}</strong>{" "}
-              · Subjects:{" "}
-              <span className="text-slate-300">{currentTrackMeta.subjects}</span>
+              <strong className="text-slate-900">{currentTrackMeta.targetUnis}</strong>{" "}
+              · Fächer:{" "}
+              <span className="text-slate-700">{currentTrackMeta.subjects}</span>
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
             <Link
               href={`/exam/${activeTrack}/lesen`}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#121620] px-3.5 py-2 text-xs font-bold text-slate-200 hover:border-white/35 hover:text-white transition"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-800 hover:border-slate-300 hover:bg-slate-100 transition"
             >
-              <BookOpen className="h-3.5 w-3.5 text-amber-400" />
+              <BookOpen className="h-3.5 w-3.5 text-indigo-600" />
               <span>Aufnahmeprüfung</span>
             </Link>
 
             <Link
               href={`/exam/${activeTrack}/hoeren`}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#121620] px-3.5 py-2 text-xs font-bold text-slate-200 hover:border-white/35 hover:text-white transition"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-semibold text-slate-800 hover:border-slate-300 hover:bg-slate-100 transition"
             >
-              <Headphones className="h-3.5 w-3.5 text-sky-400" />
+              <Headphones className="h-3.5 w-3.5 text-sky-600" />
               <span>Hören Audio</span>
             </Link>
 
             {isTrackUnlocked ? (
-              <span className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/15 px-3.5 py-2 text-xs font-bold text-emerald-300">
+              <span className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-2 text-xs font-semibold text-emerald-800">
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 <span>Track Unlocked</span>
               </span>
@@ -357,13 +278,13 @@ export function StudienkollegHub({
                     "all_access_pass",
                   )
                 }
-                className="inline-flex items-center gap-1.5 rounded-xl !bg-white !text-[#07090E] px-4 py-2 text-xs font-extrabold shadow hover:bg-slate-200 transition"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-semibold shadow-xs hover:bg-slate-800 transition cursor-pointer"
               >
                 <Lock className="h-3.5 w-3.5" />
                 <span>Unlock with GTF Pro</span>
               </button>
             ) : (
-              <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/10 px-3.5 py-2 text-xs font-semibold text-slate-200">
+              <span className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-100 px-3.5 py-2 text-xs font-semibold text-slate-700">
                 <Lock className="h-3.5 w-3.5" />
                 <span>Enrolled Students Only</span>
               </span>
@@ -371,10 +292,10 @@ export function StudienkollegHub({
           </div>
         </div>
 
-        {/* 4-Track Switcher with clean flex-wrap for mobile viewports */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-white/10">
-          <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-900 p-1 border border-white/10">
-            {(["t_kurs", "m_kurs", "w_kurs", "g_kurs"] as const).map((trk) => {
+        {/* Track Switcher + View Tabs (Responsive flex-wrap, 0px overflow on 375px) */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100">
+          <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-100/90 p-1 border border-slate-200/80">
+            {TRACK_ORDER.map((trk) => {
               const meta = trackMeta[trk];
               const Icon = meta.icon;
               const isSelected = activeTrack === trk;
@@ -386,17 +307,16 @@ export function StudienkollegHub({
                     setActiveTrack(trk);
                     setSelectedSubject("All");
                     setSelectedFormulaId(meta.formulaId);
-                    setCalculatedResult(null);
                   }}
-                  className={`relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition select-none ${
+                  className={`relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition select-none cursor-pointer ${
                     isSelected
-                      ? "!bg-white !text-[#07090E] shadow-sm"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                      ? "bg-slate-900 text-white shadow-xs"
+                      : "text-slate-600 hover:bg-white hover:text-slate-900"
                   }`}
                 >
                   <Icon
                     className={`h-3.5 w-3.5 ${
-                      isSelected ? "text-[#07090E]" : "text-slate-400"
+                      isSelected ? "text-white" : "text-slate-500"
                     }`}
                   />
                   <span>{meta.short}</span>
@@ -405,205 +325,175 @@ export function StudienkollegHub({
             })}
           </div>
 
-          {showSyllabusToggle && (
-            <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-900 p-1 border border-white/10">
-              <button
-                type="button"
-                onClick={() => setActiveView("syllabus")}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition ${
-                  activeView === "syllabus"
-                    ? "!bg-white !text-[#07090E]"
-                    : "text-slate-300 hover:text-white"
-                }`}
-              >
-                <GraduationCap className="h-3.5 w-3.5" />
-                <span>2-Semester Syllabus ({currentTrackMeta.semesters.length})</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveView("past_papers")}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition ${
-                  activeView === "past_papers"
-                    ? "!bg-white !text-[#07090E]"
-                    : "text-slate-300 hover:text-white"
-                }`}
-              >
-                <BookOpen className="h-3.5 w-3.5" />
-                <span>Past Papers ({filteredPastPapers.length})</span>
-              </button>
-            </div>
-          )}
+          <div className="flex flex-wrap gap-1.5 rounded-xl bg-slate-100/90 p-1 border border-slate-200/80">
+            {(
+              [
+                { id: "formulas", label: "Formelsammlung", icon: Sigma },
+                { id: "syllabus", label: "2-Semester-Plan", icon: GraduationCap },
+                {
+                  id: "past_papers",
+                  label: `Altklausuren (${filteredPastPapers.length})`,
+                  icon: FileText,
+                },
+                { id: "flashcards", label: "Fach-Karten", icon: Layers },
+              ] as const
+            ).map((tab) => {
+              const Icon = tab.icon;
+              const active = activeView === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveView(tab.id)}
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition cursor-pointer ${
+                    active
+                      ? "bg-slate-900 text-white shadow-xs"
+                      : "text-slate-600 hover:bg-white hover:text-slate-900"
+                  }`}
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* ── VIEW 1: INTERACTIVE FORMULA ENGINE ───────────────────────────────── */}
+      {/* ── VIEW 1: TEXTBOOK FORMULA REFERENCE (KATEX, NO CALCULATOR) ────────── */}
       {activeView === "formulas" && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Formula Selector Sidebar */}
+          {/* Formula Selector List */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-slate-400">
-              <Calculator className="h-3.5 w-3.5 text-amber-400" />
-              <span>Interactive Exam Formulas ({filteredFormulas.length})</span>
+            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <span className="inline-flex items-center gap-1.5">
+                <Sigma className="h-3.5 w-3.5 text-indigo-600" />
+                <span>Formelsammlung ({filteredFormulas.length})</span>
+              </span>
             </div>
-            <div className="space-y-2">
+
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs divide-y divide-slate-100">
               {(filteredFormulas || []).map((form) => {
                 const isSelected = form.id === currentFormula.id;
                 return (
                   <button
                     key={form.id}
                     type="button"
-                    onClick={() => {
-                      setSelectedFormulaId(form.id);
-                      setCalculatedResult(null);
-                      setFormulaInputs({});
-                    }}
-                    className={`w-full text-left rounded-2xl p-4 transition-all border ${
+                    onClick={() => setSelectedFormulaId(form.id)}
+                    className={`w-full text-left p-4 transition cursor-pointer ${
                       isSelected
-                        ? "!bg-white !text-[#07090E] border-white shadow-md"
-                        : "border-white/10 bg-[#0D1017] text-white hover:border-white/25"
+                        ? "bg-slate-900 text-white"
+                        : "bg-white text-slate-900 hover:bg-slate-50"
                     }`}
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-2">
                       <span
-                        className={`text-[10px] font-extrabold uppercase tracking-wider ${
-                          isSelected ? "text-slate-600" : "text-slate-400"
+                        className={`text-[10px] font-semibold uppercase tracking-wider ${
+                          isSelected ? "text-slate-300" : "text-slate-500"
                         }`}
                       >
                         {form.subject}
                       </span>
                       <ChevronRight
-                        className={`h-4 w-4 ${
-                          isSelected ? "text-[#07090E]" : "text-slate-500"
+                        className={`h-4 w-4 shrink-0 ${
+                          isSelected ? "text-white" : "text-slate-400"
                         }`}
                       />
                     </div>
                     <p
-                      className={`mt-1 text-xs font-black ${
-                        isSelected ? "text-[#07090E]" : "text-white"
+                      className={`mt-1 text-sm font-semibold leading-snug ${
+                        isSelected ? "text-white" : "text-slate-900"
                       }`}
                     >
                       {form.title}
                     </p>
-                    <p
-                      className={`mt-1 font-mono text-[11px] truncate ${
-                        isSelected ? "text-slate-700" : "text-slate-400"
+                    <div
+                      className={`mt-2 overflow-x-auto text-xs ${
+                        isSelected ? "text-indigo-200" : "text-slate-600"
                       }`}
                     >
-                      {form.latex}
-                    </p>
+                      <MathText text={form.latex} inlineMath />
+                    </div>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Active Formula Calculator Console */}
-          <div className="lg:col-span-2 rounded-2xl border border-white/10 bg-[#0D1017] p-6 space-y-6">
-            <div>
+          {/* Active Textbook Formula Card & Step-by-Step Worked Example */}
+          <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-6 min-w-0">
+            <div className="space-y-2 border-b border-slate-100 pb-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="rounded-full border border-white/15 bg-[#121620] text-white px-3 py-0.5 text-xs font-extrabold">
+                <span className="rounded-full border border-indigo-200 bg-indigo-50 text-indigo-800 px-3 py-0.5 text-[11px] font-semibold">
                   {currentFormula.subject}
                 </span>
-                <span className="text-xs font-bold text-amber-300">
-                  Studienkolleg Precision Engine
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
+                  <Ban className="h-3 w-3 text-slate-400" aria-hidden="true" />
+                  <span>Prüfungsmodus: Ohne Taschenrechner</span>
                 </span>
               </div>
-              <h3 className="mt-3 text-xl font-black text-white">
+              <h3 className="text-xl font-bold tracking-tight text-slate-900">
                 {currentFormula.title}
               </h3>
-              <p className="mt-1 text-xs text-slate-400">
-                {currentFormula.explanationDe}
+              <p className="text-sm text-slate-600 leading-relaxed german-reading">
+                <MathText text={currentFormula.explanationDe} />
               </p>
             </div>
 
-            {/* LaTeX Display Card */}
-            <div className="rounded-2xl border border-amber-500/30 bg-[#121620] p-4 text-center font-mono text-sm md:text-base font-bold text-amber-300">
-              {currentFormula.latex}
+            {/* Textbook Display Equation Box (Overflow-safe on 375px–430px) */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/90 px-4 py-5 text-slate-950 overflow-x-auto">
+              <MathText text={currentFormula.latex} display />
             </div>
 
-            {/* Variables & Live Input Fields */}
-            <div>
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-3">
-                Input Variables for Live Calculation
+            {/* Variable Legend (Textbook Definition Table) */}
+            <div className="space-y-3">
+              <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                Größen &amp; Einheiten (Legende)
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {(currentFormula?.variables || []).map((v) => {
-                  const key = v.symbol.replace(/[^a-zA-Z0-9_]/g, "_");
-                  return (
-                    <div
-                      key={v.symbol}
-                      className="rounded-xl border border-white/10 bg-[#121620] p-3"
-                    >
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-xs font-black text-white">
-                          Variable:{" "}
-                          <span className="font-mono text-amber-300">{v.symbol}</span>
-                        </span>
-                        <span className="text-[10px] text-slate-400">[{v.unit}]</span>
-                      </div>
-                      <p className="text-[10px] text-slate-400 mb-2 truncate">
-                        {v.description}
-                      </p>
-                      <input
-                        type="number"
-                        step="any"
-                        placeholder={`e.g. ${currentFormula?.exampleCalculation?.inputs?.[key] ?? 1}`}
-                        value={formulaInputs[key] ?? ""}
-                        onChange={(e) => {
-                          const val = parseFloat(e.target.value);
-                          setFormulaInputs((prev) => ({
-                            ...prev,
-                            [key]: isNaN(val) ? 0 : val,
-                          }));
-                        }}
-                        className="w-full rounded-lg border border-white/15 bg-slate-900 px-3 py-1.5 text-xs font-bold text-white placeholder:text-slate-500 focus:border-white/40 focus:outline-none"
-                      />
+                {(currentFormula?.variables || []).map((v) => (
+                  <div
+                    key={v.symbol}
+                    className="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 space-y-1 min-w-0"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-bold text-slate-900">
+                        <MathText text={v.symbol} />
+                      </span>
+                      <span className="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-medium text-slate-600 shrink-0">
+                        <MathText text={v.unit} />
+                      </span>
                     </div>
-                  );
-                })}
+                    <p className="text-xs text-slate-600 leading-snug">
+                      <MathText text={v.description} />
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={handleComputeFormula}
-              className="w-full rounded-xl !bg-white !text-[#07090E] py-3 text-xs font-extrabold shadow-md hover:bg-slate-200 transition flex items-center justify-center gap-2"
-            >
-              <Zap className="h-4 w-4 text-[#07090E]" />
-              <span>Execute German Precision Calculation</span>
-            </button>
-
-            {calculatedResult && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4"
-              >
-                <div className="flex items-center gap-2 text-emerald-300 font-extrabold text-xs">
-                  <CheckCircle2 className="h-4 w-4" />
-                  <span>Verified Formula Engine Output:</span>
-                </div>
-                <p className="mt-1 text-sm font-black text-white font-mono">
-                  {calculatedResult}
-                </p>
-              </motion.div>
-            )}
-
-            {/* Worked Example */}
-            <div className="rounded-2xl border border-white/10 bg-[#121620] p-4 space-y-2">
-              <p className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
-                Official Standard Solution Example:
-              </p>
-              <p className="text-xs font-black text-white">
-                {currentFormula?.exampleCalculation?.result || "N/A"}
-              </p>
-              <div className="space-y-1 pt-1">
-                {(currentFormula?.exampleCalculation?.steps || []).map((st, i) => (
-                  <p key={i} className="text-[11px] text-slate-300 font-mono">
-                    Step {i + 1}: {st}
-                  </p>
-                ))}
+            {/* Step-by-Step Worked Example */}
+            <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/50 p-4 sm:p-5 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200/60 pb-2.5">
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-800">
+                  Musterlösung · Rechenbeispiel
+                </span>
+                <span className="text-xs sm:text-sm font-bold text-slate-900">
+                  <MathText text={currentFormula?.exampleCalculation?.result || ""} />
+                </span>
               </div>
+              <ol className="space-y-2 text-xs sm:text-sm text-slate-800 leading-relaxed">
+                {(currentFormula?.exampleCalculation?.steps || []).map((st, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-[10px] font-bold text-white">
+                      {i + 1}
+                    </span>
+                    <div className="min-w-0 overflow-x-auto">
+                      <MathText text={st} />
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
@@ -615,27 +505,27 @@ export function StudienkollegHub({
           {(currentTrackMeta?.semesters || []).map((mod, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-white/10 bg-[#0D1017] p-6 flex flex-col justify-between min-h-[220px]"
+              className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-xs flex flex-col justify-between min-h-[210px]"
             >
               <div>
                 <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl !bg-white !text-[#07090E] text-xs font-black">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-900 text-white text-xs font-bold">
                     {idx + 1}
                   </span>
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
-                    Module {idx + 1}
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                    Phase 0{idx + 1}
                   </span>
                 </div>
-                <h3 className="text-sm font-black text-white leading-snug break-words">
+                <h3 className="text-base font-bold text-slate-900 leading-snug break-words">
                   {mod.sem}
                 </h3>
-                <p className="mt-2 text-xs text-slate-400 leading-relaxed">
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
                   {mod.desc}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-bold">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
                 {isTrackUnlocked ? (
-                  <span className="text-emerald-400 font-bold inline-flex items-center gap-1">
+                  <span className="text-emerald-700 inline-flex items-center gap-1">
                     <CheckCircle2 className="h-3.5 w-3.5" />
                     <span>Module Unlocked</span>
                   </span>
@@ -650,14 +540,14 @@ export function StudienkollegHub({
                         "all_access_pass",
                       )
                     }
-                    className="text-white hover:text-amber-300 transition inline-flex items-center gap-1.5 font-extrabold"
+                    className="text-slate-900 hover:text-indigo-700 transition inline-flex items-center gap-1.5 font-semibold cursor-pointer"
                   >
                     <Lock className="h-3.5 w-3.5" />
                     <span>Unlock with GTF Pro</span>
                     <ChevronRight className="h-3.5 w-3.5" />
                   </button>
                 ) : (
-                  <span className="text-slate-300 inline-flex items-center gap-1.5 font-semibold">
+                  <span className="text-slate-600 inline-flex items-center gap-1.5 font-medium">
                     <Lock className="h-3.5 w-3.5" />
                     <span>Enrolled Access</span>
                   </span>
@@ -674,60 +564,62 @@ export function StudienkollegHub({
           {(filteredPastPapers || []).map((paper) => (
             <div
               key={paper.id}
-              className="rounded-2xl border border-white/10 bg-[#0D1017] p-6 flex flex-col justify-between"
+              className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                  <span className="rounded-full border border-white/15 bg-[#121620] px-3 py-0.5 text-[10px] font-extrabold text-slate-200">
+                  <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-0.5 text-[11px] font-semibold text-slate-700">
                     {paper.city} · {paper.year}
                   </span>
-                  <span className="text-[11px] font-bold text-amber-300">
+                  <span className="text-[11px] font-semibold text-indigo-700">
                     {paper.durationMinutes} Min · {paper.totalPoints} Pkt
                   </span>
                 </div>
 
-                <h3 className="text-base font-black text-white german-headline leading-snug">
+                <h3 className="text-base font-bold text-slate-900 german-headline leading-snug">
                   {paper.university}
                 </h3>
-                <p className="mt-1 text-xs font-bold text-sky-400">
+                <p className="mt-1 text-xs font-semibold text-indigo-700">
                   {paper.subject}
                 </p>
-                <p className="mt-2 text-xs text-slate-400 leading-relaxed german-reading">
+                <p className="mt-2 text-xs text-slate-600 leading-relaxed german-reading">
                   {paper.overview}
                 </p>
 
-                <div className="mt-4 rounded-xl bg-[#121620] p-3.5 space-y-1.5 border border-white/10">
-                  <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
-                    Tested Topics &amp; Standard:
+                <div className="mt-4 rounded-xl bg-slate-50 p-3.5 space-y-1.5 border border-slate-200/80">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    Geprüfte Themen &amp; Standard:
                   </p>
                   {(Array.isArray(paper.keyTopics) ? paper.keyTopics : []).map((top, idx) => (
                     <p
                       key={idx}
-                      className="text-[11px] text-slate-200 flex items-center gap-2 german-reading"
+                      className="text-xs text-slate-700 flex items-start gap-2 german-reading"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-white shrink-0" />
-                      <span>{top}</span>
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500 shrink-0" />
+                      <span>
+                        <MathText text={top} />
+                      </span>
                     </p>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
+              <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
                 <Link
                   href={`/exam/${activeTrack}/lesen`}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-[#121620] px-3.5 py-2 text-xs font-bold text-slate-200 hover:border-white/35 hover:text-white transition"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-semibold hover:bg-slate-800 transition shadow-xs"
                 >
                   <BookOpen className="h-3.5 w-3.5" />
-                  <span>Take Simulation</span>
+                  <span>Simulation starten</span>
                 </Link>
 
                 {isTrackUnlocked ? (
                   <Link
                     href={`/exam/${activeTrack}/lesen`}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-2 text-xs font-bold text-emerald-300 hover:bg-emerald-500/25 transition"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 px-3.5 py-2 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 transition"
                   >
                     <CheckCircle2 className="h-3.5 w-3.5" />
-                    <span>Solutions Unlocked</span>
+                    <span>Lösungen frei</span>
                   </Link>
                 ) : nativeReady && !isNative ? (
                   <button
@@ -740,13 +632,13 @@ export function StudienkollegHub({
                         "all_access_pass",
                       )
                     }
-                    className="inline-flex items-center gap-1.5 rounded-xl !bg-white !text-[#07090E] px-3.5 py-2 text-xs font-extrabold hover:bg-slate-200 transition"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 px-3.5 py-2 text-xs font-semibold hover:bg-slate-100 transition cursor-pointer"
                   >
                     <Lock className="h-3.5 w-3.5" />
                     <span>Unlock with GTF Pro</span>
                   </button>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/10 px-3.5 py-2 text-xs font-semibold text-slate-300">
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-medium text-slate-600">
                     <Lock className="h-3.5 w-3.5" />
                     <span>Enrolled Access</span>
                   </span>
@@ -757,33 +649,33 @@ export function StudienkollegHub({
         </div>
       )}
 
-      {/* ── VIEW 4: ACADEMIC FLASHCARDS ──────────────────────────────────────── */}
+      {/* ── VIEW 4: ACADEMIC FLASHCARDS (LIGHT TEXTBOOK CARDS + KATEX) ────────── */}
       {activeView === "flashcards" && (
         <div className="space-y-5">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-400 mr-1">
-              <Layers className="h-3.5 w-3.5" /> Subject Filter:
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 mr-1">
+              <Layers className="h-3.5 w-3.5" /> Fach-Filter:
             </span>
             <button
               type="button"
               onClick={() => setSelectedSubject("All")}
-              className={`rounded-xl px-3 py-1.5 text-xs font-bold transition ${
+              className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition cursor-pointer ${
                 selectedSubject === "All"
-                  ? "!bg-white !text-[#07090E]"
-                  : "border border-white/10 bg-[#0D1017] text-slate-300 hover:text-white"
+                  ? "bg-slate-900 text-white shadow-xs"
+                  : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
               }`}
             >
-              All ({STUDIENKOLLEG_FLASHCARDS.filter((c) => c.track === activeTrack).length})
+              Alle ({STUDIENKOLLEG_FLASHCARDS.filter((c) => c.track === activeTrack).length})
             </button>
             {(availableSubjects || []).map((sub) => (
               <button
                 key={sub}
                 type="button"
                 onClick={() => setSelectedSubject(sub)}
-                className={`rounded-xl px-3 py-1.5 text-xs font-bold transition ${
+                className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition cursor-pointer ${
                   selectedSubject === sub
-                    ? "!bg-white !text-[#07090E]"
-                    : "border border-white/10 bg-[#0D1017] text-slate-300 hover:text-white"
+                    ? "bg-slate-900 text-white shadow-xs"
+                    : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
                 }`}
               >
                 {sub}
@@ -801,27 +693,27 @@ export function StudienkollegHub({
                 <div
                   key={card.id}
                   onClick={() => toggleFlip(card.id)}
-                  className="group relative h-72 cursor-pointer perspective-1000 select-none"
+                  className="group relative h-80 cursor-pointer perspective-1000 select-none"
                 >
                   <motion.div
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    transition={{ duration: 0.45, ease: "easeInOut" }}
                     className="relative h-full w-full rounded-2xl preserve-3d transition-shadow"
                   >
                     {/* FRONT SIDE */}
-                    <div className="absolute inset-0 flex flex-col justify-between rounded-2xl border border-white/10 bg-[#0D1017] p-5 backface-hidden">
-                      <div>
+                    <div className="absolute inset-0 flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-xs backface-hidden">
+                      <div className="min-w-0">
                         <div className="flex items-center justify-between">
-                          <span className="rounded-md border border-white/10 bg-[#121620] px-2 py-0.5 text-[10px] font-bold text-slate-300 uppercase">
+                          <span className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700 uppercase">
                             {card.subject}
                           </span>
                           <button
                             type="button"
                             onClick={(e) => toggleMastery(card.id, e)}
-                            className={`rounded-full p-1 transition ${
+                            className={`rounded-full p-1 transition cursor-pointer ${
                               isMastered
-                                ? "text-emerald-400 bg-emerald-500/15"
-                                : "text-slate-500 hover:text-white"
+                                ? "text-emerald-600 bg-emerald-50"
+                                : "text-slate-400 hover:text-slate-800"
                             }`}
                             title={isMastered ? "Mastered" : "Mark as Mastered"}
                           >
@@ -829,61 +721,61 @@ export function StudienkollegHub({
                           </button>
                         </div>
 
-                        <div className="mt-4">
-                          <p className="text-[11px] font-bold text-amber-400">
+                        <div className="mt-3.5">
+                          <p className="text-[11px] font-semibold text-indigo-700">
                             {card.category}
                           </p>
-                          <h3 className="mt-1 text-lg font-black text-white">
+                          <h3 className="mt-1 text-base font-bold text-slate-900 leading-snug">
                             {card.termDe}
                           </h3>
                           {card.pronunciationDe && (
-                            <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+                            <p className="text-[11px] text-slate-500 font-mono mt-0.5">
                               {card.pronunciationDe}
                             </p>
                           )}
                         </div>
 
-                        <p className="mt-3 text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                          {card.definitionDe}
+                        <p className="mt-3 text-xs text-slate-600 line-clamp-4 leading-relaxed">
+                          <MathText text={card.definitionDe} />
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between border-t border-white/10 pt-3 text-[11px] text-slate-400">
-                        <span>Tap to flip definition &amp; formula</span>
-                        <RotateCw className="h-3.5 w-3.5 text-slate-400 group-hover:text-white transition-colors" />
+                      <div className="flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] text-slate-500">
+                        <span>Antippen für Formel &amp; Erklärung</span>
+                        <RotateCw className="h-3.5 w-3.5 text-slate-400 group-hover:text-slate-800 transition-colors" />
                       </div>
                     </div>
 
                     {/* BACK SIDE */}
-                    <div className="absolute inset-0 flex flex-col justify-between rounded-2xl border border-amber-500/30 bg-[#121620] p-5 rotate-y-180 backface-hidden">
-                      <div>
+                    <div className="absolute inset-0 flex flex-col justify-between rounded-2xl border border-indigo-200 bg-indigo-50/40 p-5 shadow-xs rotate-y-180 backface-hidden">
+                      <div className="min-w-0">
                         <div className="flex items-center justify-between">
-                          <span className="rounded-md border border-amber-500/30 bg-amber-500/15 px-2 py-0.5 text-[10px] font-black text-amber-300 uppercase">
-                            Hinglish Key &amp; Formula
+                          <span className="rounded-md border border-indigo-200 bg-white px-2 py-0.5 text-[10px] font-bold text-indigo-800 uppercase">
+                            Formel &amp; Merkhilfe
                           </span>
-                          <span className="text-[10px] font-mono font-bold text-slate-400">
+                          <span className="text-[10px] font-mono font-semibold text-slate-500">
                             # {card.id}
                           </span>
                         </div>
 
                         {card.formulaOrExample && (
-                          <div className="mt-3 rounded-xl border border-white/10 bg-slate-900 p-2.5 font-mono text-xs font-bold text-amber-300">
-                            {card.formulaOrExample}
+                          <div className="mt-3 rounded-xl border border-indigo-200/80 bg-white p-3 text-xs text-slate-900 overflow-x-auto">
+                            <MathText text={card.formulaOrExample} />
                           </div>
                         )}
 
-                        <div className="mt-3 rounded-xl border border-white/10 bg-slate-900 p-2.5">
-                          <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
-                            Mentor Tip (Hinglish):
+                        <div className="mt-3 rounded-xl border border-slate-200 bg-white p-3">
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                            Mentor-Tipp:
                           </p>
-                          <p className="mt-1 text-xs font-medium text-slate-200 leading-relaxed">
-                            {card.contextHinglish}
+                          <p className="mt-1 text-xs text-slate-700 leading-relaxed">
+                            <MathText text={card.contextHinglish} />
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between border-t border-white/10 pt-3 text-[11px] text-slate-400">
-                        <span>Tap to flip back</span>
+                      <div className="flex items-center justify-between border-t border-indigo-200/60 pt-3 text-[11px] text-slate-500">
+                        <span>Zurück zur Vorderseite</span>
                         <RotateCw className="h-3.5 w-3.5" />
                       </div>
                     </div>

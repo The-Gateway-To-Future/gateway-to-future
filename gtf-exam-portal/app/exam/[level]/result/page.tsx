@@ -10,6 +10,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { ExamHeader } from "@/components/ExamHeader";
+import { MathText } from "@/components/MathText";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import {
   getActiveUserEmail,
@@ -70,6 +71,11 @@ export default function ExamResultPage() {
   };
 
   const currentSection = result?.sections.find((s) => s.section === activeSectionTab);
+  const isStkExam =
+    level === "m_kurs" ||
+    level === "t_kurs" ||
+    level === "w_kurs" ||
+    level === "g_kurs";
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-28 md:pb-12 light-study">
@@ -227,7 +233,9 @@ export default function ExamResultPage() {
                           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
                             {item.teilTitle}
                           </span>
-                          <h4 className="font-bold text-slate-900 mt-0.5">{item.prompt}</h4>
+                          <h4 className="font-bold text-slate-900 mt-0.5 overflow-x-auto">
+                            {isStkExam ? <MathText text={item.prompt} /> : item.prompt}
+                          </h4>
                         </div>
 
                         {item.isCorrect ? (
@@ -249,19 +257,25 @@ export default function ExamResultPage() {
                               item.isCorrect ? "text-emerald-700" : "text-rose-600"
                             }
                           >
-                            {item.givenText || "— (Keine Angabe)"}
+                            {item.givenText ? (
+                              isStkExam ? <MathText text={item.givenText} /> : item.givenText
+                            ) : (
+                              "— (Keine Angabe)"
+                            )}
                           </strong>
                         </div>
                         <div>
                           <span className="text-slate-600">Richtige Lösung: </span>
-                          <strong className="text-emerald-700">{item.correctText}</strong>
+                          <strong className="text-emerald-700">
+                            {isStkExam ? <MathText text={item.correctText} /> : item.correctText}
+                          </strong>
                         </div>
                       </div>
 
                       {item.explanation && (
-                        <div className="mt-2.5 rounded-xl bg-white p-3 text-xs text-slate-700 border border-slate-200 shadow-xs">
+                        <div className="mt-2.5 rounded-xl bg-white p-3 text-xs text-slate-700 border border-slate-200 shadow-xs overflow-x-auto">
                           <strong className="text-slate-900">Erklärung: </strong>
-                          {item.explanation}
+                          {isStkExam ? <MathText text={item.explanation} /> : item.explanation}
                         </div>
                       )}
                     </div>

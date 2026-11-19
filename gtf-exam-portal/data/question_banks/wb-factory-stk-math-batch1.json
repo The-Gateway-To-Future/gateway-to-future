@@ -1,0 +1,331 @@
+{
+  "id": "wb-factory-stk-math-batch1",
+  "department": "Department B: Studienkolleg M/T/W/G-Kurs",
+  "divisionId": "studienkolleg",
+  "track": "t_kurs",
+  "level": "b2",
+  "skill": "lesen",
+  "title": "Studienkolleg T/M-Kurs Aufnahmeprüfung Mathematik — Analysis, Vektoren & Gleichungssysteme",
+  "contentFormat": "interactive_json_roadmap",
+  "passageTitle": "Studienkolleg T/M-Kurs Aufnahmeprüfung Mathematik — Analysis, Vektoren & Gleichungssysteme",
+  "passage": "Herzlich willkommen zur Vorbereitung auf die Mathematik-Aufnahmeprüfung für das Studienkolleg T- und M-Kurs! Diese Prüfung testet grundlegende mathematische Kenntnisse, die für ein erfolgreiches Studium in technischen und medizinischen Fächern unerlässlich sind. Ein zentraler Bereich sind **Quadratische Gleichungen** der Form $ax^2 + bx + c = 0$. Die Lösungsformel, oft als Mitternachtsformel oder abc-Formel bekannt, ist hierbei von entscheidender Bedeutung. Das Verständnis von Diskriminante und deren Einfluss auf die Anzahl der reellen Lösungen ist ebenfalls wichtig.\n\nEin weiterer Schwerpunkt liegt auf **Logarithmen**. Sie sind die Umkehrfunktion der Exponentialfunktion und finden Anwendung in vielen wissenschaftlichen Disziplinen. Grundlegende Rechenregeln wie der Produkt-, Quotienten- und Potenzlogarithmus müssen sicher beherrscht werden. Die Umrechnung zwischen verschiedenen Basen ist ebenfalls ein häufig geprüftes Thema.\n\nIm Bereich der **Analysis** sind **Ableitungen** und die Bestimmung von **Extremwerten** von großer Relevanz. Die erste Ableitung gibt Auskunft über die Steigung einer Funktion und hilft bei der Identifizierung von Hoch- und Tiefpunkten. Die zweite Ableitung wird zur Bestimmung der Art der Extrema (Maximum oder Minimum) verwendet. Wendepunkte und Krümmungsverhalten sind ebenfalls Teil dieses Komplexes.\n\nSchließlich werden **Lineare Gleichungssysteme** und **Vektoren** behandelt. Das Lösen von Systemen mit zwei oder drei Unbekannten mittels Substitutions-, Additions- oder Gleichsetzungsverfahren ist eine Kernkompetenz. Im Bereich der Vektorrechnung sind Operationen wie Vektoraddition, Skalarmultiplikation, Skalarprodukt und Kreuzprodukt sowie die Berechnung von Längen und Winkeln zwischen Vektoren prüfungsrelevant. Ein solides Fundament in diesen Gebieten ist der Schlüssel zum Erfolg.",
+  "flashcards": [
+    {
+      "id": "wb-factory-stk-math-batch1-fc-1",
+      "german": "Quadratische Gleichung",
+      "phonetic": "Kvah-drah-tish-eh Glei-khung",
+      "category": "Algebra",
+      "english": "Quadratic Equation",
+      "hindi": "द्विघात समीकरण (Dvi-ghaat Sameekaran)",
+      "exampleDe": "Lösen Sie die quadratische Gleichung $x^2 - 5x + 6 = 0$.",
+      "exampleTranslation": "Solve the quadratic equation $x^2 - 5x + 6 = 0$.",
+      "grammarTip": "Die Lösungsformel (abc-Formel) ist $ax^2 + bx + c = 0$."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-2",
+      "german": "Diskriminante",
+      "phonetic": "Dis-kri-mi-nan-teh",
+      "category": "Algebra",
+      "english": "Discriminant",
+      "hindi": "विविक्तकर (Viviktakar)",
+      "exampleDe": "Die Diskriminante $D = b^2 - 4ac$ entscheidet über die Anzahl der reellen Lösungen.",
+      "exampleTranslation": "The discriminant $D = b^2 - 4ac$ determines the number of real solutions.",
+      "grammarTip": "D > 0 (zwei Lösungen), D = 0 (eine Lösung), D < 0 (keine reellen Lösungen)."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-3",
+      "german": "Logarithmus",
+      "phonetic": "Loh-gah-rit-mus",
+      "category": "Algebra",
+      "english": "Logarithm",
+      "hindi": "लघुगणक (Laghu-ganak)",
+      "exampleDe": "Der Logarithmus zur Basis 10 von 100 ist 2, da $10^2 = 100$.",
+      "exampleTranslation": "The logarithm to base 10 of 100 is 2, because $10^2 = 100$.",
+      "grammarTip": "Logarithmen sind die Umkehrfunktion von Exponentialfunktionen."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-4",
+      "german": "Ableitung",
+      "phonetic": "Ap-lei-tung",
+      "category": "Analysis",
+      "english": "Derivative",
+      "hindi": "अवकलज (Avakalaj)",
+      "exampleDe": "Die erste Ableitung von $f(x) = x^2$ ist $f'(x) = 2x$.",
+      "exampleTranslation": "The first derivative of $f(x) = x^2$ is $f'(x) = 2x$.",
+      "grammarTip": "Die Ableitung gibt die Steigung einer Funktion an einem Punkt an."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-5",
+      "german": "Extremwert",
+      "phonetic": "Eks-trem-vert",
+      "category": "Analysis",
+      "english": "Extremum (Maximum/Minimum)",
+      "hindi": "चरम मान (Charam Maan)",
+      "exampleDe": "Ein Hochpunkt ist ein lokales Maximum, ein Tiefpunkt ein lokales Minimum.",
+      "exampleTranslation": "A maximum point is a local maximum, a minimum point is a local minimum.",
+      "grammarTip": "Für Extremwerte gilt $f'(x) = 0$."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-6",
+      "german": "Lineares Gleichungssystem",
+      "phonetic": "Li-neh-ah-res Glei-khung-sis-tem",
+      "category": "Algebra",
+      "english": "Linear Equation System",
+      "hindi": "रेखीय समीकरण निकाय (Rekheeya Sameekaran Nikay)",
+      "exampleDe": "Lösen Sie das System: x + y = 5 und x - y = 1.",
+      "exampleTranslation": "Solve the system: x + y = 5 and x - y = 1.",
+      "grammarTip": "Methoden: Substitution, Addition, Gleichsetzung."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-7",
+      "german": "Vektor",
+      "phonetic": "Vek-tor",
+      "category": "Vektorrechnung",
+      "english": "Vector",
+      "hindi": "सदिश (Sadish)",
+      "exampleDe": "Ein Vektor hat sowohl eine Richtung als auch eine Länge.",
+      "exampleTranslation": "A vector has both a direction and a length.",
+      "grammarTip": "Vektoren werden oft als Pfeile im Raum dargestellt."
+    },
+    {
+      "id": "wb-factory-stk-math-batch1-fc-8",
+      "german": "Skalarprodukt",
+      "phonetic": "Skaa-lar-pro-dukt",
+      "category": "Vektorrechnung",
+      "english": "Dot Product / Scalar Product",
+      "hindi": "अदिश गुणनफल (Adish Gunanphal)",
+      "exampleDe": "Das Skalarprodukt zweier orthogonaler Vektoren ist Null.",
+      "exampleTranslation": "The dot product of two orthogonal vectors is zero.",
+      "grammarTip": "Das Ergebnis ist eine Skalargröße (Zahl), keine Vektorgröße."
+    }
+  ],
+  "vocabulary": [
+    "1. Quadratische Gleichung — Quadratic Equation / द्विघात समीकरण (Dvi-ghaat Sameekaran)",
+    "2. Diskriminante — Discriminant / विविक्तकर (Viviktakar)",
+    "3. Logarithmus — Logarithm / लघुगणक (Laghu-ganak)",
+    "4. Ableitung — Derivative / अवकलज (Avakalaj)",
+    "5. Extremwert — Extremum (Maximum/Minimum) / चरम मान (Charam Maan)",
+    "6. Lineares Gleichungssystem — Linear Equation System / रेखीय समीकरण निकाय (Rekheeya Sameekaran Nikay)"
+  ],
+  "dialogue": [],
+  "audioUrl": null,
+  "questions": [
+    {
+      "id": "q_1",
+      "page": 2,
+      "label": "Aufgabe 1",
+      "prompt": "Lösen Sie die Gleichung: $x^2 - 7x + 10 = 0$.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "$x_1 = 2,\\; x_2 = 5$"
+        },
+        {
+          "id": "b",
+          "text": "$x_1 = -2,\\; x_2 = 5$"
+        },
+        {
+          "id": "c",
+          "text": "$x_1 = 2,\\; x_2 = -5$"
+        },
+        {
+          "id": "d",
+          "text": "$x_1 = -2,\\; x_2 = -5$"
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterloesung: [German Rule] Die quadratische Gleichung $x^2 - 7x + 10 = 0$ kann durch Faktorisierung oder die abc-Formel gelöst werden. Bei Faktorisierung suchen wir zwei Zahlen, deren Produkt 10 und deren Summe -7 ist. Diese sind -2 und -5. $(x - 2)(x - 5) = 0$. Daraus folgen $x_1 = 2$ und $x_2 = 5$. | [English] The quadratic equation $x^2 - 7x + 10 = 0$ can be solved by factoring or using the quadratic formula. For factoring, we look for two numbers whose product is 10 and whose sum is -7. These are -2 and -5. $(x - 2)(x - 5) = 0$. From this, $x_1 = 2$ and $x_2 = 5$. | [Hindi/Hinglish] द्विघात समीकरण $x^2 - 7x + 10 = 0$ को गुणनखंड विधि या abc-सूत्र से हल किया जा सकता है। गुणनखंड करने के लिए, हमें दो ऐसी संख्याएँ चाहिए जिनका गुणनफल 10 हो और योग -7 हो। ये संख्याएँ -2 और -5 हैं। $(x - 2)(x - 5) = 0$। इससे हमें $x_1 = 2$ और $x_2 = 5$ मिलता है।"
+    },
+    {
+      "id": "q_2",
+      "page": 2,
+      "label": "Aufgabe 2",
+      "prompt": "Für welche Werte von k hat die Gleichung $x^2 + 4x + k = 0$ genau eine reelle Lösung?",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "k=0"
+        },
+        {
+          "id": "b",
+          "text": "k=2"
+        },
+        {
+          "id": "c",
+          "text": "k=4"
+        },
+        {
+          "id": "d",
+          "text": "k=8"
+        }
+      ],
+      "answer": "c",
+      "explanation": "Musterloesung: [German Rule] Eine quadratische Gleichung $ax^2 + bx + c = 0$ hat genau eine reelle Lösung, wenn ihre Diskriminante $D = b^2 - 4ac$ gleich Null ist. Hier ist a=1, b=4, c=k. $D = 4^2 - 4 \\cdot 1 \\cdot k = 0$. $16 - 4k = 0$. $4k = 16$. k = 4. | [English] A quadratic equation $ax^2 + bx + c = 0$ has exactly one real solution if its discriminant $D = b^2 - 4ac$ is equal to zero. Here, a=1, b=4, c=k. $D = 4^2 - 4 \\cdot 1 \\cdot k = 0$. $16 - 4k = 0$. $4k = 16$. k = 4. | [Hindi/Hinglish] एक द्विघात समीकरण $ax^2 + bx + c = 0$ का ठीक एक वास्तविक हल होता है यदि उसका विविक्तकर $D = b^2 - 4ac$ शून्य के बराबर हो। यहाँ a=1, b=4, c=k है। $D = 4^2 - 4 \\cdot 1 \\cdot k = 0$। $16 - 4k = 0$। $4k = 16$। k = 4।"
+    },
+    {
+      "id": "q_3",
+      "page": 2,
+      "label": "Aufgabe 3",
+      "prompt": "Vereinfachen Sie den Ausdruck: $\\log_2(8) + \\log_2(4)$.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "$\\log_2(12)$"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "$\\log_2(32)$"
+        },
+        {
+          "id": "d",
+          "text": "6"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Musterloesung: [German Rule] Die Logarithmusregel besagt: $\\log_b(x) + \\log_b(y) = \\log_b(x \\cdot y)$. Außerdem wissen wir, dass $\\log_2(8) = 3$ (da $2^3 = 8$) und $\\log_2(4) = 2$ (da $2^2 = 4$). Also: $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$. | [English] The logarithm rule states: $\\log_b(x) + \\log_b(y) = \\log_b(x \\cdot y)$. Also, we know that $\\log_2(8) = 3$ (since $2^3 = 8$) and $\\log_2(4) = 2$ (since $2^2 = 4$). So: $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$. | [Hindi/Hinglish] लघुगणक नियम कहता है: $\\log_b(x) + \\log_b(y) = \\log_b(x \\cdot y)$। हमें यह भी पता है कि $\\log_2(8) = 3$ (क्योंकि $2^3 = 8$) और $\\log_2(4) = 2$ (क्योंकि $2^2 = 4$)। तो: $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$।"
+    },
+    {
+      "id": "q_4",
+      "page": 2,
+      "label": "Aufgabe 4",
+      "prompt": "Bestimmen Sie die erste Ableitung der Funktion $f(x) = 3x^3 - 2x^2 + 5x - 1$.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "$9x^2 - 4x + 5$"
+        },
+        {
+          "id": "b",
+          "text": "$3x^2 - 2x + 5$"
+        },
+        {
+          "id": "c",
+          "text": "$9x^3 - 4x^2 + 5x$"
+        },
+        {
+          "id": "d",
+          "text": "6x - 4"
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterloesung: [German Rule] Um die erste Ableitung eines Polynoms zu bestimmen, verwenden wir die Potenzregel: $\\frac{d}{dx}(x^n) = n x^{n-1}$. Für eine Konstante c ist $\\frac{d}{dx}(c) = 0$. $f(x) = 3x^3 - 2x^2 + 5x - 1$. $f'(x) = \\frac{d}{dx}(3x^3) - \\frac{d}{dx}(2x^2) + \\frac{d}{dx}(5x) - \\frac{d}{dx}(1)$. $f'(x) = 3 \\cdot 3x^{3-1} - 2 \\cdot 2x^{2-1} + 5 \\cdot 1x^{1-1} - 0$. $f'(x) = 9x^2 - 4x + 5$. | [English] To find the first derivative of a polynomial, we use the power rule: $\\frac{d}{dx}(x^n) = n x^{n-1}$. For a constant c, $\\frac{d}{dx}(c) = 0$. $f(x) = 3x^3 - 2x^2 + 5x - 1$. $f'(x) = \\frac{d}{dx}(3x^3) - \\frac{d}{dx}(2x^2) + \\frac{d}{dx}(5x) - \\frac{d}{dx}(1)$. $f'(x) = 3 \\cdot 3x^{3-1} - 2 \\cdot 2x^{2-1} + 5 \\cdot 1x^{1-1} - 0$. $f'(x) = 9x^2 - 4x + 5$. | [Hindi/Hinglish] एक बहुपद का पहला अवकलज ज्ञात करने के लिए, हम घात नियम (power rule) का उपयोग करते हैं: $\\frac{d}{dx}(x^n) = n x^{n-1}$। एक स्थिरांक c के लिए, $\\frac{d}{dx}(c) = 0$ होता है। $f(x) = 3x^3 - 2x^2 + 5x - 1$। $f'(x) = \\frac{d}{dx}(3x^3) - \\frac{d}{dx}(2x^2) + \\frac{d}{dx}(5x) - \\frac{d}{dx}(1)$। $f'(x) = 3 \\cdot 3x^{3-1} - 2 \\cdot 2x^{2-1} + 5 \\cdot 1x^{1-1} - 0$। $f'(x) = 9x^2 - 4x + 5$।"
+    },
+    {
+      "id": "q_5",
+      "page": 2,
+      "label": "Aufgabe 5",
+      "prompt": "Finden Sie den x-Wert des Extrempunktes der Funktion f(x) = $x^2 - 6x + 9$.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "x=0"
+        },
+        {
+          "id": "b",
+          "text": "x=3"
+        },
+        {
+          "id": "c",
+          "text": "x=6"
+        },
+        {
+          "id": "d",
+          "text": "x=9"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Musterloesung: [German Rule] Extrempunkte einer Funktion f(x) werden gefunden, indem man die erste Ableitung f'(x) bildet und diese gleich Null setzt. f(x) = $x^2 - 6x + 9$. $f'(x) = 2x - 6$. Setze $f'(x) = 0$: 2x - 6 = 0. 2x = 6. x = 3. | [English] Extremum points of a function f(x) are found by taking the first derivative f'(x) and setting it equal to zero. f(x) = $x^2 - 6x + 9$. $f'(x) = 2x - 6$. Set $f'(x) = 0$: 2x - 6 = 0. 2x = 6. x = 3. | [Hindi/Hinglish] एक फलन f(x) के चरम बिंदु (extremum points) ज्ञात करने के लिए, हम पहली व्युत्पन्न f'(x) निकालते हैं और उसे शून्य के बराबर सेट करते हैं। f(x) = $x^2 - 6x + 9$। $f'(x) = 2x - 6$। $f'(x) = 0$ सेट करें: 2x - 6 = 0। 2x = 6। x = 3।"
+    },
+    {
+      "id": "q_6",
+      "page": 2,
+      "label": "Aufgabe 6",
+      "prompt": "Lösen Sie das Gleichungssystem: I) x + y = 7, II) 2x - y = 2.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "x=3, y=4"
+        },
+        {
+          "id": "b",
+          "text": "x=4, y=3"
+        },
+        {
+          "id": "c",
+          "text": "x=2, y=5"
+        },
+        {
+          "id": "d",
+          "text": "x=5, y=2"
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterloesung: [German Rule] Wir lösen das lineare Gleichungssystem mit dem Additionsverfahren. I) x + y = 7, II) 2x - y = 2. Addiere (I) und (II): (x + y) + (2x - y) = 7 + 2. 3x = 9. x = 3. Setze x = 3 in (I) ein: 3 + y = 7. y = 4. Die Lösung ist x=3, y=4. | [English] We solve the linear equation system using the addition method. I) x + y = 7, II) 2x - y = 2. Add (I) and (II): (x + y) + (2x - y) = 7 + 2. 3x = 9. x = 3. Substitute x = 3 into (I): 3 + y = 7. y = 4. The solution is x=3, y=4. | [Hindi/Hinglish] हम इस रेखीय समीकरण निकाय को योग विधि (addition method) से हल करते हैं। I) x + y = 7, II) 2x - y = 2। (I) और (II) को जोड़ें: (x + y) + (2x - y) = 7 + 2। 3x = 9। x = 3। x = 3 को (I) में रखें: 3 + y = 7। y = 4। हल x=3, y=4 है।"
+    },
+    {
+      "id": "q_7",
+      "page": 2,
+      "label": "Aufgabe 7",
+      "prompt": "Berechnen Sie die Länge des Vektors $\\vec{a} = (3, 4)$.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "7"
+        },
+        {
+          "id": "c",
+          "text": "9"
+        },
+        {
+          "id": "d",
+          "text": "25"
+        }
+      ],
+      "answer": "a",
+      "explanation": "Musterloesung: [German Rule] Die Länge (oder der Betrag) eines Vektors a = (x, y) wird mit der Formel $|\\vec{a}| = \\sqrt{x^2 + y^2}$ berechnet. Für $\\vec{a} = (3, 4)$: $|\\vec{a}| = \\sqrt{3^2 + 4^2}$. $|\\vec{a}| = \\sqrt{9 + 16}$. $|\\vec{a}| = \\sqrt{25}$. $|\\vec{a}| = 5$. | [English] The length (or magnitude) of a vector a = (x, y) is calculated using the formula $|\\vec{a}| = \\sqrt{x^2 + y^2}$. For $\\vec{a} = (3, 4)$: $|\\vec{a}| = \\sqrt{3^2 + 4^2}$. $|\\vec{a}| = \\sqrt{9 + 16}$. $|\\vec{a}| = \\sqrt{25}$. $|\\vec{a}| = 5$. | [Hindi/Hinglish] एक सदिश a = (x, y) की लंबाई (या परिमाण) की गणना सूत्र $|\\vec{a}| = \\sqrt{x^2 + y^2}$ का उपयोग करके की जाती है। $\\vec{a} = (3, 4)$ के लिए: $|\\vec{a}| = \\sqrt{3^2 + 4^2}$। $|\\vec{a}| = \\sqrt{9 + 16}$। $|\\vec{a}| = \\sqrt{25}$। $|\\vec{a}| = 5$।"
+    },
+    {
+      "id": "q_8",
+      "page": 2,
+      "label": "Aufgabe 8",
+      "prompt": "Gegeben sind die Vektoren $\\vec{a} = (1, 2)$ und $\\vec{b} = (3, -1)$. Berechnen Sie das Skalarprodukt $\\vec{a} \\cdot \\vec{b}$.",
+      "type": "mcq",
+      "options": [
+        {
+          "id": "a",
+          "text": "(3, -2)"
+        },
+        {
+          "id": "b",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "5"
+        },
+        {
+          "id": "d",
+          "text": "0"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Musterloesung: [German Rule] Das Skalarprodukt (Dot Product) zweier Vektoren $\\vec{a} = (a_1, a_2)$ und $\\vec{b} = (b_1, b_2)$ wird berechnet als $\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2$. Für $\\vec{a} = (1, 2)$ und $\\vec{b} = (3, -1)$: $\\vec{a} \\cdot \\vec{b} = (1 \\cdot 3) + (2 \\cdot (-1))$. $\\vec{a} \\cdot \\vec{b} = 3 - 2$. $\\vec{a} \\cdot \\vec{b} = 1$. | [English] The dot product (scalar product) of two vectors $\\vec{a} = (a_1, a_2)$ and $\\vec{b} = (b_1, b_2)$ is calculated as $\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2$. For $\\vec{a} = (1, 2)$ and $\\vec{b} = (3, -1)$: $\\vec{a} \\cdot \\vec{b} = (1 \\cdot 3) + (2 \\cdot (-1))$. $\\vec{a} \\cdot \\vec{b} = 3 - 2$. $\\vec{a} \\cdot \\vec{b} = 1$. | [Hindi/Hinglish] दो सदिशों $\\vec{a} = (a_1, a_2)$ और $\\vec{b} = (b_1, b_2)$ का अदिश गुणनफल (dot product) $\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2$ के रूप में गणना की जाती है। $\\vec{a} = (1, 2)$ और $\\vec{b} = (3, -1)$ के लिए: $\\vec{a} \\cdot \\vec{b} = (1 \\cdot 3) + (2 \\cdot (-1))$। $\\vec{a} \\cdot \\vec{b} = 3 - 2$। $\\vec{a} \\cdot \\vec{b} = 1$।"
+    }
+  ],
+  "generatedAt": "2026-11-15T13:17:39.762200+00:00"
+}

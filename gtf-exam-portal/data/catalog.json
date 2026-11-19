@@ -7,7 +7,7 @@
       "level": "a2",
       "title": "GTF A2 Interaktiver Modelltest — GTF A2 Alltag und Wohnung Berlin",
       "description": "Full A2 interactive simulation: Lesen, Sprachbausteine, Hören, Schreiben & Sprechen.",
-      "priceEur": 3.0,
+      "priceEur": 3,
       "priceInr": 199,
       "isFree": false,
       "resourceId": "gtf-a2-gtf-a2-alltag-und-wohnung-berlin",
@@ -20,7 +20,7 @@
       "level": "a2",
       "title": "GTF A2 Arbeitsbuch — GTF A2 Alltag und Wohnung Berlin",
       "description": "Intensiv-Training A2 • A2 Grammatik & Übungssätze (3 Seiten + GTF Wasserzeichen)",
-      "priceEur": 5.0,
+      "priceEur": 5,
       "priceInr": 299,
       "isFree": false,
       "resourceId": "wb-a2-gtf-a2-alltag-und-wohnung-berlin",
@@ -33,7 +33,7 @@
       "level": "b1",
       "title": "GTF B1 Interaktiver Modelltest — GTF B1 Krankenhaus und Pflege Berlin",
       "description": "Full B1 interactive simulation: Lesen, Sprachbausteine, Hören, Schreiben & Sprechen.",
-      "priceEur": 3.0,
+      "priceEur": 3,
       "priceInr": 199,
       "isFree": false,
       "resourceId": "gtf-b1-gtf-b1-krankenhaus-und-pflege-berlin",
@@ -46,7 +46,7 @@
       "level": "b1",
       "title": "GTF B1 Arbeitsbuch — GTF B1 Krankenhaus und Pflege Berlin",
       "description": "Intensiv-Training B1 • B1 Grammatik & Übungssätze (3 Seiten + GTF Wasserzeichen)",
-      "priceEur": 5.0,
+      "priceEur": 5,
       "priceInr": 299,
       "isFree": false,
       "resourceId": "wb-b1-gtf-b1-krankenhaus-und-pflege-berlin",
@@ -59,7 +59,7 @@
       "level": "b2",
       "title": "GTF B2 Interaktiver Modelltest — GTF B2 Fachsprache und Anerkennung",
       "description": "Full B2 interactive simulation: Lesen, Sprachbausteine, Hören, Schreiben & Sprechen.",
-      "priceEur": 3.0,
+      "priceEur": 3,
       "priceInr": 199,
       "isFree": false,
       "resourceId": "gtf-b2-gtf-b2-fachsprache-und-anerkennung",
@@ -72,7 +72,7 @@
       "level": "b2",
       "title": "GTF B2 Arbeitsbuch — GTF B2 Fachsprache und Anerkennung",
       "description": "Intensiv-Training B2 • B2 Grammatik & Übungssätze (3 Seiten + GTF Wasserzeichen)",
-      "priceEur": 5.0,
+      "priceEur": 5,
       "priceInr": 299,
       "isFree": false,
       "resourceId": "wb-b2-gtf-b2-fachsprache-und-anerkennung",
@@ -85,7 +85,7 @@
       "level": "a2",
       "title": "GTF A2 Interaktiver Modelltest (Drive Sync) — Alltag & Beruf Berlin",
       "description": "Auto-ingested from 'A2 to B1' Drive Vault: Complete 4-module simulation (Lesen, Hören, Schreiben, Sprechen).",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "sample-a2-from-drive",
@@ -98,7 +98,7 @@
       "level": "a2",
       "title": "GTF A2 Intensiv-Arbeitsbuch (Drive Sync) — Grammatik & Sprachbausteine",
       "description": "Auto-ingested from Google Drive: Perfekt, Wechselpräpositionen & interaktive Lückensätze.",
-      "priceEur": 4.0,
+      "priceEur": 4,
       "priceInr": 249,
       "isFree": false,
       "resourceId": "wb-a2-from-drive",
@@ -111,7 +111,7 @@
       "level": "b1",
       "title": "GTF B1 Modelltest (Drive Sync) — B1 Übergangstraining",
       "description": "Auto-ingested companion test: Transition from A2 to B1 nursing and clinical German.",
-      "priceEur": 3.0,
+      "priceEur": 3,
       "priceInr": 199,
       "isFree": false,
       "resourceId": "gtf-b1-modelltest-1",
@@ -124,7 +124,7 @@
       "level": "b1",
       "title": "GTF B1 Vorbereitungsheft (Drive Sync) — Fachwortschatz & Sprachbausteine",
       "description": "Bridge exercises from 'A2 to B1' Drive folder: Subordinate clauses & professional medical communication.",
-      "priceEur": 5.0,
+      "priceEur": 5,
       "priceInr": 299,
       "isFree": false,
       "resourceId": "wb-b1-from-drive",
@@ -138,7 +138,7 @@
       "level": "b1",
       "title": "GTF Lehrwerk — Modul 1: Stationäre Patientenaufnahme & Pflegeanamnese in der Praxis",
       "description": "Offizielles GTF Ausbildungswerk: Strukturierte Erstaufnahme im Krankenhaus, Erhebung der Pflegeanamnese nach AEDL/SIS, Schmerzerfassung nach NRS, Allergiedokumentation und empathische Patientenkommunikation. • Dialoge, Doku-Vorlagen & FSP-Training.",
-      "priceEur": 9.0,
+      "priceEur": 9,
       "priceInr": 499,
       "isFree": false,
       "resourceId": "wb-pflege-modul-1-anamnese-und-patientenaufnahme",
@@ -152,7 +152,7 @@
       "level": "b1",
       "title": "GTF Lehrwerk — Modul 2: Mündliche Dienstübergabe (ISBAR) & Rechtssicherer Pflegebericht",
       "description": "Offizielles GTF Ausbildungswerk: Strukturierte Schichtübergabe nach dem internationalen ISBAR-Standard, lückenlose Formulierung von Pflegeverlaufsberichten nach W-Fragen, rechtliche Relevanz der Dokumentation im PflBG. • Dialoge, Doku-Vorlagen & FSP-Training.",
-      "priceEur": 9.0,
+      "priceEur": 9,
       "priceInr": 499,
       "isFree": false,
       "resourceId": "wb-pflege-modul-2-dienstuebergabe-und-pflegebericht",
@@ -165,7 +165,7 @@
       "type": "studienkolleg_dossier",
       "title": "STK G-Kurs: Deutsche Geschichte 1945 bis zur Gegenwart",
       "description": "Official material for Studienkolleg Hub • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "dossier-stk-g-kurs-stk_g_kurs_deutsche_geschichte_1945_bis_heute",
@@ -181,7 +181,7 @@
       "type": "studienkolleg_dossier",
       "title": "STK W-Kurs: Grundlagen der VWL und BWL",
       "description": "Official material for Studienkolleg Hub • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "dossier-stk-w-kurs-stk_w_kurs_vwl_und_bwl_grundlagen",
@@ -197,7 +197,7 @@
       "type": "pdf_workbook",
       "title": "Studienkolleg Aufnahmeprüfung Master-Guide: M-Kurs & T-Kurs",
       "description": "Umfassender Master-Guide für die Aufnahmeprüfung an deutschen Studienkollegs (TU Berlin / FU Berlin Standard). Systemvergleich M-Kurs vs. T-Kurs, Fachwörterbuch, Diagnosetest und 12-Wochen-Crashkurs-Roadmap.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "stk-guide-aufnahmepruefung-m-und-t-kurs",
@@ -213,7 +213,7 @@
       "type": "pdf_workbook",
       "title": "Studienkolleg Mathematik Band 1: Fachbegriffe, Algebra & Gleichungslehre",
       "description": "Lehrbuchartige Fachvorbereitung Mathematik für die Aufnahmeprüfung am Studienkolleg (M- und T-Kurs). Umfassende Fachbegriffe-Tabelle, Formelsammlung, gerechnete Musterbeispiele und Prüfungsaufgaben ohne Taschenrechner.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "stk-mathematik-1-fachbegriffe-und-gleichungen",
@@ -229,7 +229,7 @@
       "type": "language_textbook",
       "title": "GTF Deutsch A1 Lehrbuch • Kapitel 1: Grundlagen, Begrüßung und Satzbau",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "book-a1-kapitel-1-a1_kapitel_1_grundlagen_und_satzbau",
@@ -244,7 +244,7 @@
       "type": "language_textbook",
       "title": "GTF Deutsch A2 Lehrbuch • Kapitel 1: Perfekt und Alltag in Deutschland",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "book-a2-kapitel-1-a2_kapitel_1_perfekt_und_alltag",
@@ -259,7 +259,7 @@
       "type": "clinical_module",
       "title": "Modul 1: Stationäre Patientenaufnahme & Pflegeanamnese in der Praxis",
       "description": "Official material for Fachsprache Pflege & Dual Ausbildung • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "Pflege_Modul_1_Anamnese_und_Patientenaufnahme",
@@ -275,7 +275,7 @@
       "type": "clinical_module",
       "title": "Modul 2: Mündliche Dienstübergabe (ISBAR) & Rechtssicherer Pflegebericht",
       "description": "Official material for Fachsprache Pflege & Dual Ausbildung • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht",
@@ -291,7 +291,7 @@
       "type": "language_textbook",
       "title": "GTF Deutsch A1 Lehrbuch • Kapitel 1: Guten Tag, Deutschland! Begrüßung, Alphabet & Phonetik",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "book-a1-kapitel-1-a1_1_kapitel_01",
@@ -306,7 +306,7 @@
       "type": "language_textbook",
       "title": "GTF Deutsch A1 Lehrbuch • Kapitel 2: Im Supermarkt & der Akkusativ",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "book-a1-kapitel-2-a1_1_kapitel_02",
@@ -321,7 +321,7 @@
       "type": "studienkolleg_course",
       "title": "Stk-De-Tu Berlin-01",
       "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am TU Berlin (T-Kurs, W-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "stk_aufnahme_deutsch-stk-de-tu-berlin-01",
@@ -336,7 +336,7 @@
       "type": "studienkolleg_course",
       "title": "Stk-De-Tu Berlin-02",
       "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am TU Berlin (T-Kurs, M-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "stk_aufnahme_deutsch-stk-de-tu-berlin-02",
@@ -351,7 +351,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Grundlagen, Begrüßung und Satzbau",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-A1_Kapitel_1_Grundlagen_und_Satzbau",
@@ -369,7 +369,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Grundlagen, Begrüßung und Satzbau",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-A1_Kapitel_1_Grundlagen_und_Satzbau",
@@ -387,7 +387,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Perfekt und Alltag in Deutschland",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-A2_Kapitel_1_Perfekt_und_Alltag",
@@ -405,7 +405,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Perfekt und Alltag in Deutschland",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-A2_Kapitel_1_Perfekt_und_Alltag",
@@ -423,7 +423,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01",
@@ -441,7 +441,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01",
@@ -459,7 +459,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
@@ -477,7 +477,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
@@ -495,7 +495,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Pflege Modul 01: Anamnese & Patientenaufnahme im Krankenhaus",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-Pflege_Modul_01_Anamnese_und_Patientenaufnahme",
@@ -513,7 +513,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Pflege Modul 01: Anamnese & Patientenaufnahme im Krankenhaus",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-Pflege_Modul_01_Anamnese_und_Patientenaufnahme",
@@ -531,7 +531,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Pflege Modul 02: Schichtübergabe nach ISBAR & digitaler Pflegebericht",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-Pflege_Modul_02_Dienstuebergabe_und_Pflegebericht_ISBAR",
@@ -549,7 +549,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Pflege Modul 02: Schichtübergabe nach ISBAR & digitaler Pflegebericht",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-Pflege_Modul_02_Dienstuebergabe_und_Pflegebericht_ISBAR",
@@ -567,7 +567,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahme Math 1: Prozent-, Zins- und Zinseszinsrechnung",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-W_Kurs_01_Aufnahme_Wirtschaftsmathematik_Prozent_Zins",
@@ -585,7 +585,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahme Math 1: Prozent-, Zins- und Zinseszinsrechnung",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-W_Kurs_01_Aufnahme_Wirtschaftsmathematik_Prozent_Zins",
@@ -603,7 +603,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung",
@@ -621,7 +621,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung",
@@ -639,7 +639,7 @@
       "type": "language_textbook",
       "title": "GTF Deutsch A1 Lehrbuch • Kapitel 3: Mein Tagesablauf & trennbare Verben",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "book-a1-kapitel-3-a1_1_kapitel_03",
@@ -654,7 +654,7 @@
       "type": "language_textbook",
       "title": "GTF Deutsch A1 Lehrbuch • Kapitel 4: Familie, Freunde & Possessivartikel",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "book-a1-kapitel-4-a1_1_kapitel_04",
@@ -669,7 +669,7 @@
       "type": "studienkolleg_course",
       "title": "Stk-De-Fu Berlin-04",
       "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am FU Berlin (M-Kurs, G-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "stk_aufnahme_deutsch-stk-de-fu-berlin-04",
@@ -684,7 +684,7 @@
       "type": "studienkolleg_course",
       "title": "Stk-De-Tu Berlin-03",
       "description": "Originalgetreuer Modelltest für die Aufnahmeprüfung Deutsch am TU Berlin (W-Kurs, T-Kurs). Enthält 4 C-Tests (80 Lücken), universitäre Grammatik-Transformationen, wissenschaftliches Leseverstehen und Erörterung inklusive vollständiger Musterlösung.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "stk_aufnahme_deutsch-stk-de-tu-berlin-03",
@@ -699,7 +699,7 @@
       "type": "audio_exam",
       "title": "A1 Hören — Am Berliner Hauptbahnhof: Gleiswechsel und Fahrkartenschalter",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-a1-hoeren-01",
@@ -714,7 +714,7 @@
       "type": "audio_exam",
       "title": "A1 Hören — In der Bäckerei und Arztterminvereinbarung in Berlin-Mitte",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-a1-hoeren-02",
@@ -729,7 +729,7 @@
       "type": "audio_exam",
       "title": "A2 Hören — Berliner Rundfunk: Verkehrsfunk, Wetterbericht und Büronachrichten von Kollegen",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-a2-hoeren-01",
@@ -744,7 +744,7 @@
       "type": "audio_exam",
       "title": "A2 Hören — WG-Zimmer-Besichtigung und Mietvertrag in Berlin-Prenzlauer Berg",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-a2-hoeren-02",
@@ -759,7 +759,7 @@
       "type": "audio_exam",
       "title": "B1 Hören — Goethe/telc B1 Interview: Mobiles Arbeiten, Homeoffice und neue Arbeitskultur in Berlin",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-b1-hoeren-01",
@@ -774,7 +774,7 @@
       "type": "audio_exam",
       "title": "B1 Hören — Universitätsleben an der TU Berlin und nachhaltige Umweltgewohnheiten",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-b1-hoeren-02",
@@ -789,7 +789,7 @@
       "type": "audio_exam",
       "title": "B2 Hören — Deutschlandfunk Kultur: Radio-Podiumsdiskussion über Künstliche Intelligenz in der modernen Medizin und Pflege",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-b2-hoeren-01",
@@ -804,7 +804,7 @@
       "type": "audio_exam",
       "title": "B2 Hören — WDR 5 Wissenschaftsmagazin Podcast: Fachkräftemangel, Chancenkarte und Anerkennung internationaler Berufsqualifikationen",
       "description": "Official material for German Language Academy • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-b2-hoeren-02",
@@ -820,7 +820,7 @@
       "level": "a1",
       "title": "A1 Hören — Ankunft am Berliner Hauptbahnhof & Bürgeramt-Anmeldung",
       "description": "Daily Factory · Interactive Audio Dialogue, Flashcards & Hindi/English Musterlösung",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-a1-hoeren-batch1",
@@ -833,7 +833,7 @@
       "level": "a2",
       "title": "A2 Lesen — Dienstplan, Hausordnung & Krankmeldung im Betrieb",
       "description": "Daily Factory · Workplace Reading JSON, Flashcards & Hindi/English Musterlösung",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-a2-lesen-batch1",
@@ -846,7 +846,7 @@
       "level": "b1",
       "title": "B1 Hören — Beratungsgespräch bei der Agentur für Arbeit & Weiterbildung",
       "description": "Daily Factory · Exam Audio Simulation, Flashcards & Hindi/English Musterlösung",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-b1-hoeren-batch1",
@@ -859,7 +859,7 @@
       "level": "b2",
       "title": "B2 Hören — Klinik-Symposium: Digitalisierung & Personalmanagement im Krankenhaus",
       "description": "Daily Factory · B2 Radio Discussion, Flashcards & Hindi/English Musterlösung",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-b2-hoeren-batch1",
@@ -872,7 +872,7 @@
       "level": "b2",
       "title": "B2 Lesen — Tarifvertrag, Arbeitsrecht & Berufsanerkennung in Deutschland",
       "description": "Daily Factory · Editorial Reading JSON, Flashcards & Musterlösung",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-b2-lesen-batch1",
@@ -885,7 +885,7 @@
       "level": "b2",
       "title": "Studienkolleg T/M-Kurs Aufnahmeprüfung Mathematik — Analysis, Vektoren & Gleichungssysteme",
       "description": "Daily Factory · TU Berlin / KIT JSON Mock, Flashcards & Formula Derivations",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-stk-math-batch1",
@@ -899,7 +899,7 @@
       "level": "b2",
       "title": "Studienkolleg M/T/W/G-Kurs Aufnahmeprüfung Deutsch — Authentischer C-Test & Wissenschaftssprache",
       "description": "Daily Factory · LMU / Charité JSON Mock, Flashcards & Grammatik-Herleitung",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-stk-ctest-batch1",
@@ -913,7 +913,7 @@
       "level": "b2",
       "title": "FSP Medizin & Pflege Fallstudie 1 — Strukturierter Anamnesebogen (Akutes Koronarsyndrom)",
       "description": "Daily Factory · Arzt-Patient-Anamnese Audio, Clinical Flashcards & Quiz",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-fsp-anamnese-batch1",
@@ -926,7 +926,7 @@
       "level": "b2",
       "title": "FSP Pflege & Medizin Fallstudie 2 — ISBAR Übergabeprotokoll & Postoperative Überwachung",
       "description": "Daily Factory · Schichtübergabe Audio, Station Handover Flashcards & Quiz",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "wb-factory-fsp-isbar-batch1",
@@ -939,7 +939,7 @@
       "level": "a1",
       "title": "A1 Alltag — Beim Bäcker und im Supermarkt (Zahlen, Preise & Höflichkeitsformen)",
       "description": "Realistischer Einkaufsdialog in Berlin, Zahlen & Preise in Euro, höfliche Bestellungen (möchten / hätten gern) + 6 Prüfungsaufgaben & Kernwortschatz.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "a1-lab-11-baecker-supermarkt"
@@ -951,7 +951,7 @@
       "level": "a2",
       "title": "A2 Grammatik — Perfekt vs. Präteritum im Alltag (Tagesablauf & Wochenende)",
       "description": "Kompakte Regelübersicht (haben/sein + trennbare Verben + Präteritum im Alltag) und 6 praxisnahe Übungen mit sofortiger Erklärung.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "a2-lab-11-perfekt-praeteritum-alltag"
@@ -963,7 +963,7 @@
       "level": "b1",
       "title": "B1 Lesen & Sprachbausteine — Wohnungssuche und Mietvertrag in Deutschland",
       "description": "Realistischer B1-Text & Vermieter-E-Mail mit 6 Goethe/telc-Prüfungsfragen (Richtig/Falsch & Sprachbausteine) inkl. klarer Erklärungen.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "b1-lab-11-wohnungssuche-mietvertrag"
@@ -975,7 +975,7 @@
       "level": "b2",
       "title": "B2 Beruf — Professionelle E-Mails & Beschwerdemanagement am Arbeitsplatz",
       "description": "Authentisches deutsches Büroszenario (Kundenreklamation & Lieferverzug), B2-Redemittel zur Deeskalation + 6 Aufgaben mit Musterantworten.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "b2-lab-11-beruf-emails-beschwerdemanagement"
@@ -987,7 +987,7 @@
       "level": "b2",
       "title": "Studienkolleg C-Test & Fachmathematik — Kompakt-Training Set #1",
       "description": "1 authentischer akademischer C-Test (Lückentext) + 5 TU-Berlin-Aufnahmeprüfungsaufgaben (Mathematik & Logik ohne Taschenrechner) mit Schritt-für-Schritt-Lösungen.",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "stk-math-ctest-kompakt-01",
@@ -1002,7 +1002,7 @@
       "level": "a2",
       "productSlug": "wb-a2-gtf-a2-alltag-und-wohnung-berlin",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#1F7A8C",
@@ -1247,7 +1247,7 @@
       "level": "b1",
       "productSlug": "wb-b1-gtf-b1-krankenhaus-und-pflege-berlin",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#0F4C81",
@@ -1492,7 +1492,7 @@
       "level": "b2",
       "productSlug": "wb-b2-gtf-b2-fachsprache-und-anerkennung",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#2A9D8F",
@@ -1736,7 +1736,7 @@
       "level": "a2",
       "productSlug": "wb-a2-from-drive",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#0F4C81",
@@ -1980,7 +1980,7 @@
       "level": "b1",
       "productSlug": "wb-b1-from-drive",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#1F7A8C",
@@ -2224,7 +2224,7 @@
       "track": "Pflegefachkraft",
       "productSlug": "book-pflege-modul-1-anamnese-und-patientenaufnahme",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#0B2545",
@@ -2472,7 +2472,7 @@
       "track": "Pflegefachkraft",
       "productSlug": "book-pflege-modul-2-dienstuebergabe-und-pflegebericht",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#0B2545",
@@ -2730,28 +2730,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -2762,23 +2762,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -2843,7 +2843,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -2859,7 +2859,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -2897,7 +2897,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -2913,7 +2913,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -2944,7 +2944,7 @@
         }
       ],
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "unlocked": true,
       "questionCount": 8,
@@ -2968,28 +2968,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -3000,23 +3000,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -3081,7 +3081,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -3097,7 +3097,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -3135,7 +3135,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -3151,7 +3151,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -3182,7 +3182,7 @@
         }
       ],
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "unlocked": true,
       "questionCount": 8,
@@ -3195,7 +3195,7 @@
       "level": "c1/b2 fachsprache & abitur-niveau",
       "productSlug": "stk-guide-aufnahmepruefung-m-und-t-kurs",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#047857",
@@ -3217,28 +3217,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -3249,23 +3249,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -3330,7 +3330,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -3346,7 +3346,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -3384,7 +3384,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -3400,7 +3400,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -3439,7 +3439,7 @@
       "level": "c1/b2 fachsprache & abitur-niveau",
       "productSlug": "stk-mathematik-1-fachbegriffe-und-gleichungen",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#047857",
@@ -3461,28 +3461,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -3493,23 +3493,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -3574,7 +3574,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -3590,7 +3590,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -3628,7 +3628,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -3644,7 +3644,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -3684,7 +3684,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "book-a1-kapitel-1-a1_kapitel_1_grundlagen_und_satzbau",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 7,
       "coverColor": "#0F4C81",
@@ -3933,7 +3933,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "book-a2-kapitel-1-a2_kapitel_1_perfekt_und_alltag",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 7,
       "coverColor": "#0F4C81",
@@ -4406,7 +4406,7 @@
         }
       ],
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "unlocked": true,
       "questionCount": 8,
@@ -4644,7 +4644,7 @@
         }
       ],
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "unlocked": true,
       "questionCount": 8,
@@ -4657,7 +4657,7 @@
       "level": "b1-b2 fachsprache pflege",
       "productSlug": "Pflege_Modul_1_Anamnese_und_Patientenaufnahme",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#065F46",
@@ -4905,7 +4905,7 @@
       "level": "b1-b2 fachsprache pflege",
       "productSlug": "Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#065F46",
@@ -5154,7 +5154,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "dossier-stk-w-kurs-stk_w_kurs_vwl_und_bwl_grundlagen",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#854D0E",
@@ -5180,28 +5180,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -5212,23 +5212,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -5293,7 +5293,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -5309,7 +5309,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -5347,7 +5347,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -5363,7 +5363,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -5402,7 +5402,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "dossier-stk-g-kurs-stk_g_kurs_deutsche_geschichte_1945_bis_heute",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#78350F",
@@ -5427,28 +5427,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -5459,23 +5459,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -5540,7 +5540,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -5556,7 +5556,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -5594,7 +5594,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -5610,7 +5610,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -5649,7 +5649,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "book-a1-kapitel-1-a1_1_kapitel_01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 13,
       "coverColor": "#0F4C81",
@@ -5893,7 +5893,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "book-a1-kapitel-2-a1_1_kapitel_02",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 13,
       "coverColor": "#0F4C81",
@@ -6137,7 +6137,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "stk_aufnahme_deutsch-stk-de-tu-berlin-01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 9,
       "coverColor": "#92400E",
@@ -6159,28 +6159,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -6191,23 +6191,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -6272,7 +6272,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -6288,7 +6288,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -6326,7 +6326,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -6342,7 +6342,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -6381,7 +6381,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "stk_aufnahme_deutsch-stk-de-tu-berlin-02",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 9,
       "coverColor": "#92400E",
@@ -6403,28 +6403,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -6435,23 +6435,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -6516,7 +6516,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -6532,7 +6532,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -6570,7 +6570,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -6586,7 +6586,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -6625,7 +6625,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "book-a1-kapitel-3-a1_1_kapitel_03",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 12,
       "coverColor": "#0F4C81",
@@ -6866,7 +6866,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "book-a1-kapitel-4-a1_1_kapitel_04",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 13,
       "coverColor": "#0F4C81",
@@ -7107,7 +7107,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "stk_aufnahme_deutsch-stk-de-fu-berlin-04",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 8,
       "coverColor": "#92400E",
@@ -7129,28 +7129,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -7161,23 +7161,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -7242,7 +7242,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -7258,7 +7258,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -7296,7 +7296,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -7312,7 +7312,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -7351,7 +7351,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "stk_aufnahme_deutsch-stk-de-tu-berlin-03",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 9,
       "coverColor": "#92400E",
@@ -7373,28 +7373,28 @@
           "id": "q_1",
           "page": 1,
           "label": "Aufgabe 1",
-          "prompt": "Wie lautet die Ableitung der Funktion f(x) = 3x³ - 5x² + 4x - 7 nach der Potenzregel?",
+          "prompt": "Wie lautet die Ableitung der Funktion $f(x) = 3x^3 - 5x^2 + 4x - 7$ nach der Potenzregel?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "f'(x) = 9x² - 10x + 4"
+              "text": "$f'(x) = 9x^2 - 10x + 4$"
             },
             {
               "id": "b",
-              "text": "f'(x) = 6x² - 5x + 4"
+              "text": "$f'(x) = 6x^2 - 5x + 4$"
             },
             {
               "id": "c",
-              "text": "f'(x) = 9x³ - 10x² + 4x"
+              "text": "$f'(x) = 9x^3 - 10x^2 + 4x$"
             },
             {
               "id": "d",
-              "text": "f'(x) = x² - 10x + 7"
+              "text": "$f'(x) = x^2 - 10x + 7$"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: d/dx [x^n] = n * x^(n-1).\n\n✅ **Lösungsbegründung:** 3*3x^(2) - 5*2x^(1) + 4*1 - 0 = 9x² - 10x + 4.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
+          "explanation": "📌 **Belegstelle / Nachweis:** Differentialrechnung: $\\frac{d}{dx}[x^n] = n \\cdot x^{n-1}$.\n\n✅ **Lösungsbegründung:** $3 \\cdot 3x^2 - 5 \\cdot 2x^1 + 4 \\cdot 1 - 0 = 9x^2 - 10x + 4$.\n\n❌ **Distraktoren-Analyse:** Option b hat falsche Koeffizienten, c hat Exponenten nicht verringert, d ist falsch gerechnet.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Aufnahmeprüfung T-Kurs / W-Kurs: Grundrechenarten der Analysis müssen blitzschnell und fehlerfrei sitzen."
         },
         {
           "id": "q_2",
@@ -7405,23 +7405,23 @@
           "options": [
             {
               "id": "a",
-              "text": "U = R * I (Spannung = Widerstand mal Stromstärke)"
+              "text": "$U = R \\cdot I$ (Spannung = Widerstand mal Stromstärke)"
             },
             {
               "id": "b",
-              "text": "P = U * I² (Leistung = Spannung mal Stromstärke zum Quadrat)"
+              "text": "$P = U \\cdot I^2$ (Leistung = Spannung mal Stromstärke zum Quadrat)"
             },
             {
               "id": "c",
-              "text": "R = U * I (Widerstand = Spannung mal Stromstärke)"
+              "text": "$R = U \\cdot I$ (Widerstand = Spannung mal Stromstärke)"
             },
             {
               "id": "d",
-              "text": "I = U * R (Stromstärke = Spannung mal Widerstand)"
+              "text": "$I = U \\cdot R$ (Stromstärke = Spannung mal Widerstand)"
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: R = U / I, somit U = R * I.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> U = R * I. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
+          "explanation": "📌 **Belegstelle / Nachweis:** Grundlagen der Elektrizitätslehre: Georg Simon Ohm.\n\n✅ **Lösungsbegründung:** Der Quotient aus Spannung U und Stromstärke I ist bei konstanter Temperatur konstant: $R = \\frac{U}{I}$, somit $U = R \\cdot I$.\n\n❌ **Distraktoren-Analyse:** Option b ist falsche Leistungsformel (P = U * I), c und d verwechseln die Proportionalitäten.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Merksatz für die Physikprüfung: 'URI' -> $U = R \\cdot I$. Spannung in Volt (V), Widerstand in Ohm (Ω), Stromstärke in Ampere (A)."
         },
         {
           "id": "q_3",
@@ -7486,7 +7486,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Ionenbindung durch elektrostatische Anziehung zwischen Na⁺ und Cl⁻"
+              "text": "Ionenbindung durch elektrostatische Anziehung zwischen $\\text{Na}^+$ und $\\text{Cl}^-$"
             },
             {
               "id": "b",
@@ -7502,7 +7502,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz (ΔEN > 1,7) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
+          "explanation": "📌 **Belegstelle / Nachweis:** Anorganische Chemie: Bindungsarten und Gitterstrukturen.\n\n✅ **Lösungsbegründung:** Große Elektronegativitätsdifferenz ($\\Delta \\text{EN} > 1{,}7$) führt zum Elektronenübergang vom Natrium zum Chlor.\n\n❌ **Distraktoren-Analyse:** Option b liegt in Molekülen wie O₂ vor, c in Edelgasen, d in reinen Metallen wie Kupfer oder Eisen.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** M-Kurs Chemie: Metall + Nichtmetall mit hoher ΔEN bildet immer ein Ionengitter (Salz) mit hohen Schmelzpunkten!"
         },
         {
           "id": "q_6",
@@ -7540,7 +7540,7 @@
           "options": [
             {
               "id": "a",
-              "text": "Das Volumen halbiert sich (V₂ = 0,5 * V₁)"
+              "text": "Das Volumen halbiert sich ($V_2 = 0{,}5 \\cdot V_1$)"
             },
             {
               "id": "b",
@@ -7556,7 +7556,7 @@
             }
           ],
           "answer": "a",
-          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: p * V = const. (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
+          "explanation": "📌 **Belegstelle / Nachweis:** Thermodynamik: $p \\cdot V = \\text{const.}$ (isotherme Zustandsänderung).\n\n✅ **Lösungsbegründung:** Druck und Volumen sind bei idealen Gasen antiproportional: Steigt p auf das 2-fache, sinkt V auf die Hälfte.\n\n❌ **Distraktoren-Analyse:** Option b wäre proportionale Abhängigkeit, c ignoriert Kompressibilität, d ist rechnerisch unsinnig.\n\n💡 **Grammatik- & Prüfungstipp (German + Hinglish):** Physik T-Kurs: p1 * V1 = p2 * V2 bei T=const. Drückt man eine Spritze zusammen, steigt der Druck und das Volumen schrumpft."
         },
         {
           "id": "q_8",
@@ -7595,7 +7595,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-a1-hoeren-01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -7842,7 +7842,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-a1-hoeren-02",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -8089,7 +8089,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-a1-hoeren-03",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -8336,7 +8336,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-a2-hoeren-01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -8583,7 +8583,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-a2-hoeren-02",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -8830,7 +8830,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-b1-hoeren-01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -9077,7 +9077,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-b1-hoeren-02",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -9324,7 +9324,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-b2-hoeren-01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -9571,7 +9571,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "daf-audio-exams-daf-b2-hoeren-02",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 5,
       "coverColor": "#1E3A8A",
@@ -9818,7 +9818,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "pdf-mat_combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 120,
       "coverColor": "from-emerald-700 to-teal-900",
@@ -10064,7 +10064,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "pdf-mat_deutsch_b2_komplette_grammatik_122_saeulen_gesamtwerk",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 61,
       "coverColor": "from-emerald-700 to-teal-900",
@@ -10310,7 +10310,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "pdf-mat_deutsch_b2_komplette_grammatik_architektur",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "from-emerald-700 to-teal-900",
@@ -10554,7 +10554,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "wb-factory-a1-hoeren-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#1E3A8A",
@@ -10894,7 +10894,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "wb-factory-a2-lesen-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#134074",
@@ -11233,7 +11233,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "wb-factory-b1-hoeren-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#0F4C81",
@@ -11573,7 +11573,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "wb-factory-b2-hoeren-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#0A1628",
@@ -11913,7 +11913,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "wb-factory-b2-lesen-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#1E293B",
@@ -12252,7 +12252,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "wb-factory-stk-math-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#B45309",
@@ -12274,9 +12274,9 @@
           "category": "Algebra",
           "english": "Quadratic Equation",
           "hindi": "द्विघात समीकरण (Dvi-ghaat Sameekaran)",
-          "exampleDe": "Lösen Sie die quadratische Gleichung x² - 5x + 6 = 0.",
-          "exampleTranslation": "Solve the quadratic equation x² - 5x + 6 = 0.",
-          "grammarTip": "Die Lösungsformel (abc-Formel) ist ax² + bx + c = 0."
+          "exampleDe": "Lösen Sie die quadratische Gleichung $x^2 - 5x + 6 = 0$.",
+          "exampleTranslation": "Solve the quadratic equation $x^2 - 5x + 6 = 0$.",
+          "grammarTip": "Die Lösungsformel (abc-Formel) ist $ax^2 + bx + c = 0$."
         },
         {
           "id": "wb-factory-stk-math-batch1-fc-2",
@@ -12285,8 +12285,8 @@
           "category": "Algebra",
           "english": "Discriminant",
           "hindi": "विविक्तकर (Viviktakar)",
-          "exampleDe": "Die Diskriminante D = b² - 4ac entscheidet über die Anzahl der reellen Lösungen.",
-          "exampleTranslation": "The discriminant D = b² - 4ac determines the number of real solutions.",
+          "exampleDe": "Die Diskriminante $D = b^2 - 4ac$ entscheidet über die Anzahl der reellen Lösungen.",
+          "exampleTranslation": "The discriminant $D = b^2 - 4ac$ determines the number of real solutions.",
           "grammarTip": "D > 0 (zwei Lösungen), D = 0 (eine Lösung), D < 0 (keine reellen Lösungen)."
         },
         {
@@ -12296,8 +12296,8 @@
           "category": "Algebra",
           "english": "Logarithm",
           "hindi": "लघुगणक (Laghu-ganak)",
-          "exampleDe": "Der Logarithmus zur Basis 10 von 100 ist 2, da 10² = 100.",
-          "exampleTranslation": "The logarithm to base 10 of 100 is 2, because 10² = 100.",
+          "exampleDe": "Der Logarithmus zur Basis 10 von 100 ist 2, da $10^2 = 100$.",
+          "exampleTranslation": "The logarithm to base 10 of 100 is 2, because $10^2 = 100$.",
           "grammarTip": "Logarithmen sind die Umkehrfunktion von Exponentialfunktionen."
         },
         {
@@ -12307,8 +12307,8 @@
           "category": "Analysis",
           "english": "Derivative",
           "hindi": "अवकलज (Avakalaj)",
-          "exampleDe": "Die erste Ableitung von f(x) = x² ist f'(x) = 2x.",
-          "exampleTranslation": "The first derivative of f(x) = x² is f'(x) = 2x.",
+          "exampleDe": "Die erste Ableitung von $f(x) = x^2$ ist $f'(x) = 2x$.",
+          "exampleTranslation": "The first derivative of $f(x) = x^2$ is $f'(x) = 2x$.",
           "grammarTip": "Die Ableitung gibt die Steigung einer Funktion an einem Punkt an."
         },
         {
@@ -12320,7 +12320,7 @@
           "hindi": "चरम मान (Charam Maan)",
           "exampleDe": "Ein Hochpunkt ist ein lokales Maximum, ein Tiefpunkt ein lokales Minimum.",
           "exampleTranslation": "A maximum point is a local maximum, a minimum point is a local minimum.",
-          "grammarTip": "Für Extremwerte gilt f'(x) = 0."
+          "grammarTip": "Für Extremwerte gilt $f'(x) = 0$."
         },
         {
           "id": "wb-factory-stk-math-batch1-fc-6",
@@ -12363,34 +12363,34 @@
           "id": "q_1",
           "page": 2,
           "label": "Aufgabe 1",
-          "prompt": "Lösen Sie die Gleichung: x² - 7x + 10 = 0.",
+          "prompt": "Lösen Sie die Gleichung: $x^2 - 7x + 10 = 0$.",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "x₁=2, x₂=5"
+              "text": "$x_1 = 2,\\; x_2 = 5$"
             },
             {
               "id": "b",
-              "text": "x₁=-2, x₂=5"
+              "text": "$x_1 = -2,\\; x_2 = 5$"
             },
             {
               "id": "c",
-              "text": "x₁=2, x₂=-5"
+              "text": "$x_1 = 2,\\; x_2 = -5$"
             },
             {
               "id": "d",
-              "text": "x₁=-2, x₂=-5"
+              "text": "$x_1 = -2,\\; x_2 = -5$"
             }
           ],
           "answer": "a",
-          "explanation": "Musterloesung: [German Rule] Die quadratische Gleichung x² - 7x + 10 = 0 kann durch Faktorisierung oder die abc-Formel gelöst werden. Bei Faktorisierung suchen wir zwei Zahlen, deren Produkt 10 und deren Summe -7 ist. Diese sind -2 und -5. (x - 2)(x - 5) = 0. Daraus folgen x₁ = 2 und x₂ = 5. | [English] The quadratic equation x² - 7x + 10 = 0 can be solved by factoring or using the quadratic formula. For factoring, we look for two numbers whose product is 10 and whose sum is -7. These are -2 and -5. (x - 2)(x - 5) = 0. From this, x₁ = 2 and x₂ = 5. | [Hindi/Hinglish] द्विघात समीकरण x² - 7x + 10 = 0 को गुणनखंड विधि या abc-सूत्र से हल किया जा सकता है। गुणनखंड करने के लिए, हमें दो ऐसी संख्याएँ चाहिए जिनका गुणनफल 10 हो और योग -7 हो। ये संख्याएँ -2 और -5 हैं। (x - 2)(x - 5) = 0। इससे हमें x₁ = 2 और x₂ = 5 मिलता है।"
+          "explanation": "Musterloesung: [German Rule] Die quadratische Gleichung $x^2 - 7x + 10 = 0$ kann durch Faktorisierung oder die abc-Formel gelöst werden. Bei Faktorisierung suchen wir zwei Zahlen, deren Produkt 10 und deren Summe -7 ist. Diese sind -2 und -5. $(x - 2)(x - 5) = 0$. Daraus folgen $x_1 = 2$ und $x_2 = 5$. | [English] The quadratic equation $x^2 - 7x + 10 = 0$ can be solved by factoring or using the quadratic formula. For factoring, we look for two numbers whose product is 10 and whose sum is -7. These are -2 and -5. $(x - 2)(x - 5) = 0$. From this, $x_1 = 2$ and $x_2 = 5$. | [Hindi/Hinglish] द्विघात समीकरण $x^2 - 7x + 10 = 0$ को गुणनखंड विधि या abc-सूत्र से हल किया जा सकता है। गुणनखंड करने के लिए, हमें दो ऐसी संख्याएँ चाहिए जिनका गुणनफल 10 हो और योग -7 हो। ये संख्याएँ -2 और -5 हैं। $(x - 2)(x - 5) = 0$। इससे हमें $x_1 = 2$ और $x_2 = 5$ मिलता है।"
         },
         {
           "id": "q_2",
           "page": 2,
           "label": "Aufgabe 2",
-          "prompt": "Für welche Werte von k hat die Gleichung x² + 4x + k = 0 genau eine reelle Lösung?",
+          "prompt": "Für welche Werte von k hat die Gleichung $x^2 + 4x + k = 0$ genau eine reelle Lösung?",
           "type": "mcq",
           "options": [
             {
@@ -12411,18 +12411,18 @@
             }
           ],
           "answer": "c",
-          "explanation": "Musterloesung: [German Rule] Eine quadratische Gleichung ax² + bx + c = 0 hat genau eine reelle Lösung, wenn ihre Diskriminante D = b² - 4ac gleich Null ist. Hier ist a=1, b=4, c=k. D = 4² - 4 * 1 * k = 0. 16 - 4k = 0. 4k = 16. k = 4. | [English] A quadratic equation ax² + bx + c = 0 has exactly one real solution if its discriminant D = b² - 4ac is equal to zero. Here, a=1, b=4, c=k. D = 4² - 4 * 1 * k = 0. 16 - 4k = 0. 4k = 16. k = 4. | [Hindi/Hinglish] एक द्विघात समीकरण ax² + bx + c = 0 का ठीक एक वास्तविक हल होता है यदि उसका विविक्तकर D = b² - 4ac शून्य के बराबर हो। यहाँ a=1, b=4, c=k है। D = 4² - 4 * 1 * k = 0। 16 - 4k = 0। 4k = 16। k = 4।"
+          "explanation": "Musterloesung: [German Rule] Eine quadratische Gleichung $ax^2 + bx + c = 0$ hat genau eine reelle Lösung, wenn ihre Diskriminante $D = b^2 - 4ac$ gleich Null ist. Hier ist a=1, b=4, c=k. $D = 4^2 - 4 \\cdot 1 \\cdot k = 0$. $16 - 4k = 0$. $4k = 16$. k = 4. | [English] A quadratic equation $ax^2 + bx + c = 0$ has exactly one real solution if its discriminant $D = b^2 - 4ac$ is equal to zero. Here, a=1, b=4, c=k. $D = 4^2 - 4 \\cdot 1 \\cdot k = 0$. $16 - 4k = 0$. $4k = 16$. k = 4. | [Hindi/Hinglish] एक द्विघात समीकरण $ax^2 + bx + c = 0$ का ठीक एक वास्तविक हल होता है यदि उसका विविक्तकर $D = b^2 - 4ac$ शून्य के बराबर हो। यहाँ a=1, b=4, c=k है। $D = 4^2 - 4 \\cdot 1 \\cdot k = 0$। $16 - 4k = 0$। $4k = 16$। k = 4।"
         },
         {
           "id": "q_3",
           "page": 2,
           "label": "Aufgabe 3",
-          "prompt": "Vereinfachen Sie den Ausdruck: log₂(8) + log₂(4).",
+          "prompt": "Vereinfachen Sie den Ausdruck: $\\log_2(8) + \\log_2(4)$.",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "log₂(12)"
+              "text": "$\\log_2(12)$"
             },
             {
               "id": "b",
@@ -12430,7 +12430,7 @@
             },
             {
               "id": "c",
-              "text": "log₂(32)"
+              "text": "$\\log_2(32)$"
             },
             {
               "id": "d",
@@ -12438,26 +12438,26 @@
             }
           ],
           "answer": "b",
-          "explanation": "Musterloesung: [German Rule] Die Logarithmusregel besagt: log_b(x) + log_b(y) = log_b(x*y). Außerdem wissen wir, dass log₂(8) = 3 (da 2³ = 8) und log₂(4) = 2 (da 2² = 4). Also: log₂(8) + log₂(4) = 3 + 2 = 5. | [English] The logarithm rule states: log_b(x) + log_b(y) = log_b(x*y). Also, we know that log₂(8) = 3 (since 2³ = 8) and log₂(4) = 2 (since 2² = 4). So: log₂(8) + log₂(4) = 3 + 2 = 5. | [Hindi/Hinglish] लघुगणक नियम कहता है: log_b(x) + log_b(y) = log_b(x*y)। हमें यह भी पता है कि log₂(8) = 3 (क्योंकि 2³ = 8) और log₂(4) = 2 (क्योंकि 2² = 4)। तो: log₂(8) + log₂(4) = 3 + 2 = 5।"
+          "explanation": "Musterloesung: [German Rule] Die Logarithmusregel besagt: $\\log_b(x) + \\log_b(y) = \\log_b(x \\cdot y)$. Außerdem wissen wir, dass $\\log_2(8) = 3$ (da $2^3 = 8$) und $\\log_2(4) = 2$ (da $2^2 = 4$). Also: $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$. | [English] The logarithm rule states: $\\log_b(x) + \\log_b(y) = \\log_b(x \\cdot y)$. Also, we know that $\\log_2(8) = 3$ (since $2^3 = 8$) and $\\log_2(4) = 2$ (since $2^2 = 4$). So: $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$. | [Hindi/Hinglish] लघुगणक नियम कहता है: $\\log_b(x) + \\log_b(y) = \\log_b(x \\cdot y)$। हमें यह भी पता है कि $\\log_2(8) = 3$ (क्योंकि $2^3 = 8$) और $\\log_2(4) = 2$ (क्योंकि $2^2 = 4$)। तो: $\\log_2(8) + \\log_2(4) = 3 + 2 = 5$।"
         },
         {
           "id": "q_4",
           "page": 2,
           "label": "Aufgabe 4",
-          "prompt": "Bestimmen Sie die erste Ableitung der Funktion f(x) = 3x³ - 2x² + 5x - 1.",
+          "prompt": "Bestimmen Sie die erste Ableitung der Funktion $f(x) = 3x^3 - 2x^2 + 5x - 1$.",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "9x² - 4x + 5"
+              "text": "$9x^2 - 4x + 5$"
             },
             {
               "id": "b",
-              "text": "3x² - 2x + 5"
+              "text": "$3x^2 - 2x + 5$"
             },
             {
               "id": "c",
-              "text": "9x³ - 4x² + 5x"
+              "text": "$9x^3 - 4x^2 + 5x$"
             },
             {
               "id": "d",
@@ -12465,13 +12465,13 @@
             }
           ],
           "answer": "a",
-          "explanation": "Musterloesung: [German Rule] Um die erste Ableitung eines Polynoms zu bestimmen, verwenden wir die Potenzregel: d/dx (x^n) = nx^(n-1). Für eine Konstante c ist d/dx (c) = 0. f(x) = 3x³ - 2x² + 5x - 1. f'(x) = d/dx (3x³) - d/dx (2x²) + d/dx (5x) - d/dx (1). f'(x) = 3 * 3x^(3-1) - 2 * 2x^(2-1) + 5 * 1x^(1-1) - 0. f'(x) = 9x² - 4x + 5. | [English] To find the first derivative of a polynomial, we use the power rule: d/dx (x^n) = nx^(n-1). For a constant c, d/dx (c) = 0. f(x) = 3x³ - 2x² + 5x - 1. f'(x) = d/dx (3x³) - d/dx (2x²) + d/dx (5x) - d/dx (1). f'(x) = 3 * 3x^(3-1) - 2 * 2x^(2-1) + 5 * 1x^(1-1) - 0. f'(x) = 9x² - 4x + 5. | [Hindi/Hinglish] एक बहुपद का पहला अवकलज ज्ञात करने के लिए, हम घात नियम (power rule) का उपयोग करते हैं: d/dx (x^n) = nx^(n-1)। एक स्थिरांक c के लिए, d/dx (c) = 0 होता है। f(x) = 3x³ - 2x² + 5x - 1। f'(x) = d/dx (3x³) - d/dx (2x²) + d/dx (5x) - d/dx (1)। f'(x) = 3 * 3x^(3-1) - 2 * 2x^(2-1) + 5 * 1x^(1-1) - 0। f'(x) = 9x² - 4x + 5।"
+          "explanation": "Musterloesung: [German Rule] Um die erste Ableitung eines Polynoms zu bestimmen, verwenden wir die Potenzregel: $\\frac{d}{dx}(x^n) = n x^{n-1}$. Für eine Konstante c ist $\\frac{d}{dx}(c) = 0$. $f(x) = 3x^3 - 2x^2 + 5x - 1$. $f'(x) = \\frac{d}{dx}(3x^3) - \\frac{d}{dx}(2x^2) + \\frac{d}{dx}(5x) - \\frac{d}{dx}(1)$. $f'(x) = 3 \\cdot 3x^{3-1} - 2 \\cdot 2x^{2-1} + 5 \\cdot 1x^{1-1} - 0$. $f'(x) = 9x^2 - 4x + 5$. | [English] To find the first derivative of a polynomial, we use the power rule: $\\frac{d}{dx}(x^n) = n x^{n-1}$. For a constant c, $\\frac{d}{dx}(c) = 0$. $f(x) = 3x^3 - 2x^2 + 5x - 1$. $f'(x) = \\frac{d}{dx}(3x^3) - \\frac{d}{dx}(2x^2) + \\frac{d}{dx}(5x) - \\frac{d}{dx}(1)$. $f'(x) = 3 \\cdot 3x^{3-1} - 2 \\cdot 2x^{2-1} + 5 \\cdot 1x^{1-1} - 0$. $f'(x) = 9x^2 - 4x + 5$. | [Hindi/Hinglish] एक बहुपद का पहला अवकलज ज्ञात करने के लिए, हम घात नियम (power rule) का उपयोग करते हैं: $\\frac{d}{dx}(x^n) = n x^{n-1}$। एक स्थिरांक c के लिए, $\\frac{d}{dx}(c) = 0$ होता है। $f(x) = 3x^3 - 2x^2 + 5x - 1$। $f'(x) = \\frac{d}{dx}(3x^3) - \\frac{d}{dx}(2x^2) + \\frac{d}{dx}(5x) - \\frac{d}{dx}(1)$। $f'(x) = 3 \\cdot 3x^{3-1} - 2 \\cdot 2x^{2-1} + 5 \\cdot 1x^{1-1} - 0$। $f'(x) = 9x^2 - 4x + 5$।"
         },
         {
           "id": "q_5",
           "page": 2,
           "label": "Aufgabe 5",
-          "prompt": "Finden Sie den x-Wert des Extrempunktes der Funktion f(x) = x² - 6x + 9.",
+          "prompt": "Finden Sie den x-Wert des Extrempunktes der Funktion $f(x) = x^2 - 6x + 9$.",
           "type": "mcq",
           "options": [
             {
@@ -12492,7 +12492,7 @@
             }
           ],
           "answer": "b",
-          "explanation": "Musterloesung: [German Rule] Extrempunkte einer Funktion f(x) werden gefunden, indem man die erste Ableitung f'(x) bildet und diese gleich Null setzt. f(x) = x² - 6x + 9. f'(x) = 2x - 6. Setze f'(x) = 0: 2x - 6 = 0. 2x = 6. x = 3. | [English] Extremum points of a function f(x) are found by taking the first derivative f'(x) and setting it equal to zero. f(x) = x² - 6x + 9. f'(x) = 2x - 6. Set f'(x) = 0: 2x - 6 = 0. 2x = 6. x = 3. | [Hindi/Hinglish] एक फलन f(x) के चरम बिंदु (extremum points) ज्ञात करने के लिए, हम पहली व्युत्पन्न f'(x) निकालते हैं और उसे शून्य के बराबर सेट करते हैं। f(x) = x² - 6x + 9। f'(x) = 2x - 6। f'(x) = 0 सेट करें: 2x - 6 = 0। 2x = 6। x = 3।"
+          "explanation": "Musterloesung: [German Rule] Extrempunkte einer Funktion f(x) werden gefunden, indem man die erste Ableitung f'(x) bildet und diese gleich Null setzt. $f(x) = x^2 - 6x + 9$. $f'(x) = 2x - 6$. Setze $f'(x) = 0$: 2x - 6 = 0. 2x = 6. x = 3. | [English] Extremum points of a function f(x) are found by taking the first derivative f'(x) and setting it equal to zero. $f(x) = x^2 - 6x + 9$. $f'(x) = 2x - 6$. Set $f'(x) = 0$: 2x - 6 = 0. 2x = 6. x = 3. | [Hindi/Hinglish] एक फलन f(x) के चरम बिंदु (extremum points) ज्ञात करने के लिए, हम पहली व्युत्पन्न f'(x) निकालते हैं और उसे शून्य के बराबर सेट करते हैं। $f(x) = x^2 - 6x + 9$। $f'(x) = 2x - 6$। $f'(x) = 0$ सेट करें: 2x - 6 = 0। 2x = 6। x = 3।"
         },
         {
           "id": "q_6",
@@ -12525,7 +12525,7 @@
           "id": "q_7",
           "page": 2,
           "label": "Aufgabe 7",
-          "prompt": "Berechnen Sie die Länge des Vektors a = (3, 4).",
+          "prompt": "Berechnen Sie die Länge des Vektors $\\vec{a} = (3, 4)$.",
           "type": "mcq",
           "options": [
             {
@@ -12546,13 +12546,13 @@
             }
           ],
           "answer": "a",
-          "explanation": "Musterloesung: [German Rule] Die Länge (oder der Betrag) eines Vektors a = (x, y) wird mit der Formel |a| = √(x² + y²) berechnet. Für a = (3, 4): |a| = √(3² + 4²). |a| = √(9 + 16). |a| = √25. |a| = 5. | [English] The length (or magnitude) of a vector a = (x, y) is calculated using the formula |a| = √(x² + y²). For a = (3, 4): |a| = √(3² + 4²). |a| = √(9 + 16). |a| = √25. |a| = 5. | [Hindi/Hinglish] एक सदिश a = (x, y) की लंबाई (या परिमाण) की गणना सूत्र |a| = √(x² + y²) का उपयोग करके की जाती है। a = (3, 4) के लिए: |a| = √(3² + 4²)। |a| = √(9 + 16)। |a| = √25। |a| = 5।"
+          "explanation": "Musterloesung: [German Rule] Die Länge (oder der Betrag) eines Vektors a = (x, y) wird mit der Formel $|\\vec{a}| = \\sqrt{x^2 + y^2}$ berechnet. Für $\\vec{a} = (3, 4)$: $|\\vec{a}| = \\sqrt{3^2 + 4^2}$. $|\\vec{a}| = \\sqrt{9 + 16}$. $|\\vec{a}| = \\sqrt{25}$. $|\\vec{a}| = 5$. | [English] The length (or magnitude) of a vector a = (x, y) is calculated using the formula $|\\vec{a}| = \\sqrt{x^2 + y^2}$. For $\\vec{a} = (3, 4)$: $|\\vec{a}| = \\sqrt{3^2 + 4^2}$. $|\\vec{a}| = \\sqrt{9 + 16}$. $|\\vec{a}| = \\sqrt{25}$. $|\\vec{a}| = 5$. | [Hindi/Hinglish] एक सदिश a = (x, y) की लंबाई (या परिमाण) की गणना सूत्र $|\\vec{a}| = \\sqrt{x^2 + y^2}$ का उपयोग करके की जाती है। $\\vec{a} = (3, 4)$ के लिए: $|\\vec{a}| = \\sqrt{3^2 + 4^2}$। $|\\vec{a}| = \\sqrt{9 + 16}$। $|\\vec{a}| = \\sqrt{25}$। $|\\vec{a}| = 5$।"
         },
         {
           "id": "q_8",
           "page": 2,
           "label": "Aufgabe 8",
-          "prompt": "Gegeben sind die Vektoren a = (1, 2) und b = (3, -1). Berechnen Sie das Skalarprodukt a ⋅ b.",
+          "prompt": "Gegeben sind die Vektoren $\\vec{a} = (1, 2)$ und $\\vec{b} = (3, -1)$. Berechnen Sie das Skalarprodukt $\\vec{a} \\cdot \\vec{b}$.",
           "type": "mcq",
           "options": [
             {
@@ -12573,7 +12573,7 @@
             }
           ],
           "answer": "b",
-          "explanation": "Musterloesung: [German Rule] Das Skalarprodukt (Dot Product) zweier Vektoren a = (a₁, a₂) und b = (b₁, b₂) wird berechnet als a ⋅ b = a₁b₁ + a₂b₂. Für a = (1, 2) und b = (3, -1): a ⋅ b = (1 * 3) + (2 * -1). a ⋅ b = 3 - 2. a ⋅ b = 1. | [English] The dot product (scalar product) of two vectors a = (a₁, a₂) and b = (b₁, b₂) is calculated as a ⋅ b = a₁b₁ + a₂b₂. For a = (1, 2) and b = (3, -1): a ⋅ b = (1 * 3) + (2 * -1). a ⋅ b = 3 - 2. a ⋅ b = 1. | [Hindi/Hinglish] दो सदिशों a = (a₁, a₂) और b = (b₁, b₂) का अदिश गुणनफल (dot product) a ⋅ b = a₁b₁ + a₂b₂ के रूप में गणना की जाती है। a = (1, 2) और b = (3, -1) के लिए: a ⋅ b = (1 * 3) + (2 * -1)। a ⋅ b = 3 - 2। a ⋅ b = 1।"
+          "explanation": "Musterloesung: [German Rule] Das Skalarprodukt (Dot Product) zweier Vektoren $\\vec{a} = (a_1, a_2)$ und $\\vec{b} = (b_1, b_2)$ wird berechnet als $\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2$. Für $\\vec{a} = (1, 2)$ und $\\vec{b} = (3, -1)$: $\\vec{a} \\cdot \\vec{b} = (1 \\cdot 3) + (2 \\cdot (-1))$. $\\vec{a} \\cdot \\vec{b} = 3 - 2$. $\\vec{a} \\cdot \\vec{b} = 1$. | [English] The dot product (scalar product) of two vectors $\\vec{a} = (a_1, a_2)$ and $\\vec{b} = (b_1, b_2)$ is calculated as $\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2$. For $\\vec{a} = (1, 2)$ and $\\vec{b} = (3, -1)$: $\\vec{a} \\cdot \\vec{b} = (1 \\cdot 3) + (2 \\cdot (-1))$. $\\vec{a} \\cdot \\vec{b} = 3 - 2$. $\\vec{a} \\cdot \\vec{b} = 1$. | [Hindi/Hinglish] दो सदिशों $\\vec{a} = (a_1, a_2)$ और $\\vec{b} = (b_1, b_2)$ का अदिश गुणनफल (dot product) $\\vec{a} \\cdot \\vec{b} = a_1 b_1 + a_2 b_2$ के रूप में गणना की जाती है। $\\vec{a} = (1, 2)$ और $\\vec{b} = (3, -1)$ के लिए: $\\vec{a} \\cdot \\vec{b} = (1 \\cdot 3) + (2 \\cdot (-1))$। $\\vec{a} \\cdot \\vec{b} = 3 - 2$। $\\vec{a} \\cdot \\vec{b} = 1$।"
         }
       ],
       "generatedAt": "2026-11-15T13:17:39.762200+00:00",
@@ -12592,7 +12592,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "wb-factory-stk-ctest-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#92400E",
@@ -12932,7 +12932,7 @@
       "divisionId": "fachsprache_medizin",
       "productSlug": "wb-factory-fsp-anamnese-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#065F46",
@@ -13272,7 +13272,7 @@
       "divisionId": "fachsprache_medizin",
       "productSlug": "wb-factory-fsp-isbar-batch1",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 3,
       "coverColor": "#047857",
@@ -13612,7 +13612,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "a1-lab-11-baecker-supermarkt",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#0F4C81",
@@ -13779,7 +13779,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "a2-lab-11-perfekt-praeteritum-alltag",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#134074",
@@ -13942,7 +13942,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "b1-lab-11-wohnungssuche-mietvertrag",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#0D1017",
@@ -14101,7 +14101,7 @@
       "divisionId": "sprachakademie",
       "productSlug": "b2-lab-11-beruf-emails-beschwerdemanagement",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#0A3358",
@@ -14280,7 +14280,7 @@
       "divisionId": "studienkolleg",
       "productSlug": "stk-math-ctest-kompakt-01",
       "isFree": true,
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "pages": 4,
       "coverColor": "#B45309",
@@ -14332,66 +14332,66 @@
           "id": "q2",
           "page": 1,
           "label": "Teil B · Mathematik 1 (Quadratische Gleichung)",
-          "prompt": "Lösen Sie ohne Taschenrechner: x² − 5x − 14 = 0. Wie lautet die Lösungsmenge L?",
+          "prompt": "Lösen Sie ohne Taschenrechner: $x^2 - 5x - 14 = 0$. Wie lautet die Lösungsmenge L?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "L = {−7; 2}"
+              "text": "$\\mathbb{L} = \\{-7;\\, 2\\}$"
             },
             {
               "id": "b",
-              "text": "L = {−2; 7}"
+              "text": "$\\mathbb{L} = \\{-2;\\, 7\\}$"
             },
             {
               "id": "c",
-              "text": "L = {2; 7}"
+              "text": "$\\mathbb{L} = \\{2;\\, 7\\}$"
             },
             {
               "id": "d",
-              "text": "L = {−2; −7}"
+              "text": "$\\mathbb{L} = \\{-2;\\, -7\\}$"
             }
           ],
           "answer": "b",
-          "explanation": "Schritt-für-Schritt-Lösung (Satz von Vieta & p-q-Formel):\n1) p = −5, q = −14.\n2) p-q-Formel: x₁,₂ = −(−5)/2 ± √((−5/2)² − (−14)) = 2,5 ± √(6,25 + 14) = 2,5 ± √20,25 = 2,5 ± 4,5.\n3) x₁ = 2,5 − 4,5 = −2 | x₂ = 2,5 + 4,5 = 7.\nProbe (Vieta): (−2)·7 = −14 und (−2) + 7 = +5 (= −p). Also (x − 7)(x + 2) = 0 → L = {−2; 7}."
+          "explanation": "Schritt-für-Schritt-Lösung (Satz von Vieta & p-q-Formel):\n1) p = −5, q = −14.\n2) p-q-Formel: $x_{1,2} = -\\frac{-5}{2} \\pm \\sqrt{\\left(-\\frac{5}{2}\\right)^2 - (-14)} = 2{,}5 \\pm \\sqrt{6{,}25 + 14} = 2{,}5 \\pm \\sqrt{20{,}25} = 2{,}5 \\pm 4{,}5$.\n3) $x_1 = 2{,}5 - 4{,}5 = -2 \\;\\big|\\; x_2 = 2{,}5 + 4{,}5 = 7$.\nProbe (Vieta): (−2)·7 = −14 und (−2) + 7 = +5 (= −p). Also (x − 7)(x + 2) = 0 → $\\mathbb{L} = \\{-2;\\, 7\\}$."
         },
         {
           "id": "q3",
           "page": 2,
           "label": "Teil B · Mathematik 2 (Logarithmengesetze)",
-          "prompt": "Berechnen Sie den exakten Zahlenwert ohne Taschenrechner: log₂(32) + log₃(27) − log₁₀(100) = ?",
+          "prompt": "Berechnen Sie den exakten Zahlenwert ohne Taschenrechner: $\\log_2(32)$ + log₃(27) − log₁₀(100) = ?",
           "type": "text",
           "answer": [
             "6"
           ],
-          "explanation": "Schritt-für-Schritt-Lösung:\n1) log₂(32) = 5, da 2⁵ = 32.\n2) log₃(27) = 3, da 3³ = 27.\n3) log₁₀(100) = 2, da 10² = 100.\n4) Gesamtergebnis: 5 + 3 − 2 = 6. | Tip: Im TU-Berlin-Test immer Basis-Potenzen (2ⁿ, 3ⁿ, 10ⁿ) im Kopf erkennen!"
+          "explanation": "Schritt-für-Schritt-Lösung:\n1) $\\log_2(32)$ = 5, da 2⁵ = 32.\n2) $\\log_3(27) = 3$, da $3^3 = 27$.\n3) log₁₀(100) = 2, da $10^2 = 100$.\n4) Gesamtergebnis: 5 + 3 − 2 = 6. | Tip: Im TU-Berlin-Test immer Basis-Potenzen ($2^n,\\; 3^n,\\; 10^n$) im Kopf erkennen!"
         },
         {
           "id": "q4",
           "page": 2,
           "label": "Teil B · Mathematik 3 (Lineare Funktion & Geradengleichung)",
-          "prompt": "Eine Gerade g verläuft durch die Punkte A(1 | 3) und B(4 | 9). An welchem Punkt S_y schneidet g die y-Achse?",
+          "prompt": "Eine Gerade g verläuft durch die Punkte A(1 | 3) und B(4 | 9). An welchem Punkt $S_y$ schneidet g die y-Achse?",
           "type": "mcq",
           "options": [
             {
               "id": "a",
-              "text": "S_y(0 | 1)"
+              "text": "$S_y(0 \\mid 1)$"
             },
             {
               "id": "b",
-              "text": "S_y(0 | 2)"
+              "text": "$S_y(0 \\mid 2)$"
             },
             {
               "id": "c",
-              "text": "S_y(0 | −1)"
+              "text": "$S_y(0 \\mid -1)$"
             },
             {
               "id": "d",
-              "text": "S_y(0 | 3)"
+              "text": "$S_y(0 \\mid 3)$"
             }
           ],
           "answer": "a",
-          "explanation": "Schritt-für-Schritt-Lösung:\n1) Steigung m = (y₂ − y₁) / (x₂ − x₁) = (9 − 3) / (4 − 1) = 6 / 3 = 2.\n2) Einsetzen von A(1 | 3) in y = m·x + b: 3 = 2·1 + b → b = 1.\n3) Geradengleichung: g(x) = 2x + 1. Probe mit B(4 | 9): 2·4 + 1 = 9 ✓.\n4) y-Achsenabschnitt (x = 0): S_y(0 | 1)."
+          "explanation": "Schritt-für-Schritt-Lösung:\n1) Steigung $m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{9 - 3}{4 - 1} = \\frac{6}{3} = 2$.\n2) Einsetzen von A(1 | 3) in $y = m \\cdot x + b$: $3 = 2 \\cdot 1 + b \\Rightarrow b = 1$.\n3) Geradengleichung: $g(x) = 2x + 1$. Probe mit B(4 | 9): 2·4 + 1 = 9 ✓.\n4) y-Achsenabschnitt (x = 0): $S_y(0 \\mid 1)$."
         },
         {
           "id": "q5",
@@ -14418,7 +14418,7 @@
             }
           ],
           "answer": "c",
-          "explanation": "Schritt-für-Schritt-Lösung:\n1) Wachstumsformel: N(t) = N₀ · 2^(t / T), mit N₀ = 500, T = 3 h, t = 12 h.\n2) Anzahl der Verdopplungsintervalle: n = 12 / 3 = 4.\n3) Berechnung: N(12) = 500 · 2⁴ = 500 · 16 = 8.000 Bakterien.\n| Hinweis: Typische Fangfrage ist lineares Rechnen (4 · 500 = 2.000) — bei Verdopplung immer Potenzen von 2 nutzen!"
+          "explanation": "Schritt-für-Schritt-Lösung:\n1) Wachstumsformel: $N(t) = N_0 \\cdot 2^{t/T}$, mit $N_0 = 500$, T = 3 h, t = 12 h.\n2) Anzahl der Verdopplungsintervalle: $n = \\frac{12}{3} = 4$.\n3) Berechnung: $N(12) = 500 \\cdot 2^4 = 500 \\cdot 16 = 8.000$ Bakterien.\n| Hinweis: Typische Fangfrage ist lineares Rechnen (4 · 500 = 2.000) — bei Verdopplung immer Potenzen von 2 nutzen!"
         },
         {
           "id": "q6",
@@ -14429,23 +14429,23 @@
           "options": [
             {
               "id": "a",
-              "text": "A = 36 cm²"
+              "text": "$A = 36\\,\\text{cm}^2$"
             },
             {
               "id": "b",
-              "text": "A = 45 cm²"
+              "text": "$A = 45\\,\\text{cm}^2$"
             },
             {
               "id": "c",
-              "text": "A = 50 cm²"
+              "text": "$A = 50\\,\\text{cm}^2$"
             },
             {
               "id": "d",
-              "text": "A = 60 cm²"
+              "text": "$A = 60\\,\\text{cm}^2$"
             }
           ],
           "answer": "c",
-          "explanation": "Schritt-für-Schritt-Lösung:\n1) Umfangsformel Rechteck: U = 2·(a + b) = 30 cm.\n2) Nebenbedingung a = 2b einsetzen: 2·(2b + b) = 30 → 2·3b = 30 → 6b = 30 → b = 5 cm.\n3) Länge bestimmen: a = 2 · 5 cm = 10 cm. (Probe Umfang: 2·(10 + 5) = 30 cm ✓).\n4) Flächeninhalt: A = a · b = 10 cm · 5 cm = 50 cm²."
+          "explanation": "Schritt-für-Schritt-Lösung:\n1) Umfangsformel Rechteck: $U = 2(a + b) = 30\\,\\text{cm}$.\n2) Nebenbedingung a = 2b einsetzen: $2(2b + b) = 30 \\Rightarrow 6b = 30 \\Rightarrow b = 5\\,\\text{cm}$.\n3) Länge bestimmen: $a = 2 \\cdot 5\\,\\text{cm} = 10\\,\\text{cm}$. (Probe Umfang: 2·(10 + 5) = 30 cm ✓).\n4) Flächeninhalt: $A = a \\cdot b = 10\\,\\text{cm} \\cdot 5\\,\\text{cm} = 50\\,\\text{cm}^2$."
         }
       ],
       "generatedAt": "2026-11-19T13:38:14Z",
@@ -14460,7 +14460,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Grundlagen, Begrüßung und Satzbau",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-A1_Kapitel_1_Grundlagen_und_Satzbau",
@@ -14478,7 +14478,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Grundlagen, Begrüßung und Satzbau",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-A1_Kapitel_1_Grundlagen_und_Satzbau",
@@ -14496,7 +14496,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Perfekt und Alltag in Deutschland",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-A2_Kapitel_1_Perfekt_und_Alltag",
@@ -14514,7 +14514,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Perfekt und Alltag in Deutschland",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-A2_Kapitel_1_Perfekt_und_Alltag",
@@ -14532,7 +14532,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Pflege Modul 01: Anamnese & Patientenaufnahme im Krankenhaus",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-Pflege_Modul_01_Anamnese_und_Patientenaufnahme",
@@ -14550,7 +14550,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Pflege Modul 01: Anamnese & Patientenaufnahme im Krankenhaus",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-Pflege_Modul_01_Anamnese_und_Patientenaufnahme",
@@ -14568,7 +14568,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Pflege Modul 02: Schichtübergabe nach ISBAR & digitaler Pflegebericht",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-Pflege_Modul_02_Dienstuebergabe_und_Pflegebericht_ISBAR",
@@ -14586,7 +14586,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Pflege Modul 02: Schichtübergabe nach ISBAR & digitaler Pflegebericht",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-Pflege_Modul_02_Dienstuebergabe_und_Pflegebericht_ISBAR",
@@ -14604,7 +14604,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01",
@@ -14622,7 +14622,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Naturwissenschaft & Argumentation",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET01",
@@ -14640,7 +14640,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
@@ -14658,7 +14658,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahmeprüfung Deutsch — TU Berlin Studienkolleg (Berlin): C-Test Technik & Textzusammenfassung",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-STK_Aufnahmetest_Deutsch_TU_BERLIN_SET02",
@@ -14676,7 +14676,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahme Math 1: Prozent-, Zins- und Zinseszinsrechnung",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-W_Kurs_01_Aufnahme_Wirtschaftsmathematik_Prozent_Zins",
@@ -14694,7 +14694,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahme Math 1: Prozent-, Zins- und Zinseszinsrechnung",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-W_Kurs_01_Aufnahme_Wirtschaftsmathematik_Prozent_Zins",
@@ -14712,7 +14712,7 @@
       "type": "interactive_flashcards",
       "title": "GTF Interaktives Flashcard-Deck • Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
       "description": "Mobile High-Yield Flashcard Deck (40 Cards) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "fc-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung",
@@ -14730,7 +14730,7 @@
       "type": "interactive_quiz",
       "title": "GTF Interaktives Quiz & C-Test • Aufnahme Math 2: Lineare Gleichungssysteme & Simplex-Grundlagen",
       "description": "Interactive Mobile Quiz & C-Test (15 Questions) • GTF Berlin",
-      "priceEur": 0.0,
+      "priceEur": 0,
       "priceInr": 0,
       "isFree": true,
       "resourceId": "quiz-W_Kurs_02_Aufnahme_Gleichungssysteme_Lineare_Optimierung",

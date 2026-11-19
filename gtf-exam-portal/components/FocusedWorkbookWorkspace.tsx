@@ -3,6 +3,7 @@
 import React, { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import {
   AlertCircle,
+  Ban,
   BookOpen,
   CheckCircle2,
   ChevronLeft,
@@ -17,6 +18,7 @@ import {
 import { AntiPiracyPdfViewer } from "@/components/AntiPiracyPdfViewer";
 import { AntiPiracyShield } from "@/components/AntiPiracyShield";
 import { FlashcardEngine } from "@/components/FlashcardEngine";
+import { MathText } from "@/components/MathText";
 import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
@@ -27,7 +29,33 @@ import Link from "next/link";
 import type { WorkbookClientView, WorkbookContentType } from "@/lib/types";
 import { getCoreLabById, convertLabToWorkbook } from "@/lib/curriculum-labs";
 
-function resolveStrictContentType(wb: WorkbookClientView | null, moduleHint?: string): WorkbookContentType {
+function isStudienkollegWorkbook(
+  levelHint?: string,
+  wb?: WorkbookClientView | null,
+): boolean {
+  const lvl = (levelHint || wb?.level || "").toLowerCase();
+  const id = (wb?.id || "").toLowerCase();
+  const slug = (wb?.productSlug || "").toLowerCase();
+  const title = (wb?.title || "").toLowerCase();
+  return (
+    lvl === "m_kurs" ||
+    lvl === "t_kurs" ||
+    lvl === "w_kurs" ||
+    lvl === "g_kurs" ||
+    id.includes("stk-") ||
+    id.includes("stk_") ||
+    slug.includes("studienkolleg") ||
+    slug.includes("stk-") ||
+    title.includes("studienkolleg") ||
+    title.startsWith("stk ")
+  );
+}
+
+function resolveStrictContentType(
+  wb: WorkbookClientView | null,
+  moduleHint?: string,
+  levelHint?: string,
+): WorkbookContentType {
   if (wb?.contentType) {
     return wb.contentType;
   }
@@ -39,6 +67,10 @@ function resolveStrictContentType(wb: WorkbookClientView | null, moduleHint?: st
   if (sk === "schreiben" || id.includes("schreiben")) return "exam_schreiben";
   if (sk === "sprechen" || id.includes("sprechen")) return "exam_sprechen";
   if (sk === "hoeren" || id.includes("hoeren") || title.includes("hören")) return "exam_hoeren";
+  // Studienkolleg math/science/C-Test workbooks with exercises always render interactive Answer Sheet + Passage/PDF
+  if (isStudienkollegWorkbook(levelHint, wb) && Array.isArray(wb?.questions) && wb.questions.length > 0) {
+    return "exam_lesen";
+  }
   if (
     sk === "lesen" ||
     id.includes("lesen") ||
@@ -670,7 +702,8 @@ function FocusedWorkbookWorkspaceInner({
     );
   }
 
-  const effectiveContentType = resolveStrictContentType(workbook, moduleHint);
+  const isStk = isStudienkollegWorkbook(levelHint, workbook);
+  const effectiveContentType = resolveStrictContentType(workbook, moduleHint, levelHint);
   const isGrammarMode = effectiveContentType === "grammar";
   const isExamLesenMode = effectiveContentType === "exam_lesen";
   const isExamHoerenMode = effectiveContentType === "exam_hoeren";
@@ -733,7 +766,9 @@ function FocusedWorkbookWorkspaceInner({
               {workbook.grammarNotes ? (
                 <div key={`gr-notes-body-${workbook.id}`} className="space-y-4">
                   <p className="text-sm text-slate-700 leading-relaxed font-medium">
-                    <span key="gr-rule">{workbook.grammarNotes.rule}</span>
+                    <span key="gr-rule">
+                      {isStk ? <MathText text={workbook.grammarNotes.rule} /> : workbook.grammarNotes.rule}
+                    </span>
                   </p>
 
                   {workbook.grammarNotes.proTip && (
@@ -742,7 +777,9 @@ function FocusedWorkbookWorkspaceInner({
                         ⚡ GRAMMATIK-PRO-TIPP
                       </span>
                       <p className="text-xs text-amber-900 leading-relaxed">
-                        <span key="gr-protip-text">{workbook.grammarNotes.proTip}</span>
+                        <span key="gr-protip-text">
+                          {isStk ? <MathText text={workbook.grammarNotes.proTip} /> : workbook.grammarNotes.proTip}
+                        </span>
                       </p>
                     </div>
                   )}
@@ -756,7 +793,9 @@ function FocusedWorkbookWorkspaceInner({
                         <ul className="list-disc list-inside text-xs sm:text-sm text-slate-700 space-y-1.5">
                           {workbook.grammarNotes.examples.map((ex, idx) => (
                             <li key={`ex-${idx}`}>
-                              <span key={`ex-span-${idx}`}>{ex}</span>
+                              <span key={`ex-span-${idx}`}>
+                                {isStk ? <MathText text={ex} /> : ex}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -889,9 +928,11 @@ function FocusedWorkbookWorkspaceInner({
                   </div>
 
                   {workbook.readingPassage ? (
-                    <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line font-normal german-reading">
-                      <span key={`reading-passage-${workbook.id}`}>{workbook.readingPassage}</span>
-                    </p>
+                    <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-line font-normal german-reading overflow-x-auto">
+                      <span key={`reading-passage-${workbook.id}`}>
+                        {isStk ? <MathText text={workbook.readingPassage} /> : workbook.readingPassage}
+                      </span>
+                    </div>
                   ) : (
                     <div key={`reading-fallback-${workbook.id}`} className="space-y-2 text-sm text-slate-600 leading-relaxed">
                       <p className="font-semibold text-slate-800">
@@ -918,7 +959,7 @@ function FocusedWorkbookWorkspaceInner({
           {showAnswerSheet && (
             <div key={`wb-sheet-${workbook.id}`} className="lg:col-span-5 space-y-4">
               <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-sm">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
                   <div>
                     <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                       Interactive Answer Sheet
@@ -928,11 +969,19 @@ function FocusedWorkbookWorkspaceInner({
                     </h2>
                   </div>
 
-                  {graded && (
-                    <span key="sheet-score" className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                      {`Score: ${graded.score}/${graded.total} (${graded.percent}%)`}
-                    </span>
-                  )}
+                  <div className="flex flex-wrap items-center gap-2">
+                    {isStk && (
+                      <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold text-slate-700">
+                        <Ban className="h-3 w-3 text-slate-500 shrink-0" aria-hidden="true" />
+                        <span>Prüfungsmodus: Ohne Taschenrechner</span>
+                      </span>
+                    )}
+                    {graded && (
+                      <span key="sheet-score" className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                        {`Score: ${graded.score}/${graded.total} (${graded.percent}%)`}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="max-h-[560px] space-y-3.5 overflow-y-auto pr-1">
@@ -959,9 +1008,11 @@ function FocusedWorkbookWorkspaceInner({
                           </span>
                         </div>
 
-                        <p className="mt-1.5 text-xs font-medium text-slate-800">
-                          <span key={`q-prompt-${q.id}`}>{q.prompt}</span>
-                        </p>
+                        <div className="mt-1.5 text-xs font-medium text-slate-800 overflow-x-auto">
+                          <span key={`q-prompt-${q.id}`}>
+                            {isStk ? <MathText text={q.prompt} /> : q.prompt}
+                          </span>
+                        </div>
 
                         {q.type === "mcq" && Array.isArray(q.options) && q.options.length > 0 ? (
                           <div className="mt-2.5 grid grid-cols-1 gap-2">
@@ -972,14 +1023,16 @@ function FocusedWorkbookWorkspaceInner({
                                   key={opt.id}
                                   type="button"
                                   onClick={() => setAnswer(q.id, opt.id)}
-                                  className={`relative z-20 text-left rounded-lg border px-3 py-2 text-xs font-semibold transition cursor-pointer ${
+                                  className={`relative z-20 text-left rounded-lg border px-3 py-2 text-xs font-semibold transition cursor-pointer overflow-x-auto ${
                                     active
                                       ? "border-slate-900 bg-slate-900 text-white shadow-xs"
                                       : "border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 shadow-xs"
                                   }`}
                                 >
                                   <span className="mr-2 uppercase font-mono">{`${opt.id})`}</span>
-                                  <span key={`opt-text-${q.id}-${opt.id}`}>{opt.text}</span>
+                                  <span key={`opt-text-${q.id}-${opt.id}`}>
+                                    {isStk ? <MathText text={opt.text} /> : opt.text}
+                                  </span>
                                 </button>
                               );
                             })}
@@ -1017,16 +1070,29 @@ function FocusedWorkbookWorkspaceInner({
                                   <span>Richtig!</span>
                                 </span>
                               ) : (
-                                <span key={`graded-err-${q.id}`} className="inline-flex items-center gap-1 text-amber-700">
-                                  <XCircle className="h-3.5 w-3.5" />
-                                  <span>{`Lösung: ${gradedItem.correctAnswer}`}</span>
+                                <span key={`graded-err-${q.id}`} className="inline-flex items-center gap-1 text-amber-700 flex-wrap">
+                                  <XCircle className="h-3.5 w-3.5 shrink-0" />
+                                  <span>
+                                    Lösung:{" "}
+                                    {isStk ? (
+                                      <MathText text={gradedItem.correctAnswer} />
+                                    ) : (
+                                      gradedItem.correctAnswer
+                                    )}
+                                  </span>
                                 </span>
                               )}
                             </div>
                             {gradedItem.explanation && (
-                              <p className="text-slate-600 german-reading leading-relaxed">
-                                <span key={`graded-exp-${q.id}`}>{gradedItem.explanation}</span>
-                              </p>
+                              <div className="text-slate-600 german-reading leading-relaxed whitespace-pre-line overflow-x-auto">
+                                <span key={`graded-exp-${q.id}`}>
+                                  {isStk ? (
+                                    <MathText text={gradedItem.explanation} />
+                                  ) : (
+                                    gradedItem.explanation
+                                  )}
+                                </span>
+                              </div>
                             )}
                           </div>
                         )}
