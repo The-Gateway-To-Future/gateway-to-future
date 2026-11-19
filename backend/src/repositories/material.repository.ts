@@ -59,7 +59,7 @@ const seedMockMaterials = () => {
     {
       id: 'material-visa-guide',
       title: 'Sperrkonto (Blocked Account) & APS Verification Roadmap',
-      description: 'Detailed instructions on setting up block accounts (Expatrio, Fintiba) and obtaining the mandatory APS certificate from India. Avoid visa rejections with this checklist.',
+      description: 'Detailed instructions on statutory German blocked account (Sperrkonto) requirements and obtaining the mandatory APS certificate from India. Avoid visa rejections with this checklist.',
       type: 'PDF',
       url: 'https://gatewaytofuture.com/resources/Sperrkonto_APS_Visa_Checklist_2026.pdf',
       level: 'ALL',

@@ -69,9 +69,9 @@
         "description": "Indian-specific document validation, Academic Evaluation Centre (APS) guidance, Sperrkonto blocked account creation, and embassy mock interviews."
       },
       {
-        "id": "blocked-account-partners",
-        "name": "Blocked Account Guidance",
-        "description": "Structured comparison and setup support for Kotak Mahindra Bank, Expatrio, and Fintiba."
+        "id": "blocked-account-guidance",
+        "name": "Blocked Account & Visa Readiness",
+        "description": "Independent checklists and statutory guidance for German Sperrkonto financial proof and APS verification."
       },
       {
         "id": "post-arrival-settlement",
@@ -118,7 +118,7 @@
   "historicalMilestones": [
     { "year": "2020-2022", "phase": "Founder Foundation", "detail": "Medical studies in Ukraine, relocation to Berlin, Pflegefachmann Ausbildung, healthcare management." },
     { "year": "2023", "phase": "GTF Founding & Curriculum", "detail": "Establish Berlin HQ, author 7 proprietary workbooks, launch A1-C1 intensive language coaching." },
-    { "year": "2024", "phase": "Indian Corridor & APS", "detail": "Implement anabin audit SOP, Expatrio/Kotak partnerships, APS checklist verification." },
+    { "year": "2024", "phase": "Indian Corridor & APS", "detail": "Implement anabin audit SOP, statutory Sperrkonto documentation checklists, and APS verification." },
     { "year": "2025", "phase": "Healthcare & Nursing Expansion", "detail": "Launch FMG Approbation & FSP coaching, Nursing Ausbildung contracts, Berlin housing network." },
     { "year": "2026", "phase": "MNC Enterprise Workspace", "detail": "Antigravity Pro workspace deployment, 7 division structuring, 10k candidate scaling action plan." }
   ],
@@ -127,7 +127,7 @@
     { "id": "INC-2024-02", "area": "Settlement & Housing", "issue": "Berlin winter housing friction", "sopSolution": "GTF Master-Leased Student Housing Reserve (SOP-SET-004)" },
     { "id": "INC-2024-03", "area": "Language Training", "issue": "B2 oral exam failure spike", "sopSolution": "300+ Speaking Hour Threshold & 3 Mock Orals (SOP-LANG-008)" },
     { "id": "INC-2025-01", "area": "Medical Anerkennung", "issue": "Medical chamber syllabus rejection", "sopSolution": "Medical Syllabus Equivalence Audit Standardizer (SOP-MED-003)" },
-    { "id": "INC-2025-02", "area": "Visas & Finance", "issue": "Blocked account transfer hold", "sopSolution": "Expatrio / Kotak Direct Wire Checklist with LRS codes" },
+    { "id": "INC-2025-02", "area": "Visas & Finance", "issue": "Blocked account transfer hold", "sopSolution": "International Remittance & LRS Compliance Checklist for Sperrkonto transfers" },
     { "id": "INC-2025-03", "area": "Placement & Adaption", "issue": "Nursing ward adaptation shock", "sopSolution": "Post-Arrival Orientation & Medical Dialect Workshop" },
     { "id": "INC-2026-01", "area": "Enterprise Tech & Ops", "issue": "OpenClaw AI Gateway Disconnect", "sopSolution": "Multi-Provider Dynamic Router & gtf_openclaw_bridge.py (SOP-TECH-007)" }
   ],
