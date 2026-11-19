@@ -136,6 +136,9 @@ export default function HomePage() {
             <Link href="/pricing" className="text-slate-600 hover:text-slate-900 transition">
               Pricing
             </Link>
+            <Link href="/impressum" className="text-slate-600 hover:text-slate-900 transition">
+              Impressum
+            </Link>
             <Link href="/privacy" className="text-slate-600 hover:text-slate-900 transition">
               Privacy
             </Link>

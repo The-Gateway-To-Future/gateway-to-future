@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `About Us — ${BRAND.name}`,
     description: `${BRAND.founderName} (${BRAND.founderTitle}) leads ${BRAND.name} from Berlin, Germany.`,
-    images: [{ url: "/public/images/ceo-sarbjit-kour.jpg", alt: `${BRAND.founderName} — ${BRAND.founderTitle}` }],
+    images: [{ url: "/sarbjit-ceo.jpg", alt: `${BRAND.founderName} — ${BRAND.founderTitle}` }],
   },
 };
 
@@ -140,6 +140,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">
             <Link href="/" className="text-slate-600 hover:text-slate-900 transition">Home</Link>
+            <Link href="/impressum" className="text-slate-600 hover:text-slate-900 transition">Impressum</Link>
             <Link href="/privacy" className="text-slate-600 hover:text-slate-900 transition">Privacy</Link>
             <Link href="/terms" className="text-slate-600 hover:text-slate-900 transition">Terms</Link>
           </div>

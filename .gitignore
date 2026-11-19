@@ -30,3 +30,9 @@ Thumbs.db
 *.njsproj
 *.sln
 *.swp
+
+# Android signing & backup secrets (NEVER commit)
+BACKUP_TO_GOOGLE_DRIVE/
+*.jks
+keystore.properties
+*firebase-service-account*.json
