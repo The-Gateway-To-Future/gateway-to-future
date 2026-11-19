@@ -4,6 +4,7 @@ import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
+import { WebOnly } from "@/components/ReaderAppNotice";
 import { BRAND } from "@/lib/config";
 
 export default function HomePage() {
@@ -137,8 +138,13 @@ export default function HomePage() {
             <Link href="/pflege" className="text-slate-600 hover:text-slate-900 transition">
               Pflege
             </Link>
-            <Link href="/pricing" className="text-slate-600 hover:text-slate-900 transition">
-              Pricing
+            <WebOnly>
+              <Link href="/pricing" className="text-slate-600 hover:text-slate-900 transition">
+                Pricing
+              </Link>
+            </WebOnly>
+            <Link href="/delete-account" className="text-slate-600 hover:text-slate-900 transition">
+              Delete Account
             </Link>
             <Link href="/impressum" className="text-slate-600 hover:text-slate-900 transition">
               Impressum

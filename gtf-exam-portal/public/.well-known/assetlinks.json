@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.gatewaytofuture.app",
+      "sha256_cert_fingerprints": [
+        "02:2E:9A:8C:D9:94:75:BE:61:A8:2B:36:62:8A:94:01:20:4C:7A:41:76:3F:88:B4:B0:B4:94:05:D1:35:86:E0"
+      ]
+    }
+  }
+]

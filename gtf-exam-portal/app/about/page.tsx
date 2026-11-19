@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
+import { WebOnly } from "@/components/ReaderAppNotice";
 import { BRAND } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -123,12 +124,23 @@ export default function AboutPage() {
               >
                 Terms of Service
               </Link>
-              <Link
-                href="/pricing"
-                className="rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-slate-800 transition"
+              <WebOnly
+                nativeFallback={
+                  <Link
+                    href="/academy"
+                    className="rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-slate-800 transition"
+                  >
+                    Open Academy
+                  </Link>
+                }
               >
-                Explore Programs
-              </Link>
+                <Link
+                  href="/pricing"
+                  className="rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-slate-800 transition"
+                >
+                  Explore Programs
+                </Link>
+              </WebOnly>
             </div>
           </div>
         </section>

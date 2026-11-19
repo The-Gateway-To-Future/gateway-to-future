@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
+import { verifyAdminRequest } from "@/lib/server/admin-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -114,7 +115,16 @@ const SNIPPET_TO_INJECT = `
 </script>
 `;
 
-export async function GET() {
+export async function GET(req: Request) {
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json(
+      { ok: false, error: "Disabled in production." },
+      { status: 403 },
+    );
+  }
+  if (!verifyAdminRequest(req)) {
+    return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
+  }
   const { indexPath, backupPath } = getWebsitePaths();
   try {
     let indexHtml = "";
@@ -152,6 +162,15 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json(
+      { ok: false, error: "Disabled in production." },
+      { status: 403 },
+    );
+  }
+  if (!verifyAdminRequest(req)) {
+    return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
+  }
   const { indexPath, backupPath } = getWebsitePaths();
 
   try {

@@ -26,6 +26,7 @@ import {
 } from "@/lib/divisions-data";
 import type { StudienkollegTrack } from "@/lib/types";
 import type { PricingTierKey } from "@/lib/config";
+import { useIsNativeApp } from "@/lib/use-native-platform";
 
 export type StudienkollegView = "formulas" | "syllabus" | "past_papers" | "flashcards";
 
@@ -47,6 +48,7 @@ export function StudienkollegHub({
   initialView = "formulas",
   onRequestAccess,
 }: StudienkollegHubProps) {
+  const { isNative, ready: nativeReady } = useIsNativeApp();
   const [activeTrack, setActiveTrack] = useState<StudienkollegTrack>(initialTrack);
   const [activeView, setActiveView] = useState<StudienkollegView>(initialView);
 
@@ -344,7 +346,7 @@ export function StudienkollegHub({
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 <span>Track Unlocked</span>
               </span>
-            ) : (
+            ) : nativeReady && !isNative ? (
               <button
                 type="button"
                 onClick={() =>
@@ -360,6 +362,11 @@ export function StudienkollegHub({
                 <Lock className="h-3.5 w-3.5" />
                 <span>Unlock with GTF Pro</span>
               </button>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/10 px-3.5 py-2 text-xs font-semibold text-slate-200">
+                <Lock className="h-3.5 w-3.5" />
+                <span>Enrolled Students Only</span>
+              </span>
             )}
           </div>
         </div>
@@ -632,7 +639,7 @@ export function StudienkollegHub({
                     <CheckCircle2 className="h-3.5 w-3.5" />
                     <span>Module Unlocked</span>
                   </span>
-                ) : (
+                ) : nativeReady && !isNative ? (
                   <button
                     type="button"
                     onClick={() =>
@@ -649,6 +656,11 @@ export function StudienkollegHub({
                     <span>Unlock with GTF Pro</span>
                     <ChevronRight className="h-3.5 w-3.5" />
                   </button>
+                ) : (
+                  <span className="text-slate-300 inline-flex items-center gap-1.5 font-semibold">
+                    <Lock className="h-3.5 w-3.5" />
+                    <span>Enrolled Access</span>
+                  </span>
                 )}
               </div>
             </div>
@@ -717,7 +729,7 @@ export function StudienkollegHub({
                     <CheckCircle2 className="h-3.5 w-3.5" />
                     <span>Solutions Unlocked</span>
                   </Link>
-                ) : (
+                ) : nativeReady && !isNative ? (
                   <button
                     type="button"
                     onClick={() =>
@@ -733,6 +745,11 @@ export function StudienkollegHub({
                     <Lock className="h-3.5 w-3.5" />
                     <span>Unlock with GTF Pro</span>
                   </button>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/10 px-3.5 py-2 text-xs font-semibold text-slate-300">
+                    <Lock className="h-3.5 w-3.5" />
+                    <span>Enrolled Access</span>
+                  </span>
                 )}
               </div>
             </div>

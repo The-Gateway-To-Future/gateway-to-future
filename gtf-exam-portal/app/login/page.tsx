@@ -42,6 +42,7 @@ function LoginScreenInner() {
 
   const nextPath = useMemo(() => resolveSafeNextPath(searchParams.get("next")), [searchParams]);
   const initialEmail = useMemo(() => searchParams.get("email") || "", [searchParams]);
+  const deletedNotice = useMemo(() => searchParams.get("deleted") === "1", [searchParams]);
   const oobCode = useMemo(() => searchParams.get("oobCode") || "", [searchParams]);
   const actionMode = useMemo(() => searchParams.get("mode") || "", [searchParams]);
 
@@ -67,6 +68,16 @@ function LoginScreenInner() {
       setEmail(initialEmail);
     }
   }, [initialEmail, email]);
+
+  useEffect(() => {
+    if (deletedNotice) {
+      pushToast(
+        "Account permanently deleted",
+        "Your Gateway To Future account and learning records have been erased.",
+        "success",
+      );
+    }
+  }, [deletedNotice]);
 
   useEffect(() => {
     if (resendCooldown <= 0) return;

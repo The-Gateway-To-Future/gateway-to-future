@@ -1,10 +1,23 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { verifyAdminRequest } from "@/lib/server/admin-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
+  if (process.env.NODE_ENV === "production") {
+    return new Response(
+      JSON.stringify({ error: "Disabled in production." }),
+      { status: 403, headers: { "Content-Type": "application/json" } },
+    );
+  }
+  if (!verifyAdminRequest(req)) {
+    return new Response(
+      JSON.stringify({ error: "Unauthorized." }),
+      { status: 401, headers: { "Content-Type": "application/json" } },
+    );
+  }
   const { searchParams } = new URL(req.url);
   const showPill = searchParams.get("pill") !== "false";
   const showFloating = searchParams.get("floating") !== "false";

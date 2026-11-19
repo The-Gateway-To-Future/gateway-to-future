@@ -3,19 +3,26 @@
 import { useEffect, useState } from "react";
 import { Download, Smartphone, X, Share } from "lucide-react";
 import { BRAND } from "@/lib/config";
+import { isNativeCapacitorApp } from "@/lib/use-native-platform";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+const ACTIVE_SW_CACHE = "gtf-exam-portal-v4-quizlet-light";
+
 export function PwaRegistrar() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showIosGuide, setShowIosGuide] = useState(false);
   const [installed, setInstalled] = useState(false);
+  const [isNative, setIsNative] = useState(true);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    const native = isNativeCapacitorApp();
+    setIsNative(native);
 
     if ("caches" in window) {
       window.caches
@@ -23,7 +30,7 @@ export function PwaRegistrar() {
         .then((keys) =>
           Promise.all(
             keys
-              .filter((k) => k !== "gtf-exam-portal-v3-bmw")
+              .filter((k) => k !== ACTIVE_SW_CACHE)
               .map((k) => window.caches.delete(k)),
           ),
         )
@@ -32,14 +39,14 @@ export function PwaRegistrar() {
 
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
-        .register("/sw.js?v=bmw-v3", { updateViaCache: "none" })
+        .register("/sw.js?v=v4-quizlet-light", { updateViaCache: "none" })
         .then((reg) => reg.update().catch(() => undefined))
         .catch((err) => {
           console.warn("[gtf] Service worker registration skipped:", err);
         });
     }
 
-    if (window.matchMedia("(display-mode: standalone)").matches) {
+    if (native || window.matchMedia("(display-mode: standalone)").matches) {
       setInstalled(true);
     }
 
@@ -52,7 +59,7 @@ export function PwaRegistrar() {
     return () => window.removeEventListener("beforeinstallprompt", onBeforeInstall);
   }, []);
 
-  if (installed) return null;
+  if (installed || isNative) return null;
 
   const handleInstallClick = async () => {
     if (deferredPrompt) {

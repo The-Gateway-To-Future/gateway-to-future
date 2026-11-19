@@ -90,10 +90,17 @@ export default function PrivacyPolicyPage() {
           </p>
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 space-y-2">
             <p>
-              1. <strong>In-App:</strong> Navigate to your <em>Profile</em> screen and click <em>Delete Account</em>.
+              1. <strong>In-App:</strong> Navigate to your <em>Profile</em> screen and click <em>Delete Account</em> for instant permanent erasure.
             </p>
             <p>
-              2. <strong>By Email:</strong> Send an email from your registered address to <a href="mailto:info@gatewaytofuture.com" className="text-amber-700 font-medium underline">info@gatewaytofuture.com</a> with the subject line <code>"Delete My Account"</code>. All associated records will be purged within 48 hours.
+              2. <strong>Web Deletion Portal:</strong> Visit{" "}
+              <Link href="/delete-account" className="text-amber-700 font-medium underline">
+                https://app.gatewaytofuture.com/delete-account
+              </Link>{" "}
+              at any time (no login required to view instructions or initiate a request).
+            </p>
+            <p>
+              3. <strong>By Email:</strong> Send an email from your registered address to <a href="mailto:info@gatewaytofuture.com" className="text-amber-700 font-medium underline">info@gatewaytofuture.com</a> with the subject line <code>"Delete My Account"</code>. All associated records will be purged within 48 hours.
             </p>
           </div>
         </section>

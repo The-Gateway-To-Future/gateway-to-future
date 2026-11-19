@@ -10,6 +10,7 @@ import {
   type User as FirebaseUser,
 } from "firebase/auth";
 import {
+  AlertTriangle,
   ArrowRight,
   BadgeCheck,
   CheckCircle2,
@@ -20,19 +21,25 @@ import {
   RefreshCw,
   ShieldAlert,
   ShieldCheck,
+  Trash2,
   User as UserIcon,
+  X,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { AuthToast, type AuthToastState } from "@/components/AuthToast";
-import { useAuth } from "@/lib/auth-context";
+import { ReaderAppNotice } from "@/components/ReaderAppNotice";
+import { clearGtfAuthCookie, useAuth } from "@/lib/auth-context";
+import { clearActiveSession } from "@/lib/client-storage";
 import { DIVISION_META } from "@/lib/config";
 import { getFirebaseAuth } from "@/lib/firebase";
+import { useIsNativeApp } from "@/lib/use-native-platform";
 import type { CatalogItem, DivisionId } from "@/lib/types";
 
 export default function ProfilePage() {
   const router = useRouter();
   const { user, isAuthenticated, isLoading, logout } = useAuth();
+  const { isNative, ready: nativeReady } = useIsNativeApp();
 
   const [fbUser, setFbUser] = useState<FirebaseUser | null>(null);
   const [fbReady, setFbReady] = useState(false);
@@ -41,6 +48,9 @@ export default function ProfilePage() {
   const [signingOut, setSigningOut] = useState(false);
   const [resendingEmail, setResendingEmail] = useState(false);
   const [refreshingVerification, setRefreshingVerification] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState("");
+  const [deletingAccount, setDeletingAccount] = useState(false);
   const [toast, setToast] = useState<AuthToastState | null>(null);
 
   useEffect(() => {
@@ -129,6 +139,95 @@ export default function ProfilePage() {
       setFbUser(getFirebaseAuth().currentUser);
     } finally {
       setRefreshingVerification(false);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    if (deletingAccount) return;
+    if (deleteConfirmText.trim().toUpperCase() !== "DELETE") {
+      setToast({
+        id: Date.now(),
+        title: "Confirmation required",
+        message: 'Type "DELETE" in the confirmation field to permanently erase your account.',
+        tone: "warning",
+      });
+      return;
+    }
+
+    setDeletingAccount(true);
+    try {
+      const auth = getFirebaseAuth();
+      const activeFbUser = auth.currentUser || fbUser;
+      let idToken = "";
+      if (activeFbUser) {
+        idToken = await activeFbUser.getIdToken(true);
+      } else if (user?.sessionToken) {
+        idToken = user.sessionToken;
+      }
+
+      if (!idToken) {
+        setToast({
+          id: Date.now(),
+          title: "Re-authentication required",
+          message: "Please sign out and sign back in to confirm permanent account deletion.",
+          tone: "error",
+        });
+        return;
+      }
+
+      const res = await fetch("/api/auth/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({
+          idToken,
+          studentId: user?.studentId || "",
+          confirm: true,
+        }),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        success?: boolean;
+        error?: string;
+      };
+
+      if (!res.ok || (!data.ok && !data.success)) {
+        setToast({
+          id: Date.now(),
+          title: "Deletion failed",
+          message:
+            data.error ||
+            "Unable to delete your account right now. Please sign in again or contact info@gatewaytofuture.com.",
+          tone: "error",
+        });
+        return;
+      }
+
+      await signOut(auth).catch(() => {});
+      clearGtfAuthCookie();
+      clearActiveSession();
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("gtf_student_user");
+        localStorage.removeItem("gtf_student_token");
+      }
+      await logout().catch(() => {});
+      setShowDeleteModal(false);
+      router.replace("/login?deleted=1");
+    } catch (err) {
+      setToast({
+        id: Date.now(),
+        title: "Deletion error",
+        message:
+          err instanceof Error
+            ? err.message
+            : "An error occurred while deleting your account.",
+        tone: "error",
+      });
+    } finally {
+      setDeletingAccount(false);
     }
   };
 
@@ -280,25 +379,31 @@ export default function ProfilePage() {
                   </div>
                 </div>
 
-                <p className="text-xs leading-relaxed text-slate-600">
-                  {subscriptionTier === "Pro"
-                    ? `Active GTF Pro entitlements detected (${unlockedCount} unlocked module${unlockedCount === 1 ? "" : "s"}).`
-                    : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, 30+ German workbooks, Studienkolleg & Pflege trainers."}
-                </p>
+                {nativeReady && isNative ? (
+                  <ReaderAppNotice compact isAuthenticated={isAuthenticated} />
+                ) : nativeReady ? (
+                  <>
+                    <p className="text-xs leading-relaxed text-slate-600">
+                      {subscriptionTier === "Pro"
+                        ? `Active GTF Pro entitlements detected (${unlockedCount} unlocked module${unlockedCount === 1 ? "" : "s"}).`
+                        : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, 30+ German workbooks, Studienkolleg & Pflege trainers."}
+                    </p>
 
-                <Link
-                  href="/pricing"
-                  className="w-full h-11 rounded-xl bg-slate-900 text-white text-xs font-semibold uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-xs"
-                >
-                  <span>{subscriptionTier === "Pro" ? "Manage Membership" : "Upgrade to Pro (€50/mo)"}</span>
-                  <ArrowRight className="h-3.5 w-3.5 text-white" />
-                </Link>
+                    <Link
+                      href="/pricing"
+                      className="w-full h-11 rounded-xl bg-slate-900 text-white text-xs font-semibold uppercase tracking-[0.16em] inline-flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-xs"
+                    >
+                      <span>{subscriptionTier === "Pro" ? "Manage Membership" : "Upgrade to Pro (€50/mo)"}</span>
+                      <ArrowRight className="h-3.5 w-3.5 text-white" />
+                    </Link>
+                  </>
+                ) : null}
               </section>
 
               {/* Sign Out Security Card */}
-              <section className="rounded-2xl border border-red-200 bg-white p-6 space-y-4 shadow-xs">
+              <section className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 shadow-xs">
                 <div className="space-y-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-600">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600">
                     Session Control
                   </p>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -310,25 +415,146 @@ export default function ProfilePage() {
                   type="button"
                   onClick={handleSignOut}
                   disabled={signingOut}
-                  className="w-full h-12 rounded-xl border border-red-300 bg-red-50 text-xs font-bold uppercase tracking-[0.18em] text-red-700 inline-flex items-center justify-center gap-2 hover:bg-red-100 hover:border-red-400 transition disabled:opacity-50"
+                  className="w-full h-12 rounded-xl border border-slate-300 bg-slate-50 text-xs font-bold uppercase tracking-[0.18em] text-slate-800 inline-flex items-center justify-center gap-2 hover:bg-slate-100 hover:border-slate-400 transition disabled:opacity-50"
                 >
                   {signingOut ? (
                     <>
-                      <Loader2 className="h-4 w-4 animate-spin text-red-700" />
+                      <Loader2 className="h-4 w-4 animate-spin text-slate-700" />
                       <span>Signing Out…</span>
                     </>
                   ) : (
                     <>
-                      <LogOut className="h-4 w-4 text-red-600" />
+                      <LogOut className="h-4 w-4 text-slate-600" />
                       <span>Sign Out</span>
                     </>
                   )}
+                </button>
+              </section>
+
+              {/* Permanent Account Deletion Card (Google Play & GDPR Art. 17 Compliance) */}
+              <section className="rounded-2xl border border-red-200 bg-white p-6 space-y-4 shadow-xs">
+                <div className="space-y-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-red-600">
+                    Account Deletion
+                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Permanently delete your Gateway To Future login, Firestore profile, and synced study progress. This action cannot be undone.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDeleteConfirmText("");
+                    setShowDeleteModal(true);
+                  }}
+                  className="w-full h-12 rounded-xl border border-red-300 bg-red-50 text-xs font-bold uppercase tracking-[0.18em] text-red-700 inline-flex items-center justify-center gap-2 hover:bg-red-100 hover:border-red-400 transition cursor-pointer"
+                >
+                  <Trash2 className="h-4 w-4 text-red-600" />
+                  <span>Delete Account</span>
                 </button>
               </section>
             </div>
           </div>
         )}
       </main>
+
+      {/* Account Deletion Confirmation Modal */}
+      {showDeleteModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-xs"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="delete-account-modal-title"
+        >
+          <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 space-y-5 shadow-2xl">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 border border-red-200 text-red-600 shrink-0">
+                  <AlertTriangle className="h-5 w-5" />
+                </div>
+                <div>
+                  <h2
+                    id="delete-account-modal-title"
+                    className="text-base sm:text-lg font-bold text-slate-900"
+                  >
+                    Delete Account Permanently?
+                  </h2>
+                  <p className="text-xs text-slate-500">This action is irreversible.</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => !deletingAccount && setShowDeleteModal(false)}
+                disabled={deletingAccount}
+                aria-label="Close modal"
+                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <div className="rounded-xl border border-red-200 bg-red-50/70 p-4 text-xs text-red-900 space-y-1.5 leading-relaxed">
+              <p className="font-semibold">
+                The following data for <span className="font-mono">{displayEmail}</span> will be permanently erased:
+              </p>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>Your Firebase Authentication login credentials</li>
+                <li>Your student profile records in Cloud Firestore</li>
+                <li>Your synced flashcard streaks &amp; learning progress</li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <label
+                htmlFor="confirm-delete-input"
+                className="block text-[11px] font-bold uppercase tracking-[0.14em] text-slate-700"
+              >
+                Type <span className="font-mono text-red-700">DELETE</span> to confirm
+              </label>
+              <input
+                id="confirm-delete-input"
+                type="text"
+                value={deleteConfirmText}
+                onChange={(e) => setDeleteConfirmText(e.target.value)}
+                placeholder="DELETE"
+                disabled={deletingAccount}
+                autoComplete="off"
+                className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm font-mono text-slate-900 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
+              />
+            </div>
+
+            <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-2.5 pt-1">
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(false)}
+                disabled={deletingAccount}
+                className="w-full sm:w-auto h-11 px-5 rounded-xl border border-slate-300 bg-white text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteAccount}
+                disabled={deletingAccount || deleteConfirmText.trim().toUpperCase() !== "DELETE"}
+                className="w-full sm:w-auto h-11 px-5 rounded-xl bg-red-600 text-xs font-bold uppercase tracking-[0.14em] text-white inline-flex items-center justify-center gap-2 hover:bg-red-700 transition disabled:opacity-50 cursor-pointer"
+              >
+                {deletingAccount ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
+                    <span>Deleting Account…</span>
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className="h-4 w-4 text-white" />
+                    <span>Confirm Permanent Delete</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <BottomNavigationBar />
     </div>

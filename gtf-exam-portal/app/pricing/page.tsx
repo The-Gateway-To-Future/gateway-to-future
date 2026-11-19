@@ -18,8 +18,10 @@ import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
+import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { useAuth } from "@/lib/auth-context";
 import { BRAND, GTF_BANK_DETAILS } from "@/lib/config";
+import { useIsNativeApp } from "@/lib/use-native-platform";
 
 interface CheckoutSessionPreview {
   mode: "live" | "sandbox";
@@ -209,6 +211,7 @@ function PricingContentInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, isAuthenticated } = useAuth();
+  const { isNative, ready: nativeReady } = useIsNativeApp();
 
   const requestedProductSlug = searchParams.get("product") || "";
   const requestedTitle = searchParams.get("title") || "";
@@ -382,6 +385,47 @@ function PricingContentInner() {
       </span>
     );
   };
+
+  if (!nativeReady) {
+    return (
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-6">
+          <Loader2 className="h-5 w-5 animate-spin text-slate-500" />
+        </main>
+        <BottomNavigationBar />
+      </div>
+    );
+  }
+
+  // Google Play & App Store Reader-App Mode: never expose external checkout, Razorpay,
+  // UPI/bank transfers, or pricing CTAs inside native Capacitor Android/iOS builds.
+  if (isNative) {
+    return (
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+        <Navbar />
+        <main className="flex-1 pb-28 lg:pb-16">
+          <BreadcrumbHeader
+            breadcrumbs={[
+              { label: "Home", href: isAuthenticated ? "/dashboard" : "/" },
+              { label: "Enrolled Access" },
+            ]}
+            eyebrow="GATEWAY TO FUTURE · COMPANION PORTAL"
+            title="Enrolled Student Portal."
+            subtitle="Access your active German A1–B2 workbooks, flashcards, and exam simulations with your existing student credentials."
+            theme="hub"
+            backgroundImage={HEADER_IMAGES.b2}
+            backHref={isAuthenticated ? "/dashboard" : "/"}
+            backLabel={isAuthenticated ? "Hub" : "Home"}
+          />
+          <section className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14">
+            <ReaderAppNotice isAuthenticated={isAuthenticated} />
+          </section>
+        </main>
+        <BottomNavigationBar />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">

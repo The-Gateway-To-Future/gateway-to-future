@@ -22,6 +22,7 @@ import {
   type UserProgress,
 } from "@/lib/firebase/progress";
 import { PwaRegistrar } from "./PwaRegistrar";
+import { useIsNativeApp } from "@/lib/use-native-platform";
 import type { DivisionId } from "@/lib/types";
 import { useEffect, useState } from "react";
 
@@ -39,6 +40,7 @@ export function Navbar({
   const pathname = rawPathname || "";
   const router = useRouter();
   const { user, isAuthenticated, logout } = useAuth();
+  const { isNative, ready: nativeReady } = useIsNativeApp();
   const [progress, setProgress] = useState<UserProgress | null>(null);
 
   const progressUid = resolveProgressUid(user);
@@ -203,18 +205,20 @@ export function Navbar({
             </>
           )}
 
-          {/* Dedicated Pricing Link */}
-          <Link
-            href="/pricing"
-            className={`hidden sm:inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition shrink-0 ${
-              isPricingActive
-                ? "border-slate-300 bg-slate-100 text-slate-900"
-                : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300"
-            }`}
-            title="Membership & Pricing"
-          >
-            <span>Pricing</span>
-          </Link>
+          {/* Dedicated Pricing Link (Web only — hidden in native Play/App Store Reader Mode) */}
+          {nativeReady && !isNative && (
+            <Link
+              href="/pricing"
+              className={`hidden sm:inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition shrink-0 ${
+                isPricingActive
+                  ? "border-slate-300 bg-slate-100 text-slate-900"
+                  : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300"
+              }`}
+              title="Membership & Pricing"
+            >
+              <span>Pricing</span>
+            </Link>
+          )}
 
           {/* Official Berlin WhatsApp Helpline */}
           <a

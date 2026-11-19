@@ -17,8 +17,10 @@ import {
 import { AntiPiracyPdfViewer } from "@/components/AntiPiracyPdfViewer";
 import { AntiPiracyShield } from "@/components/AntiPiracyShield";
 import { FlashcardEngine } from "@/components/FlashcardEngine";
+import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
+import { useIsNativeApp } from "@/lib/use-native-platform";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirebaseFirestore } from "@/lib/firebase";
 import Link from "next/link";
@@ -96,6 +98,7 @@ function FocusedWorkbookWorkspaceInner({
   onWorkbookLoaded,
 }: FocusedWorkbookWorkspaceProps) {
   const [isMounted, setIsMounted] = useState(false);
+  const { isNative, ready: nativeReady } = useIsNativeApp();
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -625,36 +628,44 @@ function FocusedWorkbookWorkspaceInner({
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <Link
-            href={`/pricing?product=${encodeURIComponent(workbook.productSlug || workbook.id)}&title=${encodeURIComponent(workbook.title || "Workbook")}`}
-            className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm cursor-pointer"
-          >
-            <span>Unlock with GTF Pro (€50 / mo)</span>
-          </Link>
+        {nativeReady && isNative ? (
+          <div className="pt-2">
+            <ReaderAppNotice compact isAuthenticated />
+          </div>
+        ) : nativeReady ? (
+          <>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <Link
+                href={`/pricing?product=${encodeURIComponent(workbook.productSlug || workbook.id)}&title=${encodeURIComponent(workbook.title || "Workbook")}`}
+                className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm cursor-pointer"
+              >
+                <span>Unlock with GTF Pro (€50 / mo)</span>
+              </Link>
 
-          <a
-            href={BRAND.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
-          >
-            <span>Contact Berlin Admissions</span>
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-        </div>
+              <a
+                href={BRAND.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
+              >
+                <span>Contact Berlin Admissions</span>
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
 
-        <p className="text-xs text-slate-500">
-          <span>Questions? Contact Official GTF Support: </span>
-          <a
-            href={BRAND.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-emerald-600 hover:underline"
-          >
-            <span key="locked-phone">{BRAND.supportPhone}</span>
-          </a>
-        </p>
+            <p className="text-xs text-slate-500">
+              <span>Questions? Contact Official GTF Support: </span>
+              <a
+                href={BRAND.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-emerald-600 hover:underline"
+              >
+                <span key="locked-phone">{BRAND.supportPhone}</span>
+              </a>
+            </p>
+          </>
+        ) : null}
       </div>
     );
   }

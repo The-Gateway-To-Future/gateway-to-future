@@ -32,6 +32,7 @@ import {
   getTopicsForSubdivision,
 } from "@/lib/subdivisions";
 import { getCoreLabById } from "@/lib/curriculum-labs";
+import { isNativeCapacitorApp } from "@/lib/use-native-platform";
 import type { FlashcardDeckItem, WorkbookClientView } from "@/lib/types";
 
 export default function AcademyTopicWorkspacePage() {
@@ -353,11 +354,12 @@ export default function AcademyTopicWorkspacePage() {
               initialView={
                 rawTopic === "stk-syllabus" ? "syllabus" : "formulas"
               }
-              onRequestAccess={(slug, title) =>
+              onRequestAccess={(slug, title) => {
+                if (isNativeCapacitorApp()) return;
                 router.push(
                   `/pricing?product=${encodeURIComponent(slug)}&title=${encodeURIComponent(title)}`,
-                )
-              }
+                );
+              }}
             />
           )}
 
@@ -368,11 +370,12 @@ export default function AcademyTopicWorkspacePage() {
               initialView={
                 rawTopic === "pflege-dialogues" ? "dialogue" : "isbar_trainer"
               }
-              onRequestAccess={(slug, title) =>
+              onRequestAccess={(slug, title) => {
+                if (isNativeCapacitorApp()) return;
                 router.push(
                   `/pricing?product=${encodeURIComponent(slug)}&title=${encodeURIComponent(title)}`,
-                )
-              }
+                );
+              }}
             />
           )}
 
