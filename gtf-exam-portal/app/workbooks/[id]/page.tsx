@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { FocusedWorkbookWorkspace } from "@/components/FocusedWorkbookWorkspace";
 import type { WorkbookClientView } from "@/lib/types";
@@ -34,6 +34,7 @@ export default function WorkbookReaderPage() {
           "Protected GTF workbook streaming with interactive answer-sheet grading."
         }
         theme="grammar"
+        backgroundImage={resolveHeaderImage(loadedWb?.level || "b1")}
         backHref="/dashboard"
         backLabel="Hub"
       />

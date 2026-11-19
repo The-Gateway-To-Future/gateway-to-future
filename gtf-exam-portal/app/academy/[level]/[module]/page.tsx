@@ -4,8 +4,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
-import { SubdivisionCard } from "@/components/SubdivisionCard";
+import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
+import { CompactTopicList } from "@/components/CompactTopicRow";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import type { RoadmapWorkbookSummary } from "@/components/GuidedRoadmapTimeline";
 import { useAuth } from "@/lib/auth-context";
@@ -72,40 +72,27 @@ export default function AcademySubdivisionTopicIndexPage() {
           title={moduleMeta.title}
           subtitle={moduleMeta.subtitle}
           theme={moduleMeta.theme}
+          backgroundImage={resolveHeaderImage(info.levelKey)}
           backHref={`/academy/${info.levelKey}`}
           backLabel={info.label}
         />
 
-        <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
-            <div className="space-y-1">
+        <section className="mx-auto max-w-6xl px-4 sm:px-8 py-6 sm:py-9 space-y-4 sm:space-y-5">
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-200 pb-3">
+            <div className="space-y-0.5">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 LEVEL 04 · TOPIC &amp; EXERCISE INDEX
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
                 Select One Focused Topic
               </h2>
             </div>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-2xs">
               {loaded ? `${topics.length} Topic${topics.length === 1 ? "" : "s"}` : "Syncing…"}
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(Array.isArray(topics) ? topics : []).map((topic) => (
-              <SubdivisionCard
-                key={topic.id}
-                indexLabel={topic.indexLabel}
-                title={topic.title}
-                subtitle={topic.subtitle}
-                href={topic.href}
-                ctaLabel={topic.ctaLabel}
-                theme={topic.theme}
-                badge={topic.badge}
-                metaItems={topic.metaItems}
-              />
-            ))}
-          </div>
+          <CompactTopicList topics={topics} />
         </section>
       </main>
 

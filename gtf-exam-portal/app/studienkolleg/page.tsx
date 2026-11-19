@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { BRAND, LEVEL_META } from "@/lib/config";
@@ -47,6 +47,7 @@ export default function StudienkollegPage() {
           title="Select Your Aufnahmeprüfung Track."
           subtitle="Structured preparation for German public university foundation colleges across T, M, W, and G-Kurs tracks — C-Tests, 1-year syllabus dossiers, and formula engines."
           theme="studienkolleg"
+          backgroundImage={HEADER_IMAGES.studienkolleg}
           backHref="/dashboard"
           backLabel="Hub"
         />
@@ -95,6 +96,7 @@ export default function StudienkollegPage() {
                   href={`/academy/${item.key}`}
                   ctaLabel={`Open ${meta.label} Folder`}
                   theme="studienkolleg"
+                  imageUrl={HEADER_IMAGES.studienkolleg}
                   badge={item.badge}
                   metaItems={item.metaItems}
                 />
@@ -121,6 +123,7 @@ export default function StudienkollegPage() {
             href="/academy/t_kurs/02-grammar/stk-workspace"
             ctaLabel="Launch Formula Suite"
             theme="studienkolleg"
+            imageUrl={HEADER_IMAGES.studienkolleg}
             badge="FORMULA ENGINE"
             metaItems={["T · M · W · G Switcher", "Live Calculators", "Past Papers"]}
             aspectClassName="min-h-[220px]"

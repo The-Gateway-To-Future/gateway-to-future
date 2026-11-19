@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { BRAND, CEFR_LEVELS, LEVEL_META, type CefrLevel } from "@/lib/config";
@@ -52,6 +52,7 @@ export default function AcademyPage() {
           title="Select Your CEFR Level."
           subtitle="Drill down into your target German level to access structured Vocabulary Decks, 122 Säulen Grammar Pillars, Hören & Lesen Labs, and Official Modelltests."
           theme="academy"
+          backgroundImage={HEADER_IMAGES.b1}
           backHref="/dashboard"
           backLabel="Hub"
         />
@@ -83,6 +84,7 @@ export default function AcademyPage() {
                   href={`/academy/${item.level}`}
                   ctaLabel={`Open ${meta.label} Subdivisions`}
                   theme="academy"
+                  imageUrl={resolveHeaderImage(item.level)}
                   badge={item.badge}
                   metaItems={item.metaItems}
                 />

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowRight, Clock, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import {
   ensureFullTrilingualDeck,
@@ -283,6 +283,7 @@ export default function AcademyTopicWorkspacePage() {
           title={pageTitle}
           subtitle={pageSubtitle}
           theme={matchedTopic?.theme || moduleMeta.theme}
+          backgroundImage={resolveHeaderImage(info.levelKey)}
           backHref={`/academy/${info.levelKey}/${moduleSlug}`}
           backLabel="Topics"
         />

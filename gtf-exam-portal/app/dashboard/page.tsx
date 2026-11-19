@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { useAuth } from "@/lib/auth-context";
@@ -58,11 +58,12 @@ export default function DashboardHubPage() {
           title={`Welcome, ${studentDisplayName}.`}
           subtitle="Select one preparation division below to drill down into your target level, syllabus subdivision, and dedicated workspace."
           theme="hub"
+          backgroundImage={HEADER_IMAGES.hub}
           rightBadge={
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-950 shadow-xs">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-100 backdrop-blur-md shadow-xs">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
               </span>
               <span>STREAK · {streakFormatted}D</span>
             </div>
@@ -72,7 +73,7 @@ export default function DashboardHubPage() {
             <div className="pt-1">
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-slate-800 shadow-sm"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950 transition hover:bg-slate-100 shadow-sm"
               >
                 Log In to Sync Progress
               </Link>
@@ -104,6 +105,7 @@ export default function DashboardHubPage() {
               href="/academy"
               ctaLabel="Open Academy"
               theme="academy"
+              imageUrl={HEADER_IMAGES.b1}
               badge="CEFR A1 – B2"
               metaItems={["4 Levels", "4 Subdivisions Each"]}
             />
@@ -115,6 +117,7 @@ export default function DashboardHubPage() {
               href="/studienkolleg"
               ctaLabel="Preview Track"
               theme="studienkolleg"
+              imageUrl={HEADER_IMAGES.studienkolleg}
               badge="COMING SOON · A1–B2 FOCUS"
               metaItems={["Coming Soon", "A1–B2 Priority"]}
             />
@@ -126,6 +129,7 @@ export default function DashboardHubPage() {
               href="/pflege"
               ctaLabel="Preview Track"
               theme="pflege"
+              imageUrl={HEADER_IMAGES.pflege}
               badge="COMING SOON · A1–B2 FOCUS"
               metaItems={["Coming Soon", "A1–B2 Priority"]}
             />
@@ -151,6 +155,7 @@ export default function DashboardHubPage() {
               href="/pathways"
               ctaLabel="Open My Plan"
               theme="hub"
+              imageUrl={HEADER_IMAGES.hub}
               badge="8 MILESTONES"
               aspectClassName="min-h-[220px]"
             />
@@ -162,6 +167,7 @@ export default function DashboardHubPage() {
               href="/academy/b1"
               ctaLabel="Open B1 Folder"
               theme="academy"
+              imageUrl={HEADER_IMAGES.b1}
               badge="VISA & AUSBILDUNG"
               aspectClassName="min-h-[220px]"
             />

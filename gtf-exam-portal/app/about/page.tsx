@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Building2, CheckCircle2, Globe2, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { BRAND } from "@/lib/config";
@@ -32,6 +32,7 @@ export default function AboutPage() {
           title="Creating Career Without Borders."
           subtitle={`Guided exclusively by ${BRAND.founderName} (${BRAND.founderTitle}) — uniting structured German language mastery with authentic relocation and hospital placement in Germany.`}
           theme="hub"
+          backgroundImage={HEADER_IMAGES.hub}
           backHref="/"
           backLabel="Home"
         />

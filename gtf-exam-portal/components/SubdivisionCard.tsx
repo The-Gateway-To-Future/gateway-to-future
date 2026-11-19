@@ -17,6 +17,7 @@ export interface SubdivisionCardProps {
   href: string;
   ctaLabel?: string;
   theme?: SubdivisionTheme;
+  imageUrl?: string;
   badge?: string;
   metaItems?: string[];
   aspectClassName?: string;
@@ -77,11 +78,13 @@ export function SubdivisionCard({
   href,
   ctaLabel = "Open Folder",
   theme = "hub",
+  imageUrl,
   badge,
   metaItems,
   aspectClassName,
 }: SubdivisionCardProps) {
   const cfg = THEME_CONFIG[theme] || THEME_CONFIG.hub;
+  const resolvedImage = (imageUrl && imageUrl.trim()) || cfg.image;
   const safeHref = href && href.trim() !== "" && href !== "#" ? href : "/academy";
 
   return (
@@ -94,8 +97,8 @@ export function SubdivisionCard({
     >
       {/* Layer 1: High-Res 3D Architectural / Topic Photography */}
       <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-55 transition-transform duration-700 ease-out group-hover:scale-105"
-        style={{ backgroundImage: `url('${cfg.image}')` }}
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-60 transition-transform duration-700 ease-out group-hover:scale-105"
+        style={{ backgroundImage: `url('${resolvedImage}')` }}
       />
 
       {/* Layer 2: Multi-layered 3D Perspective Mesh & Radial Lighting */}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
@@ -18,17 +18,18 @@ export default function HomePage() {
           title="Your Gateway to Germany."
           subtitle="An engineered learning architecture for German language mastery, public Studienkolleg admission, and clinical Pflege recognition — built in Berlin for precision, clarity, and career placement."
           theme="hub"
+          backgroundImage={HEADER_IMAGES.hub}
         >
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white shadow-sm hover:bg-slate-800 transition"
+              className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-sm hover:bg-slate-100 transition"
             >
               Enter Student Hub
             </Link>
             <Link
               href="/login"
-              className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-800 transition hover:bg-slate-50 hover:border-slate-400 shadow-xs"
+              className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/10 px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md transition hover:bg-white/20 hover:border-white/45"
             >
               Log In
             </Link>
@@ -59,6 +60,7 @@ export default function HomePage() {
               href="/academy"
               ctaLabel="Open Academy"
               theme="academy"
+              imageUrl={HEADER_IMAGES.b1}
               badge="CEFR A1 – B2"
               metaItems={["4 Levels", "122 Säulen", "Studio Audio"]}
             />
@@ -70,6 +72,7 @@ export default function HomePage() {
               href="/studienkolleg"
               ctaLabel="Open Studienkolleg"
               theme="studienkolleg"
+              imageUrl={HEADER_IMAGES.studienkolleg}
               badge="T · M · W · G-KURS"
               metaItems={["Aufnahmeprüfung", "C-Tests", "Formulas"]}
             />
@@ -81,6 +84,7 @@ export default function HomePage() {
               href="/pflege"
               ctaLabel="Open Pflege Hub"
               theme="pflege"
+              imageUrl={HEADER_IMAGES.pflege}
               badge="PFLEGE B1–B2 · FSP"
               metaItems={["ISBAR Simulator", "Ward Audio", "Anerkennung"]}
             />

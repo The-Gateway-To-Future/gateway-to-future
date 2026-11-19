@@ -15,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { CeoPortraitCard } from "@/components/CeoPortraitCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { useAuth } from "@/lib/auth-context";
@@ -401,6 +401,7 @@ function PricingContentInner() {
               : "Transparent SaaS membership for serious Germany candidates — compare features below and choose your plan."
           }
           theme="hub"
+          backgroundImage={HEADER_IMAGES.b2}
           backHref={isAuthenticated ? "/dashboard" : "/"}
           backLabel={isAuthenticated ? "Hub" : "Home"}
         />

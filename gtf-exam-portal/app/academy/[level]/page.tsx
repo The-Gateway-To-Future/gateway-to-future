@@ -4,8 +4,9 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, resolveHeaderImage } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
+import { CompactTopicList } from "@/components/CompactTopicRow";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import type { RoadmapWorkbookSummary } from "@/components/GuidedRoadmapTimeline";
 import { useAuth } from "@/lib/auth-context";
@@ -70,6 +71,7 @@ export default function AcademyLevelSubdivisionsPage() {
           title={`${info.label} — Learning Subdivisions.`}
           subtitle={`${info.description} Open any subdivision folder below to focus on one module at a time.`}
           theme={info.theme}
+          backgroundImage={resolveHeaderImage(info.levelKey)}
           backHref={info.divisionHref}
           backLabel={info.divisionLabel}
         />
@@ -108,46 +110,31 @@ export default function AcademyLevelSubdivisionsPage() {
         </section>
 
         {/* Dynamic Textbook Chapters & Factory Dossiers */}
-        <section className="mx-auto max-w-6xl px-4 sm:px-8 pb-12 space-y-8">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
-            <div className="space-y-1">
+        <section className="mx-auto max-w-6xl px-4 sm:px-8 pb-12 space-y-5">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-3.5">
+            <div className="space-y-0.5">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 02 / DIGITAL TEXTBOOK ARCHIVE
               </p>
-              <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
+              <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
                 {info.label} Chapters &amp; Factory Dossiers
               </h2>
             </div>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-2xs">
               {loaded ? `${dynamicChapters.length} Available` : "Syncing Catalog…"}
             </span>
           </div>
 
           {!loaded ? (
-            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-sm text-slate-600 shadow-xs">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600 shadow-xs">
               Loading dynamic textbook chapters for {info.label}…
             </div>
           ) : dynamicChapters.length === 0 ? (
-            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-sm text-slate-600 shadow-xs">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600 shadow-xs">
               All {info.label} interactive tools are organized inside the 4 subdivision folders above.
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {(Array.isArray(dynamicChapters) ? dynamicChapters : []).map((chap) => (
-                <SubdivisionCard
-                  key={chap.id}
-                  indexLabel={chap.indexLabel}
-                  title={chap.title}
-                  subtitle={chap.subtitle}
-                  href={chap.href}
-                  ctaLabel={chap.ctaLabel}
-                  theme={chap.theme}
-                  badge={chap.badge}
-                  metaItems={chap.metaItems}
-                  aspectClassName="min-h-[230px]"
-                />
-              ))}
-            </div>
+            <CompactTopicList topics={dynamicChapters} />
           )}
         </section>
       </main>

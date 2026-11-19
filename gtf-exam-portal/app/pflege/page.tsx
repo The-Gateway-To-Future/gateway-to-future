@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { BRAND } from "@/lib/config";
@@ -20,6 +20,7 @@ export default function PflegePage() {
           title="Clinical German & Anerkennung."
           subtitle="Choose your clinical pathway below for ward dialogues, ISBAR shift handovers, hospital vocabulary decks, and Fachsprachenprüfung simulations."
           theme="pflege"
+          backgroundImage={HEADER_IMAGES.pflege}
           backHref="/dashboard"
           backLabel="Hub"
         />
@@ -64,6 +65,7 @@ export default function PflegePage() {
               href="/academy/ausbildung_pflege"
               ctaLabel="Preview Track"
               theme="pflege"
+              imageUrl={HEADER_IMAGES.pflege}
               badge="COMING SOON · A1–B2 FOCUS"
               metaItems={["Coming Soon", "A1–B2 Priority"]}
             />
@@ -75,6 +77,7 @@ export default function PflegePage() {
               href="/academy/b2"
               ctaLabel="Open B2 Subdivisions"
               theme="pflege"
+              imageUrl={HEADER_IMAGES.b2}
               badge="APPROBATION · FSP"
               metaItems={["B2 Grammar", "Clinical Audio", "telc B2"]}
             />
@@ -99,6 +102,7 @@ export default function PflegePage() {
             href="/academy/ausbildung_pflege/03-hoeren-lesen/pflege-clinical-hub"
             ctaLabel="Launch Clinical Lab"
             theme="pflege"
+            imageUrl={HEADER_IMAGES.pflege}
             badge="ISBAR TRAINER"
             metaItems={["Case Dialogues", "Handover Form", "Redemittel"]}
             aspectClassName="min-h-[220px]"

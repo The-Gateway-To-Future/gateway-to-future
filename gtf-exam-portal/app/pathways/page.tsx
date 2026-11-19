@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader } from "@/components/BreadcrumbHeader";
+import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard, type SubdivisionTheme } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { BRAND } from "@/lib/config";
@@ -14,6 +14,7 @@ interface PlanStage {
   href: string;
   ctaLabel: string;
   theme: SubdivisionTheme;
+  imageUrl: string;
   badge: string;
   metaItems: string[];
 }
@@ -27,6 +28,7 @@ const PLAN_STAGES: PlanStage[] = [
     href: "/academy/a1",
     ctaLabel: "Open A1 Folder",
     theme: "academy",
+    imageUrl: HEADER_IMAGES.a1,
     badge: "CEFR A1",
     metaItems: ["Vocabulary", "Grammar", "Modelltests"],
   },
@@ -38,6 +40,7 @@ const PLAN_STAGES: PlanStage[] = [
     href: "/academy/a2",
     ctaLabel: "Open A2 Folder",
     theme: "academy",
+    imageUrl: HEADER_IMAGES.a2,
     badge: "CEFR A2",
     metaItems: ["Alltag & Beruf", "Hören Lab", "Goethe A2"],
   },
@@ -49,6 +52,7 @@ const PLAN_STAGES: PlanStage[] = [
     href: "/academy/b1",
     ctaLabel: "Open B1 Folder",
     theme: "academy",
+    imageUrl: HEADER_IMAGES.b1,
     badge: "ACTIVE TARGET",
     metaItems: ["Ausbildung Ready", "4 Subdivisions", "AI Sprechen"],
   },
@@ -60,6 +64,7 @@ const PLAN_STAGES: PlanStage[] = [
     href: "/academy/b2",
     ctaLabel: "Open B2 Folder",
     theme: "grammar",
+    imageUrl: HEADER_IMAGES.b2,
     badge: "122 SÄULEN",
     metaItems: ["Grammar Pillars", "B2 Hören", "telc B2"],
   },
@@ -71,6 +76,7 @@ const PLAN_STAGES: PlanStage[] = [
     href: "/studienkolleg",
     ctaLabel: "Open Studienkolleg",
     theme: "studienkolleg",
+    imageUrl: HEADER_IMAGES.studienkolleg,
     badge: "T · M · W · G-KURS",
     metaItems: ["TU Berlin", "LMU Munich", "C-Test Archive"],
   },
@@ -82,6 +88,7 @@ const PLAN_STAGES: PlanStage[] = [
     href: "/pflege",
     ctaLabel: "Open Pflege Hub",
     theme: "pflege",
+    imageUrl: HEADER_IMAGES.pflege,
     badge: "HOSPITAL CAREERS",
     metaItems: ["ISBAR Protocol", "FSP Cases", "Charité / Vivantes"],
   },
@@ -102,6 +109,7 @@ export default function PathwaysPlanPage() {
           title="Your Germany Roadmap."
           subtitle="Every milestone navigates cleanly to its own dedicated folder — from A1 fundamentals to Studienkolleg admission and German hospital careers."
           theme="hub"
+          backgroundImage={HEADER_IMAGES.hub}
           backHref="/dashboard"
           backLabel="Hub"
         />
@@ -136,6 +144,7 @@ export default function PathwaysPlanPage() {
                 href={stage.href}
                 ctaLabel={stage.ctaLabel}
                 theme={stage.theme}
+                imageUrl={stage.imageUrl}
                 badge={stage.badge}
                 metaItems={stage.metaItems}
               />
