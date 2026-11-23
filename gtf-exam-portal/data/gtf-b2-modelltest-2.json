@@ -1,0 +1,560 @@
+{
+  "id": "gtf-b2-modelltest-2",
+  "level": "b2",
+  "title": "GTF B2 Modelltest 2 — Beruf, Weiterbildung & Fachkräfteeinwanderung",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat B2 / telc Deutsch B2 Beruf",
+  "version": "2026.11",
+  "productSlug": "b2-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 65,
+      "teile": [
+        {
+          "id": "b2m2-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Sachtext: Fachkräfteeinwanderung & Anerkennung",
+          "instructions": "Lesen Sie den Fachartikel und entscheiden Sie bei den Aussagen 1 bis 5: richtig oder falsch?",
+          "passageTitle": "Chancenkarte und beschleunigtes Verfahren: Neue Wege für internationale Fachkräfte",
+          "source": "GTF Wirtschafts- & Arbeitsmarktbericht · B2 Modelltest 2",
+          "passage": "Aufgrund des demografischen Wandels fehlen in Deutschland in zahlreichen Schlüsselbranchen – insbesondere im Gesundheitswesen, in der Informationstechnologie und im Ingenieurwesen – hunderttausende qualifizierte Fachkräfte. Um die Zuwanderung transparenter und zügiger zu gestalten, hat der Gesetzgeber das Fachkräfteeinwanderungsgesetz reformiert und neben dem beschleunigten Fachkräfteverfahren nach § 81a AufenthG auch die sogenannte Chancenkarte eingeführt.\n\nIm beschleunigten Verfahren schließt der zukünftige Arbeitgeber in Deutschland mit einer Vollmacht der Fachkraft eine Vereinbarung mit der zuständigen Ausländerbehörde ab. Dadurch werden Fristen für die Gleichwertigkeitsprüfung ausländischer Abschlüsse verbindlich verkürzt, was insbesondere für Pflegekräfte und Ärztinnen eine verlässlichere Planung ermöglicht. Gleichwohl betonen Personalverantwortliche in Berliner Kliniken, dass formale Dokumente allein nicht genügen: Erst eine fundierte fachsprachliche Vorbereitung auf B2-Niveau sowie strukturiertes Onboarding im Team gewährleisten eine langfristige Integration am Arbeitsplatz.",
+          "questions": [
+            {
+              "id": "b2m2-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Der Fachkräftemangel betrifft in Deutschland vor allem das Gesundheitswesen, die IT und das Ingenieurwesen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „insbesondere im Gesundheitswesen, in der Informationstechnologie und im Ingenieurwesen“."
+            },
+            {
+              "id": "b2m2-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Beim Verfahren nach § 81a AufenthG stellt die Fachkraft den Antrag ganz ohne Mitwirkung eines Arbeitgebers.",
+              "answer": "falsch",
+              "explanation": "Im Text: „schließt der zukünftige Arbeitgeber in Deutschland mit einer Vollmacht der Fachkraft eine Vereinbarung mit der zuständigen Ausländerbehörde ab.“"
+            },
+            {
+              "id": "b2m2-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Das beschleunigte Verfahren verkürzt verbindlich die Bearbeitungsfristen für die Anerkennung.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Dadurch werden Fristen für die Gleichwertigkeitsprüfung ausländischer Abschlüsse verbindlich verkürzt...“"
+            },
+            {
+              "id": "b2m2-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Laut Berliner Personalverantwortlichen reichen formale Dokumente allein für eine nachhaltige Integration aus.",
+              "answer": "falsch",
+              "explanation": "Im Text: „dass formale Dokumente allein nicht genügen“ — Fachsprache B2 und Onboarding sind ebenso nötig."
+            },
+            {
+              "id": "b2m2-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Die Chancenkarte wurde im Zuge der Reform des Fachkräfteeinwanderungsgesetzes eingeführt.",
+              "answer": "richtig",
+              "explanation": "Im Text: „hat der Gesetzgeber das Fachkräfteeinwanderungsgesetz reformiert und ... auch die sogenannte Chancenkarte eingeführt.“"
+            }
+          ]
+        },
+        {
+          "id": "b2m2-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Arbeitsrecht, Tarifvertrag & Schichtmodelle",
+          "instructions": "Lesen Sie den Beitrag und wählen Sie für die Aufgaben 6 bis 9 jeweils a, b oder c.",
+          "passageTitle": "Moderne Arbeitszeitmodelle zwischen Flexibilität und Arbeitsschutz",
+          "source": "Zeitschrift für Arbeitsorganisation Berlin",
+          "passage": "In deutschen Großbetrieben und kommunalen Krankenhäusern regelt in der Regel ein Tarifvertrag nicht nur das Grundgehalt, sondern auch Zuschläge für Nacht-, Sonntags- und Feiertagsarbeit sowie den jährlichen Erholungsurlaub. Gleichzeitig setzen sich zunehmend flexible Arbeitszeitkonten durch, auf denen Überstunden gesammelt und später durch Freizeit ausgeglichen werden können.\n\nDas deutsche Arbeitszeitgesetz zieht dabei klare Grenzen zum Schutz der Beschäftigten: Die werktägliche Arbeitszeit darf grundsätzlich acht Stunden nicht überschreiten und nur dann auf bis zu zehn Stunden verlängert werden, wenn innerhalb von sechs Monaten im Durchschnitt acht Stunden pro Werktag nicht überschritten werden. Zudem ist zwischen zwei Schichten eine ununterbrochene Ruhezeit von mindestens elf Stunden vorgeschrieben (in bestimmten Kliniken unter strengen Ausgleichsregeln auf zehn Stunden verkürzbar).",
+          "questions": [
+            {
+              "id": "b2m2-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Was regelt ein Tarifvertrag laut Text neben dem Grundgehalt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Zuschläge für Nacht-, Sonntags- und Feiertagsarbeit sowie den Urlaub."
+                },
+                {
+                  "id": "b",
+                  "text": "Die private Mietzahlung der Beschäftigten."
+                },
+                {
+                  "id": "c",
+                  "text": "Die Auswahl der privaten Krankenkasse."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „sondern auch Zuschläge für Nacht-, Sonntags- und Feiertagsarbeit sowie den jährlichen Erholungsurlaub.“"
+            },
+            {
+              "id": "b2m2-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Wofür werden Arbeitszeitkonten genutzt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Um Urlaubstage dauerhaft zu streichen."
+                },
+                {
+                  "id": "b",
+                  "text": "Um Überstunden zu erfassen und später durch Freizeit auszugleichen."
+                },
+                {
+                  "id": "c",
+                  "text": "Um die Probezeit zu verlängern."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „auf denen Überstunden gesammelt und später durch Freizeit ausgeglichen werden können.“"
+            },
+            {
+              "id": "b2m2-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Unter welcher Bedingung darf die tägliche Arbeitszeit auf bis zu zehn Stunden verlängert werden?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Wenn innerhalb von sechs Monaten der Schnitt von acht Stunden pro Werktag eingehalten wird."
+                },
+                {
+                  "id": "b",
+                  "text": "Immer ohne Ausgleich, sobald ein Projekt beginnt."
+                },
+                {
+                  "id": "c",
+                  "text": "Nur an gesetzlichen Feiertagen."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Das Arbeitszeitgesetz erlaubt bis zu 10 Stunden nur bei entsprechendem Ausgleich innerhalb von 6 Monaten."
+            },
+            {
+              "id": "b2m2-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Wie lang ist die reguläre Mindestruhezeit zwischen zwei Schichten?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Sechs Stunden."
+                },
+                {
+                  "id": "b",
+                  "text": "Acht Stunden."
+                },
+                {
+                  "id": "c",
+                  "text": "Mindestens elf Stunden."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „eine ununterbrochene Ruhezeit von mindestens elf Stunden vorgeschrieben“."
+            }
+          ]
+        },
+        {
+          "id": "b2m2-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 1 — Formelle Stellungnahme an die Teamleitung",
+          "instructions": "Wählen Sie für jede Lücke 10–15 die passende Option a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrte Frau Dr. Neumann,\n\n{{10}} der aktuellen Personalengpässe auf Station 4 möchte ich Ihnen einen konstruktiven Vorschlag zur Dienstplangestaltung unterbreiten. Die bisherigen Übergaben {{11}} sich durch eine digitale Checkliste deutlich effizienter strukturieren. Zudem {{12}} darauf zu achten, dass neue Kolleginnen und Kollegen während der Einarbeitungsphase fest einer Praxisanleitung zugeordnet {{13}}. Sollten Sie weiteren Klärungsbedarf sehen, stehe ich Ihnen jederzeit für ein Gespräch zur {{14}}. Ich danke Ihnen im Voraus für die Prüfung meines {{15}}.\n\nMit freundlichen Grüßen,\nAnjali Verma",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Angesichts"
+                },
+                {
+                  "id": "b",
+                  "text": "Entgegen"
+                },
+                {
+                  "id": "c",
+                  "text": "Außerhalb"
+                }
+              ],
+              "answer": "a",
+              "explanation": "„Angesichts + Genitiv“ bedeutet „im Hinblick auf / wegen“ (sehr typisch für B2-Nominalstil)."
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "lassen"
+                },
+                {
+                  "id": "b",
+                  "text": "machen"
+                },
+                {
+                  "id": "c",
+                  "text": "halten"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Passiversatzform „sich lassen + Infinitiv“ (= können strukturiert werden)."
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "ist"
+                },
+                {
+                  "id": "b",
+                  "text": "hat"
+                },
+                {
+                  "id": "c",
+                  "text": "wird"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Passiversatzform mit Verpflichtung: „es ist darauf zu achten“ (= man muss darauf achten)."
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "werden"
+                },
+                {
+                  "id": "b",
+                  "text": "wurden"
+                },
+                {
+                  "id": "c",
+                  "text": "worden"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Vorgangspassiv Präsens Plural: „zugeordnet werden“."
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Verfügung"
+                },
+                {
+                  "id": "b",
+                  "text": "Entscheidung"
+                },
+                {
+                  "id": "c",
+                  "text": "Genehmigung"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Nomen-Verb-Verbindung: „jemandem zur Verfügung stehen“."
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Vorschlags"
+                },
+                {
+                  "id": "b",
+                  "text": "Vorschlag"
+                },
+                {
+                  "id": "c",
+                  "text": "Vorschläge"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Genitiv Maskulinum Singular nach „meines“: „meines Vorschlags“."
+            }
+          ]
+        },
+        {
+          "id": "b2m2-sprachbausteine-2",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 2 — Kooperationsanfrage (Wortliste)",
+          "instructions": "Ordnen Sie den Lücken 16–20 das passende Wort aus der Wortliste zu (a–h). Drei Wörter bleiben übrig.",
+          "mode": "wordbank",
+          "text": "Sehr geehrte Damen und Herren,\n\nwir wenden uns an Sie, {{16}} eine Kooperation im Bereich der berufsbegleitenden Weiterbildung anzuregen. {{17}} die Zahl der internationalen Fachkräfte stetig steigt, wächst der Bedarf an praxisnahen B2-Seminaren. Unser Konzept sieht vor, {{18}} sowohl die fachliche Kommunikation als auch interkulturelle Kompetenzen gezielt trainiert werden. {{19}} einer erfolgreichen Pilotphase könnten wir das Programm auf weitere Standorte ausweiten. Über eine zeitnahe Rückmeldung würden wir uns sehr {{20}}.",
+          "wordBank": [
+            {
+              "id": "a",
+              "text": "um"
+            },
+            {
+              "id": "b",
+              "text": "Während"
+            },
+            {
+              "id": "c",
+              "text": "dass"
+            },
+            {
+              "id": "d",
+              "text": "Nach"
+            },
+            {
+              "id": "e",
+              "text": "freuen"
+            },
+            {
+              "id": "f",
+              "text": "damit"
+            },
+            {
+              "id": "g",
+              "text": "trotzdem"
+            },
+            {
+              "id": "h",
+              "text": "wobei"
+            }
+          ],
+          "gaps": [
+            {
+              "id": "16",
+              "answer": "a",
+              "explanation": "Finaler Infinitivsatz bei gleichem Subjekt: „um ... anzuregen“."
+            },
+            {
+              "id": "17",
+              "answer": "b",
+              "explanation": "Gleichzeitigkeit / parallele Entwicklung: „Während die Zahl ... steigt, wächst der Bedarf...“."
+            },
+            {
+              "id": "18",
+              "answer": "c",
+              "explanation": "Objektsatz nach „sieht vor“ → „dass“."
+            },
+            {
+              "id": "19",
+              "answer": "d",
+              "explanation": "Temporale Präposition mit Dativ Femininum „einer erfolgreichen Pilotphase“ → „Nach“."
+            },
+            {
+              "id": "20",
+              "answer": "e",
+              "explanation": "„sich über etwas freuen“ im Konjunktiv II: „würden wir uns sehr freuen“."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 40,
+      "teile": [
+        {
+          "id": "b2m2-hoeren-1",
+          "title": "Hören Teil 1 — Podiumsdiskussion: KI in Medizin & Pflege",
+          "instructions": "Hören Sie den Ausschnitt der Diskussion und lösen Sie die Aufgaben 1 bis 3 (a, b oder c).",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-b2-modelltest-2/b2m2-hoeren-1.mp3",
+          "audio": {
+            "localFile": "exams/gtf-b2-modelltest-2/b2m2-hoeren-1.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Prof. Dr. Weber",
+              "voice": "male",
+              "text": "Künstliche Intelligenz kann die Pflegedokumentation erheblich entlasten, indem Sprachnotizen automatisch in strukturierte Berichte übertragen werden. Dennoch bleibt die menschliche Empathie am Patientenbett unersetzlich, und die letzte klinische Verantwortung liegt stets bei qualifiziertem Fachpersonal."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b2m2-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Wie kann KI laut Prof. Dr. Weber die Pflege konkret entlasten?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Durch automatische Umwandlung von Sprachnotizen in strukturierte Dokumentationen."
+                },
+                {
+                  "id": "b",
+                  "text": "Durch vollständigen Ersatz des gesamten Pflegepersonals."
+                },
+                {
+                  "id": "c",
+                  "text": "Durch Abschaffung von Schichtplänen."
+                }
+              ],
+              "answer": "a",
+              "explanation": "KI entlastet die Dokumentation durch automatische Strukturierung von Sprachnotizen."
+            },
+            {
+              "id": "b2m2-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wer trägt weiterhin die endgültige klinische Verantwortung?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Software-Entwickler."
+                },
+                {
+                  "id": "b",
+                  "text": "Das qualifizierte medizinische und pflegerische Fachpersonal."
+                },
+                {
+                  "id": "c",
+                  "text": "Die Patientinnen und Patienten selbst."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „die letzte klinische Verantwortung liegt stets bei qualifiziertem Fachpersonal.“"
+            },
+            {
+              "id": "b2m2-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Was bleibt laut dem Experten auch mit moderner Technik unersetzlich?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Papierakten im Keller."
+                },
+                {
+                  "id": "b",
+                  "text": "Die menschliche Empathie am Patientenbett."
+                },
+                {
+                  "id": "c",
+                  "text": "Faxgeräte auf jeder Station."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Er hebt ausdrücklich die unersetzliche menschliche Empathie hervor."
+            }
+          ]
+        },
+        {
+          "id": "b2m2-hoeren-2",
+          "title": "Hören Teil 2 — Wissenschaftspodcast: Berufsanerkennung & Weiterbildung",
+          "instructions": "Hören Sie den Beitrag und entscheiden Sie bei den Aufgaben 4 bis 6: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-b2-modelltest-2/b2m2-hoeren-2.mp3",
+          "audio": {
+            "localFile": "exams/gtf-b2-modelltest-2/b2m2-hoeren-2.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Moderatorin",
+              "voice": "female",
+              "text": "Viele internationale Fachkräfte nutzen in Deutschland sogenannte Anpassungslehrgänge, um Unterschiede zwischen ihrem Heimatabschluss und den deutschen Standards auszugleichen. Laut aktuellen Studien schließen über 85 Prozent der Teilnehmenden diese Qualifizierung erfolgreich ab, sofern sie währenddessen gezielt sprachlich begleitet werden."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b2m2-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Anpassungslehrgänge helfen, Unterschiede zwischen ausländischen Abschlüssen und deutschen Standards auszugleichen.",
+              "answer": "richtig",
+              "explanation": "Genau diesen Zweck erfüllen Anpassungslehrgänge laut Beitrag."
+            },
+            {
+              "id": "b2m2-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Weniger als die Hälfte der Teilnehmenden besteht die Qualifizierung.",
+              "answer": "falsch",
+              "explanation": "Laut Beitrag schließen über 85 Prozent erfolgreich ab."
+            },
+            {
+              "id": "b2m2-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Sprachliche Begleitung während des Lehrgangs unterstützt den Prüfungserfolg.",
+              "answer": "richtig",
+              "explanation": "Der hohe Erfolg wird ausdrücklich mit gezielter sprachlicher Begleitung verknüpft."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 75,
+      "tasks": [
+        {
+          "id": "b2m2-schreiben-1",
+          "title": "Aufgabe 1 — Formelle Beschwerde / Reklamation (Weiterbildungskurs)",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine strukturierte formelle Beschwerde (mindestens 150 Wörter) im angemessenen B2-Register.",
+          "situation": "Sie haben einen kostenpflichtigen Online-Vorbereitungskurs für ein Fachzertifikat gebucht, aber mehrere versprochene Live-Termine wurden kurzfristig abgesagt und die Unterlagen fehlen teilweise.",
+          "leitpunkte": [
+            "Schildern Sie sachlich den Anlass Ihres Schreibens und die konkreten Mängel.",
+            "Erklären Sie, welche Konsequenzen dies für Ihre Prüfungsvorbereitung hat.",
+            "Fordern Sie konkrete Abhilfe (Nachholtermine oder anteilige Rückerstattung) mit einer klaren Frist.",
+            "Formulieren Sie eine professionelle Schlussformel."
+          ],
+          "minWords": 150,
+          "recommendedMinutes": 45
+        },
+        {
+          "id": "b2m2-schreiben-2",
+          "title": "Aufgabe 2 — Stellungnahme im Fachforum (KI am Arbeitsplatz)",
+          "register": "forum",
+          "instructions": "Verfassen Sie einen differenzierten Forumsbeitrag (mindestens 100 Wörter).",
+          "situation": "In einem Berufsforum wird diskutiert, ob Unternehmen den Einsatz von KI-Werkzeugen im Arbeitsalltag verpflichtend schulen sollten.",
+          "leitpunkte": [
+            "Nehmen Sie klar Stellung und nennen Sie Chancen für Effizienz und Qualität.",
+            "Benennen Sie mögliche Risiken (Datenschutz, Fehlerkontrolle).",
+            "Nennen Sie konkrete Regeln für einen verantwortungsvollen Umgang im Team."
+          ],
+          "minWords": 100,
+          "recommendedMinutes": 30
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "b2m2-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Kurzvortrag: Lebenslanges Lernen im Beruf",
+          "instructions": "Halten Sie einen strukturierten Kurzvortrag (ca. 3–4 Minuten) mit gehobenen Redemitteln.",
+          "card": {
+            "heading": "Lebenslanges Lernen & berufliche Weiterbildung",
+            "subheading": "Stellen Sie mehrere Alternativen vor, wägen Sie Vor- und Nachteile ab und formulieren Sie ein klares Fazit.",
+            "bullets": [
+              "Warum regelmäßige Weiterbildung in Zeiten des digitalen Wandels unverzichtbar ist",
+              "Vergleich: Betriebliche Schulungen vs. berufsbegleitende Online-Kurse",
+              "Finanzierung und Zeitmanagement neben einer Vollzeitstelle",
+              "Ihr persönliches Fazit für internationale Fachkräfte in Deutschland"
+            ]
+          },
+          "examinerScript": "Willkommen zur mündlichen B2-Prüfung. Bitte halten Sie nun Ihren Kurzvortrag zum Thema Lebenslanges Lernen und berufliche Weiterbildung.",
+          "examinerAudio": {
+            "localFile": "b2_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 60,
+          "speakSeconds": 150
+        },
+        {
+          "id": "b2m2-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Diskussion & Kompromissfindung",
+          "instructions": "Tauschen Sie Argumente aus, gehen Sie auf Gegenargumente ein und erzielen Sie eine gemeinsame Lösung.",
+          "card": {
+            "heading": "Streitfrage: Sollte eine 4-Tage-Woche bei gleichem Gehalt eingeführt werden?",
+            "subheading": "Nutzen Sie B2-Diskussionsredemittel („Einerseits..., andererseits...“, „Dem möchte ich entgegenhalten, dass...“).",
+            "bullets": [
+              "Auswirkungen auf Motivation, Gesundheit und Vereinbarkeit von Beruf und Familie",
+              "Herausforderungen für Krankenhäuser, Pflege und Dienstleistungsbetriebe",
+              "Mögliche Kompromissmodelle (z. B. flexible Schichtmodelle oder Pilotphase)"
+            ]
+          },
+          "examinerScript": "Kommen wir nun zur Diskussion: Befürworten Sie eine 4-Tage-Woche bei vollem Lohnausgleich, oder überwiegen Ihrer Meinung nach die Risiken für Betriebe und Krankenhäuser?",
+          "examinerAudio": {
+            "localFile": "b2_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 120
+        }
+      ]
+    }
+  }
+}

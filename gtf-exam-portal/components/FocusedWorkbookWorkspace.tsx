@@ -28,6 +28,7 @@ import { getFirebaseFirestore } from "@/lib/firebase";
 import Link from "next/link";
 import type { WorkbookClientView, WorkbookContentType } from "@/lib/types";
 import { getCoreLabById, convertLabToWorkbook } from "@/lib/curriculum-labs";
+import { getComingSoonMeta } from "@/lib/coming-soon";
 
 function isStudienkollegWorkbook(
   levelHint?: string,
@@ -301,6 +302,10 @@ function FocusedWorkbookWorkspaceInner({
                 fsContentType === "exam_hoeren" || fsContentType === "exam_sprechen"
                   ? fsData.audioUrl || undefined
                   : undefined,
+              hoerenTranscript:
+                fsContentType === "exam_hoeren" && Array.isArray(fsData.hoerenTranscript)
+                  ? fsData.hoerenTranscript
+                  : undefined,
               isFree: true,
               coverColor: fsData.coverColor || "#0F172A",
               priceEur: typeof fsData.priceEur === "number" ? fsData.priceEur : 0,
@@ -335,28 +340,42 @@ function FocusedWorkbookWorkspaceInner({
       };
 
       const loadPipeline = async (): Promise<WorkbookClientView | null> => {
-        // Kick off Firestore (1.8s cap) and same-origin API (3s AbortController) in parallel
-        // so an iOS Safari Firestore stall never delays catalog workbooks like Lab 11.
-        const fsPromise = fetchFromFirestore();
-        const apiPromise = fetchFromApi();
-
-        // 1. Prefer Firestore when it responds cleanly
-        const fsDoc = await fsPromise;
-        if (fsDoc) {
-          controller.abort();
-          return fsDoc;
-        }
-
-        // 2. Immediate Local Core Labs & Grammar Pillars fallback from curriculum-labs.ts
+        // 1. Built-in local Core Labs & 122-Säulen Grammar Pillars resolve instantly (<10ms, zero lag)
         const localFallback = resolveLocalLabFallback(email);
         if (localFallback) {
           controller.abort();
           return localFallback;
         }
 
-        // 3. Secondary: Server API (/api/workbooks/[id]) already in flight, bounded by 3s AbortController
-        const apiDoc = await apiPromise;
-        if (apiDoc) return apiDoc;
+        // 2. For catalog/PDF workbooks, run same-origin API and Firestore in parallel
+        //    and return whichever resolves with valid data first (avoids 1.8s Firestore stalls on mobile)
+        const apiPromise = fetchFromApi();
+        const fsPromise = fetchFromFirestore();
+
+        const firstResolved = await new Promise<WorkbookClientView | null>((resolve) => {
+          let settled = false;
+          let pending = 2;
+          const finish = (docVal: WorkbookClientView | null) => {
+            if (settled) return;
+            if (docVal) {
+              settled = true;
+              resolve(docVal);
+              return;
+            }
+            pending -= 1;
+            if (pending <= 0) {
+              settled = true;
+              resolve(null);
+            }
+          };
+          apiPromise.then(finish).catch(() => finish(null));
+          fsPromise.then(finish).catch(() => finish(null));
+        });
+
+        if (firstResolved) {
+          controller.abort();
+          return firstResolved;
+        }
 
         return null;
       };
@@ -529,6 +548,58 @@ function FocusedWorkbookWorkspaceInner({
     return null;
   }
 
+  const comingSoonGuard = getComingSoonMeta(workbookId, levelHint);
+  if (comingSoonGuard) {
+    const cleanTitle =
+      topicTitleHint?.trim() ||
+      decodeURIComponent(workbookId || "")
+        .replace(/^(wb-factory-|wb-fc-|book-|dossier-|wb-|lab-|grammar-)/i, "")
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    return (
+      <div
+        key={`wb-coming-soon-${workbookId}`}
+        className="light-study space-y-6 text-slate-900 max-w-3xl mx-auto"
+      >
+        <div className="rounded-3xl border border-slate-200 bg-white p-7 sm:p-11 text-center space-y-5 shadow-sm">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-700 shadow-xs">
+            <Lock className="h-6 w-6" />
+          </div>
+
+          <div className="space-y-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-amber-800">
+              {comingSoonGuard.badge || "COMING SOON"}
+            </span>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+              {cleanTitle}
+            </h2>
+            <p className="text-sm text-slate-600 max-w-lg mx-auto leading-relaxed pt-1">
+              {comingSoonGuard.reason}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-slate-100">
+            <Link
+              href={comingSoonGuard.recommendedHref}
+              className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
+            >
+              <span>{comingSoonGuard.recommendedLabel}</span>
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/academy"
+              className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span>Zur Language Academy</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div
@@ -554,7 +625,6 @@ function FocusedWorkbookWorkspaceInner({
         .replace(/[-_]+/g, " ")
         .replace(/\b\w/g, (c) => c.toUpperCase());
 
-    const titleDisplay = `${rawTopicName} — Content Generating`;
     const levelDisplay = (levelHint || "b1").toUpperCase();
     const moduleDisplay = (moduleHint || "02-grammar")
       .replace(/^\d+-/, "")
@@ -566,47 +636,40 @@ function FocusedWorkbookWorkspaceInner({
         key={`wb-empty-${workbookId}`}
         className="light-study space-y-6 select-none text-slate-900 max-w-3xl mx-auto"
       >
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-12 text-center space-y-6 shadow-sm">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-600 shadow-xs">
-            <Sparkles className="h-7 w-7 animate-pulse" />
+        <div className="rounded-3xl border border-slate-200 bg-white p-7 sm:p-11 text-center space-y-5 shadow-sm">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-700 shadow-xs">
+            <Sparkles className="h-6 w-6" />
           </div>
 
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-700">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-800">
               <span key="empty-lvl">{levelDisplay}</span>
               <span key="empty-sep1">·</span>
               <span key="empty-mod">{moduleDisplay}</span>
               <span key="empty-sep2">·</span>
-              <span key="empty-badge" className="text-amber-700 font-bold">IN PRODUKTION</span>
+              <span key="empty-badge" className="font-bold">COMING SOON</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
-              <span key={`empty-title-${workbookId}`}>{titleDisplay}</span>
+              <span key={`empty-title-${workbookId}`}>{rawTopicName}</span>
             </h2>
             <p className="text-sm font-medium text-slate-700 max-w-md mx-auto leading-relaxed pt-1">
-              <span key="empty-desc-1">Die GTF AI-Factory erstellt derzeit dieses Material.</span>
+              <span key="empty-desc-1">Dieses Modul ist bald verfügbar (Coming Soon).</span>
             </p>
             <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
               <span key="empty-desc-2">
-                Dieses Modul wird für Ihren Vorbereitungspfad qualitätsgeprüft generiert. Audio-Player und Antwortbogen werden automatisch freigeschaltet, sobald das Material bereitsteht.
+                Das Arbeitsheft befindet sich noch in der finalen redaktionellen Prüfung. Nutzen Sie in der Zwischenzeit unsere sofort verfügbaren A1–B2 Übungen, Flashcards und Modelltests.
               </span>
             </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-xs text-slate-500 space-y-1 text-left max-w-md mx-auto font-mono">
-            <p><span className="font-semibold text-slate-700">Level:</span>{" "}<span key="meta-lvl">{levelDisplay}</span></p>
-            <p><span className="font-semibold text-slate-700">Modul:</span>{" "}<span key="meta-mod">{moduleDisplay}</span></p>
-            <p><span className="font-semibold text-slate-700">Topic ID:</span>{" "}<span key="meta-id">{decodeURIComponent(workbookId)}</span></p>
-            <p><span className="font-semibold text-slate-700">Status:</span>{" "}<span key="meta-status">Content In Production (AI Factory Queue)</span></p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-slate-100">
             <button
               type="button"
               onClick={() => void fetchWorkbook()}
-              className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-5 py-2.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition shadow-xs cursor-pointer"
+              className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition shadow-xs cursor-pointer"
             >
               <RefreshCw className="h-3.5 w-3.5" />
-              <span>Erneut laden</span>
+              <span>Erneut prüfen</span>
             </button>
 
             <Link
@@ -837,9 +900,9 @@ function FocusedWorkbookWorkspaceInner({
         /* STRICT PRÜFUNGSTRAINING MODE (exam_lesen / exam_hoeren / exam_schreiben / exam_sprechen):
            Grammar Pillars and Flashcards are hidden completely.
            exam_lesen hides the Audio Player and renders text + Answer Sheet. */
-        <div key={`wb-exam-${workbook.id}-${effectiveContentType}`} className="grid gap-6 lg:grid-cols-12" data-content-type={effectiveContentType}>
+        <div key={`wb-exam-${workbook.id}-${effectiveContentType}`} className="grid gap-6 lg:grid-cols-12 min-w-0" data-content-type={effectiveContentType}>
           {/* Left Column: Audio (only Hören/Sprechen) + Reading Passage / PDF */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="lg:col-span-7 space-y-5 min-w-0">
             {showAudioPlayer && (
               <div key={`wb-audio-${workbook.id}`} className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 text-slate-900 shadow-sm">
                 <div className="flex items-center justify-between gap-3 mb-3">
@@ -893,6 +956,21 @@ function FocusedWorkbookWorkspaceInner({
                     Der Audiotext wird während der Prüfung 1x bis 2x abgespielt. Notieren Sie Ihre Antworten im Antwortblatt rechts.
                   </span>
                 </p>
+
+                {Array.isArray(workbook.hoerenTranscript) && workbook.hoerenTranscript.length > 0 && (
+                  <details key={`wb-transcript-${workbook.id}`} className="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
+                    <summary className="cursor-pointer text-[11px] font-semibold uppercase tracking-wider text-slate-600">
+                      Transkript anzeigen (erst nach dem Hören)
+                    </summary>
+                    <div className="mt-2 space-y-1.5 text-xs text-slate-700 leading-relaxed">
+                      {workbook.hoerenTranscript.map((line, i) => (
+                        <p key={`tr-${workbook.id}-${i}`}>
+                          <span className="font-semibold text-slate-900">{line.speaker}:</span> {line.text}
+                        </p>
+                      ))}
+                    </div>
+                  </details>
+                )}
               </div>
             )}
 
@@ -957,8 +1035,8 @@ function FocusedWorkbookWorkspaceInner({
 
           {/* Right Column: Interactive Answer Sheet */}
           {showAnswerSheet && (
-            <div key={`wb-sheet-${workbook.id}`} className="lg:col-span-5 space-y-4">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-sm">
+            <div key={`wb-sheet-${workbook.id}`} className="lg:col-span-5 space-y-4 min-w-0">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 space-y-4 shadow-sm min-w-0">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
                   <div>
                     <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -1101,17 +1179,23 @@ function FocusedWorkbookWorkspaceInner({
                   })}
                 </div>
 
-                <button
-                  type="button"
-                  disabled={grading}
-                  onClick={handleGrade}
-                  className="relative z-20 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm disabled:opacity-50 cursor-pointer"
-                >
-                  <Sparkles className="h-4 w-4" />
-                  <span key={`grade-btn-${grading ? "busy" : "idle"}`}>
-                    {grading ? "Prüfe Antworten…" : "Antwortblatt jetzt auswerten"}
-                  </span>
-                </button>
+                {(workbook.questions || []).length > 0 ? (
+                  <button
+                    type="button"
+                    disabled={grading}
+                    onClick={handleGrade}
+                    className="relative z-20 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-slate-800 shadow-sm disabled:opacity-50 cursor-pointer"
+                  >
+                    <Sparkles className="h-4 w-4" />
+                    <span key={`grade-btn-${grading ? "busy" : "idle"}`}>
+                      {grading ? "Prüfe Antworten…" : "Antwortblatt jetzt auswerten"}
+                    </span>
+                  </button>
+                ) : (
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
+                    Interaktive Prüfungsaufgaben für dieses Arbeitsheft folgen in Kürze (Coming Soon).
+                  </div>
+                )}
               </div>
             </div>
           )}

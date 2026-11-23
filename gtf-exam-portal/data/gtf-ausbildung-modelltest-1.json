@@ -1,0 +1,412 @@
+{
+  "id": "gtf-ausbildung_pflege-modelltest-1",
+  "level": "ausbildung_pflege",
+  "title": "GTF Ausbildung Pflegefachkraft — Klinische Anamnese, ISBAR & Dokumentation",
+  "provider": "The Gateway to Future (GTF) — Generalistische Pflegeausbildung & Anerkennungsprüfung (Charité / Vivantes Berlin)",
+  "version": "2026.11",
+  "productSlug": "ausbildung-pflege-complete",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 60,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Klinischer Pflegebericht: Sturzprophylaxe und Dekubitusgrad",
+          "instructions": "Lesen Sie den Stationsbericht und beantworten Sie die Aufgaben 1 bis 6.",
+          "passageTitle": "Dokumentation einer stationären Pflegeintervention in der Geriatrie",
+          "source": "Vivantes Netzwerk für Gesundheit & Charité Berlin",
+          "passage": "Frau Hildegard Braun, 84 Jahre, wurde nach einem häuslichen Sturzereignis zur Abklärung einer Oberschenkelhalsfraktur auf die geriatrische Überwachungsstation aufgenommen. Bei der initialen Pflegeanamnese wurde ein erhöhtes Sturzrisiko nach der Morse-Sturzskala (Score 65) festgestellt. Zur Prophylaxe wurden ein Niederflurbett sowie rutschfeste Bettschuhe angeordnet.\n\nBei der Hautinspektion am Sakrum zeigte sich eine umschriebene, nicht wegdrückbare Rötung bei intakter Epidermis. Dies entspricht einem Dekubitus Grad 1 nach EPUAP-Klassifikation. Als Sofortmaßnahme wurde ein strukturierter 2-Stunden-Umlagerungsplan mit 30-Grad-Weichlagerung auf einer Wechseldruckmatratze eingeleitet. Die Flüssigkeitszufuhr wird mit mindestens 1.500 ml täglich bilanziert.\n\nDie Stationsleitung erinnert alle Auszubildenden daran, jede Umlagerung und Hautveränderung unverzüglich im digitalen Krankenhaus-Informationssystem (KIS) zu dokumentieren, um forensische Nachvollziehbarkeit zu garantieren.",
+          "questions": [
+            {
+              "id": "pf-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Bei Frau Braun liegt nach Morse-Skala ein erhöhtes Sturzrisiko vor.",
+              "answer": "richtig",
+              "explanation": "Im Text: erhöhtes Sturzrisiko (Score 65). Richtig."
+            },
+            {
+              "id": "pf-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Die Hautveränderung am Sakrum ist ein Dekubitus Grad 3.",
+              "answer": "falsch",
+              "explanation": "Im Text: Dekubitus Grad 1 (nicht wegdrückbare Rötung bei intakter Haut). Falsch."
+            },
+            {
+              "id": "pf-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Als Prophylaxe wurde ein Niederflurbett bereitgestellt.",
+              "answer": "richtig",
+              "explanation": "Im Text: Niederflurbett und rutschfeste Bettschuhe angeordnet. Richtig."
+            },
+            {
+              "id": "pf-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Patientin wird im 4-Stunden-Rhythmus umgelagert.",
+              "answer": "falsch",
+              "explanation": "Im Text: strukturierter 2-Stunden-Umlagerungsplan. Falsch."
+            },
+            {
+              "id": "pf-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Die tägliche Flüssigkeitszufuhr soll mindestens 1.500 ml betragen.",
+              "answer": "richtig",
+              "explanation": "Im Text: mindestens 1.500 ml bilanziert. Richtig."
+            },
+            {
+              "id": "pf-l1-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Die Pflegemaßnahmen müssen nicht digital erfasst werden.",
+              "answer": "falsch",
+              "explanation": "Im Text: unverzüglich im digitalen KIS dokumentieren. Falsch."
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Klinische Fachsprache: Vitalzeichen & Notfallintervention",
+          "instructions": "Wählen Sie für die Aufgaben 7 bis 10 die medizinisch korrekte Antwort.",
+          "passageTitle": "Normwerte von Vitalparametern im Erwachsenenalter",
+          "source": "Deutsches Institut für Pflegeforschung (DIP)",
+          "passage": "Die kontinuierliche Vitalzeichenkontrolle ist Kernaufgabe der professionellen Pflege. Beim gesunden ruhenden Erwachsenen liegt die physiologische Herzfrequenz zwischen 60 und 80 Schlägen pro Minute. Eine Ruheherzfrequenz über 100 Schlägen pro Minute wird als Tachykardie bezeichnet, unter 60 Schlägen als Bradykardie.\n\nDer arterielle Blutdruck liegt normwertig bei systolisch 120 mmHg und diastolisch 80 mmHg. Werte ab 140/90 mmHg signalisieren eine arterielle Hypertonie. Die Sauerstoffsättigung (SpO2) gemessen via Pulsoxymetrie sollte bei Gesunden über 95 Prozent betragen. Werte unter 90 Prozent erfordern eine umgehende Benachrichtigung des Dienstarztes sowie die Vorbereitung von Sauerstoffapplikation via Nasenbrille oder Maske.",
+          "questions": [
+            {
+              "id": "pf-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Wie wird eine Herzfrequenz von über 100 Schlägen pro Minute im Fachjargon genannt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Bradykardie"
+                },
+                {
+                  "id": "b",
+                  "text": "Tachykardie"
+                },
+                {
+                  "id": "c",
+                  "text": "Hypotonie"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Tachykardie = Herzfrequenz > 100/min."
+            },
+            {
+              "id": "pf-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Welche Sauerstoffsättigung (SpO2) erfordert sofortige ärztliche Benachrichtigung?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "SpO2 = 98 %"
+                },
+                {
+                  "id": "b",
+                  "text": "SpO2 = 96 %"
+                },
+                {
+                  "id": "c",
+                  "text": "SpO2 < 90 %"
+                }
+              ],
+              "answer": "c",
+              "explanation": "SpO2 unter 90 % ist akut interventionsbedürftig."
+            },
+            {
+              "id": "pf-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Welcher Blutdruckwert definiert den Beginn einer arteriellen Hypertonie?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "ab 140 / 90 mmHg"
+                },
+                {
+                  "id": "b",
+                  "text": "ab 110 / 70 mmHg"
+                },
+                {
+                  "id": "c",
+                  "text": "ab 90 / 60 mmHg"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Hypertonie Grad 1 ab 140/90 mmHg."
+            },
+            {
+              "id": "pf-l2-q10",
+              "type": "mcq",
+              "prompt": "10. Was bedeutet die Abkürzung ISBAR in der klinischen Übergabe?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Identifikation, Situation, Background, Assessment, Recommendation"
+                },
+                {
+                  "id": "b",
+                  "text": "Intervention, Symptom, Befund, Anamnese, Rezept"
+                },
+                {
+                  "id": "c",
+                  "text": "Injektion, Sedierung, Beatmung, Analyse, Reanimation"
+                }
+              ],
+              "answer": "a",
+              "explanation": "ISBAR = Identification, Situation, Background, Assessment, Recommendation."
+            }
+          ]
+        },
+        {
+          "id": "lesen-3",
+          "kind": "sprachbausteine",
+          "title": "Lesen Teil 3 — C-Test Fachsprache Pflege & Stationskommunikation",
+          "instructions": "Wählen Sie die passenden Verben und Begriffe für die Lücken 21 bis 25.",
+          "mode": "select",
+          "text": "Vor jeder Medikamentengabe müssen Pflegekräfte die 6-R-Regel strikt {{21}}. Die Vitalzeichen werden regelmäßig kontrolliert und in die Kurve {{22}}. Bei unklaren Thoraxschmerzen muss unverzüglich ein Arzt {{23}} werden. Eine gewissenhafte Händedesinfektion schützt Patienten {{24}} gefährlichen Keimen. Internationale Pflegefachkräfte leisten einen unverzichtbaren Beitrag {{25}} Sicherung der Patientenversorgung in Deutschland.",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "beachten"
+                },
+                {
+                  "id": "b",
+                  "text": "erinnern"
+                },
+                {
+                  "id": "c",
+                  "text": "sehen"
+                }
+              ],
+              "answer": "a",
+              "explanation": "die 6-R-Regel beachten."
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "eingetragen"
+                },
+                {
+                  "id": "b",
+                  "text": "ausgefüllt"
+                },
+                {
+                  "id": "c",
+                  "text": "angegeben"
+                }
+              ],
+              "answer": "a",
+              "explanation": "in die Kurve eintragen -> eingetragen."
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "hinzugezogen"
+                },
+                {
+                  "id": "b",
+                  "text": "abgerufen"
+                },
+                {
+                  "id": "c",
+                  "text": "abgemeldet"
+                }
+              ],
+              "answer": "a",
+              "explanation": "einen Arzt hinzuziehen."
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "vor"
+                },
+                {
+                  "id": "b",
+                  "text": "gegen"
+                },
+                {
+                  "id": "c",
+                  "text": "von"
+                }
+              ],
+              "answer": "a",
+              "explanation": "schützen VOR (Dativ) Keimen."
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "zur"
+                },
+                {
+                  "id": "b",
+                  "text": "bei"
+                },
+                {
+                  "id": "c",
+                  "text": "nach"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Beitrag ZU (Dativ) -> zur Sicherung."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 20,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Strukturierte Stationsübergabe nach ISBAR",
+          "instructions": "Sie hören die Übergabe einer Patientin mit akuter Atemnot.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/ausbildung_pflege_01.mp3",
+          "script": [
+            {
+              "speaker": "Pflegefachkraft",
+              "voice": "female",
+              "text": "Duale Ausbildung Pflegefachkraft. Modul 1: Strukturierte Stationsübergabe nach dem ISBAR-Standard. Guten Morgen Kollegin. Ich übergebe Patientin Frau Schneider auf Zimmer sechs. Identifikation: Frau Gerda Schneider, geboren am vierzehnten August neunzehnhundertfünfzig. Situation: Sie klagt seit heute früh über plötzlich aufgetretene Dyspnoe und atemabhängige Thoraxschmerzen. Background: Bekannte chronische Herzinsuffizienz und Zustand nach Schenkelhalsfraktur vor zwei Wochen. Assessment: Sauerstoffsättigung liegt bei einundneunzig Prozent, Atemfrequenz zweiundzwanzig pro Minute, Blutdruck einhundertvierzig zu neunzig. Recommendation: Ich habe zwei Liter Sauerstoff per Nasenbrille verabreicht. Der Stationsarzt ist informiert und führt sofort ein Notfall-EKG durch."
+            }
+          ],
+          "questions": [
+            {
+              "id": "pf-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Über welche Symptome klagt Patientin Frau Schneider?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Kopfschmerzen und Übelkeit"
+                },
+                {
+                  "id": "b",
+                  "text": "Dyspnoe (Atemnot) und atemabhängige Thoraxschmerzen"
+                },
+                {
+                  "id": "c",
+                  "text": "Rückenschmerzen beim Gehen"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: Dyspnoe und atemabhängige Thoraxschmerzen."
+            },
+            {
+              "id": "pf-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Welche Sofortmaßnahme hat die Pflegekraft eingeleitet?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Verabreichung von zwei Litern Sauerstoff per Nasenbrille"
+                },
+                {
+                  "id": "b",
+                  "text": "Sofortige Entlassung nach Hause"
+                },
+                {
+                  "id": "c",
+                  "text": "Gabe einer Schlaftablette"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Zwei Liter Sauerstoff per Nasenbrille verabreicht."
+            }
+          ],
+          "audio": {
+            "localFile": "ausbildung_pflege_01.mp3"
+          }
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Expertenstandard Sturz- und Dekubitusprophylaxe",
+          "instructions": "Hören Sie die Schulung zur Pflegedokumentation.",
+          "maxPlays": 1,
+          "audioUrl": "/audio/hoeren/ausbildung_pflege_02.mp3",
+          "script": [
+            {
+              "speaker": "Praxisanleiter",
+              "voice": "male",
+              "text": "Duale Ausbildung Pflegefachkraft. Modul 2: Expertenstandard Sturzprophylaxe und Dekubitusprävention. In deutschen Pflegeeinrichtungen ist die systematische Erfassung des individuellen Sturzrisikos gesetzlich vorgeschrieben. Bei immobilen Patienten führen wir alle zwei Stunden eine strukturierte Lagerung nach dem Dreißig-Grad-Schräglagerungsprinzip durch. Jede Maßnahme wird zeitnah in der elektronischen Pflegedokumentation erfasst, um Pflegequalität und forensische Absicherung zu gewährleisten."
+            }
+          ],
+          "questions": [
+            {
+              "id": "pf-h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Immobile Patienten werden alle zwei Stunden umgelagert.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: alle zwei Stunden nach 30-Grad-Prinzip (Richtig)."
+            },
+            {
+              "id": "pf-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Pflegemaßnahmen müssen in Deutschland nicht dokumentiert werden.",
+              "answer": "falsch",
+              "explanation": "Dokumentation ist gesetzlich vorgeschrieben. Falsch."
+            }
+          ],
+          "audio": {
+            "localFile": "ausbildung_pflege_02.mp3"
+          }
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 45,
+      "tasks": [
+        {
+          "id": "pf-s1",
+          "title": "Klinischer Pflegebericht: Dokumentation eines Sturzereignisses",
+          "register": "formell",
+          "instructions": "Verfassen Sie einen vollständigen Pflegebericht nach dem ISBAR-Prinzip über einen gestürzten Patienten.",
+          "situation": "Nachtdienst im Berliner Pflegeheim. Patient Herr Schmidt ist auf dem Weg zur Toilette gestürzt. Mind. 160 Wörter.",
+          "leitpunkte": [
+            "Identifikation des Bewohners und Uhrzeit des Vorfalls",
+            "Auffindesituation und erhobene Vitalwerte (RR, Puls, Pupillenreaktion)",
+            "Durchgeführte Erstmaßnahmen und ärztliche Konsultation",
+            "Maßnahmen zur zukünftigen Sturzvermeidung"
+          ],
+          "minWords": 160,
+          "recommendedMinutes": 45
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "pf-sp1",
+          "teil": 1,
+          "title": "Mündliche Prüfung: Patientengespräch & Aufklärungsdialog",
+          "instructions": "Führen Sie ein empathisches Gespräch mit einem Patienten vor einer geplanten Gastroskopie.",
+          "card": {
+            "heading": "Aufklärung Magenspiegelung",
+            "bullets": [
+              "Erklärung des Ablaufs in laiensicherem Deutsch",
+              "Nüchternheitsgebot ab 22:00 Uhr am Vorabend",
+              "Möglichkeit einer Sedierung (Kurznarkose mit Propofol)",
+              "Beantwortung von Fragen und Ängsten des Patienten"
+            ]
+          },
+          "examinerScript": "Guten Tag Pflegefachkraft. Ich habe große Angst vor dem Schlauch bei der Magenspiegelung. Tut das weh?",
+          "prepSeconds": 180,
+          "speakSeconds": 240
+        }
+      ]
+    }
+  }
+}

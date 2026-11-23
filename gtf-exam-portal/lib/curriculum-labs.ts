@@ -7,6 +7,17 @@ import type {
   WorkbookQuestion,
 } from "./types";
 import { GRAMMAR_PILLAR_FLASHCARD_DECKS } from "@/lib/flashcard-decks-data";
+import {
+  A1_EXPANSION_LABS,
+  A2_EXPANSION_LABS,
+  B1_EXPANSION_LABS,
+  B2_EXPANSION_LABS,
+} from "@/lib/curriculum-expansion";
+import {
+  HOEREN_LAB_SCRIPTS,
+  hoerenLabAudioUrl,
+  type HoerenLabScript,
+} from "@/lib/hoeren-lab-scripts";
 
 export interface CurriculumLabMeta {
   id: string;
@@ -25,6 +36,8 @@ export interface CurriculumLabMeta {
   grammarNotes?: GrammarNotes;
   readingPassage?: string;
   flashcards?: FlashcardDeckItem[];
+  /** Hörtext bound 1:1 to this lab ID (see lib/hoeren-lab-scripts.ts). Only for exam_hoeren labs. */
+  hoerenScript?: HoerenLabScript;
   questions: WorkbookQuestion[];
 }
 
@@ -61,7 +74,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Begrüßung", "Alphabet", "Herkunft", "Personalpronomen"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a1_hoeren_01.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-01-begruessung.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -150,7 +163,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Familie", "Possessivartikel", "Zahlen 1–100", "Familienstand"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a1_hoeren_01.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-02-familie.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -234,7 +247,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Supermarkt", "Preise & Euro", "Akkusativ", "Mengen"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a1_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-03-einkaufen.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -318,7 +331,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Wohnung Berlin", "Möbel", "Adjektive", "Zimmer"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a1_hoeren_02.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -402,7 +415,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Tagesablauf", "Uhrzeit", "Trennbare Verben", "Routine"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a1_hoeren_03.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-05-tagesablauf.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -486,7 +499,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Hobbys", "Modalverb können", "Vorlieben", "Sport"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a1_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -570,7 +583,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Restaurant", "Bestellung", "Speisekarte", "Höflichkeit"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a1_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-07-restaurant.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -654,7 +667,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Berufe", "Arbeitsplatz", "Endung -in", "Tätigkeiten"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a1_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -743,7 +756,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Körper", "Gesundheit", "Arzttermin", "Modalverb müssen"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a1_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-09-gesundheit.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -827,7 +840,7 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Berlin", "BVG & U-Bahn", "Wegbeschreibung", "Dativ"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a1_hoeren_03.mp3",
+    audioUrl: "/audio/hoeren/labs/a1-lab-10-stadt-orientierung.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -1039,7 +1052,10 @@ const A1_CORE_LABS_RAW: RawExamLabMeta[] = [
   },
 ];
 
-export const A1_CORE_LABS: CurriculumLabMeta[] = A1_CORE_LABS_RAW.map(normalizeExamLab);
+export const A1_CORE_LABS: CurriculumLabMeta[] = [
+  ...A1_CORE_LABS_RAW.map(normalizeExamLab),
+  ...A1_EXPANSION_LABS,
+];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LEVEL A2: 10 CORE EXAM LABS (HÖREN & LESEN)
@@ -1055,7 +1071,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Wegbeschreibung", "Wechselpräpositionen", "BVG", "Ortsangaben"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a2_hoeren_01.mp3",
+    audioUrl: "/audio/hoeren/labs/a2-lab-01-wegbeschreibung.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -1134,7 +1150,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Büro", "Telefonnotiz", "E-Mail", "Höflichkeit"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a2_hoeren_01.mp3",
+    audioUrl: "/audio/hoeren/labs/a2-lab-02-arbeit-berufsalltag.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -1218,7 +1234,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Reisen", "Perfekt Grammatik", "Deutsche Bahn", "Partizip II"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a2_hoeren_02.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -1302,7 +1318,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["WG-Suche", "Mietvertrag", "Nebenkosten", "Kaution"],
     pages: 4,
-    audioUrl: "/audio/hoeren/gtf-a2-hoeren-dialogue.mp3",
+    audioUrl: "/audio/hoeren/labs/a2-lab-04-wohnungssuche-berlin.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -1386,7 +1402,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Kleidung", "Adjektivdeklination", "Komparativ", "Wetter"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a2_hoeren_02.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -1470,7 +1486,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Kultur", "Feiertage", "Konnektoren", "Einladung"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a2_hoeren_03.mp3",
+    audioUrl: "/audio/hoeren/labs/a2-lab-06-kultur-veranstaltungen.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -1554,7 +1570,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Apotheke", "Ratschlag sollte", "Gesundheit", "Beipackzettel"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a2_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -1638,7 +1654,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Medien", "Internet", "Konnektoren", "Digitalisierung"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_a2_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/a2-lab-08-medien-nachrichten.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -1717,7 +1733,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Girokonto", "Bürgeramt", "Anmeldung", "IBAN"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a2_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -1801,7 +1817,7 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Duale Ausbildung", "Lebenslauf", "Futur I", "Karriere"],
     pages: 4,
-    audioUrl: "/audio/hoeren/a2_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/a2-lab-10-ausbildung-zukunft.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -2004,7 +2020,10 @@ const A2_CORE_LABS_RAW: RawExamLabMeta[] = [
   },
 ];
 
-export const A2_CORE_LABS: CurriculumLabMeta[] = A2_CORE_LABS_RAW.map(normalizeExamLab);
+export const A2_CORE_LABS: CurriculumLabMeta[] = [
+  ...A2_CORE_LABS_RAW.map(normalizeExamLab),
+  ...A2_EXPANSION_LABS,
+];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LEVEL B1: 10 EXAM-FOCUSED LABS (STRICTLY PRÜFUNGSTRAINING: HÖREN/LESEN/SCHREIBEN/SPRECHEN)
@@ -2020,7 +2039,7 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "GOETHE B1 FORMAT",
     topics: ["Hören Teil 1", "Durchsagen", "Detailverstehen", "Prüfungsmodus"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b1_hoeren_01.mp3",
+    audioUrl: "/audio/hoeren/labs/b1-lab-01-goethe-hoeren-teil1.mp3",
     skill: "hoeren",
     contentType: "exam_hoeren",
     module: "03-hoeren-lesen",
@@ -2116,7 +2135,7 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "TELC B1 INTERVIEW",
     topics: ["Hören Teil 2", "Interview", "Arbeitskultur", "Meinungen"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b1_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/b1-lab-02-telc-hoeren-alltag.mp3",
     skill: "hoeren",
     contentType: "exam_hoeren",
     module: "03-hoeren-lesen",
@@ -2404,7 +2423,7 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "AUDIO + 6 TASKS",
     topics: ["Hören Teil 3", "Vortrag", "Notizen", "Signalwörter"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b1_hoeren_03.mp3",
+    audioUrl: "/audio/hoeren/labs/b1-lab-05-hoeren-vortrag.mp3",
     skill: "hoeren",
     contentType: "exam_hoeren",
     module: "03-hoeren-lesen",
@@ -2691,7 +2710,7 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "SPRECHTRAINING B1",
     topics: ["Sprechen Teil 2", "Präsentation", "Redemittel", "Struktur"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b1_sprechen_examiner_sample.mp3",
+    audioUrl: "",
     skill: "sprechen",
     contentType: "exam_sprechen",
     module: "04-modelltests",
@@ -2791,7 +2810,7 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
     badge: "MÜNDLICHE DISKUSSION",
     topics: ["Sprechen Teil 3", "Planung", "Kompromiss", "Gegenargumente"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b1_hoeren_02.mp3",
+    audioUrl: "",
     skill: "sprechen",
     contentType: "exam_sprechen",
     module: "04-modelltests",
@@ -3113,6 +3132,7 @@ export const B1_CORE_LABS: CurriculumLabMeta[] = [
       },
     ],
   },
+  ...B1_EXPANSION_LABS,
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -3129,7 +3149,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "B2 BUSINESS GERMAN",
     topics: ["B2 Meeting", "Feedback", "Agile Standup", "Geschäftsdeutsch"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b2_hoeren_01.mp3",
+    audioUrl: "/audio/hoeren/labs/b2-lab-01-beruf-arbeitswelt.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -3213,7 +3233,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "DIN 5008 ANSCHREIBEN",
     topics: ["Bewerbung B2", "DIN 5008", "Anschreiben", "Qualifikationen"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b2_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -3302,7 +3322,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "JOB INTERVIEW SIM",
     topics: ["Vorstellungsgespräch", "Elevator Pitch", "Stärken & Schwächen", "Verhandlung"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b2_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/b2-lab-03-vorstellungsgespraech.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -3396,7 +3416,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "FACHVORTRAU B2",
     topics: ["Hören B2", "Betriebsrat", "Tarifvertrag", "Idiome"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b2_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/b2-lab-04-berufsbezogenes-hoeren.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -3485,7 +3505,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "WIRTSCHAFTSTEXT B2",
     topics: ["Wirtschaftsdeutsch", "Partizip I & II", "Passiversatz", "Konjunktur"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b2_hoeren_03.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -3573,7 +3593,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "B2 GESCHÄFTSBRIEF",
     topics: ["Geschäftskorrespondenz", "Mahnung", "Lieferverzug", "Rechtssicher"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b2_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -3662,7 +3682,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "B2 ARGUMENTATION",
     topics: ["Argumentation", "Debatte", "Konjunktiv II", "Rhetorik"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b2_hoeren_02.mp3",
+    audioUrl: "/audio/hoeren/labs/b2-lab-07-argumentation-debatte.mp3",
     skill: "hoeren",
     questions: [
       {
@@ -3746,7 +3766,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "STATISTIK B2",
     topics: ["Diagrammbeschreibung", "Prozente", "Trends", "Wirtschaftsberichte"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b2_hoeren_01.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -3830,7 +3850,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "ARBEITSVERTRAG B2",
     topics: ["Arbeitsrecht", "Arbeitsvertrag", "Probezeit", "Kündigungsschutz"],
     pages: 4,
-    audioUrl: "/audio/hoeren/b2_hoeren_02.mp3",
+    audioUrl: "",
     skill: "lesen",
     questions: [
       {
@@ -3919,7 +3939,7 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
     badge: "B2 GENERALPROBE",
     topics: ["B2 Generalprobe", "telc B2 Beruf", "Zeitlimit", "Bewertungsraster"],
     pages: 4,
-    audioUrl: "/audio/hoeren/daf_b2_hoeren_01.mp3",
+    audioUrl: "",
     skill: "allround",
     questions: [
       {
@@ -4190,7 +4210,10 @@ const B2_CORE_LABS_RAW: RawExamLabMeta[] = [
   },
 ];
 
-export const B2_CORE_LABS: CurriculumLabMeta[] = B2_CORE_LABS_RAW.map(normalizeExamLab);
+export const B2_CORE_LABS: CurriculumLabMeta[] = [
+  ...B2_CORE_LABS_RAW.map(normalizeExamLab),
+  ...B2_EXPANSION_LABS,
+];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DEDICATED PURE GRAMMAR PILLARS (contentType: "grammar", module: "02-grammar")
@@ -4638,6 +4661,29 @@ export function getGrammarPillarById(id: string): CurriculumLabMeta | null {
   return GRAMMAR_PILLARS_MAP.get(cleanId) || null;
 }
 
+/**
+ * Strict ID-based Hören audio binding.
+ * Every exam_hoeren lab plays ONLY `/audio/hoeren/labs/<lab.id>.mp3`, rendered from
+ * HOEREN_LAB_SCRIPTS[lab.id]. A lab without a registered script gets NO audio
+ * (never a borrowed/recycled track from another exercise).
+ */
+function bindHoerenLabAudio(lab: CurriculumLabMeta): void {
+  if (lab.contentType !== "exam_hoeren") return;
+  const script = HOEREN_LAB_SCRIPTS[lab.id];
+  if (script) {
+    lab.audioUrl = hoerenLabAudioUrl(lab.id);
+    lab.hoerenScript = script;
+  } else {
+    console.error(`[GTF Hören] No registered script for Hören lab "${lab.id}" — audio disabled to prevent a mismatch.`);
+    lab.audioUrl = "";
+    lab.hoerenScript = undefined;
+  }
+}
+
+for (const lab of [...A1_CORE_LABS, ...A2_CORE_LABS, ...B1_CORE_LABS, ...B2_CORE_LABS]) {
+  bindHoerenLabAudio(lab);
+}
+
 // Map of all 40 exam labs by ID (strictly Hören / Lesen / Schreiben / Sprechen / Modelltest)
 export const ALL_CORE_LABS: CurriculumLabMeta[] = [
   ...A1_CORE_LABS,
@@ -4735,6 +4781,7 @@ export function convertLabToWorkbook(lab: CurriculumLabMeta): Workbook {
     coverColor: isGrammar ? "#134074" : "#0D1017",
     topics: lab.topics,
     audioUrl: lab.contentType === "exam_hoeren" || lab.contentType === "exam_sprechen" ? lab.audioUrl : "",
+    hoerenTranscript: lab.contentType === "exam_hoeren" ? lab.hoerenScript?.turns : undefined,
     skill: lab.skill,
     grammarNotes: isGrammar ? lab.grammarNotes : undefined,
     readingPassage: !isGrammar ? lab.readingPassage : undefined,

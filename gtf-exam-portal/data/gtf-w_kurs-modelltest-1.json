@@ -274,12 +274,12 @@
           "title": "Hören Teil 1 — Aufnahmeprüfung W-Kurs Hörverstehen",
           "instructions": "Sie hören einen Fachausschnitt aus der Volkswirtschaftslehre.",
           "maxPlays": 2,
-          "audioUrl": "/audio/stk_w_kurs_01.mp3",
+          "audioUrl": "/audio/hoeren/stk_w_kurs_01.mp3",
           "script": [
             {
               "speaker": "Dozent VWL",
               "voice": "male",
-              "text": "Studienkolleg Aufnahmeprüfung W-Kurs. Hörverstehen: Volkswirtschaftslehre und Preisbildung. Auf einem vollkommenen Markt bildet sich der Gleichgewichtspreis im Schnittpunkt von Angebots- und Nachfragekurve. Die Preiselastizität der Nachfrage quantifiziert die prozentuale Veränderung der nachgefragten Menge in Reaktion auf eine Preisänderung."
+              "text": "Studienkolleg Aufnahmeprüfung W-Kurs. Hörverstehen: Volkswirtschaftslehre und Preisbildung. Auf einem vollkommenen Markt bildet sich der Gleichgewichtspreis im Schnittpunkt von Angebots- und Nachfragekurve. Die Preiselastizität der Nachfrage quantifiziert die prozentuale Veränderung der nachgefragten Menge in Reaktion auf eine einprozentige Preisänderung. Ist der Betrag der Elastizität größer als eins, reagieren die Konsumenten preiselastisch, was für die unternehmerische Preispolitik entscheidend ist."
             }
           ],
           "questions": [
@@ -325,19 +325,22 @@
               "answer": "b",
               "explanation": "Mengenänderung geteilt durch Preisänderung."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_w_kurs_01.mp3"
+          }
         },
         {
           "id": "hoeren-2",
           "title": "Hören Teil 2 — Kosten- und Leistungsrechnung",
           "instructions": "Hören Sie den Vorlesungsausschnitt zur Betriebswirtschaftslehre.",
           "maxPlays": 1,
-          "audioUrl": "/audio/stk_w_kurs_02.mp3",
+          "audioUrl": "/audio/hoeren/stk_w_kurs_02.mp3",
           "script": [
             {
               "speaker": "Dozentin BWL",
               "voice": "female",
-              "text": "Die Deckungsbeitragsrechnung unterscheidet strikt zwischen fixen und variablen Kostenbestandteilen. Am Break-Even-Point decken die gesamten Deckungsbeiträge exakt die fixen Gesamtkosten, sodass der operative Betriebsgewinn gleich null ist."
+              "text": "Studienkolleg W-Kurs. Vorlesung Betriebswirtschaftslehre: Kosten- und Leistungsrechnung. Die Deckungsbeitragsrechnung unterscheidet strikt zwischen fixen und variablen Kostenbestandteilen. Der Stückdeckungsbeitrag ergibt sich aus dem Verkaufspreis abzüglich der variablen Stückkosten. Am Break-Even-Point decken die gesamten Deckungsbeiträge exakt die fixen Gesamtkosten, sodass der operative Betriebsgewinn gleich null ist."
             }
           ],
           "questions": [
@@ -355,7 +358,10 @@
               "answer": "falsch",
               "explanation": "Variable Kosten verändern sich mit der Produktionsmenge. Falsch."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_w_kurs_02.mp3"
+          }
         }
       ]
     },

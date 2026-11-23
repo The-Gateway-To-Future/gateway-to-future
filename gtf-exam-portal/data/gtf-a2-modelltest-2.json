@@ -1,0 +1,490 @@
+{
+  "id": "gtf-a2-modelltest-2",
+  "level": "a2",
+  "title": "GTF A2 Modelltest 2 — Arbeitsalltag, Gesundheit & Reisen in Deutschland",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat A2 / telc Deutsch A2",
+  "version": "2026.11",
+  "productSlug": "a2-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 35,
+      "teile": [
+        {
+          "id": "a2m2-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Reisebericht & Praxismitteilung",
+          "instructions": "Lesen Sie die Texte und die Aufgaben 1 bis 5. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Wochenendausflug nach Dresden & Hausarztpraxis am Ostkreuz",
+          "source": "GTF Sprachakademie Berlin · A2 Modelltest 2",
+          "passage": "Text A — Kurzer Reisebericht:\nLetztes Wochenende bin ich mit zwei Kollegen aus Berlin mit dem Zug nach Dresden gefahren. Die Fahrt hat genau zwei Stunden gedauert. Weil wir die Fahrkarten schon drei Wochen vorher online gebucht hatten, waren die Tickets sehr günstig. Am Samstag haben wir die Altstadt besichtigt und abends im Restaurant gegessen. Am Sonntag hat es stark geregnet, deshalb sind wir in ein Technikmuseum gegangen und um 17:00 Uhr zurück nach Berlin gefahren.\n\nText B — Mitteilung der Hausarztpraxis:\nLiebe Patientinnen und Patienten, unsere Praxis bleibt vom 14. bis 18. Dezember wegen einer Fortbildung geschlossen. In dringenden Fällen vertritt uns Dr. Lindner in der Frankfurter Allee 42. Ab Montag, dem 21. Dezember, sind wir ab 08:00 Uhr wieder regulär für Sie erreichbar. Rezepte können Sie schon per E-Mail vorbestellen.",
+          "questions": [
+            {
+              "id": "a2m2-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Die Zugfahrt von Berlin nach Dresden hat zwei Stunden gedauert.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Die Fahrt hat genau zwei Stunden gedauert.“"
+            },
+            {
+              "id": "a2m2-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Sie haben die Zugtickets erst am Bahnhof direkt vor der Abfahrt gekauft.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Weil wir die Fahrkarten schon drei Wochen vorher online gebucht hatten...“"
+            },
+            {
+              "id": "a2m2-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Wegen des Regens am Sonntag haben sie ein Technikmuseum besucht.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Am Sonntag hat es stark geregnet, deshalb sind wir in ein Technikmuseum gegangen...“"
+            },
+            {
+              "id": "a2m2-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Hausarztpraxis ist eine Woche wegen Umbauarbeiten geschlossen.",
+              "answer": "falsch",
+              "explanation": "Die Praxis schließt wegen einer Fortbildung (training/weiterbildung), nicht wegen Umbau."
+            },
+            {
+              "id": "a2m2-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Patientinnen und Patienten können Rezepte bereits per E-Mail vorbestellen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Rezepte können Sie schon per E-Mail vorbestellen.“"
+            }
+          ]
+        },
+        {
+          "id": "a2m2-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Stellenanzeige & Volkshochschule",
+          "instructions": "Lesen Sie die Anzeigen und lösen Sie die Aufgaben 6 bis 9. Wählen Sie a, b oder c.",
+          "passageTitle": "Beruf & Weiterbildung in Berlin",
+          "source": "Berliner Arbeitsmarkt & VHS Info",
+          "passage": "Anzeige 1 — Teilzeitstelle im Café Sonnenblume (Charlottenburg):\nWir suchen ab sofort eine freundliche Servicekraft für 20 Stunden pro Woche (Montag bis Freitag, 08:00–12:00 Uhr). Deutschkenntnisse auf Niveau A2/B1 sind erforderlich. Erfahrung in der Gastronomie ist ein Plus, aber wir arbeiten Sie gern gründlich ein. Stundenlohn: 14,50 € plus Trinkgeld.\n\nAnzeige 2 — Volkshochschule (VHS) Computerkurs für Einsteiger:\nLernen Sie in sechs Abenden (immer mittwochs 18:30–20:30 Uhr) den sicheren Umgang mit E-Mail, Tabellenkalkulation und Online-Bewerbungen. Kursgebühr: 65 €, ermäßigt 38 € für Auszubildende und Studierende. Laptops stehen im Kursraum kostenlos bereit.",
+          "questions": [
+            {
+              "id": "a2m2-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Zu welchen Zeiten arbeitet man im Café Sonnenblume?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Nur am Wochenende abends."
+                },
+                {
+                  "id": "b",
+                  "text": "Montag bis Freitag vormittags."
+                },
+                {
+                  "id": "c",
+                  "text": "40 Stunden pro Woche in Nachtschicht."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Montag bis Freitag, 08:00–12:00 Uhr“ (20 Stunden Teilzeit vormittags)."
+            },
+            {
+              "id": "a2m2-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Muss man für die Stelle im Café schon Berufserfahrung haben?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Nein, man wird gründlich eingearbeitet."
+                },
+                {
+                  "id": "b",
+                  "text": "Ja, mindestens fünf Jahre."
+                },
+                {
+                  "id": "c",
+                  "text": "Ja, man braucht ein Universitätsdiplom."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „Erfahrung ... ist ein Plus, aber wir arbeiten Sie gern gründlich ein.“"
+            },
+            {
+              "id": "a2m2-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Wie viel bezahlen Auszubildende für den VHS-Computerkurs?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "65 Euro"
+                },
+                {
+                  "id": "b",
+                  "text": "38 Euro"
+                },
+                {
+                  "id": "c",
+                  "text": "Der Kurs ist komplett kostenlos."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „ermäßigt 38 € für Auszubildende und Studierende.“"
+            },
+            {
+              "id": "a2m2-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Müssen die Teilnehmenden einen eigenen Laptop zum VHS-Kurs mitbringen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Ja, unbedingt."
+                },
+                {
+                  "id": "b",
+                  "text": "Nein, Laptops sind im Kursraum kostenlos vorhanden."
+                },
+                {
+                  "id": "c",
+                  "text": "Nur am ersten Abend."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Laptops stehen im Kursraum kostenlos bereit.“"
+            }
+          ]
+        },
+        {
+          "id": "a2m2-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine — Urlaubsantrag im Büro",
+          "instructions": "Wählen Sie für jede Lücke 10–15 das grammatikalisch richtige Wort a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrter Herr Hoffmann,\n\nich möchte gern vom 10. bis zum 14. August Urlaub {{10}}, weil meine Eltern mich aus Indien besuchen {{11}}. Ich habe meine Aufgaben bereits mit meiner Kollegin {{12}}. Sie übernimmt in dieser Woche meine Vertretung, {{13}} es keine Verzögerungen gibt. Bitte geben Sie mir kurz Bescheid, {{14}} mein Antrag genehmigt werden kann.\n\nVielen Dank im {{15}}!\nMit freundlichen Grüßen,\nMeera Nair",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "nehmen"
+                },
+                {
+                  "id": "b",
+                  "text": "nimmt"
+                },
+                {
+                  "id": "c",
+                  "text": "genommen"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Nach Modalverb „möchte“ steht der Infinitiv am Satzende: „Urlaub nehmen“."
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "werden"
+                },
+                {
+                  "id": "b",
+                  "text": "wird"
+                },
+                {
+                  "id": "c",
+                  "text": "wurde"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Subjekt „meine Eltern“ (Plural) + Futur I → „besuchen werden“."
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "besprechen"
+                },
+                {
+                  "id": "b",
+                  "text": "besprochen"
+                },
+                {
+                  "id": "c",
+                  "text": "gesprochen"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Perfekt von „besprechen“ (untrennbar, ohne ge-): „habe ... besprochen“."
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "damit"
+                },
+                {
+                  "id": "b",
+                  "text": "trotzdem"
+                },
+                {
+                  "id": "c",
+                  "text": "aber"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Finalsatz (Zweck/Ziel) mit Verb am Ende verlangt „damit“."
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "ob"
+                },
+                {
+                  "id": "b",
+                  "text": "weil"
+                },
+                {
+                  "id": "c",
+                  "text": "als"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Indirekte Ja/Nein-Frage nach „Bescheid geben“ wird mit „ob“ eingeleitet."
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Voraus"
+                },
+                {
+                  "id": "b",
+                  "text": "Anfang"
+                },
+                {
+                  "id": "c",
+                  "text": "Ende"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste formelle Schlussformel: „Vielen Dank im Voraus!“"
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 30,
+      "teile": [
+        {
+          "id": "a2m2-hoeren-1",
+          "title": "Hören Teil 1 — Büro-Nachricht & Terminabsprache",
+          "instructions": "Hören Sie die Aufnahme und beantworten Sie die Fragen 1 bis 3 (a, b oder c).",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-a2-modelltest-2/a2m2-hoeren-1.mp3",
+          "audio": {
+            "localFile": "exams/gtf-a2-modelltest-2/a2m2-hoeren-1.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Kollegin Sandra",
+              "voice": "female",
+              "text": "Hallo, hier ist Sandra aus der Personalabteilung. Unser Teammeeting am Donnerstag findet nicht in Raum 204, sondern im Konferenzraum im dritten Stock statt. Außerdem starten wir dreißig Minuten später, also erst um 10:30 Uhr. Bringen Sie bitte Ihren Laptop mit."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a2m2-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Wo findet das Teammeeting am Donnerstag statt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "In Raum 204."
+                },
+                {
+                  "id": "b",
+                  "text": "Im Konferenzraum im dritten Stock."
+                },
+                {
+                  "id": "c",
+                  "text": "In der Kantine."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Sandra sagt: „nicht in Raum 204, sondern im Konferenzraum im dritten Stock“."
+            },
+            {
+              "id": "a2m2-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Um wie viel Uhr beginnt das Meeting jetzt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Um 10:00 Uhr."
+                },
+                {
+                  "id": "b",
+                  "text": "Um 10:30 Uhr."
+                },
+                {
+                  "id": "c",
+                  "text": "Um 11:00 Uhr."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Es startet dreißig Minuten später, also um 10:30 Uhr."
+            },
+            {
+              "id": "a2m2-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Was soll man zum Meeting mitbringen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Den eigenen Laptop."
+                },
+                {
+                  "id": "b",
+                  "text": "Einen Ausdruck des Mietvertrags."
+                },
+                {
+                  "id": "c",
+                  "text": "Frühstück für alle."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Am Ende sagt sie: „Bringen Sie bitte Ihren Laptop mit.“"
+            }
+          ]
+        },
+        {
+          "id": "a2m2-hoeren-2",
+          "title": "Hören Teil 2 — Wohnungsbesichtigung & Hausordnung",
+          "instructions": "Hören Sie den Dialog und entscheiden Sie: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-a2-modelltest-2/a2m2-hoeren-2.mp3",
+          "audio": {
+            "localFile": "exams/gtf-a2-modelltest-2/a2m2-hoeren-2.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Vermieter",
+              "voice": "male",
+              "text": "Die Warmmiete für das WG-Zimmer in Prenzlauer Berg beträgt 580 Euro inklusive Strom, Heizung und Internet. Die Kaution liegt bei zwei Monatsmieten. Im Innenhof gibt es einen abgeschlossenen Fahrradständer, aber im Haus darf man nicht rauchen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a2m2-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Strom, Heizung und Internet sind in den 580 Euro Warmmiete enthalten.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: „580 Euro inklusive Strom, Heizung und Internet.“"
+            },
+            {
+              "id": "a2m2-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Man muss keine Kaution bezahlen.",
+              "answer": "falsch",
+              "explanation": "Die Kaution beträgt zwei Monatsmieten."
+            },
+            {
+              "id": "a2m2-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Fahrräder können im abgeschlossenen Innenhof abgestellt werden.",
+              "answer": "richtig",
+              "explanation": "Es gibt einen abgeschlossenen Fahrradständer im Innenhof."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 30,
+      "tasks": [
+        {
+          "id": "a2m2-schreiben-1",
+          "title": "Schreiben Teil 1 — E-Mail an den Vermieter (Reparatur)",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine höfliche E-Mail an Ihren Vermieter (mindestens 45 Wörter). Bearbeiten Sie alle drei Leitpunkte.",
+          "situation": "In Ihrer Wohnung funktioniert die Heizung im Wohnzimmer seit gestern Abend nicht mehr.",
+          "leitpunkte": [
+            "Beschreiben Sie das Problem genau (seit wann, welches Zimmer).",
+            "Bitten Sie um einen schnellen Termin mit einem Handwerker.",
+            "Nennen Sie zwei Zeiten, zu denen Sie zu Hause sind."
+          ],
+          "minWords": 45,
+          "recommendedMinutes": 15
+        },
+        {
+          "id": "a2m2-schreiben-2",
+          "title": "Schreiben Teil 2 — Nachricht an eine Kollegin nach dem Umzug",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine freundliche Nachricht an Ihre Kollegin Lena (mindestens 45 Wörter).",
+          "situation": "Sie sind letzte Woche in eine neue Wohnung in Berlin umgezogen und möchten Lena einladen.",
+          "leitpunkte": [
+            "Beschreiben Sie kurz Ihre neue Wohnung (Lage, Zimmer).",
+            "Laden Sie Lena am Wochenende zum Abendessen ein.",
+            "Fragen Sie, ob sie vegetarisch isst oder Allergien hat."
+          ],
+          "minWords": 45,
+          "recommendedMinutes": 15
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "a2m2-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Gemeinsam einen Wochenendausflug planen",
+          "instructions": "Machen Sie Vorschläge und reagieren Sie auf die Ideen Ihres Partners.",
+          "card": {
+            "heading": "Wochenendausflug in der Nähe von Berlin",
+            "subheading": "Nutzen Sie Redemittel wie „Wie wäre es mit ...?“, „Ich schlage vor, dass ...“.",
+            "bullets": [
+              "Wohin fahren? (Potsdam, Wannsee oder Spreewald)",
+              "Wann losfahren und wie lange bleiben?",
+              "Verkehrsmittel (S-Bahn, Regionalbahn oder Fahrrad)",
+              "Was mitnehmen? (Essen, Getränke, Regenjacke)"
+            ]
+          },
+          "examinerScript": "Hallo! Wir möchten am kommenden Samstag zusammen einen kleinen Ausflug machen. Wohin sollen wir fahren und wie kommen wir am besten dorthin?",
+          "examinerAudio": {
+            "localFile": "gtf-a2-sprechen-prompt.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 60
+        },
+        {
+          "id": "a2m2-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Über Alltag & Beruf sprechen",
+          "instructions": "Berichten Sie zusammenhängend über Ihren typischen Tag und Ihre Pläne in Deutschland.",
+          "card": {
+            "heading": "Mein Alltag & meine beruflichen Ziele",
+            "subheading": "Verwenden Sie auch Sätze im Perfekt und mit „weil“.",
+            "bullets": [
+              "Wie sieht ein typischer Werktag bei Ihnen aus?",
+              "Was haben Sie gestern nach der Arbeit oder dem Kurs gemacht?",
+              "Warum lernen Sie Deutsch und was möchten Sie nächstes Jahr erreichen?"
+            ]
+          },
+          "examinerScript": "Erzählen Sie mir bitte etwas über Ihren Alltag: Was machen Sie unter der Woche, und was sind Ihre Pläne für das nächste Jahr?",
+          "examinerAudio": {
+            "localFile": "gtf-a2-sprechen-prompt.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 60
+        }
+      ]
+    }
+  }
+}

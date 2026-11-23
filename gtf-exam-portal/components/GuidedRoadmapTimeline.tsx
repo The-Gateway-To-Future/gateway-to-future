@@ -241,14 +241,8 @@ export function GuidedRoadmapTimeline({
       Boolean(wb.audioUrl) ||
       wb.title.toLowerCase().includes("hören") ||
       wb.id.toLowerCase().includes("hoeren");
-    const rawAudioUrl = isHoeren
-      ? wb.audioUrl ||
-        (wb.divisionId === "fachsprache_medizin"
-          ? "/audio/hoeren/ausbildung_pflege_01.mp3"
-          : wb.id.includes("hoeren-02")
-          ? `/audio/hoeren/daf_${wb.level.toLowerCase()}_hoeren_02.mp3`
-          : `/audio/hoeren/daf_${wb.level.toLowerCase()}_hoeren_01.mp3`)
-      : "";
+    // Only the workbook's own bound audioUrl — never a level/number-based guess.
+    const rawAudioUrl = isHoeren ? wb.audioUrl || "" : "";
     const resolvedAudioSrc = rawAudioUrl
       ? rawAudioUrl.startsWith("/")
         ? rawAudioUrl
@@ -371,14 +365,14 @@ export function GuidedRoadmapTimeline({
               type="button"
               disabled={savingStep}
               onClick={() => void completeStepsAndAdvance([1], 2)}
-              className="inline-flex items-center gap-2 rounded-2xl bg-[#134074] px-5 py-2.5 text-xs font-black text-white shadow-sm hover:bg-[#0A1628] transition disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 transition disabled:opacity-60 cursor-pointer"
             >
               <span>
                 {isStep1Completed
                   ? "Step 1 Completed · Open Step 2: Grammar Foundations"
                   : "Mark Complete & Continue to Step 2: Grammar Foundations"}
               </span>
-              <ArrowRight className="h-3.5 w-3.5 text-[#FFD166]" />
+              <ArrowRight className="h-3.5 w-3.5 text-white" />
             </button>
           </div>
         </div>
@@ -401,11 +395,11 @@ export function GuidedRoadmapTimeline({
       content: isStep2Locked ? (
         <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#0A1628] text-[#FFD166]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-100 text-amber-800">
               <Lock className="h-5 w-5" />
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-black text-[#0A1628]">
+              <p className="text-sm font-bold text-slate-900">
                 Step 2 Locked Until Step 1 Is Completed
               </p>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -416,7 +410,7 @@ export function GuidedRoadmapTimeline({
           <button
             type="button"
             onClick={() => setActiveStep(1)}
-            className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-[#0A1628] px-4 py-2.5 text-xs font-black text-[#FFD166] hover:bg-[#134074] transition"
+            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-slate-800 transition cursor-pointer"
           >
             <ArrowRight className="h-3.5 w-3.5" />
             <span>Go to Step 1</span>
@@ -447,14 +441,14 @@ export function GuidedRoadmapTimeline({
               type="button"
               disabled={savingStep}
               onClick={() => void completeStepsAndAdvance([1, 2], 3)}
-              className="inline-flex items-center gap-2 rounded-2xl bg-[#134074] px-5 py-2.5 text-xs font-black text-white shadow-sm hover:bg-[#0A1628] transition disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 transition disabled:opacity-60 cursor-pointer"
             >
               <span>
                 {isStep2Completed
                   ? "Step 2 Completed · Open Step 3: Hören & Lesen Practice"
                   : "Mark Complete & Continue to Step 3: Hören & Lesen Practice"}
               </span>
-              <ArrowRight className="h-3.5 w-3.5 text-[#FFD166]" />
+              <ArrowRight className="h-3.5 w-3.5 text-white" />
             </button>
           </div>
         </div>
@@ -477,11 +471,11 @@ export function GuidedRoadmapTimeline({
       content: isStep3Locked ? (
         <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#0A1628] text-[#FFD166]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-100 text-amber-800">
               <Lock className="h-5 w-5" />
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-black text-[#0A1628]">
+              <p className="text-sm font-bold text-slate-900">
                 Step 3 Locked Until Steps 1 &amp; 2 Are Completed
               </p>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -492,7 +486,7 @@ export function GuidedRoadmapTimeline({
           <button
             type="button"
             onClick={() => setActiveStep(isStep1Completed ? 2 : 1)}
-            className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-[#0A1628] px-4 py-2.5 text-xs font-black text-[#FFD166] hover:bg-[#134074] transition"
+            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-slate-800 transition cursor-pointer"
           >
             <ArrowRight className="h-3.5 w-3.5" />
             <span>{isStep1Completed ? "Go to Step 2" : "Go to Step 1"}</span>
@@ -574,7 +568,7 @@ export function GuidedRoadmapTimeline({
                 label: "1. Lesen",
                 sub: "Timed Reading & Gaps",
                 icon: BookOpen,
-                tone: "bg-sky-100 text-[#134074]",
+                tone: "bg-sky-50 text-sky-800 border border-sky-200",
               },
               {
                 key: "hoeren",
@@ -614,7 +608,7 @@ export function GuidedRoadmapTimeline({
                       <p className="text-[11px] text-slate-500">{mod.sub}</p>
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-xs font-extrabold text-[#134074] group-hover:translate-x-0.5 transition">
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-900 group-hover:translate-x-0.5 transition">
                     <span>Start Modelltest</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </span>
@@ -626,11 +620,11 @@ export function GuidedRoadmapTimeline({
       ) : (
         <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#0A1628] text-[#FFD166]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-100 text-amber-800">
               <Lock className="h-5 w-5" />
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-black text-[#0A1628]">
+              <p className="text-sm font-bold text-slate-900">
                 Modelltests Locked Until Previous Steps Are Completed
               </p>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -642,7 +636,7 @@ export function GuidedRoadmapTimeline({
             type="button"
             disabled={savingStep}
             onClick={() => void completeStepsAndAdvance([1, 2, 3], 4)}
-            className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-[#0A1628] px-4 py-2.5 text-xs font-black text-[#FFD166] hover:bg-[#134074] transition disabled:opacity-60"
+            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-slate-800 transition disabled:opacity-60 cursor-pointer"
           >
             <Unlock className="h-3.5 w-3.5" />
             <span>Complete Previous Steps &amp; Unlock</span>
@@ -656,7 +650,7 @@ export function GuidedRoadmapTimeline({
     <section id="guided-learning-roadmap" className="scroll-mt-20 space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0A1628] text-[#FFD166] px-3 py-1 text-[10px] font-black uppercase tracking-wider">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 text-slate-700 px-3 py-1 text-[10px] font-bold uppercase tracking-wider">
             {trackLabel} Guided Vertical Path · Sequential Mastery
           </span>
           <h3 className="mt-2 text-lg sm:text-xl font-black text-slate-900">

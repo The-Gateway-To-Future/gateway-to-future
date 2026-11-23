@@ -274,12 +274,12 @@
           "title": "Hören Teil 1 — Aufnahmeprüfung G-Kurs Hörverstehen",
           "instructions": "Sie hören einen Fachausschnitt aus der deutschen Verfassungsgeschichte.",
           "maxPlays": 2,
-          "audioUrl": "/audio/stk_g_kurs_01.mp3",
+          "audioUrl": "/audio/hoeren/stk_g_kurs_01.mp3",
           "script": [
             {
               "speaker": "Dozentin Geschichte",
               "voice": "female",
-              "text": "Studienkolleg Aufnahmeprüfung G-Kurs. Hörverstehen: Neueste Deutsche Geschichte und Verfassungsrecht. Das Grundgesetz für die Bundesrepublik Deutschland wurde am 23. Mai 1949 verkündet. Artikel 1 Absatz 1 setzt mit dem Satz 'Die Würde des Menschen ist unantastbar' das fundamentale Leitprinzip."
+              "text": "Studienkolleg Aufnahmeprüfung G-Kurs. Hörverstehen: Neueste Deutsche Geschichte und Verfassungsrecht. Das Grundgesetz für die Bundesrepublik Deutschland wurde am dreiundzwanzigsten Mai neunzehnhundertneunundvierzig vom Parlamentarischen Rat verkündet. Artikel eins Absatz eins setzt mit dem Satz 'Die Würde des Menschen ist unantastbar' das fundamentale Leitprinzip der deutschen Rechtsordnung. Über die sogenannte Ewigkeitsklausel in Artikel neunundsiebzig Absatz drei sind die Grundprinzipien der Demokratie, des Rechtsstaats und des Föderalismus jeder Verfassungsänderung entzogen."
             }
           ],
           "questions": [
@@ -325,19 +325,22 @@
               "answer": "c",
               "explanation": "23. Mai 1949."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_g_kurs_01.mp3"
+          }
         },
         {
           "id": "hoeren-2",
           "title": "Hören Teil 2 — Deutsche Literaturgeschichte",
           "instructions": "Hören Sie den Vorlesungsausschnitt zur Epoche der Weimarer Klassik.",
           "maxPlays": 1,
-          "audioUrl": "/audio/stk_g_kurs_02.mp3",
+          "audioUrl": "/audio/hoeren/stk_g_kurs_02.mp3",
           "script": [
             {
               "speaker": "Dozent Literatur",
               "voice": "male",
-              "text": "Die Weimarer Klassik, geprägt durch das Zusammenwirken von Johann Wolfgang von Goethe und Friedrich Schiller, strebte nach sittlicher Harmonie, Humanität und formaler Ausgewogenheit."
+              "text": "Studienkolleg G-Kurs. Deutsche Literaturgeschichte: Weimarer Klassik und Romantik. Die Weimarer Klassik, geprägt durch das Zusammenwirken von Johann Wolfgang von Goethe und Friedrich Schiller, strebte nach sittlicher Harmonie, Humanität und formaler Ausgewogenheit. Die darauffolgende Epoche der Romantik wandte sich gegen den reinen Rationalismus der Aufklärung und stellte Fantasie, Gefühl und die Sehnsucht nach dem Unendlichen ins Zentrum der Dichtung."
             }
           ],
           "questions": [
@@ -355,7 +358,10 @@
               "answer": "falsch",
               "explanation": "Sie strebte nach sittlicher Harmonie und Humanität. Falsch."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_g_kurs_02.mp3"
+          }
         }
       ]
     },

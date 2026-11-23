@@ -1,0 +1,503 @@
+{
+  "id": "gtf-a1-modelltest-2",
+  "level": "a1",
+  "title": "GTF A1 Start Deutsch Modelltest 2 — Verkehr, Einkaufen & Freizeit in Berlin",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat A1 / telc Deutsch A1",
+  "version": "2026.11",
+  "productSlug": "a1-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 45,
+      "teile": [
+        {
+          "id": "a1m2-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Kurze Nachrichten aus dem Alltag",
+          "instructions": "Lesen Sie die beiden kurzen Nachrichten und die Aufgaben 1 bis 5. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Nachrichten: Sprachkurs-Ausflug & Paket beim Nachbarn",
+          "source": "GTF Sprachakademie Berlin · A1 Modelltest 2",
+          "passage": "Hallo Ananya,\n\nam Sonntag fährt unsere Deutschklasse mit der S-Bahn nach Potsdam. Wir treffen uns um 09:30 Uhr am Berliner Hauptbahnhof vor der Bäckerei im Erdgeschoss. Jeder bringt bitte sein Deutschlandticket oder eine Fahrkarte für die Tarifzone ABC mit. Bei Regen besuchen wir zuerst ein Museum und trinken danach zusammen Kaffee.\n\nBis Sonntag!\nJonas\n\n---\n\nLiebe Frau Patel,\n\nich habe heute Vormittag ein Paket für Sie angenommen, weil Sie nicht zu Hause waren. Es steht bei mir im zweiten Stock links (Familie Weber). Ich bin heute ab 18:30 Uhr wieder daheim. Klingeln Sie einfach kurz, wenn Sie Zeit haben.\n\nViele Grüße,\nThomas Weber",
+          "questions": [
+            {
+              "id": "a1m2-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Die Deutschklasse fährt am Sonntag mit dem Bus nach Potsdam.",
+              "answer": "falsch",
+              "explanation": "Im Text steht: „am Sonntag fährt unsere Deutschklasse mit der S-Bahn nach Potsdam.“ — S-Bahn se jaa rahe hain, bus se nahi."
+            },
+            {
+              "id": "a1m2-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Der Treffpunkt ist um 09:30 Uhr vor einer Bäckerei im Hauptbahnhof.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Wir treffen uns um 09:30 Uhr am Berliner Hauptbahnhof vor der Bäckerei im Erdgeschoss.“"
+            },
+            {
+              "id": "a1m2-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Wenn es regnet, wird der Ausflug komplett abgesagt.",
+              "answer": "falsch",
+              "explanation": "Bei Regen besuchen sie zuerst ein Museum und trinken danach Kaffee — Ausflug cancel nahi ho raha."
+            },
+            {
+              "id": "a1m2-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Herr Weber hat ein Paket für Frau Patel entgegengenommen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „ich habe heute Vormittag ein Paket für Sie angenommen...“"
+            },
+            {
+              "id": "a1m2-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Frau Patel kann das Paket schon um 14:00 Uhr bei Herrn Weber abholen.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Ich bin heute ab 18:30 Uhr wieder daheim.“ — Shaam 18:30 ke baad hi mil sakte hain."
+            }
+          ]
+        },
+        {
+          "id": "a1m2-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Schilder, Öffnungszeiten & Stadtinfos",
+          "instructions": "Lesen Sie die Informationen und die Aufgaben 6 bis 9. Wählen Sie jeweils a, b oder c.",
+          "passageTitle": "Hinweise: Stadtbibliothek, Wochenmarkt & Apotheke",
+          "source": "Berliner Alltagsinformationen",
+          "passage": "Info 1 — Stadtbibliothek Berlin-Neukölln:\nÖffnungszeiten: Montag bis Freitag 10:00–19:00 Uhr, Samstag 10:00–14:00 Uhr. Ausleihe von Büchern und Hörbüchern ist mit dem Bibliotheksausweis für Studierende kostenlos. Kostenloses WLAN im Lesesaal.\n\nInfo 2 — Wochenmarkt am Maybachufer:\nImmer dienstags und freitags von 11:00 bis 18:30 Uhr. Frisches Gemüse, Obst, Brot und Gewürze direkt von regionalen Händlern. Viele Stände akzeptieren nur Bargeld.\n\nInfo 3 — Notdienst-Apotheke:\nSonntags hat die Bahnhof-Apotheke am Alexanderplatz von 08:00 bis 22:00 Uhr geöffnet. Bitte bringen Sie Ihr Rezept vom Arzt mit.",
+          "questions": [
+            {
+              "id": "a1m2-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Wann ist die Stadtbibliothek am Samstag geöffnet?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Von 10:00 bis 19:00 Uhr."
+                },
+                {
+                  "id": "b",
+                  "text": "Von 10:00 bis 14:00 Uhr."
+                },
+                {
+                  "id": "c",
+                  "text": "Am Samstag ist geschlossen."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Samstag 10:00–14:00 Uhr.“ (Lösung b)."
+            },
+            {
+              "id": "a1m2-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Was gilt für Studierende in der Stadtbibliothek?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Ausleihe kostet 25 Euro im Monat."
+                },
+                {
+                  "id": "b",
+                  "text": "Es gibt kein WLAN im Lesesaal."
+                },
+                {
+                  "id": "c",
+                  "text": "Mit Bibliotheksausweis ist die Ausleihe kostenlos."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „Ausleihe ... ist mit dem Bibliotheksausweis für Studierende kostenlos.“"
+            },
+            {
+              "id": "a1m2-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Was sollte man auf dem Wochenmarkt am Maybachufer mitnehmen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Bargeld, weil viele Stände keine Karte nehmen."
+                },
+                {
+                  "id": "b",
+                  "text": "Einen Reisepass für die Anmeldung."
+                },
+                {
+                  "id": "c",
+                  "text": "Ein ärztliches Rezept."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „Viele Stände akzeptieren nur Bargeld.“ — Cash saath rakhna zaroori hai."
+            },
+            {
+              "id": "a1m2-l2-q9",
+              "type": "mcq",
+              "prompt": "9. An welchen Tagen findet der Wochenmarkt statt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Montags und mittwochs."
+                },
+                {
+                  "id": "b",
+                  "text": "Dienstags und freitags."
+                },
+                {
+                  "id": "c",
+                  "text": "Nur am Sonntag."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Immer dienstags und freitags von 11:00 bis 18:30 Uhr.“"
+            }
+          ]
+        },
+        {
+          "id": "a1m2-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine — E-Mail wegen eines Termins",
+          "instructions": "Wählen Sie für jede Lücke 10–14 das passende Wort a, b oder c.",
+          "mode": "select",
+          "text": "Guten Tag Frau Klein,\n\nich habe {{10}} Mittwoch um 15:00 Uhr einen Termin in Ihrer Praxis. Leider {{11}} ich heute nicht kommen, denn ich habe Fieber. Können wir den Termin {{12}} nächste Woche verschieben? Am Montag Vormittag habe ich {{13}} Zeit.\n\nVielen Dank und {{14}} Grüße,\nRohan Mehta",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "am"
+                },
+                {
+                  "id": "b",
+                  "text": "um"
+                },
+                {
+                  "id": "c",
+                  "text": "im"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Vor Wochentagen steht immer „am“ (am Mittwoch)."
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "können"
+                },
+                {
+                  "id": "b",
+                  "text": "kann"
+                },
+                {
+                  "id": "c",
+                  "text": "kannst"
+                }
+              ],
+              "answer": "b",
+              "explanation": "1. Person Singular von „können“ lautet „ich kann“."
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "auf"
+                },
+                {
+                  "id": "b",
+                  "text": "mit"
+                },
+                {
+                  "id": "c",
+                  "text": "aus"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Verbindung: „einen Termin auf [Tag/Woche] verschieben“."
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "viel"
+                },
+                {
+                  "id": "b",
+                  "text": "vielen"
+                },
+                {
+                  "id": "c",
+                  "text": "vieler"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Vor unzählbaren Nomen wie „Zeit“ bleibt „viel“ unverändert: „viel Zeit“."
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "freundlich"
+                },
+                {
+                  "id": "b",
+                  "text": "freundliche"
+                },
+                {
+                  "id": "c",
+                  "text": "freundlichen"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Ohne Artikel im Akkusativ Plural heißt es „freundliche Grüße“ (mit „Mit“ wäre es Dativ: „Mit freundlichen Grüßen“)."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 20,
+      "teile": [
+        {
+          "id": "a1m2-hoeren-1",
+          "title": "Hören Teil 1 — Durchsagen am Bahnhof & Fahrplan",
+          "instructions": "Hören Sie die Aufnahme und lösen Sie die Aufgaben 1 bis 3. Wählen Sie a, b oder c.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-a1-modelltest-2/a1m2-hoeren-1.mp3",
+          "audio": {
+            "localFile": "exams/gtf-a1-modelltest-2/a1m2-hoeren-1.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Bahnhofsdurchsage",
+              "voice": "female",
+              "text": "Achtung, Gleisänderung am Berliner Hauptbahnhof: Der Regionalexpress RE 1 nach Potsdam fährt heute nicht von Gleis 12, sondern von Gleis 14 ab. Die Abfahrt verzögert sich um zehn Minuten auf 11:25 Uhr."
+            },
+            {
+              "speaker": "Schaltermitarbeiter",
+              "voice": "male",
+              "text": "Guten Tag! Eine Einzelfahrkarte Berlin AB kostet 3 Euro 50 und gilt zwei Stunden in eine Richtung. Vergessen Sie nicht, das Ticket vor dem Einsteigen am gelben Automaten zu entwerten."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a1m2-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Von welchem Gleis fährt der Zug heute ab?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Gleis 12"
+                },
+                {
+                  "id": "b",
+                  "text": "Gleis 14"
+                },
+                {
+                  "id": "c",
+                  "text": "Gleis 4"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Wegen der Gleisänderung fährt der Zug von Gleis 14 ab."
+            },
+            {
+              "id": "a1m2-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wann fährt der Zug nun ab?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Um 11:15 Uhr"
+                },
+                {
+                  "id": "b",
+                  "text": "Um 11:25 Uhr"
+                },
+                {
+                  "id": "c",
+                  "text": "Um 12:10 Uhr"
+                }
+              ],
+              "answer": "b",
+              "explanation": "10 Minuten Verspätung → Abfahrt um 11:25 Uhr."
+            },
+            {
+              "id": "a1m2-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Was muss man mit der Einzelfahrkarte vor dem Einsteigen tun?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Am gelben Automaten entwerten."
+                },
+                {
+                  "id": "b",
+                  "text": "Per Post abschicken."
+                },
+                {
+                  "id": "c",
+                  "text": "Dem Busfahrer schenken."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Einzelfahrkarten müssen vor der Fahrt entwertet (abgestempelt) werden."
+            }
+          ]
+        },
+        {
+          "id": "a1m2-hoeren-2",
+          "title": "Hören Teil 2 — Einkauf in der Bäckerei & Arzttermin",
+          "instructions": "Hören Sie die kurzen Alltagsdialoge und wählen Sie: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-a1-modelltest-2/a1m2-hoeren-2.mp3",
+          "audio": {
+            "localFile": "exams/gtf-a1-modelltest-2/a1m2-hoeren-2.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Kundin",
+              "voice": "female",
+              "text": "Guten Morgen! Ich hätte gern zwei Vollkornbrötchen und ein Stück Apfelkuchen zum Mitnehmen. Kann ich mit Karte zahlen?"
+            },
+            {
+              "speaker": "Verkäufer",
+              "voice": "male",
+              "text": "Sehr gern! Das macht zusammen 5 Euro 40. Kartenzahlung ist ab 5 Euro möglich, also passt das genau."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a1m2-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Kundin bestellt zwei Vollkornbrötchen und ein Stück Apfelkuchen.",
+              "answer": "richtig",
+              "explanation": "Genau diese Bestellung nennt die Kundin zu Beginn des Dialogs."
+            },
+            {
+              "id": "a1m2-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Die Kundin möchte den Kuchen direkt im Café essen.",
+              "answer": "falsch",
+              "explanation": "Sie sagt „zum Mitnehmen“ (takeaway), nicht vor Ort."
+            },
+            {
+              "id": "a1m2-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Die Kundin kann ihren Einkauf von 5,40 € mit Karte bezahlen.",
+              "answer": "richtig",
+              "explanation": "Kartenzahlung ist ab 5 Euro möglich — 5,40 € liegt darüber."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 20,
+      "tasks": [
+        {
+          "id": "a1m2-schreiben-1",
+          "title": "Schreiben Teil 1 — Formelle Kursanmeldung",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine kurze formelle E-Mail an die Sprachschule in Berlin (ca. 30 Wörter). Schreiben Sie zu allen drei Punkten.",
+          "situation": "Sie möchten nächsten Monat einen A1-Abendkurs bei der GTF Sprachakademie besuchen.",
+          "leitpunkte": [
+            "Warum Sie schreiben (Interesse am A1-Abendkurs).",
+            "Fragen Sie nach dem Startdatum und den Kurszeiten.",
+            "Bitten Sie um Informationen zur Anmeldung."
+          ],
+          "minWords": 25,
+          "recommendedMinutes": 10
+        },
+        {
+          "id": "a1m2-schreiben-2",
+          "title": "Schreiben Teil 2 — Kurze Nachricht an einen Freund",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine kurze Nachricht an Ihren Freund Lukas (ca. 30 Wörter).",
+          "situation": "Sie möchten am Samstag zusammen im Park spazieren gehen und danach Kaffee trinken.",
+          "leitpunkte": [
+            "Wann und wo Sie sich treffen möchten.",
+            "Was Sie zusammen machen wollen.",
+            "Bitten Sie um eine schnelle Antwort."
+          ],
+          "minWords": 25,
+          "recommendedMinutes": 10
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "a1m2-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Sich vorstellen",
+          "instructions": "Stellen Sie sich kurz vor. Nennen Sie mindestens 5 Stichpunkte in ganzen Sätzen.",
+          "card": {
+            "heading": "Sich vorstellen (Start Deutsch 1)",
+            "subheading": "Sprechen Sie klar und langsam über sich selbst.",
+            "bullets": [
+              "Name & Alter",
+              "Herkunftsland & Wohnort",
+              "Sprachen",
+              "Beruf oder Studium",
+              "Hobbys am Wochenende"
+            ]
+          },
+          "examinerScript": "Guten Tag! Willkommen zur A1-Prüfung. Bitte stellen Sie sich kurz vor: Wie heißen Sie, woher kommen Sie, und was machen Sie in Ihrer Freizeit?",
+          "examinerAudio": {
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 20,
+          "speakSeconds": 45
+        },
+        {
+          "id": "a1m2-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Um Informationen bitten (Thema: Einkaufen)",
+          "instructions": "Formulieren Sie passende Fragen zu den Stichwörtern und antworten Sie kurz.",
+          "card": {
+            "heading": "Thema: Einkaufen & Supermarkt",
+            "subheading": "Stellen Sie 3 einfache W-Fragen oder Ja/Nein-Fragen.",
+            "bullets": [
+              "Stichwort 1: Öffnungszeiten (Wann öffnet ...?)",
+              "Stichwort 2: Preis (Wie viel kostet ...?)",
+              "Stichwort 3: Obst & Gemüse (Wo kaufe ich ...?)"
+            ]
+          },
+          "examinerScript": "Unser Thema in Teil 2 ist Einkaufen. Bitte stellen Sie drei Fragen zu Öffnungszeiten, Preisen und frischem Obst.",
+          "examinerAudio": {
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 20,
+          "speakSeconds": 45
+        },
+        {
+          "id": "a1m2-sprechen-3",
+          "teil": 3,
+          "title": "Sprechen Teil 3 — Bitten formulieren",
+          "instructions": "Formulieren Sie höfliche Bitten mit „Können Sie bitte ...?“ oder „Geben Sie mir bitte ...“.",
+          "card": {
+            "heading": "Alltagssituationen in Berlin",
+            "subheading": "Reagieren Sie höflich mit „bitte“ und „danke“.",
+            "bullets": [
+              "Situation 1: Im Café — ein Glas Wasser bestellen",
+              "Situation 2: Auf der Straße — nach dem Weg zur U-Bahn fragen",
+              "Situation 3: Im Kurs — den Lehrer bitten, langsamer zu sprechen"
+            ]
+          },
+          "examinerScript": "In Teil 3 formulieren Sie bitte drei höfliche Bitten: im Café, nach dem Weg zur U-Bahn und im Deutschkurs.",
+          "examinerAudio": {
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 20,
+          "speakSeconds": 45
+        }
+      ]
+    }
+  }
+}

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef, useState, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import {
   AlertCircle,
@@ -33,10 +33,15 @@ function formatAudioTime(sec: number): string {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-export default function HoerenExamPage() {
+function HoerenExamPageInner() {
   const params = useParams<{ level: string }>();
+  const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
   const level: Level = isLevel(rawLevel) ? rawLevel : "b1";
+  const defaultTestId = `gtf-${level}-modelltest-1`;
+  const testId = (searchParams?.get("testId") || defaultTestId).trim().toLowerCase();
+  const testQuery =
+    testId !== defaultTestId ? `?testId=${encodeURIComponent(testId)}` : "";
 
   const [test, setTest] = useState<ExamTest | null>(null);
   const [activeTeilIdx, setActiveTeilIdx] = useState(0);
@@ -51,20 +56,24 @@ export default function HoerenExamPage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    const state = loadExamState(level);
+    setActiveTeilIdx(0);
+    setShowTranscript(false);
+    setLoading(true);
+    const state = loadExamState(level, undefined, testId);
     setAnswers(state.hoerenAnswers || {});
 
     // Clear any previously locked play counts in localStorage / sessionStorage
-    saveExamState(level, (st) => ({ ...st, hoerenPlayCounts: {} }));
+    saveExamState(level, (st) => ({ ...st, hoerenPlayCounts: {} }), undefined, testId);
     try {
       sessionStorage.removeItem(`gtf_hoeren_locks_${level}`);
     } catch {
       // ignore
     }
 
+    const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache load for <100ms tab switching
     try {
-      const cached = sessionStorage.getItem(`gtf_exam_test_${level}`);
+      const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
         const parsed = JSON.parse(cached) as ExamTest;
         if (parsed?.sections?.hoeren?.teile?.length) {
@@ -80,14 +89,14 @@ export default function HoerenExamPage() {
       try {
         const email = getActiveUserEmail();
         const res = await fetch(
-          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&email=${encodeURIComponent(email)}`,
+          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&testId=${encodeURIComponent(testId)}&email=${encodeURIComponent(email)}`,
         );
         if (res.ok) {
           const data = (await res.json()) as { test: ExamTest };
           if (data?.test?.sections?.hoeren?.teile?.length) {
             setTest(data.test);
             try {
-              sessionStorage.setItem(`gtf_exam_test_${level}`, JSON.stringify(data.test));
+              sessionStorage.setItem(cacheKey, JSON.stringify(data.test));
             } catch {
               // ignore
             }
@@ -100,7 +109,7 @@ export default function HoerenExamPage() {
       }
     }
     fetchTest();
-  }, [level]);
+  }, [level, testId]);
 
   const teile: HoerenTeil[] = test?.sections?.hoeren?.teile || [];
   const currentTeil: HoerenTeil | undefined = teile[activeTeilIdx] || teile[0];
@@ -115,14 +124,20 @@ export default function HoerenExamPage() {
     return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
   };
 
-  const fallbackAudioSrc = `/audio/hoeren/${level}_hoeren_0${activeTeilIdx + 1}.mp3`;
+  // The ONLY legitimate fallback is the SAME teil's own token stream. Never fall back to a
+  // level + teil-index file name: that played a different exercise's recording
+  // (e.g. Modelltest 2/3 or Studienkolleg teile fell back to Modelltest-1 audio).
+  const fallbackAudioSrc =
+    currentTeil?.audioUrl && currentTeil?.audioToken
+      ? `/api/drive/stream-audio?token=${encodeURIComponent(currentTeil.audioToken)}`
+      : "";
 
-  // Resolve direct static MP3 audio URL
+  // Resolve direct static MP3 audio URL bound to this exact teil
   const rawAudioSrc =
     currentTeil?.audioUrl ||
     (currentTeil?.audioToken
       ? `/api/drive/stream-audio?token=${encodeURIComponent(currentTeil.audioToken)}`
-      : fallbackAudioSrc);
+      : "");
   const resolvedAudioSrc = normalizeAudioUrl(rawAudioSrc);
 
   const [activeAudioSrc, setActiveAudioSrc] = useState(resolvedAudioSrc);
@@ -146,7 +161,7 @@ export default function HoerenExamPage() {
 
   const handleAudioError = () => {
     if (!triedFallback && fallbackAudioSrc && activeAudioSrc !== fallbackAudioSrc) {
-      console.warn("[ExamHoeren] Primary audio failed, falling back to local bundle track:", fallbackAudioSrc);
+      console.warn("[ExamHoeren] Primary audio failed, retrying this teil's own token stream:", currentTeil?.id);
       setTriedFallback(true);
       setActiveAudioSrc(fallbackAudioSrc);
       setAudioError(false);
@@ -159,7 +174,7 @@ export default function HoerenExamPage() {
   const setAnswer = (qId: string, val: string) => {
     setAnswers((prev) => {
       const next = { ...prev, [qId]: val };
-      saveExamState(level, (st) => ({ ...st, hoerenAnswers: next }));
+      saveExamState(level, (st) => ({ ...st, hoerenAnswers: next }), undefined, testId);
       return next;
     });
   };
@@ -235,7 +250,7 @@ export default function HoerenExamPage() {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
-    const fresh = resetExamState(level);
+    const fresh = resetExamState(level, undefined, testId);
     setAnswers(fresh.hoerenAnswers);
     setIsPlaying(false);
     setCurrentTime(0);
@@ -253,6 +268,7 @@ export default function HoerenExamPage() {
         activeSection="hoeren"
         durationMinutes={test?.sections?.hoeren?.durationMinutes || 40}
         testTitle={test?.title}
+        testId={testId}
         onResetExam={handleReset}
         answeredCount={answeredInSection}
         totalQuestions={totalInSection}
@@ -442,7 +458,7 @@ export default function HoerenExamPage() {
               </div>
 
               <Link
-                href={`/exam/${level}/schreiben`}
+                href={`/exam/${level}/schreiben${testQuery}`}
                 className="relative z-10 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 text-white px-5 py-3 text-xs sm:text-sm font-bold shadow-sm hover:bg-slate-800 transition cursor-pointer"
               >
                 <span>Weiter zu Modul 3: Schreiben</span>
@@ -604,5 +620,19 @@ export default function HoerenExamPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function HoerenExamPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-600 text-sm">
+          Lade Prüfungsmodul Hören…
+        </div>
+      }
+    >
+      <HoerenExamPageInner />
+    </Suspense>
   );
 }

@@ -1,0 +1,598 @@
+{
+  "id": "gtf-b1-modelltest-2",
+  "level": "b1",
+  "title": "GTF B1 Modelltest 2 — Ausbildung, Digitalisierung & Leben in Berlin",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat B1 / telc Deutsch B1",
+  "version": "2026.11",
+  "productSlug": "b1-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 65,
+      "teile": [
+        {
+          "id": "b1m2-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Duale Ausbildung in Deutschland",
+          "instructions": "Lesen Sie den Artikel und entscheiden Sie bei den Aufgaben 1 bis 5: richtig oder falsch?",
+          "passageTitle": "Praxis und Theorie vereint: Warum die duale Ausbildung weltweit gefragt ist",
+          "source": "GTF Magazin Bildung & Karriere · B1 Modelltest 2",
+          "passage": "In Deutschland entscheiden sich jedes Jahr hunderttausende junge Menschen – darunter immer mehr internationale Bewerberinnen und Bewerber – für eine duale Ausbildung. Das Besondere an diesem System ist die enge Verbindung zwischen praktischer Arbeit im Betrieb und theoretischem Unterricht in der Berufsschule. In der Regel verbringen die Auszubildenden drei bis vier Tage pro Woche im Unternehmen und ein bis zwei Tage in der Schule; in manchen Berufen wie der Pflege findet der Unterricht auch in mehrwöchigen Blöcken statt.\n\nEin großer Vorteil ist die monatliche Ausbildungsvergütung, die vom ersten Lehrjahr an gezahlt wird und jedes Jahr steigt. In der Pflegeausbildung erhalten Auszubildende in Berlin beispielsweise häufig über 1.300 Euro brutto im ersten Jahr. Gleichzeitig ist das System anspruchsvoll: Die Zwischen- und Abschlussprüfungen werden komplett auf Deutsch abgelegt, weshalb solide Sprachkenntnisse – in der Regel mindestens auf Niveau B1 bis B2 – entscheidend für den Erfolg sind. Nach dem Abschluss sind die Übernahmechancen in ein unbefristetes Arbeitsverhältnis besonders in den Bereichen Gesundheit, IT und Technik sehr hoch.",
+          "questions": [
+            {
+              "id": "b1m2-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Bei einer dualen Ausbildung lernen die Teilnehmenden ausschließlich in der Berufsschule.",
+              "answer": "falsch",
+              "explanation": "Die duale Ausbildung verbindet Praxis im Betrieb und Theorie in der Berufsschule."
+            },
+            {
+              "id": "b1m2-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. In der Pflegeausbildung kann der theoretische Unterricht auch in mehrwöchigen Blöcken stattfinden.",
+              "answer": "richtig",
+              "explanation": "Im Text: „in manchen Berufen wie der Pflege findet der Unterricht auch in mehrwöchigen Blöcken statt.“"
+            },
+            {
+              "id": "b1m2-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Auszubildende bekommen erst nach dem Abschluss ihr erstes Gehalt.",
+              "answer": "falsch",
+              "explanation": "Die Ausbildungsvergütung wird „vom ersten Lehrjahr an gezahlt“ und steigt jedes Jahr."
+            },
+            {
+              "id": "b1m2-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Abschlussprüfungen der dualen Ausbildung finden in deutscher Sprache statt.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Die Zwischen- und Abschlussprüfungen werden komplett auf Deutsch abgelegt...“"
+            },
+            {
+              "id": "b1m2-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Nach der Ausbildung haben Absolventen in Gesundheit, IT und Technik gute Chancen auf eine Festanstellung.",
+              "answer": "richtig",
+              "explanation": "Im Text: „sind die Übernahmechancen in ein unbefristetes Arbeitsverhältnis besonders in den Bereichen Gesundheit, IT und Technik sehr hoch.“"
+            }
+          ]
+        },
+        {
+          "id": "b1m2-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Ratgeber: Mietrecht & Verbraucherinfos",
+          "instructions": "Lesen Sie den Ratgebertext und lösen Sie die Aufgaben 6 bis 9. Wählen Sie a, b oder c.",
+          "passageTitle": "Wichtige Regeln bei Einzug, Nebenkosten und Kündigung",
+          "source": "Berliner Mieter-Ratgeber",
+          "passage": "Wer in Deutschland eine Wohnung mietet, sollte beim Einzug unbedingt ein Übergabeprotokoll gemeinsam mit dem Vermieter ausfüllen. Darin werden vorhandene Schäden an Böden, Wänden oder Fenstern genau notiert, damit der neue Mieter beim späteren Auszug nicht für alte Mängel bezahlen muss. Außerdem ist es gesetzlich vorgeschrieben, sich innerhalb von 14 Tagen nach dem Einzug beim Bürgeramt anzumelden; dafür benötigt man die sogenannte Wohnungsgeberbestätigung.\n\nBei einem unbefristeten Mietvertrag beträgt die gesetzliche Kündigungsfrist für Mieter in der Regel drei Monate zum Monatsende. Die Kündigung muss immer schriftlich auf Papier erfolgen und eigenhändig unterschrieben sein – eine einfache E-Mail oder WhatsApp-Nachricht ist rechtlich nicht gültig. Einmal im Jahr erhalten Mieter eine Nebenkostenabrechnung, die man sorgfältig prüfen sollte.",
+          "questions": [
+            {
+              "id": "b1m2-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Wozu dient das Übergabeprotokoll beim Einzug?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Um alte Schäden festzuhalten, damit der Mieter später nicht dafür zahlt."
+                },
+                {
+                  "id": "b",
+                  "text": "Um den Stromanbieter automatisch abzumelden."
+                },
+                {
+                  "id": "c",
+                  "text": "Um die Kündigungsfrist auf eine Woche zu verkürzen."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „damit der neue Mieter beim späteren Auszug nicht für alte Mängel bezahlen muss.“"
+            },
+            {
+              "id": "b1m2-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Welches Dokument braucht man für die Anmeldung beim Bürgeramt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Nebenkostenabrechnung vom Vorjahr."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Wohnungsgeberbestätigung."
+                },
+                {
+                  "id": "c",
+                  "text": "Den deutschen Führerschein."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „dafür benötigt man die sogenannte Wohnungsgeberbestätigung.“"
+            },
+            {
+              "id": "b1m2-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Wie muss man eine Mietwohnung rechtsgültig kündigen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Per WhatsApp-Nachricht an die Hausverwaltung."
+                },
+                {
+                  "id": "b",
+                  "text": "Per formloser E-Mail ohne Unterschrift."
+                },
+                {
+                  "id": "c",
+                  "text": "Schriftlich auf Papier mit eigenhändiger Unterschrift."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „immer schriftlich auf Papier erfolgen und eigenhändig unterschrieben sein“."
+            },
+            {
+              "id": "b1m2-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Wie lang ist die übliche gesetzliche Kündigungsfrist für Mieter?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "14 Tage."
+                },
+                {
+                  "id": "b",
+                  "text": "Drei Monate zum Monatsende."
+                },
+                {
+                  "id": "c",
+                  "text": "Ein ganzes Jahr."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „beträgt die gesetzliche Kündigungsfrist für Mieter in der Regel drei Monate zum Monatsende.“"
+            }
+          ]
+        },
+        {
+          "id": "b1m2-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 1 — Bewerbung um ein Praktikum",
+          "instructions": "Wählen Sie für jede Lücke 10–15 die passende Option a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrte Frau Dr. Richter,\n\nmit großem Interesse habe ich auf Ihrer Website gelesen, {{10}} Ihre Klinik im Herbst Praktikumsplätze im Bereich Pflege anbietet. Da ich mich derzeit intensiv auf meine Berufsanerkennung {{11}}, möchte ich praktische Erfahrungen im deutschen Krankenhausalltag sammeln. In meiner Heimat habe ich drei Jahre auf einer internistischen Station gearbeitet, {{12}} ich bereits sehr sicher im Umgang mit Patienten bin. Besonders wichtig ist {{13}} eine strukturierte Teamarbeit. Über eine Einladung zu einem persönlichen Gespräch {{14}} ich mich sehr freuen. Im Anhang sende ich Ihnen meinen Lebenslauf {{15}} meine Zeugnisse.\n\nMit freundlichen Grüßen,\nKaran Singh",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "dass"
+                },
+                {
+                  "id": "b",
+                  "text": "ob"
+                },
+                {
+                  "id": "c",
+                  "text": "weil"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Nach „gelesen, ...“ folgt ein Aussagesatz als Nebensatz → „dass“."
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "vorbereite"
+                },
+                {
+                  "id": "b",
+                  "text": "bereite vor"
+                },
+                {
+                  "id": "c",
+                  "text": "vorbereitet"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Nebensatz nach „Da“ bleibt das trennbare Verb „vorbereiten“ zusammengeschrieben am Ende: „vorbereite“."
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "sodass"
+                },
+                {
+                  "id": "b",
+                  "text": "obwohl"
+                },
+                {
+                  "id": "c",
+                  "text": "trotz"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Folge/Konsequenz im Nebensatz wird mit „sodass“ eingeleitet."
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "mich"
+                },
+                {
+                  "id": "b",
+                  "text": "mir"
+                },
+                {
+                  "id": "c",
+                  "text": "mein"
+                }
+              ],
+              "answer": "b",
+              "explanation": "„wichtig sein“ verlangt den Dativ der Person: „Besonders wichtig ist mir ...“."
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "werde"
+                },
+                {
+                  "id": "b",
+                  "text": "würde"
+                },
+                {
+                  "id": "c",
+                  "text": "wäre"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Höfliche Schlussformel im Konjunktiv II: „würde ich mich sehr freuen“."
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "sowie"
+                },
+                {
+                  "id": "b",
+                  "text": "sondern"
+                },
+                {
+                  "id": "c",
+                  "text": "weder"
+                }
+              ],
+              "answer": "a",
+              "explanation": "„sowie“ verbindet Aufzählungen gehoben wie „und auch“."
+            }
+          ]
+        },
+        {
+          "id": "b1m2-sprachbausteine-2",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 2 — Rückmeldung an das Kursbüro",
+          "instructions": "Ordnen Sie den Lücken 16–20 das passende Wort aus der Wortliste zu (a–h). Drei Wörter bleiben übrig.",
+          "mode": "wordbank",
+          "text": "Sehr geehrtes Kursteam,\n\nvielen Dank für die schnelle Zusendung meiner Teilnahmebescheinigung. {{16}} ich den B1-Kurs sehr hilfreich fand, möchte ich mich nun direkt für den B2-Intensivkurs anmelden. Könnten Sie mir bitte mitteilen, {{17}} noch Plätze für den Kursstart im nächsten Monat frei sind? {{18}} der Arbeitszeiten im Krankenhaus wäre mir ein Kurs am späten Nachmittag am liebsten. Falls noch Unterlagen fehlen, reiche ich diese {{19}} nach. Ich bedanke mich im Voraus für Ihre Unterstützung und verbleibe {{20}} freundlichen Grüßen.\n\nPriya Nair",
+          "wordBank": [
+            {
+              "id": "a",
+              "text": "Da"
+            },
+            {
+              "id": "b",
+              "text": "ob"
+            },
+            {
+              "id": "c",
+              "text": "Wegen"
+            },
+            {
+              "id": "d",
+              "text": "selbstverständlich"
+            },
+            {
+              "id": "e",
+              "text": "mit"
+            },
+            {
+              "id": "f",
+              "text": "obwohl"
+            },
+            {
+              "id": "g",
+              "text": "trotzdem"
+            },
+            {
+              "id": "h",
+              "text": "ohne"
+            }
+          ],
+          "gaps": [
+            {
+              "id": "16",
+              "answer": "a",
+              "explanation": "Kausale Begründung am Satzanfang mit Verb am Ende: „Da ich den B1-Kurs sehr hilfreich fand, ...“."
+            },
+            {
+              "id": "17",
+              "answer": "b",
+              "explanation": "Indirekte Entscheidungsfrage nach „mitteilen“ → „ob“."
+            },
+            {
+              "id": "18",
+              "answer": "c",
+              "explanation": "Präposition mit Genitiv Plural „der Arbeitszeiten“ → „Wegen“."
+            },
+            {
+              "id": "19",
+              "answer": "d",
+              "explanation": "Höfliches Adverb „selbstverständlich“ (= natürlich / of course)."
+            },
+            {
+              "id": "20",
+              "answer": "e",
+              "explanation": "Feste Grußformel: „mit freundlichen Grüßen“."
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 40,
+      "teile": [
+        {
+          "id": "b1m2-hoeren-1",
+          "title": "Hören Teil 1 — Radiointerview: Mobiles Arbeiten & Homeoffice",
+          "instructions": "Hören Sie das Interview und wählen Sie bei den Aufgaben 1 bis 3 jeweils a, b oder c.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-b1-modelltest-2/b1m2-hoeren-1.mp3",
+          "audio": {
+            "localFile": "exams/gtf-b1-modelltest-2/b1m2-hoeren-1.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Moderatorin",
+              "voice": "female",
+              "text": "Herr Berger, immer mehr Berliner Unternehmen setzen auf hybrides Arbeiten. Was sind aus Ihrer Sicht die größten Vorteile und Risiken?"
+            },
+            {
+              "speaker": "Herr Berger",
+              "voice": "male",
+              "text": "Wer zwei Tage pro Woche von zu Hause arbeitet, spart oft mehr als eine Stunde Pendelzeit am Tag und kann konzentrierter an Konzepten schreiben. Gleichzeitig warnen Arbeitspsychologen davor, dass der spontane Austausch unter Kollegen verloren geht und neue Mitarbeitende sich schwerer einarbeiten, wenn fast niemand im Büro ist."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1m2-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Welchen Vorteil nennt Herr Berger für zwei Tage Homeoffice pro Woche?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Man spart Pendelzeit und kann konzentrierter arbeiten."
+                },
+                {
+                  "id": "b",
+                  "text": "Man verdient automatisch doppelt so viel."
+                },
+                {
+                  "id": "c",
+                  "text": "Man braucht keinen Computer mehr."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Er betont Zeitersparnis beim Pendeln und konzentrierteres Arbeiten."
+            },
+            {
+              "id": "b1m2-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wovor warnen Arbeitspsychologen laut dem Interview?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Dass Büros zu laut werden."
+                },
+                {
+                  "id": "b",
+                  "text": "Dass der spontane Austausch leidet und die Einarbeitung neuer Kollegen schwerer wird."
+                },
+                {
+                  "id": "c",
+                  "text": "Dass alle Züge ausfallen."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Der spontane Austausch geht verloren und neue Mitarbeitende arbeiten sich schwerer ein."
+            },
+            {
+              "id": "b1m2-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Welches Arbeitsmodell wird im Gespräch diskutiert?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Hybrides Arbeiten (Mischung aus Büro und Homeoffice)."
+                },
+                {
+                  "id": "b",
+                  "text": "Ausschließlich Nachtarbeit."
+                },
+                {
+                  "id": "c",
+                  "text": "Ein Verbot von E-Mails."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Thema des Interviews ist hybrides Arbeiten in Berliner Unternehmen."
+            }
+          ]
+        },
+        {
+          "id": "b1m2-hoeren-2",
+          "title": "Hören Teil 2 — Campus-Bericht: Nachhaltigkeit an der TU Berlin",
+          "instructions": "Hören Sie den Beitrag und entscheiden Sie bei den Aussagen 4 bis 6: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/exams/gtf-b1-modelltest-2/b1m2-hoeren-2.mp3",
+          "audio": {
+            "localFile": "exams/gtf-b1-modelltest-2/b1m2-hoeren-2.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Studentin Clara",
+              "voice": "female",
+              "text": "Auf unserem Campus an der TU Berlin gibt es seit diesem Semester eine kostenlose Fahrradwerkstatt von Studierenden für Studierende. Außerdem bietet die Mensa jeden Tag mindestens zwei vegane Gerichte an und verwendet Pfandbecher statt Einwegbechern, wodurch tausende Becher pro Monat eingespart werden."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1m2-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Fahrradwerkstatt auf dem Campus ist für Studierende kostenlos.",
+              "answer": "richtig",
+              "explanation": "Clara nennt ausdrücklich eine „kostenlose Fahrradwerkstatt von Studierenden für Studierende“."
+            },
+            {
+              "id": "b1m2-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. In der Mensa gibt es nur einmal pro Woche veganes Essen.",
+              "answer": "falsch",
+              "explanation": "Die Mensa bietet „jeden Tag mindestens zwei vegane Gerichte“ an."
+            },
+            {
+              "id": "b1m2-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Durch Pfandbecher spart die Mensa monatlich viele Einwegbecher ein.",
+              "answer": "richtig",
+              "explanation": "Pfandbecher ersetzen Einwegbecher und sparen tausende Becher pro Monat."
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 60,
+      "tasks": [
+        {
+          "id": "b1m2-schreiben-1",
+          "title": "Aufgabe 1 — Persönliche E-Mail (Neuer Sprachkurs & Job)",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine E-Mail an eine Freundin (ca. 80 Wörter). Gehen Sie auf alle drei Leitpunkte ein.",
+          "situation": "Sie haben vor einem Monat eine neue Stelle in Deutschland begonnen und besuchen abends einen B1-Kurs.",
+          "leitpunkte": [
+            "Beschreiben Sie Ihre neue Arbeit und Ihr Team.",
+            "Erklären Sie, wie Sie Arbeit und Deutschlernen kombinieren.",
+            "Schlagen Sie ein Treffen am nächsten Wochenende vor."
+          ],
+          "minWords": 80,
+          "recommendedMinutes": 20
+        },
+        {
+          "id": "b1m2-schreiben-2",
+          "title": "Aufgabe 2 — Diskussionsbeitrag im Online-Forum (ÖPNV vs. Auto)",
+          "register": "forum",
+          "instructions": "Schreiben Sie Ihre Meinung für ein Online-Forum (ca. 80 Wörter).",
+          "situation": "Im Forum diskutieren Leserinnen und Leser über das Thema: „Sollten Innenstädte autofrei werden und der öffentliche Nahverkehr günstiger sein?“",
+          "leitpunkte": [
+            "Äußern Sie klar Ihre persönliche Meinung zum Thema.",
+            "Nennen Sie zwei Argumente mit Beispielen aus Ihrem Alltag.",
+            "Machen Sie einen konkreten Vorschlag für Pendler."
+          ],
+          "minWords": 80,
+          "recommendedMinutes": 25
+        },
+        {
+          "id": "b1m2-schreiben-3",
+          "title": "Aufgabe 3 — Formelle Entschuldigung bei der Kursleitung",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine kurze formelle E-Mail (ca. 40 Wörter).",
+          "situation": "Sie haben am Freitag einen wichtigen Termin bei der Ausländerbehörde und können deshalb nicht am Unterricht teilnehmen.",
+          "leitpunkte": [
+            "Entschuldigen Sie sich höflich und nennen Sie den Grund.",
+            "Fragen Sie nach den Hausaufgaben und Materialien für den Tag."
+          ],
+          "minWords": 40,
+          "recommendedMinutes": 15
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "b1m2-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Gemeinsam ein Kurs-Abschlussfest planen",
+          "instructions": "Planen Sie gemeinsam eine kleine Feier nach der bestandenen B1-Prüfung.",
+          "card": {
+            "heading": "Abschlussfest für unsere Deutschgruppe",
+            "subheading": "Bringen Sie eigene Vorschläge ein und einigen Sie sich.",
+            "bullets": [
+              "Wann und wo feiern? (Park, Restaurant oder Kursraum)",
+              "Essen & Getränke organisieren (Buffet aus verschiedenen Ländern)",
+              "Einladung für die Lehrerin / den Lehrer und ein kleines Geschenk",
+              "Musik oder Spiele für den Abend"
+            ]
+          },
+          "examinerScript": "Unsere B1-Prüfung ist bald vorbei! Lassen Sie uns gemeinsam ein schönes Abschlussfest für unseren Kurs planen. Was schlagen Sie für den Ort und das Essen vor?",
+          "examinerAudio": {
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 90
+        },
+        {
+          "id": "b1m2-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Präsentation: Online-Lernen vs. Präsenzkurs",
+          "instructions": "Halten Sie eine kurze strukturierte Präsentation (ca. 2 Minuten).",
+          "card": {
+            "heading": "Thema: Online-Sprachkurs oder Unterricht im Klassenzimmer?",
+            "subheading": "Gliedern Sie Ihren Vortrag in Einleitung, eigene Erfahrung, Heimatland, Vor-/Nachteile und Fazit.",
+            "bullets": [
+              "Persönliche Erfahrungen mit Online-Apps und Präsenzunterricht",
+              "Situation in Ihrem Heimatland",
+              "Vor- und Nachteile beider Lernformen",
+              "Ihre persönliche Empfehlung als Abschluss"
+            ]
+          },
+          "examinerScript": "Bitte halten Sie nun Ihre Präsentation zum Thema Online-Lernen versus Präsenzunterricht. Beginnen Sie mit einer kurzen Einleitung.",
+          "examinerAudio": {
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 45,
+          "speakSeconds": 120
+        },
+        {
+          "id": "b1m2-sprechen-3",
+          "teil": 3,
+          "title": "Sprechen Teil 3 — Rückfragen & Feedback zur Präsentation",
+          "instructions": "Beantworten Sie Rückfragen klar und begründen Sie Ihre Sichtweise.",
+          "card": {
+            "heading": "Nachfragen des Prüfers",
+            "subheading": "Nutzen Sie Konnektoren wie „deshalb“, „obwohl“ und „außerdem“.",
+            "bullets": [
+              "Wie motivieren Sie sich beim selbstständigen Lernen zu Hause?",
+              "Welche Rolle spielt das Sprechen mit anderen Lernenden?"
+            ]
+          },
+          "examinerScript": "Vielen Dank für Ihren interessanten Vortrag! Ich habe noch eine Frage: Wie schaffen Sie es, beim Online-Lernen regelmäßig Deutsch zu sprechen?",
+          "examinerAudio": {
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 15,
+          "speakSeconds": 60
+        }
+      ]
+    }
+  }
+}

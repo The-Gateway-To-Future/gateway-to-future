@@ -1,0 +1,324 @@
+{
+  "_about": "Exercise-bound Hören audio. Key = public URL. Do not hand-edit; use scripts/generate-hoeren-audio.py.",
+  "files": {
+    "/audio/hoeren/daf_a1_hoeren_03.mp3": {
+      "source": "daf-queue:daf_a1_hoeren_03",
+      "scriptSha256": "d70baa29a532e15a21d3bd1a0497bd94b9b70abc117849bfe72d1d7ae982e44f",
+      "bytes": 1008812,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Maklerin": "de-DE-KatjaNeural",
+        "Interessent": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:42:00+00:00"
+    },
+    "/audio/hoeren/exams/gtf-a1-modelltest-2/a1m2-hoeren-1.mp3": {
+      "source": "exam:gtf-a1-modelltest-2.json#a1m2-hoeren-1",
+      "scriptSha256": "d7a715532dad75fe25a16000bda195da5f0b3b8de2f70f329af90f428f39deac",
+      "bytes": 894764,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Bahnhofsdurchsage": "de-DE-KatjaNeural",
+        "Schaltermitarbeiter": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:40:34+00:00"
+    },
+    "/audio/hoeren/exams/gtf-a1-modelltest-2/a1m2-hoeren-2.mp3": {
+      "source": "exam:gtf-a1-modelltest-2.json#a1m2-hoeren-2",
+      "scriptSha256": "28940438382a418fc4eb3800c3e7d0c31121d020f90b2a4d5151b31e34cddbef",
+      "bytes": 653612,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Kundin": "de-DE-KatjaNeural",
+        "Verkäufer": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:40:45+00:00"
+    },
+    "/audio/hoeren/exams/gtf-a2-modelltest-2/a2m2-hoeren-1.mp3": {
+      "source": "exam:gtf-a2-modelltest-2.json#a2m2-hoeren-1",
+      "scriptSha256": "8e957dca183709f520a1f3b8114636a516b4f57f3779637c05f7b6c2d8f2653d",
+      "bytes": 711980,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Kollegin Sandra": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:40:54+00:00"
+    },
+    "/audio/hoeren/exams/gtf-a2-modelltest-2/a2m2-hoeren-2.mp3": {
+      "source": "exam:gtf-a2-modelltest-2.json#a2m2-hoeren-2",
+      "scriptSha256": "7c422a8d64d4b4af64c40f656e45067f8b6a8767ac1653f04a5756853dec0fcb",
+      "bytes": 598700,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Vermieter": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:41:01+00:00"
+    },
+    "/audio/hoeren/exams/gtf-b1-modelltest-2/b1m2-hoeren-1.mp3": {
+      "source": "exam:gtf-b1-modelltest-2.json#b1m2-hoeren-1",
+      "scriptSha256": "de8393343c4b7ca38bdc34991317ed44832e53136c2f30da30f58bed25ad157d",
+      "bytes": 876716,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Moderatorin": "de-DE-KatjaNeural",
+        "Herr Berger": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:41:13+00:00"
+    },
+    "/audio/hoeren/exams/gtf-b1-modelltest-2/b1m2-hoeren-2.mp3": {
+      "source": "exam:gtf-b1-modelltest-2.json#b1m2-hoeren-2",
+      "scriptSha256": "926f7d38b67d93cc344da1b621e6f8329f0d19cfaf13d7b0689c4fc0366bb35a",
+      "bytes": 710060,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Studentin Clara": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:41:22+00:00"
+    },
+    "/audio/hoeren/exams/gtf-b2-modelltest-2/b2m2-hoeren-1.mp3": {
+      "source": "exam:gtf-b2-modelltest-2.json#b2m2-hoeren-1",
+      "scriptSha256": "891074e39f47ef2f840c46b162cd2e35056da382faf4625ff6aebfb3f3d3b0f3",
+      "bytes": 675884,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Prof. Dr. Weber": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:41:30+00:00"
+    },
+    "/audio/hoeren/exams/gtf-b2-modelltest-2/b2m2-hoeren-2.mp3": {
+      "source": "exam:gtf-b2-modelltest-2.json#b2m2-hoeren-2",
+      "scriptSha256": "307f5c4835406febb80ea4cceb5c20c4ff94dfec347a1218bdc74bd141d132b8",
+      "bytes": 748076,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Moderatorin": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:41:37+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-01-begruessung.mp3": {
+      "source": "lab:a1-lab-01-begruessung",
+      "scriptSha256": "778b463567c7e9e05324fa0020390378ca9cd8509aa4941c31589ab79c18331b",
+      "bytes": 1426988,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Sekretärin": "de-DE-KatjaNeural",
+        "Frau Sharma": "de-DE-AmalaNeural"
+      },
+      "generatedAt": "2026-11-23T14:33:15+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-02-familie.mp3": {
+      "source": "lab:a1-lab-02-familie",
+      "scriptSha256": "615e414bc4e75c227cbacc17182f089a464e96f0165fd00b938aef406096e295",
+      "bytes": 1217324,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Lukas": "de-DE-ConradNeural",
+        "Anna": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:33:45+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-03-einkaufen.mp3": {
+      "source": "lab:a1-lab-03-einkaufen",
+      "scriptSha256": "40efb52033d2440d99a6d3724021496ad020bae97ba29f9fa534943e3caa6c0d",
+      "bytes": 1071404,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Kunde": "de-DE-ConradNeural",
+        "Verkäuferin": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:34:09+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-05-tagesablauf.mp3": {
+      "source": "lab:a1-lab-05-tagesablauf",
+      "scriptSha256": "be254089d2ce8a1562cee5b2843c478deeb2b78b1c7ffe95fb01050b7bc5d83b",
+      "bytes": 948908,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Priya": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:34:27+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-07-restaurant.mp3": {
+      "source": "lab:a1-lab-07-restaurant",
+      "scriptSha256": "4b62c899b66cbcf0516bf17fb4b72e607ced086308bf61daeb9379c874ab9a0f",
+      "bytes": 1126316,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Kellner": "de-DE-ConradNeural",
+        "Gast Maria": "de-DE-KatjaNeural",
+        "Gast Tom": "de-DE-KillianNeural"
+      },
+      "generatedAt": "2026-11-23T14:34:53+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-09-gesundheit.mp3": {
+      "source": "lab:a1-lab-09-gesundheit",
+      "scriptSha256": "2b4ddd79deea1f8ba4c11cbfac4dbe0d2ebcf185a9c10b32437565be94310bda",
+      "bytes": 1080236,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Arzthelferin": "de-DE-KatjaNeural",
+        "Herr Khan": "de-DE-ConradNeural",
+        "Ärztin": "de-DE-AmalaNeural"
+      },
+      "generatedAt": "2026-11-23T14:35:16+00:00"
+    },
+    "/audio/hoeren/labs/a1-lab-10-stadt-orientierung.mp3": {
+      "source": "lab:a1-lab-10-stadt-orientierung",
+      "scriptSha256": "6ed34b21004cc86fd9718bd03c05cb8fe30406cd42f74ed7f786fcd904d50b96",
+      "bytes": 1028396,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Touristin": "de-DE-KatjaNeural",
+        "Passant": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:35:41+00:00"
+    },
+    "/audio/hoeren/labs/a2-lab-01-wegbeschreibung.mp3": {
+      "source": "lab:a2-lab-01-wegbeschreibung",
+      "scriptSha256": "5371e2ae33f8788c17c7a0780f0a19fb07d50f89034dea93c8938917bbc16f79",
+      "bytes": 1324460,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Amit": "de-DE-ConradNeural",
+        "Passantin": "de-DE-KatjaNeural",
+        "BVG-Durchsage": "de-DE-AmalaNeural"
+      },
+      "generatedAt": "2026-11-23T14:32:28+00:00"
+    },
+    "/audio/hoeren/labs/a2-lab-02-arbeit-berufsalltag.mp3": {
+      "source": "lab:a2-lab-02-arbeit-berufsalltag",
+      "scriptSha256": "8eec65803507f7f083e6c08dba38607d89063fb3251da4237695d9fd54652af2",
+      "bytes": 1255340,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Sekretärin": "de-DE-KatjaNeural",
+        "Herr Singh": "de-DE-ConradNeural",
+        "Teamleiterin": "de-DE-AmalaNeural"
+      },
+      "generatedAt": "2026-11-23T14:36:02+00:00"
+    },
+    "/audio/hoeren/labs/a2-lab-04-wohnungssuche-berlin.mp3": {
+      "source": "lab:a2-lab-04-wohnungssuche-berlin",
+      "scriptSha256": "b4cd9d23956e0558e7bf353546984c50cf48800e8aa02a34d88000053ed108f3",
+      "bytes": 1312172,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Mitbewohnerin Jana": "de-DE-KatjaNeural",
+        "Kiran": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:36:27+00:00"
+    },
+    "/audio/hoeren/labs/a2-lab-06-kultur-veranstaltungen.mp3": {
+      "source": "lab:a2-lab-06-kultur-veranstaltungen",
+      "scriptSha256": "070ac408c70571e543a894128cf95d7e529f83fcf43c5bd79c56621dc74ad352",
+      "bytes": 1119404,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Lena": "de-DE-KatjaNeural",
+        "Mehmet": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:36:51+00:00"
+    },
+    "/audio/hoeren/labs/a2-lab-08-medien-nachrichten.mp3": {
+      "source": "lab:a2-lab-08-medien-nachrichten",
+      "scriptSha256": "56849f73f95395396f331c09428cf3126fdd7b0a03015929af79ac7fbaf7ad4f",
+      "bytes": 1124396,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Moderatorin": "de-DE-KatjaNeural",
+        "Jonas Klein": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:37:15+00:00"
+    },
+    "/audio/hoeren/labs/a2-lab-10-ausbildung-zukunft.mp3": {
+      "source": "lab:a2-lab-10-ausbildung-zukunft",
+      "scriptSha256": "d49a9782fba6ba91422f6e64b79586445d5fea9ec819929c5bdb733f6905cd2f",
+      "bytes": 1118252,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Berater": "de-DE-ConradNeural",
+        "Frau Kaur": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:37:37+00:00"
+    },
+    "/audio/hoeren/labs/b1-lab-01-goethe-hoeren-teil1.mp3": {
+      "source": "lab:b1-lab-01-goethe-hoeren-teil1",
+      "scriptSha256": "481dcec6611884f0e65131d74a7b87116c7f35cd6877760475e7ef9028744f7c",
+      "bytes": 1190828,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Bahnhofsdurchsage": "de-DE-KatjaNeural",
+        "Kulturradio": "de-DE-ConradNeural",
+        "Verkehrsfunk": "de-DE-KillianNeural",
+        "Wetterdienst": "de-DE-AmalaNeural"
+      },
+      "generatedAt": "2026-11-23T14:37:56+00:00"
+    },
+    "/audio/hoeren/labs/b1-lab-02-telc-hoeren-alltag.mp3": {
+      "source": "lab:b1-lab-02-telc-hoeren-alltag",
+      "scriptSha256": "0e589dd401a5a45f152614237c6b4fb407af63879fed09bd7ed0be5136ac4a34",
+      "bytes": 1446572,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Moderator": "de-DE-ConradNeural",
+        "Frau Demir": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:38:25+00:00"
+    },
+    "/audio/hoeren/labs/b1-lab-05-hoeren-vortrag.mp3": {
+      "source": "lab:b1-lab-05-hoeren-vortrag",
+      "scriptSha256": "aa581a4a83ddf6de8d7551167fdc707145e22f995de656b44ddde6f2e0b3dbd0",
+      "bytes": 1175468,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Referent Dr. Albers": "de-DE-ConradNeural"
+      },
+      "generatedAt": "2026-11-23T14:38:44+00:00"
+    },
+    "/audio/hoeren/labs/b2-lab-01-beruf-arbeitswelt.mp3": {
+      "source": "lab:b2-lab-01-beruf-arbeitswelt",
+      "scriptSha256": "9cd020680e0e31c7248411ff4f3834afe33bda08312dd9199189459bc99b92a2",
+      "bytes": 1242668,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Projektleiterin Frau Roth": "de-DE-KatjaNeural",
+        "Herr Yilmaz": "de-DE-ConradNeural",
+        "Herr Brandt": "de-DE-KillianNeural"
+      },
+      "generatedAt": "2026-11-23T14:39:09+00:00"
+    },
+    "/audio/hoeren/labs/b2-lab-03-vorstellungsgespraech.mp3": {
+      "source": "lab:b2-lab-03-vorstellungsgespraech",
+      "scriptSha256": "dfb8007d8f78a8e491a944ddc71e9a1cc8162e8e58509b83bcb23b1a3b1aac94",
+      "bytes": 1325612,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Moderator": "de-DE-ConradNeural",
+        "Frau Hartmann": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:39:35+00:00"
+    },
+    "/audio/hoeren/labs/b2-lab-04-berufsbezogenes-hoeren.mp3": {
+      "source": "lab:b2-lab-04-berufsbezogenes-hoeren",
+      "scriptSha256": "d7d2682415cfbcaee353ce05efca4d362079861d2fe8e1d22748afdd9068f272",
+      "bytes": 1264940,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Betriebsratsvorsitzende Frau Krüger": "de-DE-KatjaNeural"
+      },
+      "generatedAt": "2026-11-23T14:39:53+00:00"
+    },
+    "/audio/hoeren/labs/b2-lab-07-argumentation-debatte.mp3": {
+      "source": "lab:b2-lab-07-argumentation-debatte",
+      "scriptSha256": "de24fe63b28ddebc832cf779dc29243a5a229da5d5baf2e20420abccbd09e7fb",
+      "bytes": 1395500,
+      "engine": "edge-tts neural de-DE -> ffmpeg 128k mono",
+      "voices": {
+        "Moderatorin": "de-DE-KatjaNeural",
+        "Dr. Lange": "de-DE-ConradNeural",
+        "Frau Neumann": "de-DE-AmalaNeural"
+      },
+      "generatedAt": "2026-11-23T14:40:19+00:00"
+    }
+  }
+}

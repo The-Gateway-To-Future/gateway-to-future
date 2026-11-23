@@ -274,12 +274,12 @@
           "title": "Hören Teil 1 — Aufnahmeprüfung M-Kurs Hörverstehen",
           "instructions": "Sie hören einen Fachausschnitt aus der molekularen Zellbiologie. Hören Sie den Text und beantworten Sie die Fragen.",
           "maxPlays": 2,
-          "audioUrl": "/audio/stk_m_kurs_01.mp3",
+          "audioUrl": "/audio/hoeren/stk_m_kurs_01.mp3",
           "script": [
             {
               "speaker": "Dozent Biologie",
               "voice": "male",
-              "text": "Studienkolleg Aufnahmeprüfung M-Kurs. Hörverstehen: Molekulare Zellbiologie und Enzymkinetik. Enzyme sind biologische Biokatalysatoren, die die Aktivierungsenergie biochemischer Reaktionen drastisch senken, ohne dabei selbst verbraucht zu werden. Die Michaelis-Konstante KM entspricht der Substratkonzentration, bei der die halbe Maximalgeschwindigkeit erreicht wird."
+              "text": "Studienkolleg Aufnahmeprüfung M-Kurs. Hörverstehen: Molekulare Zellbiologie und Enzymkinetik. Enzyme sind biologische Biokatalysatoren, die die Aktivierungsenergie biochemischer Reaktionen drastisch senken, ohne dabei selbst verbraucht zu werden. Die Reaktionsgeschwindigkeit folgt bei vielen Enzymen der Michaelis-Menten-Kinetik. Die Michaelis-Konstante KM entspricht der Substratkonzentration, bei der die halbe Maximalgeschwindigkeit V-max erreicht wird. Ein niedriger KM-Wert signalisiert eine hohe Affinität des Enzyms zu seinem Substrat."
             }
           ],
           "questions": [
@@ -325,19 +325,22 @@
               "answer": "b",
               "explanation": "KM = Substratkonzentration bei 0.5 * Vmax."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_m_kurs_01.mp3"
+          }
         },
         {
           "id": "hoeren-2",
           "title": "Hören Teil 2 — Säure-Base-Puffersysteme im Organismus",
           "instructions": "Hören Sie die Vorlesung über chemische Gleichgewichte im Blut.",
           "maxPlays": 1,
-          "audioUrl": "/audio/stk_m_kurs_02.mp3",
+          "audioUrl": "/audio/hoeren/stk_m_kurs_02.mp3",
           "script": [
             {
               "speaker": "Dozentin Chemie",
               "voice": "female",
-              "text": "Der physiologische pH-Wert des menschlichen Blutes liegt in einem extrem engen Bereich zwischen 7,35 und 7,45. Das wichtigste physiologische Puffersystem ist der Kohlensäure-Bicarbonat-Puffer."
+              "text": "Studienkolleg M-Kurs. Vorlesung Chemie: Säure-Base-Gleichgewichte und biologische Puffersysteme. Der physiologische pH-Wert des menschlichen Blutes liegt in einem extrem engen Bereich zwischen sieben Komma fünf-und-dreißig und sieben Komma fünf-und-vierzig. Das wichtigste physiologische Puffersystem ist der Kohlensäure-Bicarbonat-Puffer. Die Henderson-Hasselbalch-Gleichung beschreibt den quantitativen Zusammenhang zwischen dem pH-Wert, dem pKs-Wert der Kohlensäure und dem Verhältnis von Bicarbonat zu gelöstem Kohlendioxid."
             }
           ],
           "questions": [
@@ -355,7 +358,10 @@
               "answer": "falsch",
               "explanation": "Kohlensäure-Bicarbonat-Puffer, nicht Essigsäure. Falsch."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_m_kurs_02.mp3"
+          }
         }
       ]
     },

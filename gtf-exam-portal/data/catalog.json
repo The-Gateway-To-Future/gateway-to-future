@@ -264,7 +264,7 @@
       "isFree": false,
       "resourceId": "Pflege_Modul_1_Anamnese_und_Patientenaufnahme",
       "drivePath": "GTF_App_Vault/Pflege_Ausbildung_Klinik/Pflege_Modul_1_Anamnese_und_Patientenaufnahme.pdf",
-      "localFile": "vault_fallback/vocational/pflege_ausbildung/Pflege_Modul_1_Anamnese_und_Patientenaufnahme.pdf",
+      "localFile": "vault_fallback/books/pflege_ausbildung/Pflege_Modul_1_Anamnese_und_Patientenaufnahme.pdf",
       "qaStatus": "auto_verified",
       "level": "b1-b2 fachsprache pflege",
       "track": "Pflegefachkraft (Generalistik) & Duale Ausbildung"
@@ -280,7 +280,7 @@
       "isFree": false,
       "resourceId": "Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht",
       "drivePath": "GTF_App_Vault/Pflege_Ausbildung_Klinik/Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht.pdf",
-      "localFile": "vault_fallback/vocational/pflege_ausbildung/Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht.pdf",
+      "localFile": "vault_fallback/books/pflege_ausbildung/Pflege_Modul_2_Dienstuebergabe_und_Pflegebericht.pdf",
       "qaStatus": "auto_verified",
       "level": "b1-b2 fachsprache pflege",
       "track": "Pflegefachkraft (Generalistik) & Duale Ausbildung"
@@ -704,7 +704,7 @@
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-a1-hoeren-01",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_a1_hoeren_01.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_01.mp3",
+      "localFile": "audio/hoeren/daf_a1_hoeren_01.mp3",
       "qaStatus": "approved",
       "level": "a1"
     },
@@ -719,7 +719,7 @@
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-a1-hoeren-02",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_a1_hoeren_02.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_a1_hoeren_02.mp3",
+      "localFile": "audio/hoeren/daf_a1_hoeren_02.mp3",
       "qaStatus": "approved",
       "level": "a1"
     },
@@ -734,7 +734,7 @@
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-a2-hoeren-01",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_a2_hoeren_01.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_a2_hoeren_01.mp3",
+      "localFile": "audio/hoeren/daf_a2_hoeren_01.mp3",
       "qaStatus": "approved",
       "level": "a2"
     },
@@ -749,7 +749,7 @@
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-a2-hoeren-02",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_a2_hoeren_02.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_a2_hoeren_02.mp3",
+      "localFile": "audio/hoeren/daf_a2_hoeren_02.mp3",
       "qaStatus": "approved",
       "level": "a2"
     },
@@ -764,7 +764,7 @@
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-b1-hoeren-01",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_b1_hoeren_01.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_01.mp3",
+      "localFile": "audio/hoeren/daf_b1_hoeren_01.mp3",
       "qaStatus": "approved",
       "level": "b1"
     },
@@ -779,7 +779,7 @@
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-b1-hoeren-02",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_b1_hoeren_02.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_b1_hoeren_02.mp3",
+      "localFile": "audio/hoeren/daf_b1_hoeren_02.mp3",
       "qaStatus": "approved",
       "level": "b1"
     },
@@ -794,7 +794,7 @@
       "isFree": true,
       "resourceId": "daf-audio-exams-daf-b2-hoeren-01",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_b2_hoeren_01.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_b2_hoeren_01.mp3",
+      "localFile": "audio/hoeren/daf_b2_hoeren_01.mp3",
       "qaStatus": "approved",
       "level": "b2"
     },
@@ -809,7 +809,7 @@
       "isFree": false,
       "resourceId": "daf-audio-exams-daf-b2-hoeren-02",
       "drivePath": "GTF_App_Vault/German_Language_Audio_Exams/daf_b2_hoeren_02.mp3",
-      "localFile": "vault_fallback/exams/daf_a1_b2/daf_b2_hoeren_02.mp3",
+      "localFile": "audio/hoeren/daf_b2_hoeren_02.mp3",
       "qaStatus": "approved",
       "level": "b2"
     },
@@ -7606,7 +7606,7 @@
         "Transkript",
         "Reisen, Bahnhofsdurchsagen und Fahrkartenkauf"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_a1_hoeren_01.pdf",
         "drivePath": "GTF_App_Vault/A1/daf_a1_hoeren_01.pdf"
@@ -7614,6 +7614,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Herr Sharma möchte mit der S-Bahn nach Potsdam fahren. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Herr Sharma fragt ausdrücklich nach der nächsten S-Bahn nach Potsdam für sein Vorstellungsgespräch."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Von welchem Gleis fährt die S7 heute ausnahmsweise ab?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Gleis 3"
+            },
+            {
+              "id": "1",
+              "text": "Gleis 7"
+            },
+            {
+              "id": "2",
+              "text": "Gleis 16"
+            }
+          ],
+          "answer": "gleis 16",
+          "explanation": "Die Beamtin erklärt, dass der Zug wegen Bauarbeiten nicht von Gleis 3, sondern von Gleis 16 oben abfährt."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Wie viel kostet der Einzelfahrschein für den Bereich Berlin ABC?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "3,50 Euro"
+            },
+            {
+              "id": "1",
+              "text": "4,40 Euro"
+            },
+            {
+              "id": "2",
+              "text": "5,00 Euro"
+            }
+          ],
+          "answer": "4,40 euro",
+          "explanation": "Die Beamtin nennt den exakten Preis von 4 Euro 40."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -7832,7 +7897,45 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_a1_hoeren_01.mp3"
+      "audioUrl": "/audio/hoeren/daf_a1_hoeren_01.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Schalterbeamtin",
+          "voice": "female",
+          "text": "Guten Tag! Willkommen am Berliner Hauptbahnhof. Wie kann ich Ihnen heute helfen?"
+        },
+        {
+          "speaker": "Herr Sharma",
+          "voice": "male",
+          "text": "Guten Tag. Ich muss dringend nach Potsdam zu einem Vorstellungsgespräch. Wann fährt die nächste S-Bahn dorthin?"
+        },
+        {
+          "speaker": "Schalterbeamtin",
+          "voice": "female",
+          "text": "Die Linie S7 fährt in genau sieben Minuten. Aber bitte beachten Sie: Wegen kurzfristiger Bauarbeiten fährt der Zug heute nicht von Gleis 3, sondern ausnahmsweise von Gleis 16 oben ab."
+        },
+        {
+          "speaker": "Herr Sharma",
+          "voice": "male",
+          "text": "Vielen Dank für den Hinweis! Welches Ticket benötige ich dafür? Reicht der Tarifbereich Berlin AB aus?"
+        },
+        {
+          "speaker": "Schalterbeamtin",
+          "voice": "female",
+          "text": "Nein, Potsdam liegt im Tarifbereich C. Sie benötigen einen Einzelfahrschein Berlin ABC. Er kostet genau 4 Euro 40 und ist ab Entwertung zwei Stunden lang gültig."
+        },
+        {
+          "speaker": "Herr Sharma",
+          "voice": "male",
+          "text": "Alles klar, hier sind fünf Euro. Vielen herzlichen Dank für Ihre Hilfe und einen schönen Tag!"
+        },
+        {
+          "speaker": "Schalterbeamtin",
+          "voice": "female",
+          "text": "Hier sind sechzig Cent Rückgeld und Ihre Fahrkarte. Gute Fahrt und viel Erfolg beim Vorstellungsgespräch!"
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-a1-hoeren-02",
@@ -7853,7 +7956,7 @@
         "Transkript",
         "Alltag, Einkaufen in der Bäckerei und Arztterminvereinbarung"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_a1_hoeren_02.pdf",
         "drivePath": "GTF_App_Vault/A1/daf_a1_hoeren_02.pdf"
@@ -7861,6 +7964,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Was bestellt die Kundin in der Bäckerei?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Zwei Croissants und einen Kaffee"
+            },
+            {
+              "id": "1",
+              "text": "Drei Vollkornbrötchen und Apfelkuchen"
+            },
+            {
+              "id": "2",
+              "text": "Ein Vollkornbrot"
+            }
+          ],
+          "answer": "drei vollkornbrötchen und apfelkuchen",
+          "explanation": "Frau Kaur bestellt drei Vollkornbrötchen und ein Stück Apfelkuchen."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Um wie viel Uhr hat die Kundin ihren Termin in der Arztpraxis?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Um 9:30 Uhr"
+            },
+            {
+              "id": "1",
+              "text": "Um 10:00 Uhr"
+            },
+            {
+              "id": "2",
+              "text": "Um 11:15 Uhr"
+            }
+          ],
+          "answer": "um 10:00 uhr",
+          "explanation": "Sie erwähnt ausdrücklich ihren Arzttermin um zehn Uhr bei Dr. Weber."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Die Kundin bezahlt den Betrag von 5 Euro 20 mit Bargeld. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "b",
+          "explanation": "Frau Kaur bezahlt bargeldlos mit ihrer EC-Karte."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -8079,7 +8247,45 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_a1_hoeren_02.mp3"
+      "audioUrl": "/audio/hoeren/daf_a1_hoeren_02.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Bäcker",
+          "voice": "male",
+          "text": "Guten Morgen! Der Nächste bitte! Was darf es für Sie sein?"
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Guten Morgen. Ich hätte gern drei Vollkornbrötchen und ein Stück Apfelkuchen, bitte."
+        },
+        {
+          "speaker": "Bäcker",
+          "voice": "male",
+          "text": "Sehr gerne. Der Apfelkuchen ist heute ganz frisch gebacken. Möchten Sie noch einen Kaffee zum Mitnehmen dazu?"
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Nein danke, nur die Backwaren. Ich habe gleich um zehn Uhr einen Termin beim Arzt in der Praxis Dr. Weber."
+        },
+        {
+          "speaker": "Bäcker",
+          "voice": "male",
+          "text": "Das macht zusammen 5 Euro 20, bitte. Zahlen Sie bar oder mit Karte?"
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Mit Karte, bitte. Hier ist meine EC-Karte. Schönen Tag noch!"
+        },
+        {
+          "speaker": "Bäcker",
+          "voice": "male",
+          "text": "Vielen Dank, die Zahlung hat geklappt. Auf Wiedersehen und gute Besserung beim Arzt!"
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-a1-hoeren-03",
@@ -8100,7 +8306,7 @@
         "Transkript",
         "Wohnen und Miete"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf-audio-exams-daf-a1-hoeren-03.pdf",
         "drivePath": "GTF_App_Vault/A1/daf-audio-exams-daf-a1-hoeren-03.pdf"
@@ -8108,6 +8314,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Die Kaltmiete beträgt 620 Euro. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Die Aussage 'Die Kaltmiete beträgt 620 Euro.' ist nach dem Hörtext richtig."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Wie hoch ist die Kaution?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "620 Euro"
+            },
+            {
+              "id": "b",
+              "text": "1860 Euro"
+            },
+            {
+              "id": "c",
+              "text": "400 Euro"
+            }
+          ],
+          "answer": "b",
+          "explanation": "Option B ist richtig, da dies wörtlich im Hörtext belegt ist."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Was kostet die Küche?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "150 Euro"
+            },
+            {
+              "id": "b",
+              "text": "400 Euro"
+            },
+            {
+              "id": "c",
+              "text": "1860 Euro"
+            }
+          ],
+          "answer": "b",
+          "explanation": "Option B ist die korrekte Antwort basierend auf der Transkription."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -8326,7 +8597,40 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/a1_hoeren_01.mp3"
+      "audioUrl": "/audio/hoeren/daf_a1_hoeren_03.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Maklerin",
+          "voice": "female",
+          "text": "Guten Tag! Die Zwei-Zimmer-Wohnung in Neukölln hat 54 Quadratmeter und kostet 620 Euro Kaltmiete."
+        },
+        {
+          "speaker": "Interessent",
+          "voice": "male",
+          "text": "Guten Tag. Wie hoch sind die Nebenkosten und die Kaution?"
+        },
+        {
+          "speaker": "Maklerin",
+          "voice": "female",
+          "text": "Die Nebenkosten betragen 150 Euro. Die Kaution entspricht drei Monatskaltmieten, also 1860 Euro."
+        },
+        {
+          "speaker": "Interessent",
+          "voice": "male",
+          "text": "Gibt es einen Keller und ist die Küche möbliert?"
+        },
+        {
+          "speaker": "Maklerin",
+          "voice": "female",
+          "text": "Ein Kellerabteil gehört dazu. Die Einbauküche können Sie vom Vormieter für 400 Euro übernehmen."
+        },
+        {
+          "speaker": "Interessent",
+          "voice": "male",
+          "text": "Das klingt fair. Ich gebe Ihnen heute meine Gehaltsnachweise."
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-a2-hoeren-01",
@@ -8347,7 +8651,7 @@
         "Transkript",
         "Wetterbericht, Verkehrslage und Arbeitsplatzkommunikation"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_a2_hoeren_01.pdf",
         "drivePath": "GTF_App_Vault/A2/daf_a2_hoeren_01.pdf"
@@ -8355,6 +8659,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Wie entwickelt sich das Wetter in Berlin am Nachmittag?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Es bleibt sonnig und warm"
+            },
+            {
+              "id": "1",
+              "text": "Es gibt schwere Gewitter und Starkregen"
+            },
+            {
+              "id": "2",
+              "text": "Es beginnt zu schneien"
+            }
+          ],
+          "answer": "es gibt schwere gewitter und starkregen",
+          "explanation": "Der Wetterbericht kündigt ab dem Nachmittag schwere Gewitter mit Starkregen und Sturmböen an."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Welche Ausweichempfehlung gibt die Radiosprecherin wegen der Störung am Ostkreuz?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Den Regionalexpress RE1"
+            },
+            {
+              "id": "1",
+              "text": "Die U-Bahn-Linie U2"
+            },
+            {
+              "id": "2",
+              "text": "Das Fahrrad"
+            }
+          ],
+          "answer": "die u-bahn-linie u2",
+          "explanation": "Die Sprecherin rät Pendlern, auf die Linie U2 auszuweichen."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Die Mitarbeiter dürfen ab 13 Uhr von zu Hause aus im Homeoffice arbeiten. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Florian bestätigt, dass der Teamleiter die Erlaubnis für Homeoffice ab 13 Uhr erteilt hat."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -8573,7 +8942,40 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_a2_hoeren_01.mp3"
+      "audioUrl": "/audio/hoeren/daf_a2_hoeren_01.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Nachrichtensprecherin",
+          "voice": "female",
+          "text": "Hier ist Radio Berlin 88.8 mit dem aktuellen Wetter- und Verkehrsservice für Berlin und Brandenburg um 7 Uhr 30."
+        },
+        {
+          "speaker": "Kollege Florian",
+          "voice": "male",
+          "text": "Hallo Sarbjit, hier ist Florian aus dem Büro am Potsdamer Platz. Hast du schon die Radionachrichten gehört?"
+        },
+        {
+          "speaker": "Nachrichtensprecherin",
+          "voice": "female",
+          "text": "Das Wetter: Heute Vormittag heiter bis wolkig bei milden 18 Grad. Ab dem Nachmittag ziehen von Westen her schwere Gewitter auf mit kräftigen Sturmböen und Starkregen."
+        },
+        {
+          "speaker": "Kollege Florian",
+          "voice": "male",
+          "text": "Wegen des Unwetters und eines Unfalls auf der Stadtautobahn A100 zwischen Wedding und Charlottenburg stehen alle im Stau. Es gibt mindestens dreißig Minuten Verzögerung!"
+        },
+        {
+          "speaker": "Nachrichtensprecherin",
+          "voice": "female",
+          "text": "Verkehrshinweis für Pendler: Auch die S-Bahn-Linien S3 und S5 haben wegen einer Weichenstörung am Ostkreuz erhebliche Verspätungen. Nutzen Sie bitte die U-Bahn-Linie U2."
+        },
+        {
+          "speaker": "Kollege Florian",
+          "voice": "male",
+          "text": "Unser Teamleiter hat gesagt, dass wir heute alle ab 13 Uhr im Homeoffice weiterarbeiten können, um nicht ins Unwetter zu geraten. Melde dich kurz, ob du das schaffst!"
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-a2-hoeren-02",
@@ -8594,7 +8996,7 @@
         "Transkript",
         "Wohnungssuche, Mietvertrag und WG-Leben in Berlin"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_a2_hoeren_02.pdf",
         "drivePath": "GTF_App_Vault/A2/daf_a2_hoeren_02.pdf"
@@ -8602,6 +9004,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Wie hoch ist die monatliche Warmmiete für das WG-Zimmer?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "390 Euro"
+            },
+            {
+              "id": "1",
+              "text": "490 Euro"
+            },
+            {
+              "id": "2",
+              "text": "980 Euro"
+            }
+          ],
+          "answer": "490 euro",
+          "explanation": "Jonas nennt 490 Euro Warmmiete inklusive Internet und Nebenkosten."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Zu welchem Datum kann das Zimmer bezogen werden?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Ab dem 15. Oktober"
+            },
+            {
+              "id": "1",
+              "text": "Ab dem 1. November"
+            },
+            {
+              "id": "2",
+              "text": "Ab dem 1. Dezember"
+            }
+          ],
+          "answer": "ab dem 1. november",
+          "explanation": "Der genannte Einzugstermin ist der erste November."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Die Kaution für das Zimmer beträgt 980 Euro (zwei Monatskaltmieten). (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Jonas erklärt: 'Die Kaution beträgt zwei Monatsmieten, also 980 Euro.'"
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -8820,7 +9287,45 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_a2_hoeren_02.mp3"
+      "audioUrl": "/audio/hoeren/daf_a2_hoeren_02.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Mitbewohner Jonas",
+          "voice": "male",
+          "text": "Hi Sarbjit! Komm doch erst mal rein in die Küche. Das hier ist unsere Dreier-WG im Prenzlauer Berg."
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Hallo Jonas! Vielen Dank für die Einladung zur Besichtigung. Die Wohnung hat wirklich schöne hohe Altbaudecken."
+        },
+        {
+          "speaker": "Mitbewohner Jonas",
+          "voice": "male",
+          "text": "Ja, das Zimmer, das frei wird, hat zwanzig Quadratmeter und geht zum ruhigen Innenhof hinaus. Die Warmmiete beträgt 490 Euro im Monat inklusive aller Nebenkosten und schnellem Internet."
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Das klingt fair für diese Lage. Wie hoch ist die Kaution und ab wann ist das Zimmer bezugsfrei?"
+        },
+        {
+          "speaker": "Mitbewohner Jonas",
+          "voice": "male",
+          "text": "Die Kaution beträgt zwei Monatsmieten, also 980 Euro. Einzugstermin ist der erste November. Ein wichtiger Punkt: Wir haben einen wöchentlichen Putzplan für Bad und Küche."
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Sehr gut, Sauberkeit und Ordnung sind mir auch sehr wichtig. Ich gebe dir gerne meine SCHUFA-Auskunft und den Arbeitsvertrag für die Vermieterin."
+        },
+        {
+          "speaker": "Mitbewohner Jonas",
+          "voice": "male",
+          "text": "Super! Wir entscheiden uns bis morgen Abend und rufen dich sofort an. Schön, dass du da warst!"
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-b1-hoeren-01",
@@ -8841,7 +9346,7 @@
         "Transkript",
         "Arbeitswelt, New Work, Homeoffice und Vereinbarkeit von Beruf und Familie"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_b1_hoeren_01.pdf",
         "drivePath": "GTF_App_Vault/B1/daf_b1_hoeren_01.pdf"
@@ -8849,6 +9354,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Welches Arbeitszeitmodell praktiziert das Unternehmen von Herrn Sharma?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Ausschließlich vollständige Telearbeit ohne Bürotage"
+            },
+            {
+              "id": "1",
+              "text": "Ein hybrides Modell mit drei Tagen Homeoffice und zwei Präsenztagen"
+            },
+            {
+              "id": "2",
+              "text": "Klassische Fünftage-Woche mit verpflichtender Anwesenheit"
+            }
+          ],
+          "answer": "ein hybrides modell mit drei tagen homeoffice und zwei präsenztagen",
+          "explanation": "Herr Sharma beschreibt explizit bis zu drei Tage remote und zwei Tage Präsenz im Berliner Büro."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Welche interne Regelung verhindert die ständige Erreichbarkeit nach Dienstschluss?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Die Diensthandys müssen im Büro eingeschlossen werden"
+            },
+            {
+              "id": "1",
+              "text": "Nach 18 Uhr werden keine geschäftlichen E-Mails mehr versendet"
+            },
+            {
+              "id": "2",
+              "text": "Homeoffice ist freitags grundsätzlich verboten"
+            }
+          ],
+          "answer": "nach 18 uhr werden keine geschäftlichen e-mails mehr versendet",
+          "explanation": "Herr Sharma erläutert die feste Vereinbarung, nach 18 Uhr keine dienstlichen Nachrichten mehr zu verschicken."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Laut Herrn Sharma spart das Arbeiten im Homeoffice rund zwei Stunden tägliche Pendelzeit ein. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Herr Sharma betont: 'Viele Kolleginnen und Kollegen nutzen diese zwei gewonnenen Stunden am Tag für Familie und Sport.'"
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -9067,7 +9637,40 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_b1_hoeren_01.mp3"
+      "audioUrl": "/audio/hoeren/daf_b1_hoeren_01.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Moderatorin",
+          "voice": "female",
+          "text": "Herzlich willkommen zu unserer Sendung 'Zukunft der Arbeit'. Heute im Studio ist Frau Sarbjit Kour, Gründerin und CEO eines deutsch-indischen Bildungsunternehmens in Berlin. Herr Sharma, die Pandemie hat die Arbeitswelt revolutioniert. Wie gestaltet sich das mobile Arbeiten in Ihrem Unternehmen?"
+        },
+        {
+          "speaker": "Herr Sharma",
+          "voice": "male",
+          "text": "Guten Tag, Frau Meyer. Bei uns setzen wir auf ein hybrides Modell. Unsere Dozenten und Berater können bis zu drei Tage pro Woche remote im Homeoffice arbeiten, während zwei Tage der Präsenzarbeit und dem persönlichen Austausch im Berliner Büro gewidmet sind."
+        },
+        {
+          "speaker": "Moderatorin",
+          "voice": "female",
+          "text": "Viele Kritiker befürchten beim Homeoffice einen Verlust an sozialer Nähe und Schwierigkeiten bei der Trennung von Beruf und Privatleben. Welche Erfahrungen haben Sie gemacht?"
+        },
+        {
+          "speaker": "Herr Sharma",
+          "voice": "male",
+          "text": "Natürlich erfordert mobiles Arbeiten ein hohes Maß an Selbstdisziplin und klar definierte Kommunikationsregeln. Wenn Arbeitnehmer abends die geschäftlichen E-Mails nicht ausschalten, droht Überarbeitung. Deshalb gilt bei uns die Vereinbarung, nach 18 Uhr keine dienstlichen Nachrichten mehr zu versenden."
+        },
+        {
+          "speaker": "Moderatorin",
+          "voice": "female",
+          "text": "Das klingt nach einer durchdachten Regelung. Welche Vorteile sehen Ihre internationalen Mitarbeiter gegenüber der klassischen Büropräsenz?"
+        },
+        {
+          "speaker": "Herr Sharma",
+          "voice": "male",
+          "text": "Vor allem die Zeitersparnis beim täglichen Pendeln in Berlin ist enorm. Viele Kolleginnen und Kollegen nutzen diese zwei gewonnenen Stunden am Tag für sportliche Aktivitäten, Weiterbildung oder ihre Familie. Die Zufriedenheit und Produktivität sind dadurch spürbar gestiegen."
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-b1-hoeren-02",
@@ -9088,7 +9691,7 @@
         "Transkript",
         "Hochschulalltag, studentische Nachhaltigkeit, Mülltrennung und Mobilität"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_b1_hoeren_02.pdf",
         "drivePath": "GTF_App_Vault/B1/daf_b1_hoeren_02.pdf"
@@ -9096,6 +9699,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Welche studentische Initiative zur nachhaltigen Mobilität erwähnt Rohan?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Einen kostenlosen universitären E-Scooter-Verleih"
+            },
+            {
+              "id": "1",
+              "text": "Eine Do-It-Yourself Fahrradwerkstatt zur kostenlosen Reparatur"
+            },
+            {
+              "id": "2",
+              "text": "Einen Shuttleservice zwischen den Campus-Standorten"
+            }
+          ],
+          "answer": "eine do-it-yourself fahrradwerkstatt zur kostenlosen reparatur",
+          "explanation": "Rohan erwähnt ausdrücklich die studentische Fahrradwerkstatt auf dem Campus zur kostenfreien Reparatur."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Welcher Anteil des Essensangebots in der Mensa ist mittlerweile pflanzlich?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Rund 30 Prozent"
+            },
+            {
+              "id": "1",
+              "text": "Rund 50 Prozent"
+            },
+            {
+              "id": "2",
+              "text": "Rund 70 Prozent"
+            }
+          ],
+          "answer": "rund 70 prozent",
+          "explanation": "Rohan nennt die Zahl von rund siebzig Prozent pflanzlichen Bio-Gerichten."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Für das studentische Menü in der Mensa zahlen Studierende durchschnittlich 6 Euro 50. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "b",
+          "explanation": "Rohan nennt ausdrücklich den günstigen Preis von 2 Euro 80 pro Menü."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -9314,7 +9982,40 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_b1_hoeren_02.mp3"
+      "audioUrl": "/audio/hoeren/daf_b1_hoeren_02.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Campus-Reporterin",
+          "voice": "female",
+          "text": "Willkommen zu unserem Campus-Report der TU Berlin! Wir sprechen heute mit internationalen Studierenden über ihren Alltag in Berlin und ihr Engagement für den Klimaschutz. Bei mir ist Rohan aus Mumbai, der im dritten Semester Maschinenbau studiert."
+        },
+        {
+          "speaker": "Student Rohan",
+          "voice": "male",
+          "text": "Hallo! Als ich vor einem Jahr nach Berlin kam, war die Umstellung auf das deutsche Universitätssystem zunächst eine Herausforderung. Besonders überrascht hat mich jedoch das ausgeprägte Umweltbewusstsein auf dem Campus Charlottenburg."
+        },
+        {
+          "speaker": "Campus-Reporterin",
+          "voice": "female",
+          "text": "Worin zeigt sich diese Nachhaltigkeit ganz konkret im studentischen Alltag?"
+        },
+        {
+          "speaker": "Student Rohan",
+          "voice": "male",
+          "text": "Das fängt schon bei der Mülltrennung in den Studentenwohnheimen an, die sehr strikt nach Papier, Bioabfall, Plastik und Restmüll erfolgt. Zudem nutzen fast alle Studierenden das Deutschlandticket für den öffentlichen Nahverkehr oder das Fahrrad. Auf dem Campus gibt es eine studentische Fahrradwerkstatt, in der man Räder kostenlos reparieren kann."
+        },
+        {
+          "speaker": "Campus-Reporterin",
+          "voice": "female",
+          "text": "Auch in der Mensa hat sich in den letzten Semestern einiges verändert. Was sind dort die beliebtesten Angebote?"
+        },
+        {
+          "speaker": "Student Rohan",
+          "voice": "male",
+          "text": "Die vegetarische und vegane Mensa 'Veggie No. 1' ist mittags immer voll. Rund siebzig Prozent der angebotenen Gerichte sind mittlerweile pflanzlich und stammen aus regionalem Bio-Anbau. Das schont nicht nur die Umwelt, sondern ist mit 2 Euro 80 pro Menü auch sehr bezahlbar für Studierende."
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-b2-hoeren-01",
@@ -9335,7 +10036,7 @@
         "Transkript",
         "Digitalisierung, KI im Gesundheitswesen, Robotik in der Pflege und medizinische Ethik"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_b2_hoeren_01.pdf",
         "drivePath": "GTF_App_Vault/B2/daf_b2_hoeren_01.pdf"
@@ -9343,6 +10044,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Welchen Hauptvorteil von KI-Systemen hebt Dr. Sharma für den klinischen Alltag hervor?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Die vollständige Autonomie von Diagnosen ohne ärztliche Kontrolle"
+            },
+            {
+              "id": "1",
+              "text": "Hohe diagnostische Spezifität und Entlastung bei der Dokumentation"
+            },
+            {
+              "id": "2",
+              "text": "Kostensenkungen durch die Entlassung von Pflegepersonal"
+            }
+          ],
+          "answer": "hohe diagnostische spezifität und entlastung bei der dokumentation",
+          "explanation": "Dr. Sharma verweist auf 98% Spezifität und die Automatisierung von bis zu 40% bürokratischer Dokumentation."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Welches rechtlich-ethische Bedenken äußert Frau Prof. Dr. Kaur?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Die unzureichende Rechenleistung europäischer Server"
+            },
+            {
+              "id": "1",
+              "text": "Ungeklärte Haftungsfragen bei Fehlentscheidungen und Empathieverlust"
+            },
+            {
+              "id": "2",
+              "text": "Die zu hohen Lizenzgebühren für Krankenhausbetreiber"
+            }
+          ],
+          "answer": "ungeklärte haftungsfragen bei fehlentscheidungen und empathieverlust",
+          "explanation": "Prof. Kaur problematisiert die Haftungskette zwischen Arzt, Klinik und Softwarehersteller sowie den Verlust zwischenmenschlicher Nähe."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Nach dem europäischen AI Act ist der 'Human-in-the-Loop'-Grundsatz verbindlich vorgegeben. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Dr. Sharma bestätigt die gesetzliche Verankerung des Grundsatzes, dass die finale Entscheidung beim Menschen liegt."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -9561,7 +10327,35 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_b2_hoeren_01.mp3"
+      "audioUrl": "/audio/hoeren/daf_b2_hoeren_01.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Moderatorin",
+          "voice": "female",
+          "text": "Guten Abend, meine Damen und Herren zur heutigen Sendung 'Streitkultur' im Deutschlandfunk. Der Einsatz von generativer und diagnostischer Künstlicher Intelligenz spaltet die medizinische Fachwelt. Während Optimisten von einer Entlastung des Personals und präziseren Diagnosen sprechen, warnen Kritiker vor einer Entmenschlichung der Heilkunde. Ich begrüße dazu Herrn Dr. med. Lukas Weber, Chefarzt für Intensivmedizin, und Frau Prof. Dr. Sarbjit Kaur vom Deutschen Ethikrat."
+        },
+        {
+          "speaker": "Dr. Sharma",
+          "voice": "male",
+          "text": "Vielen Dank für die Einladung, Frau Kollegin. Lassen Sie mich eingangs klarstellen: KI-Algorithmen sind keine Konkurrenz für ärztliche Intuition, sondern ein unverzichtbares Assistenzsystem. In der Radiologie und Kardiologie erkennen neuronale Netze subtile Mikrofrakturen oder beginnende Myokardischämien mit einer Spezifität von über 98 Prozent. Das rettet Menschenleben, insbesondere in unterbesetzten Nachtschichten."
+        },
+        {
+          "speaker": "Prof. Dr. Kaur",
+          "voice": "female",
+          "text": "Den diagnostischen Nutzen bestreite ich keineswegs, Herr Dr. Sharma. Jedoch werfen automatisierte Entscheidungssysteme fundamentale haftungsrechtliche und epistemologische Fragen auf. Wenn ein Algorithmus eine Fehleinschätzung trifft und ein Patient Schaden erleidet: Wer haftet dann primär? Der behandelnde Arzt, die Klinikleitung oder das Softwareunternehmen? Zudem droht der Verlust der Empathie, wenn Pflegekräfte durch Überwachungsmonitore ersetzt werden."
+        },
+        {
+          "speaker": "Dr. Sharma",
+          "voice": "male",
+          "text": "Hier möchte ich vehement widersprechen. Das Primat der ärztlichen Therapieentscheidung bleibt stets unangetastet — der 'Human-in-the-Loop'-Grundsatz ist im europäischen AI Act verbindlich verankert. Die Automatisierung bürokratischer Dokumentationspflichten, die bislang bis zu 40 Prozent unserer Arbeitszeit verschlingt, verschafft dem medizinischen Personal vielmehr wieder dringend benötigte Zeit am Patientenbett."
+        },
+        {
+          "speaker": "Moderatorin",
+          "voice": "female",
+          "text": "Einigkeit besteht offenbar darin, dass die Technologie nicht das Pflegepersonal ersetzen darf, sondern als Werkzeug zur Reduktion von Arbeitsüberlastung dienen muss. Wir danken beiden Gästen für diese differenzierte Debatte."
+        }
+      ]
     },
     {
       "id": "daf-audio-exams-daf-b2-hoeren-02",
@@ -9582,7 +10376,7 @@
         "Transkript",
         "Arbeitsmarktpolitik, Zuwanderung, ZAB-Zeugnisbewertung und Fachkräfteeinwanderungsgesetz"
       ],
-      "questionCount": 8,
+      "questionCount": 11,
       "pdf": {
         "localFile": "daf_b2_hoeren_02.pdf",
         "drivePath": "GTF_App_Vault/B2/daf_b2_hoeren_02.pdf"
@@ -9590,6 +10384,71 @@
       "unlocked": true,
       "qaStatus": "approved",
       "questions": [
+        {
+          "id": "hv_1",
+          "page": 1,
+          "label": "Hörverstehen 1",
+          "prompt": "Welche wesentliche Neuerung bringt die 'Chancenkarte' für Fachkräfte aus Drittstaaten?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Die Einreise zur Arbeitsplatzsuche auch ohne vorliegenden Arbeitsvertrag"
+            },
+            {
+              "id": "1",
+              "text": "Eine automatische deutsche Staatsbürgerschaft nach sechs Monaten"
+            },
+            {
+              "id": "2",
+              "text": "Die Befreiung von jeglichen Sprachnachweisen"
+            }
+          ],
+          "answer": "die einreise zur arbeitsplatzsuche auch ohne vorliegenden arbeitsvertrag",
+          "explanation": "Frau Kaur betont, dass Bewerber anhand von Kriterien wie Sprache und Erfahrung zur Stellensuche einreisen dürfen, bevor ein Vertrag existiert."
+        },
+        {
+          "id": "hv_2",
+          "page": 1,
+          "label": "Hörverstehen 2",
+          "prompt": "Welchen Vorteil bietet das Instrument der 'Anerkennungspartnerschaft'?",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "0",
+              "text": "Die vollständige Abschaffung aller Berufsqualifikationen"
+            },
+            {
+              "id": "1",
+              "text": "Die Aufnahme einer Erwerbstätigkeit bei paralleler Durchführung des Anerkennungsverfahrens"
+            },
+            {
+              "id": "2",
+              "text": "Die Finanzierung des Lebensunterhalts durch die Bundesagentur für Arbeit"
+            }
+          ],
+          "answer": "die aufnahme einer erwerbstätigkeit bei paralleler durchführung des anerkennungsverfahrens",
+          "explanation": "Die Anerkennungspartnerschaft gestattet die Arbeitsaufnahme in Deutschland, während die Anpassungsqualifizierung parallel läuft."
+        },
+        {
+          "id": "hv_3",
+          "page": 1,
+          "label": "Hörverstehen 3",
+          "prompt": "Laut IAB-Statistik fehlen dem deutschen Arbeitsmarkt jährlich rund 400.000 qualifizierte Zuwanderer. (Richtig oder Falsch?)",
+          "type": "mcq",
+          "options": [
+            {
+              "id": "a",
+              "text": "Richtig"
+            },
+            {
+              "id": "b",
+              "text": "Falsch"
+            }
+          ],
+          "answer": "a",
+          "explanation": "Die Redakteurin nennt einleitend genau diese Zahl von 400.000 fehlenden Fachkräften pro Jahr."
+        },
         {
           "id": "q_1",
           "page": 1,
@@ -9808,7 +10667,35 @@
         }
       ],
       "skill": "hoeren",
-      "audioUrl": "/audio/hoeren/daf_b2_hoeren_02.mp3"
+      "audioUrl": "/audio/hoeren/daf_b2_hoeren_02.mp3",
+      "contentType": "exam_hoeren",
+      "hoerenTranscript": [
+        {
+          "speaker": "Wissenschaftsredakteurin",
+          "voice": "female",
+          "text": "Herzlich willkommen zum Podcast 'Politik und Ökonomie'. Laut aktuellen Erhebungen des Instituts für Arbeitsmarkt- und Berufsforschung fehlen der deutschen Wirtschaft jährlich rund vierhunderttausend qualifizierte Zuwanderer. Mit dem neuen Fachkräfteeinwanderungsgesetz und der sogenannten Chancenkarte soll gegengesteuert werden. Ich spreche heute mit Frau Sarbjit Kaur, Expertin für internationale Bildungsanerkennung in Berlin."
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Schönen guten Tag. Das neue Punktesystem der Chancenkarte ist ein wichtiger Meilenstein. Es ermöglicht Akademikern und Fachkräften aus Drittstaaten die Einreise zur Arbeitsplatzsuche basierend auf Qualifikation, Sprachkenntnissen, Berufserfahrung und Alter, ohne dass bereits ein konkreter Arbeitsvertrag vorliegen muss."
+        },
+        {
+          "speaker": "Wissenschaftsredakteur",
+          "voice": "male",
+          "text": "Dennoch klagen viele Betriebe und ausländische Mediziner über langwierige bürokratische Hürden bei den staatlichen Anerkennungsstellen und Landesprüfungsämtern. Die Feststellung der Gleichwertigkeit nach dem Berufsqualifikationsfeststellungsgesetz dauert nicht selten über zwölf Monate."
+        },
+        {
+          "speaker": "Frau Kaur",
+          "voice": "female",
+          "text": "Das ist in der Tat der gravierendste Engpass. Um diesem Dilemma zu begegnen, setzt das Gesetz nun verstärkt auf Anerkennungspartnerschaften: Kandidaten können bereits in Deutschland eine qualifizierte Beschäftigung aufnehmen und das formale Anpassungsverfahren parallel zur Berufstätigkeit absolvieren. Voraussetzung hierfür sind ein anerkannter ausländischer Berufsabschluss und mindestens Deutschkenntnisse auf A2- oder B1-Niveau."
+        },
+        {
+          "speaker": "Wissenschaftsredakteur",
+          "voice": "male",
+          "text": "Das bedeutet in der Praxis eine drastische Beschleunigung für Krankenhäuser und IT-Unternehmen, die dringend auf Fachpersonal angewiesen sind. Entscheidend bleibt jedoch, dass die sprachliche Integration auf B2-Niveau zügig vorangetrieben wird."
+        }
+      ]
     },
     {
       "id": "wb_mat_combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first",
@@ -9832,7 +10719,7 @@
       "pdfUrl": "/materials/b1_b2/combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first.pdf",
       "downloadUrl": "/materials/b1_b2/combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first.pdf",
       "pdf": {
-        "localFile": "combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first.pdf",
+        "localFile": "materials/b1_b2/combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first.pdf",
         "drivePath": "GTF_App_Vault/B2/combined_deutsch_b2_c1_gesamtwerk_122_saeulen_first.pdf"
       },
       "questions": [
@@ -10078,7 +10965,7 @@
       "pdfUrl": "/materials/b1_b2/deutsch_b2_komplette_grammatik_122_saeulen_gesamtwerk.pdf",
       "downloadUrl": "/materials/b1_b2/deutsch_b2_komplette_grammatik_122_saeulen_gesamtwerk.pdf",
       "pdf": {
-        "localFile": "deutsch_b2_komplette_grammatik_122_saeulen_gesamtwerk.pdf",
+        "localFile": "materials/b1_b2/deutsch_b2_komplette_grammatik_122_saeulen_gesamtwerk.pdf",
         "drivePath": "GTF_App_Vault/B2/deutsch_b2_komplette_grammatik_122_saeulen_gesamtwerk.pdf"
       },
       "questions": [
@@ -10322,7 +11209,7 @@
       "pdfUrl": "/materials/b1_b2/deutsch_b2_komplette_grammatik_architektur.pdf",
       "downloadUrl": "/materials/b1_b2/deutsch_b2_komplette_grammatik_architektur.pdf",
       "pdf": {
-        "localFile": "deutsch_b2_komplette_grammatik_architektur.pdf",
+        "localFile": "materials/b1_b2/deutsch_b2_komplette_grammatik_architektur.pdf",
         "drivePath": "GTF_App_Vault/B2/deutsch_b2_komplette_grammatik_architektur.pdf"
       },
       "questions": [

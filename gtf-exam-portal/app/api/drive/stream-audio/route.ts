@@ -88,35 +88,60 @@ export async function GET(req: Request) {
     }
   }
 
-  // 2. Physical local MP3 check (from /content-factory/output_test)
+  // 2. Physical local MP3 or static CDN check (canonical /audio/hoeren/ and /audio/tts/)
   const candidateFilenames = [
     src.localFile,
     src.drivePath ? src.drivePath.split("/").pop() : "",
   ].filter(Boolean) as string[];
 
+  const runtimeRoot = Reflect.apply(process.cwd, process, []) as string;
+  const pubDir = path.join(runtimeRoot, "public");
+  const cfDir = path.join(path.dirname(runtimeRoot), "content-factory");
+
   let localMp3Buf: Buffer | null = null;
   for (const filename of candidateFilenames) {
-    const cleanName = path.basename(filename);
-    const searchDirs = [
-      path.join(process.cwd(), "..", "content-factory", "output_test", cleanName),
-      path.join(process.cwd(), "content-factory", "output_test", cleanName),
-      path.join(process.cwd(), "public", "audio", cleanName),
-      path.join(process.cwd(), "public", "audio", "hoeren", cleanName),
-      path.join(process.cwd(), "public", "audio", "tts", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "A1", "Hoeren_Audio", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "A2", "Hoeren_Audio", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "B1", "Hoeren_Audio", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "B2", "Hoeren_Audio", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "A1", "Sprechen_Prompts", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "A2", "Sprechen_Prompts", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "B1", "Sprechen_Prompts", cleanName),
-      path.join(process.cwd(), "public", "vault_fallback", "B2", "Sprechen_Prompts", cleanName),
-    ];
+    // Support exercise-bound sub-paths (e.g. "exams/gtf-a1-modelltest-2/a1m2-hoeren-1.mp3",
+    // "labs/a2-lab-01-wegbeschreibung.mp3") so identical teil ids in different tests can
+    // never resolve to the same flat file name. Path traversal is rejected.
+    const relPath = filename
+      .replace(/\\/g, "/")
+      .replace(/^\/?(public\/)?audio\/hoeren\//, "")
+      .replace(/^\/+/, "");
+    if (!relPath || relPath.startsWith("synth:") || relPath.split("/").includes("..")) continue;
+    const cleanName = path.basename(relPath);
+    const hasSubdir = relPath.includes("/");
+    const searchDirs = hasSubdir
+      ? [path.join(pubDir, "audio", "hoeren", ...relPath.split("/"))]
+      : [
+          path.join(pubDir, "audio", "hoeren", cleanName),
+          path.join(pubDir, "audio", "tts", cleanName),
+          path.join(cfDir, "output_test", cleanName),
+        ];
     for (const p of searchDirs) {
       try {
         if (fs.existsSync(p)) {
           localMp3Buf = fs.readFileSync(p);
           break;
+        }
+      } catch {
+        // continue
+      }
+    }
+    if (localMp3Buf) break;
+
+    // On Vercel Serverless (where public/** is excluded from Lambda bundle and served by static CDN)
+    const cdnCandidates = hasSubdir
+      ? [`/audio/hoeren/${relPath.split("/").map(encodeURIComponent).join("/")}`]
+      : [`/audio/hoeren/${encodeURIComponent(cleanName)}`, `/audio/tts/${encodeURIComponent(cleanName)}`];
+    for (const cdnRel of cdnCandidates) {
+      try {
+        const cdnRes = await fetch(new URL(cdnRel, req.url));
+        if (cdnRes.ok) {
+          const ab = await cdnRes.arrayBuffer();
+          if (ab.byteLength > 0) {
+            localMp3Buf = Buffer.from(ab);
+            break;
+          }
         }
       } catch {
         // continue

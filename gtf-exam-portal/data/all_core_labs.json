@@ -14,7 +14,7 @@
       "Personalpronomen"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a1_hoeren_01.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-01-begruessung.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -133,6 +133,63 @@
         "answer": "a",
         "explanation": "Am Telefon verabschiedet man sich formell mit 'Auf Wiederhören'."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Guten Morgen, GTF Sprachakademie Berlin. Mein Name ist Weber. Was kann ich für Sie tun?"
+      },
+      {
+        "speaker": "Frau Sharma",
+        "voice": "female",
+        "text": "Guten Morgen, Frau Weber. Ich möchte mich für den Deutschkurs A1 anmelden."
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Sehr gern. Wie heißen Sie, bitte?"
+      },
+      {
+        "speaker": "Frau Sharma",
+        "voice": "female",
+        "text": "Ich heiße Priya Sharma. Mein Nachname ist Sharma: S – H – A – R – M – A."
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Danke. Und woher kommen Sie, Frau Sharma?"
+      },
+      {
+        "speaker": "Frau Sharma",
+        "voice": "female",
+        "text": "Ich komme aus Indien, aus Delhi, und wohne jetzt in Berlin."
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Welche Sprachen sprechen Sie?"
+      },
+      {
+        "speaker": "Frau Sharma",
+        "voice": "female",
+        "text": "Ich spreche Hindi und Englisch. In Indien sind Hindi und Englisch offizielle Sprachen. Und jetzt lerne ich Deutsch."
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Wunderbar. Der Kurs beginnt am Montag um neun Uhr. Ich schicke Ihnen alle Informationen per E-Mail."
+      },
+      {
+        "speaker": "Frau Sharma",
+        "voice": "female",
+        "text": "Vielen Dank, Frau Weber. Auf Wiederhören!"
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Auf Wiederhören, Frau Sharma."
+      }
     ]
   },
   {
@@ -150,7 +207,7 @@
       "Familienstand"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a1_hoeren_01.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-02-familie.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -260,6 +317,63 @@
         ],
         "explanation": "Die Frage nach dem Alter lautet 'Wie alt bist du?' (informell) oder 'Wie alt sind Sie?' (formell)."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Lukas",
+        "voice": "male",
+        "text": "Hallo Anna! Sind das deine Familienfotos?"
+      },
+      {
+        "speaker": "Anna",
+        "voice": "female",
+        "text": "Ja, schau mal. Das ist mein Vater. Er ist zweiundfünfzig Jahre alt und arbeitet als Ingenieur."
+      },
+      {
+        "speaker": "Lukas",
+        "voice": "male",
+        "text": "Und die Frau neben ihm?"
+      },
+      {
+        "speaker": "Anna",
+        "voice": "female",
+        "text": "Das ist meine Mutter. Sie ist fünfundvierzig Jahre alt. Und das hier ist meine Schwester Lena mit ihrem Sohn Max."
+      },
+      {
+        "speaker": "Lukas",
+        "voice": "male",
+        "text": "Ah, Max ist also dein Neffe!"
+      },
+      {
+        "speaker": "Anna",
+        "voice": "female",
+        "text": "Genau, der Sohn meiner Schwester ist mein Neffe. Er ist erst vier."
+      },
+      {
+        "speaker": "Lukas",
+        "voice": "male",
+        "text": "Und wer ist der Mann hier links?"
+      },
+      {
+        "speaker": "Anna",
+        "voice": "female",
+        "text": "Das ist Herr Müller, unser Nachbar. Er ist verheiratet, seine Ehefrau heißt Sabine."
+      },
+      {
+        "speaker": "Lukas",
+        "voice": "male",
+        "text": "Sag mal, Anna, wie alt bist du eigentlich?"
+      },
+      {
+        "speaker": "Anna",
+        "voice": "female",
+        "text": "Ich bin dreiundzwanzig. Und du?"
+      },
+      {
+        "speaker": "Lukas",
+        "voice": "male",
+        "text": "Ich bin fünfundzwanzig."
+      }
     ]
   },
   {
@@ -277,7 +391,7 @@
       "Mengen"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a1_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-03-einkaufen.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -386,6 +500,58 @@
         "answer": "a",
         "explanation": "Die Standardfrage lautet 'Zahlen Sie bar oder mit Karte?'."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Kunde",
+        "voice": "male",
+        "text": "Entschuldigung, was kostet der Käse hier?"
+      },
+      {
+        "speaker": "Verkäuferin",
+        "voice": "female",
+        "text": "Der Gouda kostet drei Euro fünfundachtzig."
+      },
+      {
+        "speaker": "Kunde",
+        "voice": "male",
+        "text": "Gut, den nehme ich. Ich kaufe auch einen Apfel und ein Pfund Kaffee."
+      },
+      {
+        "speaker": "Verkäuferin",
+        "voice": "female",
+        "text": "Ein Pfund, also fünfhundert Gramm. Möchten Sie auch Brot?"
+      },
+      {
+        "speaker": "Kunde",
+        "voice": "male",
+        "text": "Ja, ein Vollkornbrot, bitte."
+      },
+      {
+        "speaker": "Verkäuferin",
+        "voice": "female",
+        "text": "Oh, das tut mir leid. Wir haben kein Brot mehr. Morgen früh gibt es wieder frisches Brot."
+      },
+      {
+        "speaker": "Kunde",
+        "voice": "male",
+        "text": "Kein Problem. Ich möchte bitte bezahlen."
+      },
+      {
+        "speaker": "Verkäuferin",
+        "voice": "female",
+        "text": "Das macht zusammen elf Euro zwanzig. Zahlen Sie bar oder mit Karte?"
+      },
+      {
+        "speaker": "Kunde",
+        "voice": "male",
+        "text": "Mit Karte, bitte."
+      },
+      {
+        "speaker": "Verkäuferin",
+        "voice": "female",
+        "text": "Danke schön. Einen schönen Tag noch!"
+      }
     ]
   },
   {
@@ -403,7 +569,7 @@
       "Zimmer"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a1_hoeren_02.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -530,7 +696,7 @@
       "Routine"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a1_hoeren_03.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-05-tagesablauf.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -638,6 +804,38 @@
         "answer": "a",
         "explanation": "Im Hauptsatz steht das konjugierte Verb ('beginnt') immer an Position 2."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Priya",
+        "voice": "female",
+        "text": "Hallo, ich bin Priya. Ich erzähle euch von meinem Tag."
+      },
+      {
+        "speaker": "Priya",
+        "voice": "female",
+        "text": "Ich stehe jeden Morgen um sechs Uhr auf. Dann dusche ich und frühstücke."
+      },
+      {
+        "speaker": "Priya",
+        "voice": "female",
+        "text": "Um Viertel vor acht, also um sieben Uhr fünfundvierzig, nehme ich den Bus."
+      },
+      {
+        "speaker": "Priya",
+        "voice": "female",
+        "text": "Um acht Uhr beginnt mein Deutschkurs. Der Kurs ist am Montag, am Dienstag und am Mittwoch."
+      },
+      {
+        "speaker": "Priya",
+        "voice": "female",
+        "text": "Am Donnerstag, also nach dem Mittwoch, arbeite ich im Café. Ich arbeite um vierzehn Uhr bis achtzehn Uhr."
+      },
+      {
+        "speaker": "Priya",
+        "voice": "female",
+        "text": "Am Abend koche ich und lerne neue Wörter. Um zweiundzwanzig Uhr gehe ich ins Bett."
+      }
     ]
   },
   {
@@ -655,7 +853,7 @@
       "Sport"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a1_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -781,7 +979,7 @@
       "Höflichkeit"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a1_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-07-restaurant.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -894,6 +1092,68 @@
         ],
         "explanation": "20,00 € - 18,20 € = 1,80 € Trinkgeld."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Kellner",
+        "voice": "male",
+        "text": "Guten Abend! Was möchten Sie trinken?"
+      },
+      {
+        "speaker": "Gast Maria",
+        "voice": "female",
+        "text": "Ich hätte gern ein Mineralwasser ohne Kohlensäure, bitte."
+      },
+      {
+        "speaker": "Gast Tom",
+        "voice": "male",
+        "text": "Und für mich eine Apfelschorle. Haben Sie auch vegetarische Gerichte?"
+      },
+      {
+        "speaker": "Kellner",
+        "voice": "male",
+        "text": "Ja, alle vegetarischen Gerichte sind ohne Fleisch und Fisch. Ich empfehle die Gemüselasagne."
+      },
+      {
+        "speaker": "Gast Tom",
+        "voice": "male",
+        "text": "Die nehme ich."
+      },
+      {
+        "speaker": "Kellner",
+        "voice": "male",
+        "text": "Hat es Ihnen geschmeckt?"
+      },
+      {
+        "speaker": "Gast Maria",
+        "voice": "female",
+        "text": "Ja, es hat sehr gut geschmeckt! Zahlen, bitte!"
+      },
+      {
+        "speaker": "Kellner",
+        "voice": "male",
+        "text": "Zusammen oder getrennt?"
+      },
+      {
+        "speaker": "Gast Maria",
+        "voice": "female",
+        "text": "Wir möchten bitte getrennt zahlen."
+      },
+      {
+        "speaker": "Kellner",
+        "voice": "male",
+        "text": "Gern. Ihr Essen macht achtzehn Euro zwanzig."
+      },
+      {
+        "speaker": "Gast Maria",
+        "voice": "female",
+        "text": "Hier sind zwanzig Euro. Stimmt so!"
+      },
+      {
+        "speaker": "Kellner",
+        "voice": "male",
+        "text": "Vielen Dank! Einen schönen Abend noch."
+      }
     ]
   },
   {
@@ -911,7 +1171,7 @@
       "Tätigkeiten"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a1_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -1049,7 +1309,7 @@
       "Modalverb müssen"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a1_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-09-gesundheit.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -1158,6 +1418,43 @@
         "answer": "a",
         "explanation": "Auge ist sächlich: 'das Auge' (Plural: die Augen)."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Arzthelferin",
+        "voice": "female",
+        "text": "Praxis Doktor Becker, guten Tag."
+      },
+      {
+        "speaker": "Herr Khan",
+        "voice": "male",
+        "text": "Guten Tag, ich möchte einen Termin vereinbaren. Mein Kopf tut weh. Ich habe starke Kopfschmerzen und Fieber."
+      },
+      {
+        "speaker": "Arzthelferin",
+        "voice": "female",
+        "text": "Kommen Sie heute um elf Uhr. Bringen Sie bitte Ihre Gesundheitskarte, also die Krankenkassenkarte, mit."
+      },
+      {
+        "speaker": "Ärztin",
+        "voice": "female",
+        "text": "Herr Khan, Sie haben eine Grippe. Sie sind krank. Sie müssen drei Tage im Bett bleiben und viel trinken."
+      },
+      {
+        "speaker": "Herr Khan",
+        "voice": "male",
+        "text": "Und mein rechtes Auge ist auch ganz rot."
+      },
+      {
+        "speaker": "Ärztin",
+        "voice": "female",
+        "text": "Das Auge ist nur gereizt. Hier ist ein Rezept für Tabletten und Augentropfen. Die Medikamente bekommen Sie in der Apotheke."
+      },
+      {
+        "speaker": "Herr Khan",
+        "voice": "male",
+        "text": "Vielen Dank, Frau Doktor. Auf Wiedersehen."
+      }
     ]
   },
   {
@@ -1175,7 +1472,7 @@
       "Dativ"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a1_hoeren_03.mp3",
+    "audioUrl": "/audio/hoeren/labs/a1-lab-10-stadt-orientierung.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -1283,6 +1580,53 @@
         "answer": "a",
         "explanation": "Das Brandenburger Tor ist das Wahrzeichen Berlins."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Touristin",
+        "voice": "female",
+        "text": "Entschuldigung, wie komme ich zum Bahnhof?"
+      },
+      {
+        "speaker": "Passant",
+        "voice": "male",
+        "text": "Zum Hauptbahnhof? Gehen Sie hier geradeaus, nicht links und nicht rechts, bis zur U-Bahn-Station."
+      },
+      {
+        "speaker": "Touristin",
+        "voice": "female",
+        "text": "U-Bahn – das ist die Untergrundbahn, richtig?"
+      },
+      {
+        "speaker": "Passant",
+        "voice": "male",
+        "text": "Genau. Nehmen Sie die U5 bis Hauptbahnhof. Aber Achtung: Eine Papierfahrkarte müssen Sie vor der Fahrt am Automaten entwerten."
+      },
+      {
+        "speaker": "Touristin",
+        "voice": "female",
+        "text": "Danke! Fahren Sie auch mit der U-Bahn?"
+      },
+      {
+        "speaker": "Passant",
+        "voice": "male",
+        "text": "Nein, ich fahre jeden Tag mit dem Bus zur Sprachschule."
+      },
+      {
+        "speaker": "Touristin",
+        "voice": "female",
+        "text": "Und wo ist das Brandenburger Tor?"
+      },
+      {
+        "speaker": "Passant",
+        "voice": "male",
+        "text": "Das Brandenburger Tor steht im Zentrum von Berlin, nur zwei Stationen vom Hauptbahnhof entfernt."
+      },
+      {
+        "speaker": "Touristin",
+        "voice": "female",
+        "text": "Vielen Dank für Ihre Hilfe!"
+      }
     ]
   },
   {
@@ -1300,7 +1644,7 @@
       "Ortsangaben"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a2_hoeren_01.mp3",
+    "audioUrl": "/audio/hoeren/labs/a2-lab-01-wegbeschreibung.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -1396,6 +1740,48 @@
         ],
         "explanation": "Das grüne H im gelben/weißen Kreis kennzeichnet eine Haltestelle."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Amit",
+        "voice": "male",
+        "text": "Entschuldigung, können Sie mir helfen? Ich suche die Sprachschule in der Karl-Marx-Allee."
+      },
+      {
+        "speaker": "Passantin",
+        "voice": "female",
+        "text": "Ja, gern. Gehen Sie hier geradeaus bis zur großen Kreuzung. Dort biegen Sie nach links ab."
+      },
+      {
+        "speaker": "Amit",
+        "voice": "male",
+        "text": "An der Kreuzung nach links, also zur linken Hand. Und dann?"
+      },
+      {
+        "speaker": "Passantin",
+        "voice": "female",
+        "text": "Dann gehen Sie an dem großen Park vorbei. Die Sprachschule ist direkt neben dem Supermarkt."
+      },
+      {
+        "speaker": "Amit",
+        "voice": "male",
+        "text": "Perfekt, ich gehe heute Abend sowieso in den Supermarkt. Und wo ist die nächste Bushaltestelle?"
+      },
+      {
+        "speaker": "Passantin",
+        "voice": "female",
+        "text": "Sehen Sie das grüne Schild mit dem weißen H? Das ist die Haltestelle. Mein Freund wartet dort auch gerade an der Haltestelle."
+      },
+      {
+        "speaker": "Amit",
+        "voice": "male",
+        "text": "Vielen Dank für die Wegbeschreibung!"
+      },
+      {
+        "speaker": "BVG-Durchsage",
+        "voice": "female",
+        "text": "Liebe Fahrgäste, wegen Bauarbeiten verkehrt die U2 heute nur bis Alexanderplatz. Ab Alexanderplatz fahren Ersatzbusse. Wir bitten um Ihr Verständnis."
+      }
     ]
   },
   {
@@ -1413,7 +1799,7 @@
       "Höflichkeit"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a2_hoeren_01.mp3",
+    "audioUrl": "/audio/hoeren/labs/a2-lab-02-arbeit-berufsalltag.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -1522,6 +1908,48 @@
         ],
         "explanation": "3. Person Singular von 'dürfen' mit Negation: 'darf man nicht rauchen'."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Firma Schneider Logistik, Sekretariat, guten Tag."
+      },
+      {
+        "speaker": "Herr Singh",
+        "voice": "male",
+        "text": "Guten Tag, hier ist Rahul Singh. Ich möchte bitte Herrn Weber sprechen."
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Einen Moment bitte, ich verbinde Sie mit Herrn Weber. … Es tut mir leid, Herr Weber ist gerade nicht da."
+      },
+      {
+        "speaker": "Herr Singh",
+        "voice": "male",
+        "text": "Könnten Sie ihm bitte ausrichten, dass er mich zurückruft? Es geht um eine Terminverschiebung."
+      },
+      {
+        "speaker": "Sekretärin",
+        "voice": "female",
+        "text": "Natürlich. Am besten schreiben Sie ihm auch eine E-Mail mit dem Betreff ‚Terminverschiebung‘ und beenden Sie sie mit ‚Mit freundlichen Grüßen‘."
+      },
+      {
+        "speaker": "Teamleiterin",
+        "voice": "female",
+        "text": "Herr Singh, willkommen im Team! Noch zwei wichtige Regeln: Wer krank ist, muss den Arbeitgeber unverzüglich vor Arbeitsbeginn informieren."
+      },
+      {
+        "speaker": "Teamleiterin",
+        "voice": "female",
+        "text": "Und im gesamten Bürogebäude darf man nicht rauchen. Die Raucherzone ist draußen im Hof."
+      },
+      {
+        "speaker": "Herr Singh",
+        "voice": "male",
+        "text": "Alles klar, vielen Dank für die Informationen."
+      }
     ]
   },
   {
@@ -1539,7 +1967,7 @@
       "Partizip II"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a2_hoeren_02.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -1661,7 +2089,7 @@
       "Kaution"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/gtf-a2-hoeren-dialogue.mp3",
+    "audioUrl": "/audio/hoeren/labs/a2-lab-04-wohnungssuche-berlin.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -1770,6 +2198,58 @@
         "answer": "a",
         "explanation": "Das Übergabeprotokoll hält den genauen Zustand der Wohnung beim Einzug fest."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Mitbewohnerin Jana",
+        "voice": "female",
+        "text": "Hallo Kiran, komm rein! Willkommen in unserer WG, also in unserer Wohngemeinschaft."
+      },
+      {
+        "speaker": "Kiran",
+        "voice": "male",
+        "text": "Danke! Das Zimmer ist schön hell. Ist es möbliert?"
+      },
+      {
+        "speaker": "Mitbewohnerin Jana",
+        "voice": "female",
+        "text": "Ja, es ist voll möbliert: Bett, Schrank und Schreibtisch sind schon da."
+      },
+      {
+        "speaker": "Kiran",
+        "voice": "male",
+        "text": "Und wie hoch ist die Miete?"
+      },
+      {
+        "speaker": "Mitbewohnerin Jana",
+        "voice": "female",
+        "text": "Die Kaltmiete ist vierhundertzwanzig Euro, dazu kommen achtzig Euro Nebenkosten. Die Warmmiete ist also fünfhundert Euro."
+      },
+      {
+        "speaker": "Kiran",
+        "voice": "male",
+        "text": "Muss ich eine Kaution bezahlen?"
+      },
+      {
+        "speaker": "Mitbewohnerin Jana",
+        "voice": "female",
+        "text": "Ja, die Mietkaution sind zwei Monatsmieten. Das ist eine Sicherheit für den Vermieter."
+      },
+      {
+        "speaker": "Mitbewohnerin Jana",
+        "voice": "female",
+        "text": "Ach ja, und laut Hausordnung gilt ab zweiundzwanzig Uhr die Nachtruhe."
+      },
+      {
+        "speaker": "Kiran",
+        "voice": "male",
+        "text": "Kein Problem. Was passiert beim Einzug?"
+      },
+      {
+        "speaker": "Mitbewohnerin Jana",
+        "voice": "female",
+        "text": "Vor dem Einzug schreiben wir alle Mängel in ein Übergabeprotokoll. Dann gibt es später keinen Streit."
+      }
     ]
   },
   {
@@ -1787,7 +2267,7 @@
       "Wetter"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a2_hoeren_02.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -1912,7 +2392,7 @@
       "Einladung"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a2_hoeren_03.mp3",
+    "audioUrl": "/audio/hoeren/labs/a2-lab-06-kultur-veranstaltungen.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -2018,6 +2498,38 @@
         "answer": "a",
         "explanation": "Blumen, feine Pralinen oder eine gute Flasche Wein sind klassische Gastgeschenke."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Lena",
+        "voice": "female",
+        "text": "Hallo Mehmet, hier ist Lena! Am Samstag feiere ich meinen Geburtstag und ich lade dich herzlich ein. Ich freue mich sehr, dass du mich bald besuchst!"
+      },
+      {
+        "speaker": "Lena",
+        "voice": "female",
+        "text": "Bring einfach etwas Kleines mit, zum Beispiel Blumen oder Schokolade. Das macht man in Deutschland oft so."
+      },
+      {
+        "speaker": "Mehmet",
+        "voice": "male",
+        "text": "Hallo Lena, herzlichen Glückwunsch zum Geburtstag! Vielen Dank für die Einladung, aber leider habe ich am Samstag schon einen Termin."
+      },
+      {
+        "speaker": "Mehmet",
+        "voice": "male",
+        "text": "Und ehrlich gesagt kann ich auch nicht zur Party kommen, weil ich krank bin. Ich habe eine Erkältung."
+      },
+      {
+        "speaker": "Mehmet",
+        "voice": "male",
+        "text": "Aber am dritten Oktober, am Tag der Deutschen Einheit, haben wir beide frei. Dann lade ich dich zum Essen ein!"
+      },
+      {
+        "speaker": "Lena",
+        "voice": "female",
+        "text": "Gute Besserung, Mehmet! Der dritte Oktober ist eine super Idee. Bis dann!"
+      }
     ]
   },
   {
@@ -2035,7 +2547,7 @@
       "Beipackzettel"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a2_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -2160,7 +2672,7 @@
       "Digitalisierung"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_a2_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/a2-lab-08-medien-nachrichten.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -2257,6 +2769,48 @@
         ],
         "explanation": "Nach dem vorangestellten Nebensatz beginnt der Hauptsatz sofort mit dem Verb: 'höre ich'."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Moderatorin",
+        "voice": "female",
+        "text": "Willkommen zu ‚Digital im Alltag‘. Heute sprechen wir mit dem IT-Trainer Jonas Klein."
+      },
+      {
+        "speaker": "Jonas Klein",
+        "voice": "male",
+        "text": "Viele Menschen schauen ständig auf das Smartphone, obwohl sie sich gerade mit Freunden unterhalten. Das ist unhöflich."
+      },
+      {
+        "speaker": "Moderatorin",
+        "voice": "female",
+        "text": "Und was raten Sie für die Sicherheit im Internet?"
+      },
+      {
+        "speaker": "Jonas Klein",
+        "voice": "male",
+        "text": "Ein sicheres Passwort enthält Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen. Nie das eigene Geburtsdatum! Und laden Sie Dateien nur aus sicheren Quellen herunter."
+      },
+      {
+        "speaker": "Moderatorin",
+        "voice": "female",
+        "text": "Viele arbeiten heute auch von zu Hause."
+      },
+      {
+        "speaker": "Jonas Klein",
+        "voice": "male",
+        "text": "Ja, mobiles Arbeiten oder Homeoffice ist normal geworden. Trotzdem schauen viele Deutsche abends um zwanzig Uhr noch die Tagesschau im Fernsehen."
+      },
+      {
+        "speaker": "Moderatorin",
+        "voice": "female",
+        "text": "Und Sie persönlich?"
+      },
+      {
+        "speaker": "Jonas Klein",
+        "voice": "male",
+        "text": "Wenn ich Feierabend habe, höre ich gerne einen Podcast."
+      }
     ]
   },
   {
@@ -2274,7 +2828,7 @@
       "IBAN"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a2_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -2401,7 +2955,7 @@
       "Karriere"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/a2_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/a2-lab-10-ausbildung-zukunft.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -2511,6 +3065,48 @@
         "answer": "a",
         "explanation": "Klassisches Bewerbungsdossier: Anschreiben, tabellarischer CV und relevante Zeugnisse."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Berater",
+        "voice": "male",
+        "text": "Guten Tag, Frau Kaur. Sie interessieren sich für eine duale Ausbildung?"
+      },
+      {
+        "speaker": "Frau Kaur",
+        "voice": "female",
+        "text": "Ja, nächstes Jahr werde ich meine Ausbildung in Berlin beginnen. Wie funktioniert das genau?"
+      },
+      {
+        "speaker": "Berater",
+        "voice": "male",
+        "text": "Das duale System kombiniert zwei Lernorte: den Betrieb für die Praxis und die Berufsschule für die Theorie."
+      },
+      {
+        "speaker": "Frau Kaur",
+        "voice": "female",
+        "text": "Bekomme ich während der Ausbildung Geld?"
+      },
+      {
+        "speaker": "Berater",
+        "voice": "male",
+        "text": "Ja, alle Auszubildenden erhalten monatlich eine gesetzliche Ausbildungsvergütung. Nach der Prüfung bekommen Sie das IHK-Zeugnis."
+      },
+      {
+        "speaker": "Frau Kaur",
+        "voice": "female",
+        "text": "Was brauche ich für die Bewerbung?"
+      },
+      {
+        "speaker": "Berater",
+        "voice": "male",
+        "text": "Eine vollständige Bewerbung hat drei Teile: Anschreiben, Lebenslauf und Zeugnisse. Im Lebenslauf schreiben Sie antichronologisch, also die aktuellste Station zuerst."
+      },
+      {
+        "speaker": "Frau Kaur",
+        "voice": "female",
+        "text": "Vielen Dank für die Beratung!"
+      }
     ]
   },
   {
@@ -2528,7 +3124,7 @@
       "Prüfungsmodus"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b1_hoeren_01.mp3",
+    "audioUrl": "/audio/hoeren/labs/b1-lab-01-goethe-hoeren-teil1.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -2656,6 +3252,28 @@
         "answer": "a",
         "explanation": "Fahrräder sind im Mehrzweckabteil (Wagen 4) zugelassen."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Bahnhofsdurchsage",
+        "voice": "female",
+        "text": "Achtung am Gleis drei: Der ICE siebenhundertzwei nach Hamburg hat heute circa fünfundzwanzig Minuten Verspätung. Grund ist eine Verzögerung bei der Bereitstellung des Zuges. Der Zug fährt heute von Gleis fünf statt Gleis drei. Reisende mit Fahrrädern bringen ihre Räder bitte im Abteil vier unter."
+      },
+      {
+        "speaker": "Kulturradio",
+        "voice": "male",
+        "text": "Und ein Tipp für Kulturfans: Das Pergamonmuseum öffnet am langen Donnerstag bis zweiundzwanzig Uhr. Der Eintritt ist ab achtzehn Uhr ermäßigt."
+      },
+      {
+        "speaker": "Verkehrsfunk",
+        "voice": "male",
+        "text": "Die Verkehrslage: Auf der A hundert, dem Berliner Stadtring, staut sich der Verkehr wegen einer Baustelle auf fünf Kilometern. Bitte planen Sie mehr Zeit ein."
+      },
+      {
+        "speaker": "Wetterdienst",
+        "voice": "female",
+        "text": "Das Wetter: Tagsüber bleibt es trocken. Ab den späten Abendstunden rechnen wir im Berliner Raum mit heftigen Sturmböen. Sichern Sie bitte lose Gegenstände auf Balkonen."
+      }
     ]
   },
   {
@@ -2673,7 +3291,7 @@
       "Meinungen"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b1_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/b1-lab-02-telc-hoeren-alltag.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -2795,6 +3413,58 @@
         "answer": "a",
         "explanation": "Deutschkenntnisse bleiben der entscheidende Schlüssel für langfristigen Karriereaufstieg."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Frau Demir, Sie haben ein Berliner Software-Start-up gegründet. Worum geht es bei Ihrem neuen Arbeitsmodell?"
+      },
+      {
+        "speaker": "Frau Demir",
+        "voice": "female",
+        "text": "Wir setzen auf flexible Arbeitszeiten und Remote Work im ganzen Team. Außerdem haben wir sechs Monate lang die Vier-Tage-Woche getestet."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Und wie war die Reaktion der Mitarbeitenden?"
+      },
+      {
+        "speaker": "Frau Demir",
+        "voice": "female",
+        "text": "Sehr positiv! Die Zufriedenheit und auch die Produktivität sind deutlich gestiegen."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Gibt es auch Nachteile beim Homeoffice?"
+      },
+      {
+        "speaker": "Frau Demir",
+        "voice": "female",
+        "text": "Ja, das zentrale Problem ist die Kommunikation. Wer nur zu Hause arbeitet, verliert soziale Kontakte. Deshalb arbeiten unsere Leute im Durchschnitt zwei Tage pro Woche vor Ort im Büro."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Bleibt das Modell dauerhaft?"
+      },
+      {
+        "speaker": "Frau Demir",
+        "voice": "female",
+        "text": "Ja, die Geschäftsführung hat den Beschluss fest verankert."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Ihr Rat an internationale Fachkräfte in Berlin?"
+      },
+      {
+        "speaker": "Frau Demir",
+        "voice": "female",
+        "text": "Bauen Sie frühzeitig Deutschkenntnisse auf B1- oder B2-Niveau auf. Das öffnet hier sehr viele Türen."
+      }
     ]
   },
   {
@@ -2812,7 +3482,7 @@
       "Argumente"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b1_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -2958,7 +3628,7 @@
       "Dativ/Akkusativ"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b1_hoeren_02.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -3081,7 +3751,7 @@
       "Signalwörter"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b1_hoeren_03.mp3",
+    "audioUrl": "/audio/hoeren/labs/b1-lab-05-hoeren-vortrag.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -3200,6 +3870,33 @@
         ],
         "explanation": "Klassischer Abschluss: 'Ich bedanke mich für Ihre Aufmerksamkeit und freue mich auf Ihre Fragen'."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Referent Dr. Albers",
+        "voice": "male",
+        "text": "Meine Damen und Herren, herzlich willkommen. Heute spreche ich über erfolgreiches Studieren in Berlin. Zunächst einige Fakten: An den Berliner Universitäten und Hochschulen sind rund zweihunderttausend Studierende eingeschrieben."
+      },
+      {
+        "speaker": "Referent Dr. Albers",
+        "voice": "male",
+        "text": "Eine aktuelle Arbeitsmarkterhebung des IAB, also des Instituts für Arbeitsmarkt- und Berufsforschung, zeigt: Absolventinnen und Absolventen mit guten Deutschkenntnissen finden deutlich schneller eine Stelle."
+      },
+      {
+        "speaker": "Referent Dr. Albers",
+        "voice": "male",
+        "text": "Kommen wir nun zum zweiten wesentlichen Aspekt: der Prüfungsvorbereitung. Ich empfehle regelmäßige Lerngruppen und aktive Textzusammenfassungen statt Lernen in letzter Minute."
+      },
+      {
+        "speaker": "Referent Dr. Albers",
+        "voice": "male",
+        "text": "Drittens: interkulturelle Kompetenz. Darunter verstehe ich die Fähigkeit, respektvoll und erfolgreich mit Menschen aus anderen Kulturen zusammenzuarbeiten."
+      },
+      {
+        "speaker": "Referent Dr. Albers",
+        "voice": "male",
+        "text": "Damit komme ich zum Schluss. Ich bedanke mich für Ihre Aufmerksamkeit."
+      }
     ]
   },
   {
@@ -3217,7 +3914,7 @@
       "Selektiv"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b1_hoeren_04.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -3356,7 +4053,7 @@
       "Redemittel"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b1_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -3482,7 +4179,7 @@
       "Struktur"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b1_sprechen_examiner_sample.mp3",
+    "audioUrl": "",
     "skill": "hoeren",
     "questions": [
       {
@@ -3616,7 +4313,7 @@
       "Gegenargumente"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b1_hoeren_02.mp3",
+    "audioUrl": "",
     "skill": "hoeren",
     "questions": [
       {
@@ -3752,7 +4449,7 @@
       "Goethe Zertifikat"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b1_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "allround",
     "questions": [
       {
@@ -3900,7 +4597,7 @@
       "Geschäftsdeutsch"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b2_hoeren_01.mp3",
+    "audioUrl": "/audio/hoeren/labs/b2-lab-01-beruf-arbeitswelt.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -4011,6 +4708,43 @@
         ],
         "explanation": "Aufgabenverteilung (Wer macht was bis wann?) sichert die Verbindlichkeit."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Projektleiterin Frau Roth",
+        "voice": "female",
+        "text": "Guten Morgen. Ich begrüße Sie alle herzlich zu unserer heutigen Projektabstimmung. Herr Yilmaz übernimmt heute als Protokollant die Dokumentation der Beschlüsse und To-dos."
+      },
+      {
+        "speaker": "Projektleiterin Frau Roth",
+        "voice": "female",
+        "text": "Zum ersten Punkt: Mir ist aufgefallen, dass die Berichte zuletzt verspätet eintrafen. Wie können wir den Ablauf optimieren?"
+      },
+      {
+        "speaker": "Herr Yilmaz",
+        "voice": "male",
+        "text": "Ein gemeinsamer Abgabetermin jeden Donnerstag um zwölf Uhr würde helfen."
+      },
+      {
+        "speaker": "Projektleiterin Frau Roth",
+        "voice": "female",
+        "text": "Einverstanden. Lassen Sie uns nun zum nächsten Tagesordnungspunkt übergehen: der neuen Software."
+      },
+      {
+        "speaker": "Herr Brandt",
+        "voice": "male",
+        "text": "Ich habe allerdings Bedenken wegen des Budgets. Die Lizenzen sind teuer."
+      },
+      {
+        "speaker": "Projektleiterin Frau Roth",
+        "voice": "female",
+        "text": "Sie sprechen einen berechtigten Punkt an. Lassen Sie uns die Kosten-Nutzen-Analyse prüfen, bevor wir entscheiden."
+      },
+      {
+        "speaker": "Projektleiterin Frau Roth",
+        "voice": "female",
+        "text": "Zum Abschluss: Wir halten fest, wer bis wann welche Aufgabe übernimmt. Vielen Dank für Ihre Mitarbeit."
+      }
     ]
   },
   {
@@ -4028,7 +4762,7 @@
       "Qualifikationen"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b2_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -4166,7 +4900,7 @@
       "Verhandlung"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b2_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/b2-lab-03-vorstellungsgespraech.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -4297,6 +5031,48 @@
         ],
         "explanation": "Eine kurze Follow-up-Dankesmail unterstreicht die professionelle Motivation."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Frau Hartmann, wie gelingt der Einstieg, wenn der Personalleiter sagt: ‚Erzählen Sie uns etwas über sich‘?"
+      },
+      {
+        "speaker": "Frau Hartmann",
+        "voice": "female",
+        "text": "Mit einer prägnanten Selbstpräsentation von etwa zwei bis maximal drei Minuten. Nicht länger."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Und die gefürchtete Frage nach den Schwächen?"
+      },
+      {
+        "speaker": "Frau Hartmann",
+        "voice": "female",
+        "text": "Nennen Sie eine echte Lernbaustelle und zeigen Sie, wie Sie aktiv daran arbeiten. Bei Fragen nach Fallbeispielen hilft die STAR-Methode: Situation, Task, Action, Result."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Am Ende heißt es oft: ‚Haben Sie noch Fragen an uns?‘"
+      },
+      {
+        "speaker": "Frau Hartmann",
+        "voice": "female",
+        "text": "Fragen Sie zum Beispiel: ‚Welche Weiterbildungsmöglichkeiten und Einarbeitungspläne gibt es im Team?‘ Das zeigt echtes Interesse."
+      },
+      {
+        "speaker": "Moderator",
+        "voice": "male",
+        "text": "Und beim Gehalt?"
+      },
+      {
+        "speaker": "Frau Hartmann",
+        "voice": "female",
+        "text": "Argumentieren Sie mit spezifischen Qualifikationen, nachweisbaren Erfolgen und Marktstandards – nicht mit privaten Ausgaben. Und senden Sie innerhalb von vierundzwanzig Stunden ein kurzes Dankschreiben an den Recruiter."
+      }
     ]
   },
   {
@@ -4314,7 +5090,7 @@
       "Idiome"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b2_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/b2-lab-04-berufsbezogenes-hoeren.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -4435,6 +5211,38 @@
         "answer": "a",
         "explanation": "Die Vorsitzende betont die Stabilität bei anhaltendem Kostendruck."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Betriebsratsvorsitzende Frau Krüger",
+        "voice": "female",
+        "text": "Liebe Kolleginnen und Kollegen, ich begrüße Sie zur diesjährigen Betriebsversammlung. Zuerst die wichtigste Nachricht: Wir haben die Einführung eines neuen Arbeitszeitkontos mit Gleitzeitregelung beschlossen."
+      },
+      {
+        "speaker": "Betriebsratsvorsitzende Frau Krüger",
+        "voice": "female",
+        "text": "Zweitens: Nach den Tarifverhandlungen steigen die tariflichen Gehälter ab dem nächsten Quartal um drei Komma acht Prozent."
+      },
+      {
+        "speaker": "Betriebsratsvorsitzende Frau Krüger",
+        "voice": "female",
+        "text": "Beim Thema Personalplanung haben wir lange genug diskutiert. Wir müssen jetzt Nägel mit Köpfen machen und verbindlich entscheiden."
+      },
+      {
+        "speaker": "Betriebsratsvorsitzende Frau Krüger",
+        "voice": "female",
+        "text": "Zur Arbeitssicherheit: Alle neuen Mitarbeitenden müssen verpflichtend die jährliche Unterweisung zur Arbeitssicherheit und zum Brandschutz absolvieren."
+      },
+      {
+        "speaker": "Betriebsratsvorsitzende Frau Krüger",
+        "voice": "female",
+        "text": "Unsere Rechte und Pflichten als Betriebsrat sind im Betriebsverfassungsgesetz geregelt. Darauf achten wir genau."
+      },
+      {
+        "speaker": "Betriebsratsvorsitzende Frau Krüger",
+        "voice": "female",
+        "text": "Zur wirtschaftlichen Lage: Trotz steigender Energie- und Materialkosten bin ich vorsichtig optimistisch. Vielen Dank."
+      }
     ]
   },
   {
@@ -4452,7 +5260,7 @@
       "Konjunktur"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b2_hoeren_03.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -4586,7 +5394,7 @@
       "Rechtssicher"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b2_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -4722,7 +5530,7 @@
       "Rhetorik"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b2_hoeren_02.mp3",
+    "audioUrl": "/audio/hoeren/labs/b2-lab-07-argumentation-debatte.mp3",
     "skill": "hoeren",
     "questions": [
       {
@@ -4831,6 +5639,43 @@
         "answer": "a",
         "explanation": "Ein rhetorischer Trugschluss, bei dem ein verzerrter Schein-Gegner attackiert wird."
       }
+    ],
+    "hoerenTranscript": [
+      {
+        "speaker": "Moderatorin",
+        "voice": "female",
+        "text": "Soll unser Klinikum jetzt in ein neues digitales Dokumentationssystem investieren? Herr Dr. Lange, Ihre These?"
+      },
+      {
+        "speaker": "Dr. Lange",
+        "voice": "male",
+        "text": "Meine These ist klar: Wir müssen investieren. Die Begründung: Papierakten verursachen Fehler. Und ein Beleg: Letztes Jahr gab es zwölf Medikationsfehler. Wenn wir früher reagiert hätten, wäre der Fehler vermieden worden."
+      },
+      {
+        "speaker": "Frau Neumann",
+        "voice": "female",
+        "text": "Demgegenüber muss allerdings eingewandt werden, dass die Kosten enorm sind."
+      },
+      {
+        "speaker": "Dr. Lange",
+        "voice": "male",
+        "text": "Das trifft zwar grundsätzlich zu, gilt jedoch nur unter der Voraussetzung, dass die Fördermittel nicht bewilligt werden."
+      },
+      {
+        "speaker": "Frau Neumann",
+        "voice": "female",
+        "text": "Die Investition ist riskant. Gleichwohl sollten wir die Chance ergreifen – aber Schritt für Schritt."
+      },
+      {
+        "speaker": "Dr. Lange",
+        "voice": "male",
+        "text": "Moment, ich habe nie gesagt, dass wir alles auf einmal umstellen wollen. Das ist ein Strohmann-Argument: Sie stellen meine Position verzerrt dar, um sie leichter zu widerlegen."
+      },
+      {
+        "speaker": "Moderatorin",
+        "voice": "female",
+        "text": "Vielen Dank. Wir halten fest: These, Begründung und Beleg liegen auf beiden Seiten auf dem Tisch."
+      }
     ]
   },
   {
@@ -4848,7 +5693,7 @@
       "Wirtschaftsberichte"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b2_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -4974,7 +5819,7 @@
       "Kündigungsschutz"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/b2_hoeren_02.mp3",
+    "audioUrl": "",
     "skill": "lesen",
     "questions": [
       {
@@ -5112,7 +5957,7 @@
       "Bewertungsraster"
     ],
     "pages": 4,
-    "audioUrl": "/audio/hoeren/daf_b2_hoeren_01.mp3",
+    "audioUrl": "",
     "skill": "allround",
     "questions": [
       {

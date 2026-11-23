@@ -202,6 +202,8 @@ export interface Workbook {
   coverColor: string;
   topics: string[];
   audioUrl?: string;
+  /** Hörtext bound to this exact exercise (same script the audioUrl MP3 was rendered from). */
+  hoerenTranscript?: ScriptLine[];
   skill?: string;
   flashcards?: FlashcardDeckItem[];
   grammarNotes?: GrammarNotes;

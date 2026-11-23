@@ -274,12 +274,12 @@
           "title": "Hören Teil 1 — Aufnahmeprüfung T-Kurs Hörverstehen",
           "instructions": "Sie hören einen Fachausschnitt aus der Höheren Mathematik und Technischen Mechanik.",
           "maxPlays": 2,
-          "audioUrl": "/audio/stk_t_kurs_01.mp3",
+          "audioUrl": "/audio/hoeren/stk_t_kurs_01.mp3",
           "script": [
             {
               "speaker": "Dozent Technische Mechanik",
               "voice": "male",
-              "text": "Studienkolleg Aufnahmeprüfung T-Kurs. Hörverstehen: Höhere Mathematik und Technische Mechanik. In der Differentialrechnung beschreibt die erste Ableitung die lokale Steigung der Tangente. In der technischen Mechanik formulieren wir das statische Gleichgewicht starrer Körper: Summe aller Kräfte gleich null, Summe aller Momente gleich null."
+              "text": "Studienkolleg Aufnahmeprüfung T-Kurs. Hörverstehen: Höhere Mathematik und Technische Mechanik. In der Differentialrechnung beschreibt die erste Ableitung einer reellen Funktion f von x die lokale Steigung der Tangente an den Funktionsgraphen. Verschwindet die erste Ableitung an einer inneren Stelle x-null und ist die zweite Ableitung an dieser Stelle ungleich null, so liegt ein lokales Extremum vor. In der technischen Mechanik formulieren wir das statische Gleichgewicht starrer Körper über das Verschwinden aller resultierenden Kräfte und Drehmomente: Summe aller Kräfte gleich null, Summe aller Momente gleich null."
             }
           ],
           "questions": [
@@ -325,19 +325,22 @@
               "answer": "a",
               "explanation": "Summe F = 0 und Summe M = 0."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_t_kurs_01.mp3"
+          }
         },
         {
           "id": "hoeren-2",
           "title": "Hören Teil 2 — Thermodynamik und Energieerhaltung",
           "instructions": "Hören Sie den Vorlesungsausschnitt zur Technischen Physik.",
           "maxPlays": 1,
-          "audioUrl": "/audio/stk_t_kurs_02.mp3",
+          "audioUrl": "/audio/hoeren/stk_t_kurs_02.mp3",
           "script": [
             {
               "speaker": "Dozentin Physik",
               "voice": "female",
-              "text": "Der erste Hauptsatz der Thermodynamik postuliert die universelle Energieerhaltung. Die Änderung der inneren Energie Delta U ist gleich der Summe aus zugeführter Wärme Q und verrichteter Arbeit W."
+              "text": "Studienkolleg T-Kurs. Vorlesung Technische Physik: Thermodynamik und Energieerhaltung. Der erste Hauptsatz der Thermodynamik postuliert die Äquivalenz von Wärme und mechanischer Arbeit sowie die universelle Energieerhaltung. Die Änderung der inneren Energie Delta U eines geschlossenen thermodynamischen Systems ist gleich der Summe aus zugeführter Wärme Q und am System verrichteter Arbeit W. Der Carnot-Wirkungsgrad definiert die theoretische Obergrenze jeder periodisch arbeitenden Wärmekraftmaschine zwischen zwei Temperaturniveaus."
             }
           ],
           "questions": [
@@ -355,7 +358,10 @@
               "answer": "falsch",
               "explanation": "Erster Hauptsatz postuliert die Äquivalenz von Wärme und Arbeit. Falsch."
             }
-          ]
+          ],
+          "audio": {
+            "localFile": "stk_t_kurs_02.mp3"
+          }
         }
       ]
     },
