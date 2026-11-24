@@ -1,0 +1,17 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.gatewaytofuture.app",
+      "sha256_cert_fingerprints": [
+        "02:2E:9A:8C:D9:94:75:BE:61:A8:2B:36:62:8A:94:01:20:4C:7A:41:76:3F:88:B4:B0:B4:94:05:D1:35:86:E0",
+        "C2:76:80:F1:3A:40:20:3D:DD:8B:50:D1:41:2A:7D:42:BE:EB:FA:0A:EB:1F:4E:4D:0C:D6:DE:3F:44:AB:C2:50",
+        "5A:C1:9D:3B:59:B5:58:37:58:79:3E:CA:BE:05:C0:78:CA:36:4B:8C:17:A5:D1:F0:7B:70:D2:6F:1B:64:96:CC",
+        "87:D6:B0:EB:48:78:FA:1A:E7:39:A2:2D:62:E7:45:82:99:C3:51:60:52:75:DA:5D:ED:CE:03:3A:98:2D:40:AB"
+      ]
+    }
+  }
+]

@@ -1,0 +1,84 @@
+{
+  "packageId": "com.gatewaytofuture.app",
+  "host": "app.gatewaytofuture.com",
+  "name": "Gateway To Future",
+  "launcherName": "GTF Academy",
+  "display": "standalone",
+  "themeColor": "#0A1628",
+  "themeColorDark": "#0A1628",
+  "navigationColor": "#0A1628",
+  "navigationColorDark": "#0A1628",
+  "navigationDividerColor": "#0A1628",
+  "navigationDividerColorDark": "#0A1628",
+  "backgroundColor": "#0A1628",
+  "enableNotifications": true,
+  "startUrl": "/dashboard",
+  "iconUrl": "https://app.gatewaytofuture.com/icons/icon-512.png",
+  "maskableIconUrl": "https://app.gatewaytofuture.com/icons/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android-release-key.jks",
+    "alias": "gtf-release-key"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "German Language Academy",
+      "shortName": "Language",
+      "url": "https://app.gatewaytofuture.com/dashboard?division=sprachakademie",
+      "chosenIcon": "https://app.gatewaytofuture.com/icons/icon-192.png"
+    },
+    {
+      "name": "Studienkolleg Hub",
+      "shortName": "Studienkolleg",
+      "url": "https://app.gatewaytofuture.com/dashboard?division=studienkolleg",
+      "chosenIcon": "https://app.gatewaytofuture.com/icons/icon-192.png"
+    },
+    {
+      "name": "Fachsprache Pflege & Ausbildung",
+      "shortName": "Pflege & Ausbildung",
+      "url": "https://app.gatewaytofuture.com/dashboard?division=fachsprache_medizin",
+      "chosenIcon": "https://app.gatewaytofuture.com/icons/icon-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://app.gatewaytofuture.com/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://app.gatewaytofuture.com/",
+  "orientation": "portrait-primary",
+  "fingerprints": [
+    {
+      "name": "Upload key",
+      "value": "02:2E:9A:8C:D9:94:75:BE:61:A8:2B:36:62:8A:94:01:20:4C:7A:41:76:3F:88:B4:B0:B4:94:05:D1:35:86:E0"
+    },
+    {
+      "name": "Previous Play App Signing key",
+      "value": "C2:76:80:F1:3A:40:20:3D:DD:8B:50:D1:41:2A:7D:42:BE:EB:FA:0A:EB:1F:4E:4D:0C:D6:DE:3F:44:AB:C2:50"
+    },
+    {
+      "name": "Play App Signing key (Classical)",
+      "value": "5A:C1:9D:3B:59:B5:58:37:58:79:3E:CA:BE:05:C0:78:CA:36:4B:8C:17:A5:D1:F0:7B:70:D2:6F:1B:64:96:CC"
+    },
+    {
+      "name": "Play App Signing key (Post-quantum)",
+      "value": "87:D6:B0:EB:48:78:FA:1A:E7:39:A2:2D:62:E7:45:82:99:C3:51:60:52:75:DA:5D:ED:CE:03:3A:98:2D:40:AB"
+    }
+  ],
+  "additionalHttpHeaders": {},
+  "appVersion": "1.0.0"
+}
