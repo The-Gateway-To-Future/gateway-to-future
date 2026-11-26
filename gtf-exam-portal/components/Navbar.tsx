@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
+  ClipboardCheck,
   Compass,
   GraduationCap,
   Hospital,
@@ -90,6 +91,8 @@ export function Navbar({
           ? "fachsprache_medizin"
           : null);
 
+  const isAusbildungOsActive =
+    pathname === "/ausbildung-os" || pathname.startsWith("/ausbildung-os/");
   const isPlanActive = pathname === "/pathways" || pathname.startsWith("/pathways/");
   const isPricingActive = pathname === "/pricing" || pathname.startsWith("/pricing/");
   const isProfileActive = pathname === "/profile" || pathname.startsWith("/profile/");
@@ -135,42 +138,57 @@ export function Navbar({
           </div>
         </Link>
 
-        {/* 3-Division Pill Switcher (Desktop >= lg) */}
-        <div className="hidden lg:flex items-center gap-1 rounded-2xl bg-slate-100 p-1 border border-slate-200 shrink-0">
-          {DIVISIONS.map((divId) => {
-            const Icon = divisionIcons[divId];
-            const isSelected = resolvedDivision === divId;
+        {/* 3-Division Pill Switcher + Isolated Ausbildung OS Tab (Desktop >= lg) */}
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1 rounded-2xl bg-slate-100 p-1 border border-slate-200 shrink-0">
+            {DIVISIONS.map((divId) => {
+              const Icon = divisionIcons[divId];
+              const isSelected = resolvedDivision === divId;
 
-            return (
-              <button
-                key={divId}
-                type="button"
-                onClick={() => handleDivisionClick(divId)}
-                title={DIVISION_META[divId].shortTitle}
-                className={`relative flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors select-none ${
-                  isSelected
-                    ? "!text-white"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
-                }`}
-              >
-                {isSelected && (
-                  <motion.div
-                    layoutId="active-division-pill-navbar"
-                    className="absolute inset-0 rounded-xl !bg-slate-900 shadow-xs"
-                    transition={{ type: "spring", stiffness: 450, damping: 32 }}
-                  />
-                )}
-                <span className="relative z-10 flex items-center gap-1.5">
-                  <Icon
-                    className={`h-3.5 w-3.5 ${
-                      isSelected ? "!text-white" : "text-slate-500"
-                    }`}
-                  />
-                  <span>{divisionShortLabels[divId]}</span>
-                </span>
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={divId}
+                  type="button"
+                  onClick={() => handleDivisionClick(divId)}
+                  title={DIVISION_META[divId].shortTitle}
+                  className={`relative flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors select-none ${
+                    isSelected
+                      ? "!text-white"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="active-division-pill-navbar"
+                      className="absolute inset-0 rounded-xl !bg-slate-900 shadow-xs"
+                      transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    <Icon
+                      className={`h-3.5 w-3.5 ${
+                        isSelected ? "!text-white" : "text-slate-500"
+                      }`}
+                    />
+                    <span>{divisionShortLabels[divId]}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <Link
+            href="/ausbildung-os"
+            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-bold tracking-wide transition whitespace-nowrap shrink-0 ${
+              isAusbildungOsActive
+                ? "border-[#FFD166] bg-[#051329] text-[#FFD166] shadow-[0_0_16px_-4px_rgba(255,209,102,0.55)]"
+                : "border-amber-500/45 bg-[#0A1628] text-[#FFD166] hover:bg-[#051329] hover:border-[#FFD166]"
+            }`}
+            title="Ausbildung OS — Document Readiness Checklist"
+          >
+            <ClipboardCheck className="h-3.5 w-3.5 text-[#FFD166] shrink-0" />
+            <span>Ausbildung OS</span>
+          </Link>
         </div>
 
         {/* Right Action Controls & Auth Profile */}
