@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
-import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
+import { HEADER_IMAGES } from "@/components/BreadcrumbHeader";
+import {
+  StudentHubHeroSlider,
+  type ActiveCefrLevel,
+} from "@/components/StudentHubHeroSlider";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { useAuth } from "@/lib/auth-context";
@@ -14,6 +18,26 @@ import {
   USER_PROGRESS_EVENT,
   type UserProgress,
 } from "@/lib/firebase/progress";
+
+function resolveActiveCefrLevel(
+  course?: string,
+  completedSteps?: string[],
+): ActiveCefrLevel {
+  const normCourse = (course || "").trim().toLowerCase();
+  if (normCourse === "a1" || normCourse === "a2" || normCourse === "b1" || normCourse === "b2") {
+    return normCourse;
+  }
+
+  if (Array.isArray(completedSteps) && completedSteps.length > 0) {
+    const joined = completedSteps.join(" ").toLowerCase();
+    if (joined.includes("b2-")) return "b2";
+    if (joined.includes("b1-")) return "b1";
+    if (joined.includes("a2-")) return "a2";
+    if (joined.includes("a1-")) return "a1";
+  }
+
+  return "b1";
+}
 
 export default function DashboardHubPage() {
   const { user, isAuthenticated } = useAuth();
@@ -45,44 +69,27 @@ export default function DashboardHubPage() {
     };
   }, [progressUid]);
 
-  const streakFormatted = String(progress?.currentStreak ?? 1).padStart(2, "0");
+  const activeCefrLevel = useMemo(
+    () => resolveActiveCefrLevel(user?.course, progress?.completedSteps),
+    [user?.course, progress?.completedSteps],
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar />
 
       <main className="flex-1 pb-24 lg:pb-12">
-        <BreadcrumbHeader
-          breadcrumbs={[{ label: "Home" }, { label: "Student Hub" }]}
-          eyebrow="STUDENT COMMAND HUB"
-          title={`Welcome, ${studentDisplayName}.`}
-          subtitle="Select one preparation division below to drill down into your target level, syllabus subdivision, and dedicated workspace."
-          theme="hub"
-          backgroundImage={HEADER_IMAGES.hub}
-          rightBadge={
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-100 backdrop-blur-md shadow-xs">
-              <span className="relative flex h-2 w-2 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-              </span>
-              <span>STREAK · {streakFormatted}D</span>
-            </div>
-          }
-        >
-          {!isAuthenticated && (
-            <div className="pt-1">
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950 transition hover:bg-slate-100 shadow-sm"
-              >
-                Log In to Sync Progress
-              </Link>
-            </div>
-          )}
-        </BreadcrumbHeader>
+        <StudentHubHeroSlider
+          studentDisplayName={studentDisplayName}
+          streakCount={progress?.currentStreak ?? 1}
+          completedStepsCount={progress?.completedSteps?.length ?? 0}
+          masteredCardsCount={progress?.masteredFlashcards?.length ?? 0}
+          activeLevel={activeCefrLevel}
+          isAuthenticated={isAuthenticated}
+        />
 
         {/* Level 1: The 3 Core Divisions */}
-        <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
+        <section className="mx-auto max-w-6xl px-4 sm:px-8 py-7 sm:py-10 space-y-6 sm:space-y-8">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
@@ -209,7 +216,6 @@ export default function DashboardHubPage() {
       </footer>
 
       <BottomNavigationBar />
-      
     </div>
   );
 }
