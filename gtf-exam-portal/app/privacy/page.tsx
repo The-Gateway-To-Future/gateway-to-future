@@ -43,14 +43,14 @@ export default function PrivacyPolicyPage() {
             The data controller responsible for your personal information is:
           </p>
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-1.5 font-mono text-slate-800 break-words">
-            <div><strong className="text-amber-700">Legal Entity:</strong> The Gateway to Future (Rechtsform: Einzelunternehmen)</div>
-            <div><strong className="text-amber-700">Founder &amp; CEO:</strong> Sarbjit Kour (Founder &amp; CEO, Gateway To Future)</div>
+            <div><strong className="text-amber-700">Legal Entity:</strong> The Gateway to Future</div>
+            <div><strong className="text-amber-700">Advisory &amp; Operations:</strong> Gateway To Future — Berlin &amp; India Advisory Team</div>
             <div><strong className="text-amber-700">GSTIN:</strong> 05AAOPR7336L3Z0 | <strong className="text-amber-700">PAN:</strong> AAOPR7336L</div>
             <div><strong className="text-amber-700">India Registered Office:</strong> Mahant Building, Main Market Road, Laksar, Haridwar, Uttarakhand - 247663, India</div>
             <div><strong className="text-amber-700">European HQ:</strong> Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
             <div><strong className="text-amber-700">Official Website:</strong> https://www.gatewaytofuture.com</div>
-            <div><strong className="text-amber-700">Support Email:</strong> info@gatewaytofuture.com</div>
-            <div><strong className="text-amber-700">Support Phone:</strong> +49 1522 8372894</div>
+            <div><strong className="text-amber-700">Support Email:</strong> ashusharma@gatewaytofuture.com</div>
+            <div><strong className="text-amber-700">Consultation Desk:</strong> Direct phone contact disclosed upon confirmed paid appointment</div>
           </div>
         </section>
 
@@ -109,7 +109,7 @@ export default function PrivacyPolicyPage() {
               at any time (no login required to view instructions or initiate a request).
             </p>
             <p>
-              3. <strong>By Email:</strong> Send an email from your registered address to <a href="mailto:info@gatewaytofuture.com" className="text-amber-700 font-medium underline">info@gatewaytofuture.com</a> with the subject line <code>"Delete My Account"</code>. All associated records will be purged within 48 hours.
+              3. <strong>By Email:</strong> Send an email from your registered address to <a href="mailto:ashusharma@gatewaytofuture.com" className="text-amber-700 font-medium underline">ashusharma@gatewaytofuture.com</a> with the subject line <code>"Delete My Account"</code>. All associated records will be purged within 48 hours.
             </p>
           </div>
         </section>
@@ -117,15 +117,15 @@ export default function PrivacyPolicyPage() {
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">
           <h2 className="text-lg sm:text-xl font-bold text-slate-900">6. Contact Us</h2>
           <p className="text-slate-600">
-            For privacy inquiries, data requests, or regulatory questions, reach out to our Data Privacy Officer under the direction of Sarbjit Kour (Founder &amp; CEO, Gateway To Future):
+            For privacy inquiries, data requests, or regulatory questions, reach out to our Gateway To Future Data Privacy Desk:
           </p>
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <a
-              href="mailto:info@gatewaytofuture.com"
+              href="mailto:ashusharma@gatewaytofuture.com"
               className="inline-flex items-center gap-2 text-sm text-amber-700 hover:text-amber-800 font-medium"
             >
               <Mail className="w-4 h-4" />
-              info@gatewaytofuture.com
+              ashusharma@gatewaytofuture.com
             </a>
             <span className="inline-flex items-center gap-2 text-sm text-slate-600">
               <MapPin className="w-4 h-4 text-slate-500" />

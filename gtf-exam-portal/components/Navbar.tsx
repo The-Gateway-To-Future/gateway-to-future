@@ -4,12 +4,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
+  CalendarCheck2,
   ClipboardCheck,
   Compass,
   GraduationCap,
   Hospital,
   LogOut,
-  Phone,
   Terminal,
   User,
 } from "lucide-react";
@@ -238,17 +238,17 @@ export function Navbar({
             </Link>
           )}
 
-          {/* Official Berlin WhatsApp Helpline */}
-          <a
-            href={BRAND.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center h-8 w-8 sm:h-auto sm:w-auto sm:px-3 sm:py-1.5 rounded-xl border border-slate-200 bg-white text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 hover:text-slate-900 hover:border-slate-300 transition shrink-0"
-            title="Official GTF Berlin WhatsApp Helpline"
-          >
-            <Phone className="h-3.5 w-3.5 shrink-0" />
-            <span className="hidden md:inline ml-1.5">Helpline</span>
-          </a>
+          {/* Gated Paid Consultation Booking Link (Web only) */}
+          {nativeReady && !isNative && (
+            <Link
+              href="/pricing#consultation-booking"
+              className="inline-flex items-center justify-center h-8 w-8 sm:h-auto sm:w-auto sm:px-3 sm:py-1.5 rounded-xl border border-slate-200 bg-white text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 hover:text-slate-900 hover:border-slate-300 transition shrink-0"
+              title="Book Paid Consultation — Gateway To Future Mentorship Desk"
+            >
+              <CalendarCheck2 className="h-3.5 w-3.5 shrink-0" />
+              <span className="hidden md:inline ml-1.5">Consult</span>
+            </Link>
+          )}
 
           {/* Auth Pill */}
           {isAuthenticated && user ? (

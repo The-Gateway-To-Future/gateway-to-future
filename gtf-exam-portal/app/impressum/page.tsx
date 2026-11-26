@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Building2, Mail, MapPin, Phone, Scale, Shield } from "lucide-react";
+import { ArrowLeft, Building2, CalendarCheck2, Mail, MapPin, Scale, Shield } from "lucide-react";
 import { BRAND } from "@/lib/config";
 
 export const metadata = {
   title: `Impressum | ${BRAND.name}`,
-  description: `Official Impressum (§ 5 DDG) for ${BRAND.name}, led by ${BRAND.founderName} (${BRAND.founderTitle}) at ${BRAND.headquarters}, Germany.`,
+  description: `Official Impressum (§ 5 DDG) for ${BRAND.name} (${BRAND.advisoryTeamTitle}) at ${BRAND.headquarters}, Germany.`,
 };
 
 export default function ImpressumPage() {
@@ -45,28 +45,27 @@ export default function ImpressumPage() {
           </h2>
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-2 font-mono text-slate-800 break-words">
             <div><strong className="text-amber-700">Company / Brand:</strong> Gateway To Future (The Gateway to Future)</div>
-            <div><strong className="text-amber-700">Rechtsform (Legal Form):</strong> Einzelunternehmen (Inhaberin: {BRAND.founderName})</div>
-            <div><strong className="text-amber-700">Sole Founder &amp; CEO:</strong> {BRAND.founderName} — Sole Founder &amp; CEO, Gateway To Future</div>
+            <div><strong className="text-amber-700">Advisory Team:</strong> {BRAND.name} — {BRAND.advisoryTeamTitle}</div>
             <div><strong className="text-amber-700">Berlin Headquarters:</strong> Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
-            <div><strong className="text-amber-700">Editorial Responsibility (§ 18 Abs. 2 MStV):</strong> {BRAND.founderName}, Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
+            <div><strong className="text-amber-700">Editorial Responsibility (§ 18 Abs. 2 MStV):</strong> Gateway To Future Editorial Desk, Schönefelder Straße 2, GStU, 12355 Berlin, Germany</div>
             <div><strong className="text-amber-700">India Registered Office:</strong> Mahant Building, Main Market Road, Laksar, Haridwar, Uttarakhand - 247663, India</div>
             <div><strong className="text-amber-700">GSTIN:</strong> 05AAOPR7336L3Z0 | <strong className="text-amber-700">PAN:</strong> AAOPR7336L</div>
           </div>
         </section>
 
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900">2. Direct Contact Channels</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900">2. Contact &amp; Advisory Channels</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <a
-              href={`tel:${BRAND.supportPhoneE164}`}
+            <Link
+              href="/pricing#consultation-booking"
               className="flex items-center gap-2.5 p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 hover:border-amber-300 transition"
             >
-              <Phone className="w-4 h-4 text-amber-700 shrink-0" />
+              <CalendarCheck2 className="w-4 h-4 text-amber-700 shrink-0" />
               <div>
-                <div className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Phone / WhatsApp</div>
-                <div className="font-mono font-semibold">{BRAND.supportPhone}</div>
+                <div className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Book Consultation / Advisory Desk</div>
+                <div className="text-xs font-semibold text-slate-800">Direct phone &amp; WhatsApp line disclosed after confirmed paid appointment</div>
               </div>
-            </a>
+            </Link>
             <a
               href={`mailto:${BRAND.supportEmail}`}
               className="flex items-center gap-2.5 p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 hover:border-amber-300 transition"

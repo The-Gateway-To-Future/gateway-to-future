@@ -2,6 +2,11 @@ import { createHmac, timingSafeEqual } from "crypto";
 import { NextResponse } from "next/server";
 import { upsertLocalStudent } from "@/lib/server/admin-auth";
 import { grantProductUnlock } from "@/lib/server/catalog";
+import {
+  getDirectDeskContact,
+  PAID_APPOINTMENT_COOKIE,
+  signPaidAppointmentToken,
+} from "@/lib/server/consultation-contact";
 import { serverEnv } from "@/lib/server/env";
 
 export const runtime = "nodejs";
@@ -12,9 +17,19 @@ interface VerifyCheckoutBody {
   paymentId?: string;
   signature?: string;
   productSlug?: string;
-  tierKey?: "single_module" | "level_bundle" | "studienkolleg_track" | "all_access_pass";
+  tierKey?:
+    | "single_module"
+    | "level_bundle"
+    | "studienkolleg_track"
+    | "all_access_pass"
+    | "consultation_session";
   userEmail?: string;
   studentName?: string;
+  appointmentDetails?: {
+    pathway?: string;
+    preferredSlot?: string;
+    notes?: string;
+  };
 }
 
 function safeCompareHex(a: string, b: string): boolean {
@@ -26,8 +41,9 @@ function safeCompareHex(a: string, b: string): boolean {
 
 /**
  * Verifies a client-side Razorpay checkout completion callback via HMAC-SHA256
- * (`${orderId}|${paymentId}` signed with `RAZORPAY_KEY_SECRET`) and immediately
- * grants the candidate's Pro or track entitlement.
+ * (`${orderId}|${paymentId}` signed with `RAZORPAY_KEY_SECRET`), grants the
+ * candidate's entitlement, and issues a signed HttpOnly paid-appointment cookie
+ * so direct Berlin Desk contact details can be unlocked.
  */
 export async function POST(req: Request) {
   try {
@@ -41,7 +57,7 @@ export async function POST(req: Request) {
 
     if (!userEmail || !userEmail.includes("@")) {
       return NextResponse.json(
-        { error: "A verified candidate email is required to activate Pro access." },
+        { error: "A verified candidate email is required to confirm booking or Pro access." },
         { status: 400 },
       );
     }
@@ -92,9 +108,22 @@ export async function POST(req: Request) {
     });
 
     const primarySlug =
-      tierKey === "all_access_pass"
-        ? "gtf-all-access-pass"
-        : requestedSlug || "studienkolleg-all-access";
+      tierKey === "consultation_session"
+        ? "gtf-berlin-consultation"
+        : tierKey === "all_access_pass"
+          ? "gtf-all-access-pass"
+          : tierKey === "level_bundle"
+            ? requestedSlug || "gtf-level-bundle"
+            : requestedSlug || "studienkolleg-all-access";
+
+    const amountPaid =
+      tierKey === "consultation_session"
+        ? 1000
+        : tierKey === "all_access_pass"
+          ? 4999
+          : tierKey === "level_bundle"
+            ? 1999
+            : 2999;
 
     await grantProductUnlock({
       userEmail,
@@ -102,7 +131,7 @@ export async function POST(req: Request) {
       fullName: studentName,
       paymentProvider: isSandboxDevOrder ? "razorpay-sandbox" : "razorpay",
       paymentReference: paymentId || orderId,
-      amountPaid: tierKey === "all_access_pass" ? 4999 : 2999,
+      amountPaid,
       currency: "INR",
     });
 
@@ -118,17 +147,51 @@ export async function POST(req: Request) {
       });
     }
 
+    const bookingRef = paymentId || orderId;
+    const paidAt = new Date().toISOString();
+    const pathway = (body.appointmentDetails?.pathway || "Germany Pathway Advisory").trim();
+    const preferredSlot = (body.appointmentDetails?.preferredSlot || "Scheduled Berlin/IST Slot").trim();
+
+    const appointmentToken = signPaidAppointmentToken({
+      bookingRef,
+      email: userEmail,
+      fullName: studentName,
+      pathway,
+      preferredSlot,
+      tierKey,
+      paidAt,
+    });
+
     const targetRedirect =
-      requestedSlug && requestedSlug !== "gtf-all-access-pass"
-        ? "/profile?upgraded=1"
+      tierKey === "consultation_session"
+        ? "/pricing?booked=1#consultation-booking"
         : "/profile?upgraded=1";
 
-    return NextResponse.json({
+    const res = NextResponse.json({
       ok: true,
-      tier: "Pro",
+      tier: tierKey === "consultation_session" ? "Consultation" : "Pro",
       unlockedSlug: primarySlug,
-      redirectUrl: serverEnv.isProduction ? targetRedirect : targetRedirect,
+      bookingRef,
+      appointment: {
+        email: userEmail,
+        fullName: studentName,
+        pathway,
+        preferredSlot,
+        paidAt,
+      },
+      directContact: getDirectDeskContact(),
+      redirectUrl: targetRedirect,
     });
+
+    res.cookies.set(PAID_APPOINTMENT_COOKIE, appointmentToken, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: serverEnv.isProduction,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+    });
+
+    return res;
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : "Failed to verify checkout payment." },

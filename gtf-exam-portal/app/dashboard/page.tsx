@@ -182,7 +182,7 @@ export default function DashboardHubPage() {
               {BRAND.name} · {BRAND.headquarters}
             </p>
             <p className="text-[11px] text-slate-600">
-              {BRAND.founderName} — {BRAND.founderTitle}
+              {BRAND.name} — {BRAND.advisoryTeamTitle} · {BRAND.supportEmail}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">

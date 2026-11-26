@@ -104,7 +104,7 @@ export async function POST(req: Request) {
           code: requiresRecentLogin ? "REQUIRES_RECENT_LOGIN" : "AUTH_DELETE_FAILED",
           error: requiresRecentLogin
             ? "For security, please sign out and sign back in, then tap Delete Account again."
-            : authDeletion.error || "Unable to complete Firebase account deletion. Please contact info@gatewaytofuture.com.",
+            : authDeletion.error || "Unable to complete Firebase account deletion. Please contact ashusharma@gatewaytofuture.com.",
         },
         { status: requiresRecentLogin ? 403 : 500 },
       );

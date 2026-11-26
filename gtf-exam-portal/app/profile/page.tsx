@@ -13,11 +13,15 @@ import {
   AlertTriangle,
   ArrowRight,
   BadgeCheck,
+  CalendarCheck2,
   CheckCircle2,
   Crown,
+  ExternalLink,
   Loader2,
+  Lock,
   LogOut,
   Mail,
+  Phone,
   RefreshCw,
   ShieldAlert,
   ShieldCheck,
@@ -31,7 +35,7 @@ import { AuthToast, type AuthToastState } from "@/components/AuthToast";
 import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { clearGtfAuthCookie, useAuth } from "@/lib/auth-context";
 import { clearActiveSession } from "@/lib/client-storage";
-import { DIVISION_META } from "@/lib/config";
+import { BRAND, DIVISION_META } from "@/lib/config";
 import { getFirebaseAuth } from "@/lib/firebase";
 import { useIsNativeApp } from "@/lib/use-native-platform";
 import type { CatalogItem, DivisionId } from "@/lib/types";
@@ -52,6 +56,39 @@ export default function ProfilePage() {
   const [deleteConfirmText, setDeleteConfirmText] = useState("");
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [toast, setToast] = useState<AuthToastState | null>(null);
+  const [deskAccess, setDeskAccess] = useState<{
+    unlocked: boolean;
+    bookingRef?: string;
+    contact?: {
+      deskName: string;
+      phoneDisplay: string;
+      phoneE164: string;
+      whatsappUrl: string;
+      email: string;
+      headquarters: string;
+    } | null;
+  } | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    const headers: Record<string, string> = {};
+    if (user?.sessionToken) {
+      headers.Authorization = `Bearer ${user.sessionToken}`;
+    }
+    fetch("/api/appointments/contact", {
+      cache: "no-store",
+      credentials: "include",
+      headers,
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (active && data) setDeskAccess(data);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [user?.sessionToken, user?.userEmail]);
 
   useEffect(() => {
     try {
@@ -200,7 +237,7 @@ export default function ProfilePage() {
           title: "Deletion failed",
           message:
             data.error ||
-            "Unable to delete your account right now. Please sign in again or contact info@gatewaytofuture.com.",
+            "Unable to delete your account right now. Please sign in again or contact ashusharma@gatewaytofuture.com.",
           tone: "error",
         });
         return;
@@ -399,6 +436,59 @@ export default function ProfilePage() {
                   </>
                 ) : null}
               </section>
+
+              {/* Paid-Appointment Direct Berlin Desk Gate */}
+              {deskAccess?.unlocked && deskAccess.contact ? (
+                <section className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6 space-y-3 shadow-xs">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800">
+                    <CalendarCheck2 className="h-4 w-4 text-emerald-600" />
+                    <span>Confirmed Consultation · Direct Berlin Desk</span>
+                  </div>
+                  <p className="text-xs text-slate-700">
+                    {deskAccess.contact.deskName}
+                    {deskAccess.bookingRef ? ` · Ref: ${deskAccess.bookingRef}` : ""}
+                  </p>
+                  <div className="space-y-2 text-xs">
+                    <a
+                      href={`tel:${deskAccess.contact.phoneE164}`}
+                      className="flex items-center gap-2 font-mono font-bold text-slate-900 hover:underline"
+                    >
+                      <Phone className="h-3.5 w-3.5 text-emerald-700" />
+                      <span>{deskAccess.contact.phoneDisplay}</span>
+                    </a>
+                    <a
+                      href={deskAccess.contact.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-semibold text-emerald-700 hover:underline"
+                    >
+                      <span>Open Direct WhatsApp Desk</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                    <p className="text-[11px] text-slate-600">{deskAccess.contact.email}</p>
+                  </div>
+                </section>
+              ) : nativeReady && !isNative ? (
+                <section className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3 shadow-xs">
+                  <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600">
+                    <Lock className="h-3.5 w-3.5 text-amber-600" />
+                    <span>Berlin &amp; India Advisory Desk</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Book a paid 1:1 consultation to unlock direct Berlin Desk phone &amp; WhatsApp access, or email{" "}
+                    <a href={`mailto:${BRAND.supportEmail}`} className="font-semibold text-slate-900 underline">
+                      {BRAND.supportEmail}
+                    </a>.
+                  </p>
+                  <Link
+                    href="/pricing#consultation-booking"
+                    className="w-full h-10 rounded-xl border border-slate-300 bg-slate-50 text-xs font-bold uppercase tracking-[0.14em] text-slate-800 inline-flex items-center justify-center gap-2 hover:bg-slate-100 transition"
+                  >
+                    <CalendarCheck2 className="h-3.5 w-3.5" />
+                    <span>Book Paid Consultation</span>
+                  </Link>
+                </section>
+              ) : null}
 
               {/* Sign Out Security Card */}
               <section className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 shadow-xs">

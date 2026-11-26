@@ -9,12 +9,12 @@ import { WebOnly } from "@/components/ReaderAppNotice";
 import { BRAND } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: `About Us & Leadership | ${BRAND.name}`,
-  description: `Led by ${BRAND.founderName} (${BRAND.founderTitle}). Berlin-based German Language Academy, Studienkolleg Hub, and Healthcare Relocation Institute.`,
+  title: `About Us | ${BRAND.name}`,
+  description: `${BRAND.name} — ${BRAND.advisoryTeamTitle}. Berlin-based German Language Academy, Studienkolleg Hub, and Healthcare Relocation Institute.`,
   openGraph: {
     title: `About Us — ${BRAND.name}`,
-    description: `${BRAND.founderName} (${BRAND.founderTitle}) leads ${BRAND.name} from Berlin, Germany.`,
-    images: [{ url: "/sarbjit-ceo.jpg", alt: `${BRAND.founderName} — ${BRAND.founderTitle}` }],
+    description: `${BRAND.name} — ${BRAND.advisoryTeamTitle} operating from Berlin, Germany.`,
+    images: [{ url: "/gtf-logo.jpg", alt: `${BRAND.name} — ${BRAND.advisoryTeamTitle}` }],
   },
 };
 
@@ -31,7 +31,7 @@ export default function AboutPage() {
           ]}
           eyebrow="ABOUT GATEWAY TO FUTURE · BERLIN HQ"
           title="Creating Career Without Borders."
-          subtitle={`Guided exclusively by ${BRAND.founderName} (${BRAND.founderTitle}) — uniting structured German language mastery with authentic relocation and hospital placement in Germany.`}
+          subtitle={`Guided by the ${BRAND.name} — ${BRAND.advisoryTeamTitle}, uniting structured German language mastery with authentic relocation and hospital placement in Germany.`}
           theme="hub"
           backgroundImage={HEADER_IMAGES.hub}
           backHref="/"
@@ -39,14 +39,14 @@ export default function AboutPage() {
         />
 
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-10">
-          {/* Leadership Section */}
+          {/* Advisory Desk Section */}
           <div className="space-y-4">
             <div className="border-b border-slate-200 pb-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                EXECUTIVE LEADERSHIP
+                BERLIN &amp; INDIA ADVISORY
               </p>
               <h2 className="mt-1 text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
-                {BRAND.founderName} — {BRAND.founderTitle}
+                {BRAND.mentorshipDeskTitle}
               </h2>
             </div>
 
@@ -79,9 +79,9 @@ export default function AboutPage() {
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-900">
                 <ShieldCheck className="h-5 w-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Direct CEO Accountability</h3>
+              <h3 className="text-base font-bold text-slate-900">Structured Institutional Accountability</h3>
               <p className="text-xs leading-relaxed text-slate-600">
-                Every student pathway is overseen directly from our Berlin headquarters under the leadership of {BRAND.founderName}, {BRAND.founderTitle}.
+                Every student pathway is overseen directly from our Berlin headquarters by the {BRAND.name} — {BRAND.advisoryTeamTitle}.
               </p>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
               <div className="space-y-1 text-xs text-slate-600">
                 <p className="flex items-center gap-2">
                   <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                  <span>Sole Executive Leadership: <strong>{BRAND.founderName}</strong> ({BRAND.founderTitle})</span>
+                  <span>Advisory Desk: <strong>{BRAND.name}</strong> — {BRAND.advisoryTeamTitle}</span>
                 </p>
                 <p className="flex items-center gap-2">
                   <MapPin className="h-3.5 w-3.5 text-slate-500 shrink-0" />
@@ -149,7 +149,7 @@ export default function AboutPage() {
       <footer className="border-t border-slate-200 bg-white py-10 pb-24 lg:pb-10 px-4 sm:px-8">
         <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
           <p className="font-semibold tracking-wide text-slate-900">
-            {BRAND.name} · {BRAND.founderName} ({BRAND.founderTitle}) · {BRAND.headquarters}
+            {BRAND.name} — {BRAND.advisoryTeamTitle} · {BRAND.headquarters}
           </p>
           <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">
             <Link href="/" className="text-slate-600 hover:text-slate-900 transition">Home</Link>

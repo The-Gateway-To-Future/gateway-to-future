@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).catch(() => {});
             } catch (e) {}
 
-            alert(`Thank you, ${name}! Your Strategy Call Request has been received. Sarbjit Kour (Founder & CEO, Gateway To Future) will confirm your 9:00 PM IST slot via WhatsApp.`);
+            alert(`Thank you, ${name}! Your Strategy Call Request has been received. Our Gateway To Future Berlin & India Advisory Team will send your booking confirmation and direct desk contact details after payment confirmation.`);
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
             strategyForm.reset();

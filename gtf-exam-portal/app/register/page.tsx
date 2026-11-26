@@ -466,7 +466,7 @@ export default function RegisterPage() {
                       autoComplete="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+49 152 28372894 / +91 98..."
+                      placeholder="+49 151 23456789 / +91 98765 43210"
                       className="w-full h-12 rounded-xl border border-white/15 bg-slate-900 px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/60"
                     />
                   </div>

@@ -155,7 +155,7 @@ export default function DeleteAccountPage() {
 
         <div className="border-t border-slate-200 pt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
           <div>
-            <strong className="text-slate-800">{BRAND.name}</strong> · {BRAND.founderName} ({BRAND.founderTitle}) · {BRAND.headquarters}, Germany
+            <strong className="text-slate-800">{BRAND.name}</strong> · {BRAND.advisoryTeamTitle} · {BRAND.headquarters}, Germany
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <Link

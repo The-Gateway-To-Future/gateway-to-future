@@ -54,7 +54,7 @@ Return ONLY valid JSON matching this exact TypeScript shape:
   "strengths": ["string"],
   "improvements": ["string"],
   "summaryDe": "2-3 sentences overall examiner feedback in German",
-  "summaryHinglish": "2-3 sentences encouraging mentor feedback in Hinglish (by Sarbjit Kour, Founder & CEO style)",
+  "summaryHinglish": "2-3 sentences encouraging mentor feedback in Hinglish (warm Gateway To Future Berlin mentor style)",
   "improvedVersion": "Complete C1/B2-polished model version of the student's text"
 }`;
 }

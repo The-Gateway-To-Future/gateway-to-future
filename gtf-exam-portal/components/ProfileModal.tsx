@@ -4,13 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  CalendarCheck2,
   Check,
   ChevronRight,
   ExternalLink,
   GraduationCap,
+  Lock,
   Mail,
   MapPin,
-  Phone,
   User,
   X,
 } from "lucide-react";
@@ -175,24 +176,17 @@ export function ProfileModal({ isOpen, onClose, onEmailChanged }: ProfileModalPr
                 </div>
               </div>
 
-              {/* Founder & Mentorship Support */}
+              {/* Advisory & Mentorship Desk */}
               <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
                 <div className="flex items-center gap-3">
                   <img
-                    src="/sarbjit-ceo.jpg"
-                    alt="Sarbjit Kour — Founder & CEO, Gateway To Future"
-                    onError={(e) => {
-                      const img = e.currentTarget;
-                      if (!img.dataset.fallback) {
-                        img.dataset.fallback = "1";
-                        img.src = "/assets/images/sarbjit-ceo.jpg";
-                      }
-                    }}
-                    className="h-12 w-12 rounded-xl border border-slate-200 object-cover object-top shrink-0"
+                    src="/gtf-logo.jpg"
+                    alt="Gateway To Future — Berlin & India Advisory Team"
+                    className="h-12 w-12 rounded-xl border border-slate-200 object-cover shrink-0"
                   />
                   <div>
-                    <p className="text-xs font-bold text-slate-900">{BRAND.founderName}</p>
-                    <p className="text-[11px] font-semibold text-amber-700">{BRAND.founderTitle}</p>
+                    <p className="text-xs font-bold text-slate-900">{BRAND.mentorshipDeskTitle}</p>
+                    <p className="text-[11px] font-semibold text-amber-700">{BRAND.advisoryTeamTitle}</p>
                   </div>
                 </div>
                 <div className="space-y-2 text-xs text-slate-600">
@@ -201,21 +195,26 @@ export function ProfileModal({ isOpen, onClose, onEmailChanged }: ProfileModalPr
                     <span>{BRAND.headquarters}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                    <span>WhatsApp / Direct Line: {BRAND.supportPhone}</span>
+                    <Mail className="h-3.5 w-3.5 text-slate-600 shrink-0" />
+                    <a href={`mailto:${BRAND.supportEmail}`} className="font-medium text-slate-800 hover:underline">
+                      {BRAND.supportEmail}
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                    <Lock className="h-3.5 w-3.5 text-amber-600 shrink-0" />
+                    <span>Direct Berlin Desk phone &amp; WhatsApp unlocked after paid consultation booking.</span>
                   </div>
                 </div>
 
                 <div className="flex gap-2 pt-1">
-                  <a
-                    href={BRAND.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-700 transition"
+                  <Link
+                    href="/pricing#consultation-booking"
+                    onClick={onClose}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-slate-800 transition"
                   >
-                    <Phone className="h-3.5 w-3.5" />
-                    <span>Chat on WhatsApp</span>
-                  </a>
+                    <CalendarCheck2 className="h-3.5 w-3.5" />
+                    <span>Book Paid Consultation</span>
+                  </Link>
                   <a
                     href={BRAND.website}
                     target="_blank"

@@ -7,13 +7,25 @@ export const dynamic = "force-dynamic";
 
 export type CheckoutCurrency = "INR";
 
+interface AppointmentDetails {
+  pathway?: string;
+  preferredSlot?: string;
+  notes?: string;
+}
+
 interface CreateCheckoutBody {
   productSlug?: string;
   currency?: CheckoutCurrency;
-  tierKey?: "single_module" | "level_bundle" | "studienkolleg_track" | "all_access_pass";
+  tierKey?:
+    | "single_module"
+    | "level_bundle"
+    | "studienkolleg_track"
+    | "all_access_pass"
+    | "consultation_session";
   userEmail?: string;
   studentName?: string;
   whatsappPhone?: string;
+  appointmentDetails?: AppointmentDetails;
 }
 
 function detectPreferredCurrency(_req: Request): CheckoutCurrency {
@@ -60,6 +72,7 @@ export async function GET(req: Request) {
       level_bundle: { amount: 1999, formatted: "₹1,999", label: "Complete Level Bundle (Full A1, A2, B1, or B2)" },
       studienkolleg_track: { amount: 2999, formatted: "₹2,999", label: "Studienkolleg Complete Track (M, T, W, G Kurs)" },
       all_access_pass: { amount: 4999, formatted: "₹4,999", label: "Full Academy All-Access Pass" },
+      consultation_session: { amount: 1000, formatted: "₹1,000", label: "1:1 Berlin & India Advisory Consultation" },
     },
   });
 }
@@ -98,12 +111,13 @@ export async function POST(req: Request) {
       targetLevel: product.level || "b1",
     });
 
-    // Determine tier price in INR (Tier 1: ₹499, Tier 2: ₹1,999, Tier 3: ₹2,999, Tier 4: ₹4,999)
+    // Determine tier price in INR (Tier 1: ₹499, Tier 2: ₹1,999, Tier 3: ₹2,999, Tier 4: ₹4,999, Consultation: ₹1,000)
     let priceInr = Number(product.priceInr || 499);
     if (body.tierKey === "single_module") priceInr = 499;
     else if (body.tierKey === "level_bundle") priceInr = 1999;
     else if (body.tierKey === "studienkolleg_track") priceInr = 2999;
     else if (body.tierKey === "all_access_pass") priceInr = 4999;
+    else if (body.tierKey === "consultation_session") priceInr = 1000;
     else if (!priceInr || priceInr <= 0) priceInr = 499;
 
     const amountPaise = Math.max(100, Math.round(priceInr * 100));
@@ -144,6 +158,8 @@ export async function POST(req: Request) {
               whatsappPhone,
               productSlug: product.slug,
               productTitle: product.title,
+              pathway: (body.appointmentDetails?.pathway || "").trim(),
+              preferredSlot: (body.appointmentDetails?.preferredSlot || "").trim(),
             },
           }),
         });

@@ -737,26 +737,21 @@ function FocusedWorkbookWorkspaceInner({
                 <span>Unlock with GTF Pro (₹4,999)</span>
               </Link>
 
-              <a
-                href={BRAND.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/pricing#consultation-booking"
                 className="relative z-20 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs cursor-pointer"
               >
-                <span>Contact Berlin Admissions</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+                <span>Book Advisory Consultation</span>
+              </Link>
             </div>
 
             <p className="text-xs text-slate-500">
-              <span>Questions? Contact Official GTF Support: </span>
+              <span>Questions? Email Official GTF Support: </span>
               <a
-                href={BRAND.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`mailto:${BRAND.supportEmail}`}
                 className="font-semibold text-emerald-600 hover:underline"
               >
-                <span key="locked-phone">{BRAND.supportPhone}</span>
+                <span key="locked-email">{BRAND.supportEmail}</span>
               </a>
             </p>
           </>

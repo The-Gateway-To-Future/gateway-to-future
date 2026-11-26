@@ -68,18 +68,18 @@ export default function TermsOfServicePage() {
         <section className="space-y-3 text-slate-600 text-sm leading-relaxed">
           <h2 className="text-lg sm:text-xl font-bold text-slate-900">5. Governing Law &amp; Jurisdiction</h2>
           <p>
-            These terms are governed by the laws of India and Germany applicable to corporate service agreements operated by The Gateway to Future under the sole executive leadership of <strong className="text-slate-900">Sarbjit Kour (Founder &amp; CEO, Gateway To Future)</strong>.
+            These terms are governed by the laws of India and Germany applicable to corporate service agreements operated by <strong className="text-slate-900">The Gateway to Future (Berlin &amp; India Advisory Operations)</strong>.
           </p>
           <p className="text-xs text-slate-700 font-mono bg-slate-50 border border-slate-200 rounded-xl p-3">
             <strong>European Headquarters (Impressum):</strong> Schönefelder Straße 2, GStU, 12355 Berlin, Germany
           </p>
           <div className="pt-2">
             <a
-              href="mailto:info@gatewaytofuture.com"
+              href="mailto:ashusharma@gatewaytofuture.com"
               className="inline-flex items-center gap-2 text-sm text-amber-700 hover:text-amber-800 font-medium"
             >
               <Mail className="w-4 h-4" />
-              Contact Legal Team: info@gatewaytofuture.com
+              Contact Legal Team: ashusharma@gatewaytofuture.com
             </a>
           </div>
         </section>

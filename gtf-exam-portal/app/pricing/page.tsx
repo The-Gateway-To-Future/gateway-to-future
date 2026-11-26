@@ -1,15 +1,20 @@
 "use client";
 
-import React, { Suspense, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   ArrowRight,
+  CalendarCheck2,
   Check,
   CheckCircle2,
   Copy,
   ExternalLink,
   Loader2,
+  Lock,
+  Mail,
+  MapPin,
+  Phone,
   ShieldCheck,
   Sparkles,
   X,
@@ -22,6 +27,29 @@ import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { useAuth } from "@/lib/auth-context";
 import { BRAND, GTF_BANK_DETAILS, INR_PRICING_TIERS } from "@/lib/config";
 import { useIsNativeApp } from "@/lib/use-native-platform";
+
+interface DirectDeskContact {
+  deskName: string;
+  phoneDisplay: string;
+  phoneE164: string;
+  whatsappUrl: string;
+  email: string;
+  headquarters: string;
+}
+
+interface ConfirmedDeskState {
+  unlocked: boolean;
+  source?: string;
+  bookingRef?: string;
+  appointment?: {
+    email?: string;
+    fullName?: string;
+    pathway?: string;
+    preferredSlot?: string;
+    paidAt?: string;
+  };
+  contact?: DirectDeskContact | null;
+}
 
 interface CheckoutSessionPreview {
   mode: "live" | "sandbox";
@@ -91,20 +119,20 @@ const PRICING_TIERS: PricingTier[] = [
   },
   {
     id: "relocation_cohort",
-    badge: "CEO MENTORSHIP",
+    badge: "ADVISORY MENTORSHIP",
     name: "Berlin Relocation & § 81a",
     shortName: "Relocation",
-    priceLabel: "Custom",
-    subPriceLabel: "Mentorship & guidance",
-    billingCycle: "cohort",
+    priceLabel: INR_PRICING_TIERS.consultation_session.formatted,
+    subPriceLabel: "1:1 Paid Appointment",
+    billingCycle: "appointment",
     description:
-      "Personalized Berlin-based guidance with Sarbjit Kour (Founder & CEO, Gateway To Future) — covering German language strategy, anabin/APS checks, and application preparation.",
-    ctaLabel: "Book Berlin Admissions",
+      "Personalized Berlin-based guidance from the Gateway To Future Berlin & India Advisory Team — covering German language strategy, anabin/APS checks, and application preparation.",
+    ctaLabel: "Book Paid Consultation",
     features: [
-      "Everything included in GTF All-Access Pro",
+      "1:1 strategy mapping with Gateway To Future Berlin & India Advisory Team",
       "anabin, APS & uni-assist dossier verification checklists",
       "Sperrkonto checklist & German embassy interview preparation",
-      "Structured German CV, Bewerbung & employer interview coaching",
+      "Direct Berlin Desk phone & WhatsApp unlocked upon confirmed booking",
     ],
   },
 ];
@@ -161,8 +189,8 @@ const COMPARISON_BENEFITS: ComparisonBenefit[] = [
     proType: "check",
   },
   {
-    title: "Direct Berlin HQ / WhatsApp Priority Mentor Support",
-    note: "Priority admissions guidance with Sarbjit Kour & Berlin desk",
+    title: "Direct Berlin Advisory Desk Support",
+    note: "Priority admissions guidance with the Gateway To Future Mentorship Desk (direct phone disclosed upon confirmed booking)",
     singleType: "cross",
     proType: "check",
   },
@@ -224,6 +252,57 @@ function PricingContentInner() {
   const [checkoutPreview, setCheckoutPreview] = useState<CheckoutSessionPreview | null>(null);
   const [copiedUpi, setCopiedUpi] = useState(false);
 
+  // Paid-Appointment Gate & Consultation Booking State
+  const [confirmedDesk, setConfirmedDesk] = useState<ConfirmedDeskState | null>(null);
+  const [bookingName, setBookingName] = useState("");
+  const [bookingEmail, setBookingEmail] = useState("");
+  const [bookingPhone, setBookingPhone] = useState("");
+  const [bookingPathway, setBookingPathway] = useState("German Language (A1–C1) & Goethe/telc");
+  const [bookingSlot, setBookingSlot] = useState("9:00 PM IST (5:30 PM CET)");
+  const [bookingNotes, setBookingNotes] = useState("");
+  const [bookingSubmitting, setBookingSubmitting] = useState(false);
+  const [bookingSandboxPreview, setBookingSandboxPreview] = useState<CheckoutSessionPreview | null>(null);
+  const [utrReference, setUtrReference] = useState("");
+  const [utrSubmitting, setUtrSubmitting] = useState(false);
+  const [bookingFeedback, setBookingFeedback] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (user?.fullName && !bookingName) {
+      setBookingName(user.fullName);
+    }
+    if (user?.userEmail && !bookingEmail) {
+      setBookingEmail(user.userEmail);
+    }
+    if (user?.phone && !bookingPhone) {
+      setBookingPhone(user.phone);
+    }
+  }, [user?.fullName, user?.userEmail, user?.phone, bookingName, bookingEmail, bookingPhone]);
+
+  useEffect(() => {
+    let active = true;
+    const headers: Record<string, string> = {};
+    if (user?.sessionToken) {
+      headers.Authorization = `Bearer ${user.sessionToken}`;
+    }
+    fetch("/api/appointments/contact", {
+      cache: "no-store",
+      credentials: "include",
+      headers,
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: ConfirmedDeskState | null) => {
+        if (active && data) {
+          setConfirmedDesk(data);
+        }
+      })
+      .catch(() => {
+        // Remains locked until confirmed
+      });
+    return () => {
+      active = false;
+    };
+  }, [user?.sessionToken, user?.userEmail]);
+
   const activeSlug = useMemo(
     () => requestedProductSlug || fallbackProductSlug,
     [requestedProductSlug, fallbackProductSlug],
@@ -244,12 +323,7 @@ function PricingContentInner() {
     setCheckoutNotice(null);
 
     if (tier.id === "relocation_cohort") {
-      const msg = encodeURIComponent(
-        `Hallo GTF Berlin Admissions! I would like to apply for the Berlin Relocation & § 81a Mentorship Cohort.${
-          user?.userEmail ? `\nRegistered Email: ${user.userEmail}` : ""
-        }`,
-      );
-      window.open(`${BRAND.whatsappUrl}?text=${msg}`, "_blank", "noopener,noreferrer");
+      document.getElementById("consultation-booking")?.scrollIntoView({ behavior: "smooth" });
       return;
     }
 
@@ -328,7 +402,7 @@ function PricingContentInner() {
                 } else {
                   setCheckoutNotice(
                     verifyData?.error ||
-                      "Payment received. If your Pro badge does not appear within 60 seconds, contact Berlin Desk with your payment reference.",
+                      `Payment received. If your Pro badge does not appear within 60 seconds, email ${BRAND.supportEmail} with your payment reference.`,
                   );
                 }
               } catch {
@@ -353,9 +427,182 @@ function PricingContentInner() {
         productTitle: requestedTitle || session.product?.title || "GTF All-Access Pro",
       });
     } catch {
-      setCheckoutNotice("Unable to initialize checkout right now. Use Berlin Admissions Concierge below.");
+      setCheckoutNotice("Unable to initialize checkout right now. Use the Advisory Consultation & Billing section below.");
     } finally {
       setSubmittingTier(null);
+    }
+  };
+
+  const handleBookPaidConsultation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBookingFeedback(null);
+
+    const cleanName = bookingName.trim();
+    const cleanEmail = bookingEmail.trim().toLowerCase();
+    const cleanPhone = bookingPhone.trim();
+
+    if (!cleanName || !cleanEmail.includes("@") || !cleanPhone) {
+      setBookingFeedback("Please provide your full name, valid email address, and phone/WhatsApp number.");
+      return;
+    }
+
+    setBookingSubmitting(true);
+    try {
+      const res = await fetch("/api/checkout/create-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productSlug: "gtf-berlin-consultation",
+          tierKey: "consultation_session",
+          currency: "INR",
+          userEmail: cleanEmail,
+          studentName: cleanName,
+          whatsappPhone: cleanPhone,
+          appointmentDetails: {
+            pathway: bookingPathway,
+            preferredSlot: bookingSlot,
+            notes: bookingNotes,
+          },
+        }),
+      });
+
+      const session = await res.json().catch(() => null);
+      if (!res.ok || !session) {
+        setBookingSandboxPreview({
+          mode: "sandbox",
+          tierName: INR_PRICING_TIERS.consultation_session.title,
+          priceEur: INR_PRICING_TIERS.consultation_session.formatted,
+          priceInr: INR_PRICING_TIERS.consultation_session.formatted,
+          productTitle: "1:1 Berlin & India Advisory Consultation",
+        });
+        return;
+      }
+
+      if (session.mode === "live" && session.keyId) {
+        const scriptReady = await ensureRazorpayCheckoutScript();
+        const rzWindow = window as unknown as RazorpayWindow;
+        if (scriptReady && typeof rzWindow.Razorpay === "function") {
+          const rzp = new rzWindow.Razorpay({
+            key: session.keyId,
+            amount: session.amountSubunits,
+            currency: "INR",
+            name: BRAND.name,
+            description: "1:1 Berlin & India Advisory Consultation (₹1,000)",
+            order_id: session.orderId,
+            prefill: {
+              name: cleanName,
+              email: cleanEmail,
+              contact: cleanPhone,
+            },
+            theme: { color: "#07090E" },
+            handler: async (response: RazorpayHandlerResponse) => {
+              setBookingFeedback("Confirming appointment payment & unlocking direct Berlin Desk contact…");
+              try {
+                const verifyRes = await fetch("/api/checkout/verify", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  credentials: "include",
+                  body: JSON.stringify({
+                    orderId: response.razorpay_order_id || session.orderId,
+                    paymentId: response.razorpay_payment_id,
+                    signature: response.razorpay_signature,
+                    productSlug: "gtf-berlin-consultation",
+                    tierKey: "consultation_session",
+                    userEmail: cleanEmail,
+                    studentName: cleanName,
+                    appointmentDetails: {
+                      pathway: bookingPathway,
+                      preferredSlot: bookingSlot,
+                      notes: bookingNotes,
+                    },
+                  }),
+                });
+
+                const verifyData = (await verifyRes.json().catch(() => null)) as {
+                  ok?: boolean;
+                  error?: string;
+                  bookingRef?: string;
+                  appointment?: ConfirmedDeskState["appointment"];
+                  directContact?: DirectDeskContact;
+                } | null;
+
+                if (verifyRes.ok && verifyData?.ok && verifyData.directContact) {
+                  setConfirmedDesk({
+                    unlocked: true,
+                    source: "paid_appointment",
+                    bookingRef: verifyData.bookingRef,
+                    appointment: verifyData.appointment,
+                    contact: verifyData.directContact,
+                  });
+                  setBookingSandboxPreview(null);
+                  setBookingFeedback("Appointment confirmed! Direct Berlin Desk contact details are now unlocked below.");
+                } else {
+                  setBookingFeedback(
+                    verifyData?.error ||
+                      `Payment received. Email your payment reference to ${BRAND.supportEmail} for immediate confirmation.`,
+                  );
+                }
+              } catch {
+                setBookingFeedback(
+                  `Payment submitted. Email ${BRAND.supportEmail} if direct contact details do not unlock automatically.`,
+                );
+              }
+            },
+          });
+          rzp.open();
+          return;
+        }
+      }
+
+      setBookingSandboxPreview({
+        mode: "sandbox",
+        tierName: INR_PRICING_TIERS.consultation_session.title,
+        priceEur: INR_PRICING_TIERS.consultation_session.formatted,
+        priceInr: `₹${Number(session.amount || 1000).toLocaleString("en-IN")}`,
+        orderId: session.orderId,
+        upiIntent: session.upi?.intentUrl,
+        productTitle: "1:1 Berlin & India Advisory Consultation",
+      });
+    } catch {
+      setBookingFeedback(`Unable to initialize booking payment. Please email ${BRAND.supportEmail}.`);
+    } finally {
+      setBookingSubmitting(false);
+    }
+  };
+
+  const handleSubmitUtrVerification = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!utrReference.trim()) {
+      setBookingFeedback("Please enter your UPI / Bank payment reference (UTR) to submit verification.");
+      return;
+    }
+    setUtrSubmitting(true);
+    setBookingFeedback(null);
+    try {
+      const res = await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: bookingName.trim() || user?.fullName || "GTF Candidate",
+          email: bookingEmail.trim().toLowerCase() || user?.userEmail || "",
+          whatsapp: bookingPhone.trim() || user?.phone || "Pending",
+          track: bookingPathway,
+          productSlug: "gtf-berlin-consultation",
+          notes: `Paid Appointment Request (${bookingSlot}) | Order: ${bookingSandboxPreview?.orderId || "UPI-DIRECT"} | UTR/Ref: ${utrReference.trim()} | ${bookingNotes}`,
+        }),
+      });
+      if (res.ok) {
+        setBookingFeedback(
+          `Payment reference ${utrReference.trim()} submitted. Once verified by our team, direct Berlin Desk contact details will be dispatched to ${bookingEmail.trim() || BRAND.supportEmail}.`,
+        );
+        setUtrReference("");
+      } else {
+        setBookingFeedback(`Could not submit reference automatically. Please email ${utrReference.trim()} to ${BRAND.supportEmail}.`);
+      }
+    } catch {
+      setBookingFeedback(`Please email your payment reference to ${BRAND.supportEmail} for confirmation.`);
+    } finally {
+      setUtrSubmitting(false);
     }
   };
 
@@ -653,34 +900,302 @@ function PricingContentInner() {
             </div>
           </div>
 
-          {/* Relocation Cohort VIP Mentorship Card */}
-          <div className="rounded-2xl border border-amber-300 bg-gradient-to-br from-amber-50/70 via-white to-amber-50/40 p-5 sm:p-7 space-y-4 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          {/* Relocation Cohort & Paid Consultation Booking Section */}
+          <div id="consultation-booking" className="rounded-2xl border border-amber-300 bg-gradient-to-br from-amber-50/70 via-white to-amber-50/40 p-5 sm:p-7 space-y-6 shadow-xs scroll-mt-24">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-amber-200/70 pb-5">
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-full bg-amber-100 border border-amber-300 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900">
-                    CEO MENTORSHIP &amp; GUIDANCE
+                    ADVISORY MENTORSHIP &amp; PAID CONSULTATION
                   </span>
                   <span className="text-xs font-bold text-amber-800">
-                    Limited 2026/27 Cohort
+                    {INR_PRICING_TIERS.consultation_session.formatted} · Berlin &amp; India Advisory Team
                   </span>
                 </div>
                 <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-slate-900">
-                  Berlin Relocation &amp; § 81a Guidance Cohort
+                  1:1 Berlin &amp; India Advisory Consultation
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
-                  End-to-end relocation guidance in Germany with Sarbjit Kour (Founder &amp; CEO, Gateway To Future) — covering anabin &amp; APS credential verification checklists, Sperrkonto guidance, German embassy interview prep, and structured hospital or university application coaching.
+                  End-to-end pathway guidance with the Gateway To Future Berlin &amp; India Advisory Team — covering German CEFR strategy, anabin &amp; APS credential verification checklists, Sperrkonto guidance, German embassy interview prep, and structured hospital or university application coaching.
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => handleTierAction(PRICING_TIERS[2])}
-                className="shrink-0 h-11 px-5 rounded-xl border border-amber-400 bg-amber-400/20 hover:bg-amber-400/30 text-amber-950 font-bold text-xs uppercase tracking-[0.14em] inline-flex items-center gap-2 transition cursor-pointer"
-              >
-                <span>Book Berlin Admissions</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </button>
+              <div className="shrink-0 rounded-xl border border-amber-300 bg-white px-4 py-2.5 text-center shadow-2xs">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Consultation Fee</p>
+                <p className="text-xl font-black text-slate-900">{INR_PRICING_TIERS.consultation_session.formatted}</p>
+              </div>
             </div>
+
+            {confirmedDesk?.unlocked && confirmedDesk.contact ? (
+              <div className="rounded-2xl border border-emerald-300 bg-emerald-50/80 p-5 sm:p-6 space-y-5">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="space-y-1">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                      <CheckCircle2 className="h-3.5 w-3.5" />
+                      <span>Appointment Confirmed · Direct Berlin Desk Unlocked</span>
+                    </span>
+                    <h4 className="text-lg font-bold text-slate-900 pt-1">
+                      {confirmedDesk.contact.deskName}
+                    </h4>
+                    <p className="text-xs text-slate-700">
+                      Booking Ref: <span className="font-mono font-bold">{confirmedDesk.bookingRef}</span>
+                      {confirmedDesk.appointment?.preferredSlot ? ` · ${confirmedDesk.appointment.preferredSlot}` : ""}
+                      {confirmedDesk.appointment?.pathway ? ` · ${confirmedDesk.appointment.pathway}` : ""}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <a
+                    href={`tel:${confirmedDesk.contact.phoneE164}`}
+                    className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-white p-3.5 hover:border-emerald-400 transition"
+                  >
+                    <Phone className="h-4 w-4 text-emerald-700 shrink-0" />
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Direct Phone Line</p>
+                      <p className="font-mono font-bold text-slate-900">{confirmedDesk.contact.phoneDisplay}</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href={confirmedDesk.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-3 rounded-xl border border-emerald-200 bg-white p-3.5 hover:border-emerald-400 transition"
+                  >
+                    <div className="flex items-center gap-3">
+                      <CalendarCheck2 className="h-4 w-4 text-emerald-700 shrink-0" />
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Confirmed WhatsApp Desk</p>
+                        <p className="font-semibold text-emerald-800">Open Direct WhatsApp</p>
+                      </div>
+                    </div>
+                    <ExternalLink className="h-3.5 w-3.5 text-emerald-700 shrink-0" />
+                  </a>
+
+                  <a
+                    href={`mailto:${confirmedDesk.contact.email}`}
+                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3.5 hover:border-slate-300 transition"
+                  >
+                    <Mail className="h-4 w-4 text-slate-700 shrink-0" />
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Official Email</p>
+                      <p className="font-mono font-semibold text-slate-900">{confirmedDesk.contact.email}</p>
+                    </div>
+                  </a>
+
+                  <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3.5">
+                    <MapPin className="h-4 w-4 text-slate-700 shrink-0" />
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Berlin Headquarters</p>
+                      <p className="font-medium text-slate-800">{confirmedDesk.contact.headquarters}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-5">
+                <div className="rounded-xl border border-slate-200 bg-white/90 px-4 py-3 flex items-start gap-3 text-xs text-slate-700">
+                  <Lock className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+                  <p>
+                    <strong>Paid-Appointment Contact Gate:</strong> Direct phone &amp; WhatsApp contact details for the Berlin Desk are disclosed immediately upon appointment booking and payment confirmation. For general enquiries beforehand, email{" "}
+                    <a href={`mailto:${BRAND.supportEmail}`} className="font-semibold text-slate-900 underline">
+                      {BRAND.supportEmail}
+                    </a>.
+                  </p>
+                </div>
+
+                {bookingFeedback && (
+                  <div className="rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-xs text-emerald-900 font-medium">
+                    {bookingFeedback}
+                  </div>
+                )}
+
+                <form onSubmit={handleBookPaidConsultation} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="booking-name" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                      Full Name *
+                    </label>
+                    <input
+                      id="booking-name"
+                      type="text"
+                      required
+                      value={bookingName}
+                      onChange={(e) => setBookingName(e.target.value)}
+                      placeholder="Your full name"
+                      className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm text-slate-900 outline-none focus:border-slate-900"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="booking-email" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                      Email Address *
+                    </label>
+                    <input
+                      id="booking-email"
+                      type="email"
+                      required
+                      value={bookingEmail}
+                      onChange={(e) => setBookingEmail(e.target.value)}
+                      placeholder="candidate@example.com"
+                      className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm text-slate-900 outline-none focus:border-slate-900"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="booking-phone" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                      Your Phone / WhatsApp (for slot confirmation) *
+                    </label>
+                    <input
+                      id="booking-phone"
+                      type="tel"
+                      required
+                      value={bookingPhone}
+                      onChange={(e) => setBookingPhone(e.target.value)}
+                      placeholder="+91 98765 43210 / +49 ..."
+                      className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm text-slate-900 outline-none focus:border-slate-900"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="booking-pathway" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                      Target Germany Pathway
+                    </label>
+                    <select
+                      id="booking-pathway"
+                      value={bookingPathway}
+                      onChange={(e) => setBookingPathway(e.target.value)}
+                      className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm text-slate-900 outline-none focus:border-slate-900"
+                    >
+                      <option value="German Language (A1–C1) & Goethe/telc">German Language (A1–C1) &amp; Goethe/telc</option>
+                      <option value="Studienkolleg Prep (T/M/W/G Kurs)">Studienkolleg Prep (T/M/W/G Kurs)</option>
+                      <option value="Public University Admission & APS">Public University Admission &amp; APS</option>
+                      <option value="Ausbildung Vocational Placement">Ausbildung Vocational Placement</option>
+                      <option value="Healthcare / Nursing Anerkennung (§ 81a)">Healthcare / Nursing Anerkennung (§ 81a)</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="booking-slot" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                      Preferred Time Slot
+                    </label>
+                    <select
+                      id="booking-slot"
+                      value={bookingSlot}
+                      onChange={(e) => setBookingSlot(e.target.value)}
+                      className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm text-slate-900 outline-none focus:border-slate-900"
+                    >
+                      <option value="6:00 PM IST (2:30 PM CET)">6:00 PM IST (2:30 PM CET)</option>
+                      <option value="7:30 PM IST (4:00 PM CET)">7:30 PM IST (4:00 PM CET)</option>
+                      <option value="9:00 PM IST (5:30 PM CET)">9:00 PM IST (5:30 PM CET)</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="booking-notes" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                      Academic Background / Notes
+                    </label>
+                    <input
+                      id="booking-notes"
+                      type="text"
+                      value={bookingNotes}
+                      onChange={(e) => setBookingNotes(e.target.value)}
+                      placeholder="Current German level, qualification, target intake"
+                      className="w-full h-11 rounded-xl border border-slate-300 bg-white px-3.5 text-sm text-slate-900 outline-none focus:border-slate-900"
+                    />
+                  </div>
+
+                  <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-3 pt-1">
+                    <p className="text-[11px] text-slate-600">
+                      Direct Berlin Desk phone &amp; WhatsApp reveal immediately after verified Razorpay payment.
+                    </p>
+                    <button
+                      type="submit"
+                      disabled={bookingSubmitting}
+                      className="h-11 px-6 rounded-xl bg-slate-900 text-white font-bold text-xs uppercase tracking-[0.14em] inline-flex items-center gap-2 hover:bg-slate-800 transition disabled:opacity-50 cursor-pointer"
+                    >
+                      {bookingSubmitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <span>Initializing Payment…</span>
+                        </>
+                      ) : (
+                        <>
+                          <CalendarCheck2 className="h-4 w-4" />
+                          <span>Pay {INR_PRICING_TIERS.consultation_session.formatted} &amp; Confirm Appointment</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </form>
+
+                {bookingSandboxPreview && (
+                  <div className="rounded-2xl border border-emerald-300 bg-white p-5 space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
+                          Consultation Payment · {bookingSandboxPreview.orderId || "GTF-APPT"}
+                        </p>
+                        <p className="text-base font-bold text-slate-900">
+                          Complete {bookingSandboxPreview.priceInr} Payment via SBI UPI / Bank Transfer
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-2">
+                        <p className="font-semibold text-slate-800">
+                          Beneficiary: <span className="font-mono">{GTF_BANK_DETAILS.beneficiary}</span>
+                        </p>
+                        <p className="text-slate-600">
+                          {GTF_BANK_DETAILS.bankName} · A/C <span className="font-mono font-semibold">{GTF_BANK_DETAILS.accountNumber}</span> · IFSC <span className="font-mono font-semibold">{GTF_BANK_DETAILS.ifsc}</span>
+                        </p>
+                        <div className="flex items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2">
+                          <span className="font-mono font-semibold text-slate-900 truncate">{GTF_BANK_DETAILS.upiId}</span>
+                          <button
+                            type="button"
+                            onClick={handleCopyUpi}
+                            className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2 py-1 text-[10px] font-semibold text-slate-800 hover:bg-slate-50 shrink-0"
+                          >
+                            <Copy className="h-3 w-3" />
+                            <span>{copiedUpi ? "Copied" : "Copy UPI"}</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <form onSubmit={handleSubmitUtrVerification} className="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-2.5">
+                        <label htmlFor="utr-ref-input" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                          Submit UPI / Bank Reference (UTR)
+                        </label>
+                        <div className="flex gap-2">
+                          <input
+                            id="utr-ref-input"
+                            type="text"
+                            value={utrReference}
+                            onChange={(e) => setUtrReference(e.target.value)}
+                            placeholder="Enter 12-digit UTR / Ref"
+                            className="flex-1 h-10 rounded-lg border border-slate-300 bg-white px-3 text-xs text-slate-900 outline-none focus:border-slate-900"
+                          />
+                          <button
+                            type="submit"
+                            disabled={utrSubmitting}
+                            className="h-10 px-4 rounded-lg bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 disabled:opacity-50"
+                          >
+                            {utrSubmitting ? "Saving…" : "Submit"}
+                          </button>
+                        </div>
+                        <p className="text-[11px] text-slate-600">
+                          Or email receipt to{" "}
+                          <a href={`mailto:${BRAND.supportEmail}?subject=${encodeURIComponent(`Consultation Payment Confirmation (${bookingSandboxPreview.orderId || "GTF"})`)}`} className="font-semibold underline text-slate-900">
+                            {BRAND.supportEmail}
+                          </a>
+                          . Direct Berlin Desk contact is sent after confirmation.
+                        </p>
+                      </form>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Inline Payment / Concierge Verification Panel */}
@@ -737,31 +1252,29 @@ function PricingContentInner() {
                       Berlin Admissions Concierge
                     </p>
                     <p className="text-xs text-slate-700 leading-relaxed">
-                      Send your payment confirmation or request a SEPA / Stripe invoice for European billing directly with our Berlin desk.
+                      Send your payment confirmation or request a SEPA / Stripe invoice for European billing via our official email desk. Direct Berlin Desk phone access unlocks automatically once payment is confirmed.
                     </p>
                   </div>
                   <a
-                    href={`${BRAND.whatsappUrl}?text=${encodeURIComponent(
-                      `Hallo GTF Berlin! I want to activate ${checkoutPreview.tierName} (${checkoutPreview.priceInr}) for ${
-                        user?.userEmail || "my account"
-                      }. Ref: ${checkoutPreview.orderId || "PRICING"}`,
+                    href={`mailto:${BRAND.supportEmail}?subject=${encodeURIComponent(
+                      `Activation Request: ${checkoutPreview.tierName} (${checkoutPreview.priceInr})`,
+                    )}&body=${encodeURIComponent(
+                      `Hallo Gateway To Future Team,\n\nI have completed/requested activation for ${checkoutPreview.tierName} (${checkoutPreview.priceInr}).\nAccount Email: ${user?.userEmail || ""}\nReference: ${checkoutPreview.orderId || "PRICING"}\n`,
                     )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm"
                   >
-                    <span>Confirm Activation with Berlin Desk</span>
-                    <ExternalLink className="h-3.5 w-3.5" />
+                    <Mail className="h-3.5 w-3.5" />
+                    <span>Email {BRAND.supportEmail}</span>
                   </a>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Direct CEO Mentorship Showcase */}
+          {/* Institutional Mentorship Desk Showcase */}
           <div className="space-y-3 pt-2">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-              EXECUTIVE LEADERSHIP &amp; MENTORSHIP
+              GATEWAY TO FUTURE MENTORSHIP DESK
             </p>
             <CeoPortraitCard compact />
           </div>

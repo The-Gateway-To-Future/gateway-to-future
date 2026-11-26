@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard, type SubdivisionTheme } from "@/components/SubdivisionCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
+import { WebOnly } from "@/components/ReaderAppNotice";
 import { BRAND } from "@/lib/config";
 
 interface PlanStage {
@@ -124,14 +125,23 @@ export default function PathwaysPlanPage() {
                 6 Sequential Stages to Germany
               </h2>
             </div>
-            <a
-              href={BRAND.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-800 shadow-sm hover:border-slate-400 transition"
+            <WebOnly
+              nativeFallback={
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-800 shadow-sm hover:border-slate-400 transition"
+                >
+                  <span>Advisory Team Info</span>
+                </Link>
+              }
             >
-              <span>Consult {BRAND.founderName} (Founder &amp; CEO)</span>
-            </a>
+              <Link
+                href="/pricing#consultation-booking"
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-800 shadow-sm hover:border-slate-400 transition"
+              >
+                <span>Book Paid Consultation</span>
+              </Link>
+            </WebOnly>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -160,7 +170,7 @@ export default function PathwaysPlanPage() {
               {BRAND.name} · {BRAND.headquarters}
             </p>
             <p className="text-[11px] text-slate-600">
-              {BRAND.founderName} — {BRAND.founderTitle}
+              {BRAND.name} — {BRAND.advisoryTeamTitle} · {BRAND.supportEmail}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-6 font-semibold uppercase tracking-[0.14em] text-[11px]">

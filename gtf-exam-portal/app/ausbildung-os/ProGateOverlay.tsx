@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Check, Crown, ExternalLink, Lock, Sparkles, Unlock } from "lucide-react";
-import { BRAND } from "@/lib/config";
+import Link from "next/link";
+import { ArrowRight, Check, Crown, Lock, Sparkles, Unlock } from "lucide-react";
 
 export interface ProGateOverlayProps {
   isProUnlocked: boolean;
@@ -11,21 +11,12 @@ export interface ProGateOverlayProps {
   children: React.ReactNode;
 }
 
-function buildUnlockWhatsAppUrl(
-  tierLabel: string,
-  priceLabel: string,
-  userEmail?: string,
-  userName?: string,
-): string {
-  const details = [
-    `Hallo GTF Berlin Team! I want to unlock Ausbildung OS (${tierLabel} — ${priceLabel}).`,
-    userName ? `Name: ${userName}` : "",
-    userEmail ? `Account Email: ${userEmail}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  return `${BRAND.whatsappUrl}?text=${encodeURIComponent(details)}`;
+function buildUnlockPricingHref(tierLabel: string, priceLabel: string): string {
+  const params = new URLSearchParams({
+    product: "ausbildung-os-pro",
+    title: `Ausbildung OS (${tierLabel} — ${priceLabel})`,
+  });
+  return `/pricing?${params.toString()}#consultation-booking`;
 }
 
 export function ProGateOverlay({
@@ -133,15 +124,13 @@ export function ProGateOverlay({
             </ul>
           </div>
 
-          <a
-            href={buildUnlockWhatsAppUrl("Pro OS Self-Serve", "₹14,999", userEmail, userName)}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={buildUnlockPricingHref("Pro OS Self-Serve", "₹14,999")}
             className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-[#FFD166]/55 bg-[#FFD166]/10 px-4 py-3 text-xs font-extrabold uppercase tracking-[0.14em] text-[#FFD166] hover:bg-[#FFD166] hover:text-[#0A1628] transition-colors"
           >
-            <span>Unlock via WhatsApp / GTF Team</span>
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
+            <span>Book &amp; Unlock via GTF Portal</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </article>
 
         {/* Tier 2: GTF Verified Fast-Track (₹45,000) */}
@@ -185,20 +174,13 @@ export function ProGateOverlay({
             </ul>
           </div>
 
-          <a
-            href={buildUnlockWhatsAppUrl(
-              "GTF Verified Fast-Track",
-              "₹45,000",
-              userEmail,
-              userName,
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={buildUnlockPricingHref("GTF Verified Fast-Track", "₹45,000")}
             className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FFD166] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.14em] text-[#0A1628] shadow-lg transition hover:bg-amber-300"
           >
-            <span>Unlock via WhatsApp / GTF Team</span>
-            <ExternalLink className="h-3.5 w-3.5 text-[#0A1628]" />
-          </a>
+            <span>Book &amp; Unlock via GTF Portal</span>
+            <ArrowRight className="h-3.5 w-3.5 text-[#0A1628]" />
+          </Link>
         </article>
       </div>
     </div>

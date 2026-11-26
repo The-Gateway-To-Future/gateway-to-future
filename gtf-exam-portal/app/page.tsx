@@ -92,15 +92,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Level 2: Executive Leadership & About Us */}
+        {/* Level 2: Institutional Advisory & About Us */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 pb-12 sm:pb-16 space-y-6">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
             <div className="space-y-1">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                EXECUTIVE LEADERSHIP · ABOUT US
+                INSTITUTIONAL ADVISORY · ABOUT US
               </p>
               <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900">
-                Led Exclusively from Berlin
+                {BRAND.advisoryTeamTitle}
               </h2>
             </div>
             <Link
@@ -122,7 +122,10 @@ export default function HomePage() {
               {BRAND.name} · {BRAND.headquarters}
             </p>
             <p className="text-[11px] text-slate-600">
-              Led by {BRAND.founderName} — {BRAND.founderTitle}
+              {BRAND.name} — {BRAND.advisoryTeamTitle} ·{" "}
+              <a href={`mailto:${BRAND.supportEmail}`} className="underline hover:text-slate-900">
+                {BRAND.supportEmail}
+              </a>
             </p>
             <p className="text-[10px] text-slate-500 max-w-xl leading-relaxed">
               All third-party exam boards and institutions are trademarks of their respective owners. Gateway To Future is an independent training and guidance provider.

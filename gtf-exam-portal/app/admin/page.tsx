@@ -458,7 +458,7 @@ export default function FounderAdminPortalPage() {
         </main>
 
         <footer className="py-5 text-center text-xs text-slate-400">
-          {BRAND.name} ({BRAND.shortName}) · {BRAND.headquarters} · {BRAND.supportPhone}
+          {BRAND.name} ({BRAND.shortName}) · {BRAND.headquarters} · {BRAND.supportEmail}
         </footer>
       </div>
     );
@@ -481,7 +481,7 @@ export default function FounderAdminPortalPage() {
                   Founder Admin Command Center
                 </span>
                 <span className="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-300">
-                  Sarbjit Kour · Founder &amp; CEO
+                  Gateway To Future · Berlin HQ
                 </span>
               </div>
               <p className="text-xs text-amber-300">
@@ -1373,7 +1373,7 @@ export default function FounderAdminPortalPage() {
               <span>{BRAND.website}</span>
               <ExternalLink className="h-3 w-3" />
             </a>
-            <span>Support: {BRAND.supportPhone}</span>
+            <span>Support: {BRAND.supportEmail}</span>
           </div>
         </div>
       </footer>

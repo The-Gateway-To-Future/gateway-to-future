@@ -353,7 +353,7 @@ export interface UserSessionState {
 
 /* ───────────────────────────── Commerce ───────────────────────────── */
 
-export type ProductType = "mock_test" | "pdf_workbook" | "sprechen_pass" | "studienkolleg_course" | "clinical_module";
+export type ProductType = "mock_test" | "pdf_workbook" | "sprechen_pass" | "studienkolleg_course" | "clinical_module" | "consultation";
 
 export interface Product {
   slug: string;

@@ -454,7 +454,6 @@ export default function AusbildungOsPage() {
     user?.role === "admin" ||
     normalizedEmail === "ashusharma@gatewaytofuture.com" ||
     normalizedEmail === "skour8786@gmail.com" ||
-    normalizedEmail === "info@gatewaytofuture.com" ||
     hasAdminSession;
   const isSignedInUser = Boolean(fbUid || isAuthenticated);
   const showDevPreviewToggle = process.env.NODE_ENV === "development" || isAdminUser;
