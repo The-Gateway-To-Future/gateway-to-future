@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
+  Lock,
   PenTool,
   Sparkles,
   Wand2,
@@ -15,6 +16,7 @@ import {
   loadExamState,
   resetExamSection,
   saveExamState,
+  type ExamMode,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
 import type { ExamTest, SchreibenEvaluation, SchreibenTask } from "@/lib/types";
@@ -28,6 +30,7 @@ function countWords(text: string): number {
 }
 
 function SchreibenExamPageInner() {
+  const router = useRouter();
   const params = useParams<{ level: string }>();
   const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
@@ -41,11 +44,14 @@ function SchreibenExamPageInner() {
   const [activeTaskIdx, setActiveTaskIdx] = useState(0);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [evaluations, setEvaluations] = useState<Record<string, SchreibenEvaluation>>({});
+  const [examMode, setExamMode] = useState<ExamMode>("practice");
+  const [sectionExpired, setSectionExpired] = useState(false);
   const [evaluating, setEvaluating] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const isExamMode = examMode === "exam";
 
   useEffect(() => {
     setActiveTaskIdx(0);
@@ -53,6 +59,10 @@ function SchreibenExamPageInner() {
     const st = loadExamState(level, undefined, testId);
     setDrafts(st.schreibenDrafts || {});
     setEvaluations(st.schreibenEvaluations || {});
+    setExamMode(st.examMode || "practice");
+    setSectionExpired(
+      st.examMode === "exam" && (st.expiredSections || []).includes("schreiben"),
+    );
 
     const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache check for <100ms load
@@ -100,11 +110,22 @@ function SchreibenExamPageInner() {
   const wordCount = countWords(currentText);
 
   const updateDraft = (taskId: string, value: string) => {
+    if (isExamMode && sectionExpired) return;
     setDrafts((prev) => {
       const next = { ...prev, [taskId]: value };
       saveExamState(level, (st) => ({ ...st, schreibenDrafts: next }), undefined, testId);
       return next;
     });
+  };
+
+  const handleTimeExpired = async () => {
+    setSectionExpired(true);
+    if (currentTask && currentText.trim().length >= 10 && !currentEvaluation && !evaluating) {
+      await handleEvaluate();
+    }
+    window.setTimeout(() => {
+      router.push(`/exam/${level}/sprechen${testQuery}`);
+    }, 1800);
   };
 
   const insertUmlaut = (char: string) => {
@@ -183,6 +204,7 @@ function SchreibenExamPageInner() {
     const fresh = resetExamSection(level, "schreiben", undefined, testId);
     setDrafts(fresh.schreibenDrafts);
     setEvaluations(fresh.schreibenEvaluations);
+    setSectionExpired(false);
   };
 
   return (
@@ -194,6 +216,12 @@ function SchreibenExamPageInner() {
         testTitle={test?.title}
         testId={testId}
         onResetExam={handleReset}
+        examMode={examMode}
+        onModeChange={(m) => {
+          setExamMode(m);
+          if (m === "practice") setSectionExpired(false);
+        }}
+        onTimeExpired={() => void handleTimeExpired()}
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
@@ -300,14 +328,21 @@ function SchreibenExamPageInner() {
                     </ul>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={fillSampleDraft}
-                    className="relative z-20 cursor-pointer inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition"
-                  >
-                    <Wand2 className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Beispiel-Antwort zum Testen einfügen</span>
-                  </button>
+                  {isExamMode ? (
+                    <div className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-800">
+                      <Lock className="h-3.5 w-3.5" />
+                      <span>Prüfungsmodus aktiv · Muster-Entwürfe gesperrt</span>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={fillSampleDraft}
+                      className="relative z-20 cursor-pointer inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition"
+                    >
+                      <Wand2 className="h-3.5 w-3.5 text-emerald-600" />
+                      <span>Beispiel-Antwort zum Testen einfügen</span>
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -349,10 +384,11 @@ function SchreibenExamPageInner() {
                   <textarea
                     ref={textareaRef}
                     rows={11}
+                    disabled={isExamMode && sectionExpired}
                     value={currentText}
                     onChange={(e) => updateDraft(currentTask.id, e.target.value)}
                     placeholder="Schreiben Sie Ihren deutschen Text hier… (Nutzen Sie oben die Umlaut-Buttons ä, ö, ü, Ä, Ö, Ü, ß)"
-                    className="w-full rounded-xl border border-slate-300 bg-white p-4 text-sm leading-relaxed text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none sm:text-base"
+                    className="w-full rounded-xl border border-slate-300 bg-white p-4 text-sm leading-relaxed text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none sm:text-base disabled:bg-slate-100 disabled:cursor-not-allowed"
                   />
 
                   {errorMsg && (

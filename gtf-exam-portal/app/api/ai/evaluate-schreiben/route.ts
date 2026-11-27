@@ -1,11 +1,19 @@
 import { NextResponse } from "next/server";
 import { requireVerifiedSession } from "@/lib/server/auth-session";
 import { serverEnv } from "@/lib/server/env";
+import { recordMistakeOccurrencesAdmin } from "@/lib/server/mistake-dna-admin";
 import {
   checkRateLimit,
   rateLimitExceededResponse,
   signAiEvaluation,
 } from "@/lib/server/rate-limit";
+import {
+  MISTAKE_CODE_PROMPT_LEGEND,
+  classifyMistakeCodes,
+  isMistakeCode,
+  normalizeMistakeCodes,
+  type MistakeCode,
+} from "@/lib/mistake-dna/taxonomy";
 import type { Cefr, Correction, SchreibenEvaluation } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -72,16 +80,21 @@ Return ONLY valid JSON matching this exact TypeScript shape:
       "original": "exact phrase from student text",
       "corrected": "corrected German phrase",
       "type": "grammar" | "spelling" | "vocabulary" | "punctuation" | "style",
+      "mistakeCode": "ONE exact code from the Mistake-DNA list below",
       "explanationDe": "short explanation in simple German",
       "explanationHinglish": "friendly explanation in Hinglish (Hindi in Latin script + English) explaining the grammar rule"
     }
   ],
+  "mistakeTags": ["distinct Mistake-DNA codes triggered by this student's text"],
   "strengths": ["string"],
   "improvements": ["string"],
   "summaryDe": "2-3 sentences overall examiner feedback in German",
   "summaryHinglish": "2-3 sentences encouraging mentor feedback in Hinglish (warm Gateway To Future Berlin mentor style)",
   "improvedVersion": "Complete natural German model version directly addressing the same task and Leitpunkte"
-}`;
+}
+
+Allowed Mistake-DNA codes:
+${MISTAKE_CODE_PROMPT_LEGEND}`;
 }
 
 async function callGroq(systemPrompt: string, userPrompt: string) {
@@ -198,6 +211,7 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
       original: midCapIch[1],
       corrected: midCapIch[1].replace(/^Ich\b/, "ich"),
       type: "spelling",
+      mistakeCode: "PRONUNCIATION_UMLAUT_CH",
       explanationDe: "Im Deutschen schreibt man „ich“ nur am Satzanfang groß, nicht nach einem Komma.",
       explanationHinglish:
         "English ke 'I' ke ulta, German mein 'ich' sirf sentence ke start mein capital hota hai — comma ke baad hamesha small 'ich' likho.",
@@ -214,6 +228,7 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
       original: full,
       corrected: `${conj} ${subj} ${rest.trim()} ${verb}`,
       type: "grammar",
+      mistakeCode: "WORD_ORDER_WEIL",
       explanationDe: `Nach „${conj}“ (Nebensatz) muss das konjugierte Verb „${verb}“ ganz am Ende stehen.`,
       explanationHinglish: `'${conj}' ek Nebensatz connector hai — iske baad conjugated verb ('${verb}') hamesha sentence ke bilkul end mein jaata hai!`,
     });
@@ -225,6 +240,7 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
       original: "ich habe ... umgezogen",
       corrected: "ich bin ... umgezogen",
       type: "grammar",
+      mistakeCode: "PERFEKT_HABEN_SEIN",
       explanationDe: "„umziehen“ (Wohnungswechsel) bildet das Perfekt mit „sein“: ich bin umgezogen.",
       explanationHinglish:
         "'umziehen' (ghar shift karna) Ortswechsel dikhata hai, isliye Perfekt 'sein' ke saath banta hai: 'ich bin umgezogen'.",
@@ -237,6 +253,7 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
       original: "Informelle Anrede (du / Liebe Grüße)",
       corrected: "Sie / Ihr / Mit freundlichen Grüßen",
       type: "style",
+      mistakeCode: "REGISTER_SIE_DU",
       explanationDe:
         "In einer formellen Nachricht müssen Sie die Höflichkeitsform „Sie“ und „Mit freundlichen Grüßen“ verwenden.",
       explanationHinglish:
@@ -251,6 +268,7 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
       original: "Kurze Hauptsätze ohne Konnektoren",
       corrected: "Verwenden Sie: weil, dass, deshalb, außerdem, obwohl",
       type: "vocabulary",
+      mistakeCode: "CONNECTOR_COHERENCE",
       explanationDe:
         "Für höhere Punkte im Bereich „Kohärenz & Strukturen“ sollten Sie Sätze mit Konnektoren verbinden.",
       explanationHinglish:
@@ -275,6 +293,14 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
   const score = taskFulfilment + coherence + vocabulary + grammar;
   const cefrEstimate: Cefr = normalizeCefr(undefined, score);
 
+  const offlineMistakeTags = Array.from(
+    new Set(
+      corrections
+        .map((c) => c.mistakeCode)
+        .filter((code): code is MistakeCode => isMistakeCode(code)),
+    ),
+  );
+
   return {
     engine: "offline-heuristic",
     taskId: body.taskId || "schreiben-1",
@@ -283,6 +309,7 @@ function offlineEvaluateSchreiben(body: EvaluateSchreibenBody): SchreibenEvaluat
     criteria: { taskFulfilment, coherence, vocabulary, grammar },
     wordCount: words,
     corrections,
+    mistakeTags: offlineMistakeTags,
     strengths: [
       words >= minWords
         ? `Wortanzahl erreicht (${words} Wörter bei Ziel ${minWords} Wörtern).`
@@ -360,6 +387,25 @@ ${text}
       const cefrEstimate = normalizeCefr(ai.cefrEstimate, score);
       const evaluatedAt = new Date().toISOString();
 
+      const rawCorrections = Array.isArray(ai.corrections) ? (ai.corrections as Correction[]) : [];
+      const enrichedCorrections: Correction[] = rawCorrections.map((c) => {
+        const inferred = isMistakeCode(c?.mistakeCode)
+          ? c.mistakeCode
+          : classifyMistakeCodes({
+              section: "schreiben",
+              original: c?.original,
+              corrected: c?.corrected,
+              explanation: `${c?.explanationDe || ""} ${c?.explanationHinglish || ""}`,
+              correctionType: c?.type,
+            })[0];
+        return { ...c, mistakeCode: inferred };
+      });
+      const mistakeTagSet = new Set<MistakeCode>(normalizeMistakeCodes(ai.mistakeTags));
+      for (const c of enrichedCorrections) {
+        if (c.mistakeCode) mistakeTagSet.add(c.mistakeCode);
+      }
+      const mistakeTags = Array.from(mistakeTagSet);
+
       return {
         engine,
         taskId,
@@ -367,7 +413,8 @@ ${text}
         score,
         criteria,
         wordCount: words,
-        corrections: Array.isArray(ai.corrections) ? (ai.corrections as Correction[]) : [],
+        corrections: enrichedCorrections,
+        mistakeTags,
         strengths: Array.isArray(ai.strengths) ? (ai.strengths as string[]) : [],
         improvements: Array.isArray(ai.improvements) ? (ai.improvements as string[]) : [],
         summaryDe: typeof ai.summaryDe === "string" && ai.summaryDe ? ai.summaryDe : "Bewertung abgeschlossen.",
@@ -388,10 +435,38 @@ ${text}
       };
     };
 
+    const persistMistakeDna = async (evaluation: SchreibenEvaluation) => {
+      const occurrences = (evaluation.corrections || [])
+        .filter((c) => isMistakeCode(c.mistakeCode))
+        .map((c) => ({
+          errorKey: c.mistakeCode as MistakeCode,
+          source: "schreiben" as const,
+          prompt: body.taskTitle || "Schreiben",
+          wrong: c.original,
+          right: c.corrected,
+        }));
+      if (occurrences.length === 0 && (evaluation.mistakeTags || []).length > 0) {
+        for (const tag of evaluation.mistakeTags || []) {
+          occurrences.push({
+            errorKey: tag,
+            source: "schreiben",
+            prompt: body.taskTitle || "Schreiben",
+            wrong: "",
+            right: "",
+          });
+        }
+      }
+      if (occurrences.length > 0) {
+        await recordMistakeOccurrencesAdmin(auth.session.uid, occurrences).catch(() => {});
+      }
+    };
+
     if (serverEnv.groqApiKey) {
       try {
         const ai = await callGroq(systemPrompt, userPrompt);
-        return NextResponse.json({ evaluation: finalize("groq", ai) });
+        const evaluation = finalize("groq", ai);
+        await persistMistakeDna(evaluation);
+        return NextResponse.json({ evaluation });
       } catch (err) {
         console.warn("[gtf] Groq Schreiben evaluation fallback:", err);
       }
@@ -400,7 +475,9 @@ ${text}
     if (serverEnv.geminiApiKey) {
       try {
         const ai = await callGemini(systemPrompt, userPrompt);
-        return NextResponse.json({ evaluation: finalize("gemini", ai) });
+        const evaluation = finalize("gemini", ai);
+        await persistMistakeDna(evaluation);
+        return NextResponse.json({ evaluation });
       } catch (err) {
         console.warn("[gtf] Gemini Schreiben evaluation fallback:", err);
       }
@@ -415,6 +492,7 @@ ${text}
       cefrEstimate: offlineEval.cefrEstimate,
       evaluatedAt: offlineEval.evaluatedAt,
     });
+    await persistMistakeDna(offlineEval);
     return NextResponse.json({ evaluation: offlineEval });
   } catch (err) {
     return NextResponse.json(

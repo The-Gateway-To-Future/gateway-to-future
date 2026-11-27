@@ -1,0 +1,1090 @@
+{
+  "id": "gtf-b1-modelltest-1",
+  "level": "b1",
+  "title": "GTF B1 Modelltest 1 — Goethe/telc Hybrid",
+  "provider": "GTF Academic & Language Institute (Goethe-Zertifikat B1 + telc Sprachbausteine format)",
+  "version": "2026.11",
+  "productSlug": "b1-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 70,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Blogbeitrag",
+          "instructions": "Lesen Sie den Text und die Aufgaben 1 bis 6. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Mein erstes Jahr in Berlin – Priyas Blog",
+          "source": "www.neu-in-deutschland-blog.de",
+          "passage": "Hallo zusammen! Viele von euch haben mich gefragt, wie mein erstes Jahr in Deutschland war. Heute habe ich endlich Zeit, ein bisschen zu erzählen.\n\nVor genau zwölf Monaten bin ich mit zwei Koffern und meinem B1-Zertifikat in Berlin angekommen. Ich mache hier eine Ausbildung zur Pflegefachfrau in einem Krankenhaus in Marzahn. Am Anfang war alles sehr anstrengend: Die Kolleginnen haben schnell gesprochen, und viele Wörter aus dem Krankenhausalltag kannte ich noch nicht. In der ersten Woche habe ich abends oft geweint, weil ich so müde war.\n\nAber meine Praxisanleiterin, Frau Becker, war sehr geduldig. Sie hat mir empfohlen, ein kleines Heft mit neuen Wörtern zu führen. Jeden Abend habe ich zehn neue Wörter gelernt – und nach drei Monaten konnte ich die Übergaben fast ohne Probleme verstehen.\n\nDie Wohnungssuche war leider ein echtes Problem. Die ersten vier Monate habe ich in einem Zimmer bei einer älteren Dame gewohnt. Das war günstig, aber ziemlich weit von der Arbeit entfernt. Jetzt wohne ich in einer WG mit zwei Studentinnen, nur zehn Minuten mit dem Fahrrad vom Krankenhaus.\n\nWas ich an Berlin liebe? Die vielen Parks und dass man am Wochenende so viel unternehmen kann. Was ich vermisse? Das Essen meiner Mutter! Zum Glück gibt es in Kreuzberg ein kleines indisches Restaurant, wo ich mich fast wie zu Hause fühle.\n\nMein Tipp für euch: Lernt nicht nur für die Prüfung, sondern sprecht so viel wie möglich. Die Sprache lernt man im Alltag!",
+          "questions": [
+            {
+              "id": "l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Priya ist mit einem Deutschzertifikat nach Berlin gekommen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „…mit zwei Koffern und meinem B1-Zertifikat in Berlin angekommen.“ — Hinglish: Priya B1 certificate ke saath aayi thi, isliye richtig.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. In den ersten Wochen hat Priya ihre Kolleginnen gut verstanden.",
+              "answer": "falsch",
+              "explanation": "„Die Kolleginnen haben schnell gesprochen, und viele Wörter … kannte ich noch nicht.“ — Shuru mein use samajhne mein problem tha, isliye falsch.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Frau Becker hat Priya einen Tipp zum Wortschatzlernen gegeben.",
+              "answer": "richtig",
+              "explanation": "„Sie hat mir empfohlen, ein kleines Heft mit neuen Wörtern zu führen.“ — Vocabulary notebook ka tip = Wortschatz-Tipp.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Priya wohnt seit ihrer Ankunft in einer Wohngemeinschaft.",
+              "answer": "falsch",
+              "explanation": "Die ersten vier Monate wohnte sie bei einer älteren Dame. Erst jetzt wohnt sie in einer WG. — 'seit ihrer Ankunft' galat hai.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Priya fährt heute mit dem Fahrrad zur Arbeit.",
+              "answer": "richtig",
+              "explanation": "„…nur zehn Minuten mit dem Fahrrad vom Krankenhaus.“ — Woh cycle se kaam par jaati hai.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Priya kocht am Wochenende oft indisches Essen.",
+              "answer": "falsch",
+              "explanation": "Sie vermisst das Essen ihrer Mutter und geht in ein indisches Restaurant in Kreuzberg. Vom Kochen steht nichts im Text. — Text mein khud cook karne ki baat nahi hai.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Zeitungsartikel",
+          "instructions": "Lesen Sie den Text und die Aufgaben 7 bis 9. Wählen Sie die richtige Lösung a, b oder c.",
+          "passageTitle": "Vier Tage arbeiten, drei Tage frei – ein Modell mit Zukunft?",
+          "source": "Berliner Morgenblatt, Wirtschaft",
+          "passage": "Immer mehr Betriebe in Deutschland testen die Vier-Tage-Woche. In einem Pilotprojekt haben rund 45 Unternehmen ein halbes Jahr lang ausprobiert, ob ihre Mitarbeiterinnen und Mitarbeiter bei vollem Lohn nur noch vier Tage pro Woche arbeiten können.\n\nDie Ergebnisse sind überwiegend positiv. Die meisten Beschäftigten berichten, dass sie sich weniger gestresst fühlen und besser schlafen. Auch die Zahl der Krankheitstage ist gesunken. Viele Firmen sagen außerdem, dass sie leichter neue Fachkräfte finden, seit sie das Modell anbieten.\n\nDoch nicht alle sind begeistert. Besonders in Krankenhäusern, in der Pflege und im Handwerk ist die Umsetzung schwierig, weil dort ohnehin Personal fehlt. „Wenn eine Pflegekraft einen Tag weniger arbeitet, muss jemand anderes diese Schicht übernehmen“, erklärt Markus Hoffmann vom Verband der Pflegeeinrichtungen. Kritiker warnen außerdem, dass die Arbeit an den vier Tagen intensiver wird.\n\nExperten empfehlen deshalb, das Modell flexibel zu gestalten. Nicht jede Branche müsse die gleiche Lösung finden. Wichtig sei vor allem, dass Arbeitgeber und Beschäftigte gemeinsam entscheiden.",
+          "questions": [
+            {
+              "id": "l2-q7",
+              "type": "mcq",
+              "prompt": "7. In dem Pilotprojekt …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "haben die Beschäftigten weniger Geld bekommen."
+                },
+                {
+                  "id": "b",
+                  "text": "haben die Mitarbeitenden bei gleichem Gehalt weniger Tage gearbeitet."
+                },
+                {
+                  "id": "c",
+                  "text": "haben alle Unternehmen in Deutschland mitgemacht."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„…bei vollem Lohn nur noch vier Tage pro Woche…“ = gleiches Gehalt, weniger Tage. Option c ist falsch: nur rund 45 Unternehmen.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l2-q8",
+              "type": "mcq",
+              "prompt": "8. Viele Firmen berichten, dass …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "sie mit dem Modell leichter Personal finden."
+                },
+                {
+                  "id": "b",
+                  "text": "die Mitarbeitenden öfter krank sind."
+                },
+                {
+                  "id": "c",
+                  "text": "die Kunden unzufrieden sind."
+                }
+              ],
+              "answer": "a",
+              "explanation": "„…dass sie leichter neue Fachkräfte finden…“ — Fachkräfte = Personal. Krankheitstage sind gesunken, also b ist falsch.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
+            },
+            {
+              "id": "l2-q9",
+              "type": "mcq",
+              "prompt": "9. In der Pflege ist die Vier-Tage-Woche schwierig, weil …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "die Beschäftigten sie nicht wollen."
+                },
+                {
+                  "id": "b",
+                  "text": "die Krankenhäuser zu wenig Geld haben."
+                },
+                {
+                  "id": "c",
+                  "text": "dort schon jetzt zu wenig Personal arbeitet."
+                }
+              ],
+              "answer": "c",
+              "explanation": "„…weil dort ohnehin Personal fehlt.“ — 'ohnehin' = sowieso/already. Staff pehle se hi kam hai.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesen-3",
+          "kind": "reading",
+          "title": "Lesen Teil 3 — Hausordnung",
+          "instructions": "Lesen Sie die Aufgaben 10 bis 13 und den Text dazu. Wählen Sie die richtige Lösung a, b oder c.",
+          "passageTitle": "Hausordnung – Studierendenwohnheim „Am Tierpark“",
+          "source": "Hausverwaltung Wohnheim Am Tierpark GmbH",
+          "passage": "1. Ruhezeiten: Von 22:00 bis 7:00 Uhr sowie sonntags ganztägig ist auf Zimmerlautstärke zu achten. Partys in den Gemeinschaftsräumen müssen mindestens drei Tage vorher bei der Hausverwaltung angemeldet werden.\n\n2. Küche: Die Gemeinschaftsküchen sind nach jeder Benutzung sauber zu hinterlassen. Lebensmittel dürfen nur in den beschrifteten Fächern im Kühlschrank aufbewahrt werden. Nicht beschriftete Lebensmittel werden jeden Freitag entsorgt.\n\n3. Müll: Bitte trennen Sie den Müll (Papier, Verpackungen, Bio- und Restmüll). Die Container befinden sich im Hof. Sperrmüll darf nicht im Keller abgestellt werden.\n\n4. Besuch: Gäste dürfen höchstens drei Nächte hintereinander übernachten. Längere Besuche sind mit der Hausverwaltung abzusprechen.\n\n5. Fahrräder: Fahrräder sind ausschließlich im Fahrradkeller abzustellen. Im Treppenhaus und in den Fluren dürfen aus Brandschutzgründen keine Fahrräder stehen.\n\nBei Fragen erreichen Sie die Hausverwaltung montags bis donnerstags von 9:00 bis 15:00 Uhr im Büro im Erdgeschoss.",
+          "questions": [
+            {
+              "id": "l3-q10",
+              "type": "mcq",
+              "prompt": "10. Wer eine Party feiern möchte, …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "muss sie rechtzeitig anmelden."
+                },
+                {
+                  "id": "b",
+                  "text": "darf nur sonntags feiern."
+                },
+                {
+                  "id": "c",
+                  "text": "braucht keine Erlaubnis."
+                }
+              ],
+              "answer": "a",
+              "explanation": "„…mindestens drei Tage vorher … angemeldet werden.“ = rechtzeitig anmelden. Sonntags gilt Ruhezeit, also b ist falsch.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l3-q11",
+              "type": "mcq",
+              "prompt": "11. Lebensmittel ohne Namen im Kühlschrank …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "darf jeder essen."
+                },
+                {
+                  "id": "b",
+                  "text": "werden am Freitag weggeworfen."
+                },
+                {
+                  "id": "c",
+                  "text": "bringt man ins Büro."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„Nicht beschriftete Lebensmittel werden jeden Freitag entsorgt.“ — entsorgen = wegwerfen (throw away).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l3-q12",
+              "type": "mcq",
+              "prompt": "12. Ein Freund möchte eine Woche bei Ihnen übernachten. Sie …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "müssen das mit der Hausverwaltung besprechen."
+                },
+                {
+                  "id": "b",
+                  "text": "dürfen das auf keinen Fall."
+                },
+                {
+                  "id": "c",
+                  "text": "müssen nichts tun."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Höchstens drei Nächte sind frei erlaubt. „Längere Besuche sind mit der Hausverwaltung abzusprechen.“ — Ek hafta = längerer Besuch.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l3-q13",
+              "type": "mcq",
+              "prompt": "13. Ihr Fahrrad dürfen Sie …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "im Flur abstellen."
+                },
+                {
+                  "id": "b",
+                  "text": "nur im Fahrradkeller parken."
+                },
+                {
+                  "id": "c",
+                  "text": "im Hof neben den Containern parken."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„Fahrräder sind ausschließlich im Fahrradkeller abzustellen.“ — ausschließlich = nur.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 1 — E-Mail",
+          "instructions": "Lesen Sie den Text und wählen Sie für jede Lücke 21–26 die richtige Lösung a, b oder c.",
+          "mode": "select",
+          "text": "Liebe Frau Schneider,\n\nvielen Dank für Ihre schnelle Antwort {{21}} meine Bewerbung. Ich freue mich sehr, {{22}} Sie mich zu einem Vorstellungsgespräch eingeladen haben. Leider kann ich am Montag nicht kommen, {{23}} ich an diesem Tag meine B1-Prüfung habe. Wäre es möglich, den Termin auf Mittwoch {{24}} verschieben? An diesem Tag hätte ich den ganzen Tag Zeit.\n\nAußerdem habe ich noch eine Frage: Muss ich zum Gespräch meine Zeugnisse im Original mitbringen, {{25}} reichen Kopien? Ich möchte gut vorbereitet sein.\n\nIch bedanke mich im Voraus und freue mich {{26}}, Sie persönlich kennenzulernen.\n\nMit freundlichen Grüßen\nArjun Mehta",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "auf"
+                },
+                {
+                  "id": "b",
+                  "text": "für"
+                },
+                {
+                  "id": "c",
+                  "text": "zu"
+                }
+              ],
+              "answer": "a",
+              "explanation": "die Antwort AUF + Akkusativ (eine Antwort auf etwas). 'Dank für' already used — Nomen-Verb-Verbindung yaad rakho: Antwort auf.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "dass"
+                },
+                {
+                  "id": "b",
+                  "text": "ob"
+                },
+                {
+                  "id": "c",
+                  "text": "wenn"
+                }
+              ],
+              "answer": "a",
+              "explanation": "sich freuen, DASS … — Fakt hai (invitation mil chuka hai), isliye 'dass', nicht 'ob' (Unsicherheit).",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "deshalb"
+                },
+                {
+                  "id": "b",
+                  "text": "weil"
+                },
+                {
+                  "id": "c",
+                  "text": "trotzdem"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Grund + Verb am Ende („…meine B1-Prüfung habe“) → Nebensatz mit WEIL. 'deshalb' und 'trotzdem' brauchen Verb an Position 2.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "WORD_ORDER_INVERSION"
+              ]
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "um"
+                },
+                {
+                  "id": "b",
+                  "text": "zu"
+                },
+                {
+                  "id": "c",
+                  "text": "für"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Wäre es möglich, … ZU verschieben? — Infinitiv mit 'zu' nach 'es ist möglich'.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "aber"
+                },
+                {
+                  "id": "b",
+                  "text": "sondern"
+                },
+                {
+                  "id": "c",
+                  "text": "oder"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Alternative Frage: Originale ODER Kopien? 'sondern' nur nach Verneinung.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "26",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "darauf"
+                },
+                {
+                  "id": "b",
+                  "text": "dafür"
+                },
+                {
+                  "id": "c",
+                  "text": "davon"
+                }
+              ],
+              "answer": "a",
+              "explanation": "sich freuen AUF (Zukunft) → darauf. 'sich freuen über' = Vergangenheit/Gegenwart.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sprachbausteine-2",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 2 — Zeitschriftentext",
+          "instructions": "Lesen Sie den Text. Ziehen Sie die passenden Wörter aus der Wortliste in die Lücken 31–36 (oder tippen Sie Wort → Lücke). Jedes Wort passt nur einmal. Vier Wörter bleiben übrig.",
+          "mode": "wordbank",
+          "text": "Deutsch lernen mit Podcasts\n\nViele Deutschlernende hören heute Podcasts, {{31}} ihr Hörverstehen zu verbessern. Das hat einen großen Vorteil: Man kann fast überall lernen, zum Beispiel im Bus {{32}} beim Kochen. Besonders beliebt sind Podcasts, {{33}} langsam und deutlich gesprochen werden. Expertinnen raten, {{34}} Folge mehrmals zu hören und neue Wörter aufzuschreiben. Wer {{35}} Tag nur fünfzehn Minuten hört, merkt schon nach wenigen Wochen einen Unterschied. Wichtig ist aber auch, das Gehörte aktiv zu nutzen – {{36}} beim Sprechen mit Freunden oder Kollegen.",
+          "wordBank": [
+            {
+              "id": "a",
+              "text": "um"
+            },
+            {
+              "id": "b",
+              "text": "oder"
+            },
+            {
+              "id": "c",
+              "text": "die"
+            },
+            {
+              "id": "d",
+              "text": "jede"
+            },
+            {
+              "id": "e",
+              "text": "dass"
+            },
+            {
+              "id": "f",
+              "text": "zum Beispiel"
+            },
+            {
+              "id": "g",
+              "text": "damit"
+            },
+            {
+              "id": "h",
+              "text": "deren"
+            },
+            {
+              "id": "i",
+              "text": "jeden"
+            },
+            {
+              "id": "j",
+              "text": "obwohl"
+            }
+          ],
+          "gaps": [
+            {
+              "id": "31",
+              "answer": "a",
+              "explanation": "UM … ZU + Infinitiv (Ziel/Zweck). 'damit' braucht ein konjugiertes Verb am Ende.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "CONNECTOR_COHERENCE"
+              ]
+            },
+            {
+              "id": "32",
+              "answer": "b",
+              "explanation": "im Bus ODER beim Kochen — zwei Möglichkeiten.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "33",
+              "answer": "c",
+              "explanation": "Relativsatz: die Podcasts → DIE (Plural Nominativ). 'deren' = Genitiv, passt nicht.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "34",
+              "answer": "d",
+              "explanation": "die Folge (feminin, Akkusativ) → JEDE Folge.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "GENDER_RULE_UNG_HEIT"
+              ]
+            },
+            {
+              "id": "35",
+              "answer": "i",
+              "explanation": "der Tag (maskulin, Akkusativ der Zeit) → JEDEN Tag.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "GENDER_RULE_UNG_HEIT"
+              ]
+            },
+            {
+              "id": "36",
+              "answer": "f",
+              "explanation": "Beispiel einleiten: ZUM BEISPIEL beim Sprechen.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 40,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Kurze Ansagen",
+          "instructions": "Sie hören zwei kurze Texte. Sie hören jeden Text ZWEIMAL. Lösen Sie zu jedem Text zwei Aufgaben.",
+          "maxPlays": 2,
+          "audio": {
+            "localFile": "b1_hoeren_01.mp3",
+            "drivePath": "GTF_App_Vault/B1/Hoeren_Audio/b1_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Text 1 — Anrufbeantworter",
+              "voice": "female",
+              "text": "Hallo Frau Kaur, hier ist die Praxis Doktor Weber. Sie haben morgen um neun Uhr einen Termin bei uns. Leider ist Doktor Weber krank. Wir können Ihnen einen neuen Termin am Donnerstag um vierzehn Uhr dreißig anbieten. Bitte rufen Sie uns bis heute achtzehn Uhr zurück, damit wir den Termin bestätigen können. Vielen Dank und auf Wiederhören."
+            },
+            {
+              "speaker": "Text 2 — Durchsage am Bahnhof",
+              "voice": "male",
+              "text": "Achtung an Gleis vier: Der Regionalexpress R E eins nach Frankfurt Oder, planmäßige Abfahrt sechzehn Uhr zwölf, hat heute circa zwanzig Minuten Verspätung. Grund dafür ist eine Reparatur an der Strecke. Fahrgäste nach Erkner können alternativ die S-Bahn S drei von Gleis zwei nutzen. Wir bitten um Entschuldigung."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Frau Kaurs Termin morgen findet nicht statt.",
+              "answer": "richtig",
+              "explanation": "„Leider ist Doktor Weber krank.“ Der Termin wird verschoben. — Kal ka appointment cancel hai.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "h1-q2",
+              "type": "mcq",
+              "prompt": "2. Frau Kaur soll …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "am Donnerstag ohne Anruf vorbeikommen."
+                },
+                {
+                  "id": "b",
+                  "text": "bis 18 Uhr zurückrufen."
+                },
+                {
+                  "id": "c",
+                  "text": "eine E-Mail an die Praxis schreiben."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„Bitte rufen Sie uns bis heute achtzehn Uhr zurück…“",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "h1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Der Zug fährt heute von einem anderen Gleis ab.",
+              "answer": "falsch",
+              "explanation": "Der Zug hat nur Verspätung (Gleis 4 bleibt). Die S-Bahn fährt von Gleis 2 — das ist die Alternative, nicht der Zug.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "h1-q4",
+              "type": "mcq",
+              "prompt": "4. Wer nach Erkner möchte, …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "soll 20 Minuten warten."
+                },
+                {
+                  "id": "b",
+                  "text": "kann die S-Bahn nehmen."
+                },
+                {
+                  "id": "c",
+                  "text": "muss ein neues Ticket kaufen."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„Fahrgäste nach Erkner können alternativ die S-Bahn S3 … nutzen.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/b1_hoeren_01.mp3"
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Begrüßung im Krankenhaus",
+          "instructions": "Sie hören einen Text. Sie hören den Text EINMAL. Wählen Sie für die Aufgaben 5 bis 7 die richtige Lösung a, b oder c.",
+          "maxPlays": 1,
+          "script": [
+            {
+              "speaker": "Sabine Lindner, Leiterin der Pflegeschule",
+              "voice": "female",
+              "text": "Guten Morgen und herzlich willkommen zu Ihrem ersten Tag im Klinikum Berlin-Ost! Mein Name ist Sabine Lindner, ich bin die Leiterin der Pflegeschule. Bevor wir mit dem Rundgang beginnen, ein paar wichtige Informationen. Ihre Dienstkleidung bekommen Sie heute um elf Uhr in der Wäscherei im Untergeschoss. Bitte bringen Sie dafür Ihren Mitarbeiterausweis mit. Die Kantine finden Sie im Erdgeschoss neben dem Haupteingang. Für Auszubildende kostet das Mittagessen nur drei Euro fünfzig. In den ersten zwei Wochen arbeiten Sie nur im Frühdienst, also von sechs Uhr bis vierzehn Uhr fünfzehn. Erst danach beginnen auch die Spätdienste. Wenn Sie Fragen haben oder Probleme mit der Sprache, wenden Sie sich bitte an Ihre Praxisanleitung. Jeden Mittwoch bieten wir außerdem einen kostenlosen Deutschkurs für medizinische Fachsprache an. So, und jetzt gehen wir zuerst zur Station drei, der Inneren Medizin."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h2-q5",
+              "type": "mcq",
+              "prompt": "5. Die Dienstkleidung bekommt man …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "im Untergeschoss."
+                },
+                {
+                  "id": "b",
+                  "text": "an der Information."
+                },
+                {
+                  "id": "c",
+                  "text": "auf der Station 3."
+                }
+              ],
+              "answer": "a",
+              "explanation": "„…in der Wäscherei im Untergeschoss.“ — Untergeschoss = basement.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h2-q6",
+              "type": "mcq",
+              "prompt": "6. In den ersten zwei Wochen arbeiten die Auszubildenden …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "im Spätdienst."
+                },
+                {
+                  "id": "b",
+                  "text": "nur im Frühdienst."
+                },
+                {
+                  "id": "c",
+                  "text": "auch nachts."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„In den ersten zwei Wochen arbeiten Sie nur im Frühdienst…“ Spätdienste kommen erst danach.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h2-q7",
+              "type": "mcq",
+              "prompt": "7. Am Mittwoch gibt es …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "ein besonders günstiges Mittagessen."
+                },
+                {
+                  "id": "b",
+                  "text": "einen Kurs für medizinische Fachsprache."
+                },
+                {
+                  "id": "c",
+                  "text": "die erste Prüfung."
+                }
+              ],
+              "answer": "b",
+              "explanation": "„Jeden Mittwoch … einen kostenlosen Deutschkurs für medizinische Fachsprache.“ Das Essen (3,50 €) ist jeden Tag günstig.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/b1_hoeren_02.mp3",
+          "audio": {
+            "localFile": "b1_hoeren_02.mp3",
+            "drivePath": "GTF_App_Vault/B1/Hoeren_Audio/b1_hoeren_02.mp3"
+          }
+        },
+        {
+          "id": "hoeren-3",
+          "title": "Hören Teil 3 — Gespräch unter Freunden",
+          "instructions": "Sie hören ein Gespräch. Sie hören das Gespräch EINMAL. Sind die Aussagen 8 bis 11 richtig oder falsch?",
+          "maxPlays": 1,
+          "script": [
+            {
+              "speaker": "Lena",
+              "voice": "female",
+              "text": "Hey Rahul! Na, wie läuft die Wohnungssuche?"
+            },
+            {
+              "speaker": "Rahul",
+              "voice": "male",
+              "text": "Ach, frag lieber nicht. Ich habe schon über dreißig Nachrichten geschrieben, aber nur zwei Antworten bekommen."
+            },
+            {
+              "speaker": "Lena",
+              "voice": "female",
+              "text": "Das kenne ich. Hast du es schon mal mit einem WG-Zimmer versucht? Das ist meistens billiger."
+            },
+            {
+              "speaker": "Rahul",
+              "voice": "male",
+              "text": "Ja, letzte Woche war ich bei einem WG-Casting in Friedrichshain. Die Leute waren total nett, aber das Zimmer war mit siebenhundertfünfzig Euro einfach zu teuer für mich."
+            },
+            {
+              "speaker": "Lena",
+              "voice": "female",
+              "text": "Siebenhundertfünfzig Euro für ein Zimmer? Wahnsinn! Weißt du was, in unserem Haus wird ab März eine kleine Wohnung frei. Die Nachbarin zieht zu ihrem Freund nach Hamburg."
+            },
+            {
+              "speaker": "Rahul",
+              "voice": "male",
+              "text": "Echt? Wie groß ist sie denn?"
+            },
+            {
+              "speaker": "Lena",
+              "voice": "female",
+              "text": "Ungefähr fünfunddreißig Quadratmeter, mit Balkon. Ich glaube, die Miete liegt bei fünfhundertzwanzig Euro warm. Ich kann dir die Nummer vom Vermieter geben."
+            },
+            {
+              "speaker": "Rahul",
+              "voice": "male",
+              "text": "Das wäre super! Ab März passt perfekt, weil mein Vertrag im Wohnheim Ende Februar endet."
+            },
+            {
+              "speaker": "Lena",
+              "voice": "female",
+              "text": "Dann schicke ich dir die Nummer heute Abend per WhatsApp. Aber ruf schnell an, solche Wohnungen sind sofort weg!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "h3-q8",
+              "type": "richtig_falsch",
+              "prompt": "8. Rahul hat auf viele Nachrichten nur wenige Antworten bekommen.",
+              "answer": "richtig",
+              "explanation": "Über 30 Nachrichten, nur 2 Antworten.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h3-q9",
+              "type": "richtig_falsch",
+              "prompt": "9. Rahul hat das WG-Zimmer in Friedrichshain genommen.",
+              "answer": "falsch",
+              "explanation": "Das Zimmer war mit 750 € „zu teuer für mich“. — Usne room nahi liya.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h3-q10",
+              "type": "richtig_falsch",
+              "prompt": "10. Die Wohnung in Lenas Haus hat einen Balkon.",
+              "answer": "richtig",
+              "explanation": "„Ungefähr 35 Quadratmeter, mit Balkon.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h3-q11",
+              "type": "richtig_falsch",
+              "prompt": "11. Rahul kann erst ab April umziehen.",
+              "answer": "falsch",
+              "explanation": "Sein Wohnheimvertrag endet Ende Februar, „ab März passt perfekt“.",
+              "mistakeTags": [
+                "PERFEKT_HABEN_SEIN",
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/b1_hoeren_03.mp3",
+          "audio": {
+            "localFile": "b1_hoeren_03.mp3",
+            "drivePath": "GTF_App_Vault/B1/Hoeren_Audio/b1_hoeren_03.mp3"
+          }
+        },
+        {
+          "id": "hoeren-4",
+          "title": "Hören Teil 4 — Radiodiskussion",
+          "instructions": "Sie hören eine Diskussion. Sie hören die Diskussion ZWEIMAL. Wer sagt was? Wählen Sie für die Aufgaben 12 bis 15: Moderator, Dr. Yilmaz oder Herr Krause.",
+          "maxPlays": 2,
+          "script": [
+            {
+              "speaker": "Moderator",
+              "voice": "male",
+              "text": "Willkommen zu unserer Sendung Pro und Contra. Heute diskutieren wir: Sollen Kinder schon im Kindergarten eine Fremdsprache lernen? Bei mir im Studio sind die Sprachwissenschaftlerin Doktor Aylin Yilmaz und Thomas Krause, Vater von drei Kindern und Grundschullehrer. Frau Yilmaz, was meinen Sie?"
+            },
+            {
+              "speaker": "Dr. Aylin Yilmaz",
+              "voice": "female",
+              "text": "Ich bin klar dafür. Kleine Kinder lernen Sprachen spielerisch und ohne Angst vor Fehlern. Je früher sie anfangen, desto natürlicher klingt später ihre Aussprache."
+            },
+            {
+              "speaker": "Thomas Krause",
+              "voice": "male",
+              "text": "Das mag sein, aber ich sehe das kritischer. Viele Kinder sprechen zu Hause schon eine andere Sprache als Deutsch. Für sie ist es wichtiger, zuerst gut Deutsch zu lernen."
+            },
+            {
+              "speaker": "Moderator",
+              "voice": "male",
+              "text": "Herr Krause, heißt das, Sie sind grundsätzlich gegen frühes Fremdsprachenlernen?"
+            },
+            {
+              "speaker": "Thomas Krause",
+              "voice": "male",
+              "text": "Nein, überhaupt nicht. Aber es muss gut gemacht werden. Oft fehlen qualifizierte Erzieherinnen, und eine Stunde Englisch pro Woche bringt meiner Erfahrung nach sehr wenig."
+            },
+            {
+              "speaker": "Dr. Aylin Yilmaz",
+              "voice": "female",
+              "text": "Da gebe ich Ihnen recht. Die Qualität ist entscheidend. Am besten funktioniert es, wenn eine Fachkraft im Alltag regelmäßig die Fremdsprache spricht, beim Spielen, beim Essen, beim Singen."
+            },
+            {
+              "speaker": "Moderator",
+              "voice": "male",
+              "text": "Und was ist mit den Kosten? Wer soll das bezahlen?"
+            },
+            {
+              "speaker": "Dr. Aylin Yilmaz",
+              "voice": "female",
+              "text": "Ich finde, das ist eine Investition in die Zukunft. Der Staat sollte die Kitas dabei finanziell unterstützen."
+            },
+            {
+              "speaker": "Thomas Krause",
+              "voice": "male",
+              "text": "Gute Idee. Aber dann bitte auch mehr Geld für die Deutschförderung. Beides gehört zusammen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h4-q12",
+              "type": "mcq",
+              "prompt": "12. Kinder haben beim frühen Sprachenlernen weniger Angst vor Fehlern.",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Moderator"
+                },
+                {
+                  "id": "b",
+                  "text": "Dr. Yilmaz"
+                },
+                {
+                  "id": "c",
+                  "text": "Herr Krause"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Dr. Yilmaz: „…spielerisch und ohne Angst vor Fehlern.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h4-q13",
+              "type": "mcq",
+              "prompt": "13. Manche Kinder sollten zuerst ihre Deutschkenntnisse verbessern.",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Moderator"
+                },
+                {
+                  "id": "b",
+                  "text": "Dr. Yilmaz"
+                },
+                {
+                  "id": "c",
+                  "text": "Herr Krause"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Herr Krause: „Für sie ist es wichtiger, zuerst gut Deutsch zu lernen.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h4-q14",
+              "type": "mcq",
+              "prompt": "14. Eine Stunde Unterricht pro Woche ist nicht genug.",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Moderator"
+                },
+                {
+                  "id": "b",
+                  "text": "Dr. Yilmaz"
+                },
+                {
+                  "id": "c",
+                  "text": "Herr Krause"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Herr Krause: „…eine Stunde Englisch pro Woche bringt … sehr wenig.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h4-q15",
+              "type": "mcq",
+              "prompt": "15. Der Staat sollte den Kitas Geld geben.",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Moderator"
+                },
+                {
+                  "id": "b",
+                  "text": "Dr. Yilmaz"
+                },
+                {
+                  "id": "c",
+                  "text": "Herr Krause"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Dr. Yilmaz: „Der Staat sollte die Kitas dabei finanziell unterstützen.“ Krause stimmt zu, fordert aber zusätzlich Geld für Deutschförderung.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/b1_hoeren_04.mp3",
+          "audio": {
+            "localFile": "b1_hoeren_04.mp3",
+            "drivePath": "GTF_App_Vault/B1/Hoeren_Audio/b1_hoeren_04.mp3"
+          }
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 60,
+      "tasks": [
+        {
+          "id": "schreiben-1",
+          "title": "Schreiben Teil 1 — Persönliche E-Mail",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine E-Mail (circa 80 Wörter). Schreiben Sie etwas zu allen drei Punkten. Achten Sie auf den Textaufbau (Anrede, Einleitung, Reihenfolge der Inhaltspunkte, Schluss).",
+          "situation": "Sie sind vor zwei Wochen in eine neue Wohnung umgezogen. Ihr Freund / Ihre Freundin Tim/Tina konnte beim Umzug nicht helfen.",
+          "leitpunkte": [
+            "Beschreiben Sie: Wie ist die neue Wohnung?",
+            "Begründen Sie: Warum sind Sie umgezogen?",
+            "Machen Sie einen Vorschlag für ein Treffen."
+          ],
+          "minWords": 80,
+          "recommendedMinutes": 20
+        },
+        {
+          "id": "schreiben-2",
+          "title": "Schreiben Teil 2 — Meinung im Online-Forum",
+          "register": "forum",
+          "instructions": "Schreiben Sie Ihre Meinung zum Thema (circa 80 Wörter).",
+          "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Homeoffice – Fluch oder Segen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung von Sandra (34): „Ich arbeite seit zwei Jahren von zu Hause aus und möchte nie wieder zurück ins Büro. Ich spare jeden Tag zwei Stunden Fahrzeit und kann mich viel besser konzentrieren.“",
+          "leitpunkte": [
+            "Reagieren Sie auf Sandras Meinung.",
+            "Nennen Sie Vor- und Nachteile von Homeoffice.",
+            "Schreiben Sie, was Sie persönlich bevorzugen und warum."
+          ],
+          "minWords": 80,
+          "recommendedMinutes": 25
+        },
+        {
+          "id": "schreiben-3",
+          "title": "Schreiben Teil 3 — Formelle Nachricht",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine E-Mail (circa 40 Wörter). Vergessen Sie nicht die Anrede und den Gruß am Schluss.",
+          "situation": "Ihre Kursleiterin, Frau Wagner, hat Sie zum Abschlussfest des Deutschkurses am Freitagabend eingeladen. Sie können aber nicht kommen.",
+          "leitpunkte": [
+            "Entschuldigen Sie sich höflich.",
+            "Nennen Sie den Grund, warum Sie nicht kommen können.",
+            "Bedanken Sie sich für den Kurs."
+          ],
+          "minWords": 40,
+          "recommendedMinutes": 15
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Gemeinsam etwas planen",
+          "instructions": "Im echten Test planen Sie mit einem Partner. Hier üben Sie allein: Machen Sie Vorschläge zu allen Punkten, reagieren Sie auf mögliche Gegenvorschläge (z. B. „Gute Idee, aber …“) und treffen Sie eine Entscheidung.",
+          "audio": {
+            "drivePath": "GTF_App_Vault/B1/Sprechen_Prompts/b1_sprechen_examiner_sample.mp3",
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "card": {
+            "heading": "Eine Abschiedsparty organisieren",
+            "subheading": "Ein Freund aus Ihrem Deutschkurs zieht nach Hamburg. Planen Sie eine Überraschungsparty.",
+            "bullets": [
+              "Wann und wo feiern?",
+              "Essen und Getränke?",
+              "Wen einladen?",
+              "Welches Geschenk?",
+              "Wer übernimmt welche Aufgabe?"
+            ]
+          },
+          "examinerScript": "Guten Tag. Im ersten Teil planen Sie gemeinsam etwas. Ein Freund aus Ihrem Deutschkurs zieht nach Hamburg. Sie möchten eine Abschiedsparty für ihn organisieren. Überlegen Sie, wann und wo Sie feiern, was es zu essen und zu trinken gibt, wen Sie einladen und welches Geschenk Sie kaufen. Sie haben drei Minuten Zeit. Bitte beginnen Sie jetzt.",
+          "prepSeconds": 60,
+          "speakSeconds": 180
+        },
+        {
+          "id": "sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Ein Thema präsentieren",
+          "instructions": "Präsentieren Sie das Thema in circa drei Minuten. Folgen Sie den fünf Folien auf der Karte.",
+          "card": {
+            "heading": "Online-Unterricht oder Präsenzunterricht?",
+            "subheading": "Ihre Präsentation (5 Folien)",
+            "bullets": [
+              "Folie 1: Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+              "Folie 2: Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+              "Folie 3: Berichten Sie von der Situation in Ihrem Heimatland und geben Sie Beispiele.",
+              "Folie 4: Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung.",
+              "Folie 5: Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+            ]
+          },
+          "examinerScript": "Danke schön. Jetzt kommen wir zum zweiten Teil. Sie sollen ein Thema präsentieren. Ihr Thema ist: Online-Unterricht oder Präsenzunterricht? Bitte orientieren Sie sich an den fünf Folien. Sie haben ungefähr drei Minuten Zeit. Bitte beginnen Sie.",
+          "prepSeconds": 90,
+          "speakSeconds": 180
+        },
+        {
+          "id": "sprechen-3",
+          "teil": 3,
+          "title": "Sprechen Teil 3 — Über ein Thema sprechen",
+          "instructions": "Reagieren Sie auf eine Präsentation (Rückmeldung) und beantworten Sie die Frage des Prüfers mit Begründung.",
+          "card": {
+            "heading": "Rückmeldung und Fragen",
+            "subheading": "Nach der Präsentation Ihres Partners / Ihrer Partnerin",
+            "bullets": [
+              "Geben Sie eine Rückmeldung: Was hat Ihnen gefallen? Was war neu oder interessant?",
+              "Stellen Sie eine Frage zur Präsentation.",
+              "Beantworten Sie die Frage des Prüfers: Ist Online-Unterricht für die Prüfungsvorbereitung geeignet? Begründen Sie."
+            ]
+          },
+          "examinerScript": "Vielen Dank für Ihre Präsentation. Ich habe noch eine Frage dazu: Glauben Sie, dass Online-Unterricht auch für die Vorbereitung auf eine Prüfung wie das Goethe-Zertifikat geeignet ist? Bitte begründen Sie Ihre Meinung.",
+          "prepSeconds": 30,
+          "speakSeconds": 90
+        }
+      ]
+    }
+  }
+}

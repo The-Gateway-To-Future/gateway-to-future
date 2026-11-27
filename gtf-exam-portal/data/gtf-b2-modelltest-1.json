@@ -1,0 +1,479 @@
+{
+  "id": "gtf-b2-modelltest-1",
+  "level": "b2",
+  "title": "GTF B2 Beruf & Fachsprache Modelltest 1 — Klinikum, Anerkennung & Karriere",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat B2 / telc Deutsch B2 Beruf",
+  "version": "2026.11",
+  "productSlug": "b2-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 65,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Fachartikel: Digitale Transformation im deutschen Gesundheitswesen",
+          "instructions": "Lesen Sie den Fachtext und die Aufgaben 1 bis 5. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Die elektronische Patientenakte (ePA) und der Pflegealltag in Berlin",
+          "source": "Deutsches Ärzteblatt & Berliner Pflegejournal",
+          "passage": "Die Einführung der elektronischen Patientenakte (ePA) markiert einen tiefgreifenden Wandel in der stationären und ambulanten Versorgung in Deutschland. Während bis vor wenigen Jahren papiergestützte Kurven und handschriftliche Dokumentationen den Stationsalltag prägten, erfassen Pflegekräfte und Ärzteteams Vitalparameter, Medikationspläne und Dekubitusrisiken nunmehr direkt am mobilen Terminal.\n\nFür internationale Fachkräfte, die über das Fachkräfteeinwanderungsgesetz (§ 81a AufenthG) nach Berlin kommen, bringt diese Digitalisierung sowohl Chancen als auch sprachliche Herausforderungen mit sich. Einerseits vereinfacht die standardisierte Menüführung das Auffinden relevanter Laborwerte und Vorerkrankungen. Andererseits verlangt die Freitext-Dokumentation präzise Formulierungen im Pflegebericht nach dem ISBAR-Prinzip (Identifikation, Situation, Background, Assessment, Recommendation).\n\n„Ein fehlerhafter Eintrag im digitalen Übergabeprotokoll kann gravierende forensische Konsequenzen nach sich ziehen“, betont Dr. med. Martin Weber, Chefarzt der Geriatrie an einem Berliner Akademischen Lehrkrankenhaus. Aus diesem Grund setzen führende Berliner Klinikverbünde wie Vivantes und Charité verstärkt auf berufsbezogene Fachsprachkurse, in denen Terminologie, Arztbrief-Erstellung und interdisziplinäre Kommunikation trainiert werden.",
+          "questions": [
+            {
+              "id": "l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. In deutschen Krankenhäusern wird die Dokumentation zunehmend digital durchgeführt.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Während bis vor wenigen Jahren papiergestützte Kurven ... den Stationsalltag prägten, erfassen Pflegekräfte ... nunmehr direkt am mobilen Terminal.“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Die Digitalisierung stellt für internationale Fachkräfte keinerlei sprachliche Hürde dar.",
+              "answer": "falsch",
+              "explanation": "Im Text: „...bringt diese Digitalisierung sowohl Chancen als auch sprachliche Herausforderungen mit sich.“ (Falsch).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Das ISBAR-Prinzip dient der strukturierten Übergabe und Dokumentation.",
+              "answer": "richtig",
+              "explanation": "Im Text: „...Freitext-Dokumentation präzise Formulierungen im Pflegebericht nach dem ISBAR-Prinzip...“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Fehlerhafte digitale Protokolle können rechtliche Folgen für das medizinische Personal haben.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Ein fehlerhafter Eintrag ... kann gravierende forensische Konsequenzen nach sich ziehen...“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Berliner Kliniken verzichten inzwischen auf Fachsprachkurse für Mitarbeiter.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Aus diesem Grund setzen führende Berliner Klinikverbünde ... verstärkt auf berufsbezogene Fachsprachkurse...“ (Falsch).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Kommentar: Das Beschleunigte Fachkräfteverfahren",
+          "instructions": "Lesen Sie den Kommentar und die Aufgaben 6 bis 8. Wählen Sie die richtige Lösung a, b oder c.",
+          "passageTitle": "Anerkennungsverfahren in Deutschland: Bürokratieabbau oder Mogelpackung?",
+          "source": "WirtschaftsWoche Online & GTF Berlin Policy Brief",
+          "passage": "Die Novellierung des Aufenthaltsgesetzes hat das beschleunigte Fachkräfteverfahren nach § 81a AufenthG als zentrales Instrument gegen den demografischen Fachkräftemangel etabliert. Deutsche Arbeitgeber können bei der zuständigen Ausländerbehörde eine Vorabzustimmung erwirken, was die Visumbearbeitungszeiten an den Auslandsvertretungen signifikant verkürzen soll.\n\nIn der Praxis zeigen sich jedoch strukturelle Engpässe: Während das Visum selbst oft innerhalb weniger Wochen erteilt wird, dauern die Gleichwertigkeitsprüfungen der ausländischen Diplome bei den Zentralstellen für ausländisches Bildungswesen (ZAB) und den Landesämtern für Gesundheit und Soziales (LAGeSo) nach wie vor oft sechs bis neun Monate. Zudem erfordert die Erteilung der staatlichen Approbation oder Berufserlaubnis das Bestehen einer anspruchsvollen Fachsprachenprüfung (FSP) auf C1-Niveau bei den Landesärztekammern.\n\nExperten fordern daher ein bundesweit einheitliches Online-Portal, das Anerkennungsverfahren, FSP-Terminvergabe und Visumerteilung nahtlos verzahnt. Nur wenn der administrative Vorlauf planbar bleibt, wird Deutschland im globalen Wettbewerb um hochqualifizierte Akademiker und Pflegefachkräfte konkurrenzfähig bleiben.",
+          "questions": [
+            {
+              "id": "l2-q6",
+              "type": "mcq",
+              "prompt": "6. Was ist das Ziel des beschleunigten Fachkräfteverfahrens nach § 81a AufenthG?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Abschaffung jeglicher Sprachanforderungen für ausländische Arbeitnehmer."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Verkürzung der Visumbearbeitungszeiten durch Vorabzustimmung der Behörden."
+                },
+                {
+                  "id": "c",
+                  "text": "Die ausschließliche Anwerbung von ungelernten Hilfskräften."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Deutsche Arbeitgeber können ... eine Vorabzustimmung erwirken, was die Visumbearbeitungszeiten ... signifikant verkürzen soll.“ (Lösung b).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l2-q7",
+              "type": "mcq",
+              "prompt": "7. Welche Hürde existiert laut Text trotz des schnellen Visums?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Flüge nach Berlin sind dauerhaft ausgebucht."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Gleichwertigkeitsprüfungen der Diplome dauern weiterhin viele Monate."
+                },
+                {
+                  "id": "c",
+                  "text": "Krankenhäuser dürfen keine ausländischen Fachkräfte mehr einstellen."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „...dauern die Gleichwertigkeitsprüfungen der ausländischen Diplome ... nach wie vor oft sechs bis neun Monate.“ (Lösung b).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l2-q8",
+              "type": "mcq",
+              "prompt": "8. Was empfehlen die Experten zur Verbesserung des Systems?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Ein einheitliches digitales Portal zur Koordinierung aller Schritte."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Rückkehr zu reinen Papieranträgen per Post."
+                },
+                {
+                  "id": "c",
+                  "text": "Die vollständige Schließung der Ausländerbehörden."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „Experten fordern daher ein bundesweit einheitliches Online-Portal, das Anerkennungsverfahren, FSP-Terminvergabe und Visumerteilung nahtlos verzahnt.“ (Lösung a).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 1 — Formelles Anschreiben an ein Berliner Klinikum",
+          "instructions": "Wählen Sie für jede Lücke 21–25 das passende Wort a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrte Frau Dr. Hoffmann,\n\nmit großem Interesse habe ich Ihre Stellenausschreibung für die Position als Pflegefachkraft im Bereich Intensivmedizin {{21}}. Da ich über eine fundierte Ausbildung sowie mehrjährige Berufserfahrung auf einer internistischen Station verfüge, möchte ich mein Fachwissen gewinnbringend in Ihr Haus {{22}}.\n\nMein B2-Sprachzertifikat habe ich mit überdurchschnittlichem Erfolg abgelegt; der Bescheid über die teilweise Gleichwertigkeit des Landesamtes für Gesundheit liegt mir bereits {{23}}. Zurzeit bereite ich mich gezielt auf den abschließenden Anpassungslehrgang {{24}}.\n\nÜber eine Einladung zu einem persönlichen Vorstellungsgespräch würde ich mich sehr {{25}}.\n\nMit freundlichen Grüßen,\nKavita Singh",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "gelesen"
+                },
+                {
+                  "id": "b",
+                  "text": "zur Kenntnis genommen"
+                },
+                {
+                  "id": "c",
+                  "text": "gesehen"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Gehobener formeller B2/C1-Stil im Bewerbungsanschreiben: „zur Kenntnis genommen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "einbringen"
+                },
+                {
+                  "id": "b",
+                  "text": "mitbringen"
+                },
+                {
+                  "id": "c",
+                  "text": "ausbringen"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Wendung: Wissen / Erfahrungen in ein Team / ein Haus EINBRINGEN.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "vor"
+                },
+                {
+                  "id": "b",
+                  "text": "zu"
+                },
+                {
+                  "id": "c",
+                  "text": "an"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Wendung: etwas liegt jemandem VOR (etwas ist bereits vorhanden / eingetroffen).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "vor"
+                },
+                {
+                  "id": "b",
+                  "text": "auf"
+                },
+                {
+                  "id": "c",
+                  "text": "um"
+                }
+              ],
+              "answer": "a",
+              "explanation": "sich vorbereiten AUF + Akkusativ: „auf den abschließenden Anpassungslehrgang vor“ (vorbereiten).",
+              "mistakeTags": [
+                "CASE_DAT_WECHSEL"
+              ]
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "freuen"
+                },
+                {
+                  "id": "b",
+                  "text": "gefreut"
+                },
+                {
+                  "id": "c",
+                  "text": "freute"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Konjunktiv II mit „würde“ verlangt den Infinitiv am Satzende: „würde ich mich sehr FREUEN“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 35,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Interview mit der Pflegedirektion",
+          "instructions": "Sie hören ein Experteninterview. Sie hören den Text ZWEIMAL. Wählen Sie die richtige Lösung a, b oder c.",
+          "maxPlays": 2,
+          "audio": {
+            "localFile": "b2_hoeren_01.mp3",
+            "drivePath": "GTF_App_Vault/B2/Hoeren_Audio/b2_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Moderator",
+              "voice": "male",
+              "text": "Guten Tag, liebe Zuhörer. Heute sprechen wir mit Frau Christine Bauer, Pflegedirektorin an einem großen Berliner Klinikum. Frau Bauer, wie bewerten Sie die Einarbeitung internationaler Pflegefachkräfte aus Indien und Südostasien in Ihrem Haus?"
+            },
+            {
+              "speaker": "Frau Christine Bauer",
+              "voice": "female",
+              "text": "Guten Tag. Unsere Erfahrungen sind durchweg positiv. Die fachliche Vorbildung der Kolleginnen und Kollegen ist exzellent. Was wir jedoch in den ersten sechs Monaten besonders intensiv begleiten, ist die interprofessionelle Kommunikation im Schichtbetrieb. In Deutschland arbeiten Pflegekräfte sehr autonom und tauschen sich auf Augenhöhe mit den Stationsärzten aus. Das erfordert nicht nur B2-Grammatik, sondern vor allem das selbstbewusste Anwenden medizinischer Fachausdrücke bei Visiten und Notfallübergaben."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h1-q1",
+              "type": "mcq",
+              "prompt": "1. Welche Stärke der internationalen Fachkräfte hebt Frau Bauer hervor?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Ihre langjährige Arbeitserfahrung in der Berliner Verwaltung."
+                },
+                {
+                  "id": "b",
+                  "text": "Ihre exzellente fachliche Vorbildung."
+                },
+                {
+                  "id": "c",
+                  "text": "Ihre Bereitschaft, ohne Bezahlung zu arbeiten."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „Die fachliche Vorbildung der Kolleginnen und Kollegen ist exzellent.“ (Lösung b).",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h1-q2",
+              "type": "mcq",
+              "prompt": "2. Was erfordert die Einarbeitung im deutschen Klinikalltag besonders?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Das Beherrschen von mindestens fünf Fremdsprachen."
+                },
+                {
+                  "id": "b",
+                  "text": "Autonome, selbstbewusste Kommunikation auf Augenhöhe mit dem Ärzteteam."
+                },
+                {
+                  "id": "c",
+                  "text": "Den Verzicht auf den Einsatz digitaler Medien."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „In Deutschland arbeiten Pflegekräfte sehr autonom und tauschen sich auf Augenhöhe mit den Stationsärzten aus.“ (Lösung b).",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/b2_hoeren_01.mp3"
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Fortbildungsvortrag: Hygiene & Patientensicherheit",
+          "instructions": "Sie hören einen Fachvortrag. Sie hören den Text EINMAL. Wählen Sie: Ist die Aussage richtig oder falsch?",
+          "maxPlays": 1,
+          "script": [
+            {
+              "speaker": "Hygienefachkraft Markus Lang",
+              "voice": "male",
+              "text": "Werte Kolleginnen und Kollegen, die Händedesinfektion stellt nach wie vor die wirksamste Einzelmaßnahme zur Verhütung nosokomialer Infektionen dar. Bitte beachten Sie die 5 Indikationen der Weltgesundheitsorganisation: Vor Patientenkontakt, vor aseptischen Tätigkeiten, nach Kontakt mit potentiell infektiösen Materialien, nach Patientenkontakt und nach Kontakt mit der unmittelbaren Patientenumgebung. Die Einwirkzeit für Standard-Desinfektionsmittel beträgt mindestens dreißig Sekunden."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Die Händedesinfektion gilt als wirksamste Maßnahme gegen Krankenhausinfektionen.",
+              "answer": "richtig",
+              "explanation": "Im Vortrag: „...stellt nach wie vor die wirksamste Einzelmaßnahme zur Verhütung nosokomialer Infektionen dar.“ (Richtig).",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Die Einwirkzeit des Desinfektionsmittels beträgt lediglich fünf Sekunden.",
+              "answer": "falsch",
+              "explanation": "Im Vortrag: „Die Einwirkzeit ... beträgt mindestens dreißig Sekunden.“ (Falsch).",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/b2_hoeren_02.mp3",
+          "audio": {
+            "localFile": "b2_hoeren_02.mp3",
+            "drivePath": "GTF_App_Vault/B2/Hoeren_Audio/b2_hoeren_02.mp3"
+          }
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 60,
+      "tasks": [
+        {
+          "id": "schreiben-1",
+          "title": "Schreiben Teil 1 — Formelle Beschwerde / Bitte um Stellungnahme",
+          "register": "formell",
+          "instructions": "Verfassen Sie ein formelles Schreiben (circa 150 Wörter) an die Pflegedienstleitung Ihres Krankenhauses. Behandeln Sie alle Leitpunkte ausführlich und verwenden Sie adäquate B2-Konnektoren und Wendungen.",
+          "situation": "Auf Ihrer Station kommt es seit drei Wochen wiederholt zu Engpässen bei der Dienstplangestaltung. Trotz wiederholter Hinweise müssen Sie und Ihre Kolleginnen regelmäßig ungeplante Doppelschichten leisten, was die Patientensicherheit gefährdet.",
+          "leitpunkte": [
+            "Schildern Sie die konkrete Belastungssituation auf Station 4.",
+            "Erläutern Sie die möglichen Gefahren für die pflegerische Versorgungsqualität.",
+            "Unterbreiten Sie zwei konstruktive Vorschläge zur Entlastung des Pflegeteams.",
+            "Bitten Sie um ein zeitnahes persönliches Gespräch."
+          ],
+          "minWords": 150,
+          "recommendedMinutes": 35
+        },
+        {
+          "id": "schreiben-2",
+          "title": "Schreiben Teil 2 — Diskussionsbeitrag im Fachforum",
+          "register": "forum",
+          "instructions": "Schreiben Sie einen fundierten Beitrag (circa 100 Wörter) für das Online-Forum „Zukunft der Pflege in Deutschland“.",
+          "situation": "Im Forum wird über die Einführung einer generalistischen Pflegeausbildung im Vergleich zur früheren Trennung von Alten- und Krankenpflege diskutiert.",
+          "leitpunkte": [
+            "Äußern Sie Ihre begründete Meinung zur generalistischen Ausbildung.",
+            "Nennen Sie einen wesentlichen Vorteil und einen potenziellen Nachteil.",
+            "Geben Sie ein persönliches Fazit zur Berufsattraktivität."
+          ],
+          "minWords": 100,
+          "recommendedMinutes": 25
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Strukturierter Kurzvortrag",
+          "instructions": "Präsentieren Sie ein berufliches Fachthema in circa drei Minuten. Gliedern Sie Ihren Vortrag in Einleitung, Hauptteil (Vor- und Nachteile) und persönliches Fazit.",
+          "audio": {
+            "drivePath": "GTF_App_Vault/B2/Sprechen_Prompts/b2_sprechen_examiner_sample.mp3",
+            "localFile": "b2_sprechen_examiner_sample.mp3"
+          },
+          "card": {
+            "heading": "Thema: Einsatz von Pflegerobotern und KI in der Geriatrie",
+            "subheading": "Leitfaden für Ihre 3-minütige Präsentation:",
+            "bullets": [
+              "Einleitung: Definition und aktuelle Entwicklung in Deutschland.",
+              "Vorteile: Entlastung des Personals bei Hebetätigkeiten & Routinetransporten.",
+              "Kritik / Nachteile: Mangelnde menschliche Zuwendung, ethische Fragen, Kosten.",
+              "Eigene Erfahrungen & Ausblick auf die kommenden zehn Jahre."
+            ]
+          },
+          "examinerScript": "Guten Tag. Im ersten Prüfungsteil halten Sie einen kurzen Vortrag zu einem berufsbezogenen Thema. Ihr Thema lautet: Einsatz von Pflegerobotern und KI in der Geriatrie. Sie haben 90 Sekunden Vorbereitungszeit und sprechen anschließend drei Minuten. Bitte beginnen Sie.",
+          "prepSeconds": 90,
+          "speakSeconds": 180
+        },
+        {
+          "id": "sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Fachdiskussion mit dem Prüfer",
+          "instructions": "Diskutieren Sie mit dem Prüfer über das gewählte Thema. Reagieren Sie auf Gegenargumente, differenzieren Sie Ihren Standpunkt und finden Sie einen gemeinsamen Nenner.",
+          "card": {
+            "heading": "Diskussionsthema: Verpflichtende Fachsprachprüfung für alle Heilberufe",
+            "subheading": "Gesprächspunkte für die Diskussion:",
+            "bullets": [
+              "Position A: Hohe Sprachanforderungen garantieren Patientensicherheit und fehlerfreie Dokumentation.",
+              "Position B: Zu strenge Kriterien verschärfen den bestehenden Personalnotstand im Krankenhaus.",
+              "Lösungsansatz: Begleitende Schulungen während der Berufsausübung anstelle langer Wartezeiten."
+            ]
+          },
+          "examinerScript": "Vielen Dank für Ihre Ausführungen. Lassen Sie uns nun zu Teil zwei übergehen: Befürworter fordern, dass die Fachsprachenprüfung noch strenger bewertet werden sollte, um Behandlungsfehler auszuschließen. Wie beurteilen Sie dieses Argument im Hinblick auf den akuten Pflegemangel?",
+          "prepSeconds": 30,
+          "speakSeconds": 120
+        }
+      ]
+    }
+  }
+}

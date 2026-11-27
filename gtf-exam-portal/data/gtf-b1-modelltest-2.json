@@ -25,35 +25,50 @@
               "type": "richtig_falsch",
               "prompt": "1. Bei einer dualen Ausbildung lernen die Teilnehmenden ausschließlich in der Berufsschule.",
               "answer": "falsch",
-              "explanation": "Die duale Ausbildung verbindet Praxis im Betrieb und Theorie in der Berufsschule."
+              "explanation": "Die duale Ausbildung verbindet Praxis im Betrieb und Theorie in der Berufsschule.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l1-q2",
               "type": "richtig_falsch",
               "prompt": "2. In der Pflegeausbildung kann der theoretische Unterricht auch in mehrwöchigen Blöcken stattfinden.",
               "answer": "richtig",
-              "explanation": "Im Text: „in manchen Berufen wie der Pflege findet der Unterricht auch in mehrwöchigen Blöcken statt.“"
+              "explanation": "Im Text: „in manchen Berufen wie der Pflege findet der Unterricht auch in mehrwöchigen Blöcken statt.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l1-q3",
               "type": "richtig_falsch",
               "prompt": "3. Auszubildende bekommen erst nach dem Abschluss ihr erstes Gehalt.",
               "answer": "falsch",
-              "explanation": "Die Ausbildungsvergütung wird „vom ersten Lehrjahr an gezahlt“ und steigt jedes Jahr."
+              "explanation": "Die Ausbildungsvergütung wird „vom ersten Lehrjahr an gezahlt“ und steigt jedes Jahr.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l1-q4",
               "type": "richtig_falsch",
               "prompt": "4. Die Abschlussprüfungen der dualen Ausbildung finden in deutscher Sprache statt.",
               "answer": "richtig",
-              "explanation": "Im Text: „Die Zwischen- und Abschlussprüfungen werden komplett auf Deutsch abgelegt...“"
+              "explanation": "Im Text: „Die Zwischen- und Abschlussprüfungen werden komplett auf Deutsch abgelegt...“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l1-q5",
               "type": "richtig_falsch",
               "prompt": "5. Nach der Ausbildung haben Absolventen in Gesundheit, IT und Technik gute Chancen auf eine Festanstellung.",
               "answer": "richtig",
-              "explanation": "Im Text: „sind die Übernahmechancen in ein unbefristetes Arbeitsverhältnis besonders in den Bereichen Gesundheit, IT und Technik sehr hoch.“"
+              "explanation": "Im Text: „sind die Übernahmechancen in ein unbefristetes Arbeitsverhältnis besonders in den Bereichen Gesundheit, IT und Technik sehr hoch.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -85,7 +100,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Im Text: „damit der neue Mieter beim späteren Auszug nicht für alte Mängel bezahlen muss.“"
+              "explanation": "Im Text: „damit der neue Mieter beim späteren Auszug nicht für alte Mängel bezahlen muss.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l2-q7",
@@ -106,7 +124,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „dafür benötigt man die sogenannte Wohnungsgeberbestätigung.“"
+              "explanation": "Im Text: „dafür benötigt man die sogenannte Wohnungsgeberbestätigung.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l2-q8",
@@ -127,7 +148,10 @@
                 }
               ],
               "answer": "c",
-              "explanation": "Im Text: „immer schriftlich auf Papier erfolgen und eigenhändig unterschrieben sein“."
+              "explanation": "Im Text: „immer schriftlich auf Papier erfolgen und eigenhändig unterschrieben sein“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b1m2-l2-q9",
@@ -148,7 +172,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „beträgt die gesetzliche Kündigungsfrist für Mieter in der Regel drei Monate zum Monatsende.“"
+              "explanation": "Im Text: „beträgt die gesetzliche Kündigungsfrist für Mieter in der Regel drei Monate zum Monatsende.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -177,7 +204,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Nach „gelesen, ...“ folgt ein Aussagesatz als Nebensatz → „dass“."
+              "explanation": "Nach „gelesen, ...“ folgt ein Aussagesatz als Nebensatz → „dass“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "11",
@@ -196,7 +226,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Im Nebensatz nach „Da“ bleibt das trennbare Verb „vorbereiten“ zusammengeschrieben am Ende: „vorbereite“."
+              "explanation": "Im Nebensatz nach „Da“ bleibt das trennbare Verb „vorbereiten“ zusammengeschrieben am Ende: „vorbereite“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "12",
@@ -215,7 +248,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Folge/Konsequenz im Nebensatz wird mit „sodass“ eingeleitet."
+              "explanation": "Folge/Konsequenz im Nebensatz wird mit „sodass“ eingeleitet.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "13",
@@ -234,7 +270,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "„wichtig sein“ verlangt den Dativ der Person: „Besonders wichtig ist mir ...“."
+              "explanation": "„wichtig sein“ verlangt den Dativ der Person: „Besonders wichtig ist mir ...“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
             },
             {
               "id": "14",
@@ -253,7 +292,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Höfliche Schlussformel im Konjunktiv II: „würde ich mich sehr freuen“."
+              "explanation": "Höfliche Schlussformel im Konjunktiv II: „würde ich mich sehr freuen“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
             },
             {
               "id": "15",
@@ -272,7 +314,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "„sowie“ verbindet Aufzählungen gehoben wie „und auch“."
+              "explanation": "„sowie“ verbindet Aufzählungen gehoben wie „und auch“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -321,27 +366,43 @@
             {
               "id": "16",
               "answer": "a",
-              "explanation": "Kausale Begründung am Satzanfang mit Verb am Ende: „Da ich den B1-Kurs sehr hilfreich fand, ...“."
+              "explanation": "Kausale Begründung am Satzanfang mit Verb am Ende: „Da ich den B1-Kurs sehr hilfreich fand, ...“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "17",
               "answer": "b",
-              "explanation": "Indirekte Entscheidungsfrage nach „mitteilen“ → „ob“."
+              "explanation": "Indirekte Entscheidungsfrage nach „mitteilen“ → „ob“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "18",
               "answer": "c",
-              "explanation": "Präposition mit Genitiv Plural „der Arbeitszeiten“ → „Wegen“."
+              "explanation": "Präposition mit Genitiv Plural „der Arbeitszeiten“ → „Wegen“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
             },
             {
               "id": "19",
               "answer": "d",
-              "explanation": "Höfliches Adverb „selbstverständlich“ (= natürlich / of course)."
+              "explanation": "Höfliches Adverb „selbstverständlich“ (= natürlich / of course).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "20",
               "answer": "e",
-              "explanation": "Feste Grußformel: „mit freundlichen Grüßen“."
+              "explanation": "Feste Grußformel: „mit freundlichen Grüßen“.",
+              "mistakeTags": [
+                "REGISTER_SIE_DU"
+              ]
             }
           ]
         }
@@ -391,7 +452,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Er betont Zeitersparnis beim Pendeln und konzentrierteres Arbeiten."
+              "explanation": "Er betont Zeitersparnis beim Pendeln und konzentrierteres Arbeiten.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b1m2-h1-q2",
@@ -412,7 +476,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Der spontane Austausch geht verloren und neue Mitarbeitende arbeiten sich schwerer ein."
+              "explanation": "Der spontane Austausch geht verloren und neue Mitarbeitende arbeiten sich schwerer ein.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b1m2-h1-q3",
@@ -433,7 +500,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Thema des Interviews ist hybrides Arbeiten in Berliner Unternehmen."
+              "explanation": "Thema des Interviews ist hybrides Arbeiten in Berliner Unternehmen.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         },
@@ -459,21 +529,30 @@
               "type": "richtig_falsch",
               "prompt": "4. Die Fahrradwerkstatt auf dem Campus ist für Studierende kostenlos.",
               "answer": "richtig",
-              "explanation": "Clara nennt ausdrücklich eine „kostenlose Fahrradwerkstatt von Studierenden für Studierende“."
+              "explanation": "Clara nennt ausdrücklich eine „kostenlose Fahrradwerkstatt von Studierenden für Studierende“.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b1m2-h2-q5",
               "type": "richtig_falsch",
               "prompt": "5. In der Mensa gibt es nur einmal pro Woche veganes Essen.",
               "answer": "falsch",
-              "explanation": "Die Mensa bietet „jeden Tag mindestens zwei vegane Gerichte“ an."
+              "explanation": "Die Mensa bietet „jeden Tag mindestens zwei vegane Gerichte“ an.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b1m2-h2-q6",
               "type": "richtig_falsch",
               "prompt": "6. Durch Pfandbecher spart die Mensa monatlich viele Einwegbecher ein.",
               "answer": "richtig",
-              "explanation": "Pfandbecher ersetzen Einwegbecher und sparen tausende Becher pro Monat."
+              "explanation": "Pfandbecher ersetzen Einwegbecher und sparen tausende Becher pro Monat.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         }

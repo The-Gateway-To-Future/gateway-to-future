@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -9,6 +9,7 @@ import {
   Ban,
   BookOpen,
   CheckCircle2,
+  NotebookPen,
   Puzzle,
   Sparkles,
 } from "lucide-react";
@@ -18,11 +19,13 @@ import {
   loadExamState,
   resetExamSection,
   saveExamState,
+  type ExamMode,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
 import type { ExamTest, LesenTeil, SprachbausteineTeil } from "@/lib/types";
 
 function LesenExamPageInner() {
+  const router = useRouter();
   const params = useParams<{ level: string }>();
   const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
@@ -35,9 +38,15 @@ function LesenExamPageInner() {
   const [test, setTest] = useState<ExamTest | null>(null);
   const [activeTeilIdx, setActiveTeilIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [examMode, setExamMode] = useState<ExamMode>("practice");
+  const [sectionExpired, setSectionExpired] = useState(false);
+  const [showScratchpad, setShowScratchpad] = useState(false);
+  const [scratchNotes, setScratchNotes] = useState("");
   const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
   const [draggedWordId, setDraggedWordId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const isExamMode = examMode === "exam";
 
   useEffect(() => {
     setActiveTeilIdx(0);
@@ -45,6 +54,10 @@ function LesenExamPageInner() {
     setLoading(true);
     const state = loadExamState(level, undefined, testId);
     setAnswers(state.lesenAnswers || {});
+    setExamMode(state.examMode || "practice");
+    setSectionExpired(
+      state.examMode === "exam" && (state.expiredSections || []).includes("lesen"),
+    );
 
     const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache check for <100ms load
@@ -86,6 +99,7 @@ function LesenExamPageInner() {
   }, [level, testId]);
 
   const setAnswer = (key: string, value: string) => {
+    if (isExamMode && sectionExpired) return;
     setAnswers((prev) => {
       const next = { ...prev, [key]: value };
       saveExamState(level, (st) => ({ ...st, lesenAnswers: next }), undefined, testId);
@@ -94,12 +108,20 @@ function LesenExamPageInner() {
   };
 
   const clearAnswer = (key: string) => {
+    if (isExamMode && sectionExpired) return;
     setAnswers((prev) => {
       const next = { ...prev };
       delete next[key];
       saveExamState(level, (st) => ({ ...st, lesenAnswers: next }), undefined, testId);
       return next;
     });
+  };
+
+  const handleTimeExpired = () => {
+    setSectionExpired(true);
+    window.setTimeout(() => {
+      router.push(`/exam/${level}/hoeren${testQuery}`);
+    }, 1800);
   };
 
   const handleReset = () => {
@@ -111,10 +133,16 @@ function LesenExamPageInner() {
     }
     const fresh = resetExamSection(level, "lesen", undefined, testId);
     setAnswers(fresh.lesenAnswers);
+    setSectionExpired(false);
   };
 
   const teile: LesenTeil[] = test?.sections.lesen.teile || [];
   const currentTeil: LesenTeil | undefined = teile[activeTeilIdx];
+  const totalLesenItems = teile.reduce(
+    (sum, t) => sum + (t.kind === "reading" ? t.questions.length : t.gaps.length),
+    0,
+  );
+  const answeredLesenItems = Object.keys(answers).length;
   const isStkExam =
     level === "m_kurs" ||
     level === "t_kurs" ||
@@ -188,6 +216,14 @@ function LesenExamPageInner() {
         testTitle={test?.title}
         testId={testId}
         onResetExam={handleReset}
+        answeredCount={answeredLesenItems}
+        totalQuestions={totalLesenItems}
+        examMode={examMode}
+        onModeChange={(m) => {
+          setExamMode(m);
+          if (m === "practice") setSectionExpired(false);
+        }}
+        onTimeExpired={handleTimeExpired}
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
@@ -256,12 +292,51 @@ function LesenExamPageInner() {
                 {currentTeil.instructions}
               </div>
               {isStkExam && (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold text-slate-700 shrink-0">
-                  <Ban className="h-3 w-3 text-slate-500 shrink-0" aria-hidden="true" />
-                  <span>Prüfungsmodus: Ohne Taschenrechner</span>
-                </span>
+                <div className="flex flex-wrap items-center gap-2 shrink-0">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-2.5 py-0.5 text-[11px] font-bold text-amber-900">
+                    <Ban className="h-3 w-3 text-amber-700 shrink-0" aria-hidden="true" />
+                    <span>Ohne Taschenrechner</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowScratchpad((s) => !s)}
+                    className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-1 text-[11px] font-bold transition cursor-pointer ${
+                      showScratchpad
+                        ? "border-slate-900 bg-slate-900 text-white"
+                        : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <NotebookPen className="h-3.5 w-3.5" />
+                    <span>Schmierzettel</span>
+                  </button>
+                </div>
               )}
             </div>
+
+            {isStkExam && showScratchpad && (
+              <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4 space-y-2 shadow-xs">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                    <NotebookPen className="h-3.5 w-3.5" />
+                    <span>Rechen-Schmierzettel (Kein Taschenrechner · Lokale Notizen)</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setScratchNotes("")}
+                    className="text-[11px] font-bold text-amber-800 hover:underline cursor-pointer"
+                  >
+                    Leeren
+                  </button>
+                </div>
+                <textarea
+                  rows={4}
+                  value={scratchNotes}
+                  onChange={(e) => setScratchNotes(e.target.value)}
+                  placeholder="Nebenrechnungen hier notieren (z. B. x^2 - 5x + 6 = 0 → (x-2)(x-3) = 0, sin(30°) = 1/2)…"
+                  className="w-full rounded-xl border border-amber-200 bg-white p-3 font-mono text-xs text-slate-900 focus:border-amber-500 focus:outline-none"
+                />
+              </div>
+            )}
 
             {/* SPLIT-SCREEN EXAM WORKSPACE */}
             <div className="grid gap-6 lg:grid-cols-12">

@@ -986,11 +986,13 @@ export function sanitizeExamTestForClient(test: ExamTest, userEmail: string): Ex
         for (const q of teil.questions) {
           delete q.answer;
           delete q.explanation;
+          delete q.mistakeTags;
         }
       } else {
         for (const g of teil.gaps) {
           delete g.answer;
           delete g.explanation;
+          delete g.mistakeTags;
         }
       }
     }
@@ -1013,6 +1015,7 @@ export function sanitizeExamTestForClient(test: ExamTest, userEmail: string): Ex
       for (const q of teil.questions) {
         delete q.answer;
         delete q.explanation;
+        delete q.mistakeTags;
       }
     }
   }

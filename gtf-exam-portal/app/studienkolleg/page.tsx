@@ -6,6 +6,7 @@ import { SubdivisionCard } from "@/components/SubdivisionCard";
 import { CompactTopicList } from "@/components/CompactTopicRow";
 import { MathText } from "@/components/MathText";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
+import { StudienkollegDrillsWorkspace } from "@/components/StudienkollegDrillsWorkspace";
 import { BRAND, LEVEL_META } from "@/lib/config";
 import type { SubdivisionTopicItem } from "@/lib/subdivisions";
 
@@ -220,6 +221,9 @@ export default function StudienkollegPage() {
             </div>
           </div>
         </section>
+
+        {/* Interactive Proctor Lab: C-Test Half-Word Trainer & Ohne-Taschenrechner Math Sprint */}
+        <StudienkollegDrillsWorkspace />
       </main>
 
       <footer className="border-t border-slate-200 bg-white py-10 pb-24 lg:pb-10 px-4 sm:px-8">

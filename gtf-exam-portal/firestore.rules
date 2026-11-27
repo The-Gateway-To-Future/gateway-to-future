@@ -51,6 +51,24 @@ rules_version = '2';
 //   - currentStreak: int (required, active day streak counter, bounds: 1 - 10000)
 //   NOTE: Privilege/entitlement fields (`ausbildungPro`, `entitlements`) are strictly prohibited here.
 //
+// Collection: users/{uid}/mistake_dna/{errorKey}
+// Document ID: {errorKey} (Uppercase snake_case taxonomy code, 3-60 characters, matches ^[A-Z0-9_]{3,60}$, e.g., WORD_ORDER_WEIL, CASE_DAT_WECHSEL)
+// Access: Authenticated owner (`isOwner(uid)`) or GTF Admin (`isAdmin()`) only; supports GDPR Art. 17 self-erasure.
+// Fields:
+//   - errorKey: string (required, immutable on update, matches document ID {errorKey}, ^[A-Z0-9_]{3,60}$)
+//   - uid: string (required, immutable on update, matches path {uid}, 1-100 characters)
+//   - occurrences: int (required, observed mistake count, bounds: 0 - 10000)
+//   - streak: int (required, consecutive correct drill reviews, bounds: 0 - 1000)
+//   - repetitions: int (required, SM-2 repetition counter, bounds: 0 - 1000)
+//   - easeFactor: int | float (required, SM-2 ease factor, bounds: 1.0 - 4.0)
+//   - intervalDays: int (required, SM-2 review interval in days, bounds: 0 - 3650)
+//   - nextReviewAt: string (required, ISO 8601 date string)
+//   - lastSeenAt: string (required, ISO 8601 date string)
+//   - lastSource: string (required, allowed values: 'lesen', 'hoeren', 'schreiben', 'sprechen', 'workbook', 'drill')
+//   - recentSamples: list (required, max 5 MistakeSample maps: { prompt, wrong, right, at })
+//   - mastered: bool (required, whether weak spot reached SM-2 mastery threshold)
+//   - updatedAt: string (required, ISO 8601 date string)
+//
 // Collection: entitlements
 // Document ID: {uid} (Canonical Firebase Auth UID or server-keyed identifier)
 // Access: Server-managed (Firebase Admin SDK) / GTF Admins write-only; owner read-only (`get`).
@@ -376,6 +394,84 @@ service cloud.firestore {
     }
 
     // ===============================================================
+    // Domain Validator: users/{uid}/mistake_dna/{errorKey}
+    // ===============================================================
+
+    // Validate a single MistakeSample map inside recentSamples (blocks 1MB payload DoS & schema pollution)
+    function isValidMistakeSample(sample) {
+      let allowedSampleKeys = ['prompt', 'wrong', 'right', 'at'];
+      return sample is map &&
+             hasRequiredFields(sample, allowedSampleKeys) &&
+             hasOnlyAllowedFields(sample, allowedSampleKeys) &&
+             sample.prompt is string &&
+             sample.prompt.size() <= 500 &&
+             sample.wrong is string &&
+             sample.wrong.size() <= 500 &&
+             sample.right is string &&
+             sample.right.size() <= 500 &&
+             isValidDateString(sample.at);
+    }
+
+    function isValidMistakeDnaSchema(data, docUid, docErrorKey) {
+      let allowedFields = [
+        'errorKey',
+        'uid',
+        'occurrences',
+        'streak',
+        'repetitions',
+        'easeFactor',
+        'intervalDays',
+        'nextReviewAt',
+        'lastSeenAt',
+        'lastSource',
+        'recentSamples',
+        'mastered',
+        'updatedAt'
+      ];
+      return hasRequiredFields(data, allowedFields) &&
+             hasOnlyAllowedFields(data, allowedFields) &&
+             docErrorKey is string &&
+             docErrorKey.size() >= 3 &&
+             docErrorKey.size() <= 60 &&
+             docErrorKey.matches('^[A-Z0-9_]{3,60}$') &&
+             data.errorKey is string &&
+             data.errorKey == docErrorKey &&
+             data.errorKey.size() >= 3 &&
+             data.errorKey.size() <= 60 &&
+             data.errorKey.matches('^[A-Z0-9_]{3,60}$') &&
+             data.uid is string &&
+             data.uid == docUid &&
+             data.uid.size() >= 1 &&
+             data.uid.size() <= 100 &&
+             data.occurrences is int &&
+             data.occurrences >= 0 &&
+             data.occurrences <= 10000 &&
+             data.streak is int &&
+             data.streak >= 0 &&
+             data.streak <= 1000 &&
+             data.repetitions is int &&
+             data.repetitions >= 0 &&
+             data.repetitions <= 1000 &&
+             isValidNumberInRange(data.easeFactor, 1.0, 4.0) &&
+             data.intervalDays is int &&
+             data.intervalDays >= 0 &&
+             data.intervalDays <= 3650 &&
+             isValidDateString(data.nextReviewAt) &&
+             isValidDateString(data.lastSeenAt) &&
+             data.lastSource is string &&
+             data.lastSource in ['lesen', 'hoeren', 'schreiben', 'sprechen', 'workbook', 'drill'] &&
+             data.recentSamples is list &&
+             data.recentSamples.size() <= 5 &&
+             (data.recentSamples.size() < 1 || isValidMistakeSample(data.recentSamples[0])) &&
+             (data.recentSamples.size() < 2 || isValidMistakeSample(data.recentSamples[1])) &&
+             (data.recentSamples.size() < 3 || isValidMistakeSample(data.recentSamples[2])) &&
+             (data.recentSamples.size() < 4 || isValidMistakeSample(data.recentSamples[3])) &&
+             (data.recentSamples.size() < 5 || isValidMistakeSample(data.recentSamples[4])) &&
+             data.mastered is bool &&
+             isValidDateString(data.updatedAt);
+    }
+
+    // ===============================================================
     // Collection: user_progress/{uid}
     // ===============================================================
     match /user_progress/{uid} {
@@ -398,6 +494,32 @@ service cloud.firestore {
         uidNotModified() &&
         areImmutableFieldsUnchanged(['uid']) &&
         request.resource.data.uid == resource.data.uid;
+
+      // Self-deletion enabled for authenticated owner (GDPR Art. 17 erasure) or GTF Admin
+      allow delete: if isAuthenticated() && (isOwner(uid) || isAdmin());
+    }
+
+    // ===============================================================
+    // Subcollection: users/{uid}/mistake_dna/{errorKey}
+    // ===============================================================
+    match /users/{uid}/mistake_dna/{errorKey} {
+      // Strictly authenticated owner or GTF Admin (path-scoped to uid; no cross-user access)
+      allow get, list: if isAuthenticated() && (isOwner(uid) || isAdmin());
+
+      // Mistake-DNA creation: Authenticated owner or admin, strict SM-2 & sample schema validation
+      allow create: if isAuthenticated() &&
+        (isOwner(uid) || isAdmin()) &&
+        (uidUnchanged() || isAdmin()) &&
+        isValidMistakeDnaSchema(request.resource.data, uid, errorKey);
+
+      // Mistake-DNA updates: Authenticated owner or admin, strict schema validation, immutable uid & errorKey
+      allow update: if isAuthenticated() &&
+        (isOwner(uid) || isAdmin()) &&
+        isValidMistakeDnaSchema(request.resource.data, uid, errorKey) &&
+        uidNotModified() &&
+        areImmutableFieldsUnchanged(['uid', 'errorKey']) &&
+        request.resource.data.uid == resource.data.uid &&
+        request.resource.data.errorKey == resource.data.errorKey;
 
       // Self-deletion enabled for authenticated owner (GDPR Art. 17 erasure) or GTF Admin
       allow delete: if isAuthenticated() && (isOwner(uid) || isAdmin());

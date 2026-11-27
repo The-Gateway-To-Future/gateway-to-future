@@ -1,0 +1,500 @@
+{
+  "id": "gtf-a1-modelltest-1",
+  "level": "a1",
+  "title": "GTF A1 Start Deutsch Modelltest 1 — Alltag, Familie & Berlin Ankunft",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat A1 / telc Deutsch A1",
+  "version": "2026.11",
+  "productSlug": "a1-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 45,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Kurze persönliche E-Mails und Notizen",
+          "instructions": "Lesen Sie die Texte und die Aufgaben 1 bis 5. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Zwei E-Mails aus Berlin: Einladung und Arzttermin",
+          "source": "GTF Sprachakademie Berlin",
+          "passage": "Lieber Rahul,\n\nich hoffe, es geht dir gut in Berlin! Am Samstag habe ich Geburtstag. Ich mache eine kleine Party bei mir zu Hause in Berlin-Wedding. Wir grillen ab 18:00 Uhr auf dem Balkon. Meine Freunde aus dem Deutschkurs kommen auch. Kannst du einen Salat oder Saft mitbringen? Sag mir bitte bis Donnerstag Bescheid, ob du kommen kannst.\n\nHerzliche Grüße,\nVikram\n\n---\n\nHallo Frau Sharma,\n\nhier ist die Zahnarztpraxis Dr. Becker in Berlin-Mitte. Sie haben am Dienstag um 10:30 Uhr einen Termin zur Kontrolle. Bitte bringen Sie Ihre Versichertenkarte (TK oder AOK) und Ihren Reisepass mit. Wenn Sie nicht kommen können, rufen Sie uns bitte mindestens 24 Stunden vorher an.\n\nMit freundlichen Grüßen,\nPraxisteam Dr. Becker",
+          "questions": [
+            {
+              "id": "l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Vikram feiert seinen Geburtstag am Samstag.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Am Samstag habe ich Geburtstag.“ — Vikram Saturday ko birthday celebrate kar raha hai, isliye richtig.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Die Party von Vikram findet in einem Restaurant statt.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Ich mache eine kleine Party bei mir zu Hause in Berlin-Wedding.“ — Party ghar par hai, restaurant mein nahi.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Rahul soll bis Donnerstag antworten.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Sag mir bitte bis Donnerstag Bescheid...“ — Thursday tak inform karna hai.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Frau Sharma hat ihren Arzttermin am Nachmittag.",
+              "answer": "falsch",
+              "explanation": "Im Text: „...am Dienstag um 10:30 Uhr.“ — 10:30 Uhr ist Vormittag, nicht Nachmittag.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Frau Sharma muss ihre Versichertenkarte mitbringen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Bitte bringen Sie Ihre Versichertenkarte (TK oder AOK) ... mit.“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Schilder und Anzeigen in Berlin",
+          "instructions": "Lesen Sie die Informationstexte und die Aufgaben 6 bis 8. Wählen Sie die richtige Lösung a, b oder c.",
+          "passageTitle": "Anzeigen: Berliner Supermarkt & Sprachkurse",
+          "source": "Berliner Stadtmagazin & Hinweisschilder",
+          "passage": "Anzeige A:\nSupermarkt FrischMarkt Lichtenberg: Montag bis Samstag von 08:00 bis 21:00 Uhr geöffnet. Sonntags geschlossen. Frisches Obst, Gemüse und Halal-Geflügel im Angebot. Zahlen Sie bequem mit EC-Karte oder bar.\n\nAnzeige B:\nGateway To Future Sprachakademie Berlin: Neue Deutschkurse für Niveau A1 und A2! Unterricht morgens (09:00–12:15 Uhr) oder abends (18:00–20:30 Uhr). Kleine Gruppen mit maximal 12 Teilnehmern. Anmeldung online unter www.gatewaytofuture.com oder persönlich im Büro.",
+          "questions": [
+            {
+              "id": "l2-q6",
+              "type": "mcq",
+              "prompt": "6. Der Supermarkt FrischMarkt …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "hat am Sonntag geöffnet."
+                },
+                {
+                  "id": "b",
+                  "text": "schließt jeden Tag um 18:00 Uhr."
+                },
+                {
+                  "id": "c",
+                  "text": "ist sonntags geschlossen."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „Sonntags geschlossen.“ (Lösung c).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l2-q7",
+              "type": "mcq",
+              "prompt": "7. In den Sprachkursen von GTF …",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "gibt es nur Kurse am Vormittag."
+                },
+                {
+                  "id": "b",
+                  "text": "kann man morgens oder abends lernen."
+                },
+                {
+                  "id": "c",
+                  "text": "sind immer mindestens 30 Schüler in einer Gruppe."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Unterricht morgens ... oder abends...“ (Lösung b).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l2-q8",
+              "type": "mcq",
+              "prompt": "8. Wie kann man sich für den Kurs anmelden?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Nur per Postkarte."
+                },
+                {
+                  "id": "b",
+                  "text": "Online oder persönlich im Büro."
+                },
+                {
+                  "id": "c",
+                  "text": "Gar nicht, alle Plätze sind voll."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Anmeldung online unter www.gatewaytofuture.com oder persönlich im Büro.“ (Lösung b).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine — E-Mail an eine Sprachschule",
+          "instructions": "Wählen Sie für jede Lücke 21–25 das passende Wort a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrte Damen und Herren,\n\nmein Name {{21}} Amit Verma. Ich komme {{22}} Indien und wohne jetzt in Berlin. Ich möchte gerne einen Deutschkurs auf Niveau A1 {{23}}. Haben Sie noch einen freien Platz {{24}} Abendkurs? Wann beginnt der nächste Kurs?\n\nVielen Dank {{25}} Ihre Hilfe.\n\nMit freundlichen Grüßen,\nAmit Verma",
+          "gaps": [
+            {
+              "id": "21",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "ist"
+                },
+                {
+                  "id": "b",
+                  "text": "bin"
+                },
+                {
+                  "id": "c",
+                  "text": "sind"
+                }
+              ],
+              "answer": "a",
+              "explanation": "„Mein Name“ = 3. Person Singular (er/es/sie) → ist.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "22",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "in"
+                },
+                {
+                  "id": "b",
+                  "text": "aus"
+                },
+                {
+                  "id": "c",
+                  "text": "nach"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Herkunft: kommen AUS einem Land → aus Indien.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "23",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "machen"
+                },
+                {
+                  "id": "b",
+                  "text": "macht"
+                },
+                {
+                  "id": "c",
+                  "text": "mache"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Modalverb „möchte“ verlangt den Infinitiv am Satzende → machen.",
+              "mistakeTags": [
+                "MODAL_SEPARABLE_BRACKET"
+              ]
+            },
+            {
+              "id": "24",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "im"
+                },
+                {
+                  "id": "b",
+                  "text": "am"
+                },
+                {
+                  "id": "c",
+                  "text": "um"
+                }
+              ],
+              "answer": "a",
+              "explanation": "in dem Abendkurs → im Abendkurs.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "25",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "für"
+                },
+                {
+                  "id": "b",
+                  "text": "an"
+                },
+                {
+                  "id": "c",
+                  "text": "über"
+                }
+              ],
+              "answer": "a",
+              "explanation": "feste Wendung: danken / vielen Dank FÜR etwas (Akkusativ).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 20,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Kurze Alltagsgespräche",
+          "instructions": "Sie hören kurze Alltagsgespräche. Sie hören jeden Text ZWEIMAL. Wählen Sie die richtige Lösung a, b oder c.",
+          "maxPlays": 2,
+          "audio": {
+            "localFile": "a1_hoeren_01.mp3",
+            "drivePath": "GTF_App_Vault/A1/Hoeren_Audio/a1_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Text 1 — Am Bahnhof",
+              "voice": "female",
+              "text": "Schalterbeamtin: Guten Tag! Wie kann ich Ihnen helfen? Herr Sharma: Guten Tag. Wann fährt die nächste S-Bahn nach Potsdam? Schalterbeamtin: Die Linie S7 fährt in sieben Minuten von Gleis 16 oben. Ein Ticket Berlin ABC kostet 4 Euro 40."
+            },
+            {
+              "speaker": "Text 2 — Im Supermarkt",
+              "voice": "male",
+              "text": "Kassierer: Guten Tag, das macht zusammen 14 Euro und 80 Cent bitte. Kundin: Kann ich mit Karte bezahlen? Kassierer: Ja natürlich, bitte hier Ihre Karte auflegen. Brauchen Sie einen Kassenbon? Kundin: Nein danke, schönen Tag noch!"
+            }
+          ],
+          "questions": [
+            {
+              "id": "h1-q1",
+              "type": "mcq",
+              "prompt": "1. Wohin möchte der Fahrgast fahren?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Nach München"
+                },
+                {
+                  "id": "b",
+                  "text": "Nach Potsdam"
+                },
+                {
+                  "id": "c",
+                  "text": "Zum Flughafen"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „Wann fährt die nächste S-Bahn nach Potsdam?“ (Lösung b).",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wie viel kostet der Einkauf im Supermarkt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "4 Euro 40"
+                },
+                {
+                  "id": "b",
+                  "text": "14 Euro 80"
+                },
+                {
+                  "id": "c",
+                  "text": "40 Euro"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „...das macht zusammen 14 Euro und 80 Cent...“ (Lösung b).",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/a1_hoeren_01.mp3"
+        },
+        {
+          "id": "hoeren-2",
+          "title": "Hören Teil 2 — Durchsage im Berliner Kaufhaus",
+          "instructions": "Sie hören eine Durchsage. Sie hören den Text EINMAL. Wählen Sie: Ist die Aussage richtig oder falsch?",
+          "maxPlays": 1,
+          "script": [
+            {
+              "speaker": "Durchsage",
+              "voice": "female",
+              "text": "Achtung, liebe Kundinnen und Kunden: In unserem Restaurant im dritten Stock gibt es heute frischen Kaffee und Kuchen für nur 3 Euro! Unser Kaufhaus schließt heute wie gewohnt um 20:00 Uhr. Wir danken Ihnen für Ihren Besuch und wünschen Ihnen einen schönen Tag."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h2-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Das Restaurant befindet sich im dritten Stock.",
+              "answer": "richtig",
+              "explanation": "In der Durchsage: „In unserem Restaurant im dritten Stock...“ (Richtig).",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Kaffee und Kuchen kosten heute 10 Euro.",
+              "answer": "falsch",
+              "explanation": "In der Durchsage: „...für nur 3 Euro!“ (Falsch).",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/a1_hoeren_02.mp3",
+          "audio": {
+            "localFile": "a1_hoeren_02.mp3",
+            "drivePath": "GTF_App_Vault/A1/Hoeren_Audio/a1_hoeren_02.mp3"
+          }
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 20,
+      "tasks": [
+        {
+          "id": "schreiben-1",
+          "title": "Schreiben Teil 1 — Formular ausfüllen (Anmeldung)",
+          "register": "formell",
+          "instructions": "Ihre Freundin Sunita Patel möchte an der GTF Sprachakademie in Berlin Deutsch lernen. Sie helfen ihr beim Ausfüllen des Formulars. Schreiben Sie die 5 fehlenden Informationen in die Felder.",
+          "situation": "Sunita Patel, geboren am 15.08.2001 in Neu-Delhi, wohnt in Berlin in der Karl-Marx-Straße 42, 12043 Berlin. Ihre Telefonnummer lautet 0152 28372894. Sie möchte ab nächsten Monat einen Deutschkurs A1 am Abend besuchen.",
+          "leitpunkte": [
+            "Familienname: Patel",
+            "Geburtsdatum: 15.08.2001",
+            "Wohnort: 12043 Berlin",
+            "Gewünschter Kurs: Deutsch A1 Abendkurs",
+            "Telefon: 0152 28372894"
+          ],
+          "minWords": 20,
+          "recommendedMinutes": 10
+        },
+        {
+          "id": "schreiben-2",
+          "title": "Schreiben Teil 2 — Kurze persönliche Nachricht",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine kurze Nachricht (circa 30 Wörter) an Ihre Nachbarin Frau Müller.",
+          "situation": "Sie haben ein Paket von Amazon für Frau Müller angenommen, weil sie nicht zu Hause war.",
+          "leitpunkte": [
+            "Sagen Sie: Sie haben ihr Paket angenommen.",
+            "Schreiben Sie: Wann kann Frau Müller das Paket bei Ihnen abholen?",
+            "Freundlicher Gruß"
+          ],
+          "minWords": 30,
+          "recommendedMinutes": 10
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 10,
+      "teile": [
+        {
+          "id": "sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Sich vorstellen",
+          "instructions": "Stellen Sie sich kurz vor. Nennen Sie Ihren Namen, Ihr Alter, Ihr Heimatland, Ihren Wohnort in Deutschland, Ihre Sprachen, Ihren Beruf und Ihre Hobbys. Buchstabieren Sie danach Ihren Namen und nennen Sie eine Telefonnummer.",
+          "audio": {
+            "drivePath": "GTF_App_Vault/A1/Sprechen_Prompts/a1_sprechen_examiner_sample.mp3",
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "card": {
+            "heading": "Sich vorstellen (A1 Leitfaden)",
+            "subheading": "Folgen Sie diesen 7 Stichpunkten:",
+            "bullets": [
+              "Name: Wie heißen Sie?",
+              "Alter: Wie alt sind Sie?",
+              "Land: Woher kommen Sie?",
+              "Wohnort: Wo wohnen Sie jetzt?",
+              "Sprachen: Welche Sprachen sprechen Sie?",
+              "Beruf: Was machen Sie beruflich / was studieren Sie?",
+              "Hobby: Was machen Sie gern in Ihrer Freizeit?"
+            ]
+          },
+          "examinerScript": "Guten Tag und herzlich willkommen zur mündlichen Prüfung A1. Im ersten Teil stellen Sie sich bitte kurz vor. Sagen Sie Ihren Namen, woher Sie kommen, wo Sie wohnen, welche Sprachen Sie sprechen und was Ihr Beruf oder Hobby ist. Bitte beginnen Sie.",
+          "prepSeconds": 30,
+          "speakSeconds": 90
+        },
+        {
+          "id": "sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Um Information bitten und antworten",
+          "instructions": "Formulieren Sie eine Frage zu einer Wortkarte und antworten Sie freundlich auf die Gegenfrage.",
+          "card": {
+            "heading": "Thema: Essen und Trinken",
+            "subheading": "Wortkarte: Brot / Frühstück",
+            "bullets": [
+              "Stellen Sie eine höfliche Frage an Ihren Partner (z. B. „Was essen Sie gern zum Frühstück?“)",
+              "Reagieren Sie auf die Antwort (z. B. „Ich esse auch gern Brot mit Käse.“)"
+            ]
+          },
+          "examinerScript": "Danke schön. Jetzt kommen wir zu Teil zwei. Sie ziehen eine Wortkarte zum Thema Essen und Trinken. Das Wort ist: Frühstück. Bitte stellen Sie Ihrem Partner eine passende Frage.",
+          "prepSeconds": 20,
+          "speakSeconds": 60
+        },
+        {
+          "id": "sprechen-3",
+          "teil": 3,
+          "title": "Sprechen Teil 3 — Bitten formulieren und reagieren",
+          "instructions": "Formulieren Sie eine höfliche Bitte mit „können“ oder „bitte“ zu einem Alltagsgegenstand.",
+          "card": {
+            "heading": "Alltagssituation: Im Kursraum",
+            "subheading": "Bildkarte: Ein Stift / Ein Wörterbuch",
+            "bullets": [
+              "Bitten Sie Ihren Partner um Hilfe (z. B. „Können Sie mir bitte einen Kugelschreiber leihen?“)",
+              "Reagieren Sie höflich: „Ja gerne, hier bitte.“ / „Danke schön.“"
+            ]
+          },
+          "examinerScript": "Sehr gut. Im dritten Teil formulieren Sie eine Bitte zu einer Bildkarte. Auf der Karte sehen Sie ein Wörterbuch. Bitte formulieren Sie eine höfliche Bitte.",
+          "prepSeconds": 20,
+          "speakSeconds": 60
+        }
+      ]
+    }
+  }
+}

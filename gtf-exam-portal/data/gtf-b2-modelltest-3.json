@@ -1,0 +1,645 @@
+{
+  "id": "gtf-b2-modelltest-3",
+  "level": "b2",
+  "title": "GTF B2 Modelltest 3 — Digitales Gesundheitswesen, Duales Studium & Klimaschutz",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat B2 / telc Deutsch B2 Beruf",
+  "version": "2026.11",
+  "productSlug": "b2-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 65,
+      "teile": [
+        {
+          "id": "b2m3-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Sachtext: Elektronische Patientenakte (ePA) & Telemedizin",
+          "instructions": "Lesen Sie den Fachartikel und entscheiden Sie bei den Aussagen 1 bis 5: richtig oder falsch?",
+          "passageTitle": "Zwischen Effizienz und Datenschutz: Wie die elektronische Patientenakte den Klinikalltag verändert",
+          "source": "GTF Fachjournal Gesundheit & Digitalisierung · B2 Modelltest 3",
+          "passage": "Mit der flächendeckenden Einführung der elektronischen Patientenakte (ePA) verfolgt das deutsche Gesundheitswesen das Ziel, Befunde, Medikationspläne und Arztbriefe sektorenübergreifend verfügbar zu machen. Insbesondere bei Notfallaufnahmen oder Facharztwechseln können Doppeluntersuchungen vermieden und gefährliche Wechselwirkungen zwischen Medikamenten frühzeitig erkannt werden.\n\nGleichzeitig stößt die Digitalisierung sensibler Gesundheitsdaten bei Datenschützern und Teilen der Bevölkerung auf kritische Rückfragen. Befürworter weisen darauf hin, dass die Daten nach strengen europäischen Sicherheitsstandards verschlüsselt gespeichert werden und jede versicherte Person jederzeit das Recht hat, der Nutzung zu widersprechen oder einzelne Dokumente für bestimmte Praxen zu sperren. Fachverbände betonen zudem, dass telemedizinische Videosprechstunden gerade in ländlichen Regionen eine wertvolle Ergänzung darstellen, den persönlichen ärztlichen Kontakt bei komplexen Diagnosen jedoch nicht vollständig ersetzen können.",
+          "questions": [
+            {
+              "id": "b2m3-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Durch die elektronische Patientenakte sollen unter anderem Doppeluntersuchungen vermieden werden.",
+              "answer": "richtig",
+              "explanation": "Im Text: „können Doppeluntersuchungen vermieden und gefährliche Wechselwirkungen zwischen Medikamenten frühzeitig erkannt werden.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b2m3-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Versicherte haben keinerlei Möglichkeit, einzelne Dokumente in ihrer ePA für bestimmte Praxen zu sperren.",
+              "answer": "falsch",
+              "explanation": "Im Text: „jede versicherte Person jederzeit das Recht hat, der Nutzung zu widersprechen oder einzelne Dokumente für bestimmte Praxen zu sperren.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b2m3-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Die Speicherung der Gesundheitsdaten erfolgt nach strengen europäischen Sicherheitsstandards.",
+              "answer": "richtig",
+              "explanation": "Im Text: „dass die Daten nach strengen europäischen Sicherheitsstandards verschlüsselt gespeichert werden“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
+            },
+            {
+              "id": "b2m3-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Videosprechstunden sollen laut Fachverbänden den persönlichen Arztkontakt bei komplexen Diagnosen komplett abschaffen.",
+              "answer": "falsch",
+              "explanation": "Im Text: „den persönlichen ärztlichen Kontakt bei komplexen Diagnosen jedoch nicht vollständig ersetzen können.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b2m3-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Gerade in ländlichen Gebieten gelten telemedizinische Angebote als sinnvolle Ergänzung.",
+              "answer": "richtig",
+              "explanation": "Im Text: „gerade in ländlichen Regionen eine wertvolle Ergänzung darstellen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2m3-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Bildung & Karriere: Duales Studium in Deutschland",
+          "instructions": "Lesen Sie den Beitrag und wählen Sie für die Aufgaben 6 bis 9 jeweils a, b oder c.",
+          "passageTitle": "Theorie trifft Praxis: Chancen und Anforderungen eines dualen Studiums",
+          "source": "Hochschul- und Karrierereport Berlin",
+          "passage": "Immer mehr internationale Studieninteressierte richten ihren Blick auf das duale Studium in Deutschland. Im Gegensatz zum klassischen Universitätsstudium kombinieren dual Studierende ein akademisches Bachelorstudium mit regelmäßigen Praxisphasen in einem Partnerunternehmen – häufig im dreimonatigen Wechsel. Neben dem akademischen Abschluss erwerben sie bereits während des Studiums umfangreiche Berufserfahrung und beziehen eine monatliche Vergütung vom Praxispartner.\n\nAllerdings ist das Bewerbungsverfahren deutlich anspruchsvoller als bei vielen regulären Studiengängen: Bewerberinnen und Bewerber müssen zunächst ein Unternehmen von sich überzeugen und einen Praxisvertrag abschließen, oft bereits zwölf Monate vor Studienbeginn. Zudem bleibt in der vorlesungsfreien Zeit kaum Urlaub, da diese Wochen in der Regel im Betrieb verbracht werden. Wer jedoch hohe Belastbarkeit und sehr gute Deutschkenntnisse mitbringt, profitiert am Ende von einer Übernahmequote von über 80 Prozent.",
+          "questions": [
+            {
+              "id": "b2m3-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Wodurch zeichnet sich ein duales Studium gegenüber einem klassischen Studium aus?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Es verbindet akademisches Studium mit vergüteten Praxisphasen in einem Partnerunternehmen."
+                },
+                {
+                  "id": "b",
+                  "text": "Es findet ausschließlich abends ohne Hochschulabschluss statt."
+                },
+                {
+                  "id": "c",
+                  "text": "Man benötigt dafür weder Abitur noch Sprachkenntnisse."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: Kombination aus Bachelorstudium, regelmäßigen Praxisphasen und monatlicher Vergütung.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "b2m3-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Wann sollte man sich laut Text häufig bereits bei einem Praxisunternehmen bewerben?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Eine Woche nach Beginn der Vorlesungen."
+                },
+                {
+                  "id": "b",
+                  "text": "Oft schon zwölf Monate vor Studienbeginn."
+                },
+                {
+                  "id": "c",
+                  "text": "Erst nach dem zweiten Studienjahr."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „oft bereits zwölf Monate vor Studienbeginn.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "b2m3-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Welche Herausforderung nennt der Text für dual Studierende?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Man bekommt keinen anerkannten Bachelorabschluss."
+                },
+                {
+                  "id": "b",
+                  "text": "In der vorlesungsfreien Zeit arbeitet man meist im Betrieb, weshalb hohe Belastbarkeit nötig ist."
+                },
+                {
+                  "id": "c",
+                  "text": "Es gibt kaum Chancen auf eine spätere Festanstellung."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „bleibt in der vorlesungsfreien Zeit kaum Urlaub, da diese Wochen in der Regel im Betrieb verbracht werden.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b2m3-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Wie hoch ist die im Text genannte Übernahmequote nach dem Abschluss?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Unter 25 Prozent."
+                },
+                {
+                  "id": "b",
+                  "text": "Rund 50 Prozent."
+                },
+                {
+                  "id": "c",
+                  "text": "Über 80 Prozent."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „profitiert am Ende von einer Übernahmequote von über 80 Prozent.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2m3-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 1 — Antrag auf Anerkennung von Fortbildungspunkten",
+          "instructions": "Wählen Sie für jede Lücke 10–15 die passende Option a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrte Damen und Herren,\n\n{{10}} meines Umzugs nach Berlin beantrage ich hiermit die formelle Anerkennung meiner im Ausland absolvierten fachlichen Fortbildungen. {{11}} der beigefügten Teilnahmebescheinigungen umfassen die Seminare insgesamt 120 Unterrichtseinheiten im Bereich Intensivpflege und Hygiene. Sollten einzelne Nachweise noch in beglaubigter Übersetzung {{12}} werden müssen, bitte ich um einen entsprechenden Hinweis. Ich lege großen Wert {{13}}, sämtliche Anforderungen fristgerecht zu erfüllen, um meine volle Berufserlaubnis baldmöglichst in {{14}} nehmen zu können. Für Ihre Mühe und eine zeitnahe Bearbeitung {{15}} ich mich bereits im Voraus.\n\nMit freundlichen Grüßen,\nKavita Deshmukh",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Anlässlich"
+                },
+                {
+                  "id": "b",
+                  "text": "Ungeachtet"
+                },
+                {
+                  "id": "c",
+                  "text": "Mittels"
+                }
+              ],
+              "answer": "a",
+              "explanation": "„Anlässlich + Genitiv“ (= aus Anlass / aufgrund eines Ereignisses): „Anlässlich meines Umzugs“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Gemäß"
+                },
+                {
+                  "id": "b",
+                  "text": "Gegenüber"
+                },
+                {
+                  "id": "c",
+                  "text": "Entlang"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Gehobene Präposition mit Dativ/Genitiv „Gemäß“ (= laut / entsprechend): „Gemäß der beigefügten Teilnahmebescheinigungen“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "nachgereicht"
+                },
+                {
+                  "id": "b",
+                  "text": "nachreichen"
+                },
+                {
+                  "id": "c",
+                  "text": "nachreichten"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Passiv Infinitiv mit Modalverb: „nachgereicht werden müssen“ (Partizip II + werden + Modalverb).",
+              "mistakeTags": [
+                "PERFEKT_HABEN_SEIN",
+                "MODAL_SEPARABLE_BRACKET"
+              ]
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "darauf"
+                },
+                {
+                  "id": "b",
+                  "text": "davor"
+                },
+                {
+                  "id": "c",
+                  "text": "darin"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Verbindung: „großen Wert auf etwas legen“ → Pronominaladverb „darauf“ vor Infinitivsatz.",
+              "mistakeTags": [
+                "PRONUNCIATION_UMLAUT_CH"
+              ]
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Anspruch"
+                },
+                {
+                  "id": "b",
+                  "text": "Auftrag"
+                },
+                {
+                  "id": "c",
+                  "text": "Antrag"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Nomen-Verb-Verbindung (Funktionsverbgefüge): „etwas in Anspruch nehmen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "bedanke"
+                },
+                {
+                  "id": "b",
+                  "text": "danke"
+                },
+                {
+                  "id": "c",
+                  "text": "verdanke"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Reflexives Verb „sich bedanken für“: „bedanke ich mich“ („danken“ ist nicht reflexiv!).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2m3-sprachbausteine-2",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 2 — Klimafreundliches Wohnen in Großstädten (Wortliste)",
+          "instructions": "Ordnen Sie den Lücken 16–20 das passende Wort aus der Wortliste (a–h) zu. Drei Wörter bleiben übrig.",
+          "mode": "wordbank",
+          "text": "Die energetische Sanierung älterer Wohngebäude gilt als zentraler Baustein der Klimawende. {{16}} moderne Wärmedämmung und Wärmepumpen die Heizkosten langfristig senken, stellen die hohen Investitionskosten viele Eigentümer vor Herausforderungen. Experten fordern daher, {{17}} staatliche Förderprogramme unbürokratischer gestaltet werden. {{18}} eine faire Aufteilung der Kosten zwischen Staat, Vermietern und Mietern drohen soziale Spannungen in wachsenden Metropolen. Gelingt dieser Ausgleich, {{19}} nicht nur die CO₂-Emissionen deutlich sinken, sondern auch die Wohnqualität spürbar {{20}}.",
+          "wordBank": [
+            {
+              "id": "a",
+              "text": "Obwohl"
+            },
+            {
+              "id": "b",
+              "text": "dass"
+            },
+            {
+              "id": "c",
+              "text": "Ohne"
+            },
+            {
+              "id": "d",
+              "text": "können"
+            },
+            {
+              "id": "e",
+              "text": "steigen"
+            },
+            {
+              "id": "f",
+              "text": "trotzdem"
+            },
+            {
+              "id": "g",
+              "text": "damit"
+            },
+            {
+              "id": "h",
+              "text": "wobei"
+            }
+          ],
+          "gaps": [
+            {
+              "id": "16",
+              "answer": "a",
+              "explanation": "Konzessiver Gegensatz (langfristig senken ↔ hohe Investitionskosten): „Obwohl“ mit Verb am Ende.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "PRONUNCIATION_UMLAUT_CH"
+              ]
+            },
+            {
+              "id": "17",
+              "answer": "b",
+              "explanation": "Objektsatz nach „fordern“ → „dass“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "PRONUNCIATION_UMLAUT_CH"
+              ]
+            },
+            {
+              "id": "18",
+              "answer": "c",
+              "explanation": "Präposition mit Akkusativ Femininum für eine fehlende Voraussetzung: „Ohne eine faire Aufteilung der Kosten ...“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "19",
+              "answer": "d",
+              "explanation": "Hauptsatz nach konditionalem uneingeleitetem Nebensatz („Gelingt dieser Ausgleich,“): „können ... sinken“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "WORD_ORDER_INVERSION"
+              ]
+            },
+            {
+              "id": "20",
+              "answer": "e",
+              "explanation": "Parallel zu „sinken“ am Ende des „nicht nur ..., sondern auch ...“-Satzes: „spürbar steigen“.",
+              "mistakeTags": [
+                "PRONUNCIATION_UMLAUT_CH"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 40,
+      "teile": [
+        {
+          "id": "b2m3-hoeren-1",
+          "title": "Hören Teil 1 — Experteninterview: Interprofessionelle Kommunikation in der Klinik",
+          "instructions": "Hören Sie das Experteninterview und lösen Sie die Aufgaben 1 bis 3 (a, b oder c).",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/b2_m3_hoeren_01.mp3",
+          "audio": {
+            "localFile": "b2_m3_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Dr. Hoffmann",
+              "voice": "male",
+              "text": "Untersuchungen zur Patientensicherheit zeigen immer wieder, dass Missverständnisse bei der Schichtübergabe zu den häufigsten Fehlerquellen im Krankenhaus gehören. Deshalb schulen wir Ärztinnen, Ärzte und Pflegekräfte gemeinsam im standardisierten ISBAR-Schema. Entscheidend ist dabei nicht allein ein großer Fachwortschatz, sondern die Fähigkeit, dringende Befunde präzise und ohne Zeitverlust auf den Punkt zu bringen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b2m3-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Was gehört laut Dr. Hoffmann zu den häufigsten Fehlerquellen im Krankenhaus?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Missverständnisse bei der Schichtübergabe."
+                },
+                {
+                  "id": "b",
+                  "text": "Zu lange Öffnungszeiten der Cafeteria."
+                },
+                {
+                  "id": "c",
+                  "text": "Fehlende Parkplätze für Besucher."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Hörtext: „dass Missverständnisse bei der Schichtübergabe zu den häufigsten Fehlerquellen im Krankenhaus gehören.“",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "b2m3-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Welche Berufsgruppen werden gemeinsam im ISBAR-Schema geschult?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Nur die Krankenhausverwaltung."
+                },
+                {
+                  "id": "b",
+                  "text": "Ärztinnen, Ärzte und Pflegekräfte gemeinsam."
+                },
+                {
+                  "id": "c",
+                  "text": "Ausschließlich Medizinstudierende im ersten Semester."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „schulen wir Ärztinnen, Ärzte und Pflegekräfte gemeinsam im standardisierten ISBAR-Schema.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "b2m3-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Was ist laut dem Experten neben dem Fachwortschatz besonders entscheidend?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Möglichst lange, komplizierte Sätze zu bilden."
+                },
+                {
+                  "id": "b",
+                  "text": "Dringende Befunde präzise und ohne Zeitverlust auf den Punkt zu bringen."
+                },
+                {
+                  "id": "c",
+                  "text": "Ausschließlich schriftlich per Brief zu kommunizieren."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „dringende Befunde präzise und ohne Zeitverlust auf den Punkt zu bringen.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b2m3-hoeren-2",
+          "title": "Hören Teil 2 — Wissenschaftsfeature: Dachbegrünung in deutschen Großstädten",
+          "instructions": "Hören Sie den Beitrag und entscheiden Sie bei den Aufgaben 4 bis 6: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/b2_m3_hoeren_02.mp3",
+          "audio": {
+            "localFile": "b2_m3_hoeren_02.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Wissenschaftsjournalistin",
+              "voice": "female",
+              "text": "Begrünte Flachdächer sind längst mehr als nur ein optischer Trend in der Stadtplanung. Messungen in Berlin und Stuttgart belegen, dass ein bepflanztes Dach bis zu 70 Prozent des Regenwassers speichern kann und dadurch bei Starkregen die Kanalisation spürbar entlastet. Zudem senkt die Verdunstungskälte im Sommer die Temperatur in den darunterliegenden Dachgeschosswohnungen um mehrere Grad, während gleichzeitig Lebensraum für Wildbienen entsteht."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b2m3-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Begrünte Dächer können bis zu 70 Prozent des Regenwassers speichern und die Kanalisation entlasten.",
+              "answer": "richtig",
+              "explanation": "Genau diesen Messwert aus Berlin und Stuttgart nennt die Journalistin.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "b2m3-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Im Sommer heizen bepflanzte Dächer die darunterliegenden Wohnungen noch stärker auf.",
+              "answer": "falsch",
+              "explanation": "Im Gegenteil: Die Verdunstungskälte senkt die Temperatur im Sommer um mehrere Grad.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "b2m3-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Dachbegrünungen bieten neben dem Klimaeffekt auch Lebensraum für Wildbienen.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: „während gleichzeitig Lebensraum für Wildbienen entsteht.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 75,
+      "tasks": [
+        {
+          "id": "b2m3-schreiben-1",
+          "title": "Aufgabe 1 — Formelles Schreiben an eine Prüfungs- oder Anerkennungsstelle",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine sachliche, gut gegliederte formelle E-Mail bzw. einen Brief (mindestens 150 Wörter) im gehobenen B2-Register.",
+          "situation": "Ihr sprachliches Prüfungszertifikat wurde trotz bestandener Prüfung noch nicht zugestellt, doch die Bewerbungsfrist für Ihren Studien- oder Arbeitsplatz läuft in zehn Tagen ab.",
+          "leitpunkte": [
+            "Nennen Sie präzise das Prüfungsdatum, Ihre Teilnahmenummer und den Grund Ihres Schreibens.",
+            "Schildern Sie die Dringlichkeit wegen der bevorstehenden Bewerbungsfrist.",
+            "Bitten Sie um eine vorläufige Bestätigung per PDF sowie den baldigen Versand des Originals.",
+            "Wählen Sie einen höflichen, verbindlichen Ton und eine formelle Schlussformel."
+          ],
+          "minWords": 150,
+          "recommendedMinutes": 45
+        },
+        {
+          "id": "b2m3-schreiben-2",
+          "title": "Aufgabe 2 — Stellungnahme im Online-Forum (Verpflichtendes Soziales Jahr)",
+          "register": "forum",
+          "instructions": "Verfassen Sie einen differenzierten Diskussionsbeitrag (mindestens 100 Wörter).",
+          "situation": "In einem gesellschaftspolitischen Forum wird diskutiert: „Sollte ein verpflichtendes soziales Jahr für alle jungen Erwachsenen nach dem Schulabschluss eingeführt werden?“",
+          "leitpunkte": [
+            "Äußern Sie eine klare Position und begründen Sie sie nachvollziehbar.",
+            "Wägen Sie gesellschaftlichen Nutzen (z. B. Entlastung in Pflege und Bildung) gegen Eingriffe in die persönliche Lebensplanung ab.",
+            "Nennen Sie eine konkrete Alternative (z. B. bessere Vergütung und Anreize für das Freiwillige Soziale Jahr)."
+          ],
+          "minWords": 100,
+          "recommendedMinutes": 30
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "b2m3-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Kurzvortrag: Digitalisierung im Gesundheitswesen",
+          "instructions": "Halten Sie einen strukturierten Kurzvortrag (ca. 3–4 Minuten) mit gehobenen B2-Redemitteln.",
+          "card": {
+            "heading": "Digitalisierung in Kliniken & Praxen: Chancen und Grenzen",
+            "subheading": "Stellen Sie konkrete Anwendungen vor, wägen Sie Vor- und Nachteile ab und ziehen Sie ein Fazit.",
+            "bullets": [
+              "Digitale Instrumente im Alltag (ePA, E-Rezept, Videosprechstunde)",
+              "Vorteile für Patientensicherheit, Zeitersparnis und ländliche Regionen",
+              "Risiken bei Datenschutz, IT-Ausfällen und fehlender digitaler Kompetenz älterer Menschen",
+              "Ihr Fazit: Wie gelingt eine patientenorientierte Digitalisierung?"
+            ]
+          },
+          "examinerScript": "Willkommen zur mündlichen B2-Prüfung (Modelltest 3). Bitte halten Sie nun Ihren Kurzvortrag zum Thema Digitalisierung im Gesundheitswesen.",
+          "examinerAudio": {
+            "localFile": "b2_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 60,
+          "speakSeconds": 150
+        },
+        {
+          "id": "b2m3-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Diskussion & Kompromissfindung (KI an Hochschulen)",
+          "instructions": "Diskutieren Sie kontrovers, gehen Sie auf Gegenargumente ein und erarbeiten Sie einen realistischen Kompromiss.",
+          "card": {
+            "heading": "Streitfrage: Sollten Hochschulen KI-Systeme in Hausarbeiten erlauben?",
+            "subheading": "Nutzen Sie strukturierte Diskussionsmittel („Zwar..., aber...“, „Ein entscheidender Einwand wäre...“).",
+            "bullets": [
+              "Chancen von KI als Recherche-, Übersetzungs- und Strukturierungshilfe",
+              "Gefahr für wissenschaftliche Eigenständigkeit, Quellenprüfung und Bewertungsgerechtigkeit",
+              "Möglicher Kompromiss (z. B. Kennzeichnungspflicht + mündliche Verteidigung der Arbeit)"
+            ]
+          },
+          "examinerScript": "Kommen wir nun zu Teil 2: Sollten Universitäten den Einsatz von KI-Werkzeugen bei schriftlichen Hausarbeiten offiziell erlauben oder strikt untersagen?",
+          "examinerAudio": {
+            "localFile": "b2_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 120
+        }
+      ]
+    }
+  }
+}

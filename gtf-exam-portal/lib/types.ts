@@ -1,6 +1,7 @@
 import type { Level, SectionKey } from "./config";
+import type { MistakeCode } from "./mistake-dna/taxonomy";
 
-export type { Level, SectionKey };
+export type { Level, SectionKey, MistakeCode };
 
 /* ───────────────────────────── Exam content ───────────────────────────── */
 
@@ -13,6 +14,8 @@ interface QuestionBase {
   id: string;
   prompt: string;
   points?: number;
+  /** Optional Mistake-DNA taxonomy codes associated with this question. */
+  mistakeTags?: MistakeCode[];
   /** Stripped before reaching the browser. */
   answer?: string;
   /** Stripped before reaching the browser; returned by /api/exam/score. */
@@ -46,6 +49,7 @@ export interface SprachbausteinGap {
   id: string;
   /** Only for mode = "select". */
   options?: Option[];
+  mistakeTags?: MistakeCode[];
   answer?: string;
   explanation?: string;
   points?: number;
@@ -169,6 +173,7 @@ export interface WorkbookQuestion {
   prompt: string;
   type: "mcq" | "text";
   options?: Option[];
+  mistakeTags?: MistakeCode[];
   /** For text questions: accepted answers (case/umlaut tolerant). Stripped before client. */
   answer?: string | string[];
   explanation?: string;
@@ -386,6 +391,8 @@ export interface Correction {
   type: "grammar" | "spelling" | "vocabulary" | "punctuation" | "style" | "pronunciation";
   explanationDe: string;
   explanationHinglish: string;
+  /** Canonical Mistake-DNA error code linked to this correction. */
+  mistakeCode?: MistakeCode;
 }
 
 export interface SchreibenEvaluation {
@@ -402,6 +409,7 @@ export interface SchreibenEvaluation {
   };
   wordCount: number;
   corrections: Correction[];
+  mistakeTags?: MistakeCode[];
   strengths: string[];
   improvements: string[];
   summaryDe: string;
@@ -430,6 +438,7 @@ export interface SprechenEvaluation {
   };
   pronunciationNotes: string[];
   corrections: Correction[];
+  mistakeTags?: MistakeCode[];
   tips: string[];
   summaryDe: string;
   summaryHinglish: string;
@@ -449,6 +458,16 @@ export interface ScoredItem {
   isCorrect: boolean;
   points: number;
   explanation: string;
+  mistakeTags?: MistakeCode[];
+}
+
+export interface ExamMistakeCluster {
+  errorKey: MistakeCode;
+  count: number;
+  sections: SectionKey[];
+  samplePrompt?: string;
+  sampleWrong?: string;
+  sampleRight?: string;
 }
 
 export interface SectionScore {
@@ -470,4 +489,5 @@ export interface ExamResult {
   passed: boolean;
   attemptId: string | null;
   persisted: boolean;
+  mistakeSummary?: ExamMistakeCluster[];
 }

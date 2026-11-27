@@ -6,6 +6,7 @@ import {
   verifyFirebaseIdTokenServer,
 } from "@/lib/server/firebase-admin";
 import { PAID_APPOINTMENT_COOKIE } from "@/lib/server/consultation-contact";
+import { deleteAllMistakeDnaAdmin } from "@/lib/server/mistake-dna-admin";
 import { revokeSessionToken } from "@/lib/server/session-manager";
 import { getSupabaseServerClient } from "@/lib/supabase";
 
@@ -69,6 +70,7 @@ export async function POST(req: Request) {
       email,
       idToken,
     });
+    await deleteAllMistakeDnaAdmin(uid).catch(() => undefined);
 
     // Fail closed if Firestore erasure hit 403/5xx on critical docs without Admin SDK
     const criticalFailures = firestoreCleanup.failedDocs.filter(

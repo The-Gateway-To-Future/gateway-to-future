@@ -1,13 +1,31 @@
-import type { DivisionId, Level, SchreibenEvaluation, SprechenEvaluation, UserSessionState } from "./types";
+import type {
+  DivisionId,
+  Level,
+  SchreibenEvaluation,
+  SectionKey,
+  SprechenEvaluation,
+  UserSessionState,
+} from "./types";
 
 const SESSION_TOKEN_KEY = "gtf_session_token";
 const USER_PROFILE_KEY = "gtf_user_profile";
 const ACTIVE_DIVISION_KEY = "gtf_active_division";
 
+export type ExamMode = "practice" | "exam";
+export const EXAM_MODE_EVENT = "gtf:exam-mode-changed";
+
 export interface StoredExamState {
   level: Level;
   testId: string;
   startedAt: number;
+  /** "practice" (Übungsmodus) vs "exam" (Prüfungsmodus — strict Goethe/telc/STK proctor). */
+  examMode: ExamMode;
+  /** Per-section authoritative wall-clock deadline timestamps (ms epoch) for Prüfungsmodus. */
+  sectionDeadlines: Partial<Record<SectionKey, number>>;
+  /** Server-signed HMAC tokens paired with sectionDeadlines to resist clock tampering. */
+  sectionDeadlineTokens: Partial<Record<SectionKey, string>>;
+  /** Sections that hit 00:00 in Prüfungsmodus and were auto-locked/submitted. */
+  expiredSections: SectionKey[];
   lesenAnswers: Record<string, string>;
   hoerenAnswers: Record<string, string>;
   /** Tracks how many times each Hören Teil audio has been played (enforces 1x/2x Goethe/telc lock). */
@@ -98,6 +116,10 @@ export function loadExamState(level: Level, email?: string, testId?: string): St
     level,
     testId: resolvedTestId,
     startedAt: Date.now(),
+    examMode: "practice",
+    sectionDeadlines: {},
+    sectionDeadlineTokens: {},
+    expiredSections: [],
     lesenAnswers: {},
     hoerenAnswers: {},
     hoerenPlayCounts: {},
@@ -118,6 +140,10 @@ export function loadExamState(level: Level, email?: string, testId?: string): St
       ...fallback,
       ...parsed,
       testId: resolvedTestId,
+      examMode: parsed.examMode === "exam" ? "exam" : "practice",
+      sectionDeadlines: parsed.sectionDeadlines || {},
+      sectionDeadlineTokens: parsed.sectionDeadlineTokens || {},
+      expiredSections: Array.isArray(parsed.expiredSections) ? parsed.expiredSections : [],
       lesenAnswers: parsed.lesenAnswers || {},
       hoerenAnswers: parsed.hoerenAnswers || {},
       hoerenPlayCounts: parsed.hoerenPlayCounts || {},
@@ -144,6 +170,49 @@ export function saveExamState(
   return next;
 }
 
+export function setStoredExamMode(
+  level: Level,
+  mode: ExamMode,
+  email?: string,
+  testId?: string,
+): StoredExamState {
+  const next = saveExamState(
+    level,
+    (st) => ({
+      ...st,
+      examMode: mode,
+      expiredSections: mode === "practice" ? [] : st.expiredSections,
+    }),
+    email,
+    testId,
+  );
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent(EXAM_MODE_EVENT, {
+        detail: { level, testId: next.testId, mode },
+      }),
+    );
+  }
+  return next;
+}
+
+export function markExamSectionExpired(
+  level: Level,
+  section: SectionKey,
+  email?: string,
+  testId?: string,
+): StoredExamState {
+  return saveExamState(
+    level,
+    (st) => ({
+      ...st,
+      expiredSections: Array.from(new Set([...(st.expiredSections || []), section])),
+    }),
+    email,
+    testId,
+  );
+}
+
 export function resetExamSection(
   level: Level,
   section: "lesen" | "hoeren" | "schreiben" | "sprechen",
@@ -153,10 +222,21 @@ export function resetExamSection(
   return saveExamState(
     level,
     (st) => {
-      if (section === "lesen") return { ...st, lesenAnswers: {} };
-      if (section === "hoeren") return { ...st, hoerenAnswers: {}, hoerenPlayCounts: {} };
-      if (section === "schreiben") return { ...st, schreibenDrafts: {}, schreibenEvaluations: {} };
-      return { ...st, sprechenEvaluations: {} };
+      const nextDeadlines = { ...(st.sectionDeadlines || {}) };
+      const nextTokens = { ...(st.sectionDeadlineTokens || {}) };
+      delete nextDeadlines[section];
+      delete nextTokens[section];
+      const nextExpired = (st.expiredSections || []).filter((s) => s !== section);
+      const base = {
+        ...st,
+        sectionDeadlines: nextDeadlines,
+        sectionDeadlineTokens: nextTokens,
+        expiredSections: nextExpired,
+      };
+      if (section === "lesen") return { ...base, lesenAnswers: {} };
+      if (section === "hoeren") return { ...base, hoerenAnswers: {}, hoerenPlayCounts: {} };
+      if (section === "schreiben") return { ...base, schreibenDrafts: {}, schreibenEvaluations: {} };
+      return { ...base, sprechenEvaluations: {} };
     },
     email,
     testId,
@@ -165,10 +245,15 @@ export function resetExamSection(
 
 export function resetExamState(level: Level, email?: string, testId?: string): StoredExamState {
   const resolvedTestId = (testId || "").trim() || `gtf-${level}-modelltest-1`;
+  const prev = loadExamState(level, email, resolvedTestId);
   const fresh: StoredExamState = {
     level,
     testId: resolvedTestId,
     startedAt: Date.now(),
+    examMode: prev.examMode || "practice",
+    sectionDeadlines: {},
+    sectionDeadlineTokens: {},
+    expiredSections: [],
     lesenAnswers: {},
     hoerenAnswers: {},
     hoerenPlayCounts: {},

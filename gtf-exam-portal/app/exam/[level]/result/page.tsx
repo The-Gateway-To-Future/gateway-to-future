@@ -6,21 +6,30 @@ import { Suspense, useEffect, useState } from "react";
 import {
   Award,
   CheckCircle2,
+  Lock,
   RotateCcw,
+  ShieldCheck,
   XCircle,
 } from "lucide-react";
 import { ExamHeader } from "@/components/ExamHeader";
 import { MathText } from "@/components/MathText";
+import { MistakeDnaRadarCard } from "@/components/MistakeDnaRadarCard";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
+import { useAuth } from "@/lib/auth-context";
 import {
   loadExamState,
   resetExamState,
+  type ExamMode,
 } from "@/lib/client-storage";
 import { SECTION_META, isLevel, type Level, type SectionKey } from "@/lib/config";
+import { resolveProgressUid } from "@/lib/firebase/progress";
+import { loadMistakeDna } from "@/lib/mistake-dna/store";
+import { MISTAKE_TAXONOMY } from "@/lib/mistake-dna/taxonomy";
 import type { ExamResult } from "@/lib/types";
 
 function ExamResultPageInner() {
   const router = useRouter();
+  const { user } = useAuth();
   const params = useParams<{ level: string }>();
   const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
@@ -31,6 +40,8 @@ function ExamResultPageInner() {
     testId !== defaultTestId ? `?testId=${encodeURIComponent(testId)}` : "";
 
   const [result, setResult] = useState<ExamResult | null>(null);
+  const [examMode, setExamMode] = useState<ExamMode>("practice");
+  const [expiredSections, setExpiredSections] = useState<SectionKey[]>([]);
   const [activeSectionTab, setActiveSectionTab] = useState<SectionKey>("lesen");
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -40,6 +51,8 @@ function ExamResultPageInner() {
     setErrorMsg(null);
     try {
       const st = loadExamState(level, undefined, testId);
+      setExamMode(st.examMode || "practice");
+      setExpiredSections(st.expiredSections || []);
       const attemptKey = `${level}_${testId}_${st.startedAt || 0}`;
       const res = await fetch("/api/exam/score", {
         method: "POST",
@@ -58,6 +71,11 @@ function ExamResultPageInner() {
       if (res.ok) {
         const data = (await res.json()) as { result: ExamResult };
         setResult(data.result);
+        // Refresh local Mistake-DNA cache from cloud so Dashboard Radar reflects this exam immediately
+        const uid = resolveProgressUid(user);
+        if (uid && uid !== "guest") {
+          void loadMistakeDna(uid);
+        }
       } else {
         const errData = await res.json().catch(() => ({}));
         setErrorMsg(errData.error || "Ergebnis konnte nicht berechnet werden.");
@@ -124,17 +142,37 @@ function ExamResultPageInner() {
           </div>
         ) : (
           <div className="space-y-6">
-            {/* Overall Scorecard Banner */}
+            {/* Overall Scorecard Banner + Authentic Modular Pass Gates */}
             <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-900 shadow-sm sm:p-8">
               <div className="flex flex-wrap items-center justify-between gap-6">
                 <div className="space-y-2">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800">
-                    <Award className="h-4 w-4 text-amber-600" />
-                    <span>Offizieller GTF Prüfungsbericht · Attempt {result.attemptId}</span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-bold text-slate-800">
+                      <Award className="h-4 w-4 text-amber-600" />
+                      <span>Offizieller GTF Prüfungsbericht · Attempt {result.attemptId}</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold ${
+                        examMode === "exam"
+                          ? "border-rose-200 bg-rose-50 text-rose-800"
+                          : "border-sky-200 bg-sky-50 text-sky-800"
+                      }`}
+                    >
+                      {examMode === "exam" ? (
+                        <Lock className="h-3.5 w-3.5" />
+                      ) : (
+                        <ShieldCheck className="h-3.5 w-3.5" />
+                      )}
+                      <span>
+                        {examMode === "exam"
+                          ? "Prüfungsmodus (Proctored)"
+                          : "Übungsmodus (Practice)"}
+                      </span>
+                    </span>
                   </div>
                   <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">{result.title}</h2>
                   <p className="text-xs text-slate-500 sm:text-sm">
-                    Bestehensgrenze: {result.passPercent}% · Alle vier Module im Überblick
+                    Goethe/telc Modular-Regel: Jedes der 4 Module muss einzeln ≥ {result.passPercent}% erreichen.
                   </p>
                 </div>
 
@@ -151,17 +189,61 @@ function ExamResultPageInner() {
                         result.passed ? "text-emerald-600" : "text-amber-600"
                       }`}
                     >
-                      {result.passed ? "BESTANDEN (PASSED)" : "NOCH IN ÜBUNG (< 60%)"}
+                      {result.passed
+                        ? "GESAMTZERTIFIKAT BESTANDEN"
+                        : `${result.sections.filter((s) => s.passed).length}/4 MODULE BESTANDEN`}
                     </div>
                   </div>
                 </div>
               </div>
 
+              {/* Modular Pass Gate Status Strip */}
+              {(() => {
+                const passedModules = result.sections.filter((s) => s.passed);
+                const failedModules = result.sections.filter((s) => !s.passed);
+                return (
+                  <div
+                    className={`mt-5 rounded-2xl border p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${
+                      result.passed
+                        ? "border-emerald-200 bg-emerald-50/70 text-emerald-950"
+                        : "border-amber-200 bg-amber-50/70 text-amber-950"
+                    }`}
+                  >
+                    <div className="space-y-1">
+                      <p className="font-extrabold uppercase tracking-wider text-[11px]">
+                        {result.passed
+                          ? "Alle 4 Modul-Bestehensgrenzen erfüllt (≥ 60% pro Modul)"
+                          : `Modulare Bestehensprüfung: ${passedModules.length} von ${result.sections.length} Modulen ≥ ${result.passPercent}%`}
+                      </p>
+                      <p className="text-slate-700 leading-relaxed">
+                        {result.passed
+                          ? "Herzlichen Glückwunsch! Sie haben sowohl den Gesamtschnitt als auch jede einzelne Modul-Hürde bestanden."
+                          : `Nach offizieller Goethe/telc-Regel reichen ${result.overallPercent}% gesamt allein nicht aus — wiederholen Sie gezielt die offenen Module (${failedModules.map((m) => SECTION_META[m.section].label).join(", ")}), bis jedes Modul ≥ ${result.passPercent}% erreicht.`}
+                      </p>
+                    </div>
+                    {failedModules.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 shrink-0">
+                        {failedModules.map((m) => (
+                          <Link
+                            key={m.section}
+                            href={`/exam/${level}/${m.section}${testQuery}`}
+                            className="inline-flex items-center gap-1 rounded-lg bg-slate-900 px-3 py-1.5 text-[11px] font-bold text-white hover:bg-slate-800 transition"
+                          >
+                            <span>{SECTION_META[m.section].label} wiederholen</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+
               {/* 4 Section summary cards */}
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {(result?.sections || []).map((sec) => {
                   const meta = SECTION_META[sec.section];
                   const active = activeSectionTab === sec.section;
+                  const wasAutoSubmitted = expiredSections.includes(sec.section);
                   return (
                     <button
                       key={sec.section}
@@ -188,7 +270,7 @@ function ExamResultPageInner() {
                                 : "bg-amber-50 text-amber-700 border border-amber-200"
                           }`}
                         >
-                          {sec.passed ? "≥ 60%" : "< 60%"}
+                          {sec.passed ? "Bestanden ✓" : `< ${result.passPercent}%`}
                         </span>
                       </div>
                       <p
@@ -197,6 +279,7 @@ function ExamResultPageInner() {
                         }`}
                       >
                         {meta.english}
+                        {wasAutoSubmitted ? " · Zeitlimit" : ""}
                       </p>
                       <div className="mt-3 flex items-baseline justify-between">
                         <span className="text-2xl font-extrabold">{sec.percent}%</span>
@@ -213,6 +296,13 @@ function ExamResultPageInner() {
                 })}
               </div>
             </div>
+
+            {/* Mistake-DNA Weak-Spot Breakdown for This Exam */}
+            <MistakeDnaRadarCard
+              mode="exam-review"
+              examClusters={result.mistakeSummary || []}
+              level={level}
+            />
 
             {/* Detailed Item-by-Item Breakdown & Explanations */}
             {currentSection && (
@@ -305,6 +395,26 @@ function ExamResultPageInner() {
                         <div className="mt-2.5 rounded-xl bg-white p-3 text-xs text-slate-700 border border-slate-200 shadow-xs overflow-x-auto">
                           <strong className="text-slate-900">Erklärung: </strong>
                           {isStkExam ? <MathText text={item.explanation} /> : item.explanation}
+                        </div>
+                      )}
+
+                      {!item.isCorrect && item.mistakeTags && item.mistakeTags.length > 0 && (
+                        <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                            Mistake-DNA:
+                          </span>
+                          {item.mistakeTags.map((code) => (
+                            <Link
+                              key={code}
+                              href={`/mistake-dna?focus=${encodeURIComponent(code)}`}
+                              className="inline-flex items-center gap-1 rounded-md border border-amber-300 bg-amber-100/80 px-2 py-0.5 font-mono text-[10px] font-bold text-amber-900 hover:bg-amber-200 transition"
+                            >
+                              <span>{code}</span>
+                              <span className="font-sans font-semibold text-amber-800">
+                                · {MISTAKE_TAXONOMY[code]?.shortLabel || code}
+                              </span>
+                            </Link>
+                          ))}
                         </div>
                       )}
                     </div>

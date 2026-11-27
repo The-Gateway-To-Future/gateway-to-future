@@ -25,35 +25,51 @@
               "type": "richtig_falsch",
               "prompt": "1. Die Zugfahrt von Berlin nach Dresden hat zwei Stunden gedauert.",
               "answer": "richtig",
-              "explanation": "Im Text: „Die Fahrt hat genau zwei Stunden gedauert.“"
+              "explanation": "Im Text: „Die Fahrt hat genau zwei Stunden gedauert.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a2m2-l1-q2",
               "type": "richtig_falsch",
               "prompt": "2. Sie haben die Zugtickets erst am Bahnhof direkt vor der Abfahrt gekauft.",
               "answer": "falsch",
-              "explanation": "Im Text: „Weil wir die Fahrkarten schon drei Wochen vorher online gebucht hatten...“"
+              "explanation": "Im Text: „Weil wir die Fahrkarten schon drei Wochen vorher online gebucht hatten...“",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "a2m2-l1-q3",
               "type": "richtig_falsch",
               "prompt": "3. Wegen des Regens am Sonntag haben sie ein Technikmuseum besucht.",
               "answer": "richtig",
-              "explanation": "Im Text: „Am Sonntag hat es stark geregnet, deshalb sind wir in ein Technikmuseum gegangen...“"
+              "explanation": "Im Text: „Am Sonntag hat es stark geregnet, deshalb sind wir in ein Technikmuseum gegangen...“",
+              "mistakeTags": [
+                "WORD_ORDER_INVERSION",
+                "PERFEKT_HABEN_SEIN"
+              ]
             },
             {
               "id": "a2m2-l1-q4",
               "type": "richtig_falsch",
               "prompt": "4. Die Hausarztpraxis ist eine Woche wegen Umbauarbeiten geschlossen.",
               "answer": "falsch",
-              "explanation": "Die Praxis schließt wegen einer Fortbildung (training/weiterbildung), nicht wegen Umbau."
+              "explanation": "Die Praxis schließt wegen einer Fortbildung (training/weiterbildung), nicht wegen Umbau.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a2m2-l1-q5",
               "type": "richtig_falsch",
               "prompt": "5. Patientinnen und Patienten können Rezepte bereits per E-Mail vorbestellen.",
               "answer": "richtig",
-              "explanation": "Im Text: „Rezepte können Sie schon per E-Mail vorbestellen.“"
+              "explanation": "Im Text: „Rezepte können Sie schon per E-Mail vorbestellen.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -85,7 +101,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „Montag bis Freitag, 08:00–12:00 Uhr“ (20 Stunden Teilzeit vormittags)."
+              "explanation": "Im Text: „Montag bis Freitag, 08:00–12:00 Uhr“ (20 Stunden Teilzeit vormittags).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a2m2-l2-q7",
@@ -106,7 +125,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Im Text: „Erfahrung ... ist ein Plus, aber wir arbeiten Sie gern gründlich ein.“"
+              "explanation": "Im Text: „Erfahrung ... ist ein Plus, aber wir arbeiten Sie gern gründlich ein.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a2m2-l2-q8",
@@ -127,7 +149,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „ermäßigt 38 € für Auszubildende und Studierende.“"
+              "explanation": "Im Text: „ermäßigt 38 € für Auszubildende und Studierende.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a2m2-l2-q9",
@@ -148,7 +173,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „Laptops stehen im Kursraum kostenlos bereit.“"
+              "explanation": "Im Text: „Laptops stehen im Kursraum kostenlos bereit.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
             }
           ]
         },
@@ -177,7 +205,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Nach Modalverb „möchte“ steht der Infinitiv am Satzende: „Urlaub nehmen“."
+              "explanation": "Nach Modalverb „möchte“ steht der Infinitiv am Satzende: „Urlaub nehmen“.",
+              "mistakeTags": [
+                "MODAL_SEPARABLE_BRACKET"
+              ]
             },
             {
               "id": "11",
@@ -196,7 +227,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Subjekt „meine Eltern“ (Plural) + Futur I → „besuchen werden“."
+              "explanation": "Subjekt „meine Eltern“ (Plural) + Futur I → „besuchen werden“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "12",
@@ -215,7 +249,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Perfekt von „besprechen“ (untrennbar, ohne ge-): „habe ... besprochen“."
+              "explanation": "Perfekt von „besprechen“ (untrennbar, ohne ge-): „habe ... besprochen“.",
+              "mistakeTags": [
+                "PERFEKT_HABEN_SEIN"
+              ]
             },
             {
               "id": "13",
@@ -234,7 +271,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Finalsatz (Zweck/Ziel) mit Verb am Ende verlangt „damit“."
+              "explanation": "Finalsatz (Zweck/Ziel) mit Verb am Ende verlangt „damit“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "14",
@@ -253,7 +293,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Indirekte Ja/Nein-Frage nach „Bescheid geben“ wird mit „ob“ eingeleitet."
+              "explanation": "Indirekte Ja/Nein-Frage nach „Bescheid geben“ wird mit „ob“ eingeleitet.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "15",
@@ -272,7 +315,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Feste formelle Schlussformel: „Vielen Dank im Voraus!“"
+              "explanation": "Feste formelle Schlussformel: „Vielen Dank im Voraus!“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         }
@@ -317,7 +363,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Sandra sagt: „nicht in Raum 204, sondern im Konferenzraum im dritten Stock“."
+              "explanation": "Sandra sagt: „nicht in Raum 204, sondern im Konferenzraum im dritten Stock“.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "a2m2-h1-q2",
@@ -338,7 +387,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Es startet dreißig Minuten später, also um 10:30 Uhr."
+              "explanation": "Es startet dreißig Minuten später, also um 10:30 Uhr.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
             },
             {
               "id": "a2m2-h1-q3",
@@ -359,7 +411,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Am Ende sagt sie: „Bringen Sie bitte Ihren Laptop mit.“"
+              "explanation": "Am Ende sagt sie: „Bringen Sie bitte Ihren Laptop mit.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         },
@@ -385,21 +440,31 @@
               "type": "richtig_falsch",
               "prompt": "4. Strom, Heizung und Internet sind in den 580 Euro Warmmiete enthalten.",
               "answer": "richtig",
-              "explanation": "Im Hörtext: „580 Euro inklusive Strom, Heizung und Internet.“"
+              "explanation": "Im Hörtext: „580 Euro inklusive Strom, Heizung und Internet.“",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
             },
             {
               "id": "a2m2-h2-q5",
               "type": "richtig_falsch",
               "prompt": "5. Man muss keine Kaution bezahlen.",
               "answer": "falsch",
-              "explanation": "Die Kaution beträgt zwei Monatsmieten."
+              "explanation": "Die Kaution beträgt zwei Monatsmieten.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "a2m2-h2-q6",
               "type": "richtig_falsch",
               "prompt": "6. Fahrräder können im abgeschlossenen Innenhof abgestellt werden.",
               "answer": "richtig",
-              "explanation": "Es gibt einen abgeschlossenen Fahrradständer im Innenhof."
+              "explanation": "Es gibt einen abgeschlossenen Fahrradständer im Innenhof.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         }

@@ -15,6 +15,7 @@ const PROTECTED_PREFIXES = [
   "/exam",
   "/workbooks",
   "/pathways",
+  "/mistake-dna",
 ];
 
 const AUTH_ROUTES = ["/login", "/register"];
@@ -148,5 +149,7 @@ export const config = {
     "/pathways/:path*",
     "/profile",
     "/profile/:path*",
+    "/mistake-dna",
+    "/mistake-dna/:path*",
   ],
 };

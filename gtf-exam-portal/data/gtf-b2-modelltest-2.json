@@ -25,35 +25,50 @@
               "type": "richtig_falsch",
               "prompt": "1. Der Fachkräftemangel betrifft in Deutschland vor allem das Gesundheitswesen, die IT und das Ingenieurwesen.",
               "answer": "richtig",
-              "explanation": "Im Text: „insbesondere im Gesundheitswesen, in der Informationstechnologie und im Ingenieurwesen“."
+              "explanation": "Im Text: „insbesondere im Gesundheitswesen, in der Informationstechnologie und im Ingenieurwesen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b2m2-l1-q2",
               "type": "richtig_falsch",
               "prompt": "2. Beim Verfahren nach § 81a AufenthG stellt die Fachkraft den Antrag ganz ohne Mitwirkung eines Arbeitgebers.",
               "answer": "falsch",
-              "explanation": "Im Text: „schließt der zukünftige Arbeitgeber in Deutschland mit einer Vollmacht der Fachkraft eine Vereinbarung mit der zuständigen Ausländerbehörde ab.“"
+              "explanation": "Im Text: „schließt der zukünftige Arbeitgeber in Deutschland mit einer Vollmacht der Fachkraft eine Vereinbarung mit der zuständigen Ausländerbehörde ab.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b2m2-l1-q3",
               "type": "richtig_falsch",
               "prompt": "3. Das beschleunigte Verfahren verkürzt verbindlich die Bearbeitungsfristen für die Anerkennung.",
               "answer": "richtig",
-              "explanation": "Im Text: „Dadurch werden Fristen für die Gleichwertigkeitsprüfung ausländischer Abschlüsse verbindlich verkürzt...“"
+              "explanation": "Im Text: „Dadurch werden Fristen für die Gleichwertigkeitsprüfung ausländischer Abschlüsse verbindlich verkürzt...“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b2m2-l1-q4",
               "type": "richtig_falsch",
               "prompt": "4. Laut Berliner Personalverantwortlichen reichen formale Dokumente allein für eine nachhaltige Integration aus.",
               "answer": "falsch",
-              "explanation": "Im Text: „dass formale Dokumente allein nicht genügen“ — Fachsprache B2 und Onboarding sind ebenso nötig."
+              "explanation": "Im Text: „dass formale Dokumente allein nicht genügen“ — Fachsprache B2 und Onboarding sind ebenso nötig.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "b2m2-l1-q5",
               "type": "richtig_falsch",
               "prompt": "5. Die Chancenkarte wurde im Zuge der Reform des Fachkräfteeinwanderungsgesetzes eingeführt.",
               "answer": "richtig",
-              "explanation": "Im Text: „hat der Gesetzgeber das Fachkräfteeinwanderungsgesetz reformiert und ... auch die sogenannte Chancenkarte eingeführt.“"
+              "explanation": "Im Text: „hat der Gesetzgeber das Fachkräfteeinwanderungsgesetz reformiert und ... auch die sogenannte Chancenkarte eingeführt.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -85,7 +100,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Im Text: „sondern auch Zuschläge für Nacht-, Sonntags- und Feiertagsarbeit sowie den jährlichen Erholungsurlaub.“"
+              "explanation": "Im Text: „sondern auch Zuschläge für Nacht-, Sonntags- und Feiertagsarbeit sowie den jährlichen Erholungsurlaub.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b2m2-l2-q7",
@@ -106,7 +124,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „auf denen Überstunden gesammelt und später durch Freizeit ausgeglichen werden können.“"
+              "explanation": "Im Text: „auf denen Überstunden gesammelt und später durch Freizeit ausgeglichen werden können.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b2m2-l2-q8",
@@ -127,7 +148,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Das Arbeitszeitgesetz erlaubt bis zu 10 Stunden nur bei entsprechendem Ausgleich innerhalb von 6 Monaten."
+              "explanation": "Das Arbeitszeitgesetz erlaubt bis zu 10 Stunden nur bei entsprechendem Ausgleich innerhalb von 6 Monaten.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "b2m2-l2-q9",
@@ -148,7 +172,10 @@
                 }
               ],
               "answer": "c",
-              "explanation": "Im Text: „eine ununterbrochene Ruhezeit von mindestens elf Stunden vorgeschrieben“."
+              "explanation": "Im Text: „eine ununterbrochene Ruhezeit von mindestens elf Stunden vorgeschrieben“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -177,7 +204,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "„Angesichts + Genitiv“ bedeutet „im Hinblick auf / wegen“ (sehr typisch für B2-Nominalstil)."
+              "explanation": "„Angesichts + Genitiv“ bedeutet „im Hinblick auf / wegen“ (sehr typisch für B2-Nominalstil).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
             },
             {
               "id": "11",
@@ -196,7 +226,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Passiversatzform „sich lassen + Infinitiv“ (= können strukturiert werden)."
+              "explanation": "Passiversatzform „sich lassen + Infinitiv“ (= können strukturiert werden).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "12",
@@ -215,7 +248,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Passiversatzform mit Verpflichtung: „es ist darauf zu achten“ (= man muss darauf achten)."
+              "explanation": "Passiversatzform mit Verpflichtung: „es ist darauf zu achten“ (= man muss darauf achten).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "13",
@@ -234,7 +270,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Vorgangspassiv Präsens Plural: „zugeordnet werden“."
+              "explanation": "Vorgangspassiv Präsens Plural: „zugeordnet werden“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "14",
@@ -253,7 +292,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Feste Nomen-Verb-Verbindung: „jemandem zur Verfügung stehen“."
+              "explanation": "Feste Nomen-Verb-Verbindung: „jemandem zur Verfügung stehen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "15",
@@ -272,7 +314,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Genitiv Maskulinum Singular nach „meines“: „meines Vorschlags“."
+              "explanation": "Genitiv Maskulinum Singular nach „meines“: „meines Vorschlags“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
             }
           ]
         },
@@ -321,27 +366,43 @@
             {
               "id": "16",
               "answer": "a",
-              "explanation": "Finaler Infinitivsatz bei gleichem Subjekt: „um ... anzuregen“."
+              "explanation": "Finaler Infinitivsatz bei gleichem Subjekt: „um ... anzuregen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "17",
               "answer": "b",
-              "explanation": "Gleichzeitigkeit / parallele Entwicklung: „Während die Zahl ... steigt, wächst der Bedarf...“."
+              "explanation": "Gleichzeitigkeit / parallele Entwicklung: „Während die Zahl ... steigt, wächst der Bedarf...“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "18",
               "answer": "c",
-              "explanation": "Objektsatz nach „sieht vor“ → „dass“."
+              "explanation": "Objektsatz nach „sieht vor“ → „dass“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
             },
             {
               "id": "19",
               "answer": "d",
-              "explanation": "Temporale Präposition mit Dativ Femininum „einer erfolgreichen Pilotphase“ → „Nach“."
+              "explanation": "Temporale Präposition mit Dativ Femininum „einer erfolgreichen Pilotphase“ → „Nach“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
             },
             {
               "id": "20",
               "answer": "e",
-              "explanation": "„sich über etwas freuen“ im Konjunktiv II: „würden wir uns sehr freuen“."
+              "explanation": "„sich über etwas freuen“ im Konjunktiv II: „würden wir uns sehr freuen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         }
@@ -386,7 +447,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "KI entlastet die Dokumentation durch automatische Strukturierung von Sprachnotizen."
+              "explanation": "KI entlastet die Dokumentation durch automatische Strukturierung von Sprachnotizen.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b2m2-h1-q2",
@@ -407,7 +471,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Hörtext: „die letzte klinische Verantwortung liegt stets bei qualifiziertem Fachpersonal.“"
+              "explanation": "Im Hörtext: „die letzte klinische Verantwortung liegt stets bei qualifiziertem Fachpersonal.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b2m2-h1-q3",
@@ -428,7 +495,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Er hebt ausdrücklich die unersetzliche menschliche Empathie hervor."
+              "explanation": "Er hebt ausdrücklich die unersetzliche menschliche Empathie hervor.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         },
@@ -454,21 +524,31 @@
               "type": "richtig_falsch",
               "prompt": "4. Anpassungslehrgänge helfen, Unterschiede zwischen ausländischen Abschlüssen und deutschen Standards auszugleichen.",
               "answer": "richtig",
-              "explanation": "Genau diesen Zweck erfüllen Anpassungslehrgänge laut Beitrag."
+              "explanation": "Genau diesen Zweck erfüllen Anpassungslehrgänge laut Beitrag.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "b2m2-h2-q5",
               "type": "richtig_falsch",
               "prompt": "5. Weniger als die Hälfte der Teilnehmenden besteht die Qualifizierung.",
               "answer": "falsch",
-              "explanation": "Laut Beitrag schließen über 85 Prozent erfolgreich ab."
+              "explanation": "Laut Beitrag schließen über 85 Prozent erfolgreich ab.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
             },
             {
               "id": "b2m2-h2-q6",
               "type": "richtig_falsch",
               "prompt": "6. Sprachliche Begleitung während des Lehrgangs unterstützt den Prüfungserfolg.",
               "answer": "richtig",
-              "explanation": "Der hohe Erfolg wird ausdrücklich mit gezielter sprachlicher Begleitung verknüpft."
+              "explanation": "Der hohe Erfolg wird ausdrücklich mit gezielter sprachlicher Begleitung verknüpft.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         }

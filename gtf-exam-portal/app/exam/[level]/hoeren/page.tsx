@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import {
@@ -10,6 +10,7 @@ import {
   ArrowRight,
   FileText,
   Headphones,
+  Lock,
   Pause,
   Play,
   RotateCcw,
@@ -17,10 +18,12 @@ import {
   Volume2,
 } from "lucide-react";
 import { ExamHeader } from "@/components/ExamHeader";
+import { HoerenShadowingStudio } from "@/components/HoerenShadowingStudio";
 import {
   loadExamState,
   resetExamSection,
   saveExamState,
+  type ExamMode,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
 import type { ExamTest, HoerenTeil } from "@/lib/types";
@@ -33,6 +36,7 @@ function formatAudioTime(sec: number): string {
 }
 
 function HoerenExamPageInner() {
+  const router = useRouter();
   const params = useParams<{ level: string }>();
   const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
@@ -45,6 +49,9 @@ function HoerenExamPageInner() {
   const [test, setTest] = useState<ExamTest | null>(null);
   const [activeTeilIdx, setActiveTeilIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [examMode, setExamMode] = useState<ExamMode>("practice");
+  const [playCounts, setPlayCounts] = useState<Record<string, number>>({});
+  const [sectionExpired, setSectionExpired] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -53,6 +60,9 @@ function HoerenExamPageInner() {
   const [loading, setLoading] = useState(true);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const passCountedRef = useRef<boolean>(false);
+
+  const isExamMode = examMode === "exam";
 
   useEffect(() => {
     setActiveTeilIdx(0);
@@ -60,14 +70,11 @@ function HoerenExamPageInner() {
     setLoading(true);
     const state = loadExamState(level, undefined, testId);
     setAnswers(state.hoerenAnswers || {});
-
-    // Clear any previously locked play counts in localStorage / sessionStorage
-    saveExamState(level, (st) => ({ ...st, hoerenPlayCounts: {} }), undefined, testId);
-    try {
-      sessionStorage.removeItem(`gtf_hoeren_locks_${level}`);
-    } catch {
-      // ignore
-    }
+    setExamMode(state.examMode || "practice");
+    setPlayCounts(state.hoerenPlayCounts || {});
+    setSectionExpired(
+      state.examMode === "exam" && (state.expiredSections || []).includes("hoeren"),
+    );
 
     const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache load for <100ms tab switching
@@ -143,12 +150,13 @@ function HoerenExamPageInner() {
   const [audioError, setAudioError] = useState(false);
   const [triedFallback, setTriedFallback] = useState(false);
 
-  // Stop playback and reset time when switching Teil
+  // Stop playback and reset pass counter when switching Teil
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
+    passCountedRef.current = false;
     setIsPlaying(false);
     setCurrentTime(0);
     setDuration(0);
@@ -157,6 +165,39 @@ function HoerenExamPageInner() {
     setAudioError(false);
     setTriedFallback(false);
   }, [activeTeilIdx, resolvedAudioSrc]);
+
+  // Force transcript closed whenever Prüfungsmodus is activated
+  useEffect(() => {
+    if (isExamMode) {
+      setShowTranscript(false);
+    } else {
+      setSectionExpired(false);
+    }
+  }, [isExamMode]);
+
+  const currentMaxPlays: number = currentTeil?.maxPlays === 1 ? 1 : 2;
+  const currentPlaysUsed: number = currentTeil ? playCounts[currentTeil.id] || 0 : 0;
+  const isAudioLocked =
+    isExamMode && (sectionExpired || (!isPlaying && currentPlaysUsed >= currentMaxPlays && !passCountedRef.current));
+
+  const incrementPlayCount = (teilId: string) => {
+    setPlayCounts((prev) => {
+      const next = { ...prev, [teilId]: (prev[teilId] || 0) + 1 };
+      saveExamState(level, (st) => ({ ...st, hoerenPlayCounts: next }), undefined, testId);
+      return next;
+    });
+  };
+
+  const handleTimeExpired = () => {
+    setSectionExpired(true);
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+    setIsPlaying(false);
+    window.setTimeout(() => {
+      router.push(`/exam/${level}/schreiben${testQuery}`);
+    }, 1800);
+  };
 
   const handleAudioError = () => {
     if (!triedFallback && fallbackAudioSrc && activeAudioSrc !== fallbackAudioSrc) {
@@ -171,6 +212,7 @@ function HoerenExamPageInner() {
   };
 
   const setAnswer = (qId: string, val: string) => {
+    if (isExamMode && sectionExpired) return;
     setAnswers((prev) => {
       const next = { ...prev, [qId]: val };
       saveExamState(level, (st) => ({ ...st, hoerenAnswers: next }), undefined, testId);
@@ -181,9 +223,16 @@ function HoerenExamPageInner() {
   const handleTogglePlayPause = () => {
     const el = audioRef.current;
     if (!el || !currentTeil) return;
+    if (isExamMode && sectionExpired) return;
+
     if (isPlaying) {
+      // In authentic Prüfungsmodus, pausing mid-track is disabled so audio runs like an exam CD
+      if (isExamMode) return;
       el.pause();
     } else {
+      if (isExamMode && !passCountedRef.current && currentPlaysUsed >= currentMaxPlays) {
+        return;
+      }
       let restarted = false;
       if (el.duration && el.currentTime >= el.duration - 0.25) {
         el.currentTime = 0;
@@ -193,6 +242,10 @@ function HoerenExamPageInner() {
       const playPromise = el.play();
       if (restarted) {
         setCurrentTime(0);
+      }
+      if (isExamMode && !passCountedRef.current) {
+        passCountedRef.current = true;
+        incrementPlayCount(currentTeil.id);
       }
       if (playPromise !== undefined) {
         playPromise.catch((err) => {
@@ -204,6 +257,7 @@ function HoerenExamPageInner() {
   };
 
   const handleRestartAudio = () => {
+    if (isExamMode) return;
     const el = audioRef.current;
     if (!el || !currentTeil) return;
     el.currentTime = 0;
@@ -220,6 +274,7 @@ function HoerenExamPageInner() {
   };
 
   const handleSkip = (deltaSeconds: number) => {
+    if (isExamMode) return;
     const el = audioRef.current;
     if (!el) return;
     const maxDur = el.duration && Number.isFinite(el.duration) ? el.duration : duration || 300;
@@ -232,6 +287,7 @@ function HoerenExamPageInner() {
   };
 
   const handleSeekSlider = (e: ChangeEvent<HTMLInputElement>) => {
+    if (isExamMode) return;
     const val = Number(e.target.value);
     const el = audioRef.current;
     if (el) {
@@ -247,7 +303,7 @@ function HoerenExamPageInner() {
   const handleReset = () => {
     if (
       typeof window !== "undefined" &&
-      !window.confirm("Alle Antworten in „Hören“ zurücksetzen? Ihre anderen Prüfungsteile bleiben erhalten.")
+      !window.confirm("Alle Antworten und Wiedergabezähler in „Hören“ zurücksetzen? Ihre anderen Prüfungsteile bleiben erhalten.")
     ) {
       return;
     }
@@ -255,8 +311,11 @@ function HoerenExamPageInner() {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
+    passCountedRef.current = false;
     const fresh = resetExamSection(level, "hoeren", undefined, testId);
     setAnswers(fresh.hoerenAnswers);
+    setPlayCounts(fresh.hoerenPlayCounts);
+    setSectionExpired(false);
     setIsPlaying(false);
     setCurrentTime(0);
     setProgressPct(0);
@@ -277,6 +336,9 @@ function HoerenExamPageInner() {
         onResetExam={handleReset}
         answeredCount={answeredInSection}
         totalQuestions={totalInSection}
+        examMode={examMode}
+        onModeChange={setExamMode}
+        onTimeExpired={handleTimeExpired}
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 pt-4 pb-36 sm:px-6 sm:pt-6 sm:pb-32">
@@ -314,32 +376,55 @@ function HoerenExamPageInner() {
               })}
             </div>
 
-            {/* Instructions card with active Teil Title & Transcript toggle */}
+            {/* Instructions card with active Teil Title & Mode-Aware Transcript Control */}
             <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-xs text-slate-700 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="space-y-1">
-                <p className="text-sm font-bold text-slate-900">
-                  {currentTeil.title}
-                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-sm font-bold text-slate-900">
+                    {currentTeil.title}
+                  </p>
+                  {isExamMode && (
+                    <span
+                      className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                        currentPlaysUsed >= currentMaxPlays && !isPlaying
+                          ? "border-rose-300 bg-rose-50 text-rose-700"
+                          : "border-amber-300 bg-amber-50 text-amber-800"
+                      }`}
+                    >
+                      <Lock className="h-3 w-3" />
+                      <span>
+                        Wiedergabe {Math.min(currentPlaysUsed, currentMaxPlays)} / {currentMaxPlays}
+                      </span>
+                    </span>
+                  )}
+                </div>
                 <p className="font-medium leading-relaxed text-slate-600">
                   {currentTeil.instructions}
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => setShowTranscript((prev) => !prev)}
-                className={`relative z-20 inline-flex items-center justify-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${
-                  showTranscript
-                    ? "border-slate-900 bg-slate-900 text-white shadow-xs"
-                    : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                }`}
-              >
-                <FileText className="h-3.5 w-3.5" />
-                <span>Transcript (Hörtext anzeigen)</span>
-              </button>
+              {isExamMode ? (
+                <span className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-2 text-xs font-bold text-rose-800 shrink-0">
+                  <Lock className="h-3.5 w-3.5" />
+                  <span>Transkript im Prüfungsmodus gesperrt</span>
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setShowTranscript((prev) => !prev)}
+                  className={`relative z-20 inline-flex items-center justify-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${
+                    showTranscript
+                      ? "border-slate-900 bg-slate-900 text-white shadow-xs"
+                      : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                  }`}
+                >
+                  <FileText className="h-3.5 w-3.5" />
+                  <span>Transcript (Hörtext anzeigen)</span>
+                </button>
+              )}
             </div>
 
-            {/* Collapsible German Dialogue Transcript */}
-            {showTranscript && (
+            {/* Collapsible German Dialogue Transcript (Strictly Übungsmodus only) */}
+            {!isExamMode && showTranscript && (
               <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3 shadow-sm text-slate-900">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
@@ -372,6 +457,21 @@ function HoerenExamPageInner() {
                 )}
               </div>
             )}
+
+            {/* Smart Audio + Transcript Shadowing & Cloze Dictation (Strictly Übungsmodus only) */}
+            {!isExamMode &&
+              currentTeil.script &&
+              currentTeil.script.length > 0 &&
+              Boolean(activeAudioSrc) && (
+                <HoerenShadowingStudio
+                  key={`exam-shadow-${currentTeil.id}`}
+                  audioSrc={activeAudioSrc}
+                  turns={currentTeil.script}
+                  levelHint={level}
+                  title={`${currentTeil.title} — Shadowing & Lückendiktat`}
+                  defaultCollapsed={true}
+                />
+              )}
 
             {/* QUESTIONS FOR ACTIVE HÖREN TEIL */}
             <div className="grid gap-4 md:grid-cols-2">
@@ -483,59 +583,79 @@ function HoerenExamPageInner() {
               {/* Left Playback Controls */}
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <motion.button
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={isAudioLocked ? undefined : { scale: 0.95 }}
                   type="button"
+                  disabled={isAudioLocked || (isExamMode && isPlaying)}
                   onClick={handleTogglePlayPause}
-                  className={`relative z-10 inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold shadow-sm transition cursor-pointer ${
-                    isPlaying
-                      ? "bg-emerald-600 text-white"
-                      : "bg-slate-900 text-white hover:bg-slate-800"
+                  className={`relative z-10 inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold shadow-sm transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${
+                    isAudioLocked
+                      ? "bg-rose-100 text-rose-800 border border-rose-300"
+                      : isPlaying
+                        ? "bg-emerald-600 text-white"
+                        : "bg-slate-900 text-white hover:bg-slate-800"
                   }`}
                 >
-                  {isPlaying ? (
+                  {isAudioLocked ? (
                     <>
-                      <Pause className="h-4 w-4 fill-current" />
-                      <span>Pause</span>
+                      <Lock className="h-3.5 w-3.5" />
+                      <span>Limit ({currentPlaysUsed}/{currentMaxPlays})</span>
+                    </>
+                  ) : isPlaying ? (
+                    <>
+                      {isExamMode ? (
+                        <Volume2 className="h-4 w-4 animate-pulse" />
+                      ) : (
+                        <Pause className="h-4 w-4 fill-current" />
+                      )}
+                      <span>{isExamMode ? "Läuft…" : "Pause"}</span>
                     </>
                   ) : (
                     <>
                       <Play className="h-4 w-4 fill-current" />
-                      <span>Play</span>
+                      <span>
+                        {isExamMode
+                          ? `Play (${currentPlaysUsed + 1}/${currentMaxPlays})`
+                          : "Play"}
+                      </span>
                     </>
                   )}
                 </motion.button>
 
-                <button
-                  type="button"
-                  onClick={() => handleSkip(-10)}
-                  className="relative z-10 inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
-                  title="10 Sekunden zurück"
-                >
-                  <RotateCcw className="h-3.5 w-3.5" />
-                  <span>-10s</span>
-                </button>
+                {!isExamMode && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleSkip(-10)}
+                      className="relative z-10 inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
+                      title="10 Sekunden zurück"
+                    >
+                      <RotateCcw className="h-3.5 w-3.5" />
+                      <span>-10s</span>
+                    </button>
 
-                <button
-                  type="button"
-                  onClick={() => handleSkip(10)}
-                  className="relative z-10 inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
-                  title="10 Sekunden vor"
-                >
-                  <span>+10s</span>
-                  <RotateCw className="h-3.5 w-3.5" />
-                </button>
+                    <button
+                      type="button"
+                      onClick={() => handleSkip(10)}
+                      className="relative z-10 inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
+                      title="10 Sekunden vor"
+                    >
+                      <span>+10s</span>
+                      <RotateCw className="h-3.5 w-3.5" />
+                    </button>
 
-                <button
-                  type="button"
-                  onClick={handleRestartAudio}
-                  className="relative z-10 hidden xs:inline-flex items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-2 text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
-                  title="Neu starten"
-                >
-                  <Volume2 className="h-4 w-4 text-slate-700" />
-                </button>
+                    <button
+                      type="button"
+                      onClick={handleRestartAudio}
+                      className="relative z-10 hidden xs:inline-flex items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-2 text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
+                      title="Neu starten"
+                    >
+                      <Volume2 className="h-4 w-4 text-slate-700" />
+                    </button>
+                  </>
+                )}
               </div>
 
-              {/* Center Interactive Seekable Timeline */}
+              {/* Center Timeline (seekable only in Übungsmodus; read-only progress in Prüfungsmodus) */}
               <div className="w-full sm:flex-1 order-last sm:order-none flex items-center gap-2.5">
                 <span className="font-mono text-[11px] font-bold text-slate-700 shrink-0 w-10 text-right">
                   {formatAudioTime(currentTime)}
@@ -543,38 +663,50 @@ function HoerenExamPageInner() {
                 <input
                   type="range"
                   aria-label="Audio-Zeitleiste"
+                  disabled={isExamMode}
                   min={0}
                   max={duration > 0 ? duration : 165}
                   step={0.1}
                   value={Math.min(currentTime, duration > 0 ? duration : 165)}
                   onChange={handleSeekSlider}
-                  className="relative z-10 w-full h-2 rounded-lg accent-slate-900 cursor-pointer bg-slate-200"
+                  className={`relative z-10 w-full h-2 rounded-lg accent-slate-900 bg-slate-200 ${
+                    isExamMode ? "cursor-not-allowed opacity-75" : "cursor-pointer"
+                  }`}
                 />
                 <span className="font-mono text-[11px] font-bold text-slate-500 shrink-0 w-10">
                   {formatAudioTime(duration > 0 ? duration : 165)}
                 </span>
               </div>
 
-              {/* Right: Transcript Toggle */}
-              <button
-                type="button"
-                onClick={() => setShowTranscript((prev) => !prev)}
-                className={`relative z-10 inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[11px] font-bold transition shrink-0 cursor-pointer ${
-                  showTranscript
-                    ? "border-slate-900 bg-slate-900 text-white"
-                    : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                }`}
-              >
-                <FileText className="h-3.5 w-3.5" />
-                <span className="hidden md:inline">Transcript (Hörtext anzeigen)</span>
-                <span className="md:hidden">Transcript</span>
-              </button>
+              {/* Right: Transcript Toggle (hidden in Prüfungsmodus) */}
+              {isExamMode ? (
+                <span className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[11px] font-bold text-amber-900 shrink-0">
+                  <Lock className="h-3.5 w-3.5" />
+                  <span>{currentPlaysUsed}/{currentMaxPlays} Plays</span>
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setShowTranscript((prev) => !prev)}
+                  className={`relative z-10 inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[11px] font-bold transition shrink-0 cursor-pointer ${
+                    showTranscript
+                      ? "border-slate-900 bg-slate-900 text-white"
+                      : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                  }`}
+                >
+                  <FileText className="h-3.5 w-3.5" />
+                  <span className="hidden md:inline">Transcript (Hörtext anzeigen)</span>
+                  <span className="md:hidden">Transcript</span>
+                </button>
+              )}
             </div>
 
             {/* Subtle Track Subtitle Row */}
             <div className="hidden sm:flex items-center justify-between text-[11px] text-slate-500">
               <span className="font-semibold truncate">
-                {currentTeil.title} · Übungsmodus (Unbegrenzte Wiedergabe &amp; Zeitsprung aktiv)
+                {isExamMode
+                  ? `${currentTeil.title} · Prüfungsmodus (Strikte ${currentMaxPlays}× Wiedergabe · Kein Zeitsprung · Kein Transkript)`
+                  : `${currentTeil.title} · Übungsmodus (Unbegrenzte Wiedergabe & Zeitsprung aktiv)`}
               </span>
               <span className="font-mono font-bold text-slate-700">{progressPct}%</span>
             </div>
@@ -612,6 +744,7 @@ function HoerenExamPageInner() {
               }
             }}
             onEnded={() => {
+              passCountedRef.current = false;
               setIsPlaying(false);
               setProgressPct(100);
             }}

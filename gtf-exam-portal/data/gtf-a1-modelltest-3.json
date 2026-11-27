@@ -1,0 +1,563 @@
+{
+  "id": "gtf-a1-modelltest-3",
+  "level": "a1",
+  "title": "GTF A1 Start Deutsch Modelltest 3 — Wohnung, Nachbarschaft & Urlaubsplanung",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat A1 / telc Deutsch A1",
+  "version": "2026.11",
+  "productSlug": "a1-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 45,
+      "teile": [
+        {
+          "id": "a1m3-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Kurze Nachrichten aus der Nachbarschaft",
+          "instructions": "Lesen Sie die beiden kurzen Nachrichten und die Aufgaben 1 bis 5. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Nachrichten: Neue Wohnung in Spandau & Hinweis vom Hausmeister",
+          "source": "GTF Sprachakademie Berlin · A1 Modelltest 3",
+          "passage": "Liebe Meera,\n\nich wohne seit letztem Montag in meiner neuen Wohnung in Berlin-Spandau. Die Wohnung ist im dritten Stock und hat zwei helle Zimmer, eine kleine Küche und einen schönen Balkon. Zum Glück gibt es im Haus einen Aufzug. Am Samstag ab 16:00 Uhr mache ich Kaffee und Kuchen. Hast du Zeit? Bring bitte nichts mit, ich kaufe alles ein!\n\nLiebe Grüße,\nSofia\n\n---\n\nWichtiger Hinweis für alle Hausbewohner:\n\nAm Donnerstag, den 18. Juni, wird von 09:00 bis 13:00 Uhr das Wasser im ganzen Haus abgestellt, weil ein Handwerker die Rohre im Keller repariert. Bitte füllen Sie vorher genug Trinkwasser ab. Ab 13:00 Uhr funktioniert alles wieder normal.\n\nVielen Dank für Ihr Verständnis!\nIhr Hausmeister Herr Krüger",
+          "questions": [
+            {
+              "id": "a1m3-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Sofias neue Wohnung liegt im Erdgeschoss und hat keinen Balkon.",
+              "answer": "falsch",
+              "explanation": "Im Text steht: „Die Wohnung ist im dritten Stock und hat zwei helle Zimmer ... und einen schönen Balkon.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "a1m3-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. In Sofias Wohnhaus gibt es einen Aufzug.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Zum Glück gibt es im Haus einen Aufzug.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "a1m3-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Meera soll am Samstag einen Kuchen zur Einladung mitbringen.",
+              "answer": "falsch",
+              "explanation": "Sofia schreibt: „Bring bitte nichts mit, ich kaufe alles ein!“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "a1m3-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Am Donnerstagvormittag gibt es für vier Stunden kein Wasser im Haus.",
+              "answer": "richtig",
+              "explanation": "Von 09:00 bis 13:00 Uhr (4 Stunden) wird das Wasser wegen einer Reparatur abgestellt.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a1m3-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Das Wasser bleibt den ganzen Donnerstag bis Mitternacht abgestellt.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Ab 13:00 Uhr funktioniert alles wieder normal.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1m3-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Schilder, Freizeit & Behördeninfos",
+          "instructions": "Lesen Sie die Informationen und die Aufgaben 6 bis 9. Wählen Sie jeweils a, b oder c.",
+          "passageTitle": "Hinweise: Sommerbad, Bürgeramt & Sportverein",
+          "source": "Berliner Alltagsinformationen",
+          "passage": "Info 1 — Sommerbad Kreuzberg:\nGeöffnet täglich von 07:00 bis 20:00 Uhr. Eine Tageskarte kostet 5,50 Euro, für Schüler und Studierende 3,50 Euro. Kinder unter 6 Jahren haben freien Eintritt. Bitte kaufen Sie Tickets am Automaten oder online.\n\nInfo 2 — Bürgeramt Mitte:\nFür die Anmeldung Ihrer Wohnung brauchen Sie unbedingt vorher einen Termin (online oder telefonisch unter 115). Bringen Sie bitte Ihren Reisepass und die Wohnungsgeberbestätigung mit.\n\nInfo 3 — Sportverein Grün-Weiß:\nJeden Dienstag und Donnerstag um 18:30 Uhr findet Badminton für Anfänger in der Sporthalle Nord statt. Das erste Probetraining ist kostenlos. Bitte Hallenschuhe mit heller Sohle mitbringen!",
+          "questions": [
+            {
+              "id": "a1m3-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Wie viel bezahlt eine Studentin für eine Tageskarte im Sommerbad Kreuzberg?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "5,50 Euro."
+                },
+                {
+                  "id": "b",
+                  "text": "3,50 Euro."
+                },
+                {
+                  "id": "c",
+                  "text": "Der Eintritt ist für alle kostenlos."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „für Schüler und Studierende 3,50 Euro.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a1m3-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Welche Telefonnummer hilft bei einem Termin im Bürgeramt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Nummer 115."
+                },
+                {
+                  "id": "b",
+                  "text": "Die Nummer 110."
+                },
+                {
+                  "id": "c",
+                  "text": "Man kann nur ohne Termin vorbeikommen."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „brauchen Sie unbedingt vorher einen Termin (online oder telefonisch unter 115).“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "a1m3-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Was braucht man für das Badminton-Training in der Sporthalle Nord?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Einen Reisepass."
+                },
+                {
+                  "id": "b",
+                  "text": "Hallenschuhe mit heller Sohle."
+                },
+                {
+                  "id": "c",
+                  "text": "Eine Jahreskarte vom Sommerbad."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Bitte Hallenschuhe mit heller Sohle mitbringen!“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a1m3-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Wie teuer ist das erste Probetraining beim Sportverein Grün-Weiß?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Es kostet 10 Euro."
+                },
+                {
+                  "id": "b",
+                  "text": "Es kostet 5,50 Euro."
+                },
+                {
+                  "id": "c",
+                  "text": "Es ist kostenlos."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „Das erste Probetraining ist kostenlos.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1m3-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine — Einladung nach Berlin",
+          "instructions": "Wählen Sie für jede Lücke 10–14 das passende Wort a, b oder c.",
+          "mode": "select",
+          "text": "Lieber Vikram,\n\nwie geht es {{10}}? Im August habe ich zwei Wochen Urlaub und {{11}} dich sehr gern nach Berlin einladen. Du kannst bei mir {{12}} der Wohnung schlafen. Wir können zusammen das Brandenburger Tor besuchen und {{13}} den Tiergarten spazieren gehen. Schreib mir bitte bald, {{14}} du Zeit hast!\n\nHerzliche Grüße,\nKaran",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "dir"
+                },
+                {
+                  "id": "b",
+                  "text": "dich"
+                },
+                {
+                  "id": "c",
+                  "text": "du"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Wendung im Dativ: „Wie geht es dir?“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "möchte"
+                },
+                {
+                  "id": "b",
+                  "text": "möchtest"
+                },
+                {
+                  "id": "c",
+                  "text": "möchten"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Subjekt ist „ich“ (aus dem ersten Satzteil): „ich habe ... und (ich) möchte dich einladen.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "in"
+                },
+                {
+                  "id": "b",
+                  "text": "auf"
+                },
+                {
+                  "id": "c",
+                  "text": "zu"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Wo? Dativ Femininum mit „in“: „in der Wohnung schlafen“.",
+              "mistakeTags": [
+                "CASE_DAT_WECHSEL",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "durch"
+                },
+                {
+                  "id": "b",
+                  "text": "aus"
+                },
+                {
+                  "id": "c",
+                  "text": "bei"
+                }
+              ],
+              "answer": "a",
+              "explanation": "„durch + Akkusativ“: „durch den Tiergarten spazieren gehen“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "wann"
+                },
+                {
+                  "id": "b",
+                  "text": "wer"
+                },
+                {
+                  "id": "c",
+                  "text": "wohin"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Indirekte Zeitfrage: „Schreib mir bitte bald, wann du Zeit hast!“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 20,
+      "teile": [
+        {
+          "id": "a1m3-hoeren-1",
+          "title": "Hören Teil 1 — Hotel-Nachricht & Busdurchsage",
+          "instructions": "Hören Sie die Aufnahme und lösen Sie die Aufgaben 1 bis 3. Wählen Sie a, b oder c.",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/a1_m3_hoeren_01.mp3",
+          "audio": {
+            "localFile": "a1_m3_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Hotelrezeption",
+              "voice": "female",
+              "text": "Guten Tag, hier spricht das Hotel Sonnenblick in München. Ihr Einzelzimmer ist am Freitag ab 14 Uhr für Sie bezugsfertig. Das Frühstücksbuffet gibt es von 7 bis 10 Uhr und kostet 12 Euro pro Person. Vom Hauptbahnhof fahren Sie nur zwei Stationen mit der S-Bahn bis zum Marienplatz."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a1m3-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Ab wann ist das Hotelzimmer am Freitag bezugsfertig?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Ab 10 Uhr."
+                },
+                {
+                  "id": "b",
+                  "text": "Ab 14 Uhr."
+                },
+                {
+                  "id": "c",
+                  "text": "Ab 18 Uhr."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Die Rezeption sagt: „Ihr Einzelzimmer ist am Freitag ab 14 Uhr für Sie bezugsfertig.“",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "a1m3-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wie viel kostet das Frühstücksbuffet im Hotel?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "12 Euro pro Person."
+                },
+                {
+                  "id": "b",
+                  "text": "7 Euro pro Person."
+                },
+                {
+                  "id": "c",
+                  "text": "20 Euro pro Person."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Hörtext: „kostet 12 Euro pro Person.“",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "a1m3-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Wie viele Stationen fährt man mit der S-Bahn vom Hauptbahnhof zum Marienplatz?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Fünf Stationen."
+                },
+                {
+                  "id": "b",
+                  "text": "Zehn Stationen."
+                },
+                {
+                  "id": "c",
+                  "text": "Zwei Stationen."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Hörtext: „fahren Sie nur zwei Stationen mit der S-Bahn bis zum Marienplatz.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a1m3-hoeren-2",
+          "title": "Hören Teil 2 — Gespräch in der Apotheke",
+          "instructions": "Hören Sie den Dialog in der Apotheke und wählen Sie: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/a1_m3_hoeren_02.mp3",
+          "audio": {
+            "localFile": "a1_m3_hoeren_02.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Kunde",
+              "voice": "male",
+              "text": "Guten Tag! Ich habe seit gestern Abend Halsschmerzen und leichten Husten. Haben Sie einen guten Hustensaft?"
+            },
+            {
+              "speaker": "Apothekerin",
+              "voice": "female",
+              "text": "Ja, natürlich! Nehmen Sie diesen pflanzlichen Saft dreimal täglich nach dem Essen ein. Er kostet 8 Euro 90 und Sie brauchen dafür kein Rezept. Trinken Sie außerdem viel warmen Tee."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a1m3-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Der Kunde hat Halsschmerzen und leichten Husten.",
+              "answer": "richtig",
+              "explanation": "Er sagt direkt am Anfang: „Ich habe seit gestern Abend Halsschmerzen und leichten Husten.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "a1m3-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Für den pflanzlichen Hustensaft braucht der Kunde ein ärztliches Rezept.",
+              "answer": "falsch",
+              "explanation": "Die Apothekerin erklärt: „Sie brauchen dafür kein Rezept.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "a1m3-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Der Saft soll dreimal täglich nach dem Essen eingenommen werden.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: „dreimal täglich nach dem Essen ein.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 20,
+      "tasks": [
+        {
+          "id": "a1m3-schreiben-1",
+          "title": "Schreiben Teil 1 — Hotelzimmer reservieren",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine kurze formelle E-Mail an ein Hotel in Hamburg (ca. 30 Wörter). Bearbeiten Sie alle drei Punkte.",
+          "situation": "Sie möchten am nächsten Wochenende zwei Nächte in Hamburg übernachten.",
+          "leitpunkte": [
+            "Nennen Sie Ihr Anreise- und Abreisedatum (Einzelzimmer).",
+            "Fragen Sie nach dem Preis pro Nacht inklusive Frühstück.",
+            "Bitten Sie um eine schnelle Bestätigung."
+          ],
+          "minWords": 25,
+          "recommendedMinutes": 10
+        },
+        {
+          "id": "a1m3-schreiben-2",
+          "title": "Schreiben Teil 2 — Geburtstagseinladung an eine Freundin",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine kurze Nachricht an Ihre Freundin Hannah (ca. 30 Wörter).",
+          "situation": "Sie haben am kommenden Sonntag Geburtstag und laden Hannah zu sich nach Hause ein.",
+          "leitpunkte": [
+            "Wann beginnt die Feier bei Ihnen?",
+            "Was gibt es zu essen und zu trinken?",
+            "Fragen Sie, ob Hannah kommen kann."
+          ],
+          "minWords": 25,
+          "recommendedMinutes": 10
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "a1m3-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Sich vorstellen & Buchstabieren",
+          "instructions": "Stellen Sie sich kurz vor und buchstabieren Sie Ihren Nachnamen.",
+          "card": {
+            "heading": "Vorstellung (Start Deutsch 1 · Set 3)",
+            "subheading": "Sprechen Sie klar und nennen Sie auch eine Telefonnummer oder E-Mail.",
+            "bullets": [
+              "Vorname & Nachname (buchstabieren)",
+              "Alter & Geburtsort",
+              "Wohnort & Adresse",
+              "Beruf / Studium & Deutschkurs",
+              "Lieblingsessen oder Lieblingshobby"
+            ]
+          },
+          "examinerScript": "Guten Tag! Willkommen zu Modelltest 3. Bitte stellen Sie sich kurz vor und buchstabieren Sie am Ende Ihren Nachnamen.",
+          "examinerAudio": {
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 20,
+          "speakSeconds": 45
+        },
+        {
+          "id": "a1m3-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Um Informationen bitten (Thema: Wohnen)",
+          "instructions": "Formulieren Sie passende Fragen zu den drei Stichwörtern rund um eine neue Wohnung.",
+          "card": {
+            "heading": "Thema: Wohnung & Zimmer",
+            "subheading": "Stellen Sie 3 einfache Fragen und beantworten Sie eine Rückfrage.",
+            "bullets": [
+              "Stichwort 1: Miete (Wie hoch ist die Miete?)",
+              "Stichwort 2: Balkon (Hat die Wohnung einen Balkon?)",
+              "Stichwort 3: U-Bahn (Wo ist die nächste U-Bahn-Station?)"
+            ]
+          },
+          "examinerScript": "In Teil 2 geht es um das Thema Wohnen. Bitte stellen Sie drei Fragen zu den Stichwörtern Miete, Balkon und U-Bahn.",
+          "examinerAudio": {
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 20,
+          "speakSeconds": 45
+        },
+        {
+          "id": "a1m3-sprechen-3",
+          "teil": 3,
+          "title": "Sprechen Teil 3 — Höfliche Bitten im Alltag",
+          "instructions": "Formulieren Sie zu jeder Situation eine höfliche Bitte auf Deutsch.",
+          "card": {
+            "heading": "Alltagssituationen (Restaurant · Arzt · Zug)",
+            "subheading": "Nutzen Sie „Können Sie bitte ...?“ oder „Ich hätte gern ...“.",
+            "bullets": [
+              "Situation 1: Im Restaurant — die Rechnung bestellen",
+              "Situation 2: Beim Arzt — einen neuen Termin für nächste Woche vereinbaren",
+              "Situation 3: Im Zug — bitten, das Fenster zu schließen"
+            ]
+          },
+          "examinerScript": "Bitte formulieren Sie in Teil 3 drei höfliche Bitten: im Restaurant, beim Arzt und im Zug.",
+          "examinerAudio": {
+            "localFile": "a1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 20,
+          "speakSeconds": 45
+        }
+      ]
+    }
+  }
+}

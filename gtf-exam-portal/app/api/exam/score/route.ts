@@ -1,15 +1,21 @@
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { isLevel } from "@/lib/config";
+import { classifyMistakeCodes, normalizeMistakeCodes } from "@/lib/mistake-dna/taxonomy";
+import type { MistakeOccurrenceInput } from "@/lib/mistake-dna/store";
 import { requireVerifiedSession } from "@/lib/server/auth-session";
 import { getServerExamTest, saveExamAttempt } from "@/lib/server/catalog";
 import { getFirebaseAdminFirestore } from "@/lib/server/firebase-admin";
+import { recordMistakeOccurrencesAdmin } from "@/lib/server/mistake-dna-admin";
 import { verifyAiEvaluationToken } from "@/lib/server/rate-limit";
 import type {
+  ExamMistakeCluster,
   ExamResult,
+  MistakeCode,
   Question,
   SchreibenEvaluation,
   ScoredItem,
+  SectionKey,
   SectionScore,
   SprechenEvaluation,
 } from "@/lib/types";
@@ -65,6 +71,17 @@ export async function POST(req: Request) {
           const given = lesenAnswers[q.id] ?? null;
           const correct = q.answer || "";
           const isCorrect = Boolean(given && given === correct);
+          const mistakeTags =
+            !isCorrect && given
+              ? classifyMistakeCodes({
+                  section: "lesen",
+                  prompt: q.prompt,
+                  explanation: q.explanation,
+                  given: optionText(q, given),
+                  correct: optionText(q, correct) || correct,
+                  explicitTags: q.mistakeTags,
+                })
+              : undefined;
           lesenItems.push({
             id: q.id,
             teilTitle: teil.title,
@@ -76,6 +93,7 @@ export async function POST(req: Request) {
             isCorrect,
             points: isCorrect ? pts : 0,
             explanation: q.explanation || "",
+            mistakeTags,
           });
         }
       } else {
@@ -92,6 +110,17 @@ export async function POST(req: Request) {
             return opt ? `${opt.id.toUpperCase()}) ${opt.text}` : val;
           };
           const isCorrect = Boolean(given && given === correct);
+          const mistakeTags =
+            !isCorrect && given
+              ? classifyMistakeCodes({
+                  section: "lesen",
+                  prompt: `${teil.title} Lücke [${g.id}]`,
+                  explanation: g.explanation,
+                  given: findLabel(given),
+                  correct: findLabel(correct) || correct,
+                  explicitTags: g.mistakeTags,
+                })
+              : undefined;
           lesenItems.push({
             id: key,
             teilTitle: teil.title,
@@ -103,6 +132,7 @@ export async function POST(req: Request) {
             isCorrect,
             points: isCorrect ? pts : 0,
             explanation: g.explanation || "",
+            mistakeTags,
           });
         }
       }
@@ -122,6 +152,17 @@ export async function POST(req: Request) {
         const given = hoerenAnswers[q.id] ?? null;
         const correct = q.answer || "";
         const isCorrect = Boolean(given && given === correct);
+        const mistakeTags =
+          !isCorrect && given
+            ? classifyMistakeCodes({
+                section: "hoeren",
+                prompt: q.prompt,
+                explanation: q.explanation,
+                given: optionText(q, given),
+                correct: optionText(q, correct) || correct,
+                explicitTags: q.mistakeTags,
+              })
+            : undefined;
         hoerenItems.push({
           id: q.id,
           teilTitle: teil.title,
@@ -133,6 +174,7 @@ export async function POST(req: Request) {
           isCorrect,
           points: isCorrect ? pts : 0,
           explanation: q.explanation || "",
+          mistakeTags,
         });
       }
     }
@@ -160,6 +202,13 @@ export async function POST(req: Request) {
       const pct = isSignedValid && ev ? Math.max(0, Math.min(100, Math.round(ev.score))) : 0;
       schreibenVerifiedTotal += pct;
       const isCorrect = pct >= test.passPercent;
+      const schreibenTags =
+        isSignedValid && ev
+          ? normalizeMistakeCodes([
+              ...(ev.mistakeTags || []),
+              ...(ev.corrections || []).map((c) => c.mistakeCode).filter(Boolean),
+            ])
+          : [];
       return {
         id: task.id,
         teilTitle: task.title,
@@ -178,6 +227,7 @@ export async function POST(req: Request) {
           isSignedValid && ev
             ? `${ev.summaryDe} — Hinglish: ${ev.summaryHinglish}`
             : "Reichen Sie Ihren Text im Modul „Schreiben“ zur verifizierten KI-Bewertung ein.",
+        mistakeTags: schreibenTags.length > 0 ? schreibenTags : undefined,
       };
     });
 
@@ -206,6 +256,13 @@ export async function POST(req: Request) {
       const pct = isSignedValid && ev ? Math.max(0, Math.min(100, Math.round(ev.score))) : 0;
       sprechenVerifiedTotal += pct;
       const isCorrect = pct >= test.passPercent;
+      const sprechenTags =
+        isSignedValid && ev
+          ? normalizeMistakeCodes([
+              ...(ev.mistakeTags || []),
+              ...(ev.corrections || []).map((c) => c.mistakeCode).filter(Boolean),
+            ])
+          : [];
       return {
         id: teil.id,
         teilTitle: teil.title,
@@ -224,6 +281,7 @@ export async function POST(req: Request) {
           isSignedValid && ev
             ? `${ev.summaryDe} — Hinglish: ${ev.summaryHinglish}`
             : "Nehmen Sie im Modul „Sprechen“ Ihre Antwort per Mikrofon auf.",
+        mistakeTags: sprechenTags.length > 0 ? sprechenTags : undefined,
       };
     });
 
@@ -298,6 +356,58 @@ export async function POST(req: Request) {
       schreibenVerifiedTotal > 0 ||
       sprechenVerifiedTotal > 0;
 
+    // Aggregate Mistake-DNA weak-spot clusters across all 4 sections
+    const clusterMap = new Map<
+      MistakeCode,
+      {
+        count: number;
+        sections: Set<SectionKey>;
+        samplePrompt?: string;
+        sampleWrong?: string;
+        sampleRight?: string;
+      }
+    >();
+    const dnaOccurrencesToPersist: MistakeOccurrenceInput[] = [];
+
+    for (const sec of sections) {
+      for (const item of sec.items) {
+        if (!item.mistakeTags || item.mistakeTags.length === 0) continue;
+        for (const code of item.mistakeTags) {
+          const entry = clusterMap.get(code) || { count: 0, sections: new Set<SectionKey>() };
+          entry.count += 1;
+          entry.sections.add(sec.section);
+          if (!entry.samplePrompt && item.prompt) {
+            entry.samplePrompt = item.prompt.slice(0, 180);
+            entry.sampleWrong = (item.givenText || item.given || "").slice(0, 140);
+            entry.sampleRight = (item.correctText || item.correct || "").slice(0, 140);
+          }
+          clusterMap.set(code, entry);
+
+          // Only auto-persist Lesen & Hören here (Schreiben/Sprechen already persisted on AI eval)
+          if (sec.section === "lesen" || sec.section === "hoeren") {
+            dnaOccurrencesToPersist.push({
+              errorKey: code,
+              source: sec.section,
+              prompt: item.prompt,
+              wrong: item.givenText || item.given || "",
+              right: item.correctText || item.correct || "",
+            });
+          }
+        }
+      }
+    }
+
+    const mistakeSummary: ExamMistakeCluster[] = Array.from(clusterMap.entries())
+      .map(([errorKey, data]) => ({
+        errorKey,
+        count: data.count,
+        sections: Array.from(data.sections),
+        samplePrompt: data.samplePrompt,
+        sampleWrong: data.sampleWrong,
+        sampleRight: data.sampleRight,
+      }))
+      .sort((a, b) => b.count - a.count);
+
     let attemptId: string | null = `score_${contentFingerprint}`;
     let persisted = false;
 
@@ -354,6 +464,10 @@ export async function POST(req: Request) {
         console.warn("[GTF Firestore] Test score admin sync notice:", fsErr);
       }
 
+      if (dnaOccurrencesToPersist.length > 0) {
+        await recordMistakeOccurrencesAdmin(session.uid, dnaOccurrencesToPersist).catch(() => {});
+      }
+
       if (recentAttemptCache.size > 500) recentAttemptCache.clear();
       recentAttemptCache.set(contentFingerprint, {
         attemptId,
@@ -372,6 +486,7 @@ export async function POST(req: Request) {
       passed,
       attemptId,
       persisted,
+      mistakeSummary,
     };
 
     return NextResponse.json({ result });

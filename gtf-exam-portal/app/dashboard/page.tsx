@@ -9,6 +9,8 @@ import {
   type ActiveCefrLevel,
 } from "@/components/StudentHubHeroSlider";
 import { SubdivisionCard } from "@/components/SubdivisionCard";
+import { MistakeDnaRadarCard } from "@/components/MistakeDnaRadarCard";
+import { PathwayReadinessEngine } from "@/components/PathwayReadinessEngine";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { useAuth } from "@/lib/auth-context";
 import { BRAND } from "@/lib/config";
@@ -87,6 +89,12 @@ export default function DashboardHubPage() {
           activeLevel={activeCefrLevel}
           isAuthenticated={isAuthenticated}
         />
+
+        {/* Live 0–100 Germany Pathway Readiness Score & Next Action Banner */}
+        <PathwayReadinessEngine mode="compact" />
+
+        {/* Mistake-DNA Radar & 5-Min Daily Weak-Spot Remediation */}
+        <MistakeDnaRadarCard mode="dashboard" uid={progressUid} />
 
         {/* Level 1: The 3 Core Divisions */}
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-7 sm:py-10 space-y-6 sm:space-y-8">

@@ -1,0 +1,677 @@
+{
+  "id": "gtf-b1-modelltest-3",
+  "level": "b1",
+  "title": "GTF B1 Modelltest 3 — Gesundheitssystem, Ehrenamt & Nachhaltige Mobilität",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat B1 / telc Deutsch B1",
+  "version": "2026.11",
+  "productSlug": "b1-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 65,
+      "teile": [
+        {
+          "id": "b1m3-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Das deutsche Gesundheitssystem & E-Rezept",
+          "instructions": "Lesen Sie den Artikel und entscheiden Sie bei den Aussagen 1 bis 5: richtig oder falsch?",
+          "passageTitle": "Hausarzt, Versichertenkarte und E-Rezept: So funktioniert die medizinische Versorgung in Deutschland",
+          "source": "GTF Gesundheits- & Alltagsratgeber · B1 Modelltest 3",
+          "passage": "In Deutschland besteht für alle Einwohnerinnen und Einwohner eine gesetzliche Krankenversicherungspflicht. Die große Mehrheit – rund 90 Prozent der Bevölkerung – ist in einer gesetzlichen Krankenkasse (GKV) wie der TK, AOK oder Barmer versichert. Bei jedem Arztbesuch legt man die elektronische Gesundheitskarte vor, sodass die Kosten für notwendige Untersuchungen direkt mit der Krankenkasse abgerechnet werden.\n\nBei leichten oder unklaren Beschwerden ist in Deutschland zunächst die Hausarztpraxis die erste Anlaufstelle. Wenn eine spezialisierte Behandlung nötig ist, stellt die Hausärztin oder der Hausarzt eine Überweisung für eine Facharztpraxis aus. Seit 2024 werden verschreibungspflichtige Medikamente zudem standardmäßig als elektronisches Rezept (E-Rezept) gespeichert: In der Apotheke genügt das Einlesen der Gesundheitskarte, und man zahlt bei den meisten Medikamenten lediglich eine gesetzliche Zuzahlung zwischen fünf und zehn Euro. Die Notaufnahme im Krankenhaus sollte dagegen echten medizinischen Notfällen vorbehalten bleiben.",
+          "questions": [
+            {
+              "id": "b1m3-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Eine Krankenversicherung ist in Deutschland für Einwohnerinnen und Einwohner freiwillig.",
+              "answer": "falsch",
+              "explanation": "Im Text: „In Deutschland besteht für alle Einwohnerinnen und Einwohner eine gesetzliche Krankenversicherungspflicht.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Etwa 90 Prozent der Menschen in Deutschland sind gesetzlich krankenversichert.",
+              "answer": "richtig",
+              "explanation": "Im Text: „rund 90 Prozent der Bevölkerung – ist in einer gesetzlichen Krankenkasse (GKV) ... versichert.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Bei leichten Beschwerden sollte man in Deutschland zuerst eine Hausarztpraxis aufsuchen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „ist in Deutschland zunächst die Hausarztpraxis die erste Anlaufstelle.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Um ein E-Rezept in der Apotheke einzulösen, reicht das Einlesen der elektronischen Gesundheitskarte.",
+              "answer": "richtig",
+              "explanation": "Im Text: „In der Apotheke genügt das Einlesen der Gesundheitskarte...“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Die Notaufnahme im Krankenhaus ist für gewöhnliche Erkältungen und Routineuntersuchungen gedacht.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Die Notaufnahme im Krankenhaus sollte dagegen echten medizinischen Notfällen vorbehalten bleiben.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1m3-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Ratgeber: Ehrenamt & gesellschaftliches Engagement",
+          "instructions": "Lesen Sie den Beitrag und lösen Sie die Aufgaben 6 bis 9. Wählen Sie a, b oder c.",
+          "passageTitle": "Warum sich ein Ehrenamt in Deutschland doppelt lohnt",
+          "source": "Magazin Gesellschaft & Integration Berlin",
+          "passage": "Fast jeder dritte Mensch in Deutschland engagiert sich freiwillig in seiner Freizeit – zum Beispiel als Jugendtrainer im Sportverein, bei der Freiwilligen Feuerwehr, in der Nachbarschaftshilfe oder in einem Sprachcafé. Ein solches Ehrenamt wird unentgeltlich ausgeübt, bietet jedoch gerade für internationale Studierende und Fachkräfte enorme Vorteile.\n\nWer sich ehrenamtlich einbringt, knüpft schnell authentische Kontakte außerhalb von Arbeit oder Universität und trainiert ganz nebenbei alltägliches Deutsch im echten Gespräch. Darüber hinaus schätzen viele deutsche Arbeitgeber gesellschaftliches Engagement sehr: Im Lebenslauf zeigt ein Ehrenamt Teamfähigkeit, Verantwortungsbewusstsein und Eigeninitiative. Viele Städte stellen Engagierten nach einer bestimmten Stundenzahl sogar eine Ehrenamtskarte aus, mit der man Vergünstigungen in Museen, Schwimmbädern und Bibliotheken erhält.",
+          "questions": [
+            {
+              "id": "b1m3-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Wie viele Menschen engagieren sich laut Text in Deutschland ehrenamtlich?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Fast jeder dritte Mensch."
+                },
+                {
+                  "id": "b",
+                  "text": "Weniger als ein Prozent."
+                },
+                {
+                  "id": "c",
+                  "text": "Ausschließlich Studierende im ersten Semester."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „Fast jeder dritte Mensch in Deutschland engagiert sich freiwillig in seiner Freizeit“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Warum ist ein Ehrenamt besonders für internationale Fachkräfte nützlich?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Es ersetzt die gesetzliche Steuererklärung."
+                },
+                {
+                  "id": "b",
+                  "text": "Man knüpft schnell Kontakte und übt echtes Alltagsdeutsch."
+                },
+                {
+                  "id": "c",
+                  "text": "Man erhält dadurch ein hohes monatliches Gehalt."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Ein Ehrenamt ist unentgeltlich, hilft aber enorm bei sozialen Kontakten und alltäglicher Sprachpraxis.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Was signalisiert ein Ehrenamt im Lebenslauf für deutsche Arbeitgeber?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Dass jemand zu wenig Fachwissen besitzt."
+                },
+                {
+                  "id": "b",
+                  "text": "Teamfähigkeit, Verantwortungsbewusstsein und Eigeninitiative."
+                },
+                {
+                  "id": "c",
+                  "text": "Dass jemand keine Vollzeitstelle sucht."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „Im Lebenslauf zeigt ein Ehrenamt Teamfähigkeit, Verantwortungsbewusstsein und Eigeninitiative.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "b1m3-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Welchen praktischen Vorteil bietet die Ehrenamtskarte in vielen Städten?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Kostenlose Flugtickets."
+                },
+                {
+                  "id": "b",
+                  "text": "Einen unbefristeten Mietvertrag."
+                },
+                {
+                  "id": "c",
+                  "text": "Vergünstigungen in Museen, Schwimmbädern und Bibliotheken."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „mit der man Vergünstigungen in Museen, Schwimmbädern und Bibliotheken erhält.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1m3-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 1 — Bewerbung um ein Praktikum",
+          "instructions": "Wählen Sie für jede Lücke 10–15 die richtige Option a, b oder c.",
+          "mode": "select",
+          "text": "Sehr geehrte Frau Becker,\n\nmit großem Interesse habe ich Ihre Anzeige gelesen, in {{10}} Sie einen Praktikumsplatz im Bereich Pflege und Patientenbetreuung anbieten. Derzeit besuche ich einen B1-Intensivkurs in Berlin, {{11}} ich meine Sprachkenntnisse gezielt für den Klinikalltag verbessern möchte. In meinem Heimatland habe ich bereits zwei Jahre Erfahrung in einer Klinik gesammelt, {{12}} mir der Umgang mit Patientinnen und Patienten sehr vertraut ist. Ich {{13}} mich sehr freuen, Ihr Team ab dem 1. Oktober für vier Wochen unterstützen zu dürfen. Alle erforderlichen Unterlagen {{14}} dieser E-Mail beigefügt. Über eine Einladung zu einem persönlichen Gespräch wäre ich Ihnen sehr {{15}}.\n\nMit freundlichen Grüßen,\nArjun Nair",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "der"
+                },
+                {
+                  "id": "b",
+                  "text": "die"
+                },
+                {
+                  "id": "c",
+                  "text": "den"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Relativpronomen Dativ Femininum („die Anzeige“ + „in“): „in der Sie ... anbieten“.",
+              "mistakeTags": [
+                "CASE_DAT_WECHSEL"
+              ]
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "da"
+                },
+                {
+                  "id": "b",
+                  "text": "trotzdem"
+                },
+                {
+                  "id": "c",
+                  "text": "sondern"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Kausaler Nebensatz mit Verb am Ende („möchte“): „da“ (= weil).",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "sodass"
+                },
+                {
+                  "id": "b",
+                  "text": "obwohl"
+                },
+                {
+                  "id": "c",
+                  "text": "falls"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Konsekutiver Nebensatz (Folge): „sodass mir der Umgang ... sehr vertraut ist“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "würde"
+                },
+                {
+                  "id": "b",
+                  "text": "werde"
+                },
+                {
+                  "id": "c",
+                  "text": "wurde"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Höflicher Konjunktiv II in Bewerbungen: „Ich würde mich sehr freuen...“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "sind"
+                },
+                {
+                  "id": "b",
+                  "text": "haben"
+                },
+                {
+                  "id": "c",
+                  "text": "machen"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Zustandspassiv Plural: „Alle erforderlichen Unterlagen sind dieser E-Mail beigefügt.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "dankbar"
+                },
+                {
+                  "id": "b",
+                  "text": "danken"
+                },
+                {
+                  "id": "c",
+                  "text": "Dank"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Prädikatives Adjektiv: „jemandem für etwas dankbar sein“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1m3-sprachbausteine-2",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 2 — Leben in einer Berliner WG (Wortliste)",
+          "instructions": "Ordnen Sie den Lücken 16–20 das passende Wort aus der Wortliste (a–h) zu. Drei Wörter bleiben übrig.",
+          "mode": "wordbank",
+          "text": "Seit sechs Monaten wohne ich in einer Dreier-WG in Berlin-Wedding. Am Anfang war es gar nicht leicht, ein bezahlbares Zimmer zu {{16}}. Besonders gut gefällt mir, {{17}} wir einmal pro Woche gemeinsam kochen und über unseren Alltag sprechen. Natürlich braucht man in einer WG klare Regeln, {{18}} die Küche und das Bad sauber bleiben. {{19}} meines vollen Kursplans habe ich dadurch schnell neue Freunde gefunden. Ich kann jedem Neuankömmling nur {{20}}, das WG-Leben einmal auszuprobieren.",
+          "wordBank": [
+            {
+              "id": "a",
+              "text": "finden"
+            },
+            {
+              "id": "b",
+              "text": "dass"
+            },
+            {
+              "id": "c",
+              "text": "damit"
+            },
+            {
+              "id": "d",
+              "text": "Trotz"
+            },
+            {
+              "id": "e",
+              "text": "empfehlen"
+            },
+            {
+              "id": "f",
+              "text": "weil"
+            },
+            {
+              "id": "g",
+              "text": "ob"
+            },
+            {
+              "id": "h",
+              "text": "während"
+            }
+          ],
+          "gaps": [
+            {
+              "id": "16",
+              "answer": "a",
+              "explanation": "Infinitiv mit „zu“: „ein bezahlbares Zimmer zu finden“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "17",
+              "answer": "b",
+              "explanation": "Nebensatz nach „Besonders gut gefällt mir“ → „dass“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "18",
+              "answer": "c",
+              "explanation": "Finalsatz mit unterschiedlichem Subjekt (man ↔ Küche/Bad): „damit ... sauber bleiben“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "19",
+              "answer": "d",
+              "explanation": "Konzessive Präposition mit Genitiv: „Trotz meines vollen Kursplans“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            },
+            {
+              "id": "20",
+              "answer": "e",
+              "explanation": "Verb mit Dativ + Infinitivsatz: „jemandem empfehlen, etwas auszuprobieren“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 40,
+      "teile": [
+        {
+          "id": "b1m3-hoeren-1",
+          "title": "Hören Teil 1 — Radiointerview: Nachhaltige Mobilität in Berlin",
+          "instructions": "Hören Sie das Interview und lösen Sie die Aufgaben 1 bis 3 (a, b oder c).",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/b1_m3_hoeren_01.mp3",
+          "audio": {
+            "localFile": "b1_m3_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Mobilitätskoordinatorin",
+              "voice": "female",
+              "text": "In Berlin nutzen immer mehr Pendlerinnen und Pendler eine Kombination aus S-Bahn und Leihfahrrad für den Weg zur Arbeit. Seit dem letzten Jahr wurden über 120 neue Mobilitätsstationen direkt an Bahnhöfen eingerichtet. Unser Ziel ist es, den Umstieg vom eigenen Auto auf klimafreundliche Verkehrsmittel so einfach und sicher wie möglich zu gestalten – unter anderem durch breitere, geschützte Radwege."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1m3-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Welche Kombination nutzen laut Interview immer mehr Berliner Pendler?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "S-Bahn und Leihfahrrad."
+                },
+                {
+                  "id": "b",
+                  "text": "Flugzeug und Taxi."
+                },
+                {
+                  "id": "c",
+                  "text": "Fernbus und Kreuzfahrtschiff."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Hörtext: „eine Kombination aus S-Bahn und Leihfahrrad für den Weg zur Arbeit.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "b1m3-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wie viele neue Mobilitätsstationen wurden seit dem letzten Jahr eingerichtet?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Genau 20 Stationen."
+                },
+                {
+                  "id": "b",
+                  "text": "Über 120 Stationen direkt an Bahnhöfen."
+                },
+                {
+                  "id": "c",
+                  "text": "Keine einzige Station."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „wurden über 120 neue Mobilitätsstationen direkt an Bahnhöfen eingerichtet.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "b1m3-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Wodurch soll das Radfahren sicherer werden?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Durch das Verbot von S-Bahnen."
+                },
+                {
+                  "id": "b",
+                  "text": "Durch breitere, geschützte Radwege."
+                },
+                {
+                  "id": "c",
+                  "text": "Durch höhere Parkgebühren für Fahrräder."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Hörtext: „unter anderem durch breitere, geschützte Radwege.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1m3-hoeren-2",
+          "title": "Hören Teil 2 — Podcast: Sprachtandems & B1-Prüfungstipps",
+          "instructions": "Hören Sie den kurzen Podcast-Beitrag und entscheiden Sie bei den Aufgaben 4 bis 6: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/b1_m3_hoeren_02.mp3",
+          "audio": {
+            "localFile": "b1_m3_hoeren_02.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Sprachtrainer",
+              "voice": "male",
+              "text": "Viele Lernende bereiten sich auf die B1-Prüfung vor, indem sie nur Grammatikbücher lesen, aber zu wenig laut sprechen. Ein kostenloses Sprachtandem hilft dabei enorm: Man trifft sich einmal pro Woche für eine Stunde – dreißig Minuten wird Deutsch gesprochen und dreißig Minuten die eigene Muttersprache. Wichtig ist, Fehler nicht als Schwäche zu sehen, sondern flüssig weiterzusprechen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "b1m3-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Laut dem Sprachtrainer sprechen viele B1-Lernende bei der Vorbereitung zu wenig laut.",
+              "answer": "richtig",
+              "explanation": "Er betont, dass viele „nur Grammatikbücher lesen, aber zu wenig laut sprechen“.",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "b1m3-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Bei einem Sprachtandem spricht man die gesamte Stunde ausschließlich Englisch.",
+              "answer": "falsch",
+              "explanation": "Dreißig Minuten wird Deutsch gesprochen und dreißig Minuten die eigene Muttersprache.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "b1m3-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Der Trainer empfiehlt, Fehler nicht als Schwäche zu sehen und flüssig weiterzusprechen.",
+              "answer": "richtig",
+              "explanation": "Genau diesen Tipp gibt er am Schluss des Beitrags.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 60,
+      "tasks": [
+        {
+          "id": "b1m3-schreiben-1",
+          "title": "Aufgabe 1 — Persönliche E-Mail (Wohnung gefunden & Umzug)",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine E-Mail an einen Freund (ca. 80 Wörter). Gehen Sie auf alle drei Leitpunkte ein.",
+          "situation": "Nach langer Suche haben Sie endlich ein tolles Zimmer in einer WG in Berlin gefunden und ziehen nächsten Samstag um.",
+          "leitpunkte": [
+            "Beschreiben Sie die neue Wohnung und Ihre zukünftigen Mitbewohner.",
+            "Erzählen Sie, was Ihnen an der Lage besonders gut gefällt.",
+            "Fragen Sie Ihren Freund, ob er beim Umzug helfen oder später vorbeikommen kann."
+          ],
+          "minWords": 80,
+          "recommendedMinutes": 20
+        },
+        {
+          "id": "b1m3-schreiben-2",
+          "title": "Aufgabe 2 — Diskussionsbeitrag im Online-Forum (Bargeld vs. Digitales Zahlen)",
+          "register": "forum",
+          "instructions": "Schreiben Sie Ihre Meinung für ein Online-Forum (ca. 80 Wörter).",
+          "situation": "Im Forum wird diskutiert: „Sollten wir Bargeld komplett abschaffen und in Geschäften nur noch mit Karte oder Smartphone zahlen?“",
+          "leitpunkte": [
+            "Sagen Sie klar, wie Sie persönlich dazu stehen.",
+            "Nennen Sie Vorteile des digitalen Zahlens und mögliche Nachteile (z. B. Datenschutz oder Technikausfall).",
+            "Formulieren Sie ein ausgewogenes Fazit."
+          ],
+          "minWords": 80,
+          "recommendedMinutes": 25
+        },
+        {
+          "id": "b1m3-schreiben-3",
+          "title": "Aufgabe 3 — Formelle E-Mail (Vorstellungsgespräch verschieben)",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine kurze formelle E-Mail (ca. 40 Wörter).",
+          "situation": "Sie haben morgen um 10:00 Uhr ein Vorstellungsgespräch bei Frau Lindner, sind aber plötzlich krank geworden.",
+          "leitpunkte": [
+            "Entschuldigen Sie sich höflich und nennen Sie den Grund für Ihre Absage.",
+            "Bitten Sie um einen Ersatztermin in der kommenden Woche."
+          ],
+          "minWords": 40,
+          "recommendedMinutes": 15
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "b1m3-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Gemeinsam eine Stadtführung planen",
+          "instructions": "Planen Sie gemeinsam eine kleine Willkommens-Stadtführung für neue internationale Studierende in Berlin.",
+          "card": {
+            "heading": "Willkommenstour durch Berlin",
+            "subheading": "Bringen Sie Ideen ein, reagieren Sie auf Vorschläge und einigen Sie sich.",
+            "bullets": [
+              "Startpunkt und Uhrzeit (z. B. Alexanderplatz oder Hauptbahnhof)",
+              "Welche 3 Sehenswürdigkeiten oder Alltagsorte zeigen?",
+              "Pause für Essen oder Kaffee (budgetfreundlich)",
+              "Informationen zum öffentlichen Nahverkehr (BVG-App)"
+            ]
+          },
+          "examinerScript": "Nächste Woche kommen neue internationale Studierende an unserer Sprachschule an. Lassen Sie uns gemeinsam eine kleine Stadtführung durch Berlin planen. Wo sollen wir starten?",
+          "examinerAudio": {
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 90
+        },
+        {
+          "id": "b1m3-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Präsentation: Homeoffice oder Büro?",
+          "instructions": "Halten Sie eine kurze strukturierte Präsentation (ca. 2 Minuten).",
+          "card": {
+            "heading": "Thema: Arbeiten im Homeoffice oder im Büro?",
+            "subheading": "Gliedern Sie Ihren Vortrag in Einleitung, persönliche Erfahrung, Heimatland, Vor-/Nachteile und Schluss.",
+            "bullets": [
+              "Einleitung: Warum dieses Thema heute viele Arbeitnehmer betrifft",
+              "Persönliche Erfahrung mit Lernen oder Arbeiten von zu Hause",
+              "Situation in Ihrem Heimatland im Vergleich zu Deutschland",
+              "Vor- und Nachteile (Zeitersparnis vs. sozialer Kontakt) & eigenes Fazit"
+            ]
+          },
+          "examinerScript": "Bitte halten Sie jetzt Ihre Präsentation zum Thema „Homeoffice oder Arbeiten im Büro“. Achten Sie auf eine klare Gliederung.",
+          "examinerAudio": {
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 45,
+          "speakSeconds": 120
+        },
+        {
+          "id": "b1m3-sprechen-3",
+          "teil": 3,
+          "title": "Sprechen Teil 3 — Rückmeldung & Nachfragen zur Präsentation",
+          "instructions": "Geben Sie eine kurze wertschätzende Rückmeldung und beantworten Sie eine Nachfrage des Prüfers.",
+          "card": {
+            "heading": "Rückmeldung & kurzes Gespräch",
+            "subheading": "Formulieren Sie 1 Lob und 1 konkrete Nachfrage.",
+            "bullets": [
+              "Was fanden Sie an der Präsentation besonders interessant oder klar?",
+              "Stellen Sie eine vertiefende Frage zum Thema Arbeitszeit oder Teamarbeit.",
+              "Reagieren Sie kurz auf die Rückfrage des Prüfers zu hybriden Modellen."
+            ]
+          },
+          "examinerScript": "Vielen Dank für Ihren Vortrag! Glauben Sie, dass ein hybrides Modell – also drei Tage Büro und zwei Tage Homeoffice – die beste Lösung für Teams ist?",
+          "examinerAudio": {
+            "localFile": "b1_sprechen_examiner_sample.mp3"
+          },
+          "prepSeconds": 15,
+          "speakSeconds": 60
+        }
+      ]
+    }
+  }
+}

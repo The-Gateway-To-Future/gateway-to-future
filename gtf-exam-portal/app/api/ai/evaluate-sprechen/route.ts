@@ -1,11 +1,19 @@
 import { NextResponse } from "next/server";
 import { requireVerifiedSession } from "@/lib/server/auth-session";
 import { serverEnv } from "@/lib/server/env";
+import { recordMistakeOccurrencesAdmin } from "@/lib/server/mistake-dna-admin";
 import {
   checkRateLimit,
   rateLimitExceededResponse,
   signAiEvaluation,
 } from "@/lib/server/rate-limit";
+import {
+  MISTAKE_CODE_PROMPT_LEGEND,
+  classifyMistakeCodes,
+  isMistakeCode,
+  normalizeMistakeCodes,
+  type MistakeCode,
+} from "@/lib/mistake-dna/taxonomy";
 import type { Cefr, Correction, SprechenEvaluation } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -77,14 +85,19 @@ Return ONLY valid JSON:
       "original": "exact spoken phrase from student",
       "corrected": "natural German phrase",
       "type": "grammar" | "vocabulary" | "pronunciation" | "style",
+      "mistakeCode": "ONE exact code from the Mistake-DNA list below",
       "explanationDe": "explanation in German",
       "explanationHinglish": "explanation in Hinglish"
     }
   ],
+  "mistakeTags": ["distinct Mistake-DNA codes triggered by this student's spoken answer"],
   "tips": ["actionable Goethe/telc Redemittel tip"],
   "summaryDe": "2 sentences feedback in German",
   "summaryHinglish": "2 sentences encouraging Hinglish feedback"
-}`;
+}
+
+Allowed Mistake-DNA codes:
+${MISTAKE_CODE_PROMPT_LEGEND}`;
 }
 
 async function transcribeWithGroqWhisper(audioFile: File): Promise<string> {
@@ -257,6 +270,16 @@ function offlineEvaluateSprechen(params: {
   const score = taskFulfilment + fluency + pronunciation + grammar + vocabulary;
   const cefrEstimate = normalizeCefr(undefined, score);
 
+  const offlineMistakeTags: MistakeCode[] = [];
+  if (!hasRedemittel) offlineMistakeTags.push("CONNECTOR_COHERENCE");
+  if (
+    /\b(weil|dass|obwohl)\s+(ich|du|er|sie|wir)\s+(habe|bin|kann|muss|will)\b/i.test(
+      params.transcript,
+    )
+  ) {
+    offlineMistakeTags.push("WORD_ORDER_WEIL");
+  }
+
   return {
     engine: "offline-heuristic",
     transcriptionEngine: params.transcriptionEngine,
@@ -270,6 +293,7 @@ function offlineEvaluateSprechen(params: {
       "Offline-Hinweis: Für echtes Aussprache-Feedback bitte KI-Verbindung aktivieren und klar ins Mikrofon sprechen.",
     ],
     corrections: [],
+    mistakeTags: offlineMistakeTags,
     tips: [
       "Nutzen Sie Redemittel wie „Meiner Meinung nach …“, „Wie wäre es, wenn …?“ und verbinden Sie Sätze mit „weil / deshalb“.",
     ],
@@ -357,6 +381,28 @@ export async function POST(req: Request) {
       const cefrEstimate = normalizeCefr(ai.cefrEstimate, score);
       const evaluatedAt = new Date().toISOString();
 
+      const rawCorrections = Array.isArray(ai.corrections) ? (ai.corrections as Correction[]) : [];
+      const enrichedCorrections: Correction[] = rawCorrections.map((c) => {
+        const inferred = isMistakeCode(c?.mistakeCode)
+          ? c.mistakeCode
+          : classifyMistakeCodes({
+              section: "sprechen",
+              original: c?.original,
+              corrected: c?.corrected,
+              explanation: `${c?.explanationDe || ""} ${c?.explanationHinglish || ""}`,
+              correctionType: c?.type,
+            })[0];
+        return { ...c, mistakeCode: inferred };
+      });
+      const mistakeTagSet = new Set<MistakeCode>(normalizeMistakeCodes(ai.mistakeTags));
+      for (const c of enrichedCorrections) {
+        if (c.mistakeCode) mistakeTagSet.add(c.mistakeCode);
+      }
+      if (criteria.pronunciation < 12) {
+        mistakeTagSet.add("PRONUNCIATION_UMLAUT_CH");
+      }
+      const mistakeTags = Array.from(mistakeTagSet);
+
       return {
         engine,
         transcriptionEngine: transEngine,
@@ -369,7 +415,8 @@ export async function POST(req: Request) {
         pronunciationNotes: Array.isArray(ai.pronunciationNotes)
           ? (ai.pronunciationNotes as string[])
           : [],
-        corrections: Array.isArray(ai.corrections) ? (ai.corrections as Correction[]) : [],
+        corrections: enrichedCorrections,
+        mistakeTags,
         tips: Array.isArray(ai.tips) ? (ai.tips as string[]) : [],
         summaryDe:
           typeof ai.summaryDe === "string" && ai.summaryDe
@@ -389,6 +436,32 @@ export async function POST(req: Request) {
           evaluatedAt,
         }),
       };
+    };
+
+    const persistSprechenMistakes = async (evaluation: SprechenEvaluation) => {
+      const occurrences = (evaluation.corrections || [])
+        .filter((c) => isMistakeCode(c.mistakeCode))
+        .map((c) => ({
+          errorKey: c.mistakeCode as MistakeCode,
+          source: "sprechen" as const,
+          prompt: teilTitle,
+          wrong: c.original,
+          right: c.corrected,
+        }));
+      if (occurrences.length === 0 && (evaluation.mistakeTags || []).length > 0) {
+        for (const tag of evaluation.mistakeTags || []) {
+          occurrences.push({
+            errorKey: tag,
+            source: "sprechen",
+            prompt: teilTitle,
+            wrong: "",
+            right: "",
+          });
+        }
+      }
+      if (occurrences.length > 0) {
+        await recordMistakeOccurrencesAdmin(auth.session.uid, occurrences).catch(() => {});
+      }
     };
 
     // 2. Primary audio path B: Gemini 2.5 Flash native multimodal audio (works on Android/iOS without Groq!)
@@ -418,9 +491,9 @@ export async function POST(req: Request) {
           );
         }
 
-        return NextResponse.json({
-          evaluation: buildSignedResult("gemini", "gemini", geminiTranscript, ai),
-        });
+        const evaluation = buildSignedResult("gemini", "gemini", geminiTranscript, ai);
+        await persistSprechenMistakes(evaluation);
+        return NextResponse.json({ evaluation });
       } catch (err) {
         console.warn("[gtf] Gemini multimodal Sprechen audio fallback:", err);
       }
@@ -452,14 +525,14 @@ export async function POST(req: Request) {
     });
 
     if (llmResult?.data) {
-      return NextResponse.json({
-        evaluation: buildSignedResult(
-          llmResult.engine,
-          transcriptionEngine,
-          transcript,
-          llmResult.data as Record<string, unknown>,
-        ),
-      });
+      const evaluation = buildSignedResult(
+        llmResult.engine,
+        transcriptionEngine,
+        transcript,
+        llmResult.data as Record<string, unknown>,
+      );
+      await persistSprechenMistakes(evaluation);
+      return NextResponse.json({ evaluation });
     }
 
     // 5. Honest conservative offline heuristic (only on real transcript >= 4 words)
@@ -477,6 +550,7 @@ export async function POST(req: Request) {
       cefrEstimate: evaluation.cefrEstimate,
       evaluatedAt: evaluation.evaluatedAt,
     });
+    await persistSprechenMistakes(evaluation);
     return NextResponse.json({ evaluation });
   } catch (err) {
     return NextResponse.json(

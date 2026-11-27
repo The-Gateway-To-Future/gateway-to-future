@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { BreadcrumbHeader, HEADER_IMAGES } from "@/components/BreadcrumbHeader";
 import { SubdivisionCard, type SubdivisionTheme } from "@/components/SubdivisionCard";
+import { PathwayReadinessEngine } from "@/components/PathwayReadinessEngine";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import { WebOnly } from "@/components/ReaderAppNotice";
 import { BRAND } from "@/lib/config";
@@ -114,6 +115,9 @@ export default function PathwaysPlanPage() {
           backHref="/dashboard"
           backLabel="Hub"
         />
+
+        {/* Unified 0–100 Germany Pathway Readiness Score, Dossier Checklist & Sperrkonto Gap Engine */}
+        <PathwayReadinessEngine mode="full" />
 
         <section className="mx-auto max-w-6xl px-4 sm:px-8 py-12 space-y-8">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">

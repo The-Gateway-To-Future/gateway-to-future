@@ -25,35 +25,50 @@
               "type": "richtig_falsch",
               "prompt": "1. Die Deutschklasse fährt am Sonntag mit dem Bus nach Potsdam.",
               "answer": "falsch",
-              "explanation": "Im Text steht: „am Sonntag fährt unsere Deutschklasse mit der S-Bahn nach Potsdam.“ — S-Bahn se jaa rahe hain, bus se nahi."
+              "explanation": "Im Text steht: „am Sonntag fährt unsere Deutschklasse mit der S-Bahn nach Potsdam.“ — S-Bahn se jaa rahe hain, bus se nahi.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l1-q2",
               "type": "richtig_falsch",
               "prompt": "2. Der Treffpunkt ist um 09:30 Uhr vor einer Bäckerei im Hauptbahnhof.",
               "answer": "richtig",
-              "explanation": "Im Text: „Wir treffen uns um 09:30 Uhr am Berliner Hauptbahnhof vor der Bäckerei im Erdgeschoss.“"
+              "explanation": "Im Text: „Wir treffen uns um 09:30 Uhr am Berliner Hauptbahnhof vor der Bäckerei im Erdgeschoss.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l1-q3",
               "type": "richtig_falsch",
               "prompt": "3. Wenn es regnet, wird der Ausflug komplett abgesagt.",
               "answer": "falsch",
-              "explanation": "Bei Regen besuchen sie zuerst ein Museum und trinken danach Kaffee — Ausflug cancel nahi ho raha."
+              "explanation": "Bei Regen besuchen sie zuerst ein Museum und trinken danach Kaffee — Ausflug cancel nahi ho raha.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l1-q4",
               "type": "richtig_falsch",
               "prompt": "4. Herr Weber hat ein Paket für Frau Patel entgegengenommen.",
               "answer": "richtig",
-              "explanation": "Im Text: „ich habe heute Vormittag ein Paket für Sie angenommen...“"
+              "explanation": "Im Text: „ich habe heute Vormittag ein Paket für Sie angenommen...“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l1-q5",
               "type": "richtig_falsch",
               "prompt": "5. Frau Patel kann das Paket schon um 14:00 Uhr bei Herrn Weber abholen.",
               "answer": "falsch",
-              "explanation": "Im Text: „Ich bin heute ab 18:30 Uhr wieder daheim.“ — Shaam 18:30 ke baad hi mil sakte hain."
+              "explanation": "Im Text: „Ich bin heute ab 18:30 Uhr wieder daheim.“ — Shaam 18:30 ke baad hi mil sakte hain.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -85,7 +100,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „Samstag 10:00–14:00 Uhr.“ (Lösung b)."
+              "explanation": "Im Text: „Samstag 10:00–14:00 Uhr.“ (Lösung b).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l2-q7",
@@ -106,7 +124,10 @@
                 }
               ],
               "answer": "c",
-              "explanation": "Im Text: „Ausleihe ... ist mit dem Bibliotheksausweis für Studierende kostenlos.“"
+              "explanation": "Im Text: „Ausleihe ... ist mit dem Bibliotheksausweis für Studierende kostenlos.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l2-q8",
@@ -127,7 +148,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Im Text: „Viele Stände akzeptieren nur Bargeld.“ — Cash saath rakhna zaroori hai."
+              "explanation": "Im Text: „Viele Stände akzeptieren nur Bargeld.“ — Cash saath rakhna zaroori hai.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "a1m2-l2-q9",
@@ -148,7 +172,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Im Text: „Immer dienstags und freitags von 11:00 bis 18:30 Uhr.“"
+              "explanation": "Im Text: „Immer dienstags und freitags von 11:00 bis 18:30 Uhr.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             }
           ]
         },
@@ -177,7 +204,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Vor Wochentagen steht immer „am“ (am Mittwoch)."
+              "explanation": "Vor Wochentagen steht immer „am“ (am Mittwoch).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "11",
@@ -196,7 +226,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "1. Person Singular von „können“ lautet „ich kann“."
+              "explanation": "1. Person Singular von „können“ lautet „ich kann“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "12",
@@ -215,7 +248,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Feste Verbindung: „einen Termin auf [Tag/Woche] verschieben“."
+              "explanation": "Feste Verbindung: „einen Termin auf [Tag/Woche] verschieben“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
             },
             {
               "id": "13",
@@ -234,7 +270,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Vor unzählbaren Nomen wie „Zeit“ bleibt „viel“ unverändert: „viel Zeit“."
+              "explanation": "Vor unzählbaren Nomen wie „Zeit“ bleibt „viel“ unverändert: „viel Zeit“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
             },
             {
               "id": "14",
@@ -253,7 +292,11 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Ohne Artikel im Akkusativ Plural heißt es „freundliche Grüße“ (mit „Mit“ wäre es Dativ: „Mit freundlichen Grüßen“)."
+              "explanation": "Ohne Artikel im Akkusativ Plural heißt es „freundliche Grüße“ (mit „Mit“ wäre es Dativ: „Mit freundlichen Grüßen“).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "GENDER_RULE_UNG_HEIT"
+              ]
             }
           ]
         }
@@ -303,7 +346,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "Wegen der Gleisänderung fährt der Zug von Gleis 14 ab."
+              "explanation": "Wegen der Gleisänderung fährt der Zug von Gleis 14 ab.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "a1m2-h1-q2",
@@ -324,7 +370,10 @@
                 }
               ],
               "answer": "b",
-              "explanation": "10 Minuten Verspätung → Abfahrt um 11:25 Uhr."
+              "explanation": "10 Minuten Verspätung → Abfahrt um 11:25 Uhr.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
             },
             {
               "id": "a1m2-h1-q3",
@@ -345,7 +394,10 @@
                 }
               ],
               "answer": "a",
-              "explanation": "Einzelfahrkarten müssen vor der Fahrt entwertet (abgestempelt) werden."
+              "explanation": "Einzelfahrkarten müssen vor der Fahrt entwertet (abgestempelt) werden.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             }
           ]
         },
@@ -376,21 +428,30 @@
               "type": "richtig_falsch",
               "prompt": "4. Die Kundin bestellt zwei Vollkornbrötchen und ein Stück Apfelkuchen.",
               "answer": "richtig",
-              "explanation": "Genau diese Bestellung nennt die Kundin zu Beginn des Dialogs."
+              "explanation": "Genau diese Bestellung nennt die Kundin zu Beginn des Dialogs.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "a1m2-h2-q5",
               "type": "richtig_falsch",
               "prompt": "5. Die Kundin möchte den Kuchen direkt im Café essen.",
               "answer": "falsch",
-              "explanation": "Sie sagt „zum Mitnehmen“ (takeaway), nicht vor Ort."
+              "explanation": "Sie sagt „zum Mitnehmen“ (takeaway), nicht vor Ort.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
             },
             {
               "id": "a1m2-h2-q6",
               "type": "richtig_falsch",
               "prompt": "6. Die Kundin kann ihren Einkauf von 5,40 € mit Karte bezahlen.",
               "answer": "richtig",
-              "explanation": "Kartenzahlung ist ab 5 Euro möglich — 5,40 € liegt darüber."
+              "explanation": "Kartenzahlung ist ab 5 Euro möglich — 5,40 € liegt darüber.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
             }
           ]
         }

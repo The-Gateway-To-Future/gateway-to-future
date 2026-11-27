@@ -1,0 +1,401 @@
+{
+  "id": "gtf-a2-from-drive",
+  "level": "a2",
+  "title": "GTF A2 Interaktiver Modelltest (Drive Sync) — Alltag, Wohnen & Beruf Berlin",
+  "provider": "The Gateway to Future (GTF) — Auto-Ingested from 'A2 to B1' Drive Folder",
+  "version": "2026.11",
+  "productSlug": "a2-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 60,
+      "teile": [
+        {
+          "id": "lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Blogbeitrag: Wohnungssuche & Alltag in Berlin",
+          "instructions": "Lesen Sie den Text und die Aufgaben 1 bis 5. Wählen Sie: Sind die Aussagen richtig oder falsch?",
+          "passageTitle": "Ananyas erste Schritte in Berlin-Lichtenberg",
+          "source": "www.gatewaytofuture.com/community",
+          "passage": "Hallo liebe GTF-Community! Seit drei Monaten bin ich jetzt in Berlin. Zusammen mit Priya mache ich eine Ausbildung in einem Berliner Krankenhaus. Am Anfang war es schwierig, eine bezahlbare Wohnung zu finden. Viele Vermieter wollten drei Monatsgehälter als Kaution und eine SCHUFA-Auskunft sehen.\n\nLetzte Woche hatten wir großes Glück: Wir haben eine schöne 2-Zimmer-Wohnung in Lichtenberg gefunden. Die Warmmiete beträgt 780 Euro und wir teilen uns die Kosten. Die S-Bahn-Station ist nur fünf Minuten zu Fuß entfernt. Zur Arbeit im Krankenhaus brauche ich jetzt nur noch zwanzig Minuten mit der Bahn.\n\nMein deutscher Kollege Conrad hat uns am Wochenende beim Umzug geholfen. Er hat mit seinem Auto unsere Kisten transportiert. Danach haben wir gemeinsam auf dem Balkon Pizza gegessen. Die Berliner sind wirklich hilfsbereiter als viele denken!",
+          "questions": [
+            {
+              "id": "l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Ananya wohnt seit einem Jahr in Berlin.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Seit drei Monaten bin ich jetzt in Berlin.“ (Hinglish: Ananya sirf 3 mahine se Berlin mein hai, isliye falsch).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Ananya und Priya teilen sich die Miete für die Wohnung.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Die Warmmiete beträgt 780 Euro und wir teilen uns die Kosten.“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Zur Arbeit im Krankenhaus fährt Ananya mit dem Fahrrad.",
+              "answer": "falsch",
+              "explanation": "Im Text: „...nur noch zwanzig Minuten mit der Bahn.“ Sie nimmt die S-Bahn, nicht das Fahrrad.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Conrad hat den beiden beim Umzug geholfen.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Conrad hat uns am Wochenende beim Umzug geholfen.“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Die Kaution für Berliner Wohnungen beträgt oft drei Monatsgehälter.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Viele Vermieter wollten drei Monatsgehälter als Kaution...“ (Richtig).",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine Teil 2 — Grammatik: Wechselpräpositionen & Modalverben",
+          "instructions": "Wählen Sie für jede Lücke 11 bis 15 die passende Lösung a, b oder c.",
+          "mode": "select",
+          "text": "Lieber Herr Schneider,\n\nvielen Dank für Ihre E-Mail. Ich habe die Unterlagen für die Wohnung gestern Abend {{11}} den Briefkasten geworfen. Mein Ausbildungsvertrag beginnt am ersten September, deshalb {{12}} ich die Wohnung gerne ab Mitte August mieten. {{13}} Sie mir bitte mitteilen, wann die Schlüsselübergabe stattfindet? Ich habe bis 14 Uhr Dienst im Krankenhaus und kann danach direkt {{14}} Ihnen vorbeikommen. Ich freue mich {{15}} Ihre Rückmeldung.\n\nMit freundlichen Grüßen,\nAnanya Sharma",
+          "gaps": [
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "in"
+                },
+                {
+                  "id": "b",
+                  "text": "im"
+                },
+                {
+                  "id": "c",
+                  "text": "ins"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Richtung (Wohin? -> Akkusativ maskulin): in + den = in den Briefkasten.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "GENDER_RULE_UNG_HEIT"
+              ]
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "möchte"
+                },
+                {
+                  "id": "b",
+                  "text": "muss"
+                },
+                {
+                  "id": "c",
+                  "text": "darf"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Höflicher Wunsch: 'möchte ich die Wohnung gerne mieten'.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Könnten"
+                },
+                {
+                  "id": "b",
+                  "text": "Sollten"
+                },
+                {
+                  "id": "c",
+                  "text": "Dürften"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Höfliche Bitte an Vermieter: Könnten Sie mir bitte mitteilen...?",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "zu"
+                },
+                {
+                  "id": "b",
+                  "text": "bei"
+                },
+                {
+                  "id": "c",
+                  "text": "nach"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Richtung zu Personen: 'zu Ihnen vorbeikommen' (Dativ).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "auf"
+                },
+                {
+                  "id": "b",
+                  "text": "über"
+                },
+                {
+                  "id": "c",
+                  "text": "für"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Präposition: sich freuen AUF + Akkusativ (Zukunft).",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "PREP_ZU_NACH_IN"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 30,
+      "teile": [
+        {
+          "id": "hoeren-1",
+          "title": "Hören Teil 1 — Dialog: Ankunft & Bürgeramt in Berlin",
+          "instructions": "Sie hören ein Gespräch zwischen Katja und Conrad. Sie hören den Text ZWEIMAL. Wählen Sie für die Aufgaben 1 bis 4 die richtige Lösung a, b oder c.",
+          "maxPlays": 2,
+          "audio": {
+            "localFile": "a2_hoeren_01.mp3",
+            "drivePath": "GTF_App_Vault/A2/Hoeren_Audio/a2_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Katja",
+              "voice": "female",
+              "text": "Hallo Conrad! Wie war dein erster Arbeitstag in Berlin?"
+            },
+            {
+              "speaker": "Conrad",
+              "voice": "male",
+              "text": "Hallo Katja! Sehr gut. Ich bin pünktlich mit der S-Bahn angekommen."
+            },
+            {
+              "speaker": "Katja",
+              "voice": "female",
+              "text": "Und hast du schon einen Termin beim Bürgeramt für die Anmeldung bekommen?"
+            },
+            {
+              "speaker": "Conrad",
+              "voice": "male",
+              "text": "Ja, nächsten Donnerstag um neun Uhr morgens in Lichtenberg."
+            },
+            {
+              "speaker": "Katja",
+              "voice": "female",
+              "text": "Vergiss nicht die Wohnungsgeberbestätigung vom Vermieter mitzubringen!"
+            },
+            {
+              "speaker": "Conrad",
+              "voice": "male",
+              "text": "Vielen Dank für den Tipp, Katja! Das hätte ich fast vergessen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "h1-q1",
+              "type": "mcq",
+              "prompt": "1. Wie ist Conrad zur Arbeit gefahren?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Mit dem Fahrrad."
+                },
+                {
+                  "id": "b",
+                  "text": "Mit der S-Bahn."
+                },
+                {
+                  "id": "c",
+                  "text": "Mit dem Bus."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Conrad sagt: „Ich bin pünktlich mit der S-Bahn angekommen.“",
+              "mistakeTags": [
+                "PERFEKT_HABEN_SEIN",
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h1-q2",
+              "type": "mcq",
+              "prompt": "2. Wann ist Conrads Termin beim Bürgeramt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Heute Nachmittag."
+                },
+                {
+                  "id": "b",
+                  "text": "Nächsten Donnerstag um 9 Uhr."
+                },
+                {
+                  "id": "c",
+                  "text": "Am Freitagabend."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Dialog: „Ja, nächsten Donnerstag um neun Uhr morgens in Lichtenberg.“",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "h1-q3",
+              "type": "mcq",
+              "prompt": "3. Welches Formular muss Conrad mitbringen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Die Wohnungsgeberbestätigung."
+                },
+                {
+                  "id": "b",
+                  "text": "Sein Zeugnis aus der Schule."
+                },
+                {
+                  "id": "c",
+                  "text": "Ein Passfoto für die BahnCard."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Katja erinnert ihn an die Wohnungsgeberbestätigung vom Vermieter.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS",
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "h1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Conrad hat sich bei Katja für den Tipp bedankt.",
+              "answer": "richtig",
+              "explanation": "Conrad sagt: „Vielen Dank für den Tipp, Katja!“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ],
+          "audioUrl": "/audio/hoeren/a2_hoeren_01.mp3"
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 30,
+      "tasks": [
+        {
+          "id": "schreiben-1",
+          "title": "Schreiben Teil 1 — Wohnungsanfrage (Formelle E-Mail)",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine E-Mail an den Vermieter Herrn Schneider (ca. 45–50 Wörter). Schreiben Sie zu allen drei Punkten:",
+          "situation": "Sie haben eine Wohnungsanzeige für eine 2-Zimmer-Wohnung in Berlin gelesen und möchten die Wohnung besichtigen.",
+          "leitpunkte": [
+            "Grund für das Schreiben (Interesse an der 2-Zimmer-Wohnung)",
+            "Kurze Vorstellung Ihrer Person (Ausbildung/Arbeit in Berlin)",
+            "Frage nach einem Besichtigungstermin nächste Woche"
+          ],
+          "minWords": 45,
+          "recommendedMinutes": 20
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Sich vorstellen & Beruf",
+          "instructions": "Stellen Sie sich kurz vor und sprechen Sie über Ihren Beruf oder Ihre Ausbildung in Deutschland.",
+          "audio": {
+            "drivePath": "GTF_App_Vault/A2/Sprechen_Prompts/gtf-a2-sprechen-prompt.mp3",
+            "localFile": "gtf-a2-sprechen-prompt.mp3"
+          },
+          "card": {
+            "heading": "Über sich sprechen (Teil 1)",
+            "subheading": "Nennen Sie folgende Punkte:",
+            "bullets": [
+              "Name und Heimatland",
+              "Wohnort in Deutschland",
+              "Beruf oder Ausbildung (z. B. Pflege, IT, Handwerk)",
+              "Sprachen, die Sie sprechen",
+              "Ihre Hobbys"
+            ]
+          },
+          "examinerScript": "Guten Tag und herzlich willkommen zur mündlichen Prüfung A2 des Gateway to Future Instituts. Teil 1: Bitte stellen Sie sich kurz vor. Nennen Sie Ihren Namen, woher Sie kommen, wo Sie in Berlin wohnen und welchen Beruf Sie ausüben oder lernen. Bitte beginnen Sie jetzt.",
+          "prepSeconds": 45,
+          "speakSeconds": 90
+        },
+        {
+          "id": "sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Von sich erzählen: Mein Alltag in Berlin",
+          "instructions": "Erzählen Sie von Ihrem Alltag oder Ihrer Freizeit in Deutschland.",
+          "card": {
+            "heading": "Thema: Freizeit und Wochenende",
+            "subheading": "Sprechen Sie über Ihre Gewohnheiten:",
+            "bullets": [
+              "Was machen Sie am liebsten am Wochenende?",
+              "Kochen Sie lieber zu Hause oder gehen Sie ins Restaurant?",
+              "Welche Orte in Berlin haben Sie schon besucht?",
+              "Wie lernen Sie jeden Tag Deutsch?"
+            ]
+          },
+          "examinerScript": "Vielen Dank. Kommen wir zu Teil 2. Bitte erzählen Sie ein wenig von Ihrem Alltag und Ihrer Freizeit in Berlin.",
+          "prepSeconds": 45,
+          "speakSeconds": 90
+        }
+      ]
+    }
+  }
+}

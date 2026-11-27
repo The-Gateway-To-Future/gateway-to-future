@@ -1,0 +1,554 @@
+{
+  "id": "gtf-a2-modelltest-3",
+  "level": "a2",
+  "title": "GTF A2 Modelltest 3 — Bankkonto, Behörden & Weiterbildung in Deutschland",
+  "provider": "The Gateway to Future (GTF) — Goethe-Zertifikat A2 / telc Deutsch A2",
+  "version": "2026.11",
+  "productSlug": "a2-free-demo-test",
+  "isFree": true,
+  "passPercent": 60,
+  "sections": {
+    "lesen": {
+      "durationMinutes": 45,
+      "teile": [
+        {
+          "id": "a2m3-lesen-1",
+          "kind": "reading",
+          "title": "Lesen Teil 1 — Ratgeber: Girokonto & Online-Banking",
+          "instructions": "Lesen Sie den Artikel und entscheiden Sie bei den Aussagen 1 bis 5: richtig oder falsch?",
+          "passageTitle": "Ein eigenes Girokonto in Deutschland eröffnen — darauf sollten Neulinge achten",
+          "source": "GTF Ankommens-Guide Berlin · A2 Modelltest 3",
+          "passage": "Wer zum Studieren oder Arbeiten nach Deutschland kommt, braucht möglichst schnell ein eigenes deutsches Girokonto. Über dieses Konto werden jeden Monat das Gehalt oder das Geld vom Sperrkonto ausgezahlt, und auch Miete, Strom sowie die Krankenversicherung werden bequem per Lastschrift oder Überweisung bezahlt.\n\nFür die Kontoeröffnung verlangt die Bank in der Regel einen gültigen Reisepass, den Aufenthaltstitel oder das Visum sowie die Meldebestätigung vom Bürgeramt. Bei vielen Direktbanken ist die Kontoführung für Studierende und Auszubildende unter 28 Jahren kostenlos. Beim Online-Banking sollte man jedoch stets vorsichtig sein: Banken fragen niemals per E-Mail oder SMS nach Ihrer PIN oder TAN-Nummer.",
+          "questions": [
+            {
+              "id": "a2m3-l1-q1",
+              "type": "richtig_falsch",
+              "prompt": "1. Über ein deutsches Girokonto können Miete und Krankenversicherung direkt bezahlt werden.",
+              "answer": "richtig",
+              "explanation": "Im Text: „Miete, Strom sowie die Krankenversicherung werden bequem per Lastschrift oder Überweisung bezahlt.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a2m3-l1-q2",
+              "type": "richtig_falsch",
+              "prompt": "2. Für die Kontoeröffnung braucht man überhaupt keine Ausweisdokumente.",
+              "answer": "falsch",
+              "explanation": "Man benötigt Reisepass, Aufenthaltstitel/Visum und die Meldebestätigung.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a2m3-l1-q3",
+              "type": "richtig_falsch",
+              "prompt": "3. Bei vielen Direktbanken zahlen Studierende und Auszubildende unter 28 Jahren keine Kontoführungsgebühr.",
+              "answer": "richtig",
+              "explanation": "Im Text: „ist die Kontoführung für Studierende und Auszubildende unter 28 Jahren kostenlos.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a2m3-l1-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Banken senden regelmäßig E-Mails, in denen man seine PIN zur Sicherheit eingeben muss.",
+              "answer": "falsch",
+              "explanation": "Im Text: „Banken fragen niemals per E-Mail oder SMS nach Ihrer PIN oder TAN-Nummer.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a2m3-l1-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Auch die monatliche Auszahlung vom Sperrkonto erfolgt auf das Girokonto.",
+              "answer": "richtig",
+              "explanation": "Im Text: „werden jeden Monat das Gehalt oder das Geld vom Sperrkonto ausgezahlt“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a2m3-lesen-2",
+          "kind": "reading",
+          "title": "Lesen Teil 2 — Stadtinfo: VHS-Kurse, Pfandsystem & Familienpass",
+          "instructions": "Lesen Sie die drei Hinweise und lösen Sie die Aufgaben 6 bis 9. Wählen Sie a, b oder c.",
+          "passageTitle": "Nützliche Angebote im deutschen Alltag",
+          "source": "Berliner Stadtmagazin A2",
+          "passage": "Hinweis A — Volkshochschule (VHS) Berlin:\nAb Oktober starten neue Wochenendkurse für Excel, Bewerbungstraining und Deutsch-Konversation. Die Anmeldung erfolgt online über vhs.berlin.de. Bei einer Absage bis 14 Tage vor Kursbeginn wird die gesamte Gebühr zurückerstattet.\n\nHinweis B — Pfandsystem im Supermarkt:\nAuf die meisten Plastikflaschen und Getränkedosen zahlt man beim Kauf 25 Cent Pfand, auf Mehrweg-Glasflaschen 8 oder 15 Cent. Am Pfandautomaten im Supermarkt erhält man einen Bon, der an der Kasse eingelöst oder bar ausgezahlt wird.\n\nHinweis C — Nachtbusse in Berlin:\nUnter der Woche fahren U-Bahnen zwischen 01:00 und 04:30 Uhr nicht. In dieser Zeit ersetzen die gelben Nachtbusse (Linien N1 bis N9) die wichtigsten U-Bahn-Strecken im 15-Minuten-Takt.",
+          "questions": [
+            {
+              "id": "a2m3-l2-q6",
+              "type": "mcq",
+              "prompt": "6. Bis wann bekommt man bei der VHS die volle Kursgebühr zurück?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Bis 14 Tage vor Kursbeginn."
+                },
+                {
+                  "id": "b",
+                  "text": "Noch am letzten Kurstag."
+                },
+                {
+                  "id": "c",
+                  "text": "Es gibt grundsätzlich keine Rückerstattung."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „Bei einer Absage bis 14 Tage vor Kursbeginn wird die gesamte Gebühr zurückerstattet.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a2m3-l2-q7",
+              "type": "mcq",
+              "prompt": "7. Wie hoch ist das Pfand auf die meisten Plastikflaschen und Dosen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "8 Cent."
+                },
+                {
+                  "id": "b",
+                  "text": "15 Cent."
+                },
+                {
+                  "id": "c",
+                  "text": "25 Cent."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Text: „Auf die meisten Plastikflaschen und Getränkedosen zahlt man beim Kauf 25 Cent Pfand.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "a2m3-l2-q8",
+              "type": "mcq",
+              "prompt": "8. Was bekommt man am Pfandautomaten im Supermarkt?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Direkt ein neues Getränk."
+                },
+                {
+                  "id": "b",
+                  "text": "Einen Bon für die Kasse."
+                },
+                {
+                  "id": "c",
+                  "text": "Eine Fahrkarte für den Bus."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Im Text: „erhält man einen Bon, der an der Kasse eingelöst oder bar ausgezahlt wird.“",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "a2m3-l2-q9",
+              "type": "mcq",
+              "prompt": "9. Wie oft fahren die Berliner Nachtbusse unter der Woche zwischen 01:00 und 04:30 Uhr?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Alle 15 Minuten."
+                },
+                {
+                  "id": "b",
+                  "text": "Nur einmal pro Stunde."
+                },
+                {
+                  "id": "c",
+                  "text": "Sie fahren gar nicht unter der Woche."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Text: „ersetzen die gelben Nachtbusse ... im 15-Minuten-Takt.“",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a2m3-sprachbausteine-1",
+          "kind": "sprachbausteine",
+          "title": "Sprachbausteine — E-Mail wegen Schichtwechsel",
+          "instructions": "Wählen Sie für jede Lücke 10–15 das passende Wort a, b oder c.",
+          "mode": "select",
+          "text": "Hallo Tobias,\n\nich schreibe dir, {{10}} ich nächste Woche am Dienstag meinen A2-Prüfungstermin habe. Eigentlich muss ich an diesem Tag {{11}} der Frühschicht arbeiten. Könntest du vielleicht deine Spätschicht {{12}} mir tauschen? Ich habe unsere Teamleiterin schon {{13}}, und sie ist damit einverstanden. Zum Dank lade ich dich am Freitag {{14}} einen Kaffee ein. Das wäre wirklich {{15}} als eine kurzfristige Urlaubsplanung!\n\nViele Grüße,\nPriya",
+          "gaps": [
+            {
+              "id": "10",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "weil"
+                },
+                {
+                  "id": "b",
+                  "text": "denn"
+                },
+                {
+                  "id": "c",
+                  "text": "aber"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Das konjugierte Verb „habe“ steht am Satzende (Nebensatz) → daher „weil“ (nicht „denn“).",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL"
+              ]
+            },
+            {
+              "id": "11",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "in"
+                },
+                {
+                  "id": "b",
+                  "text": "auf"
+                },
+                {
+                  "id": "c",
+                  "text": "zu"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Standardwendung: „in der Frühschicht arbeiten“ (Dativ Femininum).",
+              "mistakeTags": [
+                "CASE_DAT_WECHSEL"
+              ]
+            },
+            {
+              "id": "12",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "mit"
+                },
+                {
+                  "id": "b",
+                  "text": "für"
+                },
+                {
+                  "id": "c",
+                  "text": "ohne"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Verbindung: „eine Schicht mit jemandem tauschen“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            },
+            {
+              "id": "13",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "gefragt"
+                },
+                {
+                  "id": "b",
+                  "text": "fragen"
+                },
+                {
+                  "id": "c",
+                  "text": "fragte"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Perfekt mit „haben“ + Partizip II am Ende: „Ich habe ... schon gefragt.“",
+              "mistakeTags": [
+                "PERFEKT_HABEN_SEIN"
+              ]
+            },
+            {
+              "id": "14",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "auf"
+                },
+                {
+                  "id": "b",
+                  "text": "über"
+                },
+                {
+                  "id": "c",
+                  "text": "bei"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Feste Verbindung mit Akkusativ: „jemanden auf einen Kaffee einladen“.",
+              "mistakeTags": [
+                "CASE_AKK_DAT_VERBS"
+              ]
+            },
+            {
+              "id": "15",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "einfacher"
+                },
+                {
+                  "id": "b",
+                  "text": "einfach"
+                },
+                {
+                  "id": "c",
+                  "text": "am einfachsten"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Komparativ vor „als“: „einfacher als ...“.",
+              "mistakeTags": [
+                "LESEN_SYNONYM_PARAPHRASE"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hoeren": {
+      "durationMinutes": 30,
+      "teile": [
+        {
+          "id": "a2m3-hoeren-1",
+          "title": "Hören Teil 1 — Radio-Tipp: Deutschlandticket & Wochenendausflug",
+          "instructions": "Hören Sie den Radiobeitrag und lösen Sie die Aufgaben 1 bis 3 (a, b oder c).",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/a2_m3_hoeren_01.mp3",
+          "audio": {
+            "localFile": "a2_m3_hoeren_01.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Radiomoderator",
+              "voice": "male",
+              "text": "Und hier unser Reisetipp fürs Wochenende: Mit dem Deutschlandticket können Sie nicht nur Busse, U-Bahnen und S-Bahnen in Ihrer Stadt nutzen, sondern auch alle Regionalzüge in ganz Deutschland. Bitte beachten Sie aber, dass Fernzüge wie der ICE oder der IC damit nicht erlaubt sind. Wenn Sie das Abo kündigen möchten, muss die Kündigung bis zum zehnten Tag des Monats erfolgen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a2m3-h1-q1",
+              "type": "mcq",
+              "prompt": "1. Welche Züge darf man mit dem Deutschlandticket deutschlandweit benutzen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Alle Regionalzüge (RE/RB) sowie Busse, U- und S-Bahnen."
+                },
+                {
+                  "id": "b",
+                  "text": "Nur den ICE zwischen Berlin und München."
+                },
+                {
+                  "id": "c",
+                  "text": "Ausschließlich Nachtbusse in Berlin."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Der Moderator nennt Busse, U-Bahnen, S-Bahnen und alle Regionalzüge.",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "a2m3-h1-q2",
+              "type": "mcq",
+              "prompt": "2. Welche Züge sind im Deutschlandticket NICHT enthalten?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Regionalbahnen."
+                },
+                {
+                  "id": "b",
+                  "text": "S-Bahnen."
+                },
+                {
+                  "id": "c",
+                  "text": "Fernzüge wie ICE oder IC."
+                }
+              ],
+              "answer": "c",
+              "explanation": "Im Hörtext: „dass Fernzüge wie der ICE oder der IC damit nicht erlaubt sind.“",
+              "mistakeTags": [
+                "WORD_ORDER_WEIL",
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "a2m3-h1-q3",
+              "type": "mcq",
+              "prompt": "3. Bis wann muss man das Abo spätestens kündigen?",
+              "options": [
+                {
+                  "id": "a",
+                  "text": "Bis zum zehnten Tag des Monats."
+                },
+                {
+                  "id": "b",
+                  "text": "Erst am letzten Tag des Jahres."
+                },
+                {
+                  "id": "c",
+                  "text": "Eine Kündigung ist nicht möglich."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Im Hörtext: „muss die Kündigung bis zum zehnten Tag des Monats erfolgen.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a2m3-hoeren-2",
+          "title": "Hören Teil 2 — Anmeldung im Fitnessstudio",
+          "instructions": "Hören Sie das Gespräch am Empfang eines Fitnessstudios und entscheiden Sie: richtig oder falsch?",
+          "maxPlays": 2,
+          "audioUrl": "/audio/hoeren/a2_m3_hoeren_02.mp3",
+          "audio": {
+            "localFile": "a2_m3_hoeren_02.mp3"
+          },
+          "script": [
+            {
+              "speaker": "Mitarbeiterin",
+              "voice": "female",
+              "text": "Herzlich willkommen im Studio Fit-Berlin! Bevor Sie einen Vertrag abschließen, können Sie eine ganze Woche kostenlos trainieren und auch unsere Yoga-Kurse testen. Danach kostet der flexible Monatsvertrag 35 Euro im Monat und ist jederzeit monatlich kündbar. Duschen und Schließfächer sind im Preis enthalten, aber ein kleines Handtuch müssen Sie selbst mitbringen."
+            }
+          ],
+          "questions": [
+            {
+              "id": "a2m3-h2-q4",
+              "type": "richtig_falsch",
+              "prompt": "4. Interessenten dürfen eine Woche lang kostenlos trainieren und Yoga testen.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: „können Sie eine ganze Woche kostenlos trainieren und auch unsere Yoga-Kurse testen.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            },
+            {
+              "id": "a2m3-h2-q5",
+              "type": "richtig_falsch",
+              "prompt": "5. Der flexible Vertrag bindet Mitglieder fest für mindestens drei Jahre.",
+              "answer": "falsch",
+              "explanation": "Der Monatsvertrag kostet 35 Euro und „ist jederzeit monatlich kündbar“.",
+              "mistakeTags": [
+                "HOEREN_TIME_TRAP"
+              ]
+            },
+            {
+              "id": "a2m3-h2-q6",
+              "type": "richtig_falsch",
+              "prompt": "6. Mitglieder müssen zum Training ein eigenes kleines Handtuch mitbringen.",
+              "answer": "richtig",
+              "explanation": "Im Hörtext: „aber ein kleines Handtuch müssen Sie selbst mitbringen.“",
+              "mistakeTags": [
+                "HOEREN_NEGATION_DIST"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "schreiben": {
+      "durationMinutes": 30,
+      "tasks": [
+        {
+          "id": "a2m3-schreiben-1",
+          "title": "Schreiben Teil 1 — E-Mail an die Hausverwaltung (Schlüssel & Klingelschild)",
+          "register": "formell",
+          "instructions": "Schreiben Sie eine höfliche E-Mail an Ihre Hausverwaltung (mindestens 45 Wörter). Bearbeiten Sie alle drei Leitpunkte.",
+          "situation": "Sie haben gestern Ihren Briefkastenschlüssel verloren und möchten außerdem, dass Ihr Nachname am Klingelschild ergänzt wird.",
+          "leitpunkte": [
+            "Erklären Sie höflich, was passiert ist (Briefkastenschlüssel verloren).",
+            "Bitten Sie um einen Ersatzschlüssel und fragen Sie nach den Kosten.",
+            "Bitten Sie darum, Ihren Namen am Klingelschild und Briefkasten anzubringen."
+          ],
+          "minWords": 45,
+          "recommendedMinutes": 15
+        },
+        {
+          "id": "a2m3-schreiben-2",
+          "title": "Schreiben Teil 2 — Nachricht an einen Freund (Fahrradtour am Wannsee)",
+          "register": "informell",
+          "instructions": "Schreiben Sie eine Nachricht an Ihren Freund Daniel (mindestens 45 Wörter).",
+          "situation": "Sie haben ein gebrauchtes Fahrrad gekauft und möchten am Sonntag eine Tour zum Wannsee machen.",
+          "leitpunkte": [
+            "Erzählen Sie kurz, wo Sie das Fahrrad gekauft haben und wie es Ihnen gefällt.",
+            "Laden Sie Daniel zur Fahrradtour am Sonntag ein (Uhrzeit & Treffpunkt).",
+            "Fragen Sie, was Sie für ein kleines Picknick am See mitnehmen sollen."
+          ],
+          "minWords": 45,
+          "recommendedMinutes": 15
+        }
+      ]
+    },
+    "sprechen": {
+      "durationMinutes": 15,
+      "teile": [
+        {
+          "id": "a2m3-sprechen-1",
+          "teil": 1,
+          "title": "Sprechen Teil 1 — Gemeinsam ein Abschiedsgeschenk planen",
+          "instructions": "Planen Sie gemeinsam mit Ihrem Partner ein kleines Geschenk für einen Kollegen, der die Firma verlässt.",
+          "card": {
+            "heading": "Abschiedsgeschenk für Kollegen Markus",
+            "subheading": "Machen Sie Vorschläge und einigen Sie sich auf eine Lösung.",
+            "bullets": [
+              "Was schenken? (Buchgutschein, Fotobuch, Kaffeetasse oder Präsentkorb)",
+              "Wie viel Geld sammelt jeder im Team ein?",
+              "Wer kauft das Geschenk und wer schreibt die Abschiedskarte?",
+              "Wann überreichen wir das Geschenk?"
+            ]
+          },
+          "examinerScript": "Unser Kollege Markus wechselt nächsten Monat in eine andere Stadt. Lassen Sie uns gemeinsam ein schönes Abschiedsgeschenk für ihn planen. Was ist Ihre Idee?",
+          "examinerAudio": {
+            "localFile": "gtf-a2-sprechen-prompt.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 60
+        },
+        {
+          "id": "a2m3-sprechen-2",
+          "teil": 2,
+          "title": "Sprechen Teil 2 — Über Ernährung, Kochen & Gesundheit sprechen",
+          "instructions": "Sprechen Sie zusammenhängend über Ihre Essgewohnheiten und was Sie für Ihre Gesundheit tun.",
+          "card": {
+            "heading": "Essen, Kochen & gesund bleiben im Alltag",
+            "subheading": "Nutzen Sie Sätze mit „deshalb“, „weil“ und „wenn“.",
+            "bullets": [
+              "Kochen Sie oft selbst oder essen Sie lieber in der Kantine / im Restaurant?",
+              "Was ist Ihr Lieblingsgericht aus Ihrem Heimatland oder aus Deutschland?",
+              "Wie bleiben Sie neben Arbeit oder Studium fit und gesund?"
+            ]
+          },
+          "examinerScript": "Erzählen Sie mir bitte etwas über Ihre Ernährung: Kochen Sie gern selbst und was tun Sie im Alltag, um gesund und fit zu bleiben?",
+          "examinerAudio": {
+            "localFile": "gtf-a2-sprechen-prompt.mp3"
+          },
+          "prepSeconds": 30,
+          "speakSeconds": 60
+        }
+      ]
+    }
+  }
+}

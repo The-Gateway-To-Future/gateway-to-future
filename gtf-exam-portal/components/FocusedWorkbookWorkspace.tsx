@@ -18,10 +18,16 @@ import {
 import { AntiPiracyPdfViewer } from "@/components/AntiPiracyPdfViewer";
 import { AntiPiracyShield } from "@/components/AntiPiracyShield";
 import { FlashcardEngine } from "@/components/FlashcardEngine";
+import { HoerenShadowingStudio } from "@/components/HoerenShadowingStudio";
 import { MathText } from "@/components/MathText";
 import { ReaderAppNotice } from "@/components/ReaderAppNotice";
+import { HOEREN_LAB_SCRIPTS } from "@/lib/hoeren-lab-scripts";
+import { useAuth } from "@/lib/auth-context";
 import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
+import { resolveProgressUid } from "@/lib/firebase/progress";
+import { recordMistakeOccurrences } from "@/lib/mistake-dna/store";
+import { classifyMistakeCodes } from "@/lib/mistake-dna/taxonomy";
 import { useIsNativeApp } from "@/lib/use-native-platform";
 import Link from "next/link";
 import type { WorkbookClientView, WorkbookContentType } from "@/lib/types";
@@ -129,6 +135,7 @@ function FocusedWorkbookWorkspaceInner({
   onWorkbookLoaded,
 }: FocusedWorkbookWorkspaceProps) {
   const [isMounted, setIsMounted] = useState(false);
+  const { user } = useAuth();
   const { isNative, ready: nativeReady } = useIsNativeApp();
   useEffect(() => {
     setIsMounted(true);
@@ -352,6 +359,42 @@ function FocusedWorkbookWorkspaceInner({
     });
   };
 
+  const feedWorkbookMistakesToDna = useCallback(
+    (result: GradedWorkbookResponse) => {
+      const uid = resolveProgressUid(user);
+      if (!uid || uid === "guest") return;
+      const isHoeren =
+        workbook?.contentType === "exam_hoeren" ||
+        (workbook?.skill || "").toLowerCase() === "hoeren" ||
+        (workbookId || "").toLowerCase().includes("hoeren");
+      const source = isHoeren ? "hoeren" : "workbook";
+      const occurrences = (result.items || [])
+        .filter((it) => !it.isCorrect && Boolean((it.given || "").trim()))
+        .flatMap((it) => {
+          const matchedQ = workbook?.questions?.find((q) => q.id === it.id);
+          const tags = classifyMistakeCodes({
+            section: isHoeren ? "hoeren" : "workbook",
+            prompt: matchedQ?.prompt || it.label,
+            explanation: it.explanation,
+            given: it.given,
+            correct: it.correctAnswer,
+            explicitTags: matchedQ?.mistakeTags,
+          });
+          return tags.map((errorKey) => ({
+            errorKey,
+            source: source as "hoeren" | "workbook",
+            prompt: matchedQ?.prompt || it.label,
+            wrong: it.given,
+            right: it.correctAnswer,
+          }));
+        });
+      if (occurrences.length > 0) {
+        void recordMistakeOccurrences(uid, occurrences);
+      }
+    },
+    [user, workbook, workbookId],
+  );
+
   const handleGrade = async () => {
     setGrading(true);
     try {
@@ -366,6 +409,7 @@ function FocusedWorkbookWorkspaceInner({
         if (res.ok) {
           const data = (await res.json()) as GradedWorkbookResponse;
           setGraded(data);
+          feedWorkbookMistakesToDna(data);
           return;
         }
       } catch {
@@ -409,12 +453,14 @@ function FocusedWorkbookWorkspaceInner({
         const correctCount = gradedItems.filter((g) => g.isCorrect).length;
         const percent = Math.round((correctCount / Math.max(1, gradedItems.length)) * 100);
 
-        setGraded({
+        const localResult: GradedWorkbookResponse = {
           score: correctCount,
           total: gradedItems.length,
           percent,
           items: gradedItems,
-        });
+        };
+        setGraded(localResult);
+        feedWorkbookMistakesToDna(localResult);
       }
     } finally {
       setGrading(false);
@@ -870,6 +916,20 @@ function FocusedWorkbookWorkspaceInner({
                 )}
               </div>
             )}
+
+            {showAudioPlayer &&
+              isExamHoerenMode &&
+              Array.isArray(workbook.hoerenTranscript) &&
+              workbook.hoerenTranscript.length > 0 && (
+                <HoerenShadowingStudio
+                  key={`wb-shadowing-${workbook.id}`}
+                  audioSrc={activeAudioSrc}
+                  turns={workbook.hoerenTranscript}
+                  announcement={HOEREN_LAB_SCRIPTS[workbook.id]?.announcement}
+                  levelHint={levelHint || workbook.level}
+                  title={`${workbook.title} — Shadowing & Lückendiktat`}
+                />
+              )}
 
             {showReadingSection && workbook.pdfToken ? (
               <AntiPiracyPdfViewer
