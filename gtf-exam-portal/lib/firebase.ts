@@ -87,15 +87,12 @@ export function getFirebaseAuth(): Auth {
   return auth;
 }
 
-export const GTF_N8N_SIGNUP_WEBHOOK_URL =
-  "https://n8n.gatewaytofuture.com/webhook/firebase-auth-signup";
-
 /**
- * Pushes newly registered Firebase Auth student identity directly to GTF's
- * GCP n8n onboarding webhook so WhatsApp welcome flows fire asynchronously.
- * Silently ignores any network/timeout error so signup is never blocked.
+ * Deprecated client-side webhook helper kept as a no-op to avoid breaking external imports.
+ * All signup/welcome webhook dispatch is strictly handled server-side in `/api/auth/register`
+ * so webhook endpoints are never exposed to client-side abuse or duplicated.
  */
-export async function pushSignupToN8nWebhook(payload: {
+export async function pushSignupToN8nWebhook(_payload: {
   studentId: string;
   fullName: string;
   email: string;
@@ -103,34 +100,7 @@ export async function pushSignupToN8nWebhook(payload: {
   course?: string;
   uid?: string;
 }): Promise<void> {
-  try {
-    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const timeoutId = controller ? setTimeout(() => controller.abort(), 5000) : null;
-
-    await fetch(GTF_N8N_SIGNUP_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        event: "firebase_auth_signup",
-        studentId: payload.studentId,
-        fullName: payload.fullName,
-        name: payload.fullName,
-        email: payload.email,
-        phone: payload.phone || "",
-        course: payload.course || "A1",
-        uid: payload.uid || "",
-        source: "gtf-exam-portal",
-        timestamp: new Date().toISOString(),
-      }),
-      signal: controller?.signal,
-    }).finally(() => {
-      if (timeoutId) clearTimeout(timeoutId);
-    });
-  } catch {
-    // Silently catch webhook errors so signup process never blocks even if n8n is unreachable
-  }
+  // No-op: handled server-side via triggerStudentWelcomeWebhook()
 }
 
 export async function ensureFirebaseLocalPersistence(): Promise<Auth> {

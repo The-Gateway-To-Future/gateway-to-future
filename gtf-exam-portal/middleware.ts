@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import {
+  GTF_LEGACY_SESSION_COOKIE,
+  GTF_SESSION_COOKIE,
+  verifySessionTokenEdge,
+} from "@/lib/server/auth-edge";
 
 const PROTECTED_PREFIXES = [
   "/dashboard",
@@ -15,42 +20,17 @@ const PROTECTED_PREFIXES = [
 const AUTH_ROUTES = ["/login", "/register"];
 
 /**
- * Lightweight Edge-safe structural & expiry validator for `gtf_auth_token`.
- * Allows portal session tokens (`gtf_sec_*`) and non-expired Firebase JWTs
- * (with a 5-minute clock-skew/refresh grace window).
- */
-function isLikelyValidAuthToken(token: string): boolean {
-  if (!token) return false;
-  if (token.startsWith("gtf_sec_")) return true;
-
-  const parts = token.split(".");
-  if (parts.length !== 3) return false;
-
-  try {
-    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
-    const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
-    const payload = JSON.parse(atob(padded)) as { exp?: unknown };
-    if (typeof payload.exp === "number") {
-      return payload.exp * 1000 > Date.now() - 5 * 60 * 1000;
-    }
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-/**
  * Gateway To Future (GTF) — Edge Security Middleware
  *
  * Rules:
- *  1. In production (`NODE_ENV === 'production'`), strictly block `/setup` and `/api/setup`
- *     routes with 403 Forbidden.
- *  2. Protect portal routes (`/dashboard`, `/academy`, `/studienkolleg`, `/pflege`, `/profile`,
- *     `/exam`, `/workbooks`, `/pathways`) using the synced Firebase ID token cookie (`gtf_auth_token`).
+ *  1. In production (`NODE_ENV === 'production'`), strictly block `/setup`, `/api/setup`,
+ *     and internal website preview/mutation endpoints with 403 Forbidden.
+ *  2. Protect portal routes by cryptographically verifying the HttpOnly HMAC-SHA256
+ *     `gtf_session` cookie using Web Crypto API (zero unsigned-prefix or unverified-JWT bypass).
  *  3. Redirect authenticated users away from `/login` and `/register` to `/dashboard` unless
  *     handling email verification action links (`?mode=`, `?oobCode=`) or explicit re-auth (`?force=`).
  */
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname, search, searchParams } = request.nextUrl;
 
   // 1. Strict production lockdown on visual setup wizard, setup APIs, and local-only website preview tools
@@ -78,9 +58,17 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // 2. Synced Firebase ID Token Cookie Check
-  const authToken = request.cookies.get("gtf_auth_token")?.value?.trim() || "";
-  const hasValidToken = isLikelyValidAuthToken(authToken);
+  // 2. Cryptographic HMAC-SHA256 Verification of HttpOnly `gtf_session` cookie
+  const rawSessionCookie =
+    request.cookies.get(GTF_SESSION_COOKIE)?.value?.trim() ||
+    request.cookies.get(GTF_LEGACY_SESSION_COOKIE)?.value?.trim() ||
+    "";
+  const hasLegacyNonHttpOnlyCookie = Boolean(request.cookies.get("gtf_auth_token")?.value);
+  const verifiedSession = rawSessionCookie
+    ? await verifySessionTokenEdge(rawSessionCookie)
+    : null;
+  const hasValidSession = Boolean(verifiedSession);
+
   const isProtected = PROTECTED_PREFIXES.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
@@ -93,26 +81,36 @@ export function middleware(request: NextRequest) {
     searchParams.has("force") ||
     searchParams.has("verify");
 
-  if (isProtected && !hasValidToken) {
+  if (isProtected && !hasValidSession) {
     const loginUrl = new URL("/login", request.url);
     const nextTarget = `${pathname}${search || ""}`;
     if (nextTarget && nextTarget !== "/") {
       loginUrl.searchParams.set("next", nextTarget);
     }
     const response = NextResponse.redirect(loginUrl);
-    if (authToken) {
+    if (rawSessionCookie) {
+      response.cookies.delete(GTF_SESSION_COOKIE);
+      response.cookies.delete(GTF_LEGACY_SESSION_COOKIE);
+    }
+    if (hasLegacyNonHttpOnlyCookie) {
       response.cookies.delete("gtf_auth_token");
     }
     return response;
   }
 
   if (isAuthRoute) {
-    if (hasValidToken && !hasAuthActionParams) {
+    if (hasValidSession && !hasAuthActionParams) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
-    if (authToken && (!hasValidToken || searchParams.has("force"))) {
+    if ((rawSessionCookie && (!hasValidSession || searchParams.has("force"))) || hasLegacyNonHttpOnlyCookie) {
       const response = NextResponse.next();
-      response.cookies.delete("gtf_auth_token");
+      if (!hasValidSession || searchParams.has("force")) {
+        response.cookies.delete(GTF_SESSION_COOKIE);
+        response.cookies.delete(GTF_LEGACY_SESSION_COOKIE);
+      }
+      if (hasLegacyNonHttpOnlyCookie) {
+        response.cookies.delete("gtf_auth_token");
+      }
       return response;
     }
   }

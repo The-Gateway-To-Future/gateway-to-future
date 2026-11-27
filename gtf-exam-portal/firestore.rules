@@ -14,20 +14,20 @@ rules_version = '2';
 //   - fullName: string (required, 1-100 characters)
 //   - phone: string (required, E.164/international format, 7-25 characters)
 //   - course: string (required, 2-50 characters, e.g., 'sprachakademie', 'studienkolleg', 'fachsprache_medizin')
-//   - role: string (required, allowed values: 'student', 'admin'; unauthenticated creates restricted strictly to 'student')
-//   - registeredAt: timestamp (required, immutable, recent timestamp within 10 min window)
-//   - updatedAt: timestamp (required, recent timestamp within 10 min window on create & update)
+//   - role: string (required, allowed values: 'student', 'admin'; non-admins restricted to 'student' and immutable on update)
+//   - registeredAt: timestamp (required, immutable, recent timestamp within drift window on create)
+//   - updatedAt: timestamp (required, recent timestamp within drift window on create & update)
 //
 // Collection: test_scores
 // Document ID: {scoreId} (Unique attempt identifier or auto-generated ID)
 // Fields:
-//   - scoreId: string (optional, 1-100 characters)
-//   - studentId: string (required, immutable, format GTF-YYYY-XXXX or valid student identifier, 3-60 characters)
+//   - scoreId: string (optional, immutable once set, 1-100 characters)
+//   - studentId: string (required, immutable, format GTF-YYYY-XXXX or alphanumeric/underscore/hyphen 3-60 characters)
 //   - course: string (required, 2-50 characters)
 //   - level: string (required, 2-10 characters, e.g., 'A1', 'A2', 'B1', 'B2', 'C1')
-//   - score: number (required, non-negative numerical score, bounds: 0 - 300)
-//   - passPercent: number (required, percentage, bounds: 0 - 100)
-//   - sections: map (required, 1-10 section breakdown key-value maps, e.g. lesen, hoeren, schreiben, sprechen)
+//   - score: int | float (required, non-negative numerical score, bounds: 0 - 300)
+//   - passPercent: int | float (required, percentage, bounds: 0 - 100)
+//   - sections: map (required, 1-10 section breakdown key-value entries, e.g. lesen, hoeren, schreiben, sprechen)
 //   - passed: bool (required, whether test passed)
 //   - submittedAt: timestamp (required, immutable, recent timestamp on creation)
 //
@@ -38,66 +38,40 @@ rules_version = '2';
 //   - email: string (required, valid email format, 5-100 characters)
 //   - phone: string (required, E.164/international format, 7-25 characters)
 //   - targetCourse: string (required, 2-100 characters)
-//   - source: string (required, 1-50 characters, e.g., 'website_widget', 'landing_page')
+//   - source: string (required, 1-50 characters, e.g., 'website_widget', 'portal_enquiry')
 //   - createdAt: timestamp (required, immutable, recent timestamp on creation)
 //
 // Collection: user_progress
-// Document ID: {uid} (Sanitized studentId, email, or guest identifier, 1-100 characters)
+// Document ID: {uid} (Canonical Firebase Auth UID matching request.auth.uid, 1-100 characters)
 // Fields:
 //   - uid: string (required, immutable on update, matches document ID, 1-100 characters)
-//   - completedSteps: list (required, array of step ID strings, max 200 items)
+//   - completedSteps: list (required, array of step ID strings, max 200 items; 'AUSBILDUNG_OS_PRO_UNLOCKED' forbidden)
 //   - masteredFlashcards: list (required, array of flashcard ID strings, max 1000 items)
 //   - lastLoginDate: string (required, format YYYY-MM-DD, 10 characters)
-//   - currentStreak: number (required, active day streak counter, bounds: 1 - 10000)
+//   - currentStreak: int (required, active day streak counter, bounds: 1 - 10000)
+//   NOTE: Privilege/entitlement fields (`ausbildungPro`, `entitlements`) are strictly prohibited here.
+//
+// Collection: entitlements
+// Document ID: {uid} (Canonical Firebase Auth UID or server-keyed identifier)
+// Access: Server-managed (Firebase Admin SDK) / GTF Admins write-only; owner read-only (`get`).
+// Fields:
+//   - userEmail: string (optional, valid email format, 5-100 characters)
+//   - unlockedSlugs: list (optional, array of paid product slugs, max 200 items)
+//   - ausbildungPro: bool (optional, server-verified Ausbildung OS Pro unlock flag)
+//   - lastPaymentProvider: string (optional, 1-50 characters, e.g., 'stripe', 'razorpay', 'webhook')
+//   - lastPaymentReference: string | null (optional, up to 200 characters)
+//   - updatedAt: timestamp | string (optional, timestamp or ISO 8601 date string)
+//   - expiresAt: timestamp | string | null (optional)
+//   - notes: string (optional, up to 500 characters)
 //
 // Collection: catalog
 // Document ID: {itemId} (Product or course slug, e.g. 'a1-free-demo-test', 'wb-suite-a1-b2')
-// Fields:
-//   - slug: string (required, product identifier)
-//   - divisionId: string (required, 'sprachakademie' | 'studienkolleg' | 'fachsprache_medizin')
-//   - type: string (required, e.g. 'mock_test', 'pdf_workbook', 'sprechen_pass')
-//   - title: string (required, 1-200 characters)
-//   - description: string (required, 1-1000 characters)
-//   - priceEur: number (required, >= 0)
-//   - priceInr: number (required, >= 0)
-//   - isFree: bool (required)
-//   - resourceId: string (required)
+// Access: Public storefront discovery metadata ONLY (titles, prices, division metadata; NO PII, NO answer keys).
 //
-// Collection: workbooks
-// Document ID: {workbookId} (Workbook identifier, e.g. 'gtf-wb-a1-grammatik')
-// Fields:
-//   - id: string (required)
-//   - title: string (required, 1-200 characters)
-//   - subtitle: string (optional)
-//   - level: string (required, 'a1' | 'a2' | 'b1' | 'b2' | 'c1')
-//   - productSlug: string (required)
-//   - isFree: bool (required)
-//   - priceEur: number (required)
-//   - priceInr: number (required)
-//   - pages: number (required)
-//   - topics: list (required)
-//   - questions: list (optional/required)
-//   - flashcards: list (optional)
-//
-// Collection: materials
-// Document ID: {materialId} (Material slug or identifier)
-// Fields:
-//   - id: string (required)
-//   - title: string (required)
-//   - level: string (optional)
-//   - divisionId: string (required)
-//   - category: string (required)
-//   - isFree: bool (required)
-//
-// Collection: question_banks
-// Document ID: {bankId} (Unique exam or test paper identifier, e.g. 'gtf-a1-modelltest-1')
-// Fields:
-//   - id: string (required)
-//   - title: string (required)
-//   - level: string (required)
-//   - divisionId: string (required)
-//   - sections: map (required)
-//   - durationMinutes: number (optional)
+// Collections: workbooks, materials, question_banks (and all subcollections)
+// Access: Admin / server-only (`isAdmin()`). Contains raw answer keys and paid content;
+// clients receive sanitized, entitlement-checked views exclusively via Next.js server API routes
+// (`/api/workbooks/[id]`, `/api/drive/fetch-test`, `/api/questions`).
 //
 // ===============================================================
 
@@ -113,26 +87,78 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    // Check if the authenticated caller matches a specific user ID
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Verify the authenticated caller has a verified email address
+    function isVerifiedEmail() {
+      return isAuthenticated() &&
+        ('email_verified' in request.auth.token) &&
+        request.auth.token.email_verified == true;
+    }
+
     // Verify whether the caller is a verified GTF bootstrap founder
     function isBootstrapAdmin() {
-      return isAuthenticated() &&
+      return isVerifiedEmail() &&
         ('email' in request.auth.token) &&
-        ('email_verified' in request.auth.token) &&
-        request.auth.token.email_verified == true &&
         (
           request.auth.token.email == 'ashusharma@gatewaytofuture.com' ||
           request.auth.token.email == 'skour8786@gmail.com'
         );
     }
 
-    // Role-Based Access Control: Derives admin privileges only from verified bootstrap emails
-    // or trusted custom auth claims ('admin' or role == 'admin')
+    // Role-Based Access Control: Derives admin privileges only from trusted custom auth claims
+    // ('admin' == true or 'role' == 'admin') or verified bootstrap founder emails
     function isAdmin() {
       return isAuthenticated() && (
         (('admin' in request.auth.token) && request.auth.token.admin == true) ||
         (('role' in request.auth.token) && request.auth.token.role == 'admin') ||
         isBootstrapAdmin()
       );
+    }
+
+    // Verify UID matches caller on create when present
+    function uidUnchanged() {
+      return !('uid' in request.resource.data) ||
+        request.resource.data.uid == request.auth.uid;
+    }
+
+    // Ensure UID field is never modified on update
+    function uidNotModified() {
+      return !('uid' in request.resource.data) ||
+        request.resource.data.uid == resource.data.uid;
+    }
+
+    // Validate required fields exist on the given map
+    function hasRequiredFields(data, fields) {
+      return data.keys().hasAll(fields);
+    }
+
+    // Validate the given map contains only explicitly allowed fields
+    function hasOnlyAllowedFields(data, fields) {
+      return data.keys().hasOnly(fields);
+    }
+
+    // Ensure immutable fields are unchanged on update
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // Validate numeric value (int or float) within inclusive bounds (also blocks NaN/Infinity)
+    function isValidNumberInRange(val, minVal, maxVal) {
+      return (val is int || val is float) &&
+        val >= minVal &&
+        val <= maxVal;
+    }
+
+    // Validate ISO 8601 date string format (YYYY-MM-DDTHH:MM:SS...)
+    function isValidDateString(dateStr) {
+      return dateStr is string &&
+        dateStr.size() >= 19 &&
+        dateStr.size() <= 35 &&
+        dateStr.matches('^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.*Z?$');
     }
 
     // Validate GTF Student ID format: GTF-YYYY-XXXX (e.g. GTF-2026-0001, GTF-2026-A109)
@@ -158,14 +184,14 @@ service cloud.firestore {
         phone.matches('^[+]?[0-9\\s-]{7,25}$');
     }
 
-    // Validate timestamp accuracy (prevents back-dating or futuristic spoofing, allowing for clock drift)
+    // Validate timestamp accuracy (prevents back-dating or future spoofing, allowing bounded clock drift)
     function isRecent(time) {
       return time is timestamp &&
         time <= request.time + duration.value(1, 'm') &&
         time >= request.time - duration.value(10, 'm');
     }
 
-    // Check if a student owns the document during read or update
+    // Check if an authenticated student owns the document during get, update, or delete
     function isStudentOwner(studentId) {
       return isAuthenticated() && (
         request.auth.uid == studentId ||
@@ -180,7 +206,7 @@ service cloud.firestore {
       );
     }
 
-    // Check if a student owns the document during creation
+    // Check if an authenticated student owns the document being created
     function isStudentOwnerOnCreate(studentId) {
       return isAuthenticated() && (
         request.auth.uid == studentId ||
@@ -194,7 +220,7 @@ service cloud.firestore {
       );
     }
 
-    // Check if caller owns the score record by studentId
+    // Check if the authenticated caller owns a test_scores record by studentId
     function isScoreOwner(scoreStudentId) {
       return isAuthenticated() && (
         isAdmin() ||
@@ -203,6 +229,8 @@ service cloud.firestore {
         (('student_id' in request.auth.token) && request.auth.token.student_id == scoreStudentId) ||
         (
           ('email' in request.auth.token) &&
+          scoreStudentId is string &&
+          scoreStudentId.size() >= 1 &&
           exists(/databases/$(database)/documents/students/$(scoreStudentId)) &&
           get(/databases/$(database)/documents/students/$(scoreStudentId)).data.email == request.auth.token.email
         )
@@ -215,8 +243,8 @@ service cloud.firestore {
 
     function isValidStudentSchema(data) {
       let allowedFields = ['studentId', 'email', 'fullName', 'phone', 'course', 'role', 'registeredAt', 'updatedAt'];
-      return data.keys().hasAll(allowedFields) &&
-             data.keys().hasOnly(allowedFields) &&
+      return hasRequiredFields(data, allowedFields) &&
+             hasOnlyAllowedFields(data, allowedFields) &&
              isValidStudentIdFormat(data.studentId) &&
              isValidEmail(data.email) &&
              data.fullName is string &&
@@ -238,8 +266,8 @@ service cloud.firestore {
     function isValidTestScoreSchema(data) {
       let requiredFields = ['studentId', 'course', 'level', 'score', 'passPercent', 'sections', 'passed', 'submittedAt'];
       let allowedFields = ['studentId', 'course', 'level', 'score', 'passPercent', 'sections', 'passed', 'submittedAt', 'scoreId'];
-      return data.keys().hasAll(requiredFields) &&
-             data.keys().hasOnly(allowedFields) &&
+      return hasRequiredFields(data, requiredFields) &&
+             hasOnlyAllowedFields(data, allowedFields) &&
              (isValidStudentIdFormat(data.studentId) || (data.studentId is string && data.studentId.size() >= 3 && data.studentId.size() <= 60 && data.studentId.matches('^[A-Za-z0-9_-]+$'))) &&
              (!('scoreId' in data) || (data.scoreId is string && data.scoreId.size() >= 1 && data.scoreId.size() <= 100)) &&
              data.course is string &&
@@ -248,12 +276,8 @@ service cloud.firestore {
              data.level is string &&
              data.level.size() >= 2 &&
              data.level.size() <= 10 &&
-             data.score is number &&
-             data.score >= 0 &&
-             data.score <= 300 &&
-             data.passPercent is number &&
-             data.passPercent >= 0 &&
-             data.passPercent <= 100 &&
+             isValidNumberInRange(data.score, 0, 300) &&
+             isValidNumberInRange(data.passPercent, 0, 100) &&
              data.sections is map &&
              data.sections.keys().size() >= 1 &&
              data.sections.keys().size() <= 10 &&
@@ -267,8 +291,8 @@ service cloud.firestore {
 
     function isValidLeadSchema(data) {
       let allowedFields = ['fullName', 'email', 'phone', 'targetCourse', 'source', 'createdAt'];
-      return data.keys().hasAll(allowedFields) &&
-             data.keys().hasOnly(allowedFields) &&
+      return hasRequiredFields(data, allowedFields) &&
+             hasOnlyAllowedFields(data, allowedFields) &&
              data.fullName is string &&
              data.fullName.size() >= 1 &&
              data.fullName.size() <= 100 &&
@@ -289,32 +313,118 @@ service cloud.firestore {
 
     function isValidUserProgressSchema(data, docUid) {
       let allowedFields = ['uid', 'completedSteps', 'masteredFlashcards', 'lastLoginDate', 'currentStreak'];
-      return data.keys().hasAll(allowedFields) &&
-             data.keys().hasOnly(allowedFields) &&
+      return hasRequiredFields(data, allowedFields) &&
+             hasOnlyAllowedFields(data, allowedFields) &&
              data.uid is string &&
              data.uid == docUid &&
              data.uid.size() >= 1 &&
              data.uid.size() <= 100 &&
              data.completedSteps is list &&
              data.completedSteps.size() <= 200 &&
+             !('AUSBILDUNG_OS_PRO_UNLOCKED' in data.completedSteps) &&
+             (data.completedSteps.size() == 0 || (
+               data.completedSteps[0] is string &&
+               data.completedSteps[0].size() >= 1 &&
+               data.completedSteps[0].size() <= 120 &&
+               data.completedSteps[data.completedSteps.size() - 1] is string &&
+               data.completedSteps[data.completedSteps.size() - 1].size() >= 1 &&
+               data.completedSteps[data.completedSteps.size() - 1].size() <= 120
+             )) &&
              data.masteredFlashcards is list &&
              data.masteredFlashcards.size() <= 1000 &&
+             (data.masteredFlashcards.size() == 0 || (
+               data.masteredFlashcards[0] is string &&
+               data.masteredFlashcards[0].size() >= 1 &&
+               data.masteredFlashcards[0].size() <= 120 &&
+               data.masteredFlashcards[data.masteredFlashcards.size() - 1] is string &&
+               data.masteredFlashcards[data.masteredFlashcards.size() - 1].size() >= 1 &&
+               data.masteredFlashcards[data.masteredFlashcards.size() - 1].size() <= 120
+             )) &&
              data.lastLoginDate is string &&
              data.lastLoginDate.size() == 10 &&
-             data.lastLoginDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$') &&
-             data.currentStreak is number &&
+             data.lastLoginDate.matches('^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$') &&
+             data.currentStreak is int &&
              data.currentStreak >= 1 &&
              data.currentStreak <= 10000;
+    }
+
+    // ===============================================================
+    // Domain Validator: entitlements/{uid}
+    // ===============================================================
+
+    function isValidEntitlementSchema(data) {
+      let allowedFields = [
+        'userEmail',
+        'unlockedSlugs',
+        'ausbildungPro',
+        'lastPaymentProvider',
+        'lastPaymentReference',
+        'updatedAt',
+        'expiresAt',
+        'notes'
+      ];
+      return data.keys().size() >= 1 &&
+             hasOnlyAllowedFields(data, allowedFields) &&
+             (!('userEmail' in data) || isValidEmail(data.userEmail)) &&
+             (!('unlockedSlugs' in data) || (data.unlockedSlugs is list && data.unlockedSlugs.size() <= 200)) &&
+             (!('ausbildungPro' in data) || data.ausbildungPro is bool) &&
+             (!('lastPaymentProvider' in data) || (data.lastPaymentProvider is string && data.lastPaymentProvider.size() >= 1 && data.lastPaymentProvider.size() <= 50)) &&
+             (!('lastPaymentReference' in data) || data.lastPaymentReference == null || (data.lastPaymentReference is string && data.lastPaymentReference.size() <= 200)) &&
+             (!('updatedAt' in data) || data.updatedAt is timestamp || isValidDateString(data.updatedAt)) &&
+             (!('expiresAt' in data) || data.expiresAt == null || data.expiresAt is timestamp || isValidDateString(data.expiresAt)) &&
+             (!('notes' in data) || (data.notes is string && data.notes.size() <= 500));
+    }
+
+    // ===============================================================
+    // Collection: user_progress/{uid}
+    // ===============================================================
+    match /user_progress/{uid} {
+      // Strictly authenticated document owner or GTF Admin (no unauthenticated reads)
+      allow get: if isAuthenticated() && (isOwner(uid) || isAdmin());
+
+      // Collection listing restricted strictly to GTF Admins (prevents user enumeration)
+      allow list: if isAdmin();
+
+      // Progress creation: Authenticated owner or admin, strict schema (forbids entitlement injection & forged Pro step)
+      allow create: if isAuthenticated() &&
+        (isOwner(uid) || isAdmin()) &&
+        (uidUnchanged() || isAdmin()) &&
+        isValidUserProgressSchema(request.resource.data, uid);
+
+      // Progress updates: Authenticated owner or admin, strict schema, immutable uid
+      allow update: if isAuthenticated() &&
+        (isOwner(uid) || isAdmin()) &&
+        isValidUserProgressSchema(request.resource.data, uid) &&
+        uidNotModified() &&
+        areImmutableFieldsUnchanged(['uid']) &&
+        request.resource.data.uid == resource.data.uid;
+
+      // Self-deletion enabled for authenticated owner (GDPR Art. 17 erasure) or GTF Admin
+      allow delete: if isAuthenticated() && (isOwner(uid) || isAdmin());
+    }
+
+    // ===============================================================
+    // Collection: entitlements/{uid} (Server-managed Pro/Pack entitlements)
+    // ===============================================================
+    match /entitlements/{uid} {
+      // Users may read only their own server-granted entitlements; GTF Admins may read any
+      allow get: if isAuthenticated() && (isOwner(uid) || isAdmin());
+
+      // Clients can NEVER list, create, update, or delete entitlements (prevents self-granting Pro)
+      allow list: if isAdmin();
+      allow create: if isAdmin() && isValidEntitlementSchema(request.resource.data);
+      allow update: if isAdmin() && isValidEntitlementSchema(request.resource.data);
+      allow delete: if isAdmin();
     }
 
     // ===============================================================
     // Collection: students/{studentId}
     // ===============================================================
     match /students/{studentId} {
-      // Direct get access: Student owner or Admin only
+      // Direct get access: Authenticated student owner or GTF Admin only (protects student PII)
       allow get: if isAuthenticated() && (isStudentOwner(studentId) || isAdmin());
 
-      // Collection queries: strictly scoped to caller's own email, studentId claim, or admin
+      // Collection queries: strictly scoped to caller's own uid, studentId claim, email, or GTF Admin
       allow list: if isAuthenticated() && (
         isAdmin() ||
         request.auth.uid == studentId ||
@@ -323,96 +433,83 @@ service cloud.firestore {
         (('email' in request.auth.token) && resource.data.email == request.auth.token.email)
       );
 
-      // Student registration:
-      // - Authenticated: caller must be student owner (or admin onboarding), role == 'student' (or admin if caller is admin)
-      // - Unauthenticated (initial registration before token): permitted strictly if role == 'student'
-      // - In all cases: schema must be valid, studentId must match path docId, registeredAt & updatedAt must be recent
-      allow create: if isValidStudentSchema(request.resource.data) &&
+      // Authenticated student registration (no unauthenticated creates):
+      // Strict schema, docId == studentId, recent timestamps, owner check, role escalation blocked
+      allow create: if isAuthenticated() &&
+        isValidStudentSchema(request.resource.data) &&
         request.resource.data.studentId == studentId &&
         isRecent(request.resource.data.registeredAt) &&
         isRecent(request.resource.data.updatedAt) &&
         (
-          (isAuthenticated() && isStudentOwnerOnCreate(studentId) && (request.resource.data.role == 'student' || isAdmin())) ||
-          (!isAuthenticated() && request.resource.data.role == 'student')
+          (isStudentOwnerOnCreate(studentId) && request.resource.data.role == 'student') ||
+          isAdmin()
         );
 
-      // Profile updates: Owner or Admin only; studentId, email, and registeredAt are strictly immutable;
+      // Profile updates: Authenticated owner or admin; studentId, registeredAt, and email are immutable;
       // non-admins cannot elevate their role
       allow update: if isAuthenticated() &&
         (isStudentOwner(studentId) || isAdmin()) &&
         isValidStudentSchema(request.resource.data) &&
+        areImmutableFieldsUnchanged(['studentId', 'registeredAt', 'email']) &&
         request.resource.data.studentId == resource.data.studentId &&
         request.resource.data.registeredAt == resource.data.registeredAt &&
         request.resource.data.email == resource.data.email &&
         isRecent(request.resource.data.updatedAt) &&
         (request.resource.data.role == resource.data.role || isAdmin());
 
-      // Deletion: Restricted strictly to GTF Admins
-      allow delete: if isAuthenticated() && isAdmin();
+      // Self-deletion enabled for authenticated student owner (GDPR Art. 17 erasure) or GTF Admin
+      allow delete: if isAuthenticated() && (isStudentOwner(studentId) || isAdmin());
     }
 
     // ===============================================================
     // Collection: test_scores/{scoreId}
     // ===============================================================
     match /test_scores/{scoreId} {
-      // Direct get: Score owner or Admin
-      allow get: if isScoreOwner(resource.data.studentId);
-
-      // Query test attempts: Admin can query all; students can only query their own scores
-      allow list: if isAuthenticated() && (
+      // Direct get: Authenticated score owner or GTF Admin
+      allow get: if isAuthenticated() && (
         isAdmin() ||
-        request.auth.uid == resource.data.studentId ||
-        (('studentId' in request.auth.token) && request.auth.token.studentId == resource.data.studentId) ||
-        (('student_id' in request.auth.token) && request.auth.token.student_id == resource.data.studentId) ||
-        (
-          ('email' in request.auth.token) &&
-          exists(/databases/$(database)/documents/students/$(resource.data.studentId)) &&
-          get(/databases/$(database)/documents/students/$(resource.data.studentId)).data.email == request.auth.token.email
-        )
+        (resource != null && isScoreOwner(resource.data.studentId))
       );
 
-      // Recording test attempts:
-      // - If authenticated: caller must be score owner (student or admin)
-      // - If unauthenticated (API / serverless score submission): permitted
-      // - In all cases: schema must be valid and submittedAt must be recent
-      allow create: if isValidTestScoreSchema(request.resource.data) &&
-        isRecent(request.resource.data.submittedAt) &&
-        (
-          (isAuthenticated() && isScoreOwner(request.resource.data.studentId)) ||
-          !isAuthenticated()
-        );
+      // Collection queries: GTF Admins can query all; students can only query their own scores
+      allow list: if isAuthenticated() && isScoreOwner(resource.data.studentId);
 
-      // Score tampering prevention: Students are strictly FORBIDDEN from updating test scores once submitted.
-      // Only GTF Admins can adjust scores, retaining immutability for studentId & submittedAt.
-      allow update: if isAuthenticated() &&
-        isAdmin() &&
+      // Score submission: Strictly authenticated owner or admin (no unauthenticated creates)
+      allow create: if isAuthenticated() &&
         isValidTestScoreSchema(request.resource.data) &&
+        isRecent(request.resource.data.submittedAt) &&
+        isScoreOwner(request.resource.data.studentId);
+
+      // Score tampering prevention: Only GTF Admins may update scores; studentId, submittedAt & existing scoreId immutable
+      allow update: if isAdmin() &&
+        isValidTestScoreSchema(request.resource.data) &&
+        areImmutableFieldsUnchanged(['studentId', 'submittedAt']) &&
         request.resource.data.studentId == resource.data.studentId &&
         request.resource.data.submittedAt == resource.data.submittedAt &&
-        (!('scoreId' in resource.data) || !('scoreId' in request.resource.data) || request.resource.data.scoreId == resource.data.scoreId);
+        (!('scoreId' in resource.data) || (('scoreId' in request.resource.data) && request.resource.data.scoreId == resource.data.scoreId));
 
-      // Score deletion: GTF Admins only
-      allow delete: if isAuthenticated() && isAdmin();
+      // Self-deletion enabled for authenticated score owner (GDPR Art. 17 erasure) or GTF Admin
+      allow delete: if isAuthenticated() && (
+        isAdmin() ||
+        (resource != null && isScoreOwner(resource.data.studentId))
+      );
     }
 
     // ===============================================================
     // Collection: leads/{leadId}
     // ===============================================================
     match /leads/{leadId} {
-      // Direct get access: GTF Admins only (protects prospect PII)
-      allow get: if isAdmin();
+      // Read/list restricted strictly to GTF Admins (protects prospect PII)
+      allow get, list: if isAdmin();
 
-      // Collection queries: GTF Admins only
-      allow list: if isAdmin();
-
-      // Lead capture: Open to public (unauthenticated or authenticated)
-      // Must satisfy strict schema, field format validations, and recent timestamp
+      // Write-only public/server enquiry capture with strict schema & timestamp bounds
       allow create: if isValidLeadSchema(request.resource.data) &&
         isRecent(request.resource.data.createdAt);
 
-      // Lead management: GTF Admins only; schema must be valid and createdAt is immutable
+      // Lead management: GTF Admins only; schema validated and createdAt immutable
       allow update: if isAdmin() &&
         isValidLeadSchema(request.resource.data) &&
+        areImmutableFieldsUnchanged(['createdAt']) &&
         request.resource.data.createdAt == resource.data.createdAt;
 
       // Deletion: GTF Admins only
@@ -420,96 +517,55 @@ service cloud.firestore {
     }
 
     // ===============================================================
-    // Collection: user_progress/{uid}
-    // ===============================================================
-    match /user_progress/{uid} {
-      // Direct get access: Unauthenticated (portal uses custom session cookie/localStorage auth),
-      // authenticated document owner (request.auth.uid == uid), or GTF Admin
-      allow get: if !isAuthenticated() || request.auth.uid == uid || isAdmin();
-
-      // Collection queries / listings: GTF Admins only (protects student progress from enumeration)
-      allow list: if isAdmin();
-
-      // Progress initialization: Valid schema, matching document UID,
-      // allowed unauthenticated or authenticated as document owner / admin
-      allow create: if isValidUserProgressSchema(request.resource.data, uid) &&
-        (!isAuthenticated() || request.auth.uid == uid || isAdmin());
-
-      // Progress updates: Valid schema, matching document UID, immutable uid,
-      // allowed unauthenticated or authenticated as document owner / admin
-      allow update: if isValidUserProgressSchema(request.resource.data, uid) &&
-        request.resource.data.uid == resource.data.uid &&
-        (!isAuthenticated() || request.auth.uid == uid || isAdmin());
-
-      // Deletion: Restricted strictly to GTF Admins
-      allow delete: if isAdmin();
-    }
-
-    // ===============================================================
     // Collection: catalog/{itemId}
     // ===============================================================
     match /catalog/{itemId} {
-      // Direct get and listing: Open to public and authenticated users for product & course discovery
-      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
+      // Public discovery storefront metadata only (titles/prices/metadata — NO PII, NO answer keys)
+      allow get, list: if true;
 
-      // Write operations (create, update, delete): Strictly restricted to GTF Admins
+      // Write operations strictly restricted to GTF Admins
       allow write: if isAdmin();
 
-      // Subcollections (if any)
+      // Public catalog subcollections (read-only for clients, write restricted to GTF Admins)
       match /{allChildren=**} {
-        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
+        allow get, list: if true;
         allow write: if isAdmin();
       }
     }
 
     // ===============================================================
-    // Collection: workbooks/{workbookId}
+    // Collection: workbooks/{workbookId} (Contains paid content & answer keys)
     // ===============================================================
     match /workbooks/{workbookId} {
-      // Direct get and listing: Open to authenticated students and unauthenticated preview/demo access
-      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
+      // Strictly GTF Admin / server-only; clients consume sanitized views via /api/workbooks/[id]
+      allow get, list, write: if isAdmin();
 
-      // Write operations (create, update, delete): Strictly restricted to GTF Admins
-      allow write: if isAdmin();
-
-      // Subcollections (e.g. chapters, flashcards, questions)
       match /{allChildren=**} {
-        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
-        allow write: if isAdmin();
+        allow get, list, write: if isAdmin();
       }
     }
 
     // ===============================================================
-    // Collection: materials/{materialId}
+    // Collection: materials/{materialId} (Contains paid content & answer keys)
     // ===============================================================
     match /materials/{materialId} {
-      // Direct get and listing: Open to authenticated candidates and unauthenticated preview access
-      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
+      // Strictly GTF Admin / server-only; clients consume sanitized views via Next.js server APIs
+      allow get, list, write: if isAdmin();
 
-      // Write operations (create, update, delete): Strictly restricted to GTF Admins
-      allow write: if isAdmin();
-
-      // Subcollections (e.g. attachments, worksheets)
       match /{allChildren=**} {
-        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
-        allow write: if isAdmin();
+        allow get, list, write: if isAdmin();
       }
     }
 
     // ===============================================================
-    // Collection: question_banks/{bankId}
+    // Collection: question_banks/{bankId} (Contains raw exam papers & answer keys)
     // ===============================================================
     match /question_banks/{bankId} {
-      // Direct get and listing: Authenticated candidates, GTF Admins, and unauthenticated demo mock exam sessions
-      allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
+      // Strictly GTF Admin / server-only; clients consume sanitized views via /api/drive/fetch-test & /api/questions
+      allow get, list, write: if isAdmin();
 
-      // Write operations (create, update, delete): Strictly restricted to GTF Admins
-      allow write: if isAdmin();
-
-      // Subcollections (e.g. questions, sections)
       match /{allChildren=**} {
-        allow get, list: if request.auth != null || isAuthenticated() || !isAuthenticated();
-        allow write: if isAdmin();
+        allow get, list, write: if isAdmin();
       }
     }
 

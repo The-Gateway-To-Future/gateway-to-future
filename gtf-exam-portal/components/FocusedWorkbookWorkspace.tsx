@@ -23,8 +23,6 @@ import { ReaderAppNotice } from "@/components/ReaderAppNotice";
 import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
 import { useIsNativeApp } from "@/lib/use-native-platform";
-import { doc, getDoc } from "firebase/firestore";
-import { getFirebaseFirestore } from "@/lib/firebase";
 import Link from "next/link";
 import type { WorkbookClientView, WorkbookContentType } from "@/lib/types";
 import { getCoreLabById, convertLabToWorkbook } from "@/lib/curriculum-labs";
@@ -243,88 +241,13 @@ function FocusedWorkbookWorkspaceInner({
         }, 3000);
       });
 
-      const fetchFromFirestore = async (): Promise<WorkbookClientView | null> => {
-        try {
-          const db = getFirebaseFirestore();
-          const fsChecks = candidateIds.map(async (testId) => {
-            try {
-              const wbSnap = await getDoc(doc(db, "workbooks", testId));
-              if (wbSnap.exists()) {
-                return { id: testId, data: wbSnap.data() };
-              }
-              const matSnap = await getDoc(doc(db, "materials", testId));
-              if (matSnap.exists()) {
-                return { id: testId, data: matSnap.data() };
-              }
-            } catch {
-              // ignore individual doc errors (e.g. permission-denied / offline)
-            }
-            return null;
-          });
-
-          const fsTimeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 1800));
-          const fsMatches = await Promise.race([Promise.all(fsChecks), fsTimeout]);
-          if (!fsMatches) return null;
-
-          const fsResult = fsMatches.find((r) => r !== null && Boolean(r.data)) || null;
-          if (fsResult && fsResult.data) {
-            const fsData = fsResult.data;
-            const fsContentType = fsData.contentType as WorkbookContentType | undefined;
-            const isGrammarDoc = fsContentType === "grammar";
-            return {
-              id: fsResult.id,
-              title: fsData.title || topicTitleHintRef.current || cleanId,
-              subtitle: fsData.subtitle || topicSubtitleHintRef.current || "",
-              level: fsData.level || (cleanLevel as any) || "b1",
-              contentType: fsContentType,
-              module: fsData.module || undefined,
-              skill: fsData.skill || undefined,
-              pages: fsData.pages || 4,
-              topics: Array.isArray(fsData.topics) ? fsData.topics : [],
-              questions: isGrammarDoc
-                ? []
-                : Array.isArray(fsData.questions)
-                ? fsData.questions
-                : [],
-              flashcards: isGrammarDoc && Array.isArray(fsData.flashcards) ? fsData.flashcards : [],
-              grammarNotes:
-                isGrammarDoc && fsData.grammarNotes && typeof fsData.grammarNotes === "object"
-                  ? fsData.grammarNotes
-                  : undefined,
-              readingPassage:
-                !isGrammarDoc && typeof fsData.readingPassage === "string" && fsData.readingPassage.trim()
-                  ? fsData.readingPassage
-                  : undefined,
-              unlocked: true,
-              viewerEmail: email,
-              productSlug: fsData.productSlug || fsResult.id,
-              audioUrl:
-                fsContentType === "exam_hoeren" || fsContentType === "exam_sprechen"
-                  ? fsData.audioUrl || undefined
-                  : undefined,
-              hoerenTranscript:
-                fsContentType === "exam_hoeren" && Array.isArray(fsData.hoerenTranscript)
-                  ? fsData.hoerenTranscript
-                  : undefined,
-              isFree: true,
-              coverColor: fsData.coverColor || "#0F172A",
-              priceEur: typeof fsData.priceEur === "number" ? fsData.priceEur : 0,
-              priceInr: typeof fsData.priceInr === "number" ? fsData.priceInr : 0,
-            };
-          }
-        } catch {
-          // Firestore timed out or errored; fall through immediately
-        }
-        return null;
-      };
-
       const fetchFromApi = async (): Promise<WorkbookClientView | null> => {
         for (const testId of candidateIds.slice(0, 3)) {
           if (controller.signal.aborted) break;
           try {
             const res = await fetch(
-              `/api/workbooks/${encodeURIComponent(testId)}?email=${encodeURIComponent(email)}`,
-              { signal: controller.signal },
+              `/api/workbooks/${encodeURIComponent(testId)}`,
+              { credentials: "include", signal: controller.signal },
             );
             if (res.ok) {
               const data = (await res.json()) as { workbook?: WorkbookClientView };
@@ -347,34 +270,12 @@ function FocusedWorkbookWorkspaceInner({
           return localFallback;
         }
 
-        // 2. For catalog/PDF workbooks, run same-origin API and Firestore in parallel
-        //    and return whichever resolves with valid data first (avoids 1.8s Firestore stalls on mobile)
-        const apiPromise = fetchFromApi();
-        const fsPromise = fetchFromFirestore();
-
-        const firstResolved = await new Promise<WorkbookClientView | null>((resolve) => {
-          let settled = false;
-          let pending = 2;
-          const finish = (docVal: WorkbookClientView | null) => {
-            if (settled) return;
-            if (docVal) {
-              settled = true;
-              resolve(docVal);
-              return;
-            }
-            pending -= 1;
-            if (pending <= 0) {
-              settled = true;
-              resolve(null);
-            }
-          };
-          apiPromise.then(finish).catch(() => finish(null));
-          fsPromise.then(finish).catch(() => finish(null));
-        });
-
-        if (firstResolved) {
+        // 2. For catalog/PDF workbooks, load strictly via the authenticated server API
+        //    (Firestore `workbooks`/`materials` collections are server-only to protect answer keys).
+        const apiResult = await fetchFromApi();
+        if (apiResult) {
           controller.abort();
-          return firstResolved;
+          return apiResult;
         }
 
         return null;
@@ -458,6 +359,7 @@ function FocusedWorkbookWorkspaceInner({
       try {
         const res = await fetch(`/api/workbooks/${encodeURIComponent(workbookId)}`, {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ answers }),
         });

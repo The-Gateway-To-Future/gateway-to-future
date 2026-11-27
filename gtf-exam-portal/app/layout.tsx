@@ -49,13 +49,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" translate="no" className="notranslate h-full antialiased bg-slate-50 text-slate-900">
+    <html lang="en" translate="no" className="notranslate h-full antialiased bg-slate-50 text-slate-900">
       <head>
         <meta name="google" content="notranslate" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
-      <body className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-slate-50 text-slate-900 selection:bg-slate-900 selection:text-white">
+      <body className="min-h-screen w-full max-w-[100vw] overflow-x-clip bg-slate-50 text-slate-900 selection:bg-slate-900 selection:text-white">
         <AuthProvider>
           <CapacitorBridge />
           {children}

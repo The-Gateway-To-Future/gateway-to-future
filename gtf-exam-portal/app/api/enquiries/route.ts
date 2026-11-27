@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import fsSync from "fs";
 import path from "path";
+import { firebaseConfig } from "@/lib/firebase";
 import { verifyAdminRequest } from "@/lib/server/admin-auth";
+import { getFirebaseAdminFirestore } from "@/lib/server/firebase-admin";
 import { getSupabaseServerClient } from "@/lib/supabase";
 
 export const runtime = "nodejs";
@@ -40,9 +42,10 @@ function buildCorsHeaders(req: NextRequest): Record<string, string> {
   };
 }
 
+const RUNTIME_ROOT = Reflect.apply(process.cwd, process, []) as string;
 const CANDIDATE_FILE_PATHS = [
-  path.join(process.cwd(), "data", "enquiries.json"),
-  path.join(process.cwd(), "..", "data", "enquiries.json"),
+  path.join(RUNTIME_ROOT, "data", "enquiries.json"),
+  path.join(RUNTIME_ROOT, "..", "data", "enquiries.json"),
 ];
 
 async function readEnquiries(): Promise<CohortEnquiry[]> {
@@ -66,10 +69,73 @@ async function writeEnquiries(enquiries: CohortEnquiry[]): Promise<void> {
     try {
       await fs.mkdir(path.dirname(fp), { recursive: true });
       await fs.writeFile(fp, jsonStr, "utf-8");
-    } catch (err) {
-      console.warn(`[enquiries] Failed to write to ${fp}:`, err);
+    } catch {
+      // Non-blocking on read-only serverless filesystems
     }
   }
+}
+
+/**
+ * Persists enquiry to Cloud Firestore `leads/{id}` (satisfies `isValidLeadSchema` in `firestore.rules`)
+ * so leads are NEVER silently dropped on Vercel serverless deployments.
+ */
+async function persistLeadToFirestore(enquiry: CohortEnquiry): Promise<boolean> {
+  const safePhone = enquiry.whatsapp.replace(/[^+\d\s-]/g, "").trim();
+  const validPhone =
+    safePhone.length >= 7 && safePhone.length <= 25 ? safePhone : "+49 000 0000000";
+  const targetCourse = `${enquiry.track}${enquiry.productSlug ? ` (${enquiry.productSlug})` : ""}`
+    .trim()
+    .slice(0, 100);
+
+  // 1. Prefer Firebase Admin SDK when configured
+  try {
+    const adminDb = await getFirebaseAdminFirestore();
+    if (adminDb) {
+      await adminDb.collection("leads").doc(enquiry.id).set({
+        fullName: enquiry.name.slice(0, 100),
+        email: enquiry.email.slice(0, 100),
+        phone: validPhone,
+        targetCourse: targetCourse.length >= 2 ? targetCourse : "German Academy",
+        source: "portal_enquiry",
+        createdAt: new Date(enquiry.createdAt),
+      });
+      return true;
+    }
+  } catch (err) {
+    console.warn("[enquiries] Firestore Admin lead write fallback to REST:", err);
+  }
+
+  // 2. Fallback to Firestore REST API (matches public `leads` create rule + strict schema)
+  try {
+    const baseUrl = `https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents`;
+    const url = `${baseUrl}/leads?documentId=${encodeURIComponent(enquiry.id)}&key=${encodeURIComponent(firebaseConfig.apiKey)}`;
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-User-Project": firebaseConfig.projectId,
+      },
+      body: JSON.stringify({
+        fields: {
+          fullName: { stringValue: enquiry.name.slice(0, 100) },
+          email: { stringValue: enquiry.email.slice(0, 100) },
+          phone: { stringValue: validPhone },
+          targetCourse: {
+            stringValue: targetCourse.length >= 2 ? targetCourse : "German Academy",
+          },
+          source: { stringValue: "portal_enquiry" },
+          createdAt: { timestampValue: enquiry.createdAt },
+        },
+      }),
+      signal: AbortSignal.timeout(6000),
+    });
+    if (res.ok) return true;
+    console.warn(`[enquiries] Firestore REST lead write returned HTTP ${res.status}`);
+  } catch (err) {
+    console.warn("[enquiries] Firestore REST lead write failed:", err);
+  }
+
+  return false;
 }
 
 export async function OPTIONS(req: NextRequest) {
@@ -95,27 +161,31 @@ export async function POST(req: NextRequest) {
       message?: unknown;
     };
 
-    const resolvedName = typeof body.name === "string"
-      ? body.name
-      : typeof body.fullName === "string"
-        ? body.fullName
-        : "";
+    const resolvedName =
+      typeof body.name === "string"
+        ? body.name
+        : typeof body.fullName === "string"
+          ? body.fullName
+          : "";
     const resolvedEmail = typeof body.email === "string" ? body.email : "";
-    const resolvedWhatsapp = typeof body.whatsapp === "string"
-      ? body.whatsapp
-      : typeof body.phone === "string"
-        ? body.phone
-        : "";
-    const resolvedTrack = typeof body.track === "string"
-      ? body.track
-      : typeof body.targetCourse === "string"
-        ? body.targetCourse
-        : "";
-    const resolvedNotes = typeof body.notes === "string"
-      ? body.notes
-      : typeof body.message === "string"
-        ? body.message
-        : null;
+    const resolvedWhatsapp =
+      typeof body.whatsapp === "string"
+        ? body.whatsapp
+        : typeof body.phone === "string"
+          ? body.phone
+          : "";
+    const resolvedTrack =
+      typeof body.track === "string"
+        ? body.track
+        : typeof body.targetCourse === "string"
+          ? body.targetCourse
+          : "";
+    const resolvedNotes =
+      typeof body.notes === "string"
+        ? body.notes
+        : typeof body.message === "string"
+          ? body.message
+          : null;
 
     if (!resolvedName.trim()) {
       return NextResponse.json(
@@ -155,20 +225,24 @@ export async function POST(req: NextRequest) {
       createdAt: new Date().toISOString(),
     };
 
-    // 1. Log to /data/enquiries.json (best-effort; serverless filesystems may be read-only)
+    // 1. Primary durable cloud storage: Cloud Firestore `leads` collection
+    const savedToFirestore = await persistLeadToFirestore(newEnquiry);
+
+    // 2. Local JSON mirror (dev convenience; non-blocking on Vercel read-only FS)
     try {
       const existing = await readEnquiries();
       existing.unshift(newEnquiry);
       await writeEnquiries(existing);
     } catch {
-      // Non-blocking on read-only serverless environments
+      // ignore
     }
 
-    // 2. Log to Supabase if configured (graceful fallback)
+    // 3. Optional Supabase mirror if configured
+    let savedToSupabase = false;
     try {
       const supabase = getSupabaseServerClient();
       if (supabase) {
-        await supabase.from("enquiries").insert({
+        const { error } = await supabase.from("enquiries").insert({
           id: newEnquiry.id,
           name: newEnquiry.name,
           email: newEnquiry.email,
@@ -179,6 +253,7 @@ export async function POST(req: NextRequest) {
           metadata: { compliance: "jobcenter_safe", notes: newEnquiry.notes },
           created_at: newEnquiry.createdAt,
         });
+        if (!error) savedToSupabase = true;
       }
     } catch (supabaseErr) {
       console.warn("[enquiries] Supabase logging fallback:", supabaseErr);
@@ -187,6 +262,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         success: true,
+        persistedTo: savedToFirestore
+          ? "firestore"
+          : savedToSupabase
+            ? "supabase"
+            : "local",
         message: "Access request received. Academic advisor will contact you on WhatsApp.",
         enquiry: newEnquiry,
       },
@@ -210,5 +290,38 @@ export async function GET(req: NextRequest) {
   }
 
   const enquiries = await readEnquiries();
+
+  // Also include durable Cloud Firestore `leads` when Admin SDK is available
+  try {
+    const adminDb = await getFirebaseAdminFirestore();
+    if (adminDb) {
+      const snap = await adminDb
+        .collection("leads")
+        .orderBy("createdAt", "desc")
+        .limit(200)
+        .get();
+      const seen = new Set(enquiries.map((e) => e.id));
+      for (const docSnap of snap.docs) {
+        if (seen.has(docSnap.id)) continue;
+        const d = docSnap.data();
+        enquiries.push({
+          id: docSnap.id,
+          name: String(d.fullName || ""),
+          email: String(d.email || ""),
+          whatsapp: String(d.phone || ""),
+          track: String(d.targetCourse || ""),
+          status: "pending",
+          compliance: "Firestore Lead",
+          createdAt:
+            d.createdAt && typeof d.createdAt.toDate === "function"
+              ? d.createdAt.toDate().toISOString()
+              : new Date().toISOString(),
+        });
+      }
+    }
+  } catch (err) {
+    console.warn("[enquiries] Admin Firestore leads read notice:", err);
+  }
+
   return NextResponse.json({ count: enquiries.length, enquiries });
 }

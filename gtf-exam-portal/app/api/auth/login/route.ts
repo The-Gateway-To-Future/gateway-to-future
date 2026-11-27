@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { firebaseConfig } from "@/lib/firebase";
 import { getSupabaseServerClient } from "@/lib/supabase";
+import { GTF_LEGACY_SESSION_COOKIE, GTF_SESSION_COOKIE } from "@/lib/server/auth-edge";
 import {
   getLocalStudent,
   normalizeEmail,
@@ -11,6 +12,49 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const BOOTSTRAP_ADMIN_EMAILS = new Set([
+  "ashusharma@gatewaytofuture.com",
+  "skour8786@gmail.com",
+]);
+
+async function lookupFirebaseAccountByIdToken(idToken: string): Promise<{
+  ok: boolean;
+  localId?: string;
+  email?: string;
+  emailVerified?: boolean;
+  displayName?: string;
+}> {
+  const lookupRes = await fetch(
+    `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${encodeURIComponent(firebaseConfig.apiKey)}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idToken }),
+      signal: AbortSignal.timeout(8000),
+    },
+  );
+  const lookupData = (await lookupRes.json().catch(() => null)) as {
+    users?: Array<{
+      localId?: string;
+      email?: string;
+      emailVerified?: boolean;
+      displayName?: string;
+    }>;
+  } | null;
+
+  const fbUser = lookupData?.users?.[0];
+  if (!lookupRes.ok || !fbUser?.localId) {
+    return { ok: false };
+  }
+  return {
+    ok: true,
+    localId: fbUser.localId,
+    email: fbUser.email,
+    emailVerified: Boolean(fbUser.emailVerified),
+    displayName: fbUser.displayName,
+  };
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json().catch(() => ({}));
@@ -19,7 +63,7 @@ export async function POST(req: Request) {
     const password = typeof body.password === "string" ? body.password.trim() : "";
     const firebaseIdToken =
       typeof body.firebaseIdToken === "string" ? body.firebaseIdToken.trim() : "";
-    const firebaseUid = typeof body.firebaseUid === "string" ? body.firebaseUid.trim() : "";
+    const rememberMe = body.rememberMe !== false;
 
     if (!email || (!password && !firebaseIdToken)) {
       return NextResponse.json(
@@ -36,33 +80,20 @@ export async function POST(req: Request) {
     }
 
     let authenticated = false;
+    let firebaseUid = "";
     let studentId = "";
-    let name = typeof body.name === "string" && body.name.trim() ? body.name.trim() : email.split("@")[0];
+    let name =
+      typeof body.name === "string" && body.name.trim()
+        ? body.name.trim()
+        : email.split("@")[0];
     let phone = typeof body.phone === "string" && body.phone.trim() ? body.phone.trim() : "";
     let course = "sprachakademie";
 
-    // 0. Firebase Verified Identity Lookup (Primary for verified Firebase Auth sessions)
+    // 0. Primary: Cryptographically Verified Firebase Identity Token
     if (firebaseIdToken) {
       try {
-        const lookupRes = await fetch(
-          `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${encodeURIComponent(firebaseConfig.apiKey)}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ idToken: firebaseIdToken }),
-          },
-        );
-        const lookupData = (await lookupRes.json().catch(() => null)) as {
-          users?: Array<{
-            localId?: string;
-            email?: string;
-            emailVerified?: boolean;
-            displayName?: string;
-          }>;
-        } | null;
-
-        const fbUser = lookupData?.users?.[0];
-        if (!lookupRes.ok || !fbUser) {
+        const fbUser = await lookupFirebaseAccountByIdToken(firebaseIdToken);
+        if (!fbUser.ok || !fbUser.localId) {
           return NextResponse.json(
             {
               success: false,
@@ -93,12 +124,13 @@ export async function POST(req: Request) {
         }
 
         authenticated = true;
-        studentId = fbUser.localId || firebaseUid || "";
+        firebaseUid = fbUser.localId;
+        studentId = `GTF-2026-${fbUser.localId.slice(-4).toUpperCase()}`;
         name = fbUser.displayName || name;
 
         const localStudent = await getLocalStudent(email);
         if (localStudent) {
-          studentId = localStudent.id || studentId;
+          studentId = localStudent.studentId || localStudent.id || studentId;
           name = localStudent.name || name;
           phone = localStudent.phone || phone;
           course = localStudent.course || course;
@@ -116,7 +148,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // 1. Secondary Auth: Supabase Auth Verification (when not already authenticated via Firebase)
+    // 1. Secondary Auth: Supabase Auth Verification (for pre-migration accounts)
     const supabaseAdmin = !authenticated ? getSupabaseServerClient() : null;
     if (supabaseAdmin) {
       try {
@@ -126,14 +158,25 @@ export async function POST(req: Request) {
         });
 
         if (!authError && authData?.user) {
+          if (!authData.user.email_confirmed_at) {
+            return NextResponse.json(
+              {
+                success: false,
+                ok: false,
+                code: "EMAIL_NOT_VERIFIED",
+                error: "Please verify your email address before signing in.",
+              },
+              { status: 403 },
+            );
+          }
           authenticated = true;
+          firebaseUid = authData.user.id;
           studentId = authData.user.id;
           const meta = authData.user.user_metadata || {};
           name = meta.full_name || meta.name || name;
           phone = meta.phone || phone;
           course = meta.course || meta.targetCourse || meta.targetDivision || course;
 
-          // Check profile in public.users if exists
           try {
             const { data: profile } = await supabaseAdmin
               .from("users")
@@ -154,7 +197,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // 1b. Server-side Firebase IdentityToolkit Password Verification
+    // 1b. Server-side Firebase IdentityToolkit Password Verification (strictly enforces emailVerified)
     if (!authenticated && !firebaseIdToken && password) {
       try {
         const fbSignInRes = await fetch(
@@ -163,28 +206,46 @@ export async function POST(req: Request) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password, returnSecureToken: true }),
+            signal: AbortSignal.timeout(8000),
           },
         );
         const fbSignInData = (await fbSignInRes.json().catch(() => null)) as {
           localId?: string;
+          idToken?: string;
           displayName?: string;
         } | null;
-        if (fbSignInRes.ok && fbSignInData?.localId) {
+
+        if (fbSignInRes.ok && fbSignInData?.localId && fbSignInData?.idToken) {
+          const verifiedLookup = await lookupFirebaseAccountByIdToken(fbSignInData.idToken);
+          if (!verifiedLookup.ok || !verifiedLookup.emailVerified) {
+            return NextResponse.json(
+              {
+                success: false,
+                ok: false,
+                code: "EMAIL_NOT_VERIFIED",
+                error: "Please verify your email address before accessing the GTF Portal.",
+              },
+              { status: 403 },
+            );
+          }
+
           authenticated = true;
-          studentId = fbSignInData.localId;
-          name = fbSignInData.displayName || name;
+          firebaseUid = fbSignInData.localId;
+          studentId = `GTF-2026-${fbSignInData.localId.slice(-4).toUpperCase()}`;
+          name = fbSignInData.displayName || verifiedLookup.displayName || name;
         }
       } catch (fbSignInErr) {
         console.warn("[gtf-auth] Firebase signInWithPassword fallback notice:", fbSignInErr);
       }
     }
 
-    // 2. Local In-Memory Fallback
-    if (!authenticated) {
+    // 2. Local In-Memory Fallback (development only)
+    if (!authenticated && process.env.NODE_ENV !== "production") {
       const localStudent = await getLocalStudent(email);
       if (localStudent && verifyPassword(password, localStudent.passwordHash)) {
         authenticated = true;
-        studentId = localStudent.id;
+        firebaseUid = localStudent.uid || localStudent.id;
+        studentId = localStudent.studentId || localStudent.id;
         name = localStudent.name || name;
         phone = localStudent.phone || phone;
         course = localStudent.course || course;
@@ -204,44 +265,47 @@ export async function POST(req: Request) {
     }
 
     // 4. Generate Stateless HMAC-SHA256 Signed Session Token
-    const studentIdentifier = studentId.startsWith("GTF-") ? studentId : `GTF-2026-${studentId.slice(-4).toUpperCase()}`;
+    const canonicalUid = firebaseUid || studentId;
+    const studentIdentifier = studentId.startsWith("GTF-")
+      ? studentId
+      : `GTF-2026-${canonicalUid.slice(-4).toUpperCase()}`;
+    const role: "student" | "admin" = BOOTSTRAP_ADMIN_EMAILS.has(email) ? "admin" : "student";
+
     const userPayload = {
-      id: studentId,
+      id: canonicalUid,
+      uid: canonicalUid,
       studentId: studentIdentifier,
       name,
       email,
       phone,
       course,
-      role: "student" as const,
+      role,
     };
 
-    const token = signStudentSessionToken(userPayload);
+    const ttlDays = rememberMe ? 30 : 1;
+    const token = signStudentSessionToken(userPayload, ttlDays);
+    const maxAgeSeconds = 60 * 60 * 24 * ttlDays;
 
-    // 5. Build HTTP 200 response with Signed HTTP-Only Cookie
+    // 5. Build HTTP 200 response with Signed HttpOnly Cookie
     const response = NextResponse.json({
       success: true,
       ok: true,
       user: userPayload,
-      token,
       message: "Authenticated successfully.",
     });
 
-    // Set HTTP-only cookie gtf_session (and gtf_student_session)
-    response.cookies.set("gtf_session", token, {
+    const cookieOpts = {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: "lax" as const,
       path: "/",
-      maxAge: 60 * 60 * 24 * 30, // 30 days
-    });
+      maxAge: maxAgeSeconds,
+    };
 
-    response.cookies.set("gtf_student_session", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 30, // 30 days
-    });
+    response.cookies.set(GTF_SESSION_COOKIE, token, cookieOpts);
+    response.cookies.set(GTF_LEGACY_SESSION_COOKIE, token, cookieOpts);
+    // Purge legacy non-HttpOnly cookie so tokens are never readable by JS
+    response.cookies.delete("gtf_auth_token");
 
     return response;
   } catch (err) {
@@ -250,7 +314,7 @@ export async function POST(req: Request) {
       {
         success: false,
         ok: false,
-        error: err instanceof Error ? err.message : "Authentication failed.",
+        error: "Authentication failed.",
       },
       { status: 500 },
     );

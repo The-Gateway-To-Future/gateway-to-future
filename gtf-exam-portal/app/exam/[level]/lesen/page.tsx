@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -15,18 +15,22 @@ import {
 import { ExamHeader } from "@/components/ExamHeader";
 import { MathText } from "@/components/MathText";
 import {
-  getActiveUserEmail,
   loadExamState,
-  resetExamState,
+  resetExamSection,
   saveExamState,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
 import type { ExamTest, LesenTeil, SprachbausteineTeil } from "@/lib/types";
 
-export default function LesenExamPage() {
+function LesenExamPageInner() {
   const params = useParams<{ level: string }>();
+  const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
   const level: Level = isLevel(rawLevel) ? rawLevel : "b1";
+  const defaultTestId = `gtf-${level}-modelltest-1`;
+  const testId = (searchParams?.get("testId") || defaultTestId).trim().toLowerCase();
+  const testQuery =
+    testId !== defaultTestId ? `?testId=${encodeURIComponent(testId)}` : "";
 
   const [test, setTest] = useState<ExamTest | null>(null);
   const [activeTeilIdx, setActiveTeilIdx] = useState(0);
@@ -36,12 +40,16 @@ export default function LesenExamPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const state = loadExamState(level);
+    setActiveTeilIdx(0);
+    setSelectedWordId(null);
+    setLoading(true);
+    const state = loadExamState(level, undefined, testId);
     setAnswers(state.lesenAnswers || {});
 
+    const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache check for <100ms load
     try {
-      const cached = sessionStorage.getItem(`gtf_exam_test_${level}`);
+      const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
         const parsed = JSON.parse(cached) as ExamTest;
         if (parsed?.sections?.lesen?.teile?.length) {
@@ -55,16 +63,16 @@ export default function LesenExamPage() {
 
     async function fetchTest() {
       try {
-        const email = getActiveUserEmail();
         const res = await fetch(
-          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&email=${encodeURIComponent(email)}`,
+          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&testId=${encodeURIComponent(testId)}`,
+          { credentials: "include" },
         );
         if (res.ok) {
           const data = (await res.json()) as { test: ExamTest };
           if (data?.test?.sections?.lesen?.teile?.length) {
             setTest(data.test);
             try {
-              sessionStorage.setItem(`gtf_exam_test_${level}`, JSON.stringify(data.test));
+              sessionStorage.setItem(cacheKey, JSON.stringify(data.test));
             } catch {}
           }
         }
@@ -75,12 +83,12 @@ export default function LesenExamPage() {
       }
     }
     fetchTest();
-  }, [level]);
+  }, [level, testId]);
 
   const setAnswer = (key: string, value: string) => {
     setAnswers((prev) => {
       const next = { ...prev, [key]: value };
-      saveExamState(level, (st) => ({ ...st, lesenAnswers: next }));
+      saveExamState(level, (st) => ({ ...st, lesenAnswers: next }), undefined, testId);
       return next;
     });
   };
@@ -89,13 +97,19 @@ export default function LesenExamPage() {
     setAnswers((prev) => {
       const next = { ...prev };
       delete next[key];
-      saveExamState(level, (st) => ({ ...st, lesenAnswers: next }));
+      saveExamState(level, (st) => ({ ...st, lesenAnswers: next }), undefined, testId);
       return next;
     });
   };
 
   const handleReset = () => {
-    const fresh = resetExamState(level);
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm("Alle Antworten in diesem Modul (Lesen) zurücksetzen? Ihre anderen Prüfungsteile bleiben erhalten.")
+    ) {
+      return;
+    }
+    const fresh = resetExamSection(level, "lesen", undefined, testId);
     setAnswers(fresh.lesenAnswers);
   };
 
@@ -172,6 +186,7 @@ export default function LesenExamPage() {
         activeSection="lesen"
         durationMinutes={test?.sections?.lesen?.durationMinutes || 70}
         testTitle={test?.title}
+        testId={testId}
         onResetExam={handleReset}
       />
 
@@ -226,7 +241,7 @@ export default function LesenExamPage() {
               </div>
 
               <Link
-                href={`/exam/${level}/hoeren`}
+                href={`/exam/${level}/hoeren${testQuery}`}
                 className="relative z-10 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-bold shadow-sm hover:bg-slate-800 transition cursor-pointer"
               >
                 <span>Weiter zu Modul 2: Hören</span>
@@ -488,5 +503,19 @@ export default function LesenExamPage() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function LesenExamPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-600 text-sm">
+          Lade Prüfungsmodul Lesen…
+        </div>
+      }
+    >
+      <LesenExamPageInner />
+    </Suspense>
   );
 }

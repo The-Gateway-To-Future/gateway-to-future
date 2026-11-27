@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Shield } from "lucide-react";
 import { useIsNativeApp } from "@/lib/use-native-platform";
 
@@ -36,9 +37,16 @@ function injectGoogleAnalytics(gaId: string) {
 }
 
 export function CookieConsentBanner() {
+  const pathname = usePathname() || "";
   const gaId = process.env.NEXT_PUBLIC_GA_ID || DEFAULT_GA_ID;
   const { isNative, ready: nativeReady } = useIsNativeApp();
   const [visible, setVisible] = useState(false);
+
+  const hasBottomNav =
+    !pathname.startsWith("/login") &&
+    !pathname.startsWith("/register") &&
+    !(pathname.includes("/exam/") && !pathname.endsWith("/result")) &&
+    pathname !== "/";
 
   useEffect(() => {
     if (!nativeReady) return;
@@ -90,7 +98,11 @@ export function CookieConsentBanner() {
     <aside
       role="dialog"
       aria-label="Cookie and Analytics Preferences"
-      className="fixed inset-x-3 bottom-[72px] lg:bottom-4 z-50 mx-auto max-w-2xl rounded-2xl border border-slate-700/80 bg-slate-900/95 px-4 py-3.5 text-slate-100 shadow-2xl backdrop-blur-md"
+      className={`fixed inset-x-3 ${
+        hasBottomNav
+          ? "bottom-[calc(4.75rem+env(safe-area-inset-bottom))] lg:bottom-4"
+          : "bottom-[max(1rem,env(safe-area-inset-bottom))]"
+      } z-50 mx-auto max-w-2xl rounded-2xl border border-slate-700/80 bg-slate-900/95 px-4 py-3.5 text-slate-100 shadow-2xl backdrop-blur-md`}
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
         <div className="space-y-1 text-xs leading-relaxed text-slate-200">

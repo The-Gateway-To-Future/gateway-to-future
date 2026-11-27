@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -12,9 +12,8 @@ import {
 } from "lucide-react";
 import { ExamHeader } from "@/components/ExamHeader";
 import {
-  getActiveUserEmail,
   loadExamState,
-  resetExamState,
+  resetExamSection,
   saveExamState,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
@@ -28,10 +27,15 @@ function countWords(text: string): number {
   return cleaned.split(/\s+/).length;
 }
 
-export default function SchreibenExamPage() {
+function SchreibenExamPageInner() {
   const params = useParams<{ level: string }>();
+  const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
   const level: Level = isLevel(rawLevel) ? rawLevel : "b1";
+  const defaultTestId = `gtf-${level}-modelltest-1`;
+  const testId = (searchParams?.get("testId") || defaultTestId).trim().toLowerCase();
+  const testQuery =
+    testId !== defaultTestId ? `?testId=${encodeURIComponent(testId)}` : "";
 
   const [test, setTest] = useState<ExamTest | null>(null);
   const [activeTaskIdx, setActiveTaskIdx] = useState(0);
@@ -44,13 +48,16 @@ export default function SchreibenExamPage() {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
-    const st = loadExamState(level);
+    setActiveTaskIdx(0);
+    setLoading(true);
+    const st = loadExamState(level, undefined, testId);
     setDrafts(st.schreibenDrafts || {});
     setEvaluations(st.schreibenEvaluations || {});
 
+    const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache check for <100ms load
     try {
-      const cached = sessionStorage.getItem(`gtf_exam_test_${level}`);
+      const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
         const parsed = JSON.parse(cached) as ExamTest;
         if (parsed?.sections?.schreiben?.tasks?.length) {
@@ -64,16 +71,16 @@ export default function SchreibenExamPage() {
 
     async function fetchTest() {
       try {
-        const email = getActiveUserEmail();
         const res = await fetch(
-          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&email=${encodeURIComponent(email)}`,
+          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&testId=${encodeURIComponent(testId)}`,
+          { credentials: "include" },
         );
         if (res.ok) {
           const data = (await res.json()) as { test: ExamTest };
           if (data?.test?.sections?.schreiben?.tasks?.length) {
             setTest(data.test);
             try {
-              sessionStorage.setItem(`gtf_exam_test_${level}`, JSON.stringify(data.test));
+              sessionStorage.setItem(cacheKey, JSON.stringify(data.test));
             } catch {}
           }
         }
@@ -84,7 +91,7 @@ export default function SchreibenExamPage() {
       }
     }
     fetchTest();
-  }, [level]);
+  }, [level, testId]);
 
   const tasks: SchreibenTask[] = test?.sections.schreiben.tasks || [];
   const currentTask: SchreibenTask | undefined = tasks[activeTaskIdx];
@@ -95,7 +102,7 @@ export default function SchreibenExamPage() {
   const updateDraft = (taskId: string, value: string) => {
     setDrafts((prev) => {
       const next = { ...prev, [taskId]: value };
-      saveExamState(level, (st) => ({ ...st, schreibenDrafts: next }));
+      saveExamState(level, (st) => ({ ...st, schreibenDrafts: next }), undefined, testId);
       return next;
     });
   };
@@ -135,6 +142,7 @@ export default function SchreibenExamPage() {
     try {
       const res = await fetch("/api/ai/evaluate-schreiben", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           level,
@@ -155,7 +163,7 @@ export default function SchreibenExamPage() {
       const ev = data.evaluation as SchreibenEvaluation;
       setEvaluations((prev) => {
         const next = { ...prev, [currentTask.id]: ev };
-        saveExamState(level, (st) => ({ ...st, schreibenEvaluations: next }));
+        saveExamState(level, (st) => ({ ...st, schreibenEvaluations: next }), undefined, testId);
         return next;
       });
     } catch (err) {
@@ -166,7 +174,13 @@ export default function SchreibenExamPage() {
   };
 
   const handleReset = () => {
-    const fresh = resetExamState(level);
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm("Entwürfe und Bewertungen in „Schreiben“ zurücksetzen? Andere Prüfungsteile bleiben erhalten.")
+    ) {
+      return;
+    }
+    const fresh = resetExamSection(level, "schreiben", undefined, testId);
     setDrafts(fresh.schreibenDrafts);
     setEvaluations(fresh.schreibenEvaluations);
   };
@@ -178,6 +192,7 @@ export default function SchreibenExamPage() {
         activeSection="schreiben"
         durationMinutes={test?.sections?.schreiben?.durationMinutes || 60}
         testTitle={test?.title}
+        testId={testId}
         onResetExam={handleReset}
       />
 
@@ -230,7 +245,7 @@ export default function SchreibenExamPage() {
               </div>
 
               <Link
-                href={`/exam/${level}/sprechen`}
+                href={`/exam/${level}/sprechen${testQuery}`}
                 className="relative z-10 cursor-pointer inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-bold shadow-xs hover:bg-slate-800 transition"
               >
                 <span>Weiter zu Modul 4: Sprechen</span>
@@ -475,5 +490,19 @@ export default function SchreibenExamPage() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function SchreibenExamPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-600 text-sm">
+          Lade Prüfungsmodul Schreiben…
+        </div>
+      }
+    >
+      <SchreibenExamPageInner />
+    </Suspense>
   );
 }

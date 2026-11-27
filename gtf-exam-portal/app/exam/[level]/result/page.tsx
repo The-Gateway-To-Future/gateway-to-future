@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import {
   Award,
   CheckCircle2,
@@ -13,38 +13,42 @@ import { ExamHeader } from "@/components/ExamHeader";
 import { MathText } from "@/components/MathText";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import {
-  getActiveUserEmail,
-  getActiveUserProfile,
   loadExamState,
   resetExamState,
 } from "@/lib/client-storage";
 import { SECTION_META, isLevel, type Level, type SectionKey } from "@/lib/config";
 import type { ExamResult } from "@/lib/types";
 
-export default function ExamResultPage() {
+function ExamResultPageInner() {
+  const router = useRouter();
   const params = useParams<{ level: string }>();
+  const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
   const level: Level = isLevel(rawLevel) ? rawLevel : "b1";
+  const defaultTestId = `gtf-${level}-modelltest-1`;
+  const testId = (searchParams?.get("testId") || defaultTestId).trim().toLowerCase();
+  const testQuery =
+    testId !== defaultTestId ? `?testId=${encodeURIComponent(testId)}` : "";
 
   const [result, setResult] = useState<ExamResult | null>(null);
   const [activeSectionTab, setActiveSectionTab] = useState<SectionKey>("lesen");
   const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const computeScorecard = async () => {
     setLoading(true);
+    setErrorMsg(null);
     try {
-      const st = loadExamState(level);
-      const profile = getActiveUserProfile();
-      const userEmail = profile?.userEmail || getActiveUserEmail();
-      const studentId = profile?.studentId;
+      const st = loadExamState(level, undefined, testId);
+      const attemptKey = `${level}_${testId}_${st.startedAt || 0}`;
       const res = await fetch("/api/exam/score", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           level,
-          testId: st.testId,
-          userEmail,
-          studentId,
+          testId,
+          attemptKey,
           lesenAnswers: st.lesenAnswers,
           hoerenAnswers: st.hoerenAnswers,
           schreibenEvaluations: st.schreibenEvaluations,
@@ -54,7 +58,12 @@ export default function ExamResultPage() {
       if (res.ok) {
         const data = (await res.json()) as { result: ExamResult };
         setResult(data.result);
+      } else {
+        const errData = await res.json().catch(() => ({}));
+        setErrorMsg(errData.error || "Ergebnis konnte nicht berechnet werden.");
       }
+    } catch {
+      setErrorMsg("Netzwerkfehler beim Berechnen des Prüfungsergebnisses.");
     } finally {
       setLoading(false);
     }
@@ -63,11 +72,19 @@ export default function ExamResultPage() {
   useEffect(() => {
     computeScorecard();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [level]);
+  }, [level, testId]);
 
   const handleRestart = () => {
-    resetExamState(level);
-    computeScorecard();
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        "Möchten Sie wirklich alle Antworten dieses Modelltests (Lesen, Hören, Schreiben, Sprechen) zurücksetzen und neu starten?",
+      )
+    ) {
+      return;
+    }
+    resetExamState(level, undefined, testId);
+    router.push(`/exam/${level}/lesen${testQuery}`);
   };
 
   const currentSection = result?.sections.find((s) => s.section === activeSectionTab);
@@ -84,11 +101,23 @@ export default function ExamResultPage() {
         activeSection="result"
         durationMinutes={0}
         testTitle={result?.title}
+        testId={testId}
         onResetExam={handleRestart}
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
-        {loading || !result ? (
+        {errorMsg ? (
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-6 text-center text-sm text-amber-900 shadow-sm space-y-3">
+            <p className="font-bold">{errorMsg}</p>
+            <button
+              type="button"
+              onClick={computeScorecard}
+              className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800 transition cursor-pointer"
+            >
+              Erneut versuchen
+            </button>
+          </div>
+        ) : loading || !result ? (
           <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center text-sm text-slate-600 shadow-sm flex items-center justify-center gap-3">
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-slate-900" />
             <span>Berechne Ihr vollständiges Goethe / telc Prüfungsergebnis…</span>
@@ -202,7 +231,7 @@ export default function ExamResultPage() {
 
                   <div className="flex flex-wrap items-center gap-2">
                     <Link
-                      href={`/exam/${level}/${currentSection.section}`}
+                      href={`/exam/${level}/${currentSection.section}${testQuery}`}
                       className="relative z-10 cursor-pointer rounded-xl bg-slate-900 text-white px-3.5 py-2 text-xs font-bold hover:bg-slate-800 transition shadow-xs"
                     >
                       Modul {SECTION_META[currentSection.section].label} öffnen
@@ -289,5 +318,19 @@ export default function ExamResultPage() {
 
       <BottomNavigationBar />
     </div>
+  );
+}
+
+export default function ExamResultPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-600 text-sm">
+          Lade Prüfungsergebnis…
+        </div>
+      }
+    >
+      <ExamResultPageInner />
+    </Suspense>
   );
 }

@@ -3,31 +3,53 @@ import {
   getAllMergedProducts,
   triggerN8nWhatsAppWebhook,
   upsertLocalStudent,
+  verifyAdminRequest,
 } from "@/lib/server/admin-auth";
+import { getVerifiedSession } from "@/lib/server/auth-session";
 import {
+  ALWAYS_PAID_PRODUCT_SLUGS,
   getAllWorkbooks,
+  getPaidUnlockedProductSlugs,
   getUnlockedProductSlugs,
   grantProductUnlock,
 } from "@/lib/server/catalog";
-import { integrationStatus, serverEnv } from "@/lib/server/env";
+import { integrationStatus } from "@/lib/server/env";
 import type { CatalogItem } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const email = (searchParams.get("email") || serverEnv.demoUserEmail).toLowerCase().trim();
+  // Derive caller identity strictly from verified HttpOnly session (never trust ?email= spoofing)
+  const session = await getVerifiedSession(req);
+  const email = session?.email || "";
+  const uid = session?.uid || "";
+
   const isFreeLaunch = process.env.NEXT_PUBLIC_FREE_LAUNCH_MODE === "true";
-  const unlocked = await getUnlockedProductSlugs(email);
+  const unlocked = email
+    ? await getUnlockedProductSlugs(email, uid)
+    : new Set<string>(
+        isFreeLaunch
+          ? (await getAllMergedProducts())
+              .filter((p) => !ALWAYS_PAID_PRODUCT_SLUGS.has(p.slug))
+              .map((p) => p.slug)
+          : [],
+      );
+  const paidSlugs = email ? await getPaidUnlockedProductSlugs(email, uid) : new Set<string>();
   const mergedProducts = await getAllMergedProducts();
 
-  const products: CatalogItem[] = mergedProducts.map((p) => ({
-    ...p,
-    priceEur: 0,
-    priceInr: isFreeLaunch ? 0 : (p.isFree ? 0 : (p.priceInr || 499)),
-    unlocked: isFreeLaunch || p.isFree || unlocked.has(p.slug),
-  }));
+  const products: CatalogItem[] = mergedProducts.map((p) => {
+    const isAlwaysPaid = ALWAYS_PAID_PRODUCT_SLUGS.has(p.slug);
+    const effectivelyFree = !isAlwaysPaid && (isFreeLaunch || p.isFree);
+    return {
+      ...p,
+      priceEur: 0,
+      priceInr: effectivelyFree ? 0 : p.priceInr || 499,
+      unlocked: isAlwaysPaid
+        ? paidSlugs.has(p.slug)
+        : isFreeLaunch || p.isFree || unlocked.has(p.slug),
+    };
+  });
 
   const workbooks = getAllWorkbooks().map((wb) => ({
     id: wb.id,
@@ -56,8 +78,15 @@ export async function GET(req: Request) {
     unlocked: isFreeLaunch || wb.isFree || unlocked.has(wb.productSlug),
   }));
 
+  const ausbildungProUnlocked =
+    session?.role === "admin" ||
+    paidSlugs.has("ausbildung-os-pro") ||
+    paidSlugs.has("ausbildung-os-fast-track");
+
   return NextResponse.json({
-    userEmail: email,
+    authenticated: Boolean(session),
+    userEmail: email || null,
+    ausbildungProUnlocked,
     integrations: integrationStatus(),
     products,
     workbooks,
@@ -65,22 +94,17 @@ export async function GET(req: Request) {
 }
 
 /**
- * Convenience endpoint for simulating an instant webhook unlock from the Dashboard UI
- * when testing locally without having to run curl manually.
+ * Admin-protected manual unlock endpoint (local dev convenience or verified admin header in prod).
  */
 export async function POST(req: Request) {
-  if (process.env.NODE_ENV === "production") {
-    const adminSecret = (process.env.ADMIN_SECRET || "").trim();
-    const headerSecret = (req.headers.get("x-admin-secret") || "").trim();
-    if (!adminSecret || headerSecret !== adminSecret) {
-      return NextResponse.json(
-        {
-          ok: false,
-          error: "Direct demo unlock is disabled in production. Please subscribe at /pricing.",
-        },
-        { status: 403 },
-      );
-    }
+  if (process.env.NODE_ENV === "production" && !verifyAdminRequest(req)) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Direct demo unlock is disabled in production. Please subscribe at /pricing.",
+      },
+      { status: 403 },
+    );
   }
 
   const body = (await req.json()) as {
@@ -92,9 +116,12 @@ export async function POST(req: Request) {
     currency?: string;
     amountPaid?: number;
   };
-  const userEmail = (body.userEmail || serverEnv.demoUserEmail).toLowerCase().trim();
+  const userEmail = (body.userEmail || "").toLowerCase().trim();
   const productSlug = (body.productSlug || "").trim();
 
+  if (!userEmail || !userEmail.includes("@")) {
+    return NextResponse.json({ error: "Valid userEmail is required" }, { status: 400 });
+  }
   if (!productSlug) {
     return NextResponse.json({ error: "Missing productSlug" }, { status: 400 });
   }
@@ -128,12 +155,12 @@ export async function POST(req: Request) {
 
   const accessLink =
     product?.type === "pdf_workbook"
-      ? `${appBaseUrl}/workbooks/${product.resourceId}?email=${encodeURIComponent(userEmail)}`
+      ? `${appBaseUrl}/workbooks/${product.resourceId}`
       : product?.divisionId === "studienkolleg"
-      ? `${appBaseUrl}/dashboard?division=studienkolleg&email=${encodeURIComponent(userEmail)}`
-      : product?.divisionId === "fachsprache_medizin"
-      ? `${appBaseUrl}/dashboard?division=fachsprache_medizin&email=${encodeURIComponent(userEmail)}`
-      : `${appBaseUrl}/exam/${product?.level || "b1"}/lesen?email=${encodeURIComponent(userEmail)}`;
+        ? `${appBaseUrl}/studienkolleg`
+        : product?.divisionId === "fachsprache_medizin"
+          ? `${appBaseUrl}/pflege`
+          : `${appBaseUrl}/exam/${product?.level || "b1"}/lesen`;
 
   const n8nWebhook = await triggerN8nWhatsAppWebhook({
     student_name: studentName,

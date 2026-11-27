@@ -242,10 +242,10 @@ export function Navbar({
           {nativeReady && !isNative && (
             <Link
               href="/pricing#consultation-booking"
-              className="inline-flex items-center justify-center h-8 w-8 sm:h-auto sm:w-auto sm:px-3 sm:py-1.5 rounded-xl border border-slate-200 bg-white text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 hover:text-slate-900 hover:border-slate-300 transition shrink-0"
+              className="inline-flex items-center justify-center min-h-[40px] min-w-[40px] sm:min-h-0 sm:min-w-0 sm:px-3 sm:py-1.5 rounded-xl border border-slate-200 bg-white text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 hover:text-slate-900 hover:border-slate-300 transition shrink-0"
               title="Book Paid Consultation — Gateway To Future Mentorship Desk"
             >
-              <CalendarCheck2 className="h-3.5 w-3.5 shrink-0" />
+              <CalendarCheck2 className="h-4 w-4 sm:h-3.5 sm:w-3.5 shrink-0" />
               <span className="hidden md:inline ml-1.5">Consult</span>
             </Link>
           )}
@@ -253,7 +253,7 @@ export function Navbar({
           {/* Auth Pill */}
           {isAuthenticated && user ? (
             <div
-              className={`inline-flex items-center gap-1.5 rounded-xl border px-2 py-1 sm:px-2.5 text-xs shrink-0 transition ${
+              className={`inline-flex items-center gap-1 rounded-xl border px-1.5 py-0.5 sm:px-2.5 sm:py-1 text-xs shrink-0 transition ${
                 isProfileActive
                   ? "border-slate-300 bg-slate-100"
                   : "border-slate-200 bg-slate-50"
@@ -261,10 +261,10 @@ export function Navbar({
             >
               <Link
                 href="/profile"
-                className="inline-flex items-center gap-1.5 rounded-lg hover:opacity-85 transition focus:outline-none"
+                className="inline-flex items-center gap-1.5 min-h-[38px] px-1 rounded-lg hover:opacity-85 transition focus:outline-none"
                 title="Open Profile & Subscription"
               >
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white shrink-0">
+                <div className="flex h-7 w-7 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-slate-900 text-[11px] sm:text-[10px] font-bold text-white shrink-0">
                   {(user.fullName || user.userEmail || "S").charAt(0).toUpperCase()}
                 </div>
                 <div className="hidden sm:flex flex-col text-left max-w-[100px]">
@@ -280,9 +280,17 @@ export function Navbar({
               </Link>
               <button
                 type="button"
-                onClick={logout}
-                className="text-slate-400 hover:text-red-600 transition ml-0.5 p-0.5 rounded-md hover:bg-slate-100"
+                onClick={() => {
+                  if (
+                    typeof window === "undefined" ||
+                    window.confirm("Sign out of your Gateway To Future account?")
+                  ) {
+                    void logout();
+                  }
+                }}
+                className="hidden sm:inline-flex items-center justify-center h-8 w-8 text-slate-400 hover:text-red-600 transition ml-0.5 rounded-lg hover:bg-slate-100 cursor-pointer"
                 title="Log out"
+                aria-label="Log out"
               >
                 <LogOut className="h-3.5 w-3.5" />
               </button>
@@ -290,14 +298,15 @@ export function Navbar({
           ) : (
             <Link
               href="/login"
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white hover:bg-slate-800 transition whitespace-nowrap shrink-0 shadow-xs"
+              className="inline-flex items-center justify-center gap-1.5 min-h-[40px] rounded-xl bg-slate-900 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-white hover:bg-slate-800 transition whitespace-nowrap shrink-0 shadow-xs"
             >
               <User className="h-3.5 w-3.5 text-white" />
               <span>Log In</span>
             </Link>
           )}
 
-          <div className="hidden md:block shrink-0">
+          {/* Visible on BOTH mobile and desktop web so mobile learners can install the PWA */}
+          <div className="shrink-0">
             <PwaRegistrar />
           </div>
         </div>

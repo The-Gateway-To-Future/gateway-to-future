@@ -9,18 +9,20 @@ import {
   getActiveUserProfile,
   saveActiveUserProfile,
 } from "./client-storage";
-import { ensureFirebaseLocalPersistence, getFirebaseAuth, pushSignupToN8nWebhook } from "./firebase";
+import { ensureFirebaseLocalPersistence, getFirebaseAuth } from "./firebase";
 import type { DeviceType, DivisionId, UserSessionState } from "./types";
 
 export const GTF_AUTH_COOKIE_NAME = "gtf_auth_token";
 
-export function setGtfAuthCookie(token: string, days = 30): void {
-  if (typeof document === "undefined" || !token) return;
-  const maxAge = Math.max(1, Math.floor(days * 86400));
-  const secureAttr = window.location.protocol === "https:" ? "; Secure" : "";
-  document.cookie = `${GTF_AUTH_COOKIE_NAME}=${encodeURIComponent(token)}; path=/; max-age=${maxAge}; SameSite=Lax${secureAttr}`;
+/**
+ * Legacy helper retained as a safe no-op for external imports.
+ * Auth sessions are strictly managed via HttpOnly `gtf_session` cookies issued by `/api/auth/login`.
+ */
+export function setGtfAuthCookie(_token: string, _days = 30): void {
+  // Intentionally do not persist session tokens in JS-readable document.cookie
 }
 
+/** Purges any legacy non-HttpOnly `gtf_auth_token` cookie left on older clients. */
 export function clearGtfAuthCookie(): void {
   if (typeof document === "undefined") return;
   const secureAttr = window.location.protocol === "https:" ? "; Secure" : "";
@@ -28,19 +30,6 @@ export function clearGtfAuthCookie(): void {
 }
 
 export function getGtfAuthCookie(): string {
-  if (typeof document === "undefined") return "";
-  const prefix = `${GTF_AUTH_COOKIE_NAME}=`;
-  const parts = document.cookie.split(";");
-  for (const part of parts) {
-    const trimmed = part.trim();
-    if (trimmed.startsWith(prefix)) {
-      try {
-        return decodeURIComponent(trimmed.slice(prefix.length));
-      } catch {
-        return trimmed.slice(prefix.length);
-      }
-    }
-  }
   return "";
 }
 
@@ -51,7 +40,11 @@ interface AuthContextType {
   isLoading: boolean;
   sessionTerminatedReason: string | null;
   refreshSession: () => Promise<boolean>;
-  login: (email: string, pass: string, deviceType?: DeviceType) => Promise<{ ok: boolean; error?: string }>;
+  login: (
+    email: string,
+    pass: string,
+    deviceType?: DeviceType,
+  ) => Promise<{ ok: boolean; error?: string }>;
   register: (data: {
     email: string;
     pass: string;
@@ -77,7 +70,28 @@ function clearAllClientAuthStorage() {
   }
 }
 
-function buildFirebaseUserProfile(fbUser: FirebaseUser, token: string): UserSessionState {
+function notifyServiceWorkerLogout() {
+  if (typeof navigator !== "undefined" && navigator.serviceWorker?.controller) {
+    try {
+      navigator.serviceWorker.controller.postMessage({ type: "GTF_CLEAR_AUTH_CACHES" });
+    } catch {
+      // ignore
+    }
+  }
+}
+
+function buildFirebaseUserProfile(
+  fbUser: FirebaseUser,
+  serverUser?: {
+    id?: string;
+    uid?: string;
+    studentId?: string;
+    name?: string;
+    phone?: string;
+    course?: string;
+    role?: string;
+  } | null,
+): UserSessionState {
   const email = (fbUser.email || "").trim().toLowerCase();
   const stored = getActiveUserProfile();
   let studentMeta: { studentId?: string; id?: string; phone?: string; course?: string; name?: string } | null = null;
@@ -100,19 +114,27 @@ function buildFirebaseUserProfile(fbUser: FirebaseUser, token: string): UserSess
   const fallbackId = `GTF-2026-${fbUser.uid.slice(-4).toUpperCase()}`;
 
   return {
-    studentId: studentMeta?.studentId || studentMeta?.id || sameStoredUser?.studentId || fallbackId,
+    firebaseUid: fbUser.uid,
+    studentId:
+      serverUser?.studentId ||
+      studentMeta?.studentId ||
+      studentMeta?.id ||
+      sameStoredUser?.studentId ||
+      fallbackId,
     userEmail: email,
     fullName:
+      serverUser?.name ||
       fbUser.displayName ||
       studentMeta?.name ||
       sameStoredUser?.fullName ||
       email.split("@")[0] ||
       "Candidate",
-    phone: studentMeta?.phone || sameStoredUser?.phone || "",
+    phone: serverUser?.phone || studentMeta?.phone || sameStoredUser?.phone || "",
     phoneVerified: true,
-    course: studentMeta?.course || sameStoredUser?.course || "sprachakademie",
+    course: serverUser?.course || studentMeta?.course || sameStoredUser?.course || "sprachakademie",
+    role: serverUser?.role || sameStoredUser?.role || "student",
     deviceType: "web",
-    sessionToken: token,
+    sessionToken: "cookie-session",
     isAuthenticated: true,
   };
 }
@@ -125,51 +147,145 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [sessionTerminatedReason, setSessionTerminatedReason] = useState<string | null>(null);
 
+  const hydrateFromServerSession = useCallback(async (): Promise<boolean> => {
+    try {
+      const res = await fetch("/api/auth/me", {
+        cache: "no-store",
+        credentials: "include",
+      });
+      const data = await res.json().catch(() => ({ authenticated: false }));
+
+      if (res.ok && data.authenticated && data.user) {
+        const verifiedProfile: UserSessionState = {
+          firebaseUid: data.user.uid || data.user.id,
+          studentId:
+            data.user.studentId ||
+            (data.user.id?.startsWith("GTF-")
+              ? data.user.id
+              : `GTF-2026-${data.user.id?.slice(-4)?.toUpperCase() || "0001"}`),
+          userEmail: data.user.email,
+          fullName: data.user.name || data.user.email.split("@")[0],
+          phone: data.user.phone || "",
+          phoneVerified: true,
+          course: data.user.course || "sprachakademie",
+          role: data.user.role || "student",
+          deviceType: "web",
+          sessionToken: "cookie-session",
+          isAuthenticated: true,
+        };
+
+        saveActiveUserProfile(verifiedProfile);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("gtf_student_user", JSON.stringify(data.user));
+        }
+        setUser(verifiedProfile);
+        setSessionToken("cookie-session");
+        return true;
+      }
+      return false;
+    } catch {
+      // Preserve local profile transiently if offline
+      const cached = getActiveUserProfile();
+      if (cached && cached.userEmail) {
+        setUser(cached);
+        setSessionToken(getActiveSessionToken() || "cookie-session");
+        return true;
+      }
+      return false;
+    }
+  }, []);
+
   const syncFirebaseUserSession = useCallback(
     async (fbUser: FirebaseUser | null, forceRefresh = false): Promise<boolean> => {
+      clearGtfAuthCookie();
+
       if (!fbUser) {
-        clearGtfAuthCookie();
-        clearAllClientAuthStorage();
-        setUser(null);
-        setSessionToken("");
-        return false;
+        // IMPORTANT: Do NOT wipe valid HttpOnly server sessions (e.g. legacy Supabase accounts)
+        const hasServerSession = await hydrateFromServerSession();
+        if (!hasServerSession) {
+          clearAllClientAuthStorage();
+          setUser(null);
+          setSessionToken("");
+        }
+        return hasServerSession;
       }
 
       if (!fbUser.emailVerified) {
-        clearGtfAuthCookie();
         clearAllClientAuthStorage();
         setUser(null);
         setSessionToken("");
-        fetch("/api/auth/logout", { method: "POST" }).catch(() => {});
+        fetch("/api/auth/logout", { method: "POST", credentials: "include" }).catch(() => {});
         return false;
       }
 
       const idToken = await fbUser.getIdToken(forceRefresh);
-      setGtfAuthCookie(idToken, 30);
 
-      const profile = buildFirebaseUserProfile(fbUser, idToken);
+      // Ensure the HttpOnly 30-day `gtf_session` cookie is present & synced with this verified Firebase user
+      let serverUser: {
+        id?: string;
+        uid?: string;
+        studentId?: string;
+        name?: string;
+        phone?: string;
+        course?: string;
+        role?: string;
+      } | null = null;
+
+      try {
+        const meRes = await fetch("/api/auth/me", { cache: "no-store", credentials: "include" });
+        const meData = await meRes.json().catch(() => null);
+        const meEmail = String(meData?.user?.email || "").toLowerCase();
+        const fbEmail = String(fbUser.email || "").toLowerCase();
+
+        if (meRes.ok && meData?.authenticated && meEmail === fbEmail) {
+          serverUser = meData.user;
+        } else if (fbEmail) {
+          // Transparently exchange fresh verified Firebase ID token for HttpOnly `gtf_session` cookie
+          const loginRes = await fetch("/api/auth/login", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: fbEmail,
+              firebaseIdToken: idToken,
+              firebaseUid: fbUser.uid,
+              name: fbUser.displayName || "",
+              rememberMe: true,
+            }),
+          });
+          const loginData = await loginRes.json().catch(() => null);
+          if (loginRes.ok && loginData?.user) {
+            serverUser = loginData.user;
+          }
+        }
+      } catch {
+        // Offline resilience: keep Firebase client profile locally
+      }
+
+      const profile = buildFirebaseUserProfile(fbUser, serverUser);
       saveActiveUserProfile(profile);
       if (typeof window !== "undefined") {
         localStorage.setItem(
           "gtf_student_user",
           JSON.stringify({
-            id: profile.studentId,
+            id: profile.firebaseUid || profile.studentId,
+            uid: profile.firebaseUid,
             studentId: profile.studentId,
             name: profile.fullName,
             email: profile.userEmail,
             phone: profile.phone,
             course: profile.course,
+            role: profile.role,
           }),
         );
-        localStorage.setItem("gtf_student_token", idToken);
       }
 
       setUser(profile);
-      setSessionToken(idToken);
+      setSessionToken("cookie-session");
       setSessionTerminatedReason(null);
       return true;
     },
-    [],
+    [hydrateFromServerSession],
   );
 
   const refreshSession = useCallback(async (): Promise<boolean> => {
@@ -182,72 +298,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return await syncFirebaseUserSession(auth.currentUser, false);
       }
     } catch {
-      // Fallback below if Firebase runtime check threw transiently
+      // Fallback to server cookie check below
     }
 
-    const existingToken =
-      getGtfAuthCookie() ||
-      getActiveSessionToken() ||
-      (typeof window !== "undefined" ? localStorage.getItem("gtf_student_token") || "" : "");
-
-    try {
-      const res = await fetch("/api/auth/me", { cache: "no-store" });
-      const data = await res.json().catch(() => ({ authenticated: false }));
-
-      if (res.ok && data.authenticated && data.user) {
-        const verifiedProfile: UserSessionState = {
-          studentId:
-            data.user.studentId ||
-            (data.user.id?.startsWith("GTF-")
-              ? data.user.id
-              : `GTF-2026-${data.user.id?.slice(-4)?.toUpperCase() || "0001"}`),
-          userEmail: data.user.email,
-          fullName: data.user.name || data.user.email.split("@")[0],
-          phone: data.user.phone || "",
-          phoneVerified: true,
-          course: data.user.course || "sprachakademie",
-          deviceType: "web",
-          sessionToken: existingToken || "active",
-          isAuthenticated: true,
-        };
-
-        saveActiveUserProfile(verifiedProfile);
-        if (existingToken) {
-          setGtfAuthCookie(existingToken, 30);
-        }
-        if (typeof window !== "undefined") {
-          localStorage.setItem("gtf_student_user", JSON.stringify(data.user));
-        }
-        setUser(verifiedProfile);
-        setSessionToken(existingToken || "active");
-        return true;
-      }
-    } catch {
-      // Preserve local profile if offline/transient network glitch
-      return Boolean(getGtfAuthCookie() && getActiveUserProfile());
+    const ok = await hydrateFromServerSession();
+    if (!ok) {
+      clearGtfAuthCookie();
+      clearAllClientAuthStorage();
+      setUser(null);
+      setSessionToken("");
     }
+    return ok;
+  }, [syncFirebaseUserSession, hydrateFromServerSession]);
 
-    clearGtfAuthCookie();
-    clearAllClientAuthStorage();
-    setUser(null);
-    setSessionToken("");
-    return false;
-  }, [syncFirebaseUserSession]);
-
-  // Synchronize Firebase ID Token -> `gtf_auth_token` cookie on sign-in, restore, and auto-refresh
+  // Synchronize Firebase Auth + HttpOnly server session on mount and token rotation
   useEffect(() => {
     let active = true;
     let unsubscribe: (() => void) | undefined;
 
     const storedProfile = getActiveUserProfile();
-    const token =
-      getGtfAuthCookie() ||
-      getActiveSessionToken() ||
-      (typeof window !== "undefined" ? localStorage.getItem("gtf_student_token") || "" : "");
-
-    if (storedProfile && token) {
+    if (storedProfile && storedProfile.userEmail) {
       setUser(storedProfile);
-      setSessionToken(token);
+      setSessionToken("cookie-session");
     }
 
     ensureFirebaseLocalPersistence()
@@ -264,27 +336,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         });
       })
-      .catch(() => {
-        if (active) {
-          setIsLoading(false);
-        }
+      .catch(async () => {
+        if (!active) return;
+        await hydrateFromServerSession();
+        if (active) setIsLoading(false);
       });
 
     return () => {
       active = false;
       if (unsubscribe) unsubscribe();
     };
-  }, [syncFirebaseUserSession]);
+  }, [syncFirebaseUserSession, hydrateFromServerSession]);
 
-  // Keep synced cookie fresh across long study sessions & iOS PWA background/foreground resumes
+  // Keep Firebase client ID token fresh for Firestore SDK reads/writes across long sessions
   useEffect(() => {
     const refreshActiveToken = async () => {
       try {
         const fbUser = getFirebaseAuth().currentUser;
         if (fbUser && fbUser.emailVerified) {
-          const freshToken = await fbUser.getIdToken();
-          setGtfAuthCookie(freshToken, 30);
-          setSessionToken(freshToken);
+          await fbUser.getIdToken();
         }
       } catch {
         // Ignore transient network errors when backgrounded
@@ -315,6 +385,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         const res = await fetch("/api/auth/login", {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password: pass, deviceType }),
         });
@@ -323,30 +394,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return { ok: false, error: data.error || "Login failed" };
         }
 
-        const resolvedToken = data.token || data.sessionToken || "";
-        if (resolvedToken) {
-          setGtfAuthCookie(resolvedToken, 30);
-        }
         if (typeof window !== "undefined") {
           localStorage.setItem("gtf_student_user", JSON.stringify(data.user));
-          localStorage.setItem("gtf_student_token", resolvedToken);
         }
 
         const profile: UserSessionState = {
+          firebaseUid: data.user.uid || data.user.id,
           studentId: data.user.studentId || data.user.id,
           userEmail: data.user.email,
           fullName: data.user.name || data.user.fullName || email.split("@")[0],
           phone: data.user.phone || "",
           phoneVerified: true,
           course: data.user.course || "sprachakademie",
+          role: data.user.role || "student",
           deviceType: data.deviceType || "web",
-          sessionToken: resolvedToken,
+          sessionToken: "cookie-session",
           isAuthenticated: true,
         };
 
         saveActiveUserProfile(profile);
         setUser(profile);
-        setSessionToken(resolvedToken);
+        setSessionToken("cookie-session");
         setSessionTerminatedReason(null);
         return { ok: true };
       } catch (err) {
@@ -372,6 +440,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const studentCourse = params.targetCourse || params.targetDivision || "sprachakademie";
         const res = await fetch("/api/auth/register", {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: params.email,
@@ -389,42 +458,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return { ok: false, error: data.error || "Registration failed" };
         }
 
-        const validToken = data.token || data.sessionToken || "active";
+        if (data.verificationRequired) {
+          return { ok: true };
+        }
+
         const validStudentId =
           data.user.studentId ||
           (data.user.id?.startsWith("GTF-")
             ? data.user.id
             : `GTF-2026-${data.user.id?.slice(-4)?.toUpperCase() || "0001"}`);
         const profile: UserSessionState = {
+          firebaseUid: data.user.uid || data.user.id,
           studentId: validStudentId,
           userEmail: data.user.email,
           fullName: data.user.fullName || data.user.name || studentName,
           phone: data.user.phone,
           phoneVerified: true,
           course: studentCourse,
+          role: data.user.role || "student",
           deviceType: data.deviceType || "web",
-          sessionToken: validToken,
+          sessionToken: "cookie-session",
           isAuthenticated: true,
         };
 
         saveActiveUserProfile(profile);
-        setGtfAuthCookie(validToken, 30);
         if (typeof window !== "undefined") {
           localStorage.setItem("gtf_student_user", JSON.stringify(data.user));
-          localStorage.setItem("gtf_student_token", validToken);
         }
         setUser(profile);
-        setSessionToken(validToken);
+        setSessionToken("cookie-session");
         setSessionTerminatedReason(null);
-
-        void pushSignupToN8nWebhook({
-          studentId: validStudentId,
-          fullName: profile.fullName,
-          email: profile.userEmail,
-          phone: profile.phone,
-          course: profile.course,
-        });
-
         return { ok: true };
       } catch (err) {
         return { ok: false, error: err instanceof Error ? err.message : "Network error" };
@@ -436,6 +499,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(async () => {
     clearGtfAuthCookie();
     clearAllClientAuthStorage();
+    notifyServiceWorkerLogout();
     setUser(null);
     setSessionToken("");
 
@@ -448,8 +512,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       await fetch("/api/auth/logout", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionToken }),
+        body: JSON.stringify({}),
       });
     } catch {
       // ignore
@@ -457,33 +522,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     router.replace("/login");
     router.refresh();
-  }, [sessionToken, router]);
+  }, [router]);
 
-  const verifyPhoneOtp = useCallback(
-    async (otp: string) => {
-      if (!sessionToken) return { ok: false, error: "No active session." };
-      try {
-        const res = await fetch("/api/auth/verify-phone", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ sessionToken, otp }),
-        });
-        const data = await res.json();
-        if (!res.ok || !data.ok) {
-          return { ok: false, error: data.error || "OTP verification failed." };
-        }
-        if (user) {
-          const updated = { ...user, phoneVerified: true };
-          saveActiveUserProfile(updated);
-          setUser(updated);
-        }
-        return { ok: true };
-      } catch (err) {
-        return { ok: false, error: err instanceof Error ? err.message : "Network error" };
+  const verifyPhoneOtp = useCallback(async (otp: string) => {
+    try {
+      const res = await fetch("/api/auth/verify-phone", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ otp }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        return { ok: false, error: data.error || "OTP verification failed." };
       }
-    },
-    [sessionToken, user],
-  );
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: err instanceof Error ? err.message : "Network error" };
+    }
+  }, []);
 
   const dismissTerminationAlert = useCallback(() => {
     setSessionTerminatedReason(null);

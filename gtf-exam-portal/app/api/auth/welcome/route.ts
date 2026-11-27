@@ -1,38 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
-import { normalizeEmail, triggerStudentWelcomeWebhook } from "@/lib/server/student-auth";
+import { requireVerifiedSession } from "@/lib/server/auth-session";
+import { triggerStudentWelcomeWebhook } from "@/lib/server/student-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 /**
  * POST /api/auth/welcome
- * Triggers background "Welcome to GTF" onboarding automation upon new user registration.
+ * Authenticated endpoint to trigger onboarding welcome automation for the signed-in user only.
  */
 export async function POST(request: NextRequest) {
+  const auth = await requireVerifiedSession(request);
+  if (auth.response) return auth.response;
+
   try {
-    const body = await request.json().catch(() => ({}));
-    const email = normalizeEmail(typeof body.email === "string" ? body.email : "");
-    const name = typeof body.name === "string" ? body.name.trim() : "";
-    const phone = typeof body.phone === "string" ? body.phone.trim() : "";
-    const course = typeof body.course === "string" ? body.course.trim() : "A1";
-    const uid = typeof body.uid === "string" ? body.uid.trim() : "";
-    const rawStudentId = typeof body.studentId === "string" ? body.studentId.trim() : "";
-    const studentId =
-      rawStudentId || (uid ? `GTF-2026-${uid.slice(-4).toUpperCase()}` : "");
-
-    if (!email || !email.includes("@")) {
-      return NextResponse.json(
-        { ok: false, error: "Valid email is required." },
-        { status: 400 },
-      );
-    }
-
+    const { session } = auth;
     triggerStudentWelcomeWebhook({
-      studentId,
-      name: name || email.split("@")[0] || "GTF Candidate",
-      email,
-      phone,
-      course,
+      studentId: session.studentId,
+      name: session.name,
+      email: session.email,
+      phone: session.phone,
+      course: session.course,
     });
 
     const externalWebhookUrl = process.env.GTF_WELCOME_WEBHOOK_URL?.trim();
@@ -42,22 +30,23 @@ export async function POST(request: NextRequest) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           event: "gtf.user.registered",
-          studentId,
-          name: name || "GTF Candidate",
-          email,
-          phone,
-          course,
-          uid,
+          studentId: session.studentId,
+          name: session.name,
+          email: session.email,
+          phone: session.phone,
+          course: session.course,
+          uid: session.uid,
           source: "gtf-exam-portal",
           timestamp: new Date().toISOString(),
         }),
+        signal: AbortSignal.timeout(5000),
       }).catch(() => {});
     }
 
     return NextResponse.json({
       ok: true,
       queued: true,
-      email,
+      email: session.email,
     });
   } catch (err) {
     console.error("[GTF Auth Welcome] Error:", err);

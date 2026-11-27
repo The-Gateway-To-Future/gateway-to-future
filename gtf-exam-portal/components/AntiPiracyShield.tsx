@@ -19,6 +19,13 @@ export function AntiPiracyShield({
   const [email, setEmail] = useState<string>(userEmail || "");
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState<string>("");
+  const [sessionStamp, setSessionStamp] = useState<string>("GTF-SESSION");
+  const [dateStamp, setDateStamp] = useState<string>("");
+
+  useEffect(() => {
+    setSessionStamp(`GTF-${Date.now().toString(36).toUpperCase()}`);
+    setDateStamp(new Date().toLocaleDateString("de-DE"));
+  }, []);
 
   useEffect(() => {
     if (!email) {
@@ -33,9 +40,18 @@ export function AntiPiracyShield({
     return () => window.clearTimeout(timer);
   }, []);
 
-  // Block context menu (Right-click) and common piracy shortcut combinations
+  // Block context menu (Right-click) outside editable inputs so Android/iOS Schreiben editing works cleanly
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const isEditable =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.getAttribute("contenteditable") === "true" ||
+          Boolean(target.closest("input, textarea, [contenteditable='true']")));
+      if (isEditable) return;
+
       e.preventDefault();
       e.stopPropagation();
       triggerSecurityAlert("🔒 Right-click and copying are disabled on Gateway To Future materials.");
@@ -123,17 +139,17 @@ export function AntiPiracyShield({
       {showToast && (
         <div
           role="alert"
-          className="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-3 rounded-xl border border-amber-500/40 bg-slate-900/95 px-5 py-3 text-sm font-medium text-amber-200 shadow-2xl backdrop-blur-md transition-all duration-300 animate-in fade-in slide-in-from-top-4"
+          className="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] flex w-[calc(100vw-2rem)] max-w-md items-center gap-3 rounded-2xl border border-amber-200 bg-white px-4 py-3 text-xs sm:text-sm font-medium text-slate-900 shadow-lg backdrop-blur-md transition-all duration-300"
         >
-          <ShieldAlert className="h-5 w-5 text-amber-400 shrink-0" />
-          <span>{toastMessage}</span>
+          <ShieldAlert className="h-5 w-5 text-amber-600 shrink-0" />
+          <span className="leading-snug">{toastMessage}</span>
         </div>
       )}
 
-      {/* Dynamic Repeating Diagonal User-Email Watermark Overlay */}
+      {/* Dynamic Repeating Diagonal User-Email Watermark Overlay (below sticky headers) */}
       {enableWatermark && (
         <div
-          className="pointer-events-none fixed inset-0 z-40 overflow-hidden select-none opacity-[0.055] dark:opacity-[0.08]"
+          className="pointer-events-none fixed inset-0 z-20 overflow-hidden select-none opacity-[0.055] dark:opacity-[0.08]"
           aria-hidden="true"
         >
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +181,7 @@ export function AntiPiracyShield({
                   fontFamily="sans-serif"
                   letterSpacing="1"
                 >
-                  {BRAND.name} • BERLIN • {new Date().toLocaleDateString("de-DE")}
+                  {BRAND.name} • BERLIN{dateStamp ? ` • ${dateStamp}` : ""}
                 </text>
               </pattern>
             </defs>
@@ -198,7 +214,7 @@ export function AntiPiracyShield({
               <p className="font-mono text-slate-700">Document: {resourceTitle}</p>
             )}
             <p className="mt-1 text-[11px] text-slate-500">
-              Session ID: GTF-{Date.now().toString(36).toUpperCase()} • Berlin, Germany
+              Session ID: {sessionStamp} • Berlin, Germany
             </p>
           </div>
           <p className="mt-4 text-xs font-medium text-slate-500">

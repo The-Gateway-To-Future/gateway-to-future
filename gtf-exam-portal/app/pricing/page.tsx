@@ -105,15 +105,15 @@ const PRICING_TIERS: PricingTier[] = [
     subPriceLabel: "Complete A1–B2 Academy",
     billingCycle: "all-access",
     description:
-      "Complete active access to all CEFR A1–B2 German Language Academy levels, timed Goethe/telc Modelltests, and AI grading — with Studienkolleg & Pflege included when launched (Early Access).",
+      "Complete active access to all CEFR A1–B2 German Language Academy levels, 12 timed Goethe/telc Modelltests, AI grading, and live Studienkolleg M/T/W/G-Kurs tracks — with the Pflege clinical ward simulator included upon launch (Early Access).",
     highlighted: true,
     ctaLabel: `Unlock GTF Pro (${INR_PRICING_TIERS.all_access_pass.formatted})`,
     checkoutTierKey: "all_access_pass",
     features: [
       "Unlimited German Language Academy (A1, A2, B1, B2 & 122 Säulen)",
-      "40 interactive Hören/Lesen labs & timed Goethe/telc Modelltests",
+      "40 interactive Hören/Lesen labs & 12 timed Goethe/telc Modelltests",
       "AI Schreiben & Sprechen evaluation studio (de-DE)",
-      "Studienkolleg & Fachsprache Pflege: Included when launched (Early Access)",
+      "Live Studienkolleg M/T/W/G-Kurs tracks + Early Access to Pflege ISBAR simulator",
       "Verified student priority support from Berlin HQ",
     ],
   },
@@ -176,11 +176,11 @@ const COMPARISON_BENEFITS: ComparisonBenefit[] = [
     proValue: "Unlimited",
   },
   {
-    title: "Studienkolleg (M/T/W/G-Kurs) & Pflege Modules",
-    note: "Included when launched (Early Access) — active focus is CEFR A1–B2 Academy",
+    title: "Studienkolleg (M/T/W/G-Kurs) & Pflege Clinical Modules",
+    note: "Studienkolleg Formelsammlung, C-Tests & FSP archives are live; Pflege clinical ISBAR ward simulator is Early Access",
     singleType: "cross",
     proType: "text",
-    proValue: "Early Access",
+    proValue: "STK Live + Pflege EA",
   },
   {
     title: "Hindi + Roman Hinglish + English Explanations",
@@ -331,6 +331,7 @@ function PricingContentInner() {
     try {
       const res = await fetch("/api/checkout/create-session", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           productSlug: activeSlug,
@@ -376,6 +377,7 @@ function PricingContentInner() {
               try {
                 const verifyRes = await fetch("/api/checkout/verify", {
                   method: "POST",
+                  credentials: "include",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
                     orderId: response.razorpay_order_id || session.orderId,
@@ -450,6 +452,7 @@ function PricingContentInner() {
     try {
       const res = await fetch("/api/checkout/create-session", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           productSlug: "gtf-berlin-consultation",
@@ -689,8 +692,8 @@ function PricingContentInner() {
           title="Engineered for Mastery."
           subtitle={
             requestedTitle
-              ? `Unlock "${requestedTitle}" and every active CEFR A1–B2 module with GTF All-Access Pro (${INR_PRICING_TIERS.all_access_pass.formatted}).`
-              : "Transparent INR pricing aligned with our active CEFR A1–B2 German Language Academy — Studienkolleg & Pflege included when launched (Early Access)."
+              ? `Unlock "${requestedTitle}" and every active CEFR A1–B2 & Studienkolleg module with GTF All-Access Pro (${INR_PRICING_TIERS.all_access_pass.formatted}).`
+              : "Transparent INR pricing aligned with our live CEFR A1–B2 German Language Academy and Studienkolleg tracks — Pflege clinical simulator included upon launch (Early Access)."
           }
           theme="hub"
           backgroundImage={HEADER_IMAGES.b2}

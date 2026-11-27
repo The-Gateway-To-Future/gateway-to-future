@@ -15,11 +15,11 @@ export function CapacitorBridge() {
           return;
         }
 
-        // Configure Native Status Bar
+        // Configure Native Status Bar to match capacitor.config.ts light palette (no dark flash)
         try {
           const { StatusBar, Style } = await import("@capacitor/status-bar");
-          await StatusBar.setStyle({ style: Style.Dark });
-          await StatusBar.setBackgroundColor({ color: "#0A1628" });
+          await StatusBar.setStyle({ style: Style.Light });
+          await StatusBar.setBackgroundColor({ color: "#f8fafc" });
           await StatusBar.setOverlaysWebView({ overlay: false });
         } catch (e) {
           console.warn("[Capacitor] StatusBar config skipped:", e);
@@ -36,16 +36,41 @@ export function CapacitorBridge() {
         // Android Hardware Back-Button Handling
         try {
           const { App } = await import("@capacitor/app");
-          const backHandler = await App.addListener("backButton", ({ canGoBack }) => {
-            const path = window.location.pathname;
-            // If in an active exam or workbook, allow navigating back within the app
-            if (canGoBack && path !== "/dashboard" && path !== "/") {
-              window.history.back();
-            } else if (path === "/dashboard" || path === "/") {
-              // At root/dashboard: minimize or prompt before exit
+          const minimizeSafely = () => {
+            void App.minimizeApp().catch(() => {
               App.exitApp();
-            } else {
+            });
+          };
+
+          const backHandler = await App.addListener("backButton", ({ canGoBack }) => {
+            const path = window.location.pathname || "/";
+            const isActiveExamRoom =
+              path.startsWith("/exam/") && !path.endsWith("/result");
+
+            if (isActiveExamRoom) {
+              const confirmed = window.confirm(
+                "Exit this active exam section? Your answers are saved locally on this device so you can resume later.",
+              );
+              if (!confirmed) return;
+              if (canGoBack) {
+                window.history.back();
+              } else {
+                window.location.assign("/dashboard");
+              }
+              return;
+            }
+
+            // On primary root destinations or login, minimize cleanly instead of
+            // looping back into /login or force-killing the activity.
+            if (path === "/dashboard" || path === "/" || path === "/login") {
+              minimizeSafely();
+              return;
+            }
+
+            if (canGoBack) {
               window.history.back();
+            } else {
+              window.location.assign("/dashboard");
             }
           });
 

@@ -13,7 +13,7 @@ import {
 } from "firebase/auth";
 import { ArrowRight, CheckCircle2, Eye, EyeOff, Loader2, MailCheck, RefreshCw } from "lucide-react";
 import { AuthToast, type AuthToastState } from "@/components/AuthToast";
-import { clearGtfAuthCookie, setGtfAuthCookie, useAuth } from "@/lib/auth-context";
+import { clearGtfAuthCookie, useAuth } from "@/lib/auth-context";
 import { mapFirebaseAuthError } from "@/lib/auth-errors";
 import { clearActiveSession, saveActiveUserProfile } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
@@ -38,13 +38,14 @@ function resolveSafeNextPath(rawNext: string | null): string {
 function LoginScreenInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { refreshSession } = useAuth();
+  const { refreshSession, isAuthenticated, isLoading: authLoading } = useAuth();
 
   const nextPath = useMemo(() => resolveSafeNextPath(searchParams.get("next")), [searchParams]);
   const initialEmail = useMemo(() => searchParams.get("email") || "", [searchParams]);
   const deletedNotice = useMemo(() => searchParams.get("deleted") === "1", [searchParams]);
   const oobCode = useMemo(() => searchParams.get("oobCode") || "", [searchParams]);
   const actionMode = useMemo(() => searchParams.get("mode") || "", [searchParams]);
+  const forceLogin = useMemo(() => searchParams.has("force"), [searchParams]);
 
   const handledOobRef = useRef<string | null>(null);
   const [email, setEmail] = useState(initialEmail);
@@ -80,6 +81,12 @@ function LoginScreenInner() {
   }, [deletedNotice]);
 
   useEffect(() => {
+    if (!authLoading && isAuthenticated && !oobCode && !actionMode && !forceLogin && !deletedNotice) {
+      router.replace(nextPath);
+    }
+  }, [authLoading, isAuthenticated, oobCode, actionMode, forceLogin, deletedNotice, nextPath, router]);
+
+  useEffect(() => {
     if (resendCooldown <= 0) return;
     const timer = window.setInterval(() => {
       setResendCooldown((prev) => (prev > 0 ? prev - 1 : 0));
@@ -91,11 +98,13 @@ function LoginScreenInner() {
     data: {
       user?: {
         id?: string;
+        uid?: string;
         studentId?: string;
         email?: string;
         name?: string;
         phone?: string;
         course?: string;
+        role?: string;
       };
       token?: string;
       sessionToken?: string;
@@ -103,27 +112,25 @@ function LoginScreenInner() {
     fallbackEmail: string,
     fallbackName = "",
   ) => {
-    const token = data.token || data.sessionToken || "";
     const resolvedEmail = data.user?.email || fallbackEmail;
     const profile: UserSessionState = {
+      firebaseUid: data.user?.uid || data.user?.id,
       studentId: data.user?.studentId || data.user?.id,
       userEmail: resolvedEmail,
       fullName: data.user?.name || fallbackName || resolvedEmail.split("@")[0],
       phone: data.user?.phone || "",
       phoneVerified: true,
       course: data.user?.course || "sprachakademie",
+      role: data.user?.role || "student",
       deviceType: "web",
-      sessionToken: token,
+      sessionToken: "cookie-session",
       isAuthenticated: true,
     };
 
-    if (token) {
-      setGtfAuthCookie(token, rememberMe ? 30 : 30);
-    }
+    clearGtfAuthCookie();
     saveActiveUserProfile(profile);
     if (typeof window !== "undefined") {
       localStorage.setItem("gtf_student_user", JSON.stringify(data.user));
-      localStorage.setItem("gtf_student_token", token);
     }
 
     await refreshSession();
@@ -132,55 +139,33 @@ function LoginScreenInner() {
   };
 
   const completeVerifiedSession = async (fbUser: FirebaseUser, rawPassword?: string) => {
-    // Force a fresh Firebase ID token and write the synced middleware cookie immediately
     const idToken = await fbUser.getIdToken(true);
-    setGtfAuthCookie(idToken, rememberMe ? 30 : 30);
-
     const verifiedEmail = (fbUser.email || email).trim().toLowerCase();
-    let apiUser: {
-      id?: string;
-      studentId?: string;
-      email?: string;
-      name?: string;
-      phone?: string;
-      course?: string;
-    } | null = null;
 
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: verifiedEmail,
-          password: rawPassword || "",
-          firebaseIdToken: idToken,
-          firebaseUid: fbUser.uid,
-          firebaseVerified: true,
-          name: fbUser.displayName || "",
-        }),
-      });
-      const data = await res.json().catch(() => null);
-      if (res.ok && data && (data.success || data.ok) && data.user) {
-        apiUser = data.user;
-      }
-    } catch {
-      // Non-blocking: Firebase verified token + synced cookie already grant portal access
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: verifiedEmail,
+        password: rawPassword || "",
+        firebaseIdToken: idToken,
+        firebaseUid: fbUser.uid,
+        name: fbUser.displayName || "",
+        rememberMe,
+      }),
+    });
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data || (!data.success && !data.ok) || !data.user) {
+      throw new Error(data?.error || "Unable to establish secure server session. Please try again.");
     }
-
-    const fallbackId = `GTF-2026-${fbUser.uid.slice(-4).toUpperCase()}`;
-    const resolvedUser = apiUser || {
-      id: fbUser.uid,
-      studentId: fallbackId,
-      email: verifiedEmail,
-      name: fbUser.displayName || verifiedEmail.split("@")[0],
-      phone: "",
-      course: "sprachakademie",
-    };
 
     await persistClientSession(
       {
-        user: resolvedUser,
-        token: idToken,
+        user: {
+          ...data.user,
+          uid: fbUser.uid,
+        },
       },
       verifiedEmail,
       fbUser.displayName || "",
@@ -282,10 +267,12 @@ function LoginScreenInner() {
       if (supportsLegacyFallback) {
         const legacyRes = await fetch("/api/auth/login", {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: cleanEmail.toLowerCase(),
             password,
+            rememberMe,
           }),
         });
         const legacyData = await legacyRes.json().catch(() => ({}));
@@ -365,8 +352,6 @@ function LoginScreenInner() {
         return;
       }
 
-      const idToken = await reloaded.getIdToken(true);
-      setGtfAuthCookie(idToken, rememberMe ? 30 : 30);
       await completeVerifiedSession(reloaded, password);
     } catch (err) {
       const mapped = mapFirebaseAuthError(err);
@@ -415,7 +400,7 @@ function LoginScreenInner() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-between overflow-x-hidden">
+    <div className="dark-auth relative min-h-screen bg-slate-900 text-white flex flex-col justify-between overflow-x-clip">
       <AuthToast toast={toast} onDismiss={() => setToast(null)} />
 
       {/* Architectural Obsidian Lighting */}

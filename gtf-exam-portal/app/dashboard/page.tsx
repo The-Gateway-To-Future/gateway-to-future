@@ -120,25 +120,25 @@ export default function DashboardHubPage() {
             <SubdivisionCard
               indexLabel="02 · ACADEMICS"
               title="Studienkolleg Hub"
-              subtitle="Academic foundation college tracks paused while focusing 100% on Core German CEFR A1, A2, B1, and B2 mastery."
+              subtitle="Prepare for German public university Aufnahmeprüfung across M-, T-, W-, and G-Kurs with Formelsammlung, C-Tests, and TU Berlin / LMU / KIT archives."
               href="/studienkolleg"
-              ctaLabel="Preview Track"
+              ctaLabel="Open Studienkolleg"
               theme="studienkolleg"
               imageUrl={HEADER_IMAGES.studienkolleg}
-              badge="COMING SOON · A1–B2 FOCUS"
-              metaItems={["Coming Soon", "A1–B2 Priority"]}
+              badge="M · T · W · G-KURS"
+              metaItems={["4 Live Tracks", "Ohne Taschenrechner"]}
             />
 
             <SubdivisionCard
               indexLabel="03 · HEALTHCARE"
               title="Fachsprache Pflege & Medizin"
-              subtitle="Clinical hospital modules paused while prioritizing Core German CEFR A1–B2 Goethe/telc certification."
+              subtitle="Start B2 Anerkennung & Fachsprache modules today; full clinical ward ISBAR simulator and hospital cases are rolling out next."
               href="/pflege"
-              ctaLabel="Preview Track"
+              ctaLabel="Open Pflege Status"
               theme="pflege"
               imageUrl={HEADER_IMAGES.pflege}
-              badge="COMING SOON · A1–B2 FOCUS"
-              metaItems={["Coming Soon", "A1–B2 Priority"]}
+              badge="B2 LIVE · ISBAR PREVIEW"
+              metaItems={["B2 Track Live", "ISBAR Coming Soon"]}
             />
           </div>
         </section>

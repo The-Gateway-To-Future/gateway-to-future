@@ -18,9 +18,8 @@ import {
 } from "lucide-react";
 import { ExamHeader } from "@/components/ExamHeader";
 import {
-  getActiveUserEmail,
   loadExamState,
-  resetExamState,
+  resetExamSection,
   saveExamState,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
@@ -87,9 +86,9 @@ function HoerenExamPageInner() {
 
     async function fetchTest() {
       try {
-        const email = getActiveUserEmail();
         const res = await fetch(
-          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&testId=${encodeURIComponent(testId)}&email=${encodeURIComponent(email)}`,
+          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&testId=${encodeURIComponent(testId)}`,
+          { credentials: "include" },
         );
         if (res.ok) {
           const data = (await res.json()) as { test: ExamTest };
@@ -246,11 +245,17 @@ function HoerenExamPageInner() {
   };
 
   const handleReset = () => {
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm("Alle Antworten in „Hören“ zurücksetzen? Ihre anderen Prüfungsteile bleiben erhalten.")
+    ) {
+      return;
+    }
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
-    const fresh = resetExamState(level, undefined, testId);
+    const fresh = resetExamSection(level, "hoeren", undefined, testId);
     setAnswers(fresh.hoerenAnswers);
     setIsPlaying(false);
     setCurrentTime(0);
@@ -274,7 +279,7 @@ function HoerenExamPageInner() {
         totalQuestions={totalInSection}
       />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 pt-5 pb-52 sm:px-6 sm:pt-6 sm:pb-40">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 pt-4 pb-36 sm:px-6 sm:pt-6 sm:pb-32">
         {loading && !currentTeil ? (
           <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center text-sm text-slate-700 shadow-sm flex items-center justify-center gap-3">
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-slate-900" />
@@ -575,15 +580,15 @@ function HoerenExamPageInner() {
             </div>
           </div>
 
-          {/* Direct HTML5 audio element with native controls & preload="metadata" for iOS/iPadOS Safari */}
+          {/* Hidden HTML5 audio element driven strictly by the compact custom player (no duplicate native bar or download button) */}
           <audio
             ref={audioRef}
             key={activeAudioSrc}
             src={activeAudioSrc}
-            controls
             preload="metadata"
             playsInline
-            className="mt-2 w-full h-9 rounded-xl [color-scheme:light]"
+            controlsList="nodownload noplaybackrate"
+            className="sr-only"
             onError={handleAudioError}
             onCanPlay={() => setAudioError(false)}
             onPlay={() => setIsPlaying(true)}

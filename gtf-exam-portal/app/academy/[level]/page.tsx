@@ -11,7 +11,6 @@ import { CompactTopicList } from "@/components/CompactTopicRow";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import type { RoadmapWorkbookSummary } from "@/components/GuidedRoadmapTimeline";
 import { useAuth } from "@/lib/auth-context";
-import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
 import { getSubdivisionsForLevel } from "@/lib/subdivisions";
 
@@ -25,11 +24,11 @@ export default function AcademyLevelSubdivisionsPage() {
 
   useEffect(() => {
     let active = true;
-    const email = user?.userEmail || getActiveUserEmail();
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 4000);
 
-    fetch(`/api/catalog?email=${encodeURIComponent(email)}`, {
+    fetch("/api/catalog", {
+      credentials: "include",
       signal: controller.signal,
     })
       .then((res) => (res.ok ? res.json() : null))
@@ -109,10 +108,11 @@ export default function AcademyLevelSubdivisionsPage() {
                 title={sub.title}
                 subtitle={sub.subtitle}
                 href={sub.href}
-                ctaLabel="Open Subdivision"
+                ctaLabel={sub.comingSoon ? "Coming Soon" : "Open Subdivision"}
                 theme={sub.theme}
                 badge={sub.badge}
                 metaItems={sub.metaItems}
+                comingSoon={sub.comingSoon}
               />
             ))}
           </div>

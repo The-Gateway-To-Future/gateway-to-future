@@ -1,13 +1,13 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { getUnlockedProductSlugs } from "@/lib/server/catalog";
+import { getVerifiedSession } from "@/lib/server/auth-session";
+import { getPaidUnlockedProductSlugs } from "@/lib/server/catalog";
 import {
   CONSULTATION_ELIGIBLE_SLUGS,
   getDirectDeskContact,
   PAID_APPOINTMENT_COOKIE,
   verifyPaidAppointmentToken,
 } from "@/lib/server/consultation-contact";
-import { verifyStudentSessionToken } from "@/lib/server/student-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -34,16 +34,11 @@ export async function GET(req: Request) {
       });
     }
 
-    const sessionCookie =
-      cookieStore.get("gtf_session")?.value || cookieStore.get("gtf_student_session")?.value;
-    const authHeader = req.headers.get("authorization") || "";
-    const bearerToken = authHeader.replace(/^Bearer\s+/i, "").trim();
-    const session = verifyStudentSessionToken(sessionCookie || bearerToken);
-
-    if (session?.email && process.env.NEXT_PUBLIC_FREE_LAUNCH_MODE !== "true") {
-      const unlockedSlugs = await getUnlockedProductSlugs(session.email);
+    const session = await getVerifiedSession(req);
+    if (session?.email) {
+      const paidSlugs = await getPaidUnlockedProductSlugs(session.email, session.uid);
       const hasPaidConsultationAccess = Array.from(CONSULTATION_ELIGIBLE_SLUGS).some((slug) =>
-        unlockedSlugs.has(slug),
+        paidSlugs.has(slug),
       );
 
       if (hasPaidConsultationAccess) {

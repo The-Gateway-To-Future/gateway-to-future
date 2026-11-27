@@ -10,7 +10,6 @@ import { CompactTopicList } from "@/components/CompactTopicRow";
 import { BottomNavigationBar } from "@/components/BottomNavigationBar";
 import type { RoadmapWorkbookSummary } from "@/components/GuidedRoadmapTimeline";
 import { useAuth } from "@/lib/auth-context";
-import { getActiveUserEmail } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
 import { getTopicsForSubdivision } from "@/lib/subdivisions";
 
@@ -25,11 +24,11 @@ export default function AcademySubdivisionTopicIndexPage() {
 
   useEffect(() => {
     let active = true;
-    const email = user?.userEmail || getActiveUserEmail();
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 4000);
 
-    fetch(`/api/catalog?email=${encodeURIComponent(email)}`, {
+    fetch("/api/catalog", {
+      credentials: "include",
       signal: controller.signal,
     })
       .then((res) => (res.ok ? res.json() : null))

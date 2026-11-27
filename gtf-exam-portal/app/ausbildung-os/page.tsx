@@ -28,10 +28,10 @@ import { useAuth } from "@/lib/auth-context";
 import { BRAND } from "@/lib/config";
 import { ensureFirebaseLocalPersistence, getFirebaseFirestore } from "@/lib/firebase";
 import {
-  getUserProgress,
+  getUserProgressWithStatus,
   resolveProgressUid,
   sanitizeProgressUid,
-  updateUserProgress,
+  updateUserProgressWithStatus,
   USER_PROGRESS_EVENT,
   type UserProgress,
 } from "@/lib/firebase/progress";
@@ -178,7 +178,6 @@ export default function AusbildungOsPage() {
   const [realityHydrated, setRealityHydrated] = useState(false);
   const [activeRuleCategory, setActiveRuleCategory] = useState<RuleCategory>("All");
 
-  const [hasAdminSession, setHasAdminSession] = useState(false);
   const [isAdminClaim, setIsAdminClaim] = useState(false);
   const [firestoreAusbildungPro, setFirestoreAusbildungPro] = useState(false);
   const [catalogHasPro, setCatalogHasPro] = useState(false);
@@ -188,8 +187,8 @@ export default function AusbildungOsPage() {
   const saveQueueRef = useRef<Promise<void>>(Promise.resolve());
 
   useEffect(() => {
+    if (process.env.NODE_ENV !== "development") return;
     try {
-      setHasAdminSession(Boolean(sessionStorage.getItem("gtf_founder_admin_pwd")));
       const savedPreview = sessionStorage.getItem(DEV_PREVIEW_STORAGE_KEY);
       if (savedPreview === "free" || savedPreview === "pro") {
         setDevPreviewMode(savedPreview);
@@ -207,19 +206,30 @@ export default function AusbildungOsPage() {
     }
 
     let active = true;
-    fetch(`/api/catalog?email=${encodeURIComponent(email)}`, { cache: "no-store" })
+    fetch("/api/catalog", { cache: "no-store", credentials: "include" })
       .then((res) => (res.ok ? res.json() : null))
-      .then((data: { products?: Array<{ slug?: string; unlocked?: boolean }> } | null) => {
-        if (!active || !Array.isArray(data?.products)) return;
-        const unlocked = data.products.some(
-          (p) =>
-            p.unlocked &&
-            (p.slug === "gtf-all-access-pass" ||
-              p.slug === "ausbildung-os-pro" ||
-              p.slug === "fachsprache-pflege-ausbildung-suite"),
-        );
-        setCatalogHasPro(unlocked);
-      })
+      .then(
+        (
+          data: {
+            ausbildungProUnlocked?: boolean;
+            products?: Array<{ slug?: string; unlocked?: boolean }>;
+          } | null,
+        ) => {
+          if (!active || !data) return;
+          if (typeof data.ausbildungProUnlocked === "boolean") {
+            setCatalogHasPro(data.ausbildungProUnlocked);
+            return;
+          }
+          const unlocked = Array.isArray(data.products)
+            ? data.products.some(
+                (p) =>
+                  p.unlocked &&
+                  (p.slug === "ausbildung-os-pro" || p.slug === "ausbildung-os-fast-track"),
+              )
+            : false;
+          setCatalogHasPro(unlocked);
+        },
+      )
       .catch(() => {
         // fallback cleanly to default lock state
       });
@@ -309,50 +319,32 @@ export default function AusbildungOsPage() {
   }, []);
 
   useEffect(() => {
-    if (!fbReady || authLoading) return;
-    const isSignedIn = Boolean(fbUid || isAuthenticated);
-    if (!isSignedIn) {
+    if (!fbReady || authLoading || !fbUid) {
       setFirestoreAusbildungPro(false);
       return;
-    }
-
-    const candidateUids = Array.from(
-      new Set(
-        [
-          fbUid ? sanitizeProgressUid(fbUid) : "",
-          user?.studentId ? sanitizeProgressUid(user.studentId) : "",
-          user?.userEmail ? sanitizeProgressUid(user.userEmail.trim().toLowerCase()) : "",
-        ].filter(Boolean),
-      ),
-    );
-
-    if (candidateUids.length === 0) {
-      setFirestoreAusbildungPro(false);
-      return;
-    }
-
-    const targets: Array<[string, string]> = [];
-    for (const id of candidateUids) {
-      targets.push(["user_progress", id]);
-      targets.push(["users", id]);
     }
 
     let active = true;
     const db = getFirebaseFirestore();
-    const checks = targets.map(([col, id]) =>
-      getDoc(doc(db, col, id))
-        .then((snap) => snap.exists() && snap.data()?.ausbildungPro === true)
-        .catch(() => false),
-    );
+    const entitlementRef = doc(db, "entitlements", sanitizeProgressUid(fbUid));
 
     Promise.race([
-      Promise.all(checks),
-      new Promise<boolean[]>((resolve) => setTimeout(() => resolve([]), 4000)),
+      getDoc(entitlementRef)
+        .then((snap) => {
+          if (!snap.exists()) return false;
+          const d = snap.data() as { ausbildungPro?: boolean; unlockedSlugs?: unknown };
+          if (d?.ausbildungPro === true) return true;
+          return (
+            Array.isArray(d?.unlockedSlugs) &&
+            (d.unlockedSlugs.includes("ausbildung-os-pro") ||
+              d.unlockedSlugs.includes("ausbildung-os-fast-track"))
+          );
+        })
+        .catch(() => false),
+      new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 4000)),
     ])
-      .then((results) => {
-        if (active) {
-          setFirestoreAusbildungPro(results.some(Boolean));
-        }
+      .then((hasPro) => {
+        if (active) setFirestoreAusbildungPro(Boolean(hasPro));
       })
       .catch(() => {
         if (active) setFirestoreAusbildungPro(false);
@@ -361,7 +353,7 @@ export default function AusbildungOsPage() {
     return () => {
       active = false;
     };
-  }, [fbReady, authLoading, fbUid, isAuthenticated, user?.studentId, user?.userEmail]);
+  }, [fbReady, authLoading, fbUid]);
 
   const effectiveUid = useMemo(() => {
     if (fbUid) return sanitizeProgressUid(fbUid);
@@ -373,13 +365,13 @@ export default function AusbildungOsPage() {
     let active = true;
     setLoadingChecklist(true);
 
-    getUserProgress(effectiveUid)
-      .then((prog) => {
+    getUserProgressWithStatus(effectiveUid)
+      .then(({ progress: prog, syncedToCloud }) => {
         if (!active) return;
         const steps = Array.isArray(prog.completedSteps) ? prog.completedSteps : [];
         latestStepsRef.current = steps;
         setCompletedSteps(steps);
-        setSyncState("synced");
+        setSyncState(syncedToCloud ? "synced" : "local");
       })
       .catch(() => {
         if (active) setSyncState("local");
@@ -420,8 +412,10 @@ export default function AusbildungOsPage() {
 
     saveQueueRef.current = saveQueueRef.current
       .then(async () => {
-        await updateUserProgress(effectiveUid, { completedSteps: nextSteps });
-        setSyncState("synced");
+        const { syncedToCloud } = await updateUserProgressWithStatus(effectiveUid, {
+          completedSteps: nextSteps,
+        });
+        setSyncState(syncedToCloud ? "synced" : "local");
       })
       .catch(() => {
         setSyncState("local");
@@ -448,21 +442,11 @@ export default function AusbildungOsPage() {
     [activeRuleCategory],
   );
 
-  const normalizedEmail = (user?.userEmail || "").trim().toLowerCase();
-  const isAdminUser =
-    isAdminClaim ||
-    user?.role === "admin" ||
-    normalizedEmail === "ashusharma@gatewaytofuture.com" ||
-    normalizedEmail === "skour8786@gmail.com" ||
-    hasAdminSession;
+  const isAdminUser = isAdminClaim || user?.role === "admin";
   const isSignedInUser = Boolean(fbUid || isAuthenticated);
   const showDevPreviewToggle = process.env.NODE_ENV === "development" || isAdminUser;
   const hasRealPro =
-    isAdminUser ||
-    (isSignedInUser &&
-      (firestoreAusbildungPro ||
-        completedSet.has("AUSBILDUNG_OS_PRO_UNLOCKED") ||
-        catalogHasPro));
+    isAdminUser || (isSignedInUser && (firestoreAusbildungPro || catalogHasPro));
   const isProUnlocked =
     showDevPreviewToggle && devPreviewMode !== null ? devPreviewMode === "pro" : hasRealPro;
 

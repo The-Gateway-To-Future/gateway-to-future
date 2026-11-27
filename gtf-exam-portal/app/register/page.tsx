@@ -11,14 +11,13 @@ import {
 } from "firebase/auth";
 import { ArrowRight, CheckCircle2, Eye, EyeOff, Loader2, MailCheck, RefreshCw } from "lucide-react";
 import { AuthToast, type AuthToastState } from "@/components/AuthToast";
-import { clearGtfAuthCookie, setGtfAuthCookie, useAuth } from "@/lib/auth-context";
+import { clearGtfAuthCookie, useAuth } from "@/lib/auth-context";
 import { mapFirebaseAuthError } from "@/lib/auth-errors";
 import { saveActiveUserProfile } from "@/lib/client-storage";
 import { BRAND } from "@/lib/config";
 import {
   ensureFirebaseLocalPersistence,
   getFirebaseAuth,
-  pushSignupToN8nWebhook,
 } from "@/lib/firebase";
 
 const EMAIL_ACTION_CODE_SETTINGS = {
@@ -90,42 +89,22 @@ export default function RegisterPage() {
 
         const studentId = `GTF-2026-${credential.user.uid.slice(-4).toUpperCase()}`;
         const cleanPhone = phone.trim();
+        const signupIdToken = await credential.user.getIdToken();
 
-        // Persist candidate record without issuing active session until verified login
+        // Single server-side profile sync + deduplicated welcome webhook (no password sent; verified by Firebase token)
         fetch("/api/auth/register", {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            firebaseIdToken: signupIdToken,
             studentId,
             name: cleanName,
             fullName: cleanName,
             email: cleanEmail,
             phone: cleanPhone,
-            password,
             course: "sprachakademie",
             requireEmailVerification: true,
-          }),
-        }).catch(() => {});
-
-        // Push new user data directly to GTF n8n WhatsApp webhook (non-blocking)
-        void pushSignupToN8nWebhook({
-          studentId,
-          fullName: cleanName,
-          email: cleanEmail,
-          phone: cleanPhone,
-          course: "A1",
-          uid: credential.user.uid,
-        });
-
-        fetch("/api/auth/welcome", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            studentId,
-            email: cleanEmail,
-            name: cleanName,
-            phone: cleanPhone,
-            uid: credential.user.uid,
           }),
         }).catch(() => {});
 
@@ -161,40 +140,23 @@ export default function RegisterPage() {
         const data = await res.json().catch(() => ({}));
 
         if (res.ok && (data.success || data.ok) && data.user) {
-          const fallbackStudentId = data.user.studentId || data.user.id || "";
-          void pushSignupToN8nWebhook({
-            studentId: fallbackStudentId,
-            fullName: cleanName,
-            email: cleanEmail.toLowerCase(),
-            phone: cleanPhone || data.user.phone || "",
-            course: data.user.course || "A1",
-            uid: data.user.id || data.user.studentId,
-          });
-
-          fetch("/api/auth/welcome", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              studentId: fallbackStudentId,
-              email: cleanEmail.toLowerCase(),
-              name: cleanName,
-              phone: cleanPhone || data.user.phone || "",
-              uid: data.user.id || data.user.studentId,
-            }),
-          }).catch(() => {});
-
-          const sessionToken = data.token || data.sessionToken || "";
-          if (sessionToken) {
-            setGtfAuthCookie(sessionToken, 30);
+          if (data.verificationRequired) {
+            setVerificationSentTo(cleanEmail.toLowerCase());
+            pushToast(
+              "Account created",
+              "Please verify your email address before signing in.",
+              "success",
+            );
+            router.push(`/login?email=${encodeURIComponent(cleanEmail.toLowerCase())}`);
+            return;
           }
+
           if (typeof window !== "undefined") {
             localStorage.setItem("gtf_student_user", JSON.stringify(data.user));
-            if (sessionToken) {
-              localStorage.setItem("gtf_student_token", sessionToken);
-            }
           }
 
           saveActiveUserProfile({
+            firebaseUid: data.user.uid || data.user.id,
             studentId: data.user.studentId || data.user.id,
             userEmail: cleanEmail.toLowerCase(),
             fullName: data.user.name || data.user.fullName || cleanName,
@@ -202,7 +164,7 @@ export default function RegisterPage() {
             phoneVerified: true,
             course: data.user.course || "sprachakademie",
             deviceType: "web",
-            sessionToken,
+            sessionToken: "cookie-session",
             isAuthenticated: true,
           });
 
@@ -271,21 +233,43 @@ export default function RegisterPage() {
       }
 
       const idToken = await reloaded.getIdToken(true);
-      setGtfAuthCookie(idToken, 30);
+      const verifiedEmail = (reloaded.email || verificationSentTo).trim().toLowerCase();
+      const loginRes = await fetch("/api/auth/login", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: verifiedEmail,
+          firebaseIdToken: idToken,
+          firebaseUid: reloaded.uid,
+          name: reloaded.displayName || fullName.trim() || verifiedEmail.split("@")[0],
+          phone: phone.trim(),
+          rememberMe: true,
+        }),
+      });
+      if (!loginRes.ok) {
+        const errData = await loginRes.json().catch(() => ({}));
+        pushToast(
+          "Sign-in required",
+          errData.error || "Email verified! Please sign in on the login screen.",
+          "warning",
+        );
+        router.push(`/login?email=${encodeURIComponent(verifiedEmail)}`);
+        return;
+      }
+
       saveActiveUserProfile({
+        firebaseUid: reloaded.uid,
         studentId: `GTF-2026-${reloaded.uid.slice(-4).toUpperCase()}`,
-        userEmail: (reloaded.email || verificationSentTo).trim().toLowerCase(),
-        fullName: reloaded.displayName || fullName.trim() || verificationSentTo.split("@")[0],
+        userEmail: verifiedEmail,
+        fullName: reloaded.displayName || fullName.trim() || verifiedEmail.split("@")[0],
         phone: phone.trim(),
         phoneVerified: true,
         course: "sprachakademie",
         deviceType: "web",
-        sessionToken: idToken,
+        sessionToken: "cookie-session",
         isAuthenticated: true,
       });
-      if (typeof window !== "undefined") {
-        localStorage.setItem("gtf_student_token", idToken);
-      }
       await refreshSession();
       router.push("/dashboard");
       router.refresh();
@@ -298,7 +282,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-between overflow-x-hidden">
+    <div className="dark-auth relative min-h-screen bg-slate-900 text-white flex flex-col justify-between overflow-x-clip">
       <AuthToast toast={toast} onDismiss={() => setToast(null)} />
 
       {/* Architectural Obsidian Lighting */}

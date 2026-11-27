@@ -17,7 +17,6 @@ import { StudienkollegHub } from "@/components/StudienkollegHub";
 import { FachspracheMedizinHub } from "@/components/FachspracheMedizinHub";
 import type { RoadmapWorkbookSummary } from "@/components/GuidedRoadmapTimeline";
 import { useAuth } from "@/lib/auth-context";
-import { getActiveUserEmail } from "@/lib/client-storage";
 import { SECTION_META, type PricingTierKey, type SectionKey } from "@/lib/config";
 import {
   getStepId,
@@ -32,6 +31,7 @@ import {
   getTopicsForSubdivision,
 } from "@/lib/subdivisions";
 import { getCoreLabById } from "@/lib/curriculum-labs";
+import { getComingSoonMeta } from "@/lib/coming-soon";
 import { isNativeCapacitorApp } from "@/lib/use-native-platform";
 import type { FlashcardDeckItem, WorkbookClientView } from "@/lib/types";
 
@@ -75,11 +75,11 @@ export default function AcademyTopicWorkspacePage() {
 
   useEffect(() => {
     let active = true;
-    const email = user?.userEmail || getActiveUserEmail();
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 4000);
 
-    fetch(`/api/catalog?email=${encodeURIComponent(email)}`, {
+    fetch("/api/catalog", {
+      credentials: "include",
       signal: controller.signal,
     })
       .then((res) => (res.ok ? res.json() : null))
@@ -138,6 +138,22 @@ export default function AcademyTopicWorkspacePage() {
   };
 
   // Resolve workspace kind cleanly
+  const comingSoonGuard = useMemo(() => {
+    const meta = getComingSoonMeta(rawTopic, info.levelKey);
+    if (meta) return meta;
+    if (matchedTopic?.comingSoon) {
+      return {
+        reason:
+          matchedTopic.comingSoonReason ||
+          "Dieses Modul befindet sich derzeit in Vorbereitung (Coming Soon).",
+        badge: "COMING SOON",
+        recommendedHref: `/academy/${info.levelKey}/${moduleSlug}`,
+        recommendedLabel: "Zurück zu den Themen",
+      };
+    }
+    return null;
+  }, [rawTopic, info.levelKey, matchedTopic, moduleSlug]);
+
   const isCoreDeck = rawTopic === "core-deck";
   const isFactoryDeck = rawTopic.startsWith("wb-fc-");
   const isVocabLabDeck = rawModule === "01-vocabulary" && rawTopic.startsWith("vocab-");
@@ -151,6 +167,14 @@ export default function AcademyTopicWorkspacePage() {
     rawTopic === "exam-hoeren" ||
     rawTopic === "exam-schreiben" ||
     rawTopic === "exam-sprechen" ||
+    rawTopic === "exam-m2-lesen" ||
+    rawTopic === "exam-m2-hoeren" ||
+    rawTopic === "exam-m2-schreiben" ||
+    rawTopic === "exam-m2-sprechen" ||
+    rawTopic === "exam-m3-lesen" ||
+    rawTopic === "exam-m3-hoeren" ||
+    rawTopic === "exam-m3-schreiben" ||
+    rawTopic === "exam-m3-sprechen" ||
     rawTopic === "lab-hoeren" ||
     rawTopic === "lab-hoeren-simulator" ||
     rawTopic === "lab-lesen" ||
@@ -158,7 +182,7 @@ export default function AcademyTopicWorkspacePage() {
 
   const resolvedSection: SectionKey = (() => {
     const clean = rawTopic
-      .replace(/^(exam-|lab-)/, "")
+      .replace(/^(exam-m3-|exam-m2-|exam-|lab-)/, "")
       .replace(/-simulator$/, "");
     if (
       clean === "lesen" ||
@@ -170,6 +194,19 @@ export default function AcademyTopicWorkspacePage() {
     }
     return "lesen";
   })();
+
+  const resolvedExamTestId: string | undefined =
+    matchedTopic?.testId ||
+    (rawTopic.startsWith("exam-m3-")
+      ? `gtf-${info.examLevel}-modelltest-3`
+      : rawTopic.startsWith("exam-m2-")
+        ? `gtf-${info.examLevel}-modelltest-2`
+        : undefined);
+
+  const liveExamHref =
+    resolvedExamTestId && resolvedExamTestId !== `gtf-${info.examLevel}-modelltest-1`
+      ? `/exam/${info.examLevel}/${resolvedSection}?testId=${encodeURIComponent(resolvedExamTestId)}`
+      : `/exam/${info.examLevel}/${resolvedSection}`;
 
   const factoryWorkbookId = isFactoryDeck ? rawTopic.slice("wb-fc-".length) : "";
   const factoryWorkbook = useMemo(
@@ -225,10 +262,11 @@ export default function AcademyTopicWorkspacePage() {
   }, [isVocabLabDeck, rawTopic, info.levelKey, info.flashcardKey, coreDeckConfig, matchedTopic?.title]);
 
   const { nextTopicHref, nextTopicLabel } = useMemo(() => {
-    if (Array.isArray(topics) && topics.length > 1) {
-      const currIdx = topics.findIndex((t) => t.id === rawTopic);
-      const nextIdx = currIdx >= 0 ? (currIdx + 1) % topics.length : 0;
-      const nextItem = topics[nextIdx];
+    const activeTopics = (Array.isArray(topics) ? topics : []).filter((t) => !t.comingSoon);
+    if (activeTopics.length > 1) {
+      const currIdx = activeTopics.findIndex((t) => t.id === rawTopic);
+      const nextIdx = currIdx >= 0 ? (currIdx + 1) % activeTopics.length : 0;
+      const nextItem = activeTopics[nextIdx];
       if (nextItem?.href && nextItem.id !== rawTopic) {
         return {
           nextTopicHref: nextItem.href,
@@ -298,6 +336,41 @@ export default function AcademyTopicWorkspacePage() {
         />
 
         <section className="mx-auto w-full max-w-6xl px-4 sm:px-8 py-10">
+          {/* 0. Coming Soon Guardrail Gate (prevents landing on incomplete/lag-prone modules) */}
+          {comingSoonGuard ? (
+            <div className="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-7 sm:p-11 text-center space-y-5 shadow-sm text-slate-900">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-700 shadow-xs">
+                <Clock className="h-6 w-6" />
+              </div>
+              <div className="space-y-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-amber-800">
+                  {comingSoonGuard.badge || "COMING SOON"}
+                </span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+                  {pageTitle}
+                </h2>
+                <p className="text-sm text-slate-600 leading-relaxed max-w-lg mx-auto">
+                  {comingSoonGuard.reason}
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-3 border-t border-slate-100">
+                <Link
+                  href={comingSoonGuard.recommendedHref}
+                  className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white hover:bg-slate-800 transition shadow-sm"
+                >
+                  <span>{comingSoonGuard.recommendedLabel}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href={`/academy/${info.levelKey}/${moduleSlug}`}
+                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 hover:bg-slate-50 transition shadow-xs"
+                >
+                  Back to Topics
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <>
           {/* 1. Core, Lab Vocab, or Factory Flashcard Deck */}
           {(isCoreDeck || isFactoryDeck || isVocabLabDeck) && (
             <div key={`deck-wrap-${rawTopic}`} className="mx-auto max-w-4xl">
@@ -442,7 +515,7 @@ export default function AcademyTopicWorkspacePage() {
                   Back to Topics
                 </Link>
                 <Link
-                  href={`/exam/${info.examLevel}/${resolvedSection}`}
+                  href={liveExamHref}
                   className="relative z-20 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-7 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white hover:bg-slate-800 transition shadow-sm cursor-pointer"
                 >
                   <span>Launch Live Exam</span>
@@ -472,6 +545,8 @@ export default function AcademyTopicWorkspacePage() {
                 />
               </Suspense>
             )}
+            </>
+          )}
         </section>
       </main>
 

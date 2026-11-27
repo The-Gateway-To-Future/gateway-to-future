@@ -124,6 +124,8 @@ export async function getFirebaseAdminFirestore(): Promise<Firestore | null> {
 export interface VerifiedFirebaseIdentity {
   uid: string;
   email: string;
+  emailVerified?: boolean;
+  isAdmin?: boolean;
   displayName?: string;
   verifiedBy: "admin-sdk" | "identity-toolkit";
 }
@@ -147,6 +149,8 @@ export async function verifyFirebaseIdTokenServer(
         return {
           uid: decoded.uid,
           email: (decoded.email || "").toLowerCase().trim(),
+          emailVerified: Boolean(decoded.email_verified),
+          isAdmin: Boolean(decoded.admin === true || decoded.role === "admin"),
           displayName: typeof decoded.name === "string" ? decoded.name : undefined,
           verifiedBy: "admin-sdk",
         };
@@ -178,13 +182,20 @@ export async function verifyFirebaseIdTokenServer(
     );
     if (!res.ok) return null;
     const data = (await res.json()) as {
-      users?: Array<{ localId?: string; email?: string; displayName?: string }>;
+      users?: Array<{
+        localId?: string;
+        email?: string;
+        emailVerified?: boolean;
+        displayName?: string;
+      }>;
     };
     const user = data.users?.[0];
     if (!user?.localId) return null;
     return {
       uid: user.localId,
       email: (user.email || "").toLowerCase().trim(),
+      emailVerified: Boolean(user.emailVerified),
+      isAdmin: false,
       displayName: user.displayName,
       verifiedBy: "identity-toolkit",
     };
@@ -194,16 +205,17 @@ export async function verifyFirebaseIdTokenServer(
 }
 
 /**
- * Deletes the user's records across Firestore (`students`, `users`, `user_progress`).
+ * Deletes the verified user's own records across Firestore (`students`, `users`, `user_progress`, `test_scores`).
+ * Never accepts untrusted client-supplied `studentId` values (prevents cross-user IDOR erasure).
  */
 export async function deleteUserFirestoreRecords(params: {
   uid: string;
   email: string;
-  studentId?: string;
   idToken: string;
-}): Promise<{ deletedDocs: string[] }> {
+}): Promise<{ deletedDocs: string[]; failedDocs: string[]; usedAdminSdk: boolean }> {
   const deletedDocs: string[] = [];
-  const { uid, email, studentId, idToken } = params;
+  const failedDocs: string[] = [];
+  const { uid, email, idToken } = params;
   const derivedStudentId = `GTF-2026-${uid.slice(-4).toUpperCase()}`;
   const sanitizedEmail = email.replace(/[\/#\?\s]+/g, "_");
 
@@ -215,11 +227,6 @@ export async function deleteUserFirestoreRecords(params: {
     { collection: "user_progress", docId: derivedStudentId },
   ];
 
-  if (studentId && studentId.trim()) {
-    const cleanSid = studentId.trim().replace(/[\/#\?\s]+/g, "_");
-    candidateTargets.push({ collection: "students", docId: cleanSid });
-    candidateTargets.push({ collection: "user_progress", docId: cleanSid });
-  }
   if (sanitizedEmail) {
     candidateTargets.push({ collection: "students", docId: sanitizedEmail });
     candidateTargets.push({ collection: "users", docId: sanitizedEmail });
@@ -235,10 +242,7 @@ export async function deleteUserFirestoreRecords(params: {
 
   if (adminDb) {
     try {
-      for (const target of uniqueTargets) {
-        await adminDb.collection(target.collection).doc(target.docId).delete();
-        deletedDocs.push(`${target.collection}/${target.docId}`);
-      }
+      const ownedStudentIds = new Set<string>([uid, derivedStudentId]);
 
       if (email) {
         for (const colName of ["students", "users"]) {
@@ -247,11 +251,42 @@ export async function deleteUserFirestoreRecords(params: {
             .where("email", "==", email)
             .get();
           for (const docSnap of snap.docs) {
+            ownedStudentIds.add(docSnap.id);
+            const dataSid = docSnap.data()?.studentId;
+            if (typeof dataSid === "string" && dataSid.trim()) {
+              ownedStudentIds.add(dataSid.trim());
+            }
             await docSnap.ref.delete();
             deletedDocs.push(`${colName}/${docSnap.id}`);
           }
         }
       }
+
+      // Delete owned user_progress & direct target docs
+      for (const sid of ownedStudentIds) {
+        uniqueTargets.push({ collection: "user_progress", docId: sid });
+      }
+      const dedupedTargets = Array.from(
+        new Map(uniqueTargets.map((t) => [`${t.collection}/${t.docId}`, t])).values(),
+      );
+
+      for (const target of dedupedTargets) {
+        await adminDb.collection(target.collection).doc(target.docId).delete();
+        deletedDocs.push(`${target.collection}/${target.docId}`);
+      }
+
+      // Delete owned exam score records (GDPR Art. 17)
+      for (const sid of ownedStudentIds) {
+        const scoresSnap = await adminDb
+          .collection("test_scores")
+          .where("studentId", "==", sid)
+          .get();
+        for (const scoreDoc of scoresSnap.docs) {
+          await scoreDoc.ref.delete();
+          deletedDocs.push(`test_scores/${scoreDoc.id}`);
+        }
+      }
+
       adminSucceeded = true;
     } catch (err) {
       console.warn("[GTF Account Delete] Admin Firestore delete fallback to REST:", err);
@@ -270,14 +305,20 @@ export async function deleteUserFirestoreRecords(params: {
           },
           signal: AbortSignal.timeout(6000),
         });
-        if (res.ok) {
-          deletedDocs.push(`${target.collection}/${target.docId}`);
+        if (res.ok || res.status === 404) {
+          if (res.ok) deletedDocs.push(`${target.collection}/${target.docId}`);
+        } else {
+          failedDocs.push(`${target.collection}/${target.docId} (HTTP ${res.status})`);
         }
       }),
     );
   }
 
-  return { deletedDocs: Array.from(new Set(deletedDocs)) };
+  return {
+    deletedDocs: Array.from(new Set(deletedDocs)),
+    failedDocs,
+    usedAdminSdk: adminSucceeded,
+  };
 }
 
 /**

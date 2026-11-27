@@ -109,7 +109,7 @@ export default function ProfilePage() {
     if (!targetEmail) return;
 
     let active = true;
-    fetch(`/api/catalog?email=${encodeURIComponent(targetEmail)}`, { cache: "no-store" })
+    fetch("/api/catalog", { cache: "no-store", credentials: "include" })
       .then((res) => (res.ok ? res.json() : null))
       .then((data: { products?: CatalogItem[] } | null) => {
         if (!active || !data?.products) return;
@@ -214,13 +214,13 @@ export default function ProfilePage() {
 
       const res = await fetch("/api/auth/delete", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify({
           idToken,
-          studentId: user?.studentId || "",
           confirm: true,
         }),
       });
@@ -423,7 +423,7 @@ export default function ProfilePage() {
                     <p className="text-xs leading-relaxed text-slate-600">
                       {subscriptionTier === "Pro"
                         ? `Active GTF Pro entitlements detected (${unlockedCount} unlocked module${unlockedCount === 1 ? "" : "s"}).`
-                        : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, CEFR A1–B2 workbooks, Goethe/telc Modelltests, and Early Access to Studienkolleg & Pflege when launched."}
+                        : "You are currently on the Free Tier with sample modules unlocked. Upgrade for unlimited AI Grading, CEFR A1–B2 workbooks, 12 Goethe/telc Modelltests, live Studienkolleg tracks, and Early Access to the Pflege clinical simulator when launched."}
                     </p>
 
                     <Link

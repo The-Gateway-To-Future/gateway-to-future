@@ -339,6 +339,7 @@ export interface ClinicalModule {
 export type DeviceType = "web" | "mobile";
 
 export interface UserSessionState {
+  firebaseUid?: string;
   studentId?: string;
   userEmail: string;
   fullName: string;
@@ -407,6 +408,8 @@ export interface SchreibenEvaluation {
   summaryHinglish: string;
   improvedVersion: string;
   evaluatedAt: string;
+  /** Server-issued HMAC signature preventing client score tampering. */
+  evalToken?: string;
 }
 
 export interface SprechenEvaluation {
@@ -431,6 +434,8 @@ export interface SprechenEvaluation {
   summaryDe: string;
   summaryHinglish: string;
   evaluatedAt: string;
+  /** Server-issued HMAC signature preventing client score tampering. */
+  evalToken?: string;
 }
 
 export interface ScoredItem {

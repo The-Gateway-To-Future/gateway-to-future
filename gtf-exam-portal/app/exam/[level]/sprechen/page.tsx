@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   Award,
   CheckCircle2,
@@ -15,18 +15,22 @@ import {
 import { ExamHeader } from "@/components/ExamHeader";
 import { motion } from "framer-motion";
 import {
-  getActiveUserEmail,
   loadExamState,
-  resetExamState,
+  resetExamSection,
   saveExamState,
 } from "@/lib/client-storage";
 import { isLevel, type Level } from "@/lib/config";
 import type { ExamTest, SprechenEvaluation, SprechenTeil } from "@/lib/types";
 
-export default function SprechenExamPage() {
+function SprechenExamPageInner() {
   const params = useParams<{ level: string }>();
+  const searchParams = useSearchParams();
   const rawLevel = (params?.level || "b1").toLowerCase();
   const level: Level = isLevel(rawLevel) ? rawLevel : "b1";
+  const defaultTestId = `gtf-${level}-modelltest-1`;
+  const testId = (searchParams?.get("testId") || defaultTestId).trim().toLowerCase();
+  const testQuery =
+    testId !== defaultTestId ? `?testId=${encodeURIComponent(testId)}` : "";
 
   const [test, setTest] = useState<ExamTest | null>(null);
   const [activeTeilIdx, setActiveTeilIdx] = useState(0);
@@ -47,12 +51,15 @@ export default function SprechenExamPage() {
   const examinerAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    const st = loadExamState(level);
+    setActiveTeilIdx(0);
+    setLoading(true);
+    const st = loadExamState(level, undefined, testId);
     setEvaluations(st.sprechenEvaluations || {});
 
+    const cacheKey = `gtf_exam_test_${level}_${testId}`;
     // 1. Instant cache check for <100ms load
     try {
-      const cached = sessionStorage.getItem(`gtf_exam_test_${level}`);
+      const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
         const parsed = JSON.parse(cached) as ExamTest;
         if (parsed?.sections?.sprechen?.teile?.length) {
@@ -66,16 +73,16 @@ export default function SprechenExamPage() {
 
     async function fetchTest() {
       try {
-        const email = getActiveUserEmail();
         const res = await fetch(
-          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&email=${encodeURIComponent(email)}`,
+          `/api/drive/fetch-test?level=${encodeURIComponent(level)}&testId=${encodeURIComponent(testId)}`,
+          { credentials: "include" },
         );
         if (res.ok) {
           const data = (await res.json()) as { test: ExamTest };
           if (data?.test?.sections?.sprechen?.teile?.length) {
             setTest(data.test);
             try {
-              sessionStorage.setItem(`gtf_exam_test_${level}`, JSON.stringify(data.test));
+              sessionStorage.setItem(cacheKey, JSON.stringify(data.test));
             } catch {}
           }
         }
@@ -93,7 +100,7 @@ export default function SprechenExamPage() {
         examinerAudioRef.current.pause();
       }
     };
-  }, [level]);
+  }, [level, testId]);
 
   const teile: SprechenTeil[] = test?.sections.sprechen.teile || [];
   const currentTeil: SprechenTeil | undefined = teile[activeTeilIdx];
@@ -235,6 +242,7 @@ export default function SprechenExamPage() {
 
       const res = await fetch("/api/ai/evaluate-sprechen", {
         method: "POST",
+        credentials: "include",
         body: form,
       });
       const data = await res.json();
@@ -245,7 +253,7 @@ export default function SprechenExamPage() {
       const ev = data.evaluation as SprechenEvaluation;
       setEvaluations((prev) => {
         const next = { ...prev, [currentTeil.id]: ev };
-        saveExamState(level, (st) => ({ ...st, sprechenEvaluations: next }));
+        saveExamState(level, (st) => ({ ...st, sprechenEvaluations: next }), undefined, testId);
         return next;
       });
     } catch (err) {
@@ -256,7 +264,13 @@ export default function SprechenExamPage() {
   };
 
   const handleReset = () => {
-    const fresh = resetExamState(level);
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm("Aufnahmen und Bewertungen in „Sprechen“ zurücksetzen? Andere Prüfungsteile bleiben erhalten.")
+    ) {
+      return;
+    }
+    const fresh = resetExamSection(level, "sprechen", undefined, testId);
     setEvaluations(fresh.sprechenEvaluations);
   };
 
@@ -267,6 +281,7 @@ export default function SprechenExamPage() {
         activeSection="sprechen"
         durationMinutes={test?.sections.sprechen.durationMinutes || 15}
         testTitle={test?.title}
+        testId={testId}
         onResetExam={handleReset}
       />
 
@@ -319,7 +334,7 @@ export default function SprechenExamPage() {
               </div>
 
               <Link
-                href={`/exam/${level}/result`}
+                href={`/exam/${level}/result${testQuery}`}
                 className="relative z-10 cursor-pointer inline-flex items-center gap-1.5 rounded-xl bg-slate-900 text-white px-4 py-2 text-xs font-extrabold shadow-xs hover:bg-slate-800 transition"
               >
                 <Award className="h-4 w-4" />
@@ -635,5 +650,19 @@ export default function SprechenExamPage() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function SprechenExamPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-600 text-sm">
+          Lade Prüfungsmodul Sprechen…
+        </div>
+      }
+    >
+      <SprechenExamPageInner />
+    </Suspense>
   );
 }

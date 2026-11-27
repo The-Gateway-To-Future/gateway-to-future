@@ -21,7 +21,9 @@ interface CreateCheckoutBody {
     | "level_bundle"
     | "studienkolleg_track"
     | "all_access_pass"
-    | "consultation_session";
+    | "consultation_session"
+    | "ausbildung_os_pro"
+    | "ausbildung_os_fast_track";
   userEmail?: string;
   studentName?: string;
   whatsappPhone?: string;
@@ -73,6 +75,8 @@ export async function GET(req: Request) {
       studienkolleg_track: { amount: 2999, formatted: "₹2,999", label: "Studienkolleg Complete Track (M, T, W, G Kurs)" },
       all_access_pass: { amount: 4999, formatted: "₹4,999", label: "Full Academy All-Access Pass" },
       consultation_session: { amount: 1000, formatted: "₹1,000", label: "1:1 Berlin & India Advisory Consultation" },
+      ausbildung_os_pro: { amount: 14999, formatted: "₹14,999", label: "Ausbildung OS Pro Self-Serve" },
+      ausbildung_os_fast_track: { amount: 45000, formatted: "₹45,000", label: "Ausbildung OS GTF Verified Fast-Track" },
     },
   });
 }
@@ -111,14 +115,31 @@ export async function POST(req: Request) {
       targetLevel: product.level || "b1",
     });
 
-    // Determine tier price in INR (Tier 1: ₹499, Tier 2: ₹1,999, Tier 3: ₹2,999, Tier 4: ₹4,999, Consultation: ₹1,000)
+    // Determine canonical tier price in INR
     let priceInr = Number(product.priceInr || 499);
     if (body.tierKey === "single_module") priceInr = 499;
     else if (body.tierKey === "level_bundle") priceInr = 1999;
     else if (body.tierKey === "studienkolleg_track") priceInr = 2999;
     else if (body.tierKey === "all_access_pass") priceInr = 4999;
     else if (body.tierKey === "consultation_session") priceInr = 1000;
+    else if (body.tierKey === "ausbildung_os_pro" || product.slug === "ausbildung-os-pro")
+      priceInr = 14999;
+    else if (
+      body.tierKey === "ausbildung_os_fast_track" ||
+      product.slug === "ausbildung-os-fast-track"
+    )
+      priceInr = 45000;
     else if (!priceInr || priceInr <= 0) priceInr = 499;
+
+    const resolvedTierKey =
+      body.tierKey ||
+      (product.slug === "ausbildung-os-pro"
+        ? "ausbildung_os_pro"
+        : product.slug === "ausbildung-os-fast-track"
+          ? "ausbildung_os_fast_track"
+          : product.slug === "gtf-berlin-consultation"
+            ? "consultation_session"
+            : "all_access_pass");
 
     const amountPaise = Math.max(100, Math.round(priceInr * 100));
     const keyId = (
@@ -158,6 +179,8 @@ export async function POST(req: Request) {
               whatsappPhone,
               productSlug: product.slug,
               productTitle: product.title,
+              tierKey: resolvedTierKey,
+              expectedAmountPaise: String(amountPaise),
               pathway: (body.appointmentDetails?.pathway || "").trim(),
               preferredSlot: (body.appointmentDetails?.preferredSlot || "").trim(),
             },

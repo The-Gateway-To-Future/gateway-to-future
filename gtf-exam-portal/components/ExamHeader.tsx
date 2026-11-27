@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Award,
   BookOpen,
+  ChevronDown,
   Clock,
   Headphones,
   Mic,
@@ -23,6 +25,7 @@ interface ExamHeaderProps {
   activeSection: SectionKey | "result";
   durationMinutes: number;
   testTitle?: string;
+  testId?: string;
   onResetExam?: () => void;
   answeredCount?: number;
   totalQuestions?: number;
@@ -39,41 +42,94 @@ export function ExamHeader({
   activeSection,
   durationMinutes,
   testTitle,
+  testId,
   onResetExam,
   answeredCount,
   totalQuestions,
 }: ExamHeaderProps) {
-  const storageKey = `gtf_timer_${level}_${activeSection}`;
+  const router = useRouter();
+  const defaultTestId = `gtf-${level}-modelltest-1`;
+  const effectiveTestId = (testId || defaultTestId).trim().toLowerCase();
+  const testQuery =
+    effectiveTestId !== defaultTestId
+      ? `?testId=${encodeURIComponent(effectiveTestId)}`
+      : "";
+  const hasMultipleSets =
+    level === "a1" || level === "a2" || level === "b1" || level === "b2";
+  const modelltestOptions = [
+    { id: `gtf-${level}-modelltest-1`, label: "Modelltest 1" },
+    { id: `gtf-${level}-modelltest-2`, label: "Modelltest 2" },
+    { id: `gtf-${level}-modelltest-3`, label: "Modelltest 3" },
+  ];
+  const selectedModelltestId = modelltestOptions.some((o) => o.id === effectiveTestId)
+    ? effectiveTestId
+    : defaultTestId;
+
+  const handleSwitchModelltest = (nextId: string) => {
+    const href =
+      nextId === defaultTestId
+        ? `/exam/${level}/${activeSection}`
+        : `/exam/${level}/${activeSection}?testId=${encodeURIComponent(nextId)}`;
+    router.push(href);
+  };
+  const storageKey = `gtf_timer_deadline_${level}_${effectiveTestId}_${activeSection}`;
   const [secondsLeft, setSecondsLeft] = useState<number>(durationMinutes * 60);
   const [paused, setPaused] = useState(false);
 
+  // Wall-clock deadline countdown so backgrounded mobile tabs never freeze the exam timer
   useEffect(() => {
     if (activeSection === "result") return;
-    const saved = sessionStorage.getItem(storageKey);
-    if (saved && Number.isFinite(Number(saved)) && Number(saved) > 0) {
-      setSecondsLeft(Number(saved));
+    const totalSec = Math.max(60, durationMinutes * 60);
+    const savedDeadline = Number(sessionStorage.getItem(storageKey));
+    if (Number.isFinite(savedDeadline) && savedDeadline > Date.now()) {
+      setSecondsLeft(Math.max(0, Math.ceil((savedDeadline - Date.now()) / 1000)));
     } else {
-      setSecondsLeft(durationMinutes * 60);
+      const freshDeadline = Date.now() + totalSec * 1000;
+      sessionStorage.setItem(storageKey, String(freshDeadline));
+      setSecondsLeft(totalSec);
     }
   }, [storageKey, durationMinutes, activeSection]);
 
   useEffect(() => {
     if (activeSection === "result" || paused) return;
-    const id = window.setInterval(() => {
-      setSecondsLeft((prev) => {
-        const next = Math.max(0, prev - 1);
-        sessionStorage.setItem(storageKey, String(next));
-        return next;
-      });
-    }, 1000);
-    return () => window.clearInterval(id);
+    // Sync deadline whenever resuming from pause
+    const currentDeadline = Number(sessionStorage.getItem(storageKey));
+    if (!Number.isFinite(currentDeadline) || Math.abs((currentDeadline - Date.now()) / 1000 - secondsLeft) > 2) {
+      sessionStorage.setItem(storageKey, String(Date.now() + secondsLeft * 1000));
+    }
+
+    const tick = () => {
+      const deadline = Number(sessionStorage.getItem(storageKey));
+      if (Number.isFinite(deadline)) {
+        setSecondsLeft(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
+      }
+    };
+
+    const id = window.setInterval(tick, 1000);
+    const onVis = () => {
+      if (document.visibilityState === "visible") tick();
+    };
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener("visibilitychange", onVis);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSection, paused, storageKey]);
 
   const resetTimer = () => {
-    const fresh = durationMinutes * 60;
+    const fresh = Math.max(60, durationMinutes * 60);
+    sessionStorage.setItem(storageKey, String(Date.now() + fresh * 1000));
     setSecondsLeft(fresh);
-    sessionStorage.setItem(storageKey, String(fresh));
   };
+
+  const levelDurations: Record<string, { lesen: number; hoeren: number; schreiben: number; sprechen: number }> = {
+    a1: { lesen: 25, hoeren: 20, schreiben: 20, sprechen: 15 },
+    a2: { lesen: 30, hoeren: 30, schreiben: 30, sprechen: 15 },
+    b1: { lesen: 65, hoeren: 40, schreiben: 60, sprechen: 15 },
+    b2: { lesen: 65, hoeren: 40, schreiben: 75, sprechen: 15 },
+  };
+  const durs = levelDurations[level] || { lesen: 60, hoeren: 30, schreiben: 45, sprechen: 15 };
 
   const navItems: {
     key: SectionKey | "result";
@@ -87,40 +143,40 @@ export function ExamHeader({
       key: "lesen",
       num: "1",
       label: "Lesen",
-      sub: "70 Min",
-      href: `/exam/${level}/lesen`,
+      sub: `${activeSection === "lesen" && durationMinutes ? durationMinutes : durs.lesen}m`,
+      href: `/exam/${level}/lesen${testQuery}`,
       icon: BookOpen,
     },
     {
       key: "hoeren",
       num: "2",
       label: "Hören",
-      sub: "40 Min",
-      href: `/exam/${level}/hoeren`,
+      sub: `${activeSection === "hoeren" && durationMinutes ? durationMinutes : durs.hoeren}m`,
+      href: `/exam/${level}/hoeren${testQuery}`,
       icon: Headphones,
     },
     {
       key: "schreiben",
       num: "3",
       label: "Schreiben",
-      sub: "60 Min",
-      href: `/exam/${level}/schreiben`,
+      sub: `${activeSection === "schreiben" && durationMinutes ? durationMinutes : durs.schreiben}m`,
+      href: `/exam/${level}/schreiben${testQuery}`,
       icon: PenTool,
     },
     {
       key: "sprechen",
       num: "4",
       label: "Sprechen",
-      sub: "15 Min",
-      href: `/exam/${level}/sprechen`,
+      sub: `${activeSection === "sprechen" && durationMinutes ? durationMinutes : durs.sprechen}m`,
+      href: `/exam/${level}/sprechen${testQuery}`,
       icon: Mic,
     },
     {
       key: "result",
       num: "5",
       label: "Ergebnis",
-      sub: "Scorecard",
-      href: `/exam/${level}/result`,
+      sub: "Score",
+      href: `/exam/${level}/result${testQuery}`,
       icon: Award,
     },
   ];
@@ -153,8 +209,8 @@ export function ExamHeader({
           />
         </div>
 
-        {/* Primary Header Row */}
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 sm:px-6">
+        {/* Primary Header Row (compact on mobile to maximize reading/question space) */}
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:py-2.5 sm:px-6">
           {/* Left: Exit Link & Exam Metadata */}
           <div className="flex items-center gap-3 min-w-0">
             <Link
@@ -231,9 +287,9 @@ export function ExamHeader({
           </div>
         </div>
 
-        {/* Section Tabs Bar */}
-        <div className="mx-auto max-w-7xl px-3 sm:px-6 border-t border-slate-100">
-          <nav className="flex items-center gap-1.5 overflow-x-auto py-2 no-scrollbar">
+        {/* Single-Row Section Tabs + Compact Modelltest Switcher (never wraps into 3 rows on mobile) */}
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 border-t border-slate-100 flex items-center justify-between gap-2">
+          <nav className="flex flex-1 items-center gap-1.5 overflow-x-auto py-1.5 no-scrollbar min-w-0">
             {navItems.map((item) => {
               const Icon = item.icon;
               const active = item.key === activeSection;
@@ -269,6 +325,36 @@ export function ExamHeader({
               );
             })}
           </nav>
+
+          {hasMultipleSets && (
+            <div className="flex items-center gap-2 my-1.5 shrink-0 max-w-full">
+              <label
+                htmlFor="gtf-modelltest-switcher"
+                className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500 hidden sm:inline"
+              >
+                Exam Set
+              </label>
+              <div className="relative">
+                <select
+                  id="gtf-modelltest-switcher"
+                  aria-label="Modelltest wechseln"
+                  value={selectedModelltestId}
+                  onChange={(e) => handleSwitchModelltest(e.target.value)}
+                  className="appearance-none rounded-xl border border-slate-200 bg-white pl-3 pr-8 py-1.5 text-xs font-semibold text-slate-800 shadow-xs transition hover:border-slate-300 hover:bg-slate-50 focus:border-slate-400 focus:outline-none cursor-pointer"
+                >
+                  {modelltestOptions.map((opt) => (
+                    <option key={opt.id} value={opt.id}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </header>
     </>

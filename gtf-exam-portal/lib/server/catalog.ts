@@ -117,7 +117,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     type: "mock_test",
     level: "b2",
     title: "GTF Sprachakademie Full Exam Vault (A1–B2 Complete Suite)",
-    description: "Full institutional vault of 20+ Goethe/telc mock exams across A1, A2, B1, and B2 with instant AI Schreiben & Whisper v3 speech evaluation.",
+    description: "Complete institutional vault of 12 Goethe/telc-aligned CEFR Modelltests (3 full exams each for A1, A2, B1, and B2) with AI Schreiben & Sprechen evaluation.",
     priceEur: 0,
     priceInr: 1999,
     isFree: false,
@@ -155,7 +155,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     type: "studienkolleg_course",
     track: "m_kurs",
     title: "GTF Studienkolleg M-Kurs Intensive Track Course",
-    description: "Comprehensive medical prep: Mathematik, Physik, Chemie & Biologie. Includes 500+ terminological flashcards, interactive formula engines, and TU Berlin / LMU past papers.",
+    description: "Comprehensive medical prep: Mathematik, Physik, Chemie & Biologie. Includes curated terminology flashcards, interactive Formelsammlung, C-Tests, and TU Berlin / LMU past papers.",
     priceEur: 0,
     priceInr: 2999,
     isFree: false,
@@ -199,12 +199,36 @@ const DEFAULT_PRODUCTS: Product[] = [
     slug: "gtf-all-access-pass",
     divisionId: "sprachakademie",
     type: "studienkolleg_course",
-    title: "GTF All-Access Pro Membership (€50 / mo)",
-    description: "Complete all-access membership across Language Academy (A1–B2), Studienkolleg (T/M/W/G-Kurs), and Fachsprache Pflege & Medizin.",
-    priceEur: 50,
-    priceInr: 4499,
+    title: "GTF All-Access Pro Pass (₹4,999)",
+    description: "Complete all-access pass across Language Academy (A1–B2, 12 Modelltests, 122 Säulen Grammar), live Studienkolleg (M/T/W/G-Kurs), and Early Access to Fachsprache Pflege clinical modules when launched.",
+    priceEur: 0,
+    priceInr: 4999,
     isFree: false,
     resourceId: "gtf-all-access-pass",
+  },
+  {
+    slug: "ausbildung-os-pro",
+    divisionId: "fachsprache_medizin",
+    type: "clinical_module",
+    level: "b1",
+    title: "Ausbildung OS Pro (Self-Serve DIN Bewerbungsmappe & Tracker)",
+    description: "Unlimited DIN 5008 Lebenslauf & Anschreiben PDF exports, Application & Interview CRUD Tracker with 14-day follow-up alerts, and Top 12 German HR Interview Playbook.",
+    priceEur: 0,
+    priceInr: 14999,
+    isFree: false,
+    resourceId: "ausbildung-os-pro",
+  },
+  {
+    slug: "ausbildung-os-fast-track",
+    divisionId: "fachsprache_medizin",
+    type: "clinical_module",
+    level: "b1",
+    title: "Ausbildung OS — GTF Verified Fast-Track (Berlin Mentorship)",
+    description: "Full Ausbildung OS Pro plus 1-on-1 Berlin HQ audit of Lebenslauf/Anschreiben/Anerkennung, live mock HR interviews, and § 16a CSP Visa dossier guidance.",
+    priceEur: 0,
+    priceInr: 45000,
+    isFree: false,
+    resourceId: "ausbildung-os-fast-track",
   },
 
   // ── DIVISION 3: GTF FACHSPRACHE PFLEGE & MEDIZIN ─────────────────────────────
@@ -213,8 +237,8 @@ const DEFAULT_PRODUCTS: Product[] = [
     divisionId: "fachsprache_medizin",
     type: "clinical_module",
     level: "b2",
-    title: "GTF Fachsprachenprüfung (FSP) Medizin Master Track",
-    description: "Hospital-grade clinical German: 3-part FSP simulation (Anamnese, Epikrise, Arzt-Arzt Übergabe), physical examination scripts, and clinical case presentations.",
+    title: "GTF Fachsprachenprüfung (FSP) Medizin Master Track (Early Access)",
+    description: "Includes immediate B2 Anerkennung & Fachsprache modules plus Early Access to the 3-part clinical FSP simulation (Anamnese, Epikrise, Arzt-Arzt Übergabe) as clinical ward tracks roll out.",
     priceEur: 0,
     priceInr: 2999,
     isFree: false,
@@ -225,8 +249,8 @@ const DEFAULT_PRODUCTS: Product[] = [
     divisionId: "fachsprache_medizin",
     type: "clinical_module",
     level: "b2",
-    title: "GTF Pflege Fachsprache & Dual Ausbildung Complete Track",
-    description: "ISBAR clinical handover training, Pflegedokumentation protocols, and hospital onboarding for Berlin healthcare networks.",
+    title: "GTF Pflege Fachsprache & Dual Ausbildung Track (Early Access)",
+    description: "Includes immediate B2 Anerkennung & Fachsprache modules plus Early Access to the ISBAR clinical ward handover simulator and Pflegedokumentation protocols as they launch.",
     priceEur: 0,
     priceInr: 2999,
     isFree: false,
@@ -526,23 +550,30 @@ async function writeLocalPurchases(records: LocalPurchaseRecord[]): Promise<void
 }
 
 /**
- * Returns the set of unlocked product slugs for the given user email.
- * Free products are always included. Checks Supabase first, then local fallback store.
+ * Slugs that remain strictly paid even during `NEXT_PUBLIC_FREE_LAUNCH_MODE=true`
+ * (premium advisory services & Ausbildung OS Pro).
  */
-export async function getUnlockedProductSlugs(userEmail?: string | null): Promise<Set<string>> {
-  // Global Free Launch Mode: 100% free access for all students
-  if (process.env.NEXT_PUBLIC_FREE_LAUNCH_MODE === "true") {
-    return new Set(getAllProducts().map((p) => p.slug));
-  }
+export const ALWAYS_PAID_PRODUCT_SLUGS = new Set<string>([
+  "ausbildung-os-pro",
+  "ausbildung-os-fast-track",
+  "gtf-berlin-consultation",
+]);
 
-  const email = (userEmail || serverEnv.demoUserEmail).toLowerCase().trim();
-  const unlocked = new Set<string>(
-    DEFAULT_PRODUCTS.filter((p) => p.isFree).map((p) => p.slug),
-  );
+/**
+ * Returns ONLY verified paid product slugs (never inflated by Free Launch Mode).
+ * Checks Supabase, Firestore Admin `entitlements`, and local dev store.
+ */
+export async function getPaidUnlockedProductSlugs(
+  userEmail?: string | null,
+  uid?: string | null,
+): Promise<Set<string>> {
+  const email = (userEmail || "").toLowerCase().trim();
+  const paid = new Set<string>();
+  if (!email && !uid) return paid;
 
-  // 1. Check Supabase if configured
+  // 1. Check Supabase `user_purchases` if configured
   const supabase = getSupabaseServerClient();
-  if (supabase) {
+  if (supabase && email) {
     try {
       const { data } = await supabase
         .from("user_purchases")
@@ -553,7 +584,7 @@ export async function getUnlockedProductSlugs(userEmail?: string | null): Promis
         const now = Date.now();
         for (const row of data) {
           if (!row.expires_at || new Date(row.expires_at).getTime() > now) {
-            unlocked.add(row.product_slug);
+            paid.add(row.product_slug);
           }
         }
       }
@@ -562,15 +593,87 @@ export async function getUnlockedProductSlugs(userEmail?: string | null): Promis
     }
   }
 
-  // 2. Check local dev store (.local-store/purchases.json)
-  const localRecords = await readLocalPurchases();
-  for (const rec of localRecords) {
-    if (rec.userEmail.toLowerCase() === email) {
-      unlocked.add(rec.productSlug);
+  // 2. Check Cloud Firestore server-managed `entitlements` (via Firebase Admin SDK)
+  try {
+    const { getFirebaseAdminFirestore } = await import("./firebase-admin");
+    const adminDb = await getFirebaseAdminFirestore();
+    if (adminDb) {
+      const lookupKeys = Array.from(
+        new Set([uid || "", email ? email.replace(/[\/#\?\s]+/g, "_") : ""].filter(Boolean)),
+      );
+      for (const key of lookupKeys) {
+        const snap = await adminDb.collection("entitlements").doc(key).get();
+        if (snap.exists) {
+          const data = snap.data() as { unlockedSlugs?: unknown; ausbildungPro?: boolean };
+          if (Array.isArray(data?.unlockedSlugs)) {
+            for (const s of data.unlockedSlugs) {
+              if (typeof s === "string" && s.trim()) paid.add(s.trim());
+            }
+          }
+          if (data?.ausbildungPro === true) {
+            paid.add("ausbildung-os-pro");
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("[gtf] Firestore entitlements lookup notice:", err);
+  }
+
+  // 3. Check local dev store (.local-store/purchases.json)
+  if (email) {
+    const localRecords = await readLocalPurchases();
+    for (const rec of localRecords) {
+      if (rec.userEmail.toLowerCase() === email) {
+        paid.add(rec.productSlug);
+      }
     }
   }
 
-  // 3. Automated Vault & Suite Entitlement Expansion
+  // Expand bundle entitlements strictly from paid purchases
+  if (paid.has("ausbildung-os-fast-track")) {
+    paid.add("ausbildung-os-pro");
+    paid.add("gtf-berlin-consultation");
+  }
+  if (paid.has("gtf-all-access-pass")) {
+    for (const p of getAllProducts()) {
+      if (!ALWAYS_PAID_PRODUCT_SLUGS.has(p.slug)) {
+        paid.add(p.slug);
+      }
+    }
+    paid.add("fachsprache-pflege-ausbildung-suite");
+  }
+
+  return paid;
+}
+
+/**
+ * Returns the set of unlocked product slugs for the given user email.
+ * During `NEXT_PUBLIC_FREE_LAUNCH_MODE=true`, core A1–B2 Academy & Exam packs unlock,
+ * while ALWAYS_PAID_PRODUCT_SLUGS (Ausbildung OS Pro, Berlin Consultations) remain strictly paid.
+ */
+export async function getUnlockedProductSlugs(
+  userEmail?: string | null,
+  uid?: string | null,
+): Promise<Set<string>> {
+  const paid = await getPaidUnlockedProductSlugs(userEmail, uid);
+
+  if (process.env.NEXT_PUBLIC_FREE_LAUNCH_MODE === "true") {
+    const unlocked = new Set<string>(paid);
+    for (const p of getAllProducts()) {
+      if (!ALWAYS_PAID_PRODUCT_SLUGS.has(p.slug)) {
+        unlocked.add(p.slug);
+      }
+    }
+    return unlocked;
+  }
+
+  const unlocked = new Set<string>(
+    DEFAULT_PRODUCTS.filter((p) => p.isFree).map((p) => p.slug),
+  );
+  for (const slug of paid) unlocked.add(slug);
+
+  // Automated Vault & Suite Entitlement Expansion
   if (unlocked.has("exam-vault-a1-b2")) {
     for (const p of DEFAULT_PRODUCTS) {
       if (p.divisionId === "sprachakademie" && p.type === "mock_test") {
@@ -589,29 +692,24 @@ export async function getUnlockedProductSlugs(userEmail?: string | null): Promis
     unlocked.add("studienkolleg-m-kurs-crash");
     unlocked.add("studienkolleg-t-kurs-crash");
   }
-  if (unlocked.has("gtf-all-access-pass")) {
-    for (const p of getAllProducts()) {
-      unlocked.add(p.slug);
-    }
-    unlocked.add("fachsprache-pflege-ausbildung-suite");
-  }
 
   return unlocked;
 }
 
 /**
- * Records a product unlock in Supabase (when configured) AND the local dev store
- * so `/api/webhooks/unlock-pack` works out-of-the-box on localhost:3000.
+ * Records a product unlock across Supabase, Cloud Firestore (`entitlements`), and local dev store.
+ * Safely tolerates read-only serverless filesystems (Vercel Lambda).
  */
 export async function grantProductUnlock(params: {
   userEmail: string;
+  uid?: string;
   productSlug: string;
   fullName?: string;
   paymentProvider?: string;
   paymentReference?: string;
   amountPaid?: number;
   currency?: string;
-}): Promise<{ persistedTo: "supabase" | "local-store"; record: LocalPurchaseRecord }> {
+}): Promise<{ persistedTo: "supabase" | "firestore" | "local-store"; record: LocalPurchaseRecord }> {
   const email = params.userEmail.toLowerCase().trim();
   const slug = params.productSlug.trim();
   const nowIso = new Date().toISOString();
@@ -624,18 +722,56 @@ export async function grantProductUnlock(params: {
     unlockedAt: nowIso,
   };
 
-  // Always save to local store so offline demo works immediately
-  const existing = await readLocalPurchases();
-  const filtered = existing.filter(
-    (r) => !(r.userEmail.toLowerCase() === email && r.productSlug === slug),
-  );
-  filtered.push(record);
-  await writeLocalPurchases(filtered);
+  // 1. Best-effort local store (never crash on read-only serverless filesystems)
+  try {
+    const existing = await readLocalPurchases();
+    const filtered = existing.filter(
+      (r) => !(r.userEmail.toLowerCase() === email && r.productSlug === slug),
+    );
+    filtered.push(record);
+    await writeLocalPurchases(filtered);
+  } catch (fsErr) {
+    console.warn("[gtf] Local purchase mirror skipped (read-only filesystem):", fsErr);
+  }
 
+  // 2. Cloud Firestore server-managed `entitlements` (survives serverless restarts without Supabase)
+  let persistedFirestore = false;
+  try {
+    const { getFirebaseAdminFirestore } = await import("./firebase-admin");
+    const adminDb = await getFirebaseAdminFirestore();
+    if (adminDb) {
+      const { FieldValue } = await import("firebase-admin/firestore");
+      const docIds = Array.from(
+        new Set([params.uid || "", email.replace(/[\/#\?\s]+/g, "_")].filter(Boolean)),
+      );
+      const isAusbildungPro =
+        slug === "ausbildung-os-pro" || slug === "ausbildung-os-fast-track";
+      for (const docId of docIds) {
+        await adminDb
+          .collection("entitlements")
+          .doc(docId)
+          .set(
+            {
+              userEmail: email,
+              unlockedSlugs: FieldValue.arrayUnion(slug),
+              ...(isAusbildungPro ? { ausbildungPro: true } : {}),
+              lastPaymentProvider: record.paymentProvider,
+              lastPaymentReference: record.paymentReference || null,
+              updatedAt: nowIso,
+            },
+            { merge: true },
+          );
+      }
+      persistedFirestore = true;
+    }
+  } catch (err) {
+    console.warn("[gtf] Firestore entitlements write notice:", err);
+  }
+
+  // 3. Supabase `user_purchases` if configured
   const supabase = getSupabaseServerClient();
   if (supabase) {
     try {
-      // Ensure user row exists
       const { data: userRow } = await supabase
         .from("users")
         .upsert(
@@ -660,7 +796,7 @@ export async function grantProductUnlock(params: {
           payment_provider: params.paymentProvider || "webhook",
           payment_reference: params.paymentReference || null,
           amount_paid: params.amountPaid ?? null,
-          currency: params.currency || "EUR",
+          currency: params.currency || "INR",
           status: "active",
           unlocked_at: nowIso,
         },
@@ -670,11 +806,11 @@ export async function grantProductUnlock(params: {
         return { persistedTo: "supabase", record };
       }
     } catch (err) {
-      console.warn("[gtf] Supabase unlock fallback to local-store:", err);
+      console.warn("[gtf] Supabase unlock fallback:", err);
     }
   }
 
-  return { persistedTo: "local-store", record };
+  return { persistedTo: persistedFirestore ? "firestore" : "local-store", record };
 }
 
 /**

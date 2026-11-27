@@ -11,6 +11,7 @@ export const CONSULTATION_ELIGIBLE_SLUGS = new Set([
   "gtf-all-access-pass",
   "studienkolleg-all-access",
   "ausbildung-os-pro",
+  "ausbildung-os-fast-track",
 ]);
 
 export interface DirectDeskContact {
@@ -52,12 +53,17 @@ export function getDirectDeskContact(): DirectDeskContact {
 }
 
 function getSigningSecret(): string {
-  return (
+  const configured = (
+    process.env.SESSION_SIGNING_SECRET ||
     process.env.MEDIA_TOKEN_SECRET ||
     process.env.RAZORPAY_KEY_SECRET ||
-    process.env.ADMIN_SECRET_PASSWORD ||
-    "gtf-berlin-appointment-signing-key"
+    ""
   ).trim();
+  if (configured) return configured;
+  if (process.env.NODE_ENV === "production") {
+    return "";
+  }
+  return "gtf-dev-only-appointment-signing-key";
 }
 
 function b64urlEncode(input: string | Buffer): string {
@@ -75,8 +81,12 @@ function b64urlDecode(input: string): string {
 }
 
 function signBody(encodedPayload: string): string {
+  const secret = getSigningSecret();
+  if (!secret) {
+    throw new Error("SESSION_SIGNING_SECRET or MEDIA_TOKEN_SECRET must be set in production.");
+  }
   return b64urlEncode(
-    createHmac("sha256", getSigningSecret()).update(encodedPayload).digest(),
+    createHmac("sha256", secret).update(encodedPayload).digest(),
   );
 }
 
@@ -97,6 +107,7 @@ export function verifyPaidAppointmentToken(
   token: string | undefined | null,
 ): PaidAppointmentPayload | null {
   if (!token || !token.includes(".")) return null;
+  if (!getSigningSecret()) return null;
   const parts = token.split(".");
   if (parts.length !== 2) return null;
   const [encoded, sig] = parts;

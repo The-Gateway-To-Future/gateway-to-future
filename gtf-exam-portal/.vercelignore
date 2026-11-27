@@ -6,6 +6,7 @@ ios/
 *.keystore
 keystore.properties
 firebase-service-account.json
+data/vault_fallback_archive/
 .local-store/
 .firebase/
 firebase-hosting/

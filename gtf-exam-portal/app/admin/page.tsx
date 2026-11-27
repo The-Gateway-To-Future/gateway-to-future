@@ -115,6 +115,36 @@ export default function FounderAdminPortalPage() {
   const [runningFactory, setRunningFactory] = useState(false);
   const [factoryLog, setFactoryLog] = useState<string | null>(null);
   const [pushingTrack, setPushingTrack] = useState<string | null>(null);
+  const [audioPreviewUrls, setAudioPreviewUrls] = useState<Record<string, string>>({});
+  const [loadingAudioTrack, setLoadingAudioTrack] = useState<string | null>(null);
+
+  const handleLoadAudioPreview = async (filename: string) => {
+    if (!adminPassword || loadingAudioTrack === filename) return;
+    setLoadingAudioTrack(filename);
+    try {
+      const res = await fetch(
+        `/api/admin/audio-factory?stream=${encodeURIComponent(filename)}`,
+        {
+          headers: { "x-admin-password": adminPassword },
+          cache: "no-store",
+        },
+      );
+      if (!res.ok) {
+        setToast(`Could not preview ${filename} (HTTP ${res.status}).`);
+        return;
+      }
+      const blob = await res.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      setAudioPreviewUrls((prev) => {
+        if (prev[filename]) URL.revokeObjectURL(prev[filename]);
+        return { ...prev, [filename]: objectUrl };
+      });
+    } catch {
+      setToast(`Failed to stream preview for ${filename}.`);
+    } finally {
+      setLoadingAudioTrack(null);
+    }
+  };
 
   // Tab 3: Students & Manual Unlock state
   const [manualEmail, setManualEmail] = useState("");
@@ -1070,9 +1100,7 @@ export default function FounderAdminPortalPage() {
                   </p>
                 ) : (
                   (overview?.audioFiles || []).map((track) => {
-                    const streamUrl = `/api/admin/audio-factory?stream=${encodeURIComponent(
-                      track.filename,
-                    )}&adminPassword=${encodeURIComponent(adminPassword)}`;
+                    const previewUrl = audioPreviewUrls[track.filename];
                     const isSynced = track.driveSyncStatus !== "local_ready";
                     return (
                       <div
@@ -1100,14 +1128,27 @@ export default function FounderAdminPortalPage() {
                         </div>
 
                         <div className="flex flex-wrap items-center gap-3">
-                          <audio
-                            controls
-                            preload="none"
-                            playsInline
-                            src={streamUrl}
-                            className="h-9 w-64 sm:w-72"
-                            onError={(e) => console.warn("[Admin Audio] Playback error:", e)}
-                          />
+                          {previewUrl ? (
+                            <audio
+                              controls
+                              autoPlay
+                              playsInline
+                              src={previewUrl}
+                              className="h-9 w-64 sm:w-72"
+                              onError={(e) => console.warn("[Admin Audio] Playback error:", e)}
+                            />
+                          ) : (
+                            <button
+                              type="button"
+                              disabled={loadingAudioTrack === track.filename}
+                              onClick={() => void handleLoadAudioPreview(track.filename)}
+                              className="inline-flex h-9 items-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition disabled:opacity-50"
+                            >
+                              {loadingAudioTrack === track.filename
+                                ? "Loading audio…"
+                                : "Load Audio Preview"}
+                            </button>
+                          )}
 
                           <button
                             type="button"

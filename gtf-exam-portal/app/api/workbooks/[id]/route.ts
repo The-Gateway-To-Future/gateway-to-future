@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
-import { getWorkbookById, getWorkbookForClient } from "@/lib/server/catalog";
-import { serverEnv } from "@/lib/server/env";
+import { getVerifiedSession, requireVerifiedSession } from "@/lib/server/auth-session";
+import {
+  getUnlockedProductSlugs,
+  getWorkbookById,
+  getWorkbookForClient,
+} from "@/lib/server/catalog";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,10 +22,8 @@ export async function GET(
   context: { params: Promise<{ id: string }> },
 ) {
   const { id } = await context.params;
-  const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email") || serverEnv.demoUserEmail;
-
-  const workbook = await getWorkbookForClient(id, email);
+  const session = await getVerifiedSession(req);
+  const workbook = await getWorkbookForClient(id, session?.email || "");
   if (!workbook) {
     return NextResponse.json({ error: "Workbook not found." }, { status: 404 });
   }
@@ -33,13 +35,28 @@ export async function POST(
   req: Request,
   context: { params: Promise<{ id: string }> },
 ) {
+  const auth = await requireVerifiedSession(req);
+  if (auth.response) return auth.response;
+
   const { id } = await context.params;
   const wb = getWorkbookById(id);
   if (!wb) {
     return NextResponse.json({ error: "Workbook not found." }, { status: 404 });
   }
 
-  const body = (await req.json()) as { answers?: Record<string, string> };
+  // Enforce entitlement before revealing correct answers & explanations
+  const isFreeLaunch = process.env.NEXT_PUBLIC_FREE_LAUNCH_MODE === "true";
+  if (!isFreeLaunch && !wb.isFree) {
+    const unlocked = await getUnlockedProductSlugs(auth.session.email, auth.session.uid);
+    if (!unlocked.has(wb.productSlug)) {
+      return NextResponse.json(
+        { error: "This workbook is locked. Unlock it to submit answers and view solutions." },
+        { status: 402 },
+      );
+    }
+  }
+
+  const body = (await req.json().catch(() => ({}))) as { answers?: Record<string, string> };
   const answers = body.answers || {};
 
   const graded = wb.questions.map((q) => {

@@ -85,13 +85,13 @@ const PLAN_STAGES: PlanStage[] = [
     indexLabel: "STAGE 06 · CLINICAL RECOGNITION",
     title: "Fachsprache Pflege & Hospital Placement",
     subtitle:
-      "Prepare for hospital ward handovers (ISBAR), Patientenaufnahme, and nursing or physician Anerkennung.",
+      "Start B2 Anerkennung & Fachsprache modules today; the dedicated ISBAR ward handover simulator and FSP hospital cases are rolling out next.",
     href: "/pflege",
-    ctaLabel: "Open Pflege Hub",
+    ctaLabel: "View Pflege Status",
     theme: "pflege",
     imageUrl: HEADER_IMAGES.pflege,
-    badge: "HOSPITAL CAREERS",
-    metaItems: ["ISBAR Protocol", "FSP Cases", "Charité / Vivantes"],
+    badge: "B2 LIVE · ISBAR PREVIEW",
+    metaItems: ["B2 Track Live", "ISBAR Coming Soon", "Charité / Vivantes"],
   },
 ];
 

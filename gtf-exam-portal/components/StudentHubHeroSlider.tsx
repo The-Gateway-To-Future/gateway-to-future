@@ -72,7 +72,6 @@ export function StudentHubHeroSlider({
   isAuthenticated,
 }: StudentHubHeroSliderProps) {
   const heroRef = useRef<HTMLElement>(null);
-  const touchStartYRef = useRef<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -99,26 +98,6 @@ export function StudentHubHeroSlider({
   const bgY = useTransform(smoothProgress, [0, 1], ["0%", "16%"]);
   const fgY = useTransform(smoothProgress, [0, 0.9], [0, -16]);
   const fgOpacity = useTransform(smoothProgress, [0, 0.9], [1, 0.85]);
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
-    if (e.touches.length === 1) {
-      touchStartYRef.current = e.touches[0].clientY;
-    }
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
-    if (touchStartYRef.current === null || e.changedTouches.length === 0) return;
-    const deltaY = e.changedTouches[0].clientY - touchStartYRef.current;
-    touchStartYRef.current = null;
-
-    if (typeof window !== "undefined" && window.scrollY <= 12) {
-      if (deltaY > 45) {
-        setIsExpanded(true);
-      } else if (deltaY < -35 && isExpanded) {
-        setIsExpanded(false);
-      }
-    }
-  };
 
   const quickFocusTiles = [
     {
@@ -148,8 +127,6 @@ export function StudentHubHeroSlider({
     <section
       ref={heroRef}
       aria-label="Student Command Hub Showcase"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
       className="relative w-full overflow-hidden border-b border-slate-800/80 bg-slate-950 text-white select-none"
     >
       <motion.div

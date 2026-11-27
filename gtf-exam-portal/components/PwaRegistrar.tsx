@@ -10,7 +10,7 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
-const ACTIVE_SW_CACHE = "gtf-exam-portal-v4-quizlet-light";
+const ACTIVE_SW_CACHE = "gtf-exam-portal-v5-secure";
 
 export function PwaRegistrar() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -39,7 +39,7 @@ export function PwaRegistrar() {
 
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
-        .register("/sw.js?v=v4-quizlet-light", { updateViaCache: "none" })
+        .register("/sw.js?v=v5-secure", { updateViaCache: "none" })
         .then((reg) => reg.update().catch(() => undefined))
         .catch((err) => {
           console.warn("[gtf] Service worker registration skipped:", err);
@@ -79,11 +79,12 @@ export function PwaRegistrar() {
       <button
         type="button"
         onClick={handleInstallClick}
-        className="inline-flex items-center gap-1.5 rounded-lg bg-gtf-gold px-3 py-1.5 text-xs font-semibold text-gtf-ink shadow-sm transition hover:bg-amber-300"
+        className="inline-flex items-center justify-center gap-1.5 min-h-[40px] min-w-[40px] sm:min-h-0 sm:min-w-0 rounded-xl bg-gtf-gold px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-gtf-ink shadow-sm transition hover:bg-amber-300 cursor-pointer"
         title="Install GTF Exam Portal on iPhone, Android or Desktop"
+        aria-label="Install App"
       >
-        <Download className="h-3.5 w-3.5" />
-        <span>Install App</span>
+        <Download className="h-4 w-4 sm:h-3.5 sm:w-3.5 shrink-0" />
+        <span className="hidden sm:inline">Install App</span>
       </button>
 
       {showIosGuide && (

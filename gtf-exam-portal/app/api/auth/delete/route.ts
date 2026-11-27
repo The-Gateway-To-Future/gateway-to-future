@@ -5,6 +5,7 @@ import {
   deleteUserFirestoreRecords,
   verifyFirebaseIdTokenServer,
 } from "@/lib/server/firebase-admin";
+import { PAID_APPOINTMENT_COOKIE } from "@/lib/server/consultation-contact";
 import { revokeSessionToken } from "@/lib/server/session-manager";
 import { getSupabaseServerClient } from "@/lib/supabase";
 
@@ -13,18 +14,17 @@ export const dynamic = "force-dynamic";
 
 interface DeleteAccountRequestBody {
   idToken?: string;
-  studentId?: string;
   confirm?: boolean;
 }
 
 /**
  * Authenticated Account & Data Deletion Endpoint (Google Play & GDPR Art. 17 Compliance).
  *
- * 1. Verifies the caller's Firebase ID token (Bearer header, body, or synced `gtf_auth_token` cookie).
- * 2. Deletes user documents in Firestore (`students`, `users`, `user_progress`).
- * 3. Deletes associated rows in Supabase (when configured) and revokes active sessions.
- * 4. Deletes the Firebase Authentication account via Firebase Admin SDK (with Identity Toolkit fallback).
- * 5. Clears all session cookies.
+ * Security guarantees:
+ *  - Requires a cryptographically verified Firebase ID token (never trusts client-supplied `studentId`).
+ *  - Erases owned documents in Firestore (`students`, `users`, `user_progress`, `test_scores`).
+ *  - Cleans up Supabase tables (`users`, `user_purchases`, `user_sessions`, `exam_attempts`).
+ *  - Deletes the Firebase Auth account and clears all session cookies.
  */
 export async function POST(req: Request) {
   try {
@@ -33,19 +33,18 @@ export async function POST(req: Request) {
 
     const bearerHeader = req.headers.get("authorization") || "";
     const bearerToken = bearerHeader.replace(/^Bearer\s+/i, "").trim();
-    const cookieAuthToken = cookieStore.get("gtf_auth_token")?.value?.trim() || "";
     const legacySessionToken =
       cookieStore.get("gtf_session")?.value?.trim() ||
       cookieStore.get("gtf_student_session")?.value?.trim() ||
       "";
 
-    const idToken = bearerToken || (body.idToken || "").trim() || cookieAuthToken;
+    const idToken = bearerToken || (body.idToken || "").trim();
 
     if (!idToken) {
       return NextResponse.json(
         {
           ok: false,
-          error: "Authentication required. Please sign in again before deleting your account.",
+          error: "Fresh Firebase authentication token required. Please sign in again before deleting your account.",
         },
         { status: 401 },
       );
@@ -64,22 +63,39 @@ export async function POST(req: Request) {
 
     const { uid, email } = verified;
 
-    // 1. Delete Firestore profile, student, and progress documents
+    // 1. Delete verified user's Firestore records (never passes client `studentId`)
     const firestoreCleanup = await deleteUserFirestoreRecords({
       uid,
       email,
-      studentId: body.studentId,
       idToken,
     });
 
-    // 2. Delete Supabase records if configured (best-effort)
+    // Fail closed if Firestore erasure hit 403/5xx on critical docs without Admin SDK
+    const criticalFailures = firestoreCleanup.failedDocs.filter(
+      (f) => f.startsWith(`user_progress/${uid}`) || f.startsWith(`students/`),
+    );
+    if (!firestoreCleanup.usedAdminSdk && criticalFailures.length > 0) {
+      console.error("[GTF Account Delete] Critical Firestore deletion failures:", criticalFailures);
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "FIRESTORE_ERASURE_INCOMPLETE",
+          error:
+            "Unable to verify complete cloud record erasure right now. Please contact ashusharma@gatewaytofuture.com so we can complete GDPR deletion immediately.",
+        },
+        { status: 503 },
+      );
+    }
+
+    // 2. Delete Supabase records across canonical schema.sql tables (best-effort)
     try {
       const supabase = getSupabaseServerClient();
       if (supabase && email) {
         await Promise.allSettled([
-          supabase.from("students").delete().eq("email", email),
-          supabase.from("unlocks").delete().eq("user_email", email),
+          supabase.from("exam_attempts").delete().eq("user_email", email),
+          supabase.from("user_purchases").delete().eq("user_email", email),
           supabase.from("user_sessions").delete().eq("user_email", email),
+          supabase.from("users").delete().eq("email", email),
         ]);
       }
     } catch (sbErr) {
@@ -104,7 +120,8 @@ export async function POST(req: Request) {
           code: requiresRecentLogin ? "REQUIRES_RECENT_LOGIN" : "AUTH_DELETE_FAILED",
           error: requiresRecentLogin
             ? "For security, please sign out and sign back in, then tap Delete Account again."
-            : authDeletion.error || "Unable to complete Firebase account deletion. Please contact ashusharma@gatewaytofuture.com.",
+            : authDeletion.error ||
+              "Unable to complete Firebase account deletion. Please contact ashusharma@gatewaytofuture.com.",
         },
         { status: requiresRecentLogin ? 403 : 500 },
       );
@@ -123,6 +140,7 @@ export async function POST(req: Request) {
     response.cookies.delete("gtf_auth_token");
     response.cookies.delete("gtf_session");
     response.cookies.delete("gtf_student_session");
+    response.cookies.delete(PAID_APPOINTMENT_COOKIE);
 
     return response;
   } catch (err) {
@@ -130,7 +148,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: err instanceof Error ? err.message : "Failed to process account deletion.",
+        error: "Failed to process account deletion.",
       },
       { status: 500 },
     );
